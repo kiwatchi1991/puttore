@@ -15,8 +15,8 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('group');
-            $table->string('account_id')->unique();
+            $table->integer('group')->default(0);
+            $table->string('account_id')->unique()->default(0);
             $table->string('account_name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
@@ -38,5 +38,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        
     }
 }
