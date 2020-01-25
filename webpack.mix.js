@@ -32,7 +32,9 @@ mix.js('resources/js/app.js', 'public/js')
             'resources/views/**/*.blade.php',
             'public/**/*.*',
             'routes/**/*.php',
-            '**/*.php'
+            '**/*.php',
+            '**/*.js',
+            '**/*.vue'
         ],
         proxy: {
             target: 'http://127.0.0.1:8000/'
