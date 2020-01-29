@@ -1,0 +1,14 @@
+.register{
+.register__wrapper{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    @include pc{
+            background-color: red;
+        }
+}
+
+.register__input-area{
+    border: solid 1px #000;
+}
+}
