@@ -20,15 +20,15 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->longText('detail');
             $table->longText('lesson');
-            $table->string('description');
-            $table->tinyInteger('free_flg');
-            $table->string('pic1');
-            $table->string('pic2');
-            $table->string('pic3');
-            $table->string('pic4');
-            $table->string('pic5');
+            $table->string('description')->nullable();
+            $table->tinyInteger('free_flg')->default(0);
+            $table->string('pic1')->nullable();
+            $table->string('pic2')->nullable();
+            $table->string('pic3')->nullable();
+            $table->string('pic4')->nullable();
+            $table->string('pic5')->nullable();
             $table->tinyInteger('price_flg')->default(0);
-            $table->decimal('default_price', 10, 2);
+            $table->decimal('default_price', 10, 2)->nullable();
             $table->tinyInteger('open_flg')->default(0);
             $table->tinyInteger('delete_flg')->default(0);
             $table->timestamps();
@@ -42,6 +42,9 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
+        // 外部キー付きのカラムを削除するにはまず必ず外部キー制約を外す必要があります
+        // $table->dropForeign(['user_id']);
+        // $table->dropColumn('user_id');
         Schema::dropIfExists('products');
     }
 }
