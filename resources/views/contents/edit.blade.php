@@ -1,54 +1,54 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Drill Register') }}</div>
+<div class="">
+    <div class="">
+        <div class="">
+            <div class="">
+                <div class="">{{ __('Drill Register') }}</div>
 
-                <div class="card-body">
+                <div class="">
                     <form method="POST" action="{{ route('contents.update', $content->id) }}">
                         @csrf
-                        <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
+                        <div class="">
+                            <label for="title" class="">{{ __('Title') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror"
+                            <div class="">
+                                <input id="title" type="text" class=" @error('title') is-invalid @enderror"
                                     name="title" value="{{ $content->title }}" autocomplete="title" autofocus>
 
                                 @error('title')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="">
                             <label for="description"
-                                class="col-md-4 col-form-label text-md-right">{{ __('description') }}</label>
+                                class="">{{ __('description') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="">
                                 <input id="description" type="text"
-                                    class="form-control @error('description') is-invalid @enderror" name="description"
+                                    class="f @error('description') is-invalid @enderror" name="description"
                                     value="{{ $content->description }}" autocomplete="description" autofocus>
 
                                 @error('title')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="pic" class="col-md-4 col-form-label text-md-right">{{ __('Pic') }}</label>
+                        <div class="">
+                            <label for="pic" class="">{{ __('Pic') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="pic" type="text" class="form-control @error('pic') is-invalid @enderror"
+                            <div class="">
+                                <input id="pic" type="text" class=" @error('pic') is-invalid @enderror"
                                     name="pic" value="{{ $content->pic }}" autocomplete="pic" autofocus>
 
                                 @error('title')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
@@ -75,9 +75,9 @@
                 @endfor --}}
 
 
-                <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
+                <div class="">
+                    <div class="">
+                        <button type="submit" class="">
                             {{ __('Register') }}
                         </button>
                     </div>

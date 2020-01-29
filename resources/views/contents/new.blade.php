@@ -1,54 +1,59 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Drill Register') }}</div>
+<div class="">
+    <div class="">
+        <div class="">
+            <div class="">
+                <div class="">レッスン内容登録</div>
 
-                <div class="card-body">
+                <div class="">
                     <form method="POST" action="{{ route('contents.create') }}">
                         @csrf
-                        <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
+                        {{-- 名前 --}}
+                        <div class="">
+                            <label for="name" class="">名前</label>
 
-                            <div class="col-md-6">
-                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror"
-                                    name="title" value="{{ old('title') }}" autocomplete="title" autofocus>
+                            <div class="">
+                                <input id="name" type="text" class=" @error('name') is-invalid @enderror"
+                                    name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
 
-                                @error('title')
-                                <span class="invalid-feedback" role="alert">
+                                @error('name')
+                                <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="description"
-                                class="col-md-4 col-form-label text-md-right">{{ __('description') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="description" type="text"
-                                    class="form-control @error('description') is-invalid @enderror" name="description"
-                                    value="{{ old('description') }}" autocomplete="description" autofocus>
+                        {{-- 説明 --}}
+                        <div class="">
+                            <label for="detail"
+                                class="">説明</label>
 
-                                @error('title')
-                                <span class="invalid-feedback" role="alert">
+                            <div class="">
+                                <input id="detail" type="text"
+                                    class=" @error('detail') is-invalid @enderror" name="detail"
+                                    value="{{ old('detail') }}" autocomplete="detail" autofocus>
+
+                                @error('detail')
+                                <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="pic" class="col-md-4 col-form-label text-md-right">{{ __('Pic') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="pic" type="text" class="form-control @error('pic') is-invalid @enderror"
-                                    name="pic" value="{{ old('pic') }}" autocomplete="pic" autofocus>
+                        {{-- レッスン内容 --}}
+                        <div class="">
+                            <label for="lesson" class="">レッスン内容</label>
+
+                            <div class="">
+                                <input id="lesson" type="text" class=" @error('lesson') is-invalid @enderror"
+                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus>
 
                                 @error('title')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
@@ -75,9 +80,9 @@
                 @endfor --}}
 
 
-                <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
+                <div class="">
+                    <div class="">
+                        <button type="submit" class="">
                             {{ __('Register') }}
                         </button>
                     </div>
