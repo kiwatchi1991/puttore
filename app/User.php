@@ -20,6 +20,15 @@ class User extends Authenticatable
     ];
 
     /**
+     * ログインしているユーザーのみ表示する
+     */
+
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
