@@ -11,19 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/{any?}', function () {
+//     return view('welcome');
+// })->where('any', '.+');
 
 Auth::routes();
 
 Route::group(['middleware' => 'check'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/contents/new', 'ContentsController@new')->name('contents.new');
-    Route::post('/contents', 'ContentsController@create')->name('contents.create');
-    Route::get('/contents',  'ContentsController@index')->name('contents');
-    Route::get('/contents/{id}/edit', 'ContentsController@edit')->name('contents.edit');
-    Route::post('/contents/{id}/edit', 'ContentsController@update')->name('contents.update');
-    Route::post('/contents/{id}/delete', 'ContentsController@delete')->name('contents.delete');
-    Route::get('/mypage', 'ContentsController@mypage')->name('contents.mypage');
+    Route::get('/contents/new', 'ProductsController@new')->name('contents.new');
+    Route::post('/contents/new', 'ProductsController@create')->name('contents.create');
+    Route::get('/contents',  'ProductsController@index')->name('contents');
+    Route::get('/contents/{id}/edit', 'ProductsController@edit')->name('contents.edit');
+    Route::post('/contents/{id}/edit', 'ProductsController@update')->name('contents.update');
+    Route::post('/contents/{id}/delete', 'ProductsController@delete')->name('contents.delete');
+    Route::get('/mypage', 'ProductsController@mypage')->name('contents.mypage');
 });
