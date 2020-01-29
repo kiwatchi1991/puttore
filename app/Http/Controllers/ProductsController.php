@@ -3,44 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Content;
+use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Log;
 
-class ContentsController extends Controller
+
+class ProductsController extends Controller
 {
     public function new()
     {
         return view('contents.new');
     }
+
     public function create(Request $request)
     {
         Log::debug('あああ');
         $request->validate([
-            // 'title' => 'required|string|max:255',
-            'title' => 'required|string|max:255',
-            'description' => 'string|max:255',
-            'pic' => 'string|max:255',
-            // 'category_name' => 'required|string|max:255',
-            // 'problem0' => 'required|string|max:255',
-            // 'problem1' => 'string|max:255',
-            // 'problem2' => 'string|max:255',
-            // 'problem3' => 'string|max:255',
-            // 'problem4' => 'string|max:255',
-            // 'problem5' => 'string|max:255',
-            // 'problem6' => 'string|max:255',
-            // 'problem7' => 'string|max:255',
-            // 'problem8' => 'string|max:255',
-            // 'problem9' => 'string|max:255',
+            'name' => 'required|string|max:255',
+            'detail' => 'string|max:255',
+            'lesson' => 'string|max:255',
+            // 'free_flg' => 'string|max:255',
+            // 'pic1' => 'string|max:255',
+            // 'pic2' => 'string|max:255',
+            // 'pic3' => 'string|max:255',
+            // 'pic4' => 'string|max:255',
+            // 'pic5' => 'string|max:255',
+            // 'pic5' => 'string|max:255',
         ]);
 
         //モデルを使って、DBに登録する値をセット
-        $content = new Content;
+        $product = new Product;
 
         // fillを使って一気にいれるか
         // $fillableを使っていないと変なデータが入り込んだ場合に勝手にDBが更新されてしまうので注意！
         Log::debug('これからDBへデータ挿入');
-        Auth::user()->contents()->save($content->fill($request->all()));
+        Auth::user()->products()->save($product->fill($request->all()));
         Log::debug('DBへデータ挿入完了');
 
 
@@ -49,15 +46,17 @@ class ContentsController extends Controller
         return redirect('/contents/new')->with('flash_message', __('Registered.'));
     }
 
+
     /**
      * 一覧機能
      */
 
     public function index()
     {
-        $contents = Content::all();
-        return view('contents.index', ['view_contents' => $contents]);
+        $product = Product::all();
+        return view('contents.index', ['view_products' => $product]);
     }
+
     /**
      * 編集機能
      */
