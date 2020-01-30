@@ -67,7 +67,7 @@
 
                             <div>
                                 <input id="password" type="password"
-                                class="register__input-area" @error('password') is-invalid @enderror" name="password"
+                                class="register__input-area @error('password') is-invalid @enderror" name="password"
                                     required autocomplete="new-password">
 
                                 @error('password')
