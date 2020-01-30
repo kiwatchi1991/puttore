@@ -8,14 +8,14 @@
                 <div class="">{{ __('Drill Register') }}</div>
 
                 <div class="">
-                    <form method="POST" action="{{ route('contents.update', $content->id) }}">
+                    <form method="POST" action="{{ route('contents.update', $product->id) }}">
                         @csrf
                         <div class="">
                             <label for="title" class="">{{ __('Title') }}</label>
 
                             <div class="">
                                 <input id="title" type="text" class=" @error('title') is-invalid @enderror"
-                                    name="title" value="{{ $content->title }}" autocomplete="title" autofocus>
+                                    name="title" value="{{ $product->title }}" autocomplete="title" autofocus>
 
                                 @error('title')
                                 <span class="" role="alert">
@@ -31,7 +31,7 @@
                             <div class="">
                                 <input id="description" type="text"
                                     class="f @error('description') is-invalid @enderror" name="description"
-                                    value="{{ $content->description }}" autocomplete="description" autofocus>
+                                    value="{{ $product->description }}" autocomplete="description" autofocus>
 
                                 @error('title')
                                 <span class="" role="alert">
@@ -45,7 +45,7 @@
 
                             <div class="">
                                 <input id="pic" type="text" class=" @error('pic') is-invalid @enderror"
-                                    name="pic" value="{{ $content->pic }}" autocomplete="pic" autofocus>
+                                    name="pic" value="{{ $product->pic }}" autocomplete="pic" autofocus>
 
                                 @error('title')
                                 <span class="" role="alert">
