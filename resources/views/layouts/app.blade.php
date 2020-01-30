@@ -21,7 +21,7 @@
 </head>
 <body>
     <div >
-        <nav class="">
+        <nav class="header">
             <div class="header__inner">
                 <a class="" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -39,6 +39,15 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="" href="{{ route('products.new') }}">new</a>
+                        </li>     
+                         <li class="nav-item">
+                            <a class="" href="{{ route('products') }}">index</a>
+                        </li>                               
+                        <li class="nav-item">
+                            <a class="" href="{{ route('products.mypage') }}">mypage</a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>

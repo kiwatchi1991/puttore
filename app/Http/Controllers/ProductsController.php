@@ -12,12 +12,12 @@ class ProductsController extends Controller
 {
     public function new()
     {
-        return view('contents.new');
+        return view('products.new');
     }
 
     public function create(Request $request)
     {
-        Log::debug('あああ');
+        Log::debug('コントローラー：create');
         $request->validate([
             'name' => 'required|string|max:255',
             'detail' => 'string|max:255',
@@ -43,7 +43,7 @@ class ProductsController extends Controller
 
         // リダイレクトする
         // その時にsessionフラッシュにメッセージを入れる
-        return redirect('/contents/new')->with('flash_message', __('Registered.'));
+        return redirect('/products')->with('flash_message', __('Registered.'));
     }
 
 
@@ -54,7 +54,7 @@ class ProductsController extends Controller
     public function index()
     {
         $product = Product::all();
-        return view('contents.index', ['view_products' => $product]);
+        return view('products.index', ['view_products' => $product]);
     }
 
     /**
@@ -65,11 +65,11 @@ class ProductsController extends Controller
         // GETパラメータが数字かどうかをチェックする
         // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
         if (!ctype_digit($id)) {
-            return redirect('/contents/new')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
         }
 
-        $content = Content::find($id);
-        return view('contents.edit', ['content' => $content]);
+        $product = Product::find($id);
+        return view('products.edit', ['product' => $product]);
     }
 
     /**
@@ -79,13 +79,13 @@ class ProductsController extends Controller
     {
         // GETパラメータが数字かどうかをチェックする
         if (!ctype_digit($id)) {
-            return redirect('/contents/new')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
         }
 
         $drill = Content::find($id);
         $drill->fill($request->all())->save();
 
-        return redirect('/contents')->with('flash_message', __('Registered.'));
+        return redirect('/products')->with('flash_message', __('Registered.'));
     }
 
     /**
@@ -96,16 +96,16 @@ class ProductsController extends Controller
     {
         // GETパラメータが数字かどうかをチェックする
         if (!ctype_digit($id)) {
-            return redirect('/contents/new')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
         }
 
         // $drill = Drill::find($id);
         // $drill->delete();
 
         // こう書いた方がスマート
-        Content::find($id)->delete();
+        Product::find($id)->delete();
 
-        return redirect('/contents')->with('flash_message', __('Deleted.'));
+        return redirect('/products')->with('flash_message', __('Deleted.'));
     }
 
     /**
@@ -113,7 +113,7 @@ class ProductsController extends Controller
      */
     public function mypage()
     {
-        $contents = Auth::user()->contents()->get();
-        return view('contents.mypage', compact('contents'));
+        $products = Auth::user()->products()->get();
+        return view('products.mypage', compact('products'));
     }
 }
