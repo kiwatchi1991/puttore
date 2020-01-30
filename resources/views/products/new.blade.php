@@ -3,19 +3,19 @@
 @section('content')
 <div class="">
     <div class="">
-        <div class="">
-            <div class="">
+        <div class="new">
+            <section class="new__wrapper">
                 <div class="">レッスン内容登録</div>
 
                 <div class="">
-                    <form method="POST" action="{{ route('contents.create') }}">
+                    <form method="POST" action="{{ route('products.create') }}">
                         @csrf
                         {{-- 名前 --}}
                         <div class="">
                             <label for="name" class="">名前</label>
 
                             <div class="">
-                                <input id="name" type="text" class=" @error('name') is-invalid @enderror"
+                                <input id="name" type="text" class="new__input-area @error('name') is-invalid @enderror"
                                     name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
 
                                 @error('name')
@@ -33,7 +33,7 @@
 
                             <div class="">
                                 <input id="detail" type="text"
-                                    class=" @error('detail') is-invalid @enderror" name="detail"
+                                    class="new__input-area @error('detail') is-invalid @enderror" name="detail"
                                     value="{{ old('detail') }}" autocomplete="detail" autofocus>
 
                                 @error('detail')
@@ -49,10 +49,26 @@
                             <label for="lesson" class="">レッスン内容</label>
 
                             <div class="">
-                                <input id="lesson" type="text" class=" @error('lesson') is-invalid @enderror"
+                                <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
                                     name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus>
 
-                                @error('title')
+                                @error('lesson')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- 価格 --}}
+                        <div class="">
+                            <label for="default_price" class="">価格</label>
+
+                            <div class="">
+                                <input id="default_price" type="text" class="new__input-area @error('default_price') is-invalid @enderror"
+                                    name="default_price" value="{{ old('default_price') }}" autocomplete="default_price" autofocus>
+
+                                @error('default_price')
                                 <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -89,7 +105,7 @@
                 </div>
                 </form>
             </div>
-        </div>
+        </section>
     </div>
 </div>
 </div>

@@ -22,11 +22,11 @@ Auth::routes();
 
 Route::group(['middleware' => 'check'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/contents/new', 'ProductsController@new')->name('contents.new');
-    Route::post('/contents/new', 'ProductsController@create')->name('contents.create');
-    Route::get('/contents',  'ProductsController@index')->name('contents');
-    Route::get('/contents/{id}/edit', 'ProductsController@edit')->name('contents.edit');
-    Route::post('/contents/{id}/edit', 'ProductsController@update')->name('contents.update');
-    Route::post('/contents/{id}/delete', 'ProductsController@delete')->name('contents.delete');
-    Route::get('/mypage', 'ProductsController@mypage')->name('contents.mypage');
+    Route::get('/products/new', 'ProductsController@new')->name('products.new');
+    Route::post('/products/new', 'ProductsController@create')->name('products.create');
+    Route::get('/products',  'ProductsController@index')->name('products');
+    Route::get('/products/{id}/edit', 'ProductsController@edit')->name('products.edit');
+    Route::post('/products/{id}/edit', 'ProductsController@update')->name('products.update');
+    Route::post('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
+    Route::get('/mypage', 'ProductsController@mypage')->name('products.mypage');
 });

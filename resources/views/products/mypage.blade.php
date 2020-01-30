@@ -5,16 +5,16 @@
     <h2>{{ __('Drill List') }}</h2>
     <div class="">
 
-        @foreach ($contents as $content)
+        @foreach ($products as $product)
 
         <div class="">
             <div class="">
                 <div class="">
-                    <h3 class="">{{ $content->title }}</h3>
+                    <h3 class="">{{ $product->title }}</h3>
                     {{-- <a href="#" class="btn btn-primary">{{ __('Go Practice')  }}</a> --}}
-                    <a href="{{ route('contents.edit',$content->id ) }}"
+                    <a href="{{ route('products.edit',$product->id ) }}"
                         class="">{{ __('Go Practice')  }}</a>
-                    <form action="{{ route('contents.delete',$content->id ) }}" method="post" class="">
+                    <form action="{{ route('products.delete',$product->id ) }}" method="post" class="">
                         @csrf
                         <button class=""
                             onclick='return confirm("削除しますか？");'>{{ __('Go Delete')  }}</button>
