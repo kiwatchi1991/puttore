@@ -29,4 +29,6 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/products/{id}/edit', 'ProductsController@update')->name('products.update');
     Route::post('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
     Route::get('/mypage', 'ProductsController@mypage')->name('products.mypage');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
 });
