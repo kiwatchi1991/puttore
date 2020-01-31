@@ -16,15 +16,18 @@ class CreatMessageTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('bord_id');
-            $table->foreign('bord_id')->references('id')->on('bords');
-            $table->dateTime('send_date');
             $table->unsignedBigInteger('send-user_id');
-            $table->foreign('send-user_id')->references('id')->on('users');
+            $table->dateTime('send_date');
             $table->unsignedBigInteger('recieve-user_id');
-            $table->foreign('recieve-user_id')->references('id')->on('users');
             $table->longText('msg');
             $table->tinyInteger('delete_flg')->default(0);
             $table->timestamps();
+            
+            // 外部キー制約
+            $table->foreign('bord_id')->references('id')->on('bords');
+            $table->foreign('send-user_id')->references('id')->on('users');
+            $table->foreign('recieve-user_id')->references('id')->on('users');
+
         });
     }
 

@@ -16,13 +16,16 @@ class CreateBordTable extends Migration
         Schema::create('bords', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('sale-user_id');
-            $table->foreign('sale-user_id')->references('id')->on('users');
             $table->unsignedBigInteger('buy-user_id');
-            $table->foreign('buy-user_id')->references('id')->on('users');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
             $table->tinyInteger('delete_flg')->default(0);
             $table->timestamps();
+            
+            // 外部キー制約
+            $table->foreign('sale-user_id')->references('id')->on('users');
+            $table->foreign('buy-user_id')->references('id')->on('users');
+            $table->foreign('product_id')->references('id')->on('products');
+            
         });
     }
 
