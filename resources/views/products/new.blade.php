@@ -25,6 +25,33 @@
                                 @enderror
                             </div>
                         </div>
+                        {{-- 言語選択 --}}
+                        <div class="searchbox">
+                            <div class="serchbox__inner">
+                                <p>1.言語を選んでね</p>
+                            <div for="lang" class="">言語</div>
+
+                            <div class="">
+                                @foreach ($category as $categories)
+                                    <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
+                                        name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus>{{ $categories->name }}
+                                @endforeach
+                                @foreach ($difficult as $difficults)
+                                    <input id="difficult" type="checkbox" class="new__input-area @error('difficult') is-invalid @enderror"
+                                        name="difficult[]" value="{{ $difficults->id }}" autocomplete="difficult" autofocus>{{ $difficults->name }}
+                                @endforeach
+                               
+                                    {{-- <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
+                                    name="lang[]" value="2" autocomplete="lang" autofocus>{{ $category->name }} --}}
+
+                                @error('name')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            </div>
+                        </div>
 
                         {{-- 説明 --}}
                         <div class="">
