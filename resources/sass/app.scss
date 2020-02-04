@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'reset';
-@import 'layout';
-@import 'variables';
+
+@import 'foundation/reset';
+@import 'foundation/variables';
+@import 'layout/header';
 @import 'userRegister';
 @import 'login';
 @import 'new';
