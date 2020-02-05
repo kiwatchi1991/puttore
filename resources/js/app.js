@@ -7,6 +7,10 @@
 // require('./bootstrap');
 
 const Vue = require('vue');
+// ルーティングの定義をインポートする
+import router from './router'
+// ルートコンポーネントをインポートする
+import App from './App.vue'
 
 /**
  * The following block of code may be used to automatically register yourcd
@@ -19,7 +23,8 @@ const Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/UserRegister.vue').default);
+// Vue.component('example-component', require('./components/UserRegister.vue').default);
+// Vue.component('example-component', require('./components/sample.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +34,7 @@ Vue.component('example-component', require('./components/UserRegister.vue').defa
 
 new Vue({
     el: '#app',
+    router, // ルーティングの定義を読み込む
+    components: { App }, // ルートコンポーネントの使用を宣言する
+    template: '<App />' // ルートコンポーネントを描画する
 });
