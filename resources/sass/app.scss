@@ -3,9 +3,24 @@
 
 // Variables
 
+//foundation
 @import 'foundation/reset';
 @import 'foundation/variables';
+
+//layout
 @import 'layout/header';
+@import 'layout/auth';
+
+//component
+@import 'object/component/ham';
+@import 'object/component/input_form';
+@import 'object/component/product';
+
+
+//project
+@import 'object/project/hammenu';
+@import 'object/project/productBlock';
+
 @import 'userRegister';
 @import 'login';
 @import 'new';

@@ -116,14 +116,33 @@ class ProductsController extends Controller
      */
     public function mypage()
     {
-        $products = Auth::user()->products()->get();
+        //プロダクト件数
+        $all_products = Auth::user()->products()->get();
+        //ログインユーザーのプロダクト件数
+        $products = Auth::user()->products()->paginate(10);
+
+        //ページング用変数 始点
+        $pageNum_from =  $products->currentPage()*10-9;
+        //ページング用変数 終点
+        $pageNum_to = $products->currentPage()*10;
+        
+        //価格をカンマ入れて表示
+        // $price = DB::select('select * from products where active = ?', [1]);
+
+
         Log::debug('products_id中身 : '.$products);
         $product_category = Product::all();
         $product_difficulty = Product::all();
 
 
 
-        return view('products.mypage', ['products' => $products,'product_categories' => $product_category,'product_difficulties' => $product_difficulty,
+        return view('products.mypage',[
+        'products' => $products,
+        'product_categories' => $product_category,
+        'product_difficulties' => $product_difficulty,
+        'all_products'=>$all_products,
+        'pageNum_from' => $pageNum_from,
+        'pageNum_to' => $pageNum_to,
         ]);
 
         

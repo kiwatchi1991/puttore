@@ -14,9 +14,7 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Route::get('/{any?}', function () {
-//     return view('welcome');
-// })->where('any', '.+');
+
 
 Auth::routes();
 
@@ -32,3 +30,7 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 });
+
+// Route::get('/{any?}', function () {
+//     return view('index');
+// })->where('any', '.+');

@@ -1,8 +1,18 @@
 .header{
-    height: 90px;
+    height: 40px;
     background: #bab4b4;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 6px rgba(0,0,0,.16);
+    background-color: #fff;
 }
 .header__inner{
     display: flex;
     justify-content: space-between;
+}
+
+body{
+    padding-top: 40px;
 }

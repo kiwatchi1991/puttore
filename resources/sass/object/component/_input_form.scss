@@ -1,0 +1,36 @@
+.c-pageTitle{
+    font-size: 36px;
+}
+
+.c-input__area{
+    width: 160px;
+    margin: 0 auto;
+    text-align: left;
+    &:not(:first-child){
+        margin-top: 10px;
+    }
+    &--another{
+        text-align: center;
+    }
+}
+
+.c-input__form{
+    height: 15px;
+    width: 100%;
+    border: 1px solid ;
+}
+
+.c-input__remember{
+    width: 160px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.c-button__block{
+    margin-top: 20px;
+}
+
+.c-button{
+    width: 160px;
+    border: 1px solid #000;
+}
