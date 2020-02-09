@@ -75,8 +75,8 @@ class RegisterController extends Controller
     }
 
     //api用に追加
-    protected function registered(Request $request, $user)
-    {
-        return $user;
-    }
+    // protected function registered(Request $request, $user)
+    // {
+    //     return $user;
+    // }
 }

@@ -40,8 +40,5 @@ class LoginController extends Controller
     }
 
     //api用に追加
-    protected function authenticated(Request $request, $user)
-    {
-        return $user;
-    }
+
 }
