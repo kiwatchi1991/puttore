@@ -135,6 +135,7 @@ class ProductsController extends Controller
         $product_difficulty = Product::all();
 
 
+
         return view('products.mypage',[
         'products' => $products,
         'product_categories' => $product_category,
