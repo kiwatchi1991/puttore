@@ -8,7 +8,7 @@
                 <div class="">レッスン内容登録</div>
 
                 <div class="">
-                    <form method="POST" action="{{ route('products.create') }}">
+                    <form method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data" >
                         @csrf
                         {{-- 名前 --}}
                         <div class="">
@@ -101,6 +101,14 @@
                                 </span>
                                 @enderror
                             </div>
+                        </div>
+
+                        {{-- 画像 --}}
+                        <div class="">
+                            {{-- <form method="POST" action="/profile" enctype="multipart/form-data" > --}}
+                                <input type="file" name="photo">
+                                <input type="submit">
+                            {{-- </form> --}}
                         </div>
 
                         {{-- @for ($i = 1; $i <= 10; $i++) <div class="form-group row">

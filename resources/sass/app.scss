@@ -2,10 +2,28 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'layout';
-@import 'variables';
+
+//foundation
+@import 'foundation/reset';
+@import 'foundation/variables';
+
+//layout
+@import 'layout/header';
+@import 'layout/auth';
+
+//component
+@import 'object/component/ham';
+@import 'object/component/input_form';
+@import 'object/component/product';
+
+
+//project
+@import 'object/project/hammenu';
+@import 'object/project/productBlock';
+
 @import 'userRegister';
 @import 'login';
+@import 'new';
 
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';

@@ -4,9 +4,17 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-// require('./bootstrap');
+require('./bootstrap');
 
 const Vue = require('vue');
+// const Sample = require('vue');
+// var $ = require('jQuery');
+require('./components/hamgurger');
+
+require('./components/hamgurger');
+// const Sample = require('vue');
+// var $ = require('jQuery');
+require('./components/hamgurger');
 
 /**
  * The following block of code may be used to automatically register yourcd
@@ -19,6 +27,8 @@ const Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+
+Vue.component('example-component', require('./components/Hamburger.vue').default);
 Vue.component('example-component', require('./components/UserRegister.vue').default);
 
 /**
@@ -27,6 +37,14 @@ Vue.component('example-component', require('./components/UserRegister.vue').defa
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
 new Vue({
     el: '#app',
+    template: '<App />' // ルートコンポーネントを描画する
 });
+
+// n
+// new Sample({
+//     el: '#sample',
+// });
+
