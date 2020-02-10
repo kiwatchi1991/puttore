@@ -353,6 +353,32 @@ body {
   margin-top: 20px;
 }
 
+.c-pagination {
+  margin-top: 20px;
+}
+
+.c-pagination .pagination {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.c-pagination .page-item {
+  border: 1px solid #000;
+  padding: 6px;
+  margin-left: 5px;
+}
+
+.c-pagination .page-item.active {
+  background: #333333;
+  color: white;
+}
+
+.c-pagination .page-link {
+  text-decoration: none;
+}
+
 .global-nav {
   position: fixed;
   right: -320px;
