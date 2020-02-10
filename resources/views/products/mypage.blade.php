@@ -46,7 +46,7 @@
             </div>
         </div>
         @endforeach
-        <div class="d-flex justify-content-center">
+        <div class="c-pagination">
             {{ $products->links() }}
         </div>
 </div>
