@@ -41,3 +41,24 @@
 .c-contents__price{
     margin-top: 20px;
 }
+
+//ページネーションはDOM自動生成なので、自動で付与されたclass名にスタイルをあてる
+.c-pagination{
+    margin-top: 20px;
+    .pagination{
+        display: flex;
+        justify-content: center;
+    }
+    .page-item{
+        border: 1px solid #000;
+        padding: 6px;
+        margin-left: 5px;
+        &.active{
+            background: #333333;
+            color: white;
+        }
+    }
+    .page-link{
+        text-decoration: none;
+    }
+}
