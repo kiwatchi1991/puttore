@@ -107,7 +107,7 @@
                         <div class="">
                             {{-- <form method="POST" action="/profile" enctype="multipart/form-data" > --}}
                                 <input type="file" name="photo">
-                                <input type="submit">
+                                {{-- <input type="submit"> --}}
                             {{-- </form> --}}
                         </div>
 
