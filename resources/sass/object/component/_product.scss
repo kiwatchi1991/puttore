@@ -7,9 +7,16 @@
     font-size: 20px;
 }
 
+.c-product__link{
+    cursor: pointer;
+}
+
 .c-image__block{
-    padding: 50px 0;
     background:#FFFFCC;
+}
+
+.c-image{
+    max-width: 100%;
 }
 
 .c-tag__block{

@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use App\Difficulty;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Log;
 
 
@@ -105,10 +106,12 @@ class ProductsController extends Controller
             $product->difficulties()->sync($difficulty_ids);  
             // return redirect('/products/mypage')->with('success', '登録しました');
 
+        //画像アップロード
+        $request->photo->storeAs('public/profile_images', Auth::id() . '.jpg');
 
         // リダイレクトする
         // その時にsessionフラッシュにメッセージを入れる
-        return redirect('/products')->with('flash_message', __('Registered.'));
+        return redirect('/products/mypage')->with('flash_message', __('Registered.'));
     }
     
     /**
@@ -129,6 +132,11 @@ class ProductsController extends Controller
         //価格をカンマ入れて表示
         // $price = DB::select('select * from products where active = ?', [1]);
 
+        //画像有無判定フラグ
+        $is_image = false;
+        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
+        $is_image = true;
+        }
 
         Log::debug('products_id中身 : '.$products);
         $product_category = Product::all();
@@ -143,6 +151,7 @@ class ProductsController extends Controller
         'all_products'=>$all_products,
         'pageNum_from' => $pageNum_from,
         'pageNum_to' => $pageNum_to,
+        'is_image' => $is_image,
         ]);
 
         

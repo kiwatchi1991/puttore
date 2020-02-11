@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2 class="c-pageTitle">マイページ</h2>
+<h2 class="c-pageTitle">マイページ</h2>
+@if (session('flash_message'))
+<div class="alert alert-success">
+    {{ session('flash_message') }}
+</div>
+@endif
     <div class="c-pageNum"> 全 <span class="c-totalNum">{{ $all_products->count() }}</span> 件中 {{ $pageNum_from }} 〜 {{ $pageNum_to }} 件</div>
         <div class="p-product__area">
             @foreach ($products as $product)
             <div class="p-product__block">
+            <a class="c-product__link">
             {{-- プロダクトID {{ $product->id }} --}}
         
                     {{-- <h3 class="">{{ $product->name }}</h3> --}}
@@ -13,7 +19,10 @@
                     {{-- <a href="{{ route('products.edit',$product->id ) }}" --}}
                         {{-- class="">{{ __('Go Practice')  }}</a> --}}
                     <div class="c-image__block">
-                        画像    
+                        {{-- 画像     --}}
+                        @if ($is_image)
+                            <img class="c-image" src="/storage/profile_images/{{ Auth::id() }}.jpg">
+                        @endif
                     </div>
                     <div class="c-tag__block">
                         
@@ -43,7 +52,8 @@
                             onclick='return confirm("削除しますか？");'>{{ __('Go Delete')  }}</button>
                         </form> --}}
                     </div>
-            </div>
+            </a>
+        </div>
         </div>
         @endforeach
         <div class="c-pagination">
