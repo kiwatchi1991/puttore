@@ -98,6 +98,67 @@ class ProductsController extends Controller
      */
     public function new()
     {
+        Log::debug('mypageコントローラー');
+        Log::debug($request);
+
+        // 検索ボックス用カテゴリーと難易度
+        $category = Category::all();
+        $difficult = Difficulty::all();
+
+        $query  = Product::query();
+        $tags   = $request->get('lang');
+        if ($tags) {
+            Log::debug('$tagsがあった！');
+            $query->whereIn('id', $this->getProductIdByCategories($tags));
+        }
+
+
+        //プロダクト件数
+        $all_products = Auth::user()->products()->get();
+        //ログインユーザーのプロダクト（ページング）
+        $products = Auth::user()->products()->paginate(10);
+
+        //ページング用変数 始点
+        $pageNum_from =  $products->currentPage()*10-9;
+        //ページング用変数 終点
+        $pageNum_to = $products->currentPage()*10;
+        
+        //価格をカンマ入れて表示
+
+        //画像有無判定フラグ
+        $is_image = false;
+        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
+        $is_image = true;
+        }
+
+        $product_category = Product::all();
+        $product_difficulty = Product::all();
+
+
+
+        return view('products.mypage',[
+        'products' => $products,
+        'product_categories' => $product_category,
+        'product_difficulties' => $product_difficulty,
+        'all_products'=>$all_products,
+        'pageNum_from' => $pageNum_from,
+        'pageNum_to' => $pageNum_to,
+        'is_image' => $is_image,
+        'category' => $category,
+        'difficult' => $difficult,
+        ]);
+
+        
+        // return view('products.mypage', compact('products,categories'));
+
+    }
+    
+    
+     /**
+     * コンテンツ登録画面
+     */
+    public function new()
+    {
         return view('contents.new');
     }
 
