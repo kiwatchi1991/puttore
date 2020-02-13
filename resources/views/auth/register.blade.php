@@ -9,7 +9,7 @@
                     <form method="POST" class="l-auth__formArea" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="c-input__area">
+                        {{-- <div class="c-input__area">
                             <label for="account_id"
                                 >id</label>
 
@@ -24,8 +24,8 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="c-input__area">
+                        </div> --}}
+                        {{-- <div class="c-input__area">
                             <label for="account_name"
                                 >ニックネーム</label>
 
@@ -39,7 +39,7 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="c-input__area">
                             <label for="email"
