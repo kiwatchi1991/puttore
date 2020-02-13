@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h2 class="c-pageTitle">作品一覧ページ</h2>
+<h2 class="c-pageTitle">マイページ</h2>
 {{-- @if (session('flash_message'))
 <div class="alert alert-success">
     {{ session('flash_message') }}
@@ -36,9 +36,9 @@
                         {{-- class="">{{ __('Go Practice')  }}</a> --}}
                     <div class="c-image__block">
                         {{-- 画像     --}}
-                        @if ($is_image)
-                            <img class="c-image" src="/storage/profile_images/{{ Auth::id() }}.jpg">
-                        @endif
+                        {{-- @if ($is_image) --}}
+                            <img class="c-image" src="/storage/profile_images{{ $product->pic1 }}">
+                        {{-- @endif --}}
                     </div>
                     <div class="c-tag__block">
                         

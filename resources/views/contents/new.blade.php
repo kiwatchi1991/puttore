@@ -60,6 +60,30 @@
                             </div>
                         </div>
 
+                        {{-- 価格 --}}
+                        <div class="">
+                            <label for="default_price" class="">価格</label>
+
+                            <div class="">
+                                <input id="default_price" type="text" class="new__input-area @error('default_price') is-invalid @enderror"
+                                    name="default_price" value="{{ old('default_price') }}" autocomplete="default_price" autofocus>
+
+                                @error('default_price')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- 画像 --}}
+                        <div class="">
+                            {{-- <form method="POST" action="/profile" enctype="multipart/form-data" > --}}
+                                <input type="file" name="pic1">
+                                {{-- <input type="submit"> --}}
+                            {{-- </form> --}}
+                        </div>
+
                         {{-- @for ($i = 1; $i <= 10; $i++) <div class="form-group row">
                             <label for="problem0"
                                 class="col-md-4 col-form-label text-md-right">{{ __('Problem').$i }}</label>
