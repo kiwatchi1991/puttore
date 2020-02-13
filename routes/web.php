@@ -30,6 +30,11 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/products/mypage', 'ProductsController@mypage')->name('products.search');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
+    //プロフィール編集
+    Route::get('/profile/{id}/edit', 'Auth\ProfileController@edit')->name('edit');
+    Route::post('/profile/{id}/edit', 'Auth\ProfileController@update')->name('update');
+
+
 });
 
 // Route::get('/{any?}', function () {
