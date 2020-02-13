@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
 html,
@@ -469,5 +470,12 @@ body {
 
 .new .new__input-area {
   border: solid 1px #000;
+=======
+@import url(https://fonts.googleapis.com/css?family=Nunito);.header__inner {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+>>>>>>> refs/heads/feature/プロダクト登録
 }
 
