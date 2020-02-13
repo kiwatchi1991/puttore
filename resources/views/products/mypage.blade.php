@@ -2,11 +2,27 @@
 
 @section('content')
 <h2 class="c-pageTitle">マイページ</h2>
-@if (session('flash_message'))
+{{-- @if (session('flash_message'))
 <div class="alert alert-success">
     {{ session('flash_message') }}
 </div>
-@endif
+@endif --}}
+    <div class="c-searchBox">
+        <form method="GET" action="{{ route('products.search') }}" enctype="multipart/form-data" >
+            @csrf
+            @foreach ($category as $categories)
+                <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
+                    name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus>{{ $categories->name }}
+            @endforeach
+            @foreach ($difficult as $difficults)
+                <input id="difficult" type="checkbox" class="new__input-area @error('difficult') is-invalid @enderror"
+                    name="difficult[]" value="{{ $difficults->id }}" autocomplete="difficult" autofocus>{{ $difficults->name }}
+            @endforeach
+            <button type="submit" class="">
+                検索する
+            </button>
+        </form>
+    </div>
     <div class="c-pageNum"> 全 <span class="c-totalNum">{{ $all_products->count() }}</span> 件中 {{ $pageNum_from }} 〜 {{ $pageNum_to }} 件</div>
         <div class="p-product__area">
             @foreach ($products as $product)
@@ -20,9 +36,9 @@
                         {{-- class="">{{ __('Go Practice')  }}</a> --}}
                     <div class="c-image__block">
                         {{-- 画像     --}}
-                        @if ($is_image)
-                            <img class="c-image" src="/storage/profile_images/{{ Auth::id() }}.jpg">
-                        @endif
+                        {{-- @if ($is_image) --}}
+                            <img class="c-image" src="/storage/profile_images{{ $product->pic1 }}">
+                        {{-- @endif --}}
                     </div>
                     <div class="c-tag__block">
                         
