@@ -47,6 +47,9 @@ class ProductsController extends Controller
 
         $query  = Product::query();
         $tags   = $request->get('lang');
+        Log::debug('$tagsの中身！');
+        Log::debug($tags);
+
         if ($tags) {
             Log::debug('$tagsがあった！');
             $query->whereIn('id', $this->getProductIdByCategories($tags));
@@ -97,62 +100,60 @@ class ProductsController extends Controller
      /**
      * コンテンツ登録画面
      */
-    public function new()
-    {
-        Log::debug('mypageコントローラー');
-        Log::debug($request);
+    // public function new()
+    // {
 
-        // 検索ボックス用カテゴリーと難易度
-        $category = Category::all();
-        $difficult = Difficulty::all();
+    //     // 検索ボックス用カテゴリーと難易度
+    //     $category = Category::all();
+    //     $difficult = Difficulty::all();
 
-        $query  = Product::query();
-        $tags   = $request->get('lang');
-        if ($tags) {
-            Log::debug('$tagsがあった！');
-            $query->whereIn('id', $this->getProductIdByCategories($tags));
-        }
+    //     $query  = Product::query();
+    //     $tags   = $request->get('lang');
+    //     if ($tags) {
+    //         Log::debug('$tagsがあった！');
+    //         $query->whereIn('id', $this->getProductIdByCategories($tags));
+    //     }
 
 
-        //プロダクト件数
-        $all_products = Auth::user()->products()->get();
-        //ログインユーザーのプロダクト（ページング）
-        $products = Auth::user()->products()->paginate(10);
+    //     //プロダクト件数
+    //     $all_products = Auth::user()->products()->get();
+    //     //ログインユーザーのプロダクト（ページング）
+    //     $products = Auth::user()->products()->paginate(10);
 
-        //ページング用変数 始点
-        $pageNum_from =  $products->currentPage()*10-9;
-        //ページング用変数 終点
-        $pageNum_to = $products->currentPage()*10;
+    //     //ページング用変数 始点
+    //     $pageNum_from =  $products->currentPage()*10-9;
+    //     //ページング用変数 終点
+    //     $pageNum_to = $products->currentPage()*10;
         
-        //価格をカンマ入れて表示
+    //     //価格をカンマ入れて表示
 
-        //画像有無判定フラグ
-        $is_image = false;
-        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
-        $is_image = true;
-        }
+    //     //画像有無判定フラグ
+    //     $is_image = false;
+    //     if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
+    //     $is_image = true;
+    //     }
 
-        $product_category = Product::all();
-        $product_difficulty = Product::all();
+    //     $product_category = Product::all();
+    //     $product_difficulty = Product::all();
 
 
 
-        return view('products.mypage',[
-        'products' => $products,
-        'product_categories' => $product_category,
-        'product_difficulties' => $product_difficulty,
-        'all_products'=>$all_products,
-        'pageNum_from' => $pageNum_from,
-        'pageNum_to' => $pageNum_to,
-        'is_image' => $is_image,
-        'category' => $category,
-        'difficult' => $difficult,
-        ]);
+    //     return view('products.mypage',[
+    //     'products' => $products,
+    //     'product_categories' => $product_category,
+    //     'product_difficulties' => $product_difficulty,
+    //     'all_products'=>$all_products,
+    //     'pageNum_from' => $pageNum_from,
+    //     'pageNum_to' => $pageNum_to,
+    //     'is_image' => $is_image,
+    //     'category' => $category,
+    //     'difficult' => $difficult,
+    //     ]);
 
         
         // return view('products.mypage', compact('products,categories'));
 
-    }
+    // }
     
     
      /**
@@ -164,7 +165,6 @@ class ProductsController extends Controller
         $difficult = Difficulty::all();
         return view('products.new',['category' => $category,'difficult' => $difficult]);
 
-        // return view('products.edit', ['product' => $product]);
     }
 
     /**
@@ -281,62 +281,73 @@ class ProductsController extends Controller
     /**
      * マイページ
      */
-    public function mypage()
-    {
-        //プロダクト件数
-        $all_products = Auth::user()->products()->get();
-        //ログインユーザーのプロダクト件数
-        $products = Auth::user()->products()->paginate(10);
+    // public function mypage()
+    // {
+    //     //プロダクト件数
+    //     $all_products = Auth::user()->products()->get();
+    //     //ログインユーザーのプロダクト件数
+    //     $products = Auth::user()->products()->paginate(10);
 
-        //ページング用変数 始点
-        $pageNum_from =  $products->currentPage()*10-9;
-        //ページング用変数 終点
-        $pageNum_to = $products->currentPage()*10;
+    //     //ページング用変数 始点
+    //     $pageNum_from =  $products->currentPage()*10-9;
+    //     //ページング用変数 終点
+    //     $pageNum_to = $products->currentPage()*10;
         
-        //価格をカンマ入れて表示
-        // $price = DB::select('select * from products where active = ?', [1]);
+    //     //価格をカンマ入れて表示
+    //     // $price = DB::select('select * from products where active = ?', [1]);
 
-        //画像有無判定フラグ
-        $is_image = false;
-        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
-        $is_image = true;
-        }
+    //     //画像有無判定フラグ
+    //     $is_image = false;
+    //     if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
+    //     $is_image = true;
+    //     }
 
-        Log::debug('products_id中身 : '.$products);
-        $product_category = Product::all();
-        $product_difficulty = Product::all();
+    //     Log::debug('products_id中身 : '.$products);
+    //     $product_category = Product::all();
+    //     $product_difficulty = Product::all();
 
 
 
-        return view('products.mypage',[
-        'products' => $products,
-        'product_categories' => $product_category,
-        'product_difficulties' => $product_difficulty,
-        'all_products'=>$all_products,
-        'pageNum_from' => $pageNum_from,
-        'pageNum_to' => $pageNum_to,
-        'is_image' => $is_image,
-        ]);
+    //     return view('products.mypage',[
+    //     'products' => $products,
+    //     'product_categories' => $product_category,
+    //     'product_difficulties' => $product_difficulty,
+    //     'all_products'=>$all_products,
+    //     'pageNum_from' => $pageNum_from,
+    //     'pageNum_to' => $pageNum_to,
+    //     'is_image' => $is_image,
+    //     ]);
 
         
-        // return view('products.mypage', compact('products,categories'));
 
-    }
+    // }
     
     /**
      * 一覧機能
      */
 
-    public function index()
+    public function index(Request $request)
     {
         // 検索ボックス用
         $category = Category::all();
         $difficult = Difficulty::all();
 
+         $query  = Product::query();
+         $tags   = $request->get('lang');
+         Log::debug('$tagsの中身！');
+         Log::debug($tags);
+
+         $products = Product::whereHas('categories', function($query) use ($tags) {
+            $query->whereIn('id', $tags);
+        })::paginate(10);
+        
+
+
+
         //プロダクト件数
         $all_products = Product::all();
-        //ログインユーザーのプロダクト（ページング）
-        $products = Product::paginate(10);
+        //全プロダクト（ページング）
+        // $products = Product::paginate(10);
 
         //ページング用変数 始点
         $pageNum_from =  $products->currentPage()*10-9;
@@ -347,7 +358,7 @@ class ProductsController extends Controller
 
         //画像有無判定フラグ
         $is_image = false;
-        if (Storage::disk('local')->exists('public/profile_images/' . $products->pic1)) {
+        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
         $is_image = true;
         }
 
@@ -357,7 +368,7 @@ class ProductsController extends Controller
         // fillを使って一気にいれるか
         // $fillableを使っていないと変なデータが入り込んだ場合に勝手にDBが更新されてしまうので注意！
         Log::debug('これからDBへデータ挿入');
-        Auth::user()->products()->save($product->fill($request->all()));
+        // $product->save($product->fill($request->all()));
         Log::debug('DBへデータ挿入完了');
 
 
@@ -372,6 +383,9 @@ class ProductsController extends Controller
         'category' => $category,
         'difficult' => $difficult,
         ]);
+
+        // return redirect('/products')->with('flash_message', __('検索したよ'));
+
     }
 
     /**
