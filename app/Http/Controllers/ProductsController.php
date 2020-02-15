@@ -272,15 +272,28 @@ class ProductsController extends Controller
         $category = Category::all();
         $difficult = Difficulty::all();
 
-         $query  = Product::query();
-         $tags   = $request->get('lang');
-         Log::debug('$tagsの中身！');
-         Log::debug($tags);
-
-         $products = Product::whereHas('categories', function($query) use ($tags) {
-            $query->whereIn('id', $tags);
-        })::paginate(10);
+        //  $query  = Product::query();
+        Log::debug('$tagsの中身！');
+        // Log::debug($tags);
         
+        if($request->get('lang') || $request->get('difficult')){
+            $categorieIds   = $request->get('lang');
+            $difficultiesIds   = $request->get('difficult');
+             $products = Product::whereHas('categories', function($query) use ($categorieIds) {
+                 $query->whereIn('category_id', $categorieIds);
+                })
+                
+             //難易度   
+            //  $products = $products::
+             ->whereHas('difficulties', function($query) use ($difficultiesIds) {
+                 $query->whereIn('difficulty_id', $difficultiesIds);
+                })->paginate(10);
+            } else {
+                $products = Product::paginate(10);
+            }
+            
+        // Log::debug('$productsの中身！');
+        // Log::debug($products);
 
 
 
@@ -304,13 +317,6 @@ class ProductsController extends Controller
 
         $product_category = Product::all();
         $product_difficulty = Product::all();
-
-        // fillを使って一気にいれるか
-        // $fillableを使っていないと変なデータが入り込んだ場合に勝手にDBが更新されてしまうので注意！
-        Log::debug('これからDBへデータ挿入');
-        // $product->save($product->fill($request->all()));
-        Log::debug('DBへデータ挿入完了');
-
 
         return view('products.index',[
         'products' => $products,
