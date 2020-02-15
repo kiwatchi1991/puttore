@@ -272,31 +272,40 @@ class ProductsController extends Controller
         $category = Category::all();
         $difficult = Difficulty::all();
 
-        //  $query  = Product::query();
-        Log::debug('$tagsの中身！');
-        // Log::debug($tags);
+        $categorieIds   = $request->get('lang');
+        $difficultiesIds   = $request->get('difficult');
         
-        if($request->get('lang') || $request->get('difficult')){
-            $categorieIds   = $request->get('lang');
-            $difficultiesIds   = $request->get('difficult');
+        /**
+         * 検索機能
+         */
+
+
+        //カテゴリーと難易度両方あるパターン
+        if($request->get('lang') && $request->get('difficult')){
+            //カテゴリー
              $products = Product::whereHas('categories', function($query) use ($categorieIds) {
                  $query->whereIn('category_id', $categorieIds);
-                })
-                
-             //難易度   
-            //  $products = $products::
-             ->whereHas('difficulties', function($query) use ($difficultiesIds) {
-                 $query->whereIn('difficulty_id', $difficultiesIds);
-                })->paginate(10);
-            } else {
-                $products = Product::paginate(10);
-            }
+                 })
+                        //難易度   
+                        ->whereHas('difficulties', function($query) use ($difficultiesIds) {
+                            $query->whereIn('difficulty_id', $difficultiesIds);
+                            })->paginate(10);
+        //カテゴリーしかないパターン
+        } else if($request->get('lang')) {
+        $products = Product::whereHas('categories', function($query) use ($categorieIds) {
+            $query->whereIn('category_id', $categorieIds);})->paginate(10);
+       
+        //難易度しかないパターン
+        } else if($request->get('difficult')){
+        $products = Product::whereHas('difficulties', function($query) use ($difficultiesIds) {
+            $query->whereIn('difficulty_id', $difficultiesIds);
+            })->paginate(10);
+        
+        //両方ないパターン（初期表示）
+        }  else {
+            $products = Product::paginate(10);
+        }
             
-        // Log::debug('$productsの中身！');
-        // Log::debug($products);
-
-
-
         //プロダクト件数
         $all_products = Product::all();
         //全プロダクト（ページング）
