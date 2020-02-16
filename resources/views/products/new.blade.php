@@ -41,9 +41,6 @@
                                         name="difficult[]" value="{{ $difficults->id }}" autocomplete="difficult" autofocus>{{ $difficults->name }}
                                 @endforeach
                                
-                                    {{-- <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
-                                    name="lang[]" value="2" autocomplete="lang" autofocus>{{ $category->name }} --}}
-
                                 @error('name')
                                 <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -104,11 +101,13 @@
                         </div>
 
                         {{-- 画像 --}}
-                        <div class="">
-                            {{-- <form method="POST" action="/profile" enctype="multipart/form-data" > --}}
-                                <input type="file" name="pic1">
-                                {{-- <input type="submit"> --}}
-                            {{-- </form> --}}
+                        <div class="c-image__preview">
+                            <p class="c-delete__file">消す</p>
+                            <label class="c-area__drop">
+                                <input class="c-input__file" type="file" name="pic1" >
+                                <img src="" alt=""  class="c-prev__img">
+                            ドラッグ＆ドロップ
+                            </label>
                         </div>
 
                         {{-- @for ($i = 1; $i <= 10; $i++) <div class="form-group row">
@@ -131,13 +130,9 @@
                 @endfor --}}
 
 
-                <div class="">
-                    <div class="">
                         <button type="submit" class="">
                             {{ __('Register') }}
                         </button>
-                    </div>
-                </div>
                 </form>
             </div>
         </section>
