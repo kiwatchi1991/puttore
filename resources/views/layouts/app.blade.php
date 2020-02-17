@@ -43,6 +43,11 @@
 
                             <nav class="global-nav">
                              <ul class="global-nav__list">
+                                 
+                                 @auth
+                                 ユーザーID:{{ $user->id }}　メールアドレス{{ $user->email }}
+                                 @endauth
+
                                <li class="global-nav__item"><a href="{{ route('products.new') }}">New</a></li>
                                <li class="global-nav__item"><a href="{{ route('products') }}">index</a></li>
                              <li class="global-nav__item"><a href=" {{ route('products.mypage') }}" >mypage</a></li>
