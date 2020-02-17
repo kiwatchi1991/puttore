@@ -8,7 +8,7 @@
 </div>
 @endif --}}
     <div class="c-searchBox">
-        <form method="GET" action="{{ route('products.search') }}" enctype="multipart/form-data" >
+        <form method="POST" action="{{ route('products') }}" enctype="multipart/form-data" >
             @csrf
             @foreach ($category as $categories)
                 <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
