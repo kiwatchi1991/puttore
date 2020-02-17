@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use Log;
+
 
 use Illuminate\Http\Request;//api用に追加
 
@@ -19,7 +22,7 @@ class RegisterController extends Controller
     |
     | This controller handles the registration of new users as well as their
     | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
+    | provide this functionality without requiring any additional code. 
     |
     */
 
@@ -30,7 +33,13 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/profile/{$id}/edit';
+    protected function redirectTo()
+    {
+        // $id = Auth::user()->id;
+        // Log::debug($id);
+        return '/products/mypage';
+}
 
     /**
      * Create a new controller instance.
@@ -67,10 +76,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            // 'account_id' => $data['account_id'],
-            // 'account_name' => $data['account_name'],
+            //初期登録
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+
+            // 追加登録
+        redirect('/products/mypage')->with('flash_message', __('Registered.'))
+
         ]);
     }
 
