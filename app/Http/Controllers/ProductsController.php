@@ -129,28 +129,35 @@ class ProductsController extends Controller
             // 'pic5' => 'string|max:255',
             ]);
             
-            //モデルを使って、DBに登録する値をセット
-            $product = new Product;
-            
-            
-            
             Log::debug('これからDBへデータ挿入');
+            //おしえてもらったやりかた
+
+            $product = new Product;
+            Auth::user()->products()->save($product->fill($request->all()));
+            Log::debug($request->pic1);
+            $path = $request->pic1->store('public/profile_images');
+            $product->pic1 = str_replace('public/', '', $path);
+            $product->save();
+         
+            //モデルを使って、DBに登録する値をセット
+            // $product = new Product;
+            
+            
             //画像アップロード（これだけ単独で入れる）
             Log::debug('リクエストの中身確認');
-            Log::debug($request->pic1);
 
             // $filename = $request->pic1->getClientOriginalName();
             // $request->pic1->storeAs('public/profile_images',$filename);
-            $path = $request->pic1->store('public/profile_images');
+            // $path = $request->pic1->store('public/profile_images');
             // $path->move('storage/profile_images');
-            Auth::user()->products()->pic1 = $path;
+            // Auth::user()->products()->pic1 = $path;
             // Auth::user()->products()->name = $request->name;
             // Auth::user()->products()->detail = $request->detail;
             // Auth::user()->products()->lesson = $request->lesson;
             // $product->save(Auth::user()->products()->get());
 
             // Auth::user()->products()->save();
-            Auth::user()->products()->save($product->fill($request->all()));
+            // Auth::user()->products()->save($product->fill($request->all()));
             Log::debug('DBへデータ挿入完了');
 
 
