@@ -8,7 +8,7 @@
                 <div class="">{{ __('Drill Register') }}</div>
 
                 <div class="">
-                    <form method="POST" action="{{ route('contents.update', $product->id) }}">
+                    <form method="POST" action="{{ route('products.update', $product->id) }}">
                         @csrf
                         <div class="">
                             <label for="title" class="">{{ __('Title') }}</label>
