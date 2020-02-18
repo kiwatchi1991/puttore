@@ -27,9 +27,9 @@
         <div class="p-product__area">
             @foreach ($products as $product)
             <div class="p-product__block">
-            <a class="c-product__link">
+            <a class="c-product__link" href="{{ route('products.show', $product->id) }}">
             {{-- プロダクトID {{ $product->id }} --}}
-        
+           
                     {{-- <h3 class="">{{ $product->name }}</h3> --}}
                     {{-- <a href="#" class="btn btn-primary">{{ __('Go Practice')  }}</a> --}}
                     {{-- <a href="{{ route('products.edit',$product->id ) }}" --}}
