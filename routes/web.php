@@ -24,12 +24,11 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/products/new', 'ProductsController@create')->name('products.create');
     Route::get('/products',  'ProductsController@index')->name('products');
     Route::post('/products',  'ProductsController@index')->name('products');
-    Route::get('/products/{id}',  'ProductsController@show')->name('products.show');
     Route::get('/products/{id}/edit', 'ProductsController@edit')->name('products.edit');
     Route::post('/products/{id}/edit', 'ProductsController@update')->name('products.update');
     Route::post('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
     Route::get('/products/mypage', 'ProductsController@mypage')->name('products.mypage');
-    // Route::post('/products/mypage', 'ProductsController@mypage')->name('products.search');
+    Route::get('/products/{id}',  'ProductsController@shows')->name('products.show');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
     //プロフィール

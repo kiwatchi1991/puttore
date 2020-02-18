@@ -9,6 +9,7 @@ use App\Difficulty;
 use App\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use Log;
 
 
@@ -90,10 +91,6 @@ class ProductsController extends Controller
         'category' => $category,
         'difficult' => $difficult,
         ]);
-
-        
-        // return view('products.mypage', compact('products,categories'));
-
     }
     
      /**
@@ -351,6 +348,39 @@ class ProductsController extends Controller
     }
 
     /**
+     * 詳細表示機能
+     */
+    public function shows($id)
+    {
+
+        // if (!ctype_digit($id)) {
+        //     return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
+        // }
+
+        Log::debug('SHOW!!!');
+        $product = Product::find($id);
+        
+        // ユーザー情報の取得
+        $user = DB::table('users')
+        ->join('products', 'users.id', '=', 'products.user_id')
+        ->select('products.id', 'users.account_name')
+        ->where('products.id',$id)
+        ->get();
+        
+        Log::debug('$user');
+        Log::debug($user);
+
+        $categoryAndDifficulty = Product::all();
+
+        return view('products.show', [
+        'product' => $product,
+        'user' => $user,
+        'categoryAndDifficulty' => $categoryAndDifficulty,
+        ]);
+    }
+
+
+    /**
      * 編集機能
      */
     public function edit($id)
@@ -360,9 +390,19 @@ class ProductsController extends Controller
         if (!ctype_digit($id)) {
             return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
         }
-
+        
         $product = Product::find($id);
-        return view('products.edit', ['product' => $product]);
+        
+        $category = Category::all();
+        $difficult = Difficulty::all();
+        $product_category = Product::all();
+        
+        return view('products.edit', [
+            'product' => $product,
+            'category' => $category,
+            'difficult' => $difficult,
+            'product_categories' => $product_category,
+            ]);
     }
 
     /**
