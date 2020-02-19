@@ -16,11 +16,14 @@ class CreateDiscountPriceTable extends Migration
         Schema::create('discount_price', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->tinyInteger('delete_flg')->default(0);
             $table->timestamps();
+            
+            // 外部キー制約
+            $table->foreign('product_id')->references('id')->on('products');
+
         });
     }
 

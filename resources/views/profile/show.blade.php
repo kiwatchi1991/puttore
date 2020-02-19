@@ -1,44 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-<h2 class="c-pageTitle">作品一覧ページ</h2>
-{{-- @if (session('flash_message'))
-<div class="alert alert-success">
-    {{ session('flash_message') }}
+
+<div class="">
+        @if ($user->id === Auth::id())
+        <div class="c-button__block">
+        <a class="c-button" href="{{ route('profile.edit',$user->id) }}">
+                （自分の作品の場合は）編集する
+            </a>
+        </div>
+        @endif
+        <div class="">
+            画像
+            <img src="/storage/{{ $user->pic }}" alt=""> 
+        </div>
+        <div class="">
+            アカウント名：{{ $user->account_name }}
+        </div>
+        <div class="">
+            肩書き：{{ $user->account_title }}
+        </div>
+        <div class="">
+            自己紹介：{{ $user->account_detail }}
+        </div>    
 </div>
-@endif --}}
-    <div class="c-searchBox">
-        <form method="GET" action="{{ route('products.search') }}" enctype="multipart/form-data" >
-            @csrf
-            @foreach ($category as $categories)
-                <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
-                    name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus>{{ $categories->name }}
-            @endforeach
-            @foreach ($difficult as $difficults)
-                <input id="difficult" type="checkbox" class="new__input-area @error('difficult') is-invalid @enderror"
-                    name="difficult[]" value="{{ $difficults->id }}" autocomplete="difficult" autofocus>{{ $difficults->name }}
-            @endforeach
-            <button type="submit" class="">
-                検索する
-            </button>
-        </form>
-    </div>
-    <div class="c-pageNum"> 全 <span class="c-totalNum">{{ $all_products->count() }}</span> 件中 {{ $pageNum_from }} 〜 {{ $pageNum_to }} 件</div>
+<div class="c-pageNum"> 全 <span class="c-totalNum">{{ $all_products->count() }}</span> 件中 {{ $pageNum_from }} 〜 {{ $pageNum_to }} 件</div>
         <div class="p-product__area">
             @foreach ($products as $product)
             <div class="p-product__block">
-            <a class="c-product__link">
+            <a class="c-product__link" href="{{ route('products.show', $product->id) }}">
             {{-- プロダクトID {{ $product->id }} --}}
-        
+           
                     {{-- <h3 class="">{{ $product->name }}</h3> --}}
                     {{-- <a href="#" class="btn btn-primary">{{ __('Go Practice')  }}</a> --}}
                     {{-- <a href="{{ route('products.edit',$product->id ) }}" --}}
                         {{-- class="">{{ __('Go Practice')  }}</a> --}}
                     <div class="c-image__block">
                         {{-- 画像     --}}
-                        @if ($is_image)
-                            <img class="c-image" src="/storage/profile_images/{{ Auth::id() }}.jpg">
-                        @endif
+                        {{-- @if ($is_image) --}}
+                            <img class="c-image" src="/storage/{{ $product->pic1 }}">
+                        {{-- @endif --}}
                     </div>
                     <div class="c-tag__block">
                         

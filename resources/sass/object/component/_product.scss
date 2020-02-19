@@ -1,0 +1,71 @@
+.c-pageNum{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.c-totalNum{
+    font-size: 20px;
+}
+
+.c-product__link{
+    cursor: pointer;
+}
+
+.c-image__block{
+    background:#FFFFCC;
+}
+
+.c-image{
+    max-width: 100%;
+}
+
+.c-tag__block{
+    display: flex;
+    background: #CCFFFF;
+    padding: 15px 10px 5px 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.c-tag{
+    font-size: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 3px 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.c-contents__block{
+    background: #FFCCCC;
+    padding: 15px;
+}
+
+.c-contents__detail{
+    margin-top: 20px;
+}
+
+.c-contents__price{
+    margin-top: 20px;
+}
+
+//ページネーションはDOM自動生成なので、自動で付与されたclass名にスタイルをあてる
+.c-pagination{
+    margin-top: 20px;
+    .pagination{
+        display: flex;
+        justify-content: center;
+    }
+    .page-item{
+        border: 1px solid #000;
+        padding: 6px;
+        margin-left: 5px;
+        &.active{
+            background: #333333;
+            color: white;
+        }
+    }
+    .page-link{
+        text-decoration: none;
+    }
+}

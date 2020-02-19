@@ -8,7 +8,7 @@
 </div>
 @endif --}}
     <div class="c-searchBox">
-        <form method="GET" action="{{ route('products.search') }}" enctype="multipart/form-data" >
+        <form method="GET" action="{{ route('products') }}" enctype="multipart/form-data" >
             @csrf
             @foreach ($category as $categories)
                 <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
@@ -27,9 +27,9 @@
         <div class="p-product__area">
             @foreach ($products as $product)
             <div class="p-product__block">
-            <a class="c-product__link">
+            <a class="c-product__link" href="{{ route('products.show', $product->id) }}">
             {{-- プロダクトID {{ $product->id }} --}}
-        
+           
                     {{-- <h3 class="">{{ $product->name }}</h3> --}}
                     {{-- <a href="#" class="btn btn-primary">{{ __('Go Practice')  }}</a> --}}
                     {{-- <a href="{{ route('products.edit',$product->id ) }}" --}}
@@ -37,7 +37,7 @@
                     <div class="c-image__block">
                         {{-- 画像     --}}
                         {{-- @if ($is_image) --}}
-                            <img class="c-image" src="/storage/profile_images{{ $product->pic1 }}">
+                            <img class="c-image" src="/storage/{{ $product->pic1 }}">
                         {{-- @endif --}}
                     </div>
                     <div class="c-tag__block">

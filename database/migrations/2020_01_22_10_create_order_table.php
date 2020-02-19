@@ -17,12 +17,15 @@ class CreateOrderTable extends Migration
             $table->bigIncrements('id');
             $table->dateTime('order_date');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
             $table->decimal('sale-price', 10, 2);
             $table->integer('status');
             $table->timestamps();
+            
+            // 外部キー制約
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('product_id')->references('id')->on('products');
+
         });
     }
 

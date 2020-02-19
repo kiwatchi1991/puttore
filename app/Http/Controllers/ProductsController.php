@@ -8,6 +8,8 @@ use App\Category;
 use App\Difficulty;
 use App\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use Log;
 
 
@@ -46,6 +48,9 @@ class ProductsController extends Controller
 
         $query  = Product::query();
         $tags   = $request->get('lang');
+        Log::debug('$tagsの中身！');
+        Log::debug($tags);
+
         if ($tags) {
             Log::debug('$tagsがあった！');
             $query->whereIn('id', $this->getProductIdByCategories($tags));
@@ -86,80 +91,17 @@ class ProductsController extends Controller
         'category' => $category,
         'difficult' => $difficult,
         ]);
-
-        
-        // return view('products.mypage', compact('products,categories'));
-
     }
-    
     
      /**
      * コンテンツ登録画面
      */
     public function new()
     {
-        Log::debug('mypageコントローラー');
-        Log::debug($request);
-
-        // 検索ボックス用カテゴリーと難易度
         $category = Category::all();
         $difficult = Difficulty::all();
+        return view('products.new',['category' => $category,'difficult' => $difficult]);
 
-        $query  = Product::query();
-        $tags   = $request->get('lang');
-        if ($tags) {
-            Log::debug('$tagsがあった！');
-            $query->whereIn('id', $this->getProductIdByCategories($tags));
-        }
-
-
-        //プロダクト件数
-        $all_products = Auth::user()->products()->get();
-        //ログインユーザーのプロダクト（ページング）
-        $products = Auth::user()->products()->paginate(10);
-
-        //ページング用変数 始点
-        $pageNum_from =  $products->currentPage()*10-9;
-        //ページング用変数 終点
-        $pageNum_to = $products->currentPage()*10;
-        
-        //価格をカンマ入れて表示
-
-        //画像有無判定フラグ
-        $is_image = false;
-        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
-        $is_image = true;
-        }
-
-        $product_category = Product::all();
-        $product_difficulty = Product::all();
-
-
-
-        return view('products.mypage',[
-        'products' => $products,
-        'product_categories' => $product_category,
-        'product_difficulties' => $product_difficulty,
-        'all_products'=>$all_products,
-        'pageNum_from' => $pageNum_from,
-        'pageNum_to' => $pageNum_to,
-        'is_image' => $is_image,
-        'category' => $category,
-        'difficult' => $difficult,
-        ]);
-
-        
-        // return view('products.mypage', compact('products,categories'));
-
-    }
-    
-    
-     /**
-     * コンテンツ登録画面
-     */
-    public function new()
-    {
-        return view('contents.new');
     }
 
     /**
@@ -184,28 +126,35 @@ class ProductsController extends Controller
             // 'pic5' => 'string|max:255',
             ]);
             
-            //モデルを使って、DBに登録する値をセット
-            $product = new Product;
-            
-            
-            
             Log::debug('これからDBへデータ挿入');
+            //おしえてもらったやりかた
+
+            $product = new Product;
+            Auth::user()->products()->save($product->fill($request->all()));
+            Log::debug($request->pic1);
+            $path = $request->pic1->store('public/profile_images');
+            $product->pic1 = str_replace('public/', '', $path);
+            $product->save();
+         
+            //モデルを使って、DBに登録する値をセット
+            // $product = new Product;
+            
+            
             //画像アップロード（これだけ単独で入れる）
             Log::debug('リクエストの中身確認');
-            Log::debug($request->pic1);
 
             // $filename = $request->pic1->getClientOriginalName();
             // $request->pic1->storeAs('public/profile_images',$filename);
-            $path = $request->pic1->store('public/profile_images');
+            // $path = $request->pic1->store('public/profile_images');
             // $path->move('storage/profile_images');
-            Auth::user()->products()->pic1 = $path;
+            // Auth::user()->products()->pic1 = $path;
             // Auth::user()->products()->name = $request->name;
             // Auth::user()->products()->detail = $request->detail;
             // Auth::user()->products()->lesson = $request->lesson;
             // $product->save(Auth::user()->products()->get());
 
             // Auth::user()->products()->save();
-            Auth::user()->products()->save($product->fill($request->all()));
+            // Auth::user()->products()->save($product->fill($request->all()));
             Log::debug('DBへデータ挿入完了');
 
 
@@ -274,19 +223,97 @@ class ProductsController extends Controller
     }
     
     /**
+     * マイページ
+     */
+    // public function mypage()
+    // {
+    //     //プロダクト件数
+    //     $all_products = Auth::user()->products()->get();
+    //     //ログインユーザーのプロダクト件数
+    //     $products = Auth::user()->products()->paginate(10);
+
+    //     //ページング用変数 始点
+    //     $pageNum_from =  $products->currentPage()*10-9;
+    //     //ページング用変数 終点
+    //     $pageNum_to = $products->currentPage()*10;
+        
+    //     //価格をカンマ入れて表示
+    //     // $price = DB::select('select * from products where active = ?', [1]);
+
+    //     //画像有無判定フラグ
+    //     $is_image = false;
+    //     if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
+    //     $is_image = true;
+    //     }
+
+    //     Log::debug('products_id中身 : '.$products);
+    //     $product_category = Product::all();
+    //     $product_difficulty = Product::all();
+
+
+
+    //     return view('products.mypage',[
+    //     'products' => $products,
+    //     'product_categories' => $product_category,
+    //     'product_difficulties' => $product_difficulty,
+    //     'all_products'=>$all_products,
+    //     'pageNum_from' => $pageNum_from,
+    //     'pageNum_to' => $pageNum_to,
+    //     'is_image' => $is_image,
+    //     ]);
+
+        
+
+    // }
+    
+    /**
      * 一覧機能
      */
 
-    public function index()
+    public function index(Request $request)
     {
         // 検索ボックス用
         $category = Category::all();
         $difficult = Difficulty::all();
 
+        $categorieIds   = $request->get('lang');
+        $difficultiesIds   = $request->get('difficult');
+        
+        /**
+         * 検索機能
+         */
+
+
+        //カテゴリーと難易度両方あるパターン
+        if($request->get('lang') && $request->get('difficult')){
+            //カテゴリー
+             $products = Product::whereHas('categories', function($query) use ($categorieIds) {
+                 $query->whereIn('category_id', $categorieIds);
+                 })
+                        //難易度   
+                        ->whereHas('difficulties', function($query) use ($difficultiesIds) {
+                            $query->whereIn('difficulty_id', $difficultiesIds);
+                            })->paginate(10);
+        //カテゴリーしかないパターン
+        } else if($request->get('lang')) {
+        $products = Product::whereHas('categories', function($query) use ($categorieIds) {
+            $query->whereIn('category_id', $categorieIds);})->paginate(10);
+       
+        //難易度しかないパターン
+        } else if($request->get('difficult')){
+        $products = Product::whereHas('difficulties', function($query) use ($difficultiesIds) {
+            $query->whereIn('difficulty_id', $difficultiesIds);
+            })->paginate(10);
+        
+        //両方ないパターン（初期表示）
+        }  else {
+            $products = Product::paginate(10);
+        }
+            
         //プロダクト件数
         $all_products = Product::all();
-        //ログインユーザーのプロダクト（ページング）
-        $products = Product::paginate(10);
+        //全プロダクト（ページング）
+        // $products = Product::paginate(10);
 
         //ページング用変数 始点
         $pageNum_from =  $products->currentPage()*10-9;
@@ -297,19 +324,12 @@ class ProductsController extends Controller
 
         //画像有無判定フラグ
         $is_image = false;
-        if (Storage::disk('local')->exists('public/profile_images/' . $products->pic1)) {
+        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
         $is_image = true;
         }
 
         $product_category = Product::all();
         $product_difficulty = Product::all();
-
-        // fillを使って一気にいれるか
-        // $fillableを使っていないと変なデータが入り込んだ場合に勝手にDBが更新されてしまうので注意！
-        Log::debug('これからDBへデータ挿入');
-        Auth::user()->products()->save($product->fill($request->all()));
-        Log::debug('DBへデータ挿入完了');
-
 
         return view('products.index',[
         'products' => $products,
@@ -322,7 +342,43 @@ class ProductsController extends Controller
         'category' => $category,
         'difficult' => $difficult,
         ]);
+
+        // return redirect('/products')->with('flash_message', __('検索したよ'));
+
     }
+
+    /**
+     * 詳細表示機能
+     */
+    public function shows($id)
+    {
+
+        // if (!ctype_digit($id)) {
+        //     return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
+        // }
+
+        Log::debug('SHOW!!!');
+        $product = Product::find($id);
+        
+        // ユーザー情報の取得
+        $user = DB::table('users')
+        ->join('products', 'users.id', '=', 'products.user_id')
+        ->select('products.id', 'users.account_name')
+        ->where('products.id',$id)
+        ->get();
+        
+        Log::debug('$user');
+        Log::debug($user);
+
+        $categoryAndDifficulty = Product::all();
+
+        return view('products.show', [
+        'product' => $product,
+        'user' => $user,
+        'categoryAndDifficulty' => $categoryAndDifficulty,
+        ]);
+    }
+
 
     /**
      * 編集機能
@@ -332,11 +388,21 @@ class ProductsController extends Controller
         // GETパラメータが数字かどうかをチェックする
         // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
         if (!ctype_digit($id)) {
-            return redirect('/contents/new')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
         }
-
-        $content = Content::find($id);
-        return view('contents.edit', ['content' => $content]);
+        
+        $product = Product::find($id);
+        
+        $category = Category::all();
+        $difficult = Difficulty::all();
+        $product_category = Product::all();
+        
+        return view('products.edit', [
+            'product' => $product,
+            'category' => $category,
+            'difficult' => $difficult,
+            'product_categories' => $product_category,
+            ]);
     }
 
     /**
@@ -346,13 +412,13 @@ class ProductsController extends Controller
     {
         // GETパラメータが数字かどうかをチェックする
         if (!ctype_digit($id)) {
-            return redirect('/contents/new')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
         }
 
         $drill = Content::find($id);
         $drill->fill($request->all())->save();
 
-        return redirect('/contents')->with('flash_message', __('Registered.'));
+        return redirect('/products')->with('flash_message', __('Registered.'));
     }
 
     /**
@@ -363,24 +429,16 @@ class ProductsController extends Controller
     {
         // GETパラメータが数字かどうかをチェックする
         if (!ctype_digit($id)) {
-            return redirect('/contents/new')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
         }
 
         // $drill = Drill::find($id);
         // $drill->delete();
 
         // こう書いた方がスマート
-        Content::find($id)->delete();
+        Product::find($id)->delete();
 
-        return redirect('/contents')->with('flash_message', __('Deleted.'));
+        return redirect('/products')->with('flash_message', __('Deleted.'));
     }
 
-    /**
-     * マイページ
-     */
-    public function mypage()
-    {
-        $contents = Auth::user()->contents()->get();
-        return view('contents.mypage', compact('contents'));
-    }
 }

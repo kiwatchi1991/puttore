@@ -1,24 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div>
-    <div>
-        <div >
-            <section class="register">
-                <div class="register__wrapper">
-                <div>新規登録</div>
 
-                <div>
-                    <form method="POST" action="{{ route('register') }}">
+            <section class="register">
+                <div class="l-auth__inner">
+                <div class="c-pageTitle">新規登録</div>
+
+                    <form method="POST" class="l-auth__formArea" action="{{ route('register') }}">
                         @csrf
 
-                        <div>
+                        {{-- <div class="c-input__area">
                             <label for="account_id"
-                                ="col-md-4 col-form-label text-md-right">{{ __('account_Id') }}</label>
+                                >id</label>
 
                             <div>
-                                <input id="account_id" class="register__input-area" type="text"
-                                    ="form-control @error('account_id') is-invalid @enderror" name="account_id"
+                                <input id="account_id" class="c-input__form @error('account_id') is-invalid @enderror" type="text"
+                                     name="account_id"
                                     value="{{ old('account_id') }}" required autocomplete="account_id" autofocus>
 
                                 @error('account_id')
@@ -27,14 +24,13 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
-                        <div >
+                        </div> --}}
+                        {{-- <div class="c-input__area">
                             <label for="account_name"
-                                ="col-md-4 col-form-label text-md-right">{{ __('account_Name') }}</label>
+                                >ニックネーム</label>
 
                             <div>
-                                <input id="account_name" class="register__input-area" type="text"
-                                    ="form-control @error('account_name') is-invalid @enderror" name="account_name"
+                                <input id="account_name" class="c-input__form @error('account_id') is-invalid @enderror" type="text" name="account_name"
                                     value="{{ old('account_name') }}" required autocomplete="account_name" autofocus>
 
                                 @error('account_name')
@@ -43,11 +39,11 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div >
+                        <div class="c-input__area">
                             <label for="email"
-                                ="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                >メールアドレス</label>
 
                             <div>
                                 <input id="email" type="email" class="register__input-area" @error('email') is-invalid @enderror"
@@ -60,14 +56,13 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div>
+                        <div class="c-input__area">
                             <label for="password"
-                                ="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                >パスワード</label>
 
                             <div>
                                 <input id="password" type="password"
-                                class="register__input-area" @error('password') is-invalid @enderror" name="password"
+                                class="c-input__form @error('account_id') is-invalid @enderror" name="password"
                                     required autocomplete="new-password">
 
                                 @error('password')
@@ -78,29 +73,27 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div class="c-input__area">
                             <label for="password-confirm"
-                                ="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                >パスワード確認</label>
 
                             <div >
-                                <input id="password-confirm" type="password" class="register__input-area"
+                                <input id="password-confirm" type="password" class="c-input__form @error('account_id') is-invalid @enderror"
                                     name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
-                        <div>
-                            <div >
-                                <button type="submit">
+                            <div class="c-button__block">
+                                <button type="submit" class="c-button">
                                    登録する
                                 </button>
                             </div>
-                        </div>
                     </form>
-                  </div>
+
                 </div>
+                <div class="c-input__area c-input__area--another">
+                    <a class="" href="{{ route('login') }}">ログインへ</a>
+                </div>
+
             </section>
-        </div>
-    </div>
-    <script src="/js/app.js"></script>
-</div>
 @endsection
