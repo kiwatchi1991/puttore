@@ -213,8 +213,7 @@ class ProductsController extends Controller
             // 言語中間テーブル
             $product->difficulties()->sync($difficulty_ids);  
             // return redirect('/products/mypage')->with('success', '登録しました');
-
-
+            
         // return $path;
 
         // リダイレクトする
