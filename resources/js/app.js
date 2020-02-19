@@ -12,6 +12,7 @@ require('./bootstrap');
 // var $ = require('jQuery');
 require('./components/hamgurger');
 require('./components/previewImage');
+require('./components/drop-down');
 
 // const Sample = require('vue');
 // var $ = require('jQuery');
