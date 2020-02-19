@@ -30,10 +30,17 @@
                     <div for="lang" class="">言語</div>
 
                     <div class="">
+
                         @foreach ($category as $categories)
                             <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
-                                name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus @if($product_categories->find($product->id)->categories) checked @endif>{{ $categories->name }}
+                                name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus 
+                                @if(
+                                $product->categories->contains(function ($category1) use ($categories) {
+                                    return $category1->id === $categories->id;
+                                })
+                                ) checked @endif>{{ $categories->name }}
                         @endforeach
+
                         @foreach ($difficult as $difficults)
                             <input id="difficult" type="checkbox" class="new__input-area @error('difficult') is-invalid @enderror"
                                 name="difficult[]" value="{{ $difficults->id }}" autocomplete="difficult" autofocus>{{ $difficults->name }}

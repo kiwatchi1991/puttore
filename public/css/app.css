@@ -429,6 +429,16 @@ body {
   left: 0;
 }
 
+.c-tag__title {
+  position: relative;
+  display: block;
+}
+
+.c-tag__list {
+  position: absolute;
+  display: none;
+}
+
 .global-nav {
   position: fixed;
   right: -320px;
