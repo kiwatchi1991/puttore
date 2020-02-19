@@ -6,7 +6,7 @@
         @if ($product->user_id === Auth::id())
             
         <div class="c-button__block">
-            <a class="c-button">
+        <a class="c-button" href="{{ route('products.edit',$product->id) }}">
                 （自分の作品の場合は）編集する
             </a>
         </div>
