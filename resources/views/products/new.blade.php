@@ -80,10 +80,32 @@
                         {{-- レッスン内容 --}}
                         <div class="">
                             <label for="lesson" class="">レッスン１</label>
-
+                            {{-- レッスン１　Number --}}
                             <div class="">
                                 <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="レッスン１">
+                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="Number1">
+
+                                @error('lesson')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            {{-- 　　レッスン1　title --}}
+                            <div class="">
+                                <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
+                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="title１">
+
+                                @error('lesson')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            {{-- レッスン１ lesson --}}
+                            <div class="">
+                                <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
+                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
 
                                 @error('lesson')
                                 <span class="" role="alert">
@@ -92,6 +114,10 @@
                                 @enderror
                             </div>
                         </div>
+
+
+
+
                         <div class="">
                             <label for="lesson" class="">レッスン２</label>
 
