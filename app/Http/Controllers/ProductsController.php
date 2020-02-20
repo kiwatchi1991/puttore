@@ -116,7 +116,7 @@ class ProductsController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'detail' => 'string|max:255',
-            'lesson' => 'string|max:255',
+            // 'lesson' => 'string|max:255',
             // 'free_flg' => 'string|max:255',
             // 'pic1' => 'string|max:255',
             // 'pic2' => 'string|max:255',
@@ -207,13 +207,17 @@ class ProductsController extends Controller
                         $difficulty_ids[] = $difficulty->id;
                     }
                 }
-            Log::debug('$difficulty_ids[]の内容');
-            Log::debug($difficulty_ids);
-    
-            // 言語中間テーブル
-            $product->difficulties()->sync($difficulty_ids);  
-            // return redirect('/products/mypage')->with('success', '登録しました');
+                
+                // 言語中間テーブル
+                $product->difficulties()->sync($difficulty_ids);  
+                // return redirect('/products/mypage')->with('success', '登録しました');
+                
+
+                $lessons = $request->input('lessons'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
+                Log::debug('$lessonsの内容');
+                Log::debug($lessons);
             
+
         // return $path;
 
         // リダイレクトする

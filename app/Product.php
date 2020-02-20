@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'detail', 'lesson', 'default_price', 'pic1' ];
+    protected $fillable = ['name', 'detail', 'default_price', 'pic1' ];
     
     //多対多のリレーションを作る
     //カテゴリー
