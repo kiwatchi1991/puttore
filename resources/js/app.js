@@ -13,6 +13,8 @@ require('./bootstrap');
 require('./components/hamgurger');
 require('./components/previewImage');
 require('./components/drop-down');
+require('./components/add-lesson');
+
 
 // const Sample = require('vue');
 // var $ = require('jQuery');
