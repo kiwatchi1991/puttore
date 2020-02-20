@@ -37064,7 +37064,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // const 
 
 __webpack_require__(/*! ./components/hamgurger */ "./resources/js/components/hamgurger.js");
 
-__webpack_require__(/*! ./components/previewImage */ "./resources/js/components/previewImage.js"); // const Sample = require('vue');
+__webpack_require__(/*! ./components/previewImage */ "./resources/js/components/previewImage.js");
+
+__webpack_require__(/*! ./components/drop-down */ "./resources/js/components/drop-down.js"); // const Sample = require('vue');
 // var $ = require('jQuery');
 
 /**
@@ -37138,6 +37140,25 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/drop-down.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/drop-down.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  console.log('loaded！！！');
+  $('.c-tag__title').hover(function () {
+    console.log('click！！！');
+    $('.c-tag__list:not(:animated)', this).slideDown();
+  }, function () {
+    $('.c-tag__list', this).slideUp();
+  });
+});
 
 /***/ }),
 

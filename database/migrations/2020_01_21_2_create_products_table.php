@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->longText('detail');
-            $table->longText('lesson');
+            // $table->longText('lesson');
             $table->string('description')->nullable();
             $table->tinyInteger('free_flg')->default(0);
             $table->string('pic1')->nullable();
@@ -46,8 +46,10 @@ class CreateProductsTable extends Migration
     public function down()
     {
         // 外部キー付きのカラムを削除するにはまず必ず外部キー制約を外す必要があります
-        // $table->dropForeign(['user_id']);
-        // $table->dropColumn('user_id');
+        Schema::table('lessons', function (Blueprint $table) {
+        $table->dropForeign(['user_id']);
+        $table->dropColumn('user_id');
         Schema::dropIfExists('products');
+        });
     }
 }

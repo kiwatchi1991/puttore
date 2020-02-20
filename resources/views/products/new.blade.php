@@ -28,24 +28,33 @@
                         {{-- 言語選択 --}}
                         <div class="searchbox">
                             <div class="serchbox__inner">
-                                <p>1.言語を選んでね</p>
-                            <div for="lang" class="">言語</div>
+                                <ul>
+                                    {{-- <p>1.言語を選んでね</p> --}}
+                                <li for="lang" class="c-tag__title">言語
 
-                            <div class="">
-                                @foreach ($category as $categories)
-                                    <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
-                                        name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus>{{ $categories->name }}
-                                @endforeach
-                                @foreach ($difficult as $difficults)
-                                    <input id="difficult" type="checkbox" class="new__input-area @error('difficult') is-invalid @enderror"
-                                        name="difficult[]" value="{{ $difficults->id }}" autocomplete="difficult" autofocus>{{ $difficults->name }}
-                                @endforeach
-                               
-                                @error('name')
-                                <span class="" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                    <ul class="c-tag__list">
+                                        @foreach ($category as $categories)
+                                        <li><input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
+                                            name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus>{{ $categories->name }}</li> 
+                                            @endforeach
+                                        </ul>
+                                </li>
+                                {{-- <p>２.難易度を選んでね</p> --}}
+                                <li for="lang" class="c-tag__title">難易度
+                                    <ul class="c-tag__list">
+                                        @foreach ($difficult as $difficults)
+                                        <li><input id="difficult" type="checkbox" class="new__input-area @error('difficult') is-invalid @enderror"
+                                        name="difficult[]" value="{{ $difficults->id }}" autocomplete="difficult" autofocus>{{ $difficults->name }}</li> 
+                                        @endforeach
+                                    </ul>  
+                                </li> 
+                                </ul> 
+                                    @error('name')
+                                    <span class="" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                
                             </div>
                             </div>
                         </div>
@@ -70,11 +79,33 @@
 
                         {{-- レッスン内容 --}}
                         <div class="">
-                            <label for="lesson" class="">レッスン内容</label>
+                            <label for="lesson" class="">レッスン１</label>
+                            {{-- レッスン１　Number --}}
+                            <div class="">
+                                <input id="number" type="text" class="new__input-area @error('number') is-invalid @enderror"
+                                    name="lessons[0][number]" value="{{ old('number') }}" autocomplete="number" autofocus placeholder="Number1">
 
+                                @error('number')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            {{-- 　　レッスン1　title --}}
+                            <div class="">
+                                <input id="title" type="text" class="new__input-area @error('title') is-invalid @enderror"
+                                    name="lessons[0][title]" value="{{ old('title') }}" autocomplete="title" autofocus placeholder="title１">
+
+                                @error('title')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            {{-- レッスン１ lesson --}}
                             <div class="">
                                 <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus>
+                                    name="lessons[0][lesson]" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
 
                                 @error('lesson')
                                 <span class="" role="alert">
@@ -83,6 +114,49 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="">
+                            <label for="lesson" class="">レッスン１</label>
+                            {{-- レッスン2　Number --}}
+                            {{-- <div class="">
+                                <input id="number" type="text" class="new__input-area @error('number') is-invalid @enderror"
+                                    name="lessons[number]" value="{{ old('number') }}" autocomplete="number" autofocus placeholder="Number1">
+
+                                @error('number')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div> --}}
+                            {{-- 　　レッスン2　title --}}
+                            {{-- <div class="">
+                                <input id="title" type="text" class="new__input-area @error('title') is-invalid @enderror"
+                                    name="lessons[title]" value="{{ old('title') }}" autocomplete="title" autofocus placeholder="title１">
+
+                                @error('title')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div> --}}
+                            {{-- レッスン2 lesson --}}
+                            {{-- <div class="">
+                                <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
+                                    name="lessons[lesson]" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
+
+                                @error('lesson')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div> --}}
+                        </div>
+
+
+
+
+                           
+
 
                         {{-- 価格 --}}
                         <div class="">
