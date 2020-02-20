@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Difficulty;
+use App\Lesson;
 use App\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -135,6 +136,12 @@ class ProductsController extends Controller
             $path = $request->pic1->store('public/profile_images');
             $product->pic1 = str_replace('public/', '', $path);
             $product->save();
+
+            
+            $lessons = $request->input('lessons'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
+            Log::debug('$lessonsの内容');
+            Log::debug($lessons);
+            $product->lessons()->createMany($request->input('lessons'));
          
             //モデルを使って、DBに登録する値をセット
             // $product = new Product;
@@ -213,9 +220,7 @@ class ProductsController extends Controller
                 // return redirect('/products/mypage')->with('success', '登録しました');
                 
 
-                $lessons = $request->input('lessons'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
-                Log::debug('$lessonsの内容');
-                Log::debug($lessons);
+
             
 
         // return $path;

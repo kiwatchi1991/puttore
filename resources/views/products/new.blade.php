@@ -83,7 +83,7 @@
                             {{-- レッスン１　Number --}}
                             <div class="">
                                 <input id="number" type="text" class="new__input-area @error('number') is-invalid @enderror"
-                                    name="lessons[number]" value="{{ old('number') }}" autocomplete="number" autofocus placeholder="Number1">
+                                    name="lessons[0][number]" value="{{ old('number') }}" autocomplete="number" autofocus placeholder="Number1">
 
                                 @error('number')
                                 <span class="" role="alert">
@@ -94,7 +94,7 @@
                             {{-- 　　レッスン1　title --}}
                             <div class="">
                                 <input id="title" type="text" class="new__input-area @error('title') is-invalid @enderror"
-                                    name="lessons[title]" value="{{ old('title') }}" autocomplete="title" autofocus placeholder="title１">
+                                    name="lessons[0][title]" value="{{ old('title') }}" autocomplete="title" autofocus placeholder="title１">
 
                                 @error('title')
                                 <span class="" role="alert">
@@ -105,6 +105,43 @@
                             {{-- レッスン１ lesson --}}
                             <div class="">
                                 <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
+                                    name="lessons[0][lesson]" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
+
+                                @error('lesson')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <label for="lesson" class="">レッスン１</label>
+                            {{-- レッスン2　Number --}}
+                            {{-- <div class="">
+                                <input id="number" type="text" class="new__input-area @error('number') is-invalid @enderror"
+                                    name="lessons[number]" value="{{ old('number') }}" autocomplete="number" autofocus placeholder="Number1">
+
+                                @error('number')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div> --}}
+                            {{-- 　　レッスン2　title --}}
+                            {{-- <div class="">
+                                <input id="title" type="text" class="new__input-area @error('title') is-invalid @enderror"
+                                    name="lessons[title]" value="{{ old('title') }}" autocomplete="title" autofocus placeholder="title１">
+
+                                @error('title')
+                                <span class="" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div> --}}
+                            {{-- レッスン2 lesson --}}
+                            {{-- <div class="">
+                                <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
                                     name="lessons[lesson]" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
 
                                 @error('lesson')
@@ -112,40 +149,14 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                            </div>
+                            </div> --}}
                         </div>
 
 
 
 
-                        {{-- <div class="">
-                            <label for="lesson" class="">レッスン２</label>
+                           
 
-                            <div class="">
-                                <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="レッスン２">
-
-                                @error('lesson')
-                                <span class="" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="">
-                            <label for="lesson" class="">レッスン３</label>
-
-                            <div class="">
-                                <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="レッスン３">
-
-                                @error('lesson')
-                                <span class="" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div> --}}
 
                         {{-- 価格 --}}
                         <div class="">
