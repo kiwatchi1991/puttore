@@ -82,10 +82,10 @@
                             <label for="lesson" class="">レッスン１</label>
                             {{-- レッスン１　Number --}}
                             <div class="">
-                                <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="Number1">
+                                <input id="number" type="text" class="new__input-area @error('number') is-invalid @enderror"
+                                    name="lessons[number]" value="{{ old('number') }}" autocomplete="number" autofocus placeholder="Number1">
 
-                                @error('lesson')
+                                @error('number')
                                 <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -93,10 +93,10 @@
                             </div>
                             {{-- 　　レッスン1　title --}}
                             <div class="">
-                                <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="title１">
+                                <input id="title" type="text" class="new__input-area @error('title') is-invalid @enderror"
+                                    name="lessons[title]" value="{{ old('title') }}" autocomplete="title" autofocus placeholder="title１">
 
-                                @error('lesson')
+                                @error('title')
                                 <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -105,7 +105,7 @@
                             {{-- レッスン１ lesson --}}
                             <div class="">
                                 <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                                    name="lesson" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
+                                    name="lessons[lesson]" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
 
                                 @error('lesson')
                                 <span class="" role="alert">
@@ -118,7 +118,7 @@
 
 
 
-                        <div class="">
+                        {{-- <div class="">
                             <label for="lesson" class="">レッスン２</label>
 
                             <div class="">
@@ -145,7 +145,7 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{-- 価格 --}}
                         <div class="">
