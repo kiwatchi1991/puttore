@@ -28,12 +28,12 @@ class Product extends Model
      }
 
     // 検索機能
-    public function scopeTagFilter($query, ?string $tag)
-    {
-        if (!is_null($tag)) {
-                return $query->where('categorie ', $tag);
-            }
-        return $query;
-    }
+    // public function scopeTagFilter($query, ?string $tag)
+    // {
+    //     if (!is_null($tag)) {
+    //             return $query->where('categorie ', $tag);
+    //         }
+    //     return $query;
+    // }
 }
 
