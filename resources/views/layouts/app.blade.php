@@ -34,9 +34,7 @@
                     <ul class="">
 
                     </ul>
-                    <div id="app">
-                        <example-component route={{ route('products.new') }}></example-component>
-                    </div>
+                   
                     <!-- Right Side Of Navbar -->
                     <ul class="">
                         <div>

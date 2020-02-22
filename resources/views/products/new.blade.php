@@ -7,6 +7,9 @@
             <section class="new__wrapper">
                 <div class="">レッスン内容登録</div>
 
+
+
+
                 <div class="">
                     <form method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data" >
                         @csrf
@@ -78,6 +81,7 @@
                         </div>
 
                         {{-- レッスン内容 --}}
+                                        
                         <div id="c-lesson__section">
                             <div class="c-lesson__block">
                                 <label for="lesson" class="">レッスン１</label>
@@ -105,19 +109,23 @@
                                 </div>
                                 {{-- レッスン１ lesson --}}
                                 <div class="">
-                                    <input id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                                        name="lessons[0][lesson]" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
+                                    {{-- vueでのライブプレビュー↓↓↓↓ --}}
+                <div id="app">
+                    <textarea-livepreview></textarea-livepreview>
+                </div>
 
+                {{-- vueでのライブプレビュー↑↑↑↑ --}}
+                                    {{-- <textarea id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
+                                        name="lessons[0][lesson]" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
+                                    </textarea>
                                     @error('lesson')
                                     <span class="" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror
+                                    @enderror --}}
                                 </div>
                                 {{-- レッスン１ lesson --}}
-                                <div class="">
-                                     リアルタイムプレビュー
-                                </div>
+                             
                             </div>
                           </div>
                         <div>

@@ -24,15 +24,13 @@ require('./components/add-lesson');
  * Vue components. It will recursively scan this directory for the Vue
  * components and automatically register them with their "basename".
  *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 
-// Vue.component('example-component', require('./components/Hamburger.vue').default);
-// Vue.component('example-component', require('./components/UserRegister.vue').default);
+Vue.component('textarea-livepreview', require('./components/MarkdownPanel.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -46,8 +44,8 @@ require('./components/add-lesson');
 //     template: '<App />' // ルートコンポーネントを描画する
 // });
 
-// n
-// new Sample({
-//     el: '#sample',
-// });
+new Vue({
+    el: '#app',// index.htmlでid="app"となっている要素（エレメント）を指定
+   
+})
 
