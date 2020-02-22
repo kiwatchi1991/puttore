@@ -36,6 +36,11 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/profile/{id}/edit', 'ProfilesController@update')->name('profile.update');
     Route::get('/profile/{id}',  'ProfilesController@show')->name('profile.show');
 
+    //パスワード変更
+    Route::get('changepassword', 'HomeController@showChangePasswordForm');
+    Route::post('changepassword', 'HomeController@changePassword')->name('changepassword');
+
+
 
 });
 
