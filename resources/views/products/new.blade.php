@@ -11,7 +11,7 @@
 
 
                 <div class="">
-                    <form method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data" >
+                    <form id="form" method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data" >
                         @csrf
                         {{-- 名前 --}}
                         <div class="">
@@ -108,21 +108,22 @@
                                     @enderror
                                 </div>
                                 {{-- レッスン１ lesson --}}
-                                <div class="">
-                                    {{-- vueでのライブプレビュー↓↓↓↓ --}}
-                <div id="app">
-                    <textarea-livepreview></textarea-livepreview>
-                </div>
-
-                {{-- vueでのライブプレビュー↑↑↑↑ --}}
-                                    {{-- <textarea id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
+                                {{-- vueでのライブプレビュー↓↓↓↓ --}}
+                            {{-- <div id="app">
+                                <textarea-livepreview></textarea-livepreview>
+                            </div> --}}
+                            {{-- vueでのライブプレビュー↑↑↑↑ --}}
+                                <div>
+                                    <textarea id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
                                         name="lessons[0][lesson]" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
                                     </textarea>
+                                    <div id="preview">ぷれびゅー</div>
+                                    
                                     @error('lesson')
                                     <span class="" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror --}}
+                                    @enderror
                                 </div>
                                 {{-- レッスン１ lesson --}}
                              
@@ -132,8 +133,8 @@
                             <button class="c-addLesson__button">追加する</button>
                         </div>
 
-                        <div class="">
-                            <label for="lesson" class="">レッスン１</label>
+                        {{-- <div class="">
+                            <label for="lesson" class="">レッスン１</label> --}}
                             {{-- レッスン2　Number --}}
                             {{-- <div class="">
                                 <input id="number" type="text" class="new__input-area @error('number') is-invalid @enderror"
@@ -167,7 +168,7 @@
                                 </span>
                                 @enderror
                             </div> --}}
-                        </div>
+                        {{-- </div> --}}
 
 
 
@@ -221,7 +222,7 @@
                 @endfor --}}
 
 
-                        <button type="submit" class="">
+                        <button type="submit" class="button">
                             {{ __('Register') }}
                         </button>
                 </form>
@@ -230,4 +231,8 @@
     </div>
 </div>
 </div>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 @endsection

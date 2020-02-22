@@ -14,6 +14,7 @@ require('./components/hamgurger');
 require('./components/previewImage');
 require('./components/drop-down');
 require('./components/add-lesson');
+require('./components/markdown');
 
 
 // const Sample = require('vue');
@@ -46,6 +47,5 @@ Vue.component('textarea-livepreview', require('./components/MarkdownPanel.vue').
 
 new Vue({
     el: '#app',// index.htmlでid="app"となっている要素（エレメント）を指定
-   
 })
 
