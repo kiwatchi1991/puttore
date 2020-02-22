@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 
-// const Vue = require('vue');
+const Vue = require('vue');
 
 // const Sample = require('vue');
 // var $ = require('jQuery');
