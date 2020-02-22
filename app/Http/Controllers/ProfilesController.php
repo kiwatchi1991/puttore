@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+// use App\User;
+use App\Users;
 use App\Product;
 use App\Category;
 use App\Difficulty;
@@ -27,7 +28,7 @@ class ProfilesController extends Controller
         // $product = Product::find($id);
         
         // ユーザー情報の取得
-        $user = User::find($id);
+        $user = Users::find($id);
         
         Log::debug('$user');
         Log::debug($user);
@@ -84,7 +85,7 @@ class ProfilesController extends Controller
             return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
         }
 
-        $user = User::find($id);
+        $user = Users::find($id);
         return view('profile.edit', ['user' => $user]);
     }
 
@@ -100,7 +101,7 @@ class ProfilesController extends Controller
         }
         
         Log::debug('プロフィール更新');
-        $user = User::find($id);
+        $user = Users::find($id);
         $user->fill($request->all())->save();
         
         $path = $request->pic->store('public/profile_images');
@@ -112,4 +113,43 @@ class ProfilesController extends Controller
         return redirect('/products/mypage')->with('flash_message', __('Registered.'));
 
     }
+
+    /**
+     * 退会機能
+     */
+
+    //表示
+    public function deleteShow(Request $request, $id)
+  {
+    // GETパラメータが数字かどうかをチェックする
+    // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
+        if (!ctype_digit($id)) {
+            return redirect('/profiles')->with('flash_message', __('Invalid operation was performed.'));
+        }
+
+        $user = Users::find($id);
+        return view('profile.delete', ['user' => $user]);
+
+  }
+
+    //削除
+    public function deleteData(Request $request, $id)
+  {
+    Log::debug('<< deleteData >>');
+    Log::debug($request);
+    Log::debug($id);
+
+    // GETパラメータが数字かどうかをチェックする
+    // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
+    if (!ctype_digit($id)) {
+        return redirect('/profiles')->with('flash_message', __('Invalid operation was performed.'));
+    }
+
+    $user = Users::find($request->input('id'));
+    $user->delete();
+
+    return redirect('/products/mypage')->with('flash_message', __('Registered.'));
+
+  }
+
 }

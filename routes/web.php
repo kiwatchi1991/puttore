@@ -31,10 +31,12 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/products/{id}',  'ProductsController@shows')->name('products.show');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-    //プロフィール
+    //ユーザー
     Route::get('/profile/{id}/edit', 'ProfilesController@edit')->name('profile.edit');
     Route::post('/profile/{id}/edit', 'ProfilesController@update')->name('profile.update');
     Route::get('/profile/{id}',  'ProfilesController@show')->name('profile.show');
+    Route::get('/profile/{id}/delete',  'ProfilesController@deleteShow')->name('profile.deleteShow');
+    Route::post('/profile/{id}/delete',  'ProfilesController@deleteData')->name('profile.deleteData');
 
     //パスワード変更
     Route::get('changepassword', 'HomeController@showChangePasswordForm');
