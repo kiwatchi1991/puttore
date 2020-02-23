@@ -46,11 +46,16 @@ class BordsController extends Controller
         $orders = Order::find($id);
         $ordersId = $orders->id;
         Log::debug($orders);
+        
+        $messages = Message::where('messages.order_id',$id)->get();
+        Log::debug('messages↓↓');
+        Log::debug($messages);
         // Log::debug($orders->id);
 
         return view('bords.show',[
             'orders' => $orders,
             'ordersId' => $ordersId,
+            'messages' => $messages,
             ]);
     }
 

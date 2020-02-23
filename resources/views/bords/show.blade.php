@@ -17,6 +17,10 @@
     </form>
 </div>
 <div class="c-bords__messageArea">
+@foreach ($messages as $message)
+<div class="">{{ $message->msg }}</div>
+@endforeach
+
 
 </div>
 
