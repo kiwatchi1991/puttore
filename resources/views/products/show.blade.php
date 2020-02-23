@@ -42,9 +42,12 @@
             <p>　¥ {{ $product->default_price }}</p>  
         </div>
         <div class="c-button__block">
-            <button type="submit" class="c-button">
-               購入する
-            </button>
+        <form method="post" action="{{ route('orders.create',$product->id) }}">
+                @csrf
+                <button type="submit" class="c-button">
+                    購入する
+                </button>
+            </form>
         </div>
         <div class="c-button__block">
             <button type="submit" class="c-button">

@@ -29,6 +29,7 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
     Route::get('/products/mypage', 'ProductsController@mypage')->name('products.mypage');
     Route::get('/products/{id}',  'ProductsController@shows')->name('products.show');
+    Route::post('/products/{id}',  'OrdersController@create')->name('orders.create');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
     //ユーザー
@@ -42,7 +43,7 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('changepassword', 'HomeController@showChangePasswordForm');
     Route::post('changepassword', 'HomeController@changePassword')->name('changepassword');
 
-
+    
 
 });
 
