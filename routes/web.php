@@ -29,10 +29,11 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
     Route::get('/products/mypage', 'ProductsController@mypage')->name('products.mypage');
     Route::get('/products/{id}',  'ProductsController@shows')->name('products.show');
-    //注文
+    //注文・トークルーム
     Route::post('/products/{id}',  'OrdersController@create')->name('orders.create');
-    Route::get('/bords',  'OrdersController@create')->name('orders.create');
     Route::get('/bords',  'BordsController@index')->name('bords');
+    Route::get('/bords/{id}',  'BordsController@show')->name('bords.show');
+    Route::post('/bords',  'MessagesController@create')->name('messages.create');
 
     
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');

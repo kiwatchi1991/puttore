@@ -13,7 +13,7 @@
             <img src="/storage/{{ $bord->pic }}" alt="">
         </div>
         <div class="p-product__block">
-            {{ $bord->name }}
+           販売者ユーザー名： {{ $bord->name }}
         </div>
     </a>
     @endforeach
