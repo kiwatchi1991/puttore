@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Bord extends Model
 {
     // 1対多のリレーションを作る
     public function messages()
     {
-        return $this->hasMany('App\Message');
+        return $this->hasMany('App\Lesson');
     }
 }
