@@ -137,7 +137,7 @@ class ProductsController extends Controller
             $product->pic1 = str_replace('public/', '', $path);
             $product->save();
 
-            
+            //1対多の登録
             $lessons = $request->input('lessons'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
             Log::debug('$lessonsの内容');
             Log::debug($lessons);
@@ -166,7 +166,7 @@ class ProductsController extends Controller
 
 
             // 言語の登録
-            $categories_name = $request->s('lang'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
+            $categories_name = $request->input('lang'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
     
             Log::debug('$productの内容');
             Log::debug([$product]);

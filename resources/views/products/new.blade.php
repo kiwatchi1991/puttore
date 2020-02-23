@@ -60,7 +60,6 @@
                                 
                             </div>
                             </div>
-                        </div>
 
                         {{-- 説明 --}}
                         <div class="">
@@ -218,8 +217,8 @@
                             </span>
                             @enderror
                         </div>
-                </div>
-                @endfor --}}
+                        </div>
+                        @endfor --}}
 
 
                         <button type="submit" class="button">
