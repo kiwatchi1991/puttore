@@ -15,11 +15,10 @@ class CreateOrderTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('order_date');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->decimal('sale-price', 10, 2);
-            $table->integer('status');
+            $table->decimal('sale_price', 10, 2);
+            $table->integer('status')->default(0);
             $table->timestamps();
             
             // 外部キー制約

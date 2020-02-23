@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\User;
-use App\Users;
+use App\User;
+// use App\Users;
 use App\Product;
 use App\Category;
 use App\Difficulty;
 use App\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class ProfilesController extends Controller
 {
@@ -28,7 +28,7 @@ class ProfilesController extends Controller
         // $product = Product::find($id);
         
         // ユーザー情報の取得
-        $user = Users::find($id);
+        $user = User::find($id);
         
         Log::debug('$user');
         Log::debug($user);
@@ -85,7 +85,7 @@ class ProfilesController extends Controller
             return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
         }
 
-        $user = Users::find($id);
+        $user = User::find($id);
         return view('profile.edit', ['user' => $user]);
     }
 
@@ -101,7 +101,7 @@ class ProfilesController extends Controller
         }
         
         Log::debug('プロフィール更新');
-        $user = Users::find($id);
+        $user = User::find($id);
         $user->fill($request->all())->save();
         
         $path = $request->pic->store('public/profile_images');
@@ -127,7 +127,7 @@ class ProfilesController extends Controller
             return redirect('/profiles')->with('flash_message', __('Invalid operation was performed.'));
         }
 
-        $user = Users::find($id);
+        $user = User::find($id);
         return view('profile.delete', ['user' => $user]);
 
   }
@@ -145,7 +145,7 @@ class ProfilesController extends Controller
         return redirect('/profiles')->with('flash_message', __('Invalid operation was performed.'));
     }
 
-    $user = Users::find($request->input('id'));
+    $user = User::find($request->input('id'));
     $user->delete();
 
     return redirect('/products/mypage')->with('flash_message', __('Registered.'));

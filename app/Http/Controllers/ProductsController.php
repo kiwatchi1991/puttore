@@ -11,7 +11,7 @@ use App\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 
 class ProductsController extends Controller
@@ -166,7 +166,7 @@ class ProductsController extends Controller
 
 
             // 言語の登録
-            $categories_name = $request->input('lang'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
+            $categories_name = $request->s('lang'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
     
             Log::debug('$productの内容');
             Log::debug([$product]);

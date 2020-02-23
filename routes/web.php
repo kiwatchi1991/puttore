@@ -48,7 +48,7 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('changepassword', 'HomeController@showChangePasswordForm');
     Route::post('changepassword', 'HomeController@changePassword')->name('changepassword');
 
-
+    
 
 });
 

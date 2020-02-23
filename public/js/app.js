@@ -1932,6 +1932,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -1944,6 +1949,7 @@ __webpack_require__.r(__webpack_exports__);
       return marked__WEBPACK_IMPORTED_MODULE_0___default()(this.input);
     }
   },
+  methods: {},
   data: function data() {
     return {
       input: '' // index.htmlでv-model="input"が付与されている要素と双方向データバインディングされている。
@@ -1951,6 +1957,17 @@ __webpack_require__.r(__webpack_exports__);
     };
   }
 });
+$('#edit').keyup(function () {
+  var html = marked__WEBPACK_IMPORTED_MODULE_0___default()($(this).val());
+  $('#preview').html(html);
+}); // $('#form').on('submit', function(e){
+//      $('input[name="lessons[0][lesson]"]').val(e.target.value);
+//     e.preventDefault();
+//     // return false;
+//     $.post( 'https://httpbin.org/post', $('#form').serialize() )
+// .done(function( data ) {
+//     console.log( data.form );
+// })
 
 /***/ }),
 
@@ -39231,80 +39248,38 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "columns" }, [
-      _c(
-        "div",
-        { staticClass: "column is-6", attrs: { id: "input-field-wrapper" } },
-        [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.input,
-                expression: "input"
-              }
-            ],
-            staticClass: "textarea",
-            attrs: { name: "lessons[0][lesson]", id: "input-field" },
-            domProps: { value: _vm.input },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.input = $event.target.value
-              }
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.input,
+          expression: "input"
+        }
+      ],
+      staticClass: "textarea",
+      attrs: {
+        id: "lesson",
+        name: "lessons[0][lesson]",
+        type: "text",
+        placeholder: "レッスン１"
+      },
+      domProps: { value: _vm.input },
+      on: {
+        input: [
+          function($event) {
+            if ($event.target.composing) {
+              return
             }
-          })
+            _vm.input = $event.target.value
+          },
+          _vm.inputLesson
         ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "column is-6", attrs: { id: "preview-field-wrapper" } },
-        [
-          _vm._m(2),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "content",
-            attrs: { id: "preview-field" },
-            domProps: { innerHTML: _vm._s(_vm.convertMarkdown) }
-          })
-        ]
-      )
-    ])
+      }
+    })
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "navbar" }, [
-      _c("h1", { staticClass: "title" }, [_vm._v("Markdown Editor")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", [_c("i", { staticClass: "fas fa-edit" }), _vm._v(" Input")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", [
-      _c("i", { staticClass: "fas fa-eye" }),
-      _vm._v(" Preview")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -51492,7 +51467,9 @@ __webpack_require__(/*! ./components/previewImage */ "./resources/js/components/
 
 __webpack_require__(/*! ./components/drop-down */ "./resources/js/components/drop-down.js");
 
-__webpack_require__(/*! ./components/add-lesson */ "./resources/js/components/add-lesson.js"); // const Sample = require('vue');
+__webpack_require__(/*! ./components/add-lesson */ "./resources/js/components/add-lesson.js");
+
+__webpack_require__(/*! ./components/markdown */ "./resources/js/components/markdown.js"); // const Sample = require('vue');
 // var $ = require('jQuery');
 
 /**
@@ -51710,6 +51687,22 @@ function toggleNav() {
 
 $(function () {
   toggleNav();
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/markdown.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/markdown.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
+
+$('#lesson').keyup(function () {
+  var html = marked($(this).val());
+  $('#preview').html(html);
 });
 
 /***/ }),
