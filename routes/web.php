@@ -29,6 +29,9 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
     Route::get('/products/mypage', 'ProductsController@mypage')->name('products.mypage');
     Route::get('/products/{id}',  'ProductsController@shows')->name('products.show');
+    Route::post('/products/ajaxlike',  'LikesController@ajaxlike')->name('products.ajaxlike');
+
+
     //注文・トークルーム
     Route::post('/products/{id}',  'OrdersController@create')->name('orders.create');
     Route::get('/bords',  'BordsController@index')->name('bords');
