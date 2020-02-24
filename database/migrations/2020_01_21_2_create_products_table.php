@@ -46,10 +46,11 @@ class CreateProductsTable extends Migration
     public function down()
     {
         // 外部キー付きのカラムを削除するにはまず必ず外部キー制約を外す必要があります
-        Schema::table('lessons', function (Blueprint $table) {
-        $table->dropForeign(['user_id']);
-        $table->dropColumn('user_id');
-        Schema::dropIfExists('products');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
         });
+        Schema::dropIfExists('products');
+
     }
 }

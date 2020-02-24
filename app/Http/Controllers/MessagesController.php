@@ -50,8 +50,8 @@ class MessagesController extends Controller
 
         $message = new Message;
         $message->order_id = $id; 
-        $message->sendUser_id = Auth::user()->id;
-        $message->recieveUser_id = $saleUserId[0]->user_id;
+        $message->send_user_id = Auth::user()->id;
+        $message->recieve_user_id = $saleUserId[0]->user_id;
         $message->msg = $request->messages;
         // $message->sale_price = Product::find($id)->default_price;
         $message->save();

@@ -36,6 +36,15 @@ class CreateBordTable extends Migration
      */
     public function down()
     {
+        Schema::table('bord', function (Blueprint $table) {
+            $table->dropForeign(['sale-user_id']);
+            $table->dropColumn('sale-user_id');
+            $table->dropForeign(['buy-user_id']);
+            $table->dropColumn('buy-user_id');
+            $table->dropForeign(['product_id']);
+            $table->dropColumn('product_id');
+            });
         Schema::dropIfExists('bord');
+        
     }
 }

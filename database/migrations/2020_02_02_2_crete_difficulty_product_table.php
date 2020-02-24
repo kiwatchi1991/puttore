@@ -32,6 +32,13 @@ class CreteDifficultyProductTable extends Migration
      */
     public function down()
     {
+        Schema::table('difficulty_product', function (Blueprint $table) {
+            $table->dropForeign(['difficulty_id']);
+            $table->dropColumn('difficulty_id');
+            $table->dropForeign(['product_id']);
+            $table->dropColumn('product_id');
+        });
         Schema::dropIfExists('difficulty_product');
+        
     }
 }

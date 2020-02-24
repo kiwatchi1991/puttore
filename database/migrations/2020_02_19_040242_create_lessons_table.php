@@ -38,7 +38,8 @@ class CreateLessonsTable extends Migration
         Schema::table('lessons', function (Blueprint $table) {
             $table->dropForeign(['product_id']);
             $table->dropColumn('product_id');
-            Schema::dropIfExists('lessons');
         });
+        Schema::dropIfExists('lessons');
+
     }
 }

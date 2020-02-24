@@ -45,7 +45,17 @@
         <form method="post" action="{{ route('orders.create',$product->id) }}">
                 @csrf
                 <button type="submit" class="c-button">
-                    購入する
+                    
+                    <script
+            type="text/javascript"
+            src="https://checkout.pay.jp/"
+            class="payjp-button"
+            id="payjp-button"
+            data-key="pk_test_65b86d16158dad1607ce9b69"
+            data-on-created="onCreated"
+            data-text="pay"
+            data-submit-text="pay"
+            ></script>
                 </button>
             </form>
         </div>

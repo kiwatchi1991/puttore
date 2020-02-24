@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatMessageTable extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,16 +16,16 @@ class CreatMessageTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('sendUser_id');
-            $table->unsignedBigInteger('recieveUser_id');
+            $table->unsignedBigInteger('send_user_id');
+            $table->unsignedBigInteger('recieve_user_id');
             $table->longText('msg');
             $table->tinyInteger('delete_flg')->default(0);
             $table->timestamps();
             
             // 外部キー制約
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('sendUser_id')->references('id')->on('users');
-            $table->foreign('recieveUser_id')->references('id')->on('users');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('send_user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('recieve_user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }
@@ -40,12 +40,11 @@ class CreatMessageTable extends Migration
         Schema::table('messages', function (Blueprint $table) {
             $table->dropForeign(['order_id']);
             $table->dropColumn('order_id');
-            $table->dropForeign(['sendUser_id']);
-            $table->dropColumn('sendUser_id');
-            $table->dropForeign(['recieveUser_id']);
-            $table->dropColumn('recieveUser_id');
-
-            Schema::dropIfExists('messages');
+            $table->dropForeign(['send_user_id']);
+            $table->dropColumn('send_user_id');
+            $table->dropForeign(['recieve_user_id']);
+            $table->dropColumn('recieve_user_id');
         });
+        Schema::dropIfExists('messages');
     }
 }
