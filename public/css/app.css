@@ -395,6 +395,12 @@ body {
   text-decoration: none;
 }
 
+.c-ajaxLike__icon {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  z-index: 3;
+}
+
 .c-image__preview {
   width: 160px;
   margin: 0 auto;

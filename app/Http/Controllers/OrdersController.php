@@ -33,21 +33,21 @@ class OrdersController extends Controller
 
 
             //----------------- コンテンツ登録 →　payjpでの支払い処理　↓↓↓--------------
-            try{
+            // try{
 
-                \Payjp\Payjp::setApiKey("sk_test_b2ea23efe6354c79bfa31070");
-                \Payjp\Customer::create(array(
-                    "description" => "テストユーザー2",
-                    "card" => $request->{'payjp-token'}
-                ));
-                \Payjp\Charge::create(array(
-                    "customer" => $request->{'payjp-token'},
-                    "amount" => $product->default_price,
-                    "currency" => "jpy",
-                ));
-            } catch(\Payjp\Error\Card $e){
+            //     \Payjp\Payjp::setApiKey("sk_test_b2ea23efe6354c79bfa31070");
+            //     \Payjp\Customer::create(array(
+            //         "description" => "テストユーザー2",
+            //         "card" => $request->{'payjp-token'}
+            //     ));
+            //     \Payjp\Charge::create(array(
+            //         "customer" => "",
+            //         "amount" => $product->default_price,
+            //         "currency" => "jpy",
+            //     ));
+            // } catch(\Payjp\Error\Card $e){
 
-            }
+            // }
 
             //----------------- コンテンツ登録 →　payjpでの支払い処理　↑↑↑--------------
 
@@ -59,6 +59,6 @@ class OrdersController extends Controller
             
         // リダイレクトする
         // その時にsessionフラッシュにメッセージを入れる
-        return redirect('/products/mypage')->with('flash_message', __('Registered.'));
+        return redirect('/bords')->with('flash_message', __('Registered.'));
     }
 }

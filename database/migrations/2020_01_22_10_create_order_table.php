@@ -17,7 +17,7 @@ class CreateOrderTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->decimal('sale_price', 10, 2);
+            $table->decimal('sale_price', 10);
             $table->integer('status')->default(0);
             $table->timestamps();
             

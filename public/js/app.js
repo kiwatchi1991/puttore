@@ -51469,7 +51469,9 @@ __webpack_require__(/*! ./components/drop-down */ "./resources/js/components/dro
 
 __webpack_require__(/*! ./components/add-lesson */ "./resources/js/components/add-lesson.js");
 
-__webpack_require__(/*! ./components/markdown */ "./resources/js/components/markdown.js"); // const Sample = require('vue');
+__webpack_require__(/*! ./components/markdown */ "./resources/js/components/markdown.js");
+
+__webpack_require__(/*! ./components/ajaxLike */ "./resources/js/components/ajaxLike.js"); // const Sample = require('vue');
 // var $ = require('jQuery');
 
 /**
@@ -51640,6 +51642,46 @@ $(function () {
 
     console.log(_typeof(count));
     console.log(count);
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/ajaxLike.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/ajaxLike.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+console.log('ajaxlike読み込み');
+var $like = $('.c-ajaxLike__icon');
+var likePostId;
+$like.on('click', function () {
+  console.log('ajaxlike発火');
+  console.log('ここまで1');
+  var $this = $(this);
+  console.log('ここまで2');
+  likePostId = $this.data('like');
+  console.log('ここまで3');
+  $.ajax({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    url: '/products/ajaxlike',
+    type: 'POST',
+    dataType: 'json',
+    data: {
+      'like': likePostId
+    }
+  }) // Ajaxリクエストが成功した場合
+  .done(function () {
+    console.log('ここまで4');
+    $this.toggleClass('is-active');
+  }) // Ajaxリクエストが失敗した場合
+  .fail(function (data) {
+    console.log('エラー');
+    console.log(data);
   });
 });
 
