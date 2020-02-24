@@ -29,6 +29,28 @@ class OrdersController extends Controller
             Log::debug('リクエスト内容↓↓');
             Log::debug($request);
 
+            $product = Product::find($id);
+
+
+            //----------------- コンテンツ登録 →　payjpでの支払い処理　↓↓↓--------------
+            try{
+
+                \Payjp\Payjp::setApiKey("sk_test_b2ea23efe6354c79bfa31070");
+                \Payjp\Customer::create(array(
+                    "description" => "テストユーザー2",
+                    "card" => $request->{'payjp-token'}
+                ));
+                \Payjp\Charge::create(array(
+                    "customer" => $request->{'payjp-token'},
+                    "amount" => $product->default_price,
+                    "currency" => "jpy",
+                ));
+            } catch(\Payjp\Error\Card $e){
+
+            }
+
+            //----------------- コンテンツ登録 →　payjpでの支払い処理　↑↑↑--------------
+
             $order = new Order;
             $order->user_id = Auth::user()->id; 
             $order->product_id = $id;
