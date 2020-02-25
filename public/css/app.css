@@ -401,6 +401,10 @@ body {
   z-index: 3;
 }
 
+.c-ajaxLike__icon.is-like {
+  color: red;
+}
+
 .c-image__preview {
   width: 160px;
   margin: 0 auto;
