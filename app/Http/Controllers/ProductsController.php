@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Difficulty;
+use App\Cart;
+use App\Follow;
+use App\Like;
 use App\Lesson;
 use App\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
@@ -380,10 +383,26 @@ class ProductsController extends Controller
 
         $categoryAndDifficulty = Product::all();
 
+        //カート情報取得
+        $product_id = $id;
+        $my_id = Auth::user()->id;
+        $cart = Cart::where('user_id',$my_id)->where('product_id',$product_id)->count();
+
+        //フォロー情報取得
+        $user_id = $user[0]->id;
+        $follow = Follow::where('followed_user_id',$user_id)->where('follow_user_id',Auth::user()->id)->count();
+
+        // お気に入り情報取得
+        $product_id = $id;
+        $liked = Like::where('product_id',$product_id)->where('user_id',Auth::user()->id)->count();
+
         return view('products.show', [
         'product' => $product,
         'user' => $user,
         'categoryAndDifficulty' => $categoryAndDifficulty,
+        'cart' => $cart,
+        'follow' => $follow,
+        'liked' => $liked,
         ]);
     }
 

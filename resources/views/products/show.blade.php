@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-    <div class="">
+    <button class="">
         @if ($product->user_id === Auth::id())
             
         <div class="c-button__block">
@@ -35,9 +35,9 @@
         <div class="">
             <p>　出品者:{{ $user[0]->account_name }}</p>  
         </div>
-        <div class="c-ajaxFollow__icon" data-follow="{{ $user[0]->id }}">
+        <button type="submit" class="c-button c-ajaxFollow__icon @if($follow) is-active  @endif" data-follow="{{ $user[0]->id }}">
             フォローする
-        </div>
+        </button>
         <div class="">
             <p>　最終更新日:{{ $product->updated_at }}</p>  
         </div>
@@ -63,8 +63,13 @@
             </form>
         </div>
         <div class="c-button__block">
-            <button type="submit" class="c-button c-ajaxLike__icon">
+            <button type="submit" class="c-button c-ajaxLike__icon @if($liked) is-active  @endif" data-like="{{ $product->id }}">
                ほしいものリストに追加する
+            </button>
+        </div>
+        <div class="c-button__block">
+            <button type="submit" class="c-button c-ajaxCart__icon @if($cart) is-inCart  @endif" data-cart="{{ $product->id }}">
+               カートに追加する
             </button>
         </div>
         <div class="">
