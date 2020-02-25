@@ -33,6 +33,11 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/products/ajaxfollow',  'FollowsController@ajaxfollow')->name('products.ajaxfollow');
     
     
+    //カート
+    Route::get('/carts',  'CartsController@index')->name('carts');
+    Route::post('/carts',  'CartsController@ajaxcart')->name('ajaxcarts');
+
+
     //注文・トークルーム
     Route::post('/products/{id}',  'OrdersController@create')->name('orders.create');
     Route::get('/bords',  'BordsController@index')->name('bords');
