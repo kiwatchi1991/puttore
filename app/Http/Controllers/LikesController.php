@@ -26,14 +26,14 @@ class LikesController extends Controller
         $liked = Like::where('product_id',$product_id)->where('user_id',Auth::user()->id)->count();
         if($liked > 0){
             Log::debug('<<<<<<<< お気に入り削除処理　>>>>>>>>>>>>>');
-            $like = new Like;
-            $like->product_id = $request->$product_id;
-            $like->user_id = Auth::user()->id;
-            $like->save();
+            $like = Like::where('product_id',$product_id)->where('user_id', Auth::user()->id)->delete();
             return response()->json($like);
         }else{
             Log::debug('<<<<<<<< お気に入り追加処理　>>>>>>>>>>>>>');
-            $like = Like::where('product_id',$product_id)->where('user_id', Auth::user()->id)->delete();
+            $like = new Like;
+            $like->product_id = $product_id;
+            $like->user_id = Auth::user()->id;
+            $like->save();
             return response()->json($like);
         }
 

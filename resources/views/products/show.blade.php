@@ -35,6 +35,9 @@
         <div class="">
             <p>　出品者:{{ $user[0]->account_name }}</p>  
         </div>
+        <div class="c-ajaxFollow__icon" data-follow="{{ $user[0]->id }}">
+            フォローする
+        </div>
         <div class="">
             <p>　最終更新日:{{ $product->updated_at }}</p>  
         </div>
@@ -60,7 +63,7 @@
             </form>
         </div>
         <div class="c-button__block">
-            <button type="submit" class="c-button">
+            <button type="submit" class="c-button c-ajaxLike__icon">
                ほしいものリストに追加する
             </button>
         </div>

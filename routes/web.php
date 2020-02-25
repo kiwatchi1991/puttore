@@ -30,8 +30,9 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/products/mypage', 'ProductsController@mypage')->name('products.mypage');
     Route::get('/products/{id}',  'ProductsController@shows')->name('products.show');
     Route::post('/products/ajaxlike',  'LikesController@ajaxlike')->name('products.ajaxlike');
-
-
+    Route::post('/products/ajaxfollow',  'FollowsController@ajaxfollow')->name('products.ajaxfollow');
+    
+    
     //注文・トークルーム
     Route::post('/products/{id}',  'OrdersController@create')->name('orders.create');
     Route::get('/bords',  'BordsController@index')->name('bords');
