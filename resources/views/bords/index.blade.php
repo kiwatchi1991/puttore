@@ -10,7 +10,7 @@
     <a href="{{ route('bords.show',$bord->id) }}">
 
         <div class="p-product__block">
-            <img src="/storage/{{ $bord->pic }}" alt="">
+            <img src="/storage/{{ $bord->pic }}" alt="" class="c-userIcon_img">
         </div>
         <div class="p-product__block">
            販売者ユーザー名： {{ $bord->name }}
