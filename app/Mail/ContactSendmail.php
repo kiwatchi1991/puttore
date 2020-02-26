@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
+
 
 class ContactSendmail extends Mailable
 {
@@ -33,11 +35,13 @@ class ContactSendmail extends Mailable
         return $this
             ->from('example@gmail.com')
             ->subject('自動送信メール')
-            ->view('contact.mail')
+            ->view('contacts.mail')
             ->with([
                 'email' => $this->email,
                 'title' => $this->title,
                 'body'  => $this->body,
-            ]);
+                ]);
+            Log::debug('thisの中身');
+            Log::debug($this);
     }
 }

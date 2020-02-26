@@ -1,1 +1,6 @@
-お問い合わせ内容の送信が完了いたしました。
+@extends('layouts.app')
+
+@section('content')
+<h1>{{ __('送信完了') }}</
+
+@endsection

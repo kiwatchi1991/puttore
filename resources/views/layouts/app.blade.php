@@ -53,6 +53,7 @@
                              <li class="global-nav__item"><a href=" {{ route('products.mypage') }}" >mypage</a></li>
                              <li class="global-nav__item"><a href=" {{ route('bords') }}" >bords</a></li>
                              <li class="global-nav__item"><a href=" {{ route('carts') }}" >carts</a></li>
+                             <li class="global-nav__item"><a href=" {{ route('contact.index') }}" >contacts</a></li>
                                <li class="global-nav__item">
                            
                                  <a onclick="event.preventDefault();
