@@ -58,6 +58,11 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('changepassword', 'HomeController@showChangePasswordForm');
     Route::post('changepassword', 'HomeController@changePassword')->name('changepassword');
 
+    //お問い合わせ
+    Route::get('/contacts', 'ContactController@index')->name('contact.index'); //入力画面
+    Route::post('/contacts/confirm', 'ContactController@confirm')->name('contact.confirm'); //確認画面
+    Route::post('/contacts/finish', 'ContactController@finish')->name('contact.finish'); //完了画面
+
     
 
 });
