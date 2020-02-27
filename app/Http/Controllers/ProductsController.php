@@ -354,13 +354,14 @@ class ProductsController extends Controller
         
         $category = Category::all();
         $difficult = Difficulty::all();
-        $product_category = Product::all();
+        $difficult = Difficulty::all();
+        $lessons= Lesson::where('product_id',$id)->get();
         
         return view('products.edit', [
             'product' => $product,
             'category' => $category,
             'difficult' => $difficult,
-            'product_categories' => $product_category,
+            'lessons' => $lessons,
             ]);
     }
 
