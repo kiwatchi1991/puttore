@@ -62,6 +62,7 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/contacts', 'ContactController@index')->name('contact.index'); //入力画面
     Route::post('/contacts/confirm', 'ContactController@confirm')->name('contact.confirm'); //確認画面
     Route::post('/contacts/finish', 'ContactController@send')->name('contact.send'); //完了画面
+    Route::get('/contacts/finish', 'ContactController@finish')->name('contact.finish'); //完了画面
 
     
 

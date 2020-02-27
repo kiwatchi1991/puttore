@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\ContactSendmail;
 use Illuminate\Support\Facades\Mail;
-
+use App\Contact;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 
@@ -58,20 +60,34 @@ class ContactController extends Controller
 
         } else {
 
+        Log::debug('<<<<<    DBへ登録開始   >>>>>>>>>>');
+        //DBへ登録
+        $contacts = new Contact;
+        Auth::user()->contacts()->save($contacts->fill($request->all()));
+
           Log::debug('<<<<<    mail送信処理開始   >>>>>>>>>>');
           Log::debug('$inputs内容');
           Log::debug($inputs);
           Log::debug($inputs['email']);
-
-            //入力されたメールアドレスにメールを送信
-            Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
-
-            //再送信を防ぐためにトークンを再発行
-            $request->session()->regenerateToken();
-
-            //送信完了ページのviewを表示
+          
+          //入力されたメールアドレスにメールを送信
+          Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
+          
+          Log::debug(['メール送信']);
+          //再送信を防ぐためにトークンを再発行
+          $request->session()->regenerateToken();
+          
+          Log::debug(['トークン再発行']);
+          //送信完了ページのviewを表示
+          Log::debug(['これからリダイレクト']);
             return view('contacts.finish');
             
         }
+    }
+
+    public function finish()
+    {
+        Log::alert('<<<<<<    finish     >>>>>>>>>');
+        return view('contacts.finish');
     }
 }
