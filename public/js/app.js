@@ -51473,7 +51473,9 @@ __webpack_require__(/*! ./components/markdown */ "./resources/js/components/mark
 
 __webpack_require__(/*! ./components/ajaxLike */ "./resources/js/components/ajaxLike.js");
 
-__webpack_require__(/*! ./components/ajaxFollow */ "./resources/js/components/ajaxFollow.js"); // const Sample = require('vue');
+__webpack_require__(/*! ./components/ajaxFollow */ "./resources/js/components/ajaxFollow.js");
+
+__webpack_require__(/*! ./components/ajaxCart */ "./resources/js/components/ajaxCart.js"); // const Sample = require('vue');
 // var $ = require('jQuery');
 
 /**
@@ -51649,6 +51651,46 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/js/components/ajaxCart.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/ajaxCart.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+console.log('ajaxcart読み込み');
+var $cart = $('.c-ajaxCart__icon');
+var cartPostId;
+$cart.on('click', function () {
+  console.log('ajaxcart発火');
+  console.log('ここまで1');
+  var $this = $(this);
+  console.log('ここまで2');
+  cartPostId = $this.data('cart');
+  console.log('ここまで3');
+  $.ajax({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    url: '/carts',
+    type: 'POST',
+    dataType: 'json',
+    data: {
+      'cart': cartPostId
+    }
+  }) // Ajaxリクエストが成功した場合
+  .done(function () {
+    console.log('ここまで4');
+    $this.toggleClass('is-inCart');
+  }) // Ajaxリクエストが失敗した場合
+  .fail(function (data) {
+    console.log('エラー');
+    console.log(data);
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/ajaxFollow.js":
 /*!***********************************************!*\
   !*** ./resources/js/components/ajaxFollow.js ***!
@@ -51706,6 +51748,7 @@ $like.on('click', function () {
   console.log('ここまで2');
   likePostId = $this.data('like');
   console.log('ここまで3');
+  console.log(likePostId);
   $.ajax({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -51719,7 +51762,7 @@ $like.on('click', function () {
   }) // Ajaxリクエストが成功した場合
   .done(function () {
     console.log('ここまで4');
-    $this.toggleClass('is-like');
+    $this.toggleClass('is-active');
   }) // Ajaxリクエストが失敗した場合
   .fail(function (data) {
     console.log('エラー');

@@ -29,6 +29,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Product');
     }
 
+    public function contacts()
+    {
+        return $this->hasMany('App\Product');
+    }
+
     /**
      * 削除済みユーザー以外を表示する
      */

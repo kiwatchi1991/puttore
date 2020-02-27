@@ -343,7 +343,6 @@ body {
   display: flex;
   background: #CCFFFF;
   padding: 15px 10px 5px 5px;
-  display: flex;
   flex-wrap: wrap;
 }
 
@@ -401,7 +400,15 @@ body {
   z-index: 3;
 }
 
-.c-ajaxLike__icon.is-like {
+.c-ajaxLike__icon.is-active {
+  color: red;
+}
+
+.c-ajaxFollow__icon.is-active {
+  color: red;
+}
+
+.c-ajaxCart__icon.is-inCart {
   color: red;
 }
 
@@ -447,6 +454,10 @@ body {
 .c-tag__list {
   position: absolute;
   display: none;
+}
+
+.c-userIcon_img {
+  width: inherit;
 }
 
 .global-nav {
