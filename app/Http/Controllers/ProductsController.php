@@ -146,25 +146,8 @@ class ProductsController extends Controller
             Log::debug($lessons);
             $product->lessons()->createMany($request->input('lessons'));
          
-            //モデルを使って、DBに登録する値をセット
-            // $product = new Product;
-            
-            
             //画像アップロード（これだけ単独で入れる）
             Log::debug('リクエストの中身確認');
-
-            // $filename = $request->pic1->getClientOriginalName();
-            // $request->pic1->storeAs('public/profile_images',$filename);
-            // $path = $request->pic1->store('public/profile_images');
-            // $path->move('storage/profile_images');
-            // Auth::user()->products()->pic1 = $path;
-            // Auth::user()->products()->name = $request->name;
-            // Auth::user()->products()->detail = $request->detail;
-            // Auth::user()->products()->lesson = $request->lesson;
-            // $product->save(Auth::user()->products()->get());
-
-            // Auth::user()->products()->save();
-            // Auth::user()->products()->save($product->fill($request->all()));
             Log::debug('DBへデータ挿入完了');
 
 
@@ -220,62 +203,11 @@ class ProductsController extends Controller
                 
                 // 言語中間テーブル
                 $product->difficulties()->sync($difficulty_ids);  
-                // return redirect('/products/mypage')->with('success', '登録しました');
-                
-
-
-            
-
-        // return $path;
 
         // リダイレクトする
         // その時にsessionフラッシュにメッセージを入れる
         return redirect('/products/mypage')->with('flash_message', __('Registered.'));
     }
-    
-    /**
-     * マイページ
-     */
-    // public function mypage()
-    // {
-    //     //プロダクト件数
-    //     $all_products = Auth::user()->products()->get();
-    //     //ログインユーザーのプロダクト件数
-    //     $products = Auth::user()->products()->paginate(10);
-
-    //     //ページング用変数 始点
-    //     $pageNum_from =  $products->currentPage()*10-9;
-    //     //ページング用変数 終点
-    //     $pageNum_to = $products->currentPage()*10;
-        
-    //     //価格をカンマ入れて表示
-    //     // $price = DB::select('select * from products where active = ?', [1]);
-
-    //     //画像有無判定フラグ
-    //     $is_image = false;
-    //     if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
-    //     $is_image = true;
-    //     }
-
-    //     Log::debug('products_id中身 : '.$products);
-    //     $product_category = Product::all();
-    //     $product_difficulty = Product::all();
-
-
-
-    //     return view('products.mypage',[
-    //     'products' => $products,
-    //     'product_categories' => $product_category,
-    //     'product_difficulties' => $product_difficulty,
-    //     'all_products'=>$all_products,
-    //     'pageNum_from' => $pageNum_from,
-    //     'pageNum_to' => $pageNum_to,
-    //     'is_image' => $is_image,
-    //     ]);
-
-        
-
-    // }
     
     /**
      * 一覧機能
