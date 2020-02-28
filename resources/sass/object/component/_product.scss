@@ -48,6 +48,12 @@
     margin-top: 20px;
 }
 
+.c-price{
+  &.is-inactive{
+    text-decoration:line-through;
+  }
+}
+
 //ページネーションはDOM自動生成なので、自動で付与されたclass名にスタイルをあてる
 .c-pagination{
     margin-top: 20px;
@@ -67,6 +73,7 @@
     .page-link{
         text-decoration: none;
     }
+
 
 }
 .c-ajaxLike__icon{

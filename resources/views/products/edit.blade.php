@@ -150,10 +150,10 @@
                     <label for="default_price" class="">割引価格</label>
                     <div class="">
 
-                        <input id="discounct_price"  class="new__input-area @error('discounct_price') is-invalid @enderror"
-                        name="discounct_price" value="{{ $product->discounct_price }}" autocomplete="discounct_price" autofocus>
+                        <input id="discount_price"  class="new__input-area @error('discount_price') is-invalid @enderror"
+                        name="discount_price" value="{{ $product->discount_price }}" autocomplete="discount_price" autofocus>
 
-                        {{-- @error('discounct_price')
+                        {{-- @error('discount_price')
                           <span class="" role="alert">
                             <strong>{{ $message }}</strong>
                           </span>

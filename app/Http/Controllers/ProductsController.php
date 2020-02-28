@@ -225,10 +225,12 @@ class ProductsController extends Controller
         Log::debug($request->discount_price);
         //割引価格の設定
         if(isset($request->discount_price)){
+          Discount::where('product_id',$id)->delete();
+
           $discount_price = new Discount;
           $discount_price->product_id = $id;
           $discount_price->discount_price = $request->discount_price;
-          $discount_price->start_date = $request->strat_date;
+          $discount_price->start_date = $request->start_date;
           $discount_price->end_date = $request->end_date;
           $discount_price->save();
         }else{
@@ -449,8 +451,9 @@ class ProductsController extends Controller
 
         $categoryAndDifficulty = Product::all();
 
-        //カート情報取得
+        //各種情報取得
         $product_id = $id;
+        //カート情報取得
         $my_id = Auth::user()->id;
         $cart = Cart::where('user_id',$my_id)->where('product_id',$product_id)->count();
 
@@ -459,8 +462,13 @@ class ProductsController extends Controller
         $follow = Follow::where('followed_user_id',$user_id)->where('follow_user_id',Auth::user()->id)->count();
 
         // お気に入り情報取得
-        $product_id = $id;
         $liked = Like::where('product_id',$product_id)->where('user_id',Auth::user()->id)->count();
+
+        //　割引価格情報取得
+        $discount_price = Discount::where('product_id',$product_id)->first();
+        Log::debug('$discount_price');
+        Log::debug($discount_price);
+
 
         return view('products.show', [
         'product' => $product,
@@ -469,6 +477,7 @@ class ProductsController extends Controller
         'cart' => $cart,
         'follow' => $follow,
         'liked' => $liked,
+        'discount_price' => $discount_price,
         ]);
     }
 

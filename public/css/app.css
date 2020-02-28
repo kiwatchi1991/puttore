@@ -368,6 +368,10 @@ body {
   margin-top: 20px;
 }
 
+.c-price.is-inactive {
+  text-decoration: line-through;
+}
+
 .c-pagination {
   margin-top: 20px;
 }

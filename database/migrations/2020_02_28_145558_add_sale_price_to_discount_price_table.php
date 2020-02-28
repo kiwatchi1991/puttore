@@ -14,7 +14,7 @@ class AddSalePriceToDiscountPriceTable extends Migration
     public function up()
     {
         Schema::table('discount_price', function (Blueprint $table) {
-          $table->decimal('discount_price', 10);
+          $table->decimal('discount_price', 10,0);
         });
     }
 
