@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Difficulty;
+use App\Discount;
 use App\Cart;
 use App\Follow;
 use App\Like;
@@ -33,11 +34,11 @@ class ProductsController extends Controller
             $query->orWhere('category_id', $id);
         }
         return $query->get()->pluck("product_id");
-        
+
         Log::debug('$query');
 
     }
-    
+
     /**
      * マイページ
      */
@@ -70,7 +71,7 @@ class ProductsController extends Controller
         $pageNum_from =  $products->currentPage()*10-9;
         //ページング用変数 終点
         $pageNum_to = $products->currentPage()*10;
-        
+
         //価格をカンマ入れて表示
 
         //画像有無判定フラグ
@@ -96,7 +97,7 @@ class ProductsController extends Controller
         'difficult' => $difficult,
         ]);
     }
-    
+
      /**
      * コンテンツ登録画面
      */
@@ -118,6 +119,8 @@ class ProductsController extends Controller
         Log::debug('---------------------------------');
         Log::debug('<<<<<< product update >>>>>>>>>>>');
         Log::debug('---------------------------------');
+        Log::debug('$request');
+        Log::debug($request);
         // GETパラメータが数字かどうかをチェックする
         if (!ctype_digit($id)) {
             return redirect('/products/edit')->with('flash_message', __('Invalid operation was performed.'));
@@ -135,12 +138,12 @@ class ProductsController extends Controller
         }
 
         //レッスンの登録
-        
+
         $lessons = $request->input('lessons');
         Log::debug('$lessons');
         Log::debug($lessons);
         foreach($lessons as $lesson){
-            
+
             //hiddenのレッスンIDがあるかどうか（すでにあるレッスンかどうか）
             //すでにあるレッスンなら、更新
             if(isset($lesson['id'])){
@@ -168,56 +171,71 @@ class ProductsController extends Controller
 
                     // 言語の登録
                     $categories_name = $request->input('lang'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
-    
+
                     Log::debug('$productの内容');
                     Log::debug([$product]);
                     Log::debug('$categories_nameの内容');
                     Log::debug($categories_name);
-                    
+
                     $category_ids = [];
                     foreach ($categories_name as $category_name) {
                         if(!empty($category_name)){
                              $category = Category::firstOrCreate([
                                  'id' => $category_name,
                                  ]);
-            
+
                                  Log::debug('$categoryの内容');
                                  Log::debug($category);
-            
+
                              $category_ids[] = $category->id;
                             }
                         }
                     Log::debug('$category_ids[]の内容');
                     Log::debug($category_ids);
-            
+
                     // 言語中間テーブル
-                    $product->categories()->sync($category_ids);  
-        
-                    
+                    $product->categories()->sync($category_ids);
+
+
                     // 難易度の登録
                     $difficulties_name = $request->input('difficult'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
-        
+
                     Log::debug('$productの内容');
                     Log::debug([$product]);
                     Log::debug('$difficulties_nameの内容');
                     Log::debug($difficulties_name);
-                    
+
                     $difficulty_ids = [];
                     foreach ($difficulties_name as $difficulty_name) {
                         if(!empty($difficulty_name)){
                                 $difficulty = Category::firstOrCreate([
                                     'id' => $difficulty_name,
                                     ]);
-            
+
                                     Log::debug('$difficultyの内容');
                                     Log::debug($difficulty);
-            
+
                                 $difficulty_ids[] = $difficulty->id;
                             }
                         }
-                        
+
                         // 言語中間テーブル
-                        $product->difficulties()->sync($difficulty_ids);  
+                        $product->difficulties()->sync($difficulty_ids);
+
+        Log::debug($request->discount_price);
+        //割引価格の設定
+        if(isset($request->discount_price)){
+          $discount_price = new Discount;
+          $discount_price->product_id = $id;
+          $discount_price->discount_price = $request->discount_price;
+          $discount_price->start_date = $request->strat_date;
+          $discount_price->end_date = $request->end_date;
+          $discount_price->save();
+        }else{
+          Log::debug('<<<<      割 引価格の入力がない！  >>>>>>>>>>>>>');
+          Log::debug('<<<<      割 引価格の入力がない！  >>>>>>>>>>>>>');
+          Log::debug('<<<<      割 引価格の入力がない！  >>>>>>>>>>>>>');
+        }
 
         return redirect()->route('products.show',$id)->with('flash_message', __('Registered.'));
     }
@@ -229,8 +247,8 @@ class ProductsController extends Controller
     {
 
         Log::debug('コントローラー：create');
-        
-        
+
+
         $request->validate([
             'name' => 'required|string|max:255',
             'detail' => 'string|max:255',
@@ -243,7 +261,7 @@ class ProductsController extends Controller
             // 'pic5' => 'string|max:255',
             // 'pic5' => 'string|max:255',
             ]);
-            
+
             Log::debug('これからDBへデータ挿入');
             //おしえてもらったやりかた
 
@@ -259,7 +277,7 @@ class ProductsController extends Controller
             Log::debug('$lessonsの内容');
             Log::debug($lessons);
             $product->lessons()->createMany($request->input('lessons'));
-         
+
             //画像アップロード（これだけ単独で入れる）
             Log::debug('リクエストの中身確認');
             Log::debug('DBへデータ挿入完了');
@@ -267,32 +285,32 @@ class ProductsController extends Controller
 
             // 言語の登録
             $categories_name = $request->input('lang'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
-    
+
             Log::debug('$productの内容');
             Log::debug([$product]);
             Log::debug('$categories_nameの内容');
             Log::debug($categories_name);
-            
+
             $category_ids = [];
             foreach ($categories_name as $category_name) {
                 if(!empty($category_name)){
                      $category = Category::firstOrCreate([
                          'id' => $category_name,
                          ]);
-    
+
                          Log::debug('$categoryの内容');
                          Log::debug($category);
-    
+
                      $category_ids[] = $category->id;
                     }
                 }
             Log::debug('$category_ids[]の内容');
             Log::debug($category_ids);
-    
-            // 言語中間テーブル
-            $product->categories()->sync($category_ids);  
 
-            
+            // 言語中間テーブル
+            $product->categories()->sync($category_ids);
+
+
             // 難易度の登録
             $difficulties_name = $request->input('difficult'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
 
@@ -300,29 +318,31 @@ class ProductsController extends Controller
             Log::debug([$product]);
             Log::debug('$categories_nameの内容');
             Log::debug($difficulties_name);
-            
+
             $difficulty_ids = [];
             foreach ($difficulties_name as $difficulty_name) {
                 if(!empty($difficulty_name)){
                         $difficulty = Category::firstOrCreate([
                             'id' => $difficulty_name,
                             ]);
-    
+
                             Log::debug('$difficultyの内容');
                             Log::debug($difficulty);
-    
+
                         $difficulty_ids[] = $difficulty->id;
                     }
                 }
-                
+
                 // 言語中間テーブル
-                $product->difficulties()->sync($difficulty_ids);  
+                $product->difficulties()->sync($difficulty_ids);
+
+
 
         // リダイレクトする
         // その時にsessionフラッシュにメッセージを入れる
         return redirect('/products/mypage')->with('flash_message', __('Registered.'));
     }
-    
+
     /**
      * 一覧機能
      */
@@ -335,7 +355,7 @@ class ProductsController extends Controller
 
         $categorieIds   = $request->get('lang');
         $difficultiesIds   = $request->get('difficult');
-        
+
         /**
          * 検索機能
          */
@@ -347,7 +367,7 @@ class ProductsController extends Controller
              $products = Product::whereHas('categories', function($query) use ($categorieIds) {
                  $query->whereIn('category_id', $categorieIds);
                  })
-                        //難易度   
+                        //難易度
                         ->whereHas('difficulties', function($query) use ($difficultiesIds) {
                             $query->whereIn('difficulty_id', $difficultiesIds);
                             })->paginate(10);
@@ -355,18 +375,18 @@ class ProductsController extends Controller
         } else if($request->get('lang')) {
         $products = Product::whereHas('categories', function($query) use ($categorieIds) {
             $query->whereIn('category_id', $categorieIds);})->paginate(10);
-       
+
         //難易度しかないパターン
         } else if($request->get('difficult')){
         $products = Product::whereHas('difficulties', function($query) use ($difficultiesIds) {
             $query->whereIn('difficulty_id', $difficultiesIds);
             })->paginate(10);
-        
+
         //両方ないパターン（初期表示）
         }  else {
             $products = Product::paginate(10);
         }
-            
+
         //プロダクト件数
         $all_products = Product::all();
         //全プロダクト（ページング）
@@ -376,7 +396,7 @@ class ProductsController extends Controller
         $pageNum_from =  $products->currentPage()*10-9;
         //ページング用変数 終点
         $pageNum_to = $products->currentPage()*10;
-        
+
         //価格をカンマ入れて表示
 
         //画像有無判定フラグ
@@ -416,14 +436,14 @@ class ProductsController extends Controller
 
         Log::debug('SHOW!!!');
         $product = Product::find($id);
-        
+
         // ユーザー情報の取得
         $user = DB::table('users')
         ->join('products', 'users.id', '=', 'products.user_id')
         ->select('users.id', 'users.account_name')
         ->where('products.id',$id)
         ->get();
-        
+
         Log::debug('$user');
         Log::debug($user);
 
@@ -463,14 +483,14 @@ class ProductsController extends Controller
         if (!ctype_digit($id)) {
             return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
         }
-        
+
         $product = Product::find($id);
-        
+
         $category = Category::all();
         $difficult = Difficulty::all();
         $difficult = Difficulty::all();
         $lessons= Lesson::where('product_id',$id)->get();
-        
+
         return view('products.edit', [
             'product' => $product,
             'category' => $category,
@@ -479,7 +499,7 @@ class ProductsController extends Controller
             ]);
     }
 
-  
+
     /**
      * 削除機能
      */

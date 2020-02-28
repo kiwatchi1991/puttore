@@ -51630,24 +51630,44 @@ __webpack_require__.r(__webpack_exports__);
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var $button = $('.c-addLesson__button');
-$(function () {
-  $button.on('click', function (e) {
-    e.preventDefault();
-    var $copyTaget = $('.c-lesson__block:last-child');
-    $copyTaget.clone().appendTo('#c-lesson__section');
-    var $countUpTarget = $('.c-lesson__block:last-child input[data-input="target"]');
-    var count = $countUpTarget.prop('value');
-    console.log(_typeof(count));
-    count = Number(count) + 1; // count = count++;
+var $button = $('.c-addLesson__button'); //レッスンの追加ボタンを押した時の
 
-    $countUpTarget.prop('value', count); // val.val(val++);
-    // let valAfter = val++;
+$button.on('click', function (e) {
+  e.preventDefault(); //レッスンのコピー
 
-    console.log(_typeof(count));
-    console.log(count);
-  });
+  var $copyTaget = $('.c-lesson__block:last-child');
+  $copyTaget.clone().appendTo('#c-lesson__section');
+  var $newCopyTaget = $('.c-lesson__block:last-child');
+  $newCopyTaget.find('input[type="hidden"]').remove();
+  load();
 });
+
+var load = function load() {
+  console.log('window.load!!!');
+  var count = 0;
+  var count1 = 1;
+  $('.c-lesson__block').each(function () {
+    console.log(_typeof(count));
+    console.log(_typeof(count1));
+    console.log(count);
+    console.log(count1); // $(this).prop('value',count);
+    //コピー後のそれぞれのinput要素DOMを定義
+
+    var $targetHidden = $('#hidden', this);
+    var $targetNumber = $('#number', this);
+    var $targetTitle = $('#title', this);
+    var $targetLesson = $('#lesson', this); //カウントアップした数字をそれぞれのinputタグのname属性にセット
+
+    $targetHidden.prop('name', 'lessons[' + count + '][id]').val(count1);
+    $targetNumber.prop('name', 'lessons[' + count + '][number]').val(count1);
+    $targetTitle.prop('name', 'lessons[' + count + '][title]');
+    $targetLesson.prop('name', 'lessons[' + count + '][lesson]');
+    count += 1;
+    count1 += 1;
+  });
+};
+
+window.onload = load();
 
 /***/ }),
 

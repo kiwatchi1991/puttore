@@ -33,7 +33,7 @@
 
                         @foreach ($category as $categories)
                             <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
-                                name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus 
+                                name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus
                                 @if(
                                 $product->categories->contains(function ($category1) use ($categories) {
                                     return $category1->id === $categories->id;
@@ -50,7 +50,7 @@
                                 })
                                 ) checked @endif>{{ $difficults->name }}
                         @endforeach
-                       
+
                         @error('name')
                         <span class="" role="alert">
                             <strong>{{ $message }}</strong>
@@ -112,14 +112,14 @@
                                     name="" value="{{ $lesson->lesson }}" autocomplete="lesson" autofocus placeholder="lesson１">{{ $lesson->lesson }}
                                 </textarea>
                                 <div id="preview">ぷれびゅー</div>
-                                
+
                                 @error('lesson')
                                 <span class="" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
-                        
+
                         </div>
                         @endforeach
                     </div>
@@ -148,21 +148,23 @@
                 {{-- 割引価格 --}}
                 <div class="">
                     <label for="default_price" class="">割引価格</label>
-
-                    {{-- <input id="sale_price"  class="new__input-area @error('sale_price') is-invalid @enderror"
-                    name="sale_price" value="{{ $product->sale_price }}" autocomplete="sale_price" autofocus> --}}
-                    
-                    {{-- @error('sale_price')
-                    <span class="" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror --}}
-                    
                     <div class="">
-                        <input type="date" name="sale_price_from" class="new__input-area @error('sale_price') is-invalid @enderror">開始日
+
+                        <input id="discounct_price"  class="new__input-area @error('discounct_price') is-invalid @enderror"
+                        name="discounct_price" value="{{ $product->discounct_price }}" autocomplete="discounct_price" autofocus>
+
+                        {{-- @error('discounct_price')
+                          <span class="" role="alert">
+                            <strong>{{ $message }}</strong>
+                          </span>
+                          @enderror --}}
+
+                      </div>
+                    <div class="">
+                        <input type="date" name="start_date" class="new__input-area @error('sale_price') is-invalid @enderror">開始日
                     </div>
                     <div>
-                        <input type="date" name="sale_price_to" class="new__input-area @error('sale_price') is-invalid @enderror">終了日
+                        <input type="date" name="end_date" class="new__input-area @error('sale_price') is-invalid @enderror">終了日
                     </div>
                 </div>
 
