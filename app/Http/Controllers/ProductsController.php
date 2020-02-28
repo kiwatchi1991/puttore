@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-
+use Mockery\Undefined;
 
 class ProductsController extends Controller
 {
@@ -106,6 +106,120 @@ class ProductsController extends Controller
         $difficult = Difficulty::all();
         return view('products.new',['category' => $category,'difficult' => $difficult]);
 
+    }
+
+    /**
+     * 更新機能
+     */
+
+    public function update(Request $request, $id)
+    {
+
+        Log::debug('---------------------------------');
+        Log::debug('<<<<<< product update >>>>>>>>>>>');
+        Log::debug('---------------------------------');
+        // GETパラメータが数字かどうかをチェックする
+        if (!ctype_digit($id)) {
+            return redirect('/products/edit')->with('flash_message', __('Invalid operation was performed.'));
+        }
+
+        //画像登録
+        $product = Product::find($id);
+        $product->fill($request->all())->save();
+        $isPic = $request->pic1;
+        //画像に変更がない場合は処理をしない
+        if($isPic){
+            $path = $isPic->pic1->store('public/profile_images');
+            $product->pic1 = str_replace('public/', '', $path);
+            $product->save();
+        }
+
+        //レッスンの登録
+        
+        $lessons = $request->input('lessons');
+        Log::debug('$lessons');
+        Log::debug($lessons);
+        foreach($lessons as $lesson){
+            
+            //hiddenのレッスンIDがあるかどうか（すでにあるレッスンかどうか）
+            //すでにあるレッスンなら、更新
+            if(isset($lesson['id'])){
+                    $lesson1 = Lesson::find($lesson['id']);
+                    Log::debug('$lesson1');
+                    Log::debug($lesson1);
+                    $lesson1->number = $lesson['number'];
+                    $lesson1->title = $lesson['title'];
+                    $lesson1->lesson = $lesson['lesson'];
+                    $lesson1->save();
+            //ない場合は、新規作成
+            }else{
+            $newLessons = new Lesson;
+            $newLessons->product_id = $id;
+            $newLessons->number = $lesson['number'];
+            $newLessons->title = $lesson['title'];
+            $newLessons->lesson = $lesson['lesson'];
+            $newLessons->save();
+            // Log::debug('$lessonsの内容');
+            // Log::debug($lessons);
+            // $product->lessons()->createMany($request->input('lessons'));
+
+            }
+        }
+
+                    // 言語の登録
+                    $categories_name = $request->input('lang'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
+    
+                    Log::debug('$productの内容');
+                    Log::debug([$product]);
+                    Log::debug('$categories_nameの内容');
+                    Log::debug($categories_name);
+                    
+                    $category_ids = [];
+                    foreach ($categories_name as $category_name) {
+                        if(!empty($category_name)){
+                             $category = Category::firstOrCreate([
+                                 'id' => $category_name,
+                                 ]);
+            
+                                 Log::debug('$categoryの内容');
+                                 Log::debug($category);
+            
+                             $category_ids[] = $category->id;
+                            }
+                        }
+                    Log::debug('$category_ids[]の内容');
+                    Log::debug($category_ids);
+            
+                    // 言語中間テーブル
+                    $product->categories()->sync($category_ids);  
+        
+                    
+                    // 難易度の登録
+                    $difficulties_name = $request->input('difficult'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
+        
+                    Log::debug('$productの内容');
+                    Log::debug([$product]);
+                    Log::debug('$difficulties_nameの内容');
+                    Log::debug($difficulties_name);
+                    
+                    $difficulty_ids = [];
+                    foreach ($difficulties_name as $difficulty_name) {
+                        if(!empty($difficulty_name)){
+                                $difficulty = Category::firstOrCreate([
+                                    'id' => $difficulty_name,
+                                    ]);
+            
+                                    Log::debug('$difficultyの内容');
+                                    Log::debug($difficulty);
+            
+                                $difficulty_ids[] = $difficulty->id;
+                            }
+                        }
+                        
+                        // 言語中間テーブル
+                        $product->difficulties()->sync($difficulty_ids);  
+
+        return redirect()->route('products.show',$id)->with('flash_message', __('Registered.'));
     }
 
     /**
@@ -365,22 +479,7 @@ class ProductsController extends Controller
             ]);
     }
 
-    /**
-     * 更新機能
-     */
-    public function update(Request $request, $id)
-    {
-        // GETパラメータが数字かどうかをチェックする
-        if (!ctype_digit($id)) {
-            return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
-        }
-
-        $drill = Content::find($id);
-        $drill->fill($request->all())->save();
-
-        return redirect('/products')->with('flash_message', __('Registered.'));
-    }
-
+  
     /**
      * 削除機能
      */

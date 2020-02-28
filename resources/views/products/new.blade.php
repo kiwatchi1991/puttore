@@ -87,7 +87,7 @@
                                 {{-- レッスン１　Number --}}
                                 <div class="">
                                     <input id="number" type="number" class="new__input-area @error('number') is-invalid @enderror"
-                                       data-input="target" name="lessons[0][number]" value=1 autocomplete="number" autofocus placeholder="Number1">
+                                       data-input="number" name="" value="" autocomplete="number" autofocus placeholder="Number1">
 
                                     @error('number')
                                     <span class="" role="alert">
@@ -98,7 +98,7 @@
                                 {{-- 　　レッスン1　title --}}
                                 <div class="">
                                     <input id="title" type="text" class="new__input-area @error('title') is-invalid @enderror"
-                                        name="lessons[0][title]" value="{{ old('title') }}" autocomplete="title" autofocus placeholder="title１">
+                                    data-input="title" name="" value="{{ old('title') }}" autocomplete="title" autofocus placeholder="title１">
 
                                     @error('title')
                                     <span class="" role="alert">
@@ -106,15 +106,10 @@
                                     </span>
                                     @enderror
                                 </div>
-                                {{-- レッスン１ lesson --}}
-                                {{-- vueでのライブプレビュー↓↓↓↓ --}}
-                            {{-- <div id="app">
-                                <textarea-livepreview></textarea-livepreview>
-                            </div> --}}
-                            {{-- vueでのライブプレビュー↑↑↑↑ --}}
+       
                                 <div>
                                     <textarea id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                                        name="lessons[0][lesson]" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
+                                    data-input="lessson" name="" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
                                     </textarea>
                                     <div id="preview">ぷれびゅー</div>
                                     
