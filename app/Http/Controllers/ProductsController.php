@@ -507,6 +507,11 @@ class ProductsController extends Controller
 
         $product = Product::find($id);
 
+        //　割引価格情報取得
+        $discount_price = Discount::where('product_id',$id)->first();
+        Log::debug('$discount_price');
+        Log::debug($discount_price);
+
         $category = Category::all();
         $difficult = Difficulty::all();
         $difficult = Difficulty::all();
@@ -517,6 +522,7 @@ class ProductsController extends Controller
             'category' => $category,
             'difficult' => $difficult,
             'lessons' => $lessons,
+            'discount_price' => $discount_price,
             ]);
     }
 
