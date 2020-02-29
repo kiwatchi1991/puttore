@@ -2,6 +2,17 @@
 
 @section('content')
 <div>
+    <div class="c-product__img">
+        <ul>
+            @foreach($product_imgs as $product_img)
+            @if($product_img)
+            <li>
+            <img src="/storage/{{ $product_img  }}" alt="">
+            </li>
+            @endif
+            @endforeach
+        </ul>
+    </div>
         @if ($product->user_id === Auth::id())
 
         <div class="c-button__block">

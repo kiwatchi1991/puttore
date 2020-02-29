@@ -493,6 +493,19 @@ class ProductsController extends Controller
         $discount_price = Discount::where('product_id',$product_id)->first();
         Log::debug('$discount_price');
         Log::debug($discount_price);
+        
+        //　画像情報のみ取得
+        $product_imgs = [];
+        $product_imgs[] = $product->pic1;
+        $product_imgs[] = $product->pic2;
+        $product_imgs[] = $product->pic3;
+        $product_imgs[] = $product->pic4;
+        $product_imgs[] = $product->pic5;
+        
+        
+        Log::debug('$product_imgs');
+        Log::debug($product_imgs);
+        Log::debug($product);
 
 
         return view('products.show', [
@@ -503,6 +516,7 @@ class ProductsController extends Controller
         'follow' => $follow,
         'liked' => $liked,
         'discount_price' => $discount_price,
+        'product_imgs' => $product_imgs,
         ]);
     }
 
