@@ -1,11 +1,11 @@
 $(function () {
     console.log('loaded！！！');
 
-    $('.c-tag__title').hover(function () {
+    $('.c-tag__list').hover(function () {
         console.log('click！！！');
-        $('.c-tag__list:not(:animated)', this).slideDown();
+        $('.c-tag__lists:not(:animated)', this).slideDown();
     }, function () {
-          $('.c-tag__list', this).slideUp();
+          $('.c-tag__lists', this).slideUp();
     });
 
   });

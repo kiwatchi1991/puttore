@@ -5,10 +5,10 @@ let $button = $('.c-addLesson__button');
         e.preventDefault();
     
         //レッスンのコピー
-        let $copyTaget = $('.c-lesson__block:last-child');
-        $copyTaget.clone().appendTo('#c-lesson__section');
+        let $copyTaget = $('.js-add__target:last-child');
+        $copyTaget.clone().appendTo('#js-lesson__section');
         
-        let $newCopyTaget = $('.c-lesson__block:last-child');
+        let $newCopyTaget = $('.js-add__target:last-child');
         $newCopyTaget.find('input[type="hidden"]').remove();
 
         load();
@@ -20,7 +20,7 @@ let $button = $('.c-addLesson__button');
         
         let count = 0;
         let count1 = 1;
-        $('.c-lesson__block').each(function(){
+        $('.js-add__target').each(function(){
 
         console.log(typeof count);
         console.log(typeof count1);

@@ -1,15 +1,13 @@
-.new{
-    .new__wrapper{
+.l-product{
+    .l-product__wrapper{
         display: flex;
         flex-direction: column;
         text-align: center;
+        padding: 32px 16px;
         @include pc{
               
             background-color: red;
             }
     }    
 
-    .new__input-area{
-        border: solid 1px #000;
-    } 
 }

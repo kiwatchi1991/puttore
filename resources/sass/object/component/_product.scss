@@ -26,14 +26,7 @@
     flex-wrap: wrap;
 }
 
-.c-tag{
-    font-size: 10px;
-    border: 1px solid;
-    border-radius: 10px;
-    padding: 3px 10px;
-    margin-left: 5px;
-    margin-bottom: 10px;
-}
+
 
 .c-contents__block{
     background: #FFCCCC;
@@ -42,6 +35,32 @@
 
 .c-contents__detail{
     margin-top: 20px;
+}
+
+.c-lesson__number{
+    text-align: left;
+}
+
+.c-lesson__block{
+    &--preview{
+        width: 100%;
+        border: 1px solid #333;
+        height: 200px;
+    }
+}
+
+
+.c-lesson__header{
+    display: flex;
+}
+
+.c-lesson__lesson{
+    display: none;
+    // border: solid 1px #000;
+    height: 250px;
+    &.active{
+        display: block;
+    }
 }
 
 .c-contents__price{
@@ -53,6 +72,18 @@
     text-decoration:line-through;
   }
 }
+
+.c-product__input-area{
+    border: solid 1px #000;
+    width: 100%;
+    box-sizing: border-box;
+    &--number{
+        width: 30px;
+    }
+    &--textarea{
+        height: 100%;
+    }
+} 
 
 //ページネーションはDOM自動生成なので、自動で付与されたclass名にスタイルをあてる
 .c-pagination{
