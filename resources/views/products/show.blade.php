@@ -2,12 +2,11 @@
 
 @section('content')
 <div>
-    <button class="">
         @if ($product->user_id === Auth::id())
 
         <div class="c-button__block">
         <a class="c-button" href="{{ route('products.edit',$product->id) }}">
-                （自分の作品の場合は）編集する
+            <i class="fas fa-edit"></i>
             </a>
         </div>
         @endif

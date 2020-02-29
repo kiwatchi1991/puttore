@@ -51658,7 +51658,7 @@ var load = function load() {
     var $targetTitle = $('#title', this);
     var $targetLesson = $('#lesson', this); //カウントアップした数字をそれぞれのinputタグのname属性にセット
 
-    $targetHidden.prop('name', 'lessons[' + count + '][id]').val(count1);
+    $targetHidden.prop('name', 'lessons[' + count + '][id]');
     $targetNumber.prop('name', 'lessons[' + count + '][number]').val(count1);
     $targetTitle.prop('name', 'lessons[' + count + '][title]');
     $targetLesson.prop('name', 'lessons[' + count + '][lesson]');

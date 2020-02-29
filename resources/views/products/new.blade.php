@@ -107,11 +107,22 @@
                                     @enderror
                                 </div>
        
-                                <div>
-                                    <textarea id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                                    data-input="lessson" name="" value="{{ old('lesson') }}" autocomplete="lesson" autofocus placeholder="lesson１">
-                                    </textarea>
-                                    <div id="preview">ぷれびゅー</div>
+                                {{-- レッスン１ lesson --}}
+                                <div class="p-lesson__lesson">
+                                    
+                                    <div class="c-lesson__header">
+                                        <div class="js-toggleTab js-toggleTab__input active" data-status="input">本文</div>
+                                        <div class="js-toggleTab js-toggleTab__preview" data-status="preview">ぷれびゅー</div>
+                                    </div>
+                                    
+                                    <div class="c-lesson__lesson js-lesson__block js-lesson__block--input active">
+                                        <textarea id="lesson" type="text" class="c-product__input-area c-product__input-area--textarea @error('lesson') is-invalid @enderror"
+                                        data-input="lessson" name="" value="{{ old('lesson') }}" autocomplete="lesson"  placeholder="lesson１"　
+                                        >{{ old('lesson') }}
+                                        </textarea>
+                                    </div>
+                                    <div id="preview" class="c-product__input-area c-lesson__lesson js-lesson__block js-lesson__block--preview ">
+                                    </div>
                                     
                                     @error('lesson')
                                     <span class="" role="alert">
@@ -175,8 +186,8 @@
                             <label for="default_price" class="">価格</label>
 
                             <div class="">
-                                <input id="default_price" type="text" class="new__input-area @error('default_price') is-invalid @enderror"
-                                    name="default_price" value="{{ old('default_price') }}" autocomplete="default_price" autofocus>
+                                <input id="default_price" type="text" class="c-product__input-area c-product__input-area--price @error('default_price') is-invalid @enderror"
+                                    name="default_price" value="{{ old('default_price') }}" autocomplete="default_price" placeholder="価格">
 
                                 @error('default_price')
                                 <span class="" role="alert">
@@ -188,29 +199,48 @@
 
                         {{-- 画像 --}}
                         <div class="c-image__preview">
-                            <p class="c-delete__file">消す</p>
-                            <label class="c-area__drop">
-                                <input class="c-input__file" type="file" name="pic1" >
-                                <img src="" alt=""  class="c-prev__img">
-                            ドラッグ＆ドロップ
-                            </label>
-                        </div>
-
-                        {{-- @for ($i = 1; $i <= 10; $i++) <div class="form-group row">
-                            <label for="problem0"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Problem').$i }}</label>
-
-                        <div class="col-md-6">
-                            <input id="problem{{$i - 1}}" type="text"
-                                class="form-control @error('problem'.($i - 1)) is-invalid @enderror"
-                                name="problem{{$i - 1}}" value="{{ old('title') }}" autocomplete="problem{{$i - 1}}"
-                                autofocus>
-
-                            @error('problem'.($i - 1))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <ul>
+                                <li>
+                                    <p class="c-delete__file">消す</p>
+                                    <label class="c-area__drop">
+                                        <input class="c-input__file" type="file" name="pic1" >
+                                        <img src="" alt=""  class="c-prev__img">
+                                        ドラッグ＆ドロップ
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="c-delete__file">消す</p>
+                                    <label class="c-area__drop">
+                                        <input class="c-input__file" type="file" name="pic2" >
+                                        <img src="" alt=""  class="c-prev__img">
+                                        ドラッグ＆ドロップ
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="c-delete__file">消す</p>
+                                    <label class="c-area__drop">
+                                        <input class="c-input__file" type="file" name="pic3" >
+                                        <img src="" alt=""  class="c-prev__img">
+                                        ドラッグ＆ドロップ
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="c-delete__file">消す</p>
+                                    <label class="c-area__drop">
+                                        <input class="c-input__file" type="file" name="pic4" >
+                                        <img src="" alt=""  class="c-prev__img">
+                                        ドラッグ＆ドロップ
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="c-delete__file">消す</p>
+                                    <label class="c-area__drop">
+                                        <input class="c-input__file" type="file" name="pic5" >
+                                        <img src="" alt=""  class="c-prev__img">
+                                        ドラッグ＆ドロップ
+                                    </label>
+                                </li>
+                            </ul>
                         </div>
                         </div>
                         @endfor --}}

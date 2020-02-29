@@ -277,6 +277,7 @@ class ProductsController extends Controller
             ]);
 
             Log::debug('これからDBへデータ挿入');
+            Log::debug($request);
             //おしえてもらったやりかた
 
             $product = new Product;
@@ -284,6 +285,18 @@ class ProductsController extends Controller
             Log::debug($request->pic1);
             $path = $request->pic1->store('public/profile_images');
             $product->pic1 = str_replace('public/', '', $path);
+
+            $path = $request->pic2->store('public/profile_images');
+            $product->pic2 = str_replace('public/', '', $path);
+
+            $path = $request->pic3->store('public/profile_images');
+            $product->pic3 = str_replace('public/', '', $path);
+
+            $path = $request->pic4->store('public/profile_images');
+            $product->pic4 = str_replace('public/', '', $path);
+            
+            $path = $request->pic5->store('public/profile_images');
+            $product->pic5 = str_replace('public/', '', $path);
             $product->save();
 
             //1対多の登録

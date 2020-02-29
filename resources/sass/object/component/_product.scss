@@ -54,6 +54,27 @@
   }
 }
 
+.c-product__input-area{
+    border: solid 1px #000;
+    width: 100%;
+    box-sizing: border-box;
+    &--number{
+        width: 30px;
+    }
+    &--textarea{
+        height: 100%;
+    }
+    // &--price{
+    //     width: 100px;
+    // }
+}
+
+.c-submit__button{
+    width: 100%;
+    border: 1px solid #333;
+
+}
+
 //ページネーションはDOM自動生成なので、自動で付与されたclass名にスタイルをあてる
 .c-pagination{
     margin-top: 20px;

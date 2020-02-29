@@ -372,6 +372,25 @@ body {
   text-decoration: line-through;
 }
 
+.c-product__input-area {
+  border: solid 1px #000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c-product__input-area--number {
+  width: 30px;
+}
+
+.c-product__input-area--textarea {
+  height: 100%;
+}
+
+.c-submit__button {
+  width: 100%;
+  border: 1px solid #333;
+}
+
 .c-pagination {
   margin-top: 20px;
 }
