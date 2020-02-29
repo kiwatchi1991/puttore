@@ -151,7 +151,7 @@
                     <div class="">
 
                         <input id="discount_price"  class="new__input-area @error('discount_price') is-invalid @enderror"
-                        name="discount_price" value="{{ $product->discount_price }}" autocomplete="discount_price" autofocus>
+                        name="discount_price" value="{{ $discount_price->discount_price }}" autocomplete="discount_price" autofocus>
 
                         {{-- @error('discount_price')
                           <span class="" role="alert">
@@ -161,10 +161,12 @@
 
                       </div>
                     <div class="">
-                        <input type="date" name="start_date" class="new__input-area @error('sale_price') is-invalid @enderror">開始日
+                        <input type="date" name="start_date" class="new__input-area @error('sale_price') is-invalid @enderror"
+                          value="{{ $discount_price->start_date }}">開始日
                     </div>
                     <div>
-                        <input type="date" name="end_date" class="new__input-area @error('sale_price') is-invalid @enderror">終了日
+                        <input type="date" name="end_date" class="new__input-area @error('sale_price') is-invalid @enderror"
+                          value="{{ $discount_price->end_date }}">終了日
                     </div>
                 </div>
 

@@ -10,6 +10,7 @@
 //layout
 @import 'layout/header';
 @import 'layout/auth';
+@import 'layout/product';
 
 //component
 @import 'object/component/ham';
@@ -23,10 +24,10 @@
 //project
 @import 'object/project/hammenu';
 @import 'object/project/productBlock';
+@import 'object/project/productRegister';
 
 @import 'userRegister';
 @import 'login';
-@import 'new';
 
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';

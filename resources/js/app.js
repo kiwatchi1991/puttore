@@ -18,6 +18,7 @@ require('./components/markdown');
 require('./components/ajaxLike');
 require('./components/ajaxFollow');
 require('./components/ajaxCart');
+require('./components/toggle-lessonTab');
 
 
 // const Sample = require('vue');

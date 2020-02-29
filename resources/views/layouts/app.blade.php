@@ -17,6 +17,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
+    {{-- slick(カルーセルのプラグイン) --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>
+    {{-- // Add the new slick-theme.css if you want the default styling --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -114,6 +119,7 @@
         </main>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
 
 </body>
 </html>

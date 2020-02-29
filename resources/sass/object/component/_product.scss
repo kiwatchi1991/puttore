@@ -19,6 +19,7 @@
     max-width: 100%;
 }
 
+
 .c-tag__block{
     display: flex;
     background: #CCFFFF;
@@ -26,14 +27,7 @@
     flex-wrap: wrap;
 }
 
-.c-tag{
-    font-size: 10px;
-    border: 1px solid;
-    border-radius: 10px;
-    padding: 3px 10px;
-    margin-left: 5px;
-    margin-bottom: 10px;
-}
+
 
 .c-contents__block{
     background: #FFCCCC;
@@ -42,6 +36,33 @@
 
 .c-contents__detail{
     margin-top: 20px;
+}
+
+.c-lesson__number{
+    text-align: left;
+}
+
+.c-lesson__block{
+    margin-top: 30px;
+    &--preview{
+        width: 100%;
+        border: 1px solid #333;
+        height: 200px;
+    }
+}
+
+
+.c-lesson__header{
+    display: flex;
+}
+
+.c-lesson__lesson{
+    display: none;
+    // border: solid 1px #000;
+    height: 250px;
+    &.active{
+        display: block;
+    }
 }
 
 .c-contents__price{

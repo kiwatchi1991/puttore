@@ -51475,7 +51475,9 @@ __webpack_require__(/*! ./components/ajaxLike */ "./resources/js/components/ajax
 
 __webpack_require__(/*! ./components/ajaxFollow */ "./resources/js/components/ajaxFollow.js");
 
-__webpack_require__(/*! ./components/ajaxCart */ "./resources/js/components/ajaxCart.js"); // const Sample = require('vue');
+__webpack_require__(/*! ./components/ajaxCart */ "./resources/js/components/ajaxCart.js");
+
+__webpack_require__(/*! ./components/toggle-lessonTab */ "./resources/js/components/toggle-lessonTab.js"); // const Sample = require('vue');
 // var $ = require('jQuery');
 
 /**
@@ -51635,9 +51637,9 @@ var $button = $('.c-addLesson__button'); //レッスンの追加ボタンを押�
 $button.on('click', function (e) {
   e.preventDefault(); //レッスンのコピー
 
-  var $copyTaget = $('.c-lesson__block:last-child');
-  $copyTaget.clone().appendTo('#c-lesson__section');
-  var $newCopyTaget = $('.c-lesson__block:last-child');
+  var $copyTaget = $('.js-add__target:last-child');
+  $copyTaget.clone().appendTo('#js-lesson__section');
+  var $newCopyTaget = $('.js-add__target:last-child');
   $newCopyTaget.find('input[type="hidden"]').remove();
   load();
 });
@@ -51646,7 +51648,7 @@ var load = function load() {
   console.log('window.load!!!');
   var count = 0;
   var count1 = 1;
-  $('.c-lesson__block').each(function () {
+  $('.js-add__target').each(function () {
     console.log(_typeof(count));
     console.log(_typeof(count1));
     console.log(count);
@@ -51668,6 +51670,18 @@ var load = function load() {
 };
 
 window.onload = load();
+$(document).ready(function () {
+  $('.c-image__preview ul').slick({
+    infinite: true,
+    //スライドのループ有効化
+    dots: true,
+    //ドットのナビゲーションを表示
+    centerMode: true,
+    //要素を中央寄せ
+    centerPadding: '10%' //両サイドの見えている部分のサイズ
+
+  });
+});
 
 /***/ }),
 
@@ -51801,11 +51815,11 @@ $like.on('click', function () {
 
 $(function () {
   console.log('loaded！！！');
-  $('.c-tag__title').hover(function () {
+  $('.c-tag__list').hover(function () {
     console.log('click！！！');
-    $('.c-tag__list:not(:animated)', this).slideDown();
+    $('.c-tag__lists:not(:animated)', this).slideDown();
   }, function () {
-    $('.c-tag__list', this).slideUp();
+    $('.c-tag__lists', this).slideUp();
   });
 });
 
@@ -51894,6 +51908,35 @@ $fileInput.on('change', function () {
 });
 $deletebtn.on('click', function () {
   $('.c-prev__img').attr('src', '').show();
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/toggle-lessonTab.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/toggle-lessonTab.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var $head = $('.js-toggleTab');
+var $block = $('.js-lesson__block');
+var $areaInput = $('.js-lesson__block--input');
+var $areaPreview = $('.js-lesson__block--preview');
+$head.on('click', function (e) {
+  var target = $(e.target).attr('data-status');
+  $head.removeClass('active');
+  $block.removeClass('active');
+
+  switch (target) {
+    case 'input':
+      $areaInput.addClass('active');
+      break;
+
+    case 'preview':
+      $areaPreview.addClass('active');
+      break;
+  }
 });
 
 /***/ }),

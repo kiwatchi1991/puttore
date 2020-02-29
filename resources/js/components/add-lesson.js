@@ -5,10 +5,10 @@ let $button = $('.c-addLesson__button');
         e.preventDefault();
     
         //レッスンのコピー
-        let $copyTaget = $('.c-lesson__block:last-child');
-        $copyTaget.clone().appendTo('#c-lesson__section');
+        let $copyTaget = $('.js-add__target:last-child');
+        $copyTaget.clone().appendTo('#js-lesson__section');
         
-        let $newCopyTaget = $('.c-lesson__block:last-child');
+        let $newCopyTaget = $('.js-add__target:last-child');
         $newCopyTaget.find('input[type="hidden"]').remove();
 
         load();
@@ -20,7 +20,7 @@ let $button = $('.c-addLesson__button');
         
         let count = 0;
         let count1 = 1;
-        $('.c-lesson__block').each(function(){
+        $('.js-add__target').each(function(){
 
         console.log(typeof count);
         console.log(typeof count1);
@@ -45,3 +45,12 @@ let $button = $('.c-addLesson__button');
     })
 };
 window.onload = load();
+
+$(document).ready(function(){
+    $('.c-image__preview ul').slick({
+        infinite: true, //スライドのループ有効化
+        dots:true, //ドットのナビゲーションを表示
+        centerMode: true, //要素を中央寄せ
+        centerPadding:'10%', //両サイドの見えている部分のサイズ
+    });
+  });
