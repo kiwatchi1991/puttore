@@ -19,6 +19,7 @@
     max-width: 100%;
 }
 
+
 .c-tag__block{
     display: flex;
     background: #CCFFFF;
@@ -42,6 +43,7 @@
 }
 
 .c-lesson__block{
+    margin-top: 30px;
     &--preview{
         width: 100%;
         border: 1px solid #333;
@@ -83,7 +85,13 @@
     &--textarea{
         height: 100%;
     }
-} 
+}
+
+.c-submit__button{
+    width: 100%;
+    border: 1px solid #333;
+
+}
 
 //ページネーションはDOM自動生成なので、自動で付与されたclass名にスタイルをあてる
 .c-pagination{

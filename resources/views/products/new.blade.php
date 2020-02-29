@@ -109,12 +109,12 @@
                                     </div>
                                     
                                     <div class="c-lesson__lesson js-lesson__block js-lesson__block--input active">
-                                        <textarea id="lesson" type="text" class="c-product__input-area c-product__input-area--textbox @error('lesson') is-invalid @enderror"
+                                        <textarea id="lesson" type="text" class="c-product__input-area c-product__input-area--textarea @error('lesson') is-invalid @enderror"
                                         data-input="lessson" name="" value="{{ old('lesson') }}" autocomplete="lesson"  placeholder="lesson１"　
                                         >
                                         </textarea>
                                     </div>
-                                    <div id="preview" class="c-lesson__lesson js-lesson__block js-lesson__block--preview ">
+                                    <div id="preview" class="c-product__input-area c-lesson__lesson js-lesson__block js-lesson__block--preview ">
                                     </div>
                                     
                                     @error('lesson')
@@ -127,59 +127,14 @@
                             </div>
                           </div>
                         <div>
-                            <button class="c-addLesson__button">追加する</button>
+                            <button class="c-addLesson__button"><i class="fas fa-plus-circle"></i>追加する</button>
                         </div>
-
-                        {{-- <div class="">
-                            <label for="lesson" class="">レッスン１</label> --}}
-                            {{-- レッスン2　Number --}}
-                            {{-- <div class="">
-                                <input id="number" type="text" class="c-product__input-area @error('number') is-invalid @enderror"
-                                    name="lessons[number]" value="{{ old('number') }}" autocomplete="number" placeholder="教材のタイトル（例：Twitter風アプリを作ろう）" placeholder="Number1">
-
-                                @error('number')
-                                <span class="" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div> --}}
-                            {{-- 　　レッスン2　title --}}
-                            {{-- <div class="">
-                                <input id="title" type="text" class="c-product__input-area @error('title') is-invalid @enderror"
-                                    name="lessons[title]" value="{{ old('title') }}" autocomplete="title" placeholder="教材のタイトル（例：Twitter風アプリを作ろう）" placeholder="title１">
-
-                                @error('title')
-                                <span class="" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div> --}}
-                            {{-- レッスン2 lesson --}}
-                            {{-- <div class="">
-                                <input id="lesson" type="text" class="c-product__input-area @error('lesson') is-invalid @enderror"
-                                    name="lessons[lesson]" value="{{ old('lesson') }}" autocomplete="lesson" placeholder="教材のタイトル（例：Twitter風アプリを作ろう）" placeholder="lesson１">
-
-                                @error('lesson')
-                                <span class="" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div> --}}
-                        {{-- </div> --}}
-
-
-
-
-                           
-
 
                         {{-- 価格 --}}
                         <div class="">
-                            <label for="default_price" class="">価格</label>
-
                             <div class="">
                                 <input id="default_price" type="text" class="c-product__input-area @error('default_price') is-invalid @enderror"
-                                    name="default_price" value="{{ old('default_price') }}" autocomplete="default_price" placeholder="教材のタイトル（例：Twitter風アプリを作ろう）">
+                                    name="default_price" value="{{ old('default_price') }}" autocomplete="default_price" placeholder="価格">
 
                                 @error('default_price')
                                 <span class="" role="alert">
@@ -191,37 +146,54 @@
 
                         {{-- 画像 --}}
                         <div class="c-image__preview">
-                            <p class="c-delete__file">消す</p>
-                            <label class="c-area__drop">
-                                <input class="c-input__file" type="file" name="pic1" >
-                                <img src="" alt=""  class="c-prev__img">
-                            ドラッグ＆ドロップ
-                            </label>
+                            <ul>
+                                <li>
+                                    <p class="c-delete__file">消す</p>
+                                    <label class="c-area__drop">
+                                        <input class="c-input__file" type="file" name="pic1" >
+                                        <img src="" alt=""  class="c-prev__img">
+                                        ドラッグ＆ドロップ
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="c-delete__file">消す</p>
+                                    <label class="c-area__drop">
+                                        <input class="c-input__file" type="file" name="pic1" >
+                                        <img src="" alt=""  class="c-prev__img">
+                                        ドラッグ＆ドロップ
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="c-delete__file">消す</p>
+                                    <label class="c-area__drop">
+                                        <input class="c-input__file" type="file" name="pic1" >
+                                        <img src="" alt=""  class="c-prev__img">
+                                        ドラッグ＆ドロップ
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="c-delete__file">消す</p>
+                                    <label class="c-area__drop">
+                                        <input class="c-input__file" type="file" name="pic1" >
+                                        <img src="" alt=""  class="c-prev__img">
+                                        ドラッグ＆ドロップ
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="c-delete__file">消す</p>
+                                    <label class="c-area__drop">
+                                        <input class="c-input__file" type="file" name="pic1" >
+                                        <img src="" alt=""  class="c-prev__img">
+                                        ドラッグ＆ドロップ
+                                    </label>
+                                </li>
+                            </ul>
                         </div>
-
-                        {{-- @for ($i = 1; $i <= 10; $i++) <div class="form-group row">
-                            <label for="problem0"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Problem').$i }}</label>
-
-                        <div class="col-md-6">
-                            <input id="problem{{$i - 1}}" type="text"
-                                class="form-control @error('problem'.($i - 1)) is-invalid @enderror"
-                                name="problem{{$i - 1}}" value="{{ old('title') }}" autocomplete="problem{{$i - 1}}"
-                                placeholder="教材のタイトル（例：Twitter風アプリを作ろう）">
-
-                            @error('problem'.($i - 1))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                        <div class="c-submit__button">
+                            <button type="submit" class="button">
+                                {{ __('Register') }}
+                            </button>
                         </div>
-                        </div>
-                        @endfor --}}
-
-
-                        <button type="submit" class="button">
-                            {{ __('Register') }}
-                        </button>
                 </form>
             </div>
     </section>
@@ -229,4 +201,5 @@
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+
 @endsection

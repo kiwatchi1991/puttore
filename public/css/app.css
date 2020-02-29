@@ -375,6 +375,10 @@ body {
   text-align: left;
 }
 
+.c-lesson__block {
+  margin-top: 30px;
+}
+
 .c-lesson__block--preview {
   width: 100%;
   border: 1px solid #333;
@@ -415,6 +419,11 @@ body {
 
 .c-product__input-area--textarea {
   height: 100%;
+}
+
+.c-submit__button {
+  width: 100%;
+  border: 1px solid #333;
 }
 
 .c-pagination {
@@ -462,7 +471,7 @@ body {
 }
 
 .c-image__preview {
-  width: 160px;
+  width: 250px;
   margin: 0 auto;
 }
 
