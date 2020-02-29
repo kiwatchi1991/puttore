@@ -83,7 +83,7 @@
                     @foreach( $lessons as $lesson )
                         <div class="c-lesson__block">
                             <label for="lesson" class="">レッスン１</label>
-                             <input id="hidden" type="hidden" name="" val="{{ $lesson->id }}">
+                             <input id="hidden" type="hidden" name="" value="{{ $lesson->id }}">
                             {{-- レッスン　Number --}}
                             <div class="">
                                 <input id="number" type="number" class="new__input-area @error('number') is-invalid @enderror"

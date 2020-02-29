@@ -148,14 +148,25 @@ class ProductsController extends Controller
             //すでにあるレッスンなら、更新
             if(isset($lesson['id'])){
                     $lesson1 = Lesson::find($lesson['id']);
-                    Log::debug('$lesson1');
+                    Log::debug('<<<<<<<<<<<<  $lesson1 >>>>>>>>>>>>>>>>>>>>>>>');
+                    Log::debug('<<<<<<<<<<<<  $lesson1 >>>>>>>>>>>>>>>>>>>>>>>');
+                    Log::debug('<<<<<<<<<<<<  $lesson1 >>>>>>>>>>>>>>>>>>>>>>>');
                     Log::debug($lesson1);
+                    Log::debug('<<<<<<<<<<<<  $lesson >>>>>>>>>>>>>>>>>>>>>>>');
+                    Log::debug($lesson['number']);
+                    Log::debug($lesson['title']);
+                    Log::debug($lesson['lesson']);
+                    Log::debug($lesson1->number);
+                    Log::debug($lesson1->title);
+                    Log::debug($lesson1->lesson);
+
                     $lesson1->number = $lesson['number'];
                     $lesson1->title = $lesson['title'];
                     $lesson1->lesson = $lesson['lesson'];
                     $lesson1->save();
-            //ない場合は、新規作成
-            }else{
+                    //ない場合は、新規作成
+                }else{
+                    Log::debug('<<<<<<<<<<<<  New lesson >>>>>>>>>>>>>>>>>>>>>>>');
             $newLessons = new Lesson;
             $newLessons->product_id = $id;
             $newLessons->number = $lesson['number'];
@@ -169,58 +180,59 @@ class ProductsController extends Controller
             }
         }
 
-                    // 言語の登録
-                    $categories_name = $request->input('lang'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
+        // 言語の登録
+        $categories_name = $request->input('lang'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
 
-                    Log::debug('$productの内容');
-                    Log::debug([$product]);
-                    Log::debug('$categories_nameの内容');
-                    Log::debug($categories_name);
+        Log::debug('$productの内容');
+        Log::debug([$product]);
+        Log::debug('$categories_nameの内容');
+        Log::debug($categories_name);
 
-                    $category_ids = [];
-                    foreach ($categories_name as $category_name) {
-                        if(!empty($category_name)){
-                             $category = Category::firstOrCreate([
-                                 'id' => $category_name,
-                                 ]);
+        $category_ids = [];
+        foreach ($categories_name as $category_name) {
+            if(!empty($category_name)){
+                    $category = Category::firstOrCreate([
+                        'id' => $category_name,
+                        ]);
 
-                                 Log::debug('$categoryの内容');
-                                 Log::debug($category);
+                        Log::debug('$categoryの内容');
+                        Log::debug($category);
 
-                             $category_ids[] = $category->id;
-                            }
-                        }
-                    Log::debug('$category_ids[]の内容');
-                    Log::debug($category_ids);
+                    $category_ids[] = $category->id;
+                }
+            }
+        Log::debug('$category_ids[]の内容');
+        Log::debug($category_ids);
 
-                    // 言語中間テーブル
-                    $product->categories()->sync($category_ids);
+        // 言語中間テーブル
+        $product->categories()->sync($category_ids);
 
 
-                    // 難易度の登録
-                    $difficulties_name = $request->input('difficult'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
+        // 難易度の登録
+        $difficulties_name = $request->input('difficult'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
 
-                    Log::debug('$productの内容');
-                    Log::debug([$product]);
-                    Log::debug('$difficulties_nameの内容');
-                    Log::debug($difficulties_name);
+        Log::debug('$productの内容');
+        Log::debug([$product]);
+        Log::debug('$difficulties_nameの内容');
+        Log::debug($difficulties_name);
 
-                    $difficulty_ids = [];
-                    foreach ($difficulties_name as $difficulty_name) {
-                        if(!empty($difficulty_name)){
-                                $difficulty = Category::firstOrCreate([
-                                    'id' => $difficulty_name,
-                                    ]);
+        $difficulty_ids = [];
+        foreach ($difficulties_name as $difficulty_name) {
+            if(!empty($difficulty_name)){
+                    $difficulty = Category::firstOrCreate([
+                        'id' => $difficulty_name,
+                        ]);
 
-                                    Log::debug('$difficultyの内容');
-                                    Log::debug($difficulty);
+                        Log::debug('$difficultyの内容');
+                        Log::debug($difficulty);
 
-                                $difficulty_ids[] = $difficulty->id;
-                            }
-                        }
+                    $difficulty_ids[] = $difficulty->id;
+                }
+            }
 
-                        // 言語中間テーブル
-                        $product->difficulties()->sync($difficulty_ids);
+            // 言語中間テーブル
+            $product->difficulties()->sync($difficulty_ids);
+
 
         Log::debug($request->discount_price);
         //割引価格の設定
