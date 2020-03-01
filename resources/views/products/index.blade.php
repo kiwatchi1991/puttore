@@ -10,23 +10,40 @@
     {{ session('flash_message') }}
 </div>
 @endif --}}
-    <div class="c-searchBox">
+<div class="c-searchBox">
+    <div class="c-searchBox__inner">
         <form method="POST" action="{{ route('products') }}" enctype="multipart/form-data" >
             @csrf
-            @foreach ($category as $categories)
+
+            {{-- 言語選択 --}}
+            <div class="c-searchBox__categories">
+                <p>1. 言語を選んでね</p>
+                @foreach ($category as $categories)
                 <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
                 name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus>{{ $categories->name }}
-            @endforeach
+                @endforeach
+            </div>
+
+            {{-- 難易度選択 --}}
+            <div class="c-searchBox__difficults">
+                <p>2. 難易度を選んでね</p>
             @foreach ($difficult as $difficults)
                 <input id="difficult" type="checkbox" class="new__input-area @error('difficult') is-invalid @enderror"
                 name="difficult[]" value="{{ $difficults->id }}" autocomplete="difficult" autofocus>{{ $difficults->name }}
                 @endforeach
+            </div>
+
+            {{-- 送信ボタン --}}
+            <div class="c-searchBox__submit">
                 <button type="submit" class="">
                     検索する
                 </button>
+            </div>
             </form>
     </div>
-    <div class="c-pageNum"> 全 <span class="c-totalNum">{{ $all_products->count() }}</span> 件中 {{ $pageNum_from }} 〜 {{ $pageNum_to }} 件</div>
+</div>
+    
+    <div class="c-pageNum"> 全 <span class="c-totalNum">{{ $products->count() }}</span> 件中 {{ $pageNum_from }} 〜 {{ $pageNum_to }} 件</div>
     <div class="p-product__area">
         @foreach ($products as $product)
         <div class="p-product__block">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cart;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -53,7 +54,21 @@ class CartsController extends Controller
         //カート情報取得
         $product_id = $request->cart;
         $my_id = Auth::user()->id;
-        $cart = Cart::where('user_id',$my_id)->where('product_id',$product_id)->count();
+        $carts = DB::table('carts')
+        ->join('products','product_id','=','products.id')
+        ->where('carts.user_id',$my_id)
+        ->select('products.pic1','products.name','products.default_price',)
+        ->get();
+
+        Log::debug('$cartの中身↓↓');
+        Log::debug($carts);
+
+        // $user = DB::table('users')
+        // ->join('products', 'users.id', '=', 'products.user_id')
+        // ->select('users.id', 'users.account_name')
+        // ->where('products.id',$id)
+        // ->get();
+
 
         // $id = Auth::user()->id;
         // $carts = Cart::where('orders.user_id',$id)
@@ -62,11 +77,9 @@ class CartsController extends Controller
         // ->select('orders.id','users.pic','products.name')
         // ->get();
         
-        // Log::debug('$bords↓↓');
-        // Log::debug($carts);
 
         return view('carts.index',[
-            'cart' => $cart,
+            'carts' => $carts,
             ]);
     }
 }

@@ -355,6 +355,28 @@ body {
   cursor: pointer;
 }
 
+.c-searchBox {
+  background: #fff333;
+}
+
+.c-searchBox__inner {
+  padding: 24px;
+}
+
+.c-searchBox__categories {
+  margin-top: 8px;
+}
+
+.c-searchBox__difficults {
+  margin-top: 8px;
+}
+
+.c-searchBox__submit {
+  margin-top: 24px;
+  width: 100%;
+  border: 1px solid #333;
+}
+
 .c-image__block {
   background: #FFFFCC;
   height: 155px;
@@ -658,6 +680,11 @@ body {
 }
 
 .c-profile__detail {
+  margin-top: 16px;
+}
+
+.c-cart__block {
+  border: 1px solid #333;
   margin-top: 16px;
 }
 

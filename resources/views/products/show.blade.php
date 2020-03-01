@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if (empty($isOrder))
+{{-- @if (empty($isOrder)) --}}
     
 <div>
     <div class="c-product__img">
@@ -107,8 +107,8 @@
 </div>
 
 {{-- 購入済みの場合 --}}
-@else
-<div class="l-productShow__wrapper">
+{{-- @else --}}
+{{-- <div class="l-productShow__wrapper">
 
     <div class="c-productShow__title">
         <h2>「タイトル」: {{ $product->name }}</h2>
@@ -149,9 +149,9 @@
 
 
 
-</div>
+</div> --}}
 
-@endif
+{{-- @endif --}}
 
 
 
