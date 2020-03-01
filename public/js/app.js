@@ -51477,7 +51477,11 @@ __webpack_require__(/*! ./components/ajaxFollow */ "./resources/js/components/aj
 
 __webpack_require__(/*! ./components/ajaxCart */ "./resources/js/components/ajaxCart.js");
 
-__webpack_require__(/*! ./components/toggle-lessonTab */ "./resources/js/components/toggle-lessonTab.js"); // const Sample = require('vue');
+__webpack_require__(/*! ./components/toggle-lessonTab */ "./resources/js/components/toggle-lessonTab.js");
+
+__webpack_require__(/*! ./components/date-picker */ "./resources/js/components/date-picker.js");
+
+__webpack_require__(/*! ./components/slick */ "./resources/js/components/slick.js"); // const Sample = require('vue');
 // var $ = require('jQuery');
 
 /**
@@ -51670,18 +51674,6 @@ var load = function load() {
 };
 
 window.onload = load();
-$(document).ready(function () {
-  $('.c-image__preview ul').slick({
-    infinite: true,
-    //スライドのループ有効化
-    dots: true,
-    //ドットのナビゲーションを表示
-    centerMode: true,
-    //要素を中央寄せ
-    centerPadding: '10%' //両サイドの見えている部分のサイズ
-
-  });
-});
 
 /***/ }),
 
@@ -51692,36 +51684,67 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-console.log('ajaxcart読み込み');
-var $cart = $('.c-ajaxCart__icon');
-var cartPostId;
-$cart.on('click', function () {
-  console.log('ajaxcart発火');
-  console.log('ここまで1');
-  var $this = $(this);
-  console.log('ここまで2');
-  cartPostId = $this.data('cart');
-  console.log('ここまで3');
-  $.ajax({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    url: '/carts',
-    type: 'POST',
-    dataType: 'json',
-    data: {
-      'cart': cartPostId
-    }
-  }) // Ajaxリクエストが成功した場合
-  .done(function () {
-    console.log('ここまで4');
-    $this.toggleClass('is-inCart');
-  }) // Ajaxリクエストが失敗した場合
-  .fail(function (data) {
-    console.log('エラー');
-    console.log(data);
-  });
-});
+// console.log('ajaxcart読み込み');
+// let $cart = $('.js-ajaxCart__icon');
+// let cartPostId;
+//     $cart.on('click', function () {
+//     console.log('ajaxcart発火');
+//     console.log('ここまで1');
+//     let $this = $(this);
+//     console.log('ここまで2');
+//     cartPostId = $this.data('add_cart');
+//     console.log('ここまで3');
+//     console.log(cartPostId);
+//     $.ajax({
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         url: '/carts',
+//         type: 'POST',
+//         dataType: 'json',
+//         data:{ 'addCart':cartPostId},
+//     })
+//     // Ajaxリクエストが成功した場合
+//     .done(function () {
+//         console.log('ここまで4');
+//     $this.addClass('is-inCart');
+//   })
+//   // Ajaxリクエストが失敗した場合
+//   .fail(function (data) {
+//     console.log('エラー');
+//     console.log(data);
+//   });
+// })
+//削除
+// let $delete_button = $('.js-ajaxCart__delete');
+// $delete_button.on('click',function () {
+//     console.log('ajaxdelete発火');
+//     console.log('ここまで1');
+//     let $this = $(this);
+//     console.log('ここまで2');
+//     cartPostId = $this.data('delete_cart');
+//     console.log('ここまで3');
+//     console.log(cartPostId);
+//     $.ajax({
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         url: '/carts',
+//         type: 'POST',
+//         dataType: 'json',
+//         data:{ 'deleteCart':cartPostId},
+//     })
+//     // Ajaxリクエストが成功した場合
+//     .done(function () {
+//       console.log('ここまで4');
+//   $this.removeClass('is-inCart');
+// })
+// // Ajaxリクエストが失敗した場合
+// .fail(function (data) {
+//   console.log('エラー');
+//   console.log(data);
+// });
+// })
 
 /***/ }),
 
@@ -51801,6 +51824,21 @@ $like.on('click', function () {
   .fail(function (data) {
     console.log('エラー');
     console.log(data);
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/date-picker.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/date-picker.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('.js-date_picker').datepicker({
+    language: 'ja'
   });
 });
 
@@ -51908,6 +51946,28 @@ $fileInput.on('change', function () {
 });
 $deletebtn.on('click', function () {
   $('.c-prev__img').attr('src', '').show();
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/slick.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/slick.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('.c-image__preview ul').slick({
+    infinite: true,
+    //スライドのループ有効化
+    dots: true,
+    //ドットのナビゲーションを表示
+    centerMode: true,
+    //要素を中央寄せ
+    centerPadding: '10%' //両サイドの見えている部分のサイズ
+
+  });
 });
 
 /***/ }),

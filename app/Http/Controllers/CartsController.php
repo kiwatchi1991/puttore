@@ -20,26 +20,45 @@ class CartsController extends Controller
         Log::debug('<<<<<<<< $request 内容 >>>>>>>>>>>>>');
         Log::debug($request);
 
-        $product_id = $request->cart;
+        
+        //ここで、data-追加か削除で振り分ける
+        
         $my_id = Auth::user()->id;
+        $product_id = $request->product_id;
+        $type = $request->type;
 
-        $cart = Cart::where('user_id',$my_id)->where('product_id',$product_id)->count();
-        Log::debug($cart);
-        if($cart > 0){
+        if($type == "delete"){
+            // カート削除
             Log::debug('<<<<<<<< カート削除処理　>>>>>>>>>>>>>');
             $cart = Cart::where('user_id',$my_id)->where('product_id',$product_id)->delete();
-            return response()->json($cart);
-            // Log::debug('<<<<<<<< 【失敗】カート追加処理　>>>>>>>>>>>>>');
-            // return false;
-            
-        }else{
-            Log::debug('<<<<<<<< カート追加処理　>>>>>>>>>>>>>');
-            $cart = new Cart;
-            $cart->user_id = $my_id;
-            $cart->product_id = $product_id;
-            $cart->save();
-            return response()->json($cart);
+            return redirect('/carts');
+        }elseif($type == "add"){
+            // カート追加
+                Log::debug('<<<<<<<< カート追加処理　>>>>>>>>>>>>>');
+                $cart = new Cart;
+                $cart->user_id = $my_id;
+                $cart->product_id = $product_id;
+                $cart->save();
+                return redirect('/carts');
         }
+
+        // $cart = Cart::where('user_id',$my_id)->where('product_id',$product_id)->count();
+        // Log::debug($cart);
+        // if($cart > 0){
+        //     Log::debug('<<<<<<<< カート削除処理　>>>>>>>>>>>>>');
+        //     $cart = Cart::where('user_id',$my_id)->where('product_id',$product_id)->delete();
+        //     return response()->json($cart);
+        //     // Log::debug('<<<<<<<< 【失敗】カート追加処理　>>>>>>>>>>>>>');
+        //     // return false;
+            
+        // }else{
+        //     Log::debug('<<<<<<<< カート追加処理　>>>>>>>>>>>>>');
+        //     $cart = new Cart;
+        //     $cart->user_id = $my_id;
+        //     $cart->product_id = $product_id;
+        //     $cart->save();
+        //     return response()->json($cart);
+        // }
         
     }
 
@@ -57,7 +76,7 @@ class CartsController extends Controller
         $carts = DB::table('carts')
         ->join('products','product_id','=','products.id')
         ->where('carts.user_id',$my_id)
-        ->select('products.pic1','products.name','products.default_price',)
+        ->select('products.id','products.pic1','products.name','products.default_price',)
         ->get();
 
         Log::debug('$cartの中身↓↓');

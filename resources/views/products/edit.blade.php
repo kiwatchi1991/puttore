@@ -81,7 +81,7 @@
                 {{-- レッスン --}}
                 <div id="c-lesson__section">
                     @foreach( $lessons as $lesson )
-                        <div class="c-lesson__block">
+                        <div class="c-lesson__block js-add__target">
                             <label for="lesson" class="">レッスン１</label>
                              <input id="hidden" type="hidden" name="" value="{{ $lesson->id }}">
                             {{-- レッスン　Number --}}
@@ -161,11 +161,11 @@
 
                       </div>
                     <div class="">
-                        <input type="date" name="start_date" class="new__input-area @error('sale_price') is-invalid @enderror"
+                        <input type="text" name="start_date" class="new__input-area js-date_picker @error('sale_price') is-invalid @enderror"
                           value="{{ $discount_price->start_date }}">開始日
                     </div>
                     <div>
-                        <input type="date" name="end_date" class="new__input-area @error('sale_price') is-invalid @enderror"
+                        <input type="text" name="end_date" class="new__input-area js-date_picker @error('sale_price') is-invalid @enderror"
                           value="{{ $discount_price->end_date }}">終了日
                     </div>
                 </div>

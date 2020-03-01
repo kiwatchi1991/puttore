@@ -65,9 +65,14 @@
 
         {{-- カートに追加する --}}
         <div class="c-button__block">
-            <button type="submit" class="c-button c-ajaxCart__icon @if($cart) is-inCart  @endif" data-cart="{{ $product->id }}">
-               カートに追加する
-            </button>
+            <form method="POST" action="{{ route('ajaxcarts') }}">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <input type="hidden" name="type" value="add">
+                <button type="submit" class="c-button c-ajaxCart__icon js-ajaxCart__icon @if($cart) is-inCart  @endif" data-add_cart="{{ $product->id }}">
+                    カートに追加する
+                </button>
+            </form>
         </div>
 
         {{-- ほしいものに追加する --}}
