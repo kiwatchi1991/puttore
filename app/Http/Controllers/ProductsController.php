@@ -391,13 +391,13 @@ class ProductsController extends Controller
         //カテゴリーと難易度両方あるパターン
         if($request->get('lang') && $request->get('difficult')){
             //カテゴリー
-             $products = Product::whereHas('categories', function($query) use ($categorieIds) {
-                 $query->whereIn('category_id', $categorieIds);
-                 })
-                        //難易度
-                        ->whereHas('difficulties', function($query) use ($difficultiesIds) {
-                            $query->whereIn('difficulty_id', $difficultiesIds);
-                            })->paginate(10);
+            $products = Product::whereHas('categories', function($query) use ($categorieIds) {
+                $query->whereIn('category_id', $categorieIds);
+            })
+            //難易度
+            ->whereHas('difficulties', function($query) use ($difficultiesIds) {
+                $query->whereIn('difficulty_id', $difficultiesIds);
+                })->paginate(10);
         //カテゴリーしかないパターン
         } else if($request->get('lang')) {
         $products = Product::whereHas('categories', function($query) use ($categorieIds) {

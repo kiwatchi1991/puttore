@@ -19,6 +19,14 @@
 
     </div>
 
+    {{-- カートに追加する --}}
+    <div class="c-button__block">
+        <button type="submit" class="c-button c-ajaxCart__icon @if($cart) is-inCart  @endif" data-cart="{{ $cart->products.id }}">
+            カートに追加する
+        </button>
+    </div>
+
+
 </div>
 @endforeach
  
