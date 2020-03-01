@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="">
+<div class="l-profile__wrap c-profile">
         @if ($user->id === Auth::id())
         <div class="c-button__block">
         <a class="c-button" href="{{ route('profile.edit',$user->id) }}">
@@ -10,17 +10,16 @@
             </a>
         </div>
         @endif
-        <div class="">
-            画像
+        <div class="c-profile__img">
             <img src="/storage/{{ $user->pic }}" alt=""> 
         </div>
-        <div class="">
-            アカウント名：{{ $user->account_name }}
+        <div class="c-profile__name">
+            {{ $user->account_name }}
         </div>
-        <div class="">
-            肩書き：{{ $user->account_title }}
+        <div class="c-profile__title">
+            {{ $user->account_title }}
         </div>
-        <div class="">
+        <div class="c-profile__detail">
             自己紹介：{{ $user->account_detail }}
         </div>    
 </div>
@@ -73,8 +72,7 @@
         </div>
         </div>
         @endforeach
-        <div class="c-pagination">
-            {{ $products->links() }}
-        </div>
+
 </div>
+
 @endsection

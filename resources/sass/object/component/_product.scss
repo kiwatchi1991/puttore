@@ -69,7 +69,8 @@
     margin-top: 20px;
 }
 
-.c-price{
+.c-productShow__price{
+    margin-top: 16px;
   &.is-inactive{
     text-decoration:line-through;
   }
@@ -94,6 +95,34 @@
     width: 100%;
     border: 1px solid #333;
 
+}
+
+.c-edit__button{
+    text-align: right;
+}
+
+.c-productShow__title{
+    margin-top: 16px;
+}
+
+.c-productShow__detail{
+    margin-top: 16px;
+}
+
+.c-productShow__username{
+    margin-top: 16px;
+}
+.c-productShow__updated{
+    margin-top: 16px;
+}
+
+.c-productShow__curriculumBlock{
+    margin-top: 32px;
+}
+
+.c-productShow__curriculum{
+    border: 1px solid #333;
+    margin-top: 32px;
 }
 
 //ページネーションはDOM自動生成なので、自動で付与されたclass名にスタイルをあてる

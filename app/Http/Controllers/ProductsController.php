@@ -463,6 +463,16 @@ class ProductsController extends Controller
 
         Log::debug('SHOW!!!');
         $product = Product::find($id);
+        
+        // 購入済みかどうかを判断（これによって表示するページが違う）
+        $isOrder = DB::table('orders')
+        ->where('user_id',Auth::user()->id)
+        ->where('product_id',$id)
+        ->get();
+        Log::debug('<<<<<<<<<  isOrder   >>>>>>>>>>>>>>>>>>');
+        Log::debug($isOrder);
+        
+
 
         // ユーザー情報の取得
         $user = DB::table('users')
@@ -493,6 +503,11 @@ class ProductsController extends Controller
         $discount_price = Discount::where('product_id',$product_id)->first();
         Log::debug('$discount_price');
         Log::debug($discount_price);
+
+        //　レッスン情報取得
+        $lessons = Lesson::where('product_id',$product_id)->get();
+
+   
         
         //　画像情報のみ取得
         $product_imgs = [];
@@ -517,6 +532,8 @@ class ProductsController extends Controller
         'liked' => $liked,
         'discount_price' => $discount_price,
         'product_imgs' => $product_imgs,
+        'lessons' => $lessons,
+        'isOrder' => $isOrder,
         ]);
     }
 
