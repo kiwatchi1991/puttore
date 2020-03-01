@@ -13,16 +13,21 @@
         <div class="c-profile__img">
             <img src="/storage/{{ $user->pic }}" alt=""> 
         </div>
+        {{-- プロフィール名 --}}
         <div class="c-profile__name">
             {{ $user->account_name }}
         </div>
+        {{-- 肩書き --}}
         <div class="c-profile__title">
             {{ $user->account_title }}
         </div>
+        {{-- 自己紹介 --}}
         <div class="c-profile__detail">
-            自己紹介：{{ $user->account_detail }}
+            {{ $user->account_detail }}
         </div>    
 </div>
+
+{{-- 出品作品 --}}
 <div class="c-pageNum"> 全 <span class="c-totalNum">{{ $all_products->count() }}</span> 件中 {{ $pageNum_from }} 〜 {{ $pageNum_to }} 件</div>
         <div class="p-product__area">
             @foreach ($products as $product)

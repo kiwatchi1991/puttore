@@ -357,10 +357,18 @@ body {
 
 .c-image__block {
   background: #FFFFCC;
+  height: 155px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .c-image {
   max-width: 100%;
+  max-height: 100%;
 }
 
 .c-tag__block {
