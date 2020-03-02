@@ -238,6 +238,10 @@ body {
   text-align: center;
 }
 
+.c-top__text--recommend {
+  font-size: 10px;
+}
+
 .c-top__button {
   text-align: center;
   margin-top: 10px;
@@ -250,8 +254,49 @@ body {
   background: orange;
 }
 
-.c-top__recommend {
+.c-top__outputSample {
+  text-align: center;
   background: #f0fff0;
+}
+
+.c-top__outputImgs {
+  text-align: center;
+}
+
+.c-top__outputImg {
+  border: 1px solid #333;
+  height: 100px;
+  width: 100px;
+  margin: 24px auto 0;
+}
+
+.c-top__recommends {
+  padding: 0 10px;
+}
+
+.c-top__recommend {
+  text-align: center;
+  border: 1px solid #333;
+}
+
+.c-top__recommendImg {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #333;
+  margin: 0 auto;
+}
+
+.c-top__features {
+  padding: 0 10px;
+  border: 1px solid #333;
+}
+
+.c-top__features__title {
+  text-align: center;
+}
+
+.c-top__feature {
+  margin-top: 24px;
 }
 
 .hamburger {

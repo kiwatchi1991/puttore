@@ -28,6 +28,9 @@
             margin-top: 16px;
             text-align: center;
         }
+        &--recommend{
+            font-size: 10px;
+        }
     }
     &__button{
         text-align: center;
@@ -40,18 +43,43 @@
         }
     }
     &__outputSample{
-
-    }
-    &__outputImgs{
-
-    }
-    &__outputImg{
-
-    }
-    &__recommend{
+        text-align: center;
         background: $bg;
     }
+    &__outputImgs{
+        text-align: center;
+    }
+    &__outputImg{
+        border: $test;
+        height: 100px;
+        width: 100px;
+        margin: 24px auto 0;
+    }
+    &__recommends{
+        padding: 0 10px;
+    }
+    &__recommend{
+        text-align: center;
+        border: $test;
+    }
     &__recommendImg{
+        width: 100px;
+        height: 100px;
+        border: $test;
+        margin: 0 auto;
+    }
+
+    &__features{
+        padding: 0 10px;
+        border: $test;
+        &__title{
+            
+            text-align: center;
+        }
+    }
+
+    &__feature{
+        margin-top: 24px;
 
     }
 }
