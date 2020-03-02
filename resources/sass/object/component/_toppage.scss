@@ -1,18 +1,43 @@
 .c-top{
+    color: $text;
+
     &__fv{
-        
+        padding: 0 16px 16px;
     }
     &__fvImg{
-
+        height: 250px;
+        background: $bg;
     }
     &__fvMsg{
-
+        h2{
+            font-size: 24px;
+            margin: 24px 0;
+        }
+        
     }
     &__text{
-
+        color: $text;
+        &--fvMsg{
+            font-size: 12px;
+        }
+        &--subject{
+            margin-top: 16px;
+            text-align: center;
+        }
+        &--title{
+            margin-top: 16px;
+            text-align: center;
+        }
     }
     &__button{
-
+        text-align: center;
+        margin-top: 10px;
+        &--link{
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 40px;
+            background: orange;
+        }
     }
     &__outputSample{
 
@@ -24,7 +49,7 @@
 
     }
     &__recommend{
-
+        background: $bg;
     }
     &__recommendImg{
 

@@ -2,18 +2,19 @@
 
 @section('content')
 <div class="c-top__fv">
-    <div class="c-top__fiImg">
+    <div class="c-top__fvImg">
         <img src="" alt="">FVイラスト
     </div>
     <div class="c-top__fvMsg">
         <h2 class="c-top__text">プログラミング<br>学習中のあなたへ</h2>
-        <p class="c-top__text">「どのくらいのレベルで作ればいいの？」</p>
-        <p class="c-top__text">「アウトプットしたいけど、何を作ればいいの？」</p>
-        <p class="c-top__text">テキスト型アウトプット教材サービス</p>
-        <h1 class="c-top__text">『ぷっとれ』</h1>
+        <p class="c-top__text c-top__text--fvMsg">「どのくらいのレベルで作ればいいの？」</p>
+        <p class="c-top__text c-top__text--fvMsg">「アウトプットしたいけど、何を作ればいいの？」</p>
+        
+        <h3 class="c-top__text c-top__text--subject">テキスト型アウトプット教材サービス</h3>
+        <h1 class="c-top__text c-top__text--title">『ぷっとれ』</h1>
 
         <div class="c-top__button">
-            <a href="{{ route('products') }}">教材を見てみる</a>
+            <a class="c-top__button--link" href="{{ route('products') }}" >教材を見てみる</a>
         </div>
 
     </div>

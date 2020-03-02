@@ -202,6 +202,58 @@ body {
   padding: 0 16px;
 }
 
+.c-top {
+  color: #3cb371;
+}
+
+.c-top__fv {
+  padding: 0 16px 16px;
+}
+
+.c-top__fvImg {
+  height: 250px;
+  background: #f0fff0;
+}
+
+.c-top__fvMsg h2 {
+  font-size: 24px;
+  margin: 24px 0;
+}
+
+.c-top__text {
+  color: #3cb371;
+}
+
+.c-top__text--fvMsg {
+  font-size: 12px;
+}
+
+.c-top__text--subject {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.c-top__text--title {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.c-top__button {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.c-top__button--link {
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 40px;
+  background: orange;
+}
+
+.c-top__recommend {
+  background: #f0fff0;
+}
+
 .hamburger {
   position: absolute;
   right: 0;
