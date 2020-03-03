@@ -106,6 +106,7 @@
                                     <div class="c-lesson__header">
                                         <div class="js-toggleTab js-toggleTab__input active" data-status="input">本文</div>
                                         <div class="js-toggleTab js-toggleTab__preview" data-status="preview">ぷれびゅー</div>
+                                        <div class="js-insertImg " data-status="preview">画像を挿入</div>
                                     </div>
                                     
                                     <div class="c-lesson__lesson js-lesson__block js-lesson__block--input active">
@@ -114,13 +115,8 @@
                                         >{{ old('lesson') }}
                                         </textarea>
 
-                                        <script>
-                                            var simplemde = new SimpleMDE({ element: document.getElementById("lesson") });
-                                            simplemde.value();
-                                       </script>
-
                                     </div>
-                                    <div id="preview" class="c-product__input-area c-lesson__lesson js-lesson__block js-lesson__block--preview ">
+                                    <div id="preview" class="c-product__input-area c-lesson__lesson c-lesson__lesson--preview js-lesson__block js-lesson__block--preview ">
                                     </div>
                                     
                                     @error('lesson')

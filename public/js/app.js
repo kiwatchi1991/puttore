@@ -51504,11 +51504,9 @@ Vue.component('textarea-livepreview', __webpack_require__(/*! ./components/Markd
 //     el: '#app',
 //     template: '<App />' // ルートコンポーネントを描画する
 // });
-
-new Vue({
-  el: '#app' // index.htmlでid="app"となっている要素（エレメント）を指定
-
-});
+// new Vue({
+//     el: '#app',// index.htmlでid="app"となっている要素（エレメント）を指定
+// })
 
 /***/ }),
 
@@ -51897,12 +51895,15 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 
 var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
 
 $('#lesson').keyup(function () {
   var html = marked($(this).val());
   $('#preview').html(html);
+}); //画像を挿入
+
+$('.js-insertImg').on('click', function () {
+  console.log('画像を挿入ボタンクリック！！！');
 });
 
 /***/ }),

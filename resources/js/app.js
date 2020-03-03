@@ -51,7 +51,7 @@ Vue.component('textarea-livepreview', require('./components/MarkdownPanel.vue').
 //     template: '<App />' // ルートコンポーネントを描画する
 // });
 
-new Vue({
-    el: '#app',// index.htmlでid="app"となっている要素（エレメント）を指定
-})
+// new Vue({
+//     el: '#app',// index.htmlでid="app"となっている要素（エレメント）を指定
+// })
 

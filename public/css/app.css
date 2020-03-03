@@ -529,10 +529,1013 @@ body {
 .c-lesson__lesson {
   display: none;
   height: 250px;
+  text-align: left;
+}
+
+.c-lesson__lesson--preview {
+  padding: 24px 16px;
+  height: auto;
 }
 
 .c-lesson__lesson.active {
   display: block;
+}
+
+.c-lesson__lesson .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.c-lesson__lesson .anchor {
+  float: left;
+  line-height: 1;
+  margin-left: -20px;
+  padding-right: 4px;
+}
+
+.c-lesson__lesson .anchor:focus {
+  outline: none;
+}
+
+.c-lesson__lesson h1 .octicon-link,
+.c-lesson__lesson h2 .octicon-link,
+.c-lesson__lesson h3 .octicon-link,
+.c-lesson__lesson h4 .octicon-link,
+.c-lesson__lesson h5 .octicon-link,
+.c-lesson__lesson h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.c-lesson__lesson h1:hover .anchor,
+.c-lesson__lesson h2:hover .anchor,
+.c-lesson__lesson h3:hover .anchor,
+.c-lesson__lesson h4:hover .anchor,
+.c-lesson__lesson h5:hover .anchor,
+.c-lesson__lesson h6:hover .anchor {
+  text-decoration: none;
+}
+
+.c-lesson__lesson h1:hover .anchor .octicon-link,
+.c-lesson__lesson h2:hover .anchor .octicon-link,
+.c-lesson__lesson h3:hover .anchor .octicon-link,
+.c-lesson__lesson h4:hover .anchor .octicon-link,
+.c-lesson__lesson h5:hover .anchor .octicon-link,
+.c-lesson__lesson h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.c-lesson__lesson h1:hover .anchor .octicon-link:before,
+.c-lesson__lesson h2:hover .anchor .octicon-link:before,
+.c-lesson__lesson h3:hover .anchor .octicon-link:before,
+.c-lesson__lesson h4:hover .anchor .octicon-link:before,
+.c-lesson__lesson h5:hover .anchor .octicon-link:before,
+.c-lesson__lesson h6:hover .anchor .octicon-link:before {
+  width: 16px;
+  height: 16px;
+  content: " ";
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' width='16' height='16' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'%3E%3C/path%3E%3C/svg%3E");
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #24292e;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.c-lesson__lesson details {
+  display: block;
+}
+
+.c-lesson__lesson summary {
+  display: list-item;
+}
+
+.c-lesson__lesson a {
+  background-color: initial;
+}
+
+.c-lesson__lesson a:active,
+.c-lesson__lesson a:hover {
+  outline-width: 0;
+}
+
+.c-lesson__lesson strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+.c-lesson__lesson h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.c-lesson__lesson img {
+  border-style: none;
+}
+
+.c-lesson__lesson code,
+.c-lesson__lesson kbd,
+.c-lesson__lesson pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.c-lesson__lesson hr {
+  box-sizing: initial;
+  height: 0;
+  overflow: visible;
+}
+
+.c-lesson__lesson input {
+  font: inherit;
+  margin: 0;
+}
+
+.c-lesson__lesson input {
+  overflow: visible;
+}
+
+.c-lesson__lesson [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.c-lesson__lesson * {
+  box-sizing: border-box;
+}
+
+.c-lesson__lesson input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.c-lesson__lesson a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.c-lesson__lesson a:hover {
+  text-decoration: underline;
+}
+
+.c-lesson__lesson strong {
+  font-weight: 600;
+}
+
+.c-lesson__lesson hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+
+.c-lesson__lesson hr:after,
+.c-lesson__lesson hr:before {
+  display: table;
+  content: "";
+}
+
+.c-lesson__lesson hr:after {
+  clear: both;
+}
+
+.c-lesson__lesson table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.c-lesson__lesson td,
+.c-lesson__lesson th {
+  padding: 0;
+}
+
+.c-lesson__lesson details summary {
+  cursor: pointer;
+}
+
+.c-lesson__lesson kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.c-lesson__lesson h1,
+.c-lesson__lesson h2,
+.c-lesson__lesson h3,
+.c-lesson__lesson h4,
+.c-lesson__lesson h5,
+.c-lesson__lesson h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.c-lesson__lesson h1 {
+  font-size: 32px;
+}
+
+.c-lesson__lesson h1,
+.c-lesson__lesson h2 {
+  font-weight: 600;
+}
+
+.c-lesson__lesson h2 {
+  font-size: 24px;
+}
+
+.c-lesson__lesson h3 {
+  font-size: 20px;
+}
+
+.c-lesson__lesson h3,
+.c-lesson__lesson h4 {
+  font-weight: 600;
+}
+
+.c-lesson__lesson h4 {
+  font-size: 16px;
+}
+
+.c-lesson__lesson h5 {
+  font-size: 14px;
+}
+
+.c-lesson__lesson h5,
+.c-lesson__lesson h6 {
+  font-weight: 600;
+}
+
+.c-lesson__lesson h6 {
+  font-size: 12px;
+}
+
+.c-lesson__lesson p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.c-lesson__lesson blockquote {
+  margin: 0;
+}
+
+.c-lesson__lesson ol,
+.c-lesson__lesson ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.c-lesson__lesson ol ol,
+.c-lesson__lesson ul ol {
+  list-style-type: lower-roman;
+}
+
+.c-lesson__lesson ol ol ol,
+.c-lesson__lesson ol ul ol,
+.c-lesson__lesson ul ol ol,
+.c-lesson__lesson ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+.c-lesson__lesson dd {
+  margin-left: 0;
+}
+
+.c-lesson__lesson code,
+.c-lesson__lesson pre {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-size: 12px;
+}
+
+.c-lesson__lesson pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.c-lesson__lesson input::-webkit-inner-spin-button,
+.c-lesson__lesson input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.c-lesson__lesson :checked + .radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+
+.c-lesson__lesson .border {
+  border: 1px solid #e1e4e8 !important;
+}
+
+.c-lesson__lesson .border-0 {
+  border: 0 !important;
+}
+
+.c-lesson__lesson .border-bottom {
+  border-bottom: 1px solid #e1e4e8 !important;
+}
+
+.c-lesson__lesson .rounded-1 {
+  border-radius: 3px !important;
+}
+
+.c-lesson__lesson .bg-white {
+  background-color: #fff !important;
+}
+
+.c-lesson__lesson .bg-gray-light {
+  background-color: #fafbfc !important;
+}
+
+.c-lesson__lesson .text-gray-light {
+  color: #6a737d !important;
+}
+
+.c-lesson__lesson .mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.c-lesson__lesson .my-2 {
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.c-lesson__lesson .pl-0 {
+  padding-left: 0 !important;
+}
+
+.c-lesson__lesson .py-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.c-lesson__lesson .pl-1 {
+  padding-left: 4px !important;
+}
+
+.c-lesson__lesson .pl-2 {
+  padding-left: 8px !important;
+}
+
+.c-lesson__lesson .py-2 {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+.c-lesson__lesson .pl-3,
+.c-lesson__lesson .px-3 {
+  padding-left: 16px !important;
+}
+
+.c-lesson__lesson .px-3 {
+  padding-right: 16px !important;
+}
+
+.c-lesson__lesson .pl-4 {
+  padding-left: 24px !important;
+}
+
+.c-lesson__lesson .pl-5 {
+  padding-left: 32px !important;
+}
+
+.c-lesson__lesson .pl-6 {
+  padding-left: 40px !important;
+}
+
+.c-lesson__lesson .f6 {
+  font-size: 12px !important;
+}
+
+.c-lesson__lesson .lh-condensed {
+  line-height: 1.25 !important;
+}
+
+.c-lesson__lesson .text-bold {
+  font-weight: 600 !important;
+}
+
+.c-lesson__lesson .pl-c {
+  color: #6a737d;
+}
+
+.c-lesson__lesson .pl-c1,
+.c-lesson__lesson .pl-s .pl-v {
+  color: #005cc5;
+}
+
+.c-lesson__lesson .pl-e,
+.c-lesson__lesson .pl-en {
+  color: #6f42c1;
+}
+
+.c-lesson__lesson .pl-s .pl-s1,
+.c-lesson__lesson .pl-smi {
+  color: #24292e;
+}
+
+.c-lesson__lesson .pl-ent {
+  color: #22863a;
+}
+
+.c-lesson__lesson .pl-k {
+  color: #d73a49;
+}
+
+.c-lesson__lesson .pl-pds,
+.c-lesson__lesson .pl-s,
+.c-lesson__lesson .pl-s .pl-pse .pl-s1,
+.c-lesson__lesson .pl-sr,
+.c-lesson__lesson .pl-sr .pl-cce,
+.c-lesson__lesson .pl-sr .pl-sra,
+.c-lesson__lesson .pl-sr .pl-sre {
+  color: #032f62;
+}
+
+.c-lesson__lesson .pl-smw,
+.c-lesson__lesson .pl-v {
+  color: #e36209;
+}
+
+.c-lesson__lesson .pl-bu {
+  color: #b31d28;
+}
+
+.c-lesson__lesson .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+
+.c-lesson__lesson .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+
+.c-lesson__lesson .pl-c2:before {
+  content: "^M";
+}
+
+.c-lesson__lesson .pl-sr .pl-cce {
+  font-weight: 700;
+  color: #22863a;
+}
+
+.c-lesson__lesson .pl-ml {
+  color: #735c0f;
+}
+
+.c-lesson__lesson .pl-mh,
+.c-lesson__lesson .pl-mh .pl-en,
+.c-lesson__lesson .pl-ms {
+  font-weight: 700;
+  color: #005cc5;
+}
+
+.c-lesson__lesson .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+
+.c-lesson__lesson .pl-mb {
+  font-weight: 700;
+  color: #24292e;
+}
+
+.c-lesson__lesson .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+
+.c-lesson__lesson .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+
+.c-lesson__lesson .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+
+.c-lesson__lesson .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+
+.c-lesson__lesson .pl-mdr {
+  font-weight: 700;
+  color: #6f42c1;
+}
+
+.c-lesson__lesson .pl-ba {
+  color: #586069;
+}
+
+.c-lesson__lesson .pl-sg {
+  color: #959da5;
+}
+
+.c-lesson__lesson .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+
+.c-lesson__lesson .mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.c-lesson__lesson .my-2 {
+  margin-bottom: 8px !important;
+}
+
+.c-lesson__lesson .my-2 {
+  margin-top: 8px !important;
+}
+
+.c-lesson__lesson .pl-0 {
+  padding-left: 0 !important;
+}
+
+.c-lesson__lesson .py-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.c-lesson__lesson .pl-1 {
+  padding-left: 4px !important;
+}
+
+.c-lesson__lesson .pl-2 {
+  padding-left: 8px !important;
+}
+
+.c-lesson__lesson .py-2 {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+.c-lesson__lesson .pl-3 {
+  padding-left: 16px !important;
+}
+
+.c-lesson__lesson .pl-4 {
+  padding-left: 24px !important;
+}
+
+.c-lesson__lesson .pl-5 {
+  padding-left: 32px !important;
+}
+
+.c-lesson__lesson .pl-6 {
+  padding-left: 40px !important;
+}
+
+.c-lesson__lesson .pl-7 {
+  padding-left: 48px !important;
+}
+
+.c-lesson__lesson .pl-8 {
+  padding-left: 64px !important;
+}
+
+.c-lesson__lesson .pl-9 {
+  padding-left: 80px !important;
+}
+
+.c-lesson__lesson .pl-10 {
+  padding-left: 96px !important;
+}
+
+.c-lesson__lesson .pl-11 {
+  padding-left: 112px !important;
+}
+
+.c-lesson__lesson .pl-12 {
+  padding-left: 128px !important;
+}
+
+.c-lesson__lesson hr {
+  border-bottom-color: #eee;
+}
+
+.c-lesson__lesson kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #d1d5da;
+}
+
+.c-lesson__lesson .body:after,
+.c-lesson__lesson .body:before {
+  display: table;
+  content: "";
+}
+
+.c-lesson__lesson .body:after {
+  clear: both;
+}
+
+.c-lesson__lesson .body > :first-child {
+  margin-top: 0 !important;
+}
+
+.c-lesson__lesson .body > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.c-lesson__lesson a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.c-lesson__lesson blockquote,
+.c-lesson__lesson details,
+.c-lesson__lesson dl,
+.c-lesson__lesson ol,
+.c-lesson__lesson p,
+.c-lesson__lesson pre,
+.c-lesson__lesson table,
+.c-lesson__lesson ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.c-lesson__lesson hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.c-lesson__lesson blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+}
+
+.c-lesson__lesson blockquote > :first-child {
+  margin-top: 0;
+}
+
+.c-lesson__lesson blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.c-lesson__lesson h1,
+.c-lesson__lesson h2,
+.c-lesson__lesson h3,
+.c-lesson__lesson h4,
+.c-lesson__lesson h5,
+.c-lesson__lesson h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.c-lesson__lesson h1 {
+  font-size: 2em;
+}
+
+.c-lesson__lesson h1,
+.c-lesson__lesson h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.c-lesson__lesson h2 {
+  font-size: 1.5em;
+}
+
+.c-lesson__lesson h3 {
+  font-size: 1.25em;
+}
+
+.c-lesson__lesson h4 {
+  font-size: 1em;
+}
+
+.c-lesson__lesson h5 {
+  font-size: 0.875em;
+}
+
+.c-lesson__lesson h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+
+.c-lesson__lesson ol,
+.c-lesson__lesson ul {
+  padding-left: 2em;
+}
+
+.c-lesson__lesson ol ol,
+.c-lesson__lesson ol ul,
+.c-lesson__lesson ul ol,
+.c-lesson__lesson ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.c-lesson__lesson li {
+  word-wrap: break-all;
+}
+
+.c-lesson__lesson li > p {
+  margin-top: 16px;
+}
+
+.c-lesson__lesson li + li {
+  margin-top: 0.25em;
+}
+
+.c-lesson__lesson dl {
+  padding: 0;
+}
+
+.c-lesson__lesson dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.c-lesson__lesson dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.c-lesson__lesson table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+.c-lesson__lesson table th {
+  font-weight: 600;
+}
+
+.c-lesson__lesson table td,
+.c-lesson__lesson table th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.c-lesson__lesson table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.c-lesson__lesson table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.c-lesson__lesson img {
+  max-width: 100%;
+  box-sizing: initial;
+  background-color: #fff;
+}
+
+.c-lesson__lesson img[align=right] {
+  padding-left: 20px;
+}
+
+.c-lesson__lesson img[align=left] {
+  padding-right: 20px;
+}
+
+.c-lesson__lesson code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+}
+
+.c-lesson__lesson pre {
+  word-wrap: normal;
+}
+
+.c-lesson__lesson pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.c-lesson__lesson .highlight {
+  margin-bottom: 16px;
+}
+
+.c-lesson__lesson .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.c-lesson__lesson .highlight pre,
+.c-lesson__lesson pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+.c-lesson__lesson pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: initial;
+  border: 0;
+}
+
+.c-lesson__lesson .commit-tease-sha {
+  display: inline-block;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-size: 90%;
+  color: #444d56;
+}
+
+.c-lesson__lesson .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+
+.c-lesson__lesson .blob-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.c-lesson__lesson .blob-wrapper-embedded {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.c-lesson__lesson .blob-num {
+  width: 1%;
+  min-width: 50px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(27, 31, 35, 0.3);
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: top;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c-lesson__lesson .blob-num:hover {
+  color: rgba(27, 31, 35, 0.6);
+}
+
+.c-lesson__lesson .blob-num:before {
+  content: attr(data-line-number);
+}
+
+.c-lesson__lesson .blob-code {
+  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+  line-height: 20px;
+  vertical-align: top;
+}
+
+.c-lesson__lesson .blob-code-inner {
+  overflow: visible;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-size: 12px;
+  color: #24292e;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+.c-lesson__lesson .pl-token.active,
+.c-lesson__lesson .pl-token:hover {
+  cursor: pointer;
+  background: #ffea7f;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="1"] {
+  -moz-tab-size: 1;
+  -o-tab-size: 1;
+     tab-size: 1;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="2"] {
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+     tab-size: 2;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="3"] {
+  -moz-tab-size: 3;
+  -o-tab-size: 3;
+     tab-size: 3;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="4"] {
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+     tab-size: 4;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="5"] {
+  -moz-tab-size: 5;
+  -o-tab-size: 5;
+     tab-size: 5;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="6"] {
+  -moz-tab-size: 6;
+  -o-tab-size: 6;
+     tab-size: 6;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="7"] {
+  -moz-tab-size: 7;
+  -o-tab-size: 7;
+     tab-size: 7;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="8"] {
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+     tab-size: 8;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="9"] {
+  -moz-tab-size: 9;
+  -o-tab-size: 9;
+     tab-size: 9;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="10"] {
+  -moz-tab-size: 10;
+  -o-tab-size: 10;
+     tab-size: 10;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="11"] {
+  -moz-tab-size: 11;
+  -o-tab-size: 11;
+     tab-size: 11;
+}
+
+.c-lesson__lesson .tab-size[data-tab-size="12"] {
+  -moz-tab-size: 12;
+  -o-tab-size: 12;
+     tab-size: 12;
+}
+
+.c-lesson__lesson .task-list-item {
+  list-style-type: none;
+}
+
+.c-lesson__lesson .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+
+.c-lesson__lesson .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
 }
 
 .c-contents__price {
