@@ -1,3 +1,47 @@
-.c-userIcon_img{
-    width: inherit;
+.c-bords{
+    &__head{
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-bottom: $test;
+    }
+}
+
+.c-bord{
+    &__list{
+        border: $test;
+        display: block;
+        padding: 10px;
+    }
+    &__inner{
+        display: flex;
+    }
+    &__userImg{
+        width: 65px;
+        height: 64px;
+        border-radius: 50%;
+        &__wrapper{
+            margin-right: 10px;
+        }
+    }
+    &__order{
+        padding: 5px 12px;
+        border-radius: 10px;
+        &.buy{
+            background: blue;
+        }
+        &.sell{
+            background: pink;
+        }
+    }
+    &__title{
+
+    }
+    &__msg{
+
+    }
+  
+
+    
+
 }

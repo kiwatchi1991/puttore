@@ -746,8 +746,45 @@ body {
   cursor: pointer;
 }
 
-.c-userIcon_img {
-  width: inherit;
+.c-bords__head {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.c-bord__list {
+  border: 1px solid #333;
+  display: block;
+  padding: 10px;
+}
+
+.c-bord__inner {
+  display: -webkit-box;
+  display: flex;
+}
+
+.c-bord__userImg {
+  width: 65px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.c-bord__userImg__wrapper {
+  margin-right: 10px;
+}
+
+.c-bord__order {
+  padding: 5px 12px;
+  border-radius: 10px;
+}
+
+.c-bord__order.buy {
+  background: blue;
+}
+
+.c-bord__order.sell {
+  background: pink;
 }
 
 .c-profile {
@@ -783,6 +820,22 @@ body {
 .c-cart__block {
   border: 1px solid #333;
   margin-top: 16px;
+}
+
+.c-messages__head {
+  height: 50px;
+}
+
+.c-message {
+  padding: 15px;
+  border: 1px solid #333;
+  width: 250px;
+  margin: 30px auto 0 15px;
+}
+
+.c-message.self {
+  color: red;
+  margin: 30px 15px 0 auto;
 }
 
 .global-nav {

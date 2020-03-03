@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Order;
 use App\Bord;
 use App\Message;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Log;
@@ -24,15 +25,20 @@ class BordsController extends Controller
         $id = Auth::user()->id;
         $bords = Order::where('orders.user_id',$id)
         ->join('products', 'orders.product_id','products.id')
+        ->orWhere('products.user_id',$id)
         ->join('users','products.user_id','users.id')
-        ->select('orders.id','users.pic','products.name')
+        ->select('orders.id','orders.user_id','users.pic','products.user_id as p.user_id','products.name')
         ->get();
         
+        $user = User::all();
+
         Log::debug('$bords↓↓');
         Log::debug($bords);
 
         return view('bords.index',[
             'bords' => $bords,
+            'id' => $id,
+            'user' => $user,
             ]);
     }
 
@@ -43,19 +49,35 @@ class BordsController extends Controller
     {
         Log::debug('連絡掲示板：show');
         
-        $orders = Order::find($id);
-        $ordersId = $orders->id;
-        Log::debug($orders);
+        //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
+        $self_user_id = Auth::user()->id;
+        $bord = Order::where('orders.id',$id)
+        ->join('products', 'orders.product_id','products.id')
+        ->join('users','products.user_id','users.id')
+        ->select('orders.id','orders.user_id as o.u_id','users.pic','products.user_id as p.u_id','products.name')
+        ->first();
+        
+        $user = User::all();
+
+        $order = Order::find($id);
+        $ordersId = $order->id;
+        Log::debug($order);
         
         $messages = Message::where('messages.order_id',$id)->get();
-        Log::debug('messages↓↓');
+        Log::debug('<<<<<<<   messages  >>>>>>>>');
         Log::debug($messages);
-        // Log::debug($orders->id);
+        Log::debug('<<<<<<<<<    $bord  >>>>>>>>');
+        Log::debug($bord);
+        // Log::debug($order->id);
 
         return view('bords.show',[
-            'orders' => $orders,
+            'order' => $order,
             'ordersId' => $ordersId,
             'messages' => $messages,
+            'bord' => $bord,
+            'self_user_id' => $self_user_id,
+            'user' => $user,
+
             ]);
     }
 
