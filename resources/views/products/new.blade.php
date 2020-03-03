@@ -113,6 +113,12 @@
                                         data-input="lessson" name="" value="{{ old('lesson') }}" autocomplete="lesson"  placeholder="lesson１"　
                                         >{{ old('lesson') }}
                                         </textarea>
+
+                                        <script>
+                                            var simplemde = new SimpleMDE({ element: document.getElementById("lesson") });
+                                            simplemde.value();
+                                       </script>
+
                                     </div>
                                     <div id="preview" class="c-product__input-area c-lesson__lesson js-lesson__block js-lesson__block--preview ">
                                     </div>
@@ -201,5 +207,6 @@
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
 @endsection

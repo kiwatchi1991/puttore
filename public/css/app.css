@@ -836,6 +836,7 @@ body {
 .c-message.self {
   color: red;
   margin: 30px 15px 0 auto;
+  overflow-wrap: break-word;
 }
 
 .global-nav {
