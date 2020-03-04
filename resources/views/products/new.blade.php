@@ -106,7 +106,13 @@
                                     <div class="c-lesson__header">
                                         <div class="js-toggleTab js-toggleTab__input active" data-status="input">本文</div>
                                         <div class="js-toggleTab js-toggleTab__preview" data-status="preview">ぷれびゅー</div>
-                                        <div class="js-insertImg " data-status="preview">画像を挿入</div>
+                                        <div class="js-insertImg" data-status="preview">
+                                            <form method="POST" action="{{ route('products.imgupload') }}" enctype="multipart/form-data">
+                                                @csrf
+                                                <input class="js-uploadimg" type="file" name="lesson_pic">
+                                            </form>
+                                            画像を挿入
+                                        </div>
                                     </div>
                                     
                                     <div class="c-lesson__lesson js-lesson__block js-lesson__block--input active">

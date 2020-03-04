@@ -31,7 +31,8 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/products/{id}',  'ProductsController@shows')->name('products.show');
     Route::post('/products/ajaxlike',  'LikesController@ajaxlike')->name('products.ajaxlike');
     Route::post('/products/ajaxfollow',  'FollowsController@ajaxfollow')->name('products.ajaxfollow');
-    
+    //レッスンの画像アップロード
+    Route::post('/products/imgupload',  'LessonImgUploadController@imgupload')->name('products.imgupload');
     
     //カート
     Route::get('/carts',  'CartsController@index')->name('carts');
