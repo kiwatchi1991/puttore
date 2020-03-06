@@ -12,23 +12,23 @@ let $insert_btn =  $('.js-uploadimg');
 $insert_btn.on('change',function(){
     console.log('画像を挿入ボタンクリック！！！ajax処理開始');
     console.log('ここまで1');
-    let $this = $(this);
     console.log('ここまで2');
     // let postImgFile = $this.data('follow');
 
     let file = this.files[0];
-    let fileReader = new FileReader();  //  ファイルを読み込むFileReaderオブジェクト
-    fileReader.readAsDataURL(file);
-    // let json = JSON.parse(fileReader['result']);
+    let formData = new FormData(); 
+    console.log('formData append前');
+    console.log(...formData.entries());
+    formData.append('file',file);
+    // let json = JSON.parse(formData['result']);
 
-    fileReader.onload = function(){ 
-    console.log('fileReader');
-    console.log(fileReader);
-    console.log('fileReader.result');
-    console.log(fileReader[0]);
-    console.log(fileReader['result']);
-    // console.log('JSON');
-    // console.log(json);
+    // formData.onload = function(){ 
+    console.log('file');
+    console.log(file);
+    console.log('file.val');
+    // console.log(file.prop('files'));
+    console.log('formData append後');
+    console.log(...formData.entries());
     console.log('ここまで3');
 
     $.ajax({
@@ -39,7 +39,8 @@ $insert_btn.on('change',function(){
         type: 'POST',
         dataType: 'json',
         processData: false,
-        data:{ 'uploadimg':fileReader['result']},
+        contentType : false,
+        data:formData,
     })
     // Ajaxリクエストが成功した場合
     .done(function () {
@@ -52,7 +53,7 @@ $insert_btn.on('change',function(){
     console.log(data);
  })
 
-}
+// }
 
 })
 

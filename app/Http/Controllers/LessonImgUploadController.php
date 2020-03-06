@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 class LessonImgUploadController extends Controller
 {
      /**
-     * お気に入り登録
+     * 画像アップロード
      */
     public function imgupload(Request $request)
     {

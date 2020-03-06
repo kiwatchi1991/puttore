@@ -51895,6 +51895,14 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
 
 $('#lesson').keyup(function () {
@@ -51904,45 +51912,48 @@ $('#lesson').keyup(function () {
 
 var $insert_btn = $('.js-uploadimg');
 $insert_btn.on('change', function () {
+  var _console, _console2;
+
   console.log('画像を挿入ボタンクリック！！！ajax処理開始');
   console.log('ここまで1');
-  var $this = $(this);
   console.log('ここまで2'); // let postImgFile = $this.data('follow');
 
   var file = this.files[0];
-  var fileReader = new FileReader(); //  ファイルを読み込むFileReaderオブジェクト
+  var formData = new FormData();
+  console.log('formData append前');
 
-  fileReader.readAsDataURL(file); // let json = JSON.parse(fileReader['result']);
+  (_console = console).log.apply(_console, _toConsumableArray(formData.entries()));
 
-  fileReader.onload = function () {
-    console.log('fileReader');
-    console.log(fileReader);
-    console.log('fileReader.result');
-    console.log(fileReader[0]);
-    console.log(fileReader['result']); // console.log('JSON');
-    // console.log(json);
+  formData.append('file', file); // let json = JSON.parse(formData['result']);
+  // formData.onload = function(){ 
 
-    console.log('ここまで3');
-    $.ajax({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      },
-      url: '/products/imgupload',
-      type: 'POST',
-      dataType: 'json',
-      processData: false,
-      data: {
-        'uploadimg': fileReader['result']
-      }
-    }) // Ajaxリクエストが成功した場合
-    .done(function () {
-      console.log('ここまで4');
-    }) // Ajaxリクエストが失敗した場合
-    .fail(function (data) {
-      console.log('エラー');
-      console.log(data);
-    });
-  };
+  console.log('file');
+  console.log(file);
+  console.log('file.val'); // console.log(file.prop('files'));
+
+  console.log('formData append後');
+
+  (_console2 = console).log.apply(_console2, _toConsumableArray(formData.entries()));
+
+  console.log('ここまで3');
+  $.ajax({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    url: '/products/imgupload',
+    type: 'POST',
+    dataType: 'json',
+    processData: false,
+    contentType: false,
+    data: formData
+  }) // Ajaxリクエストが成功した場合
+  .done(function () {
+    console.log('ここまで4');
+  }) // Ajaxリクエストが失敗した場合
+  .fail(function (data) {
+    console.log('エラー');
+    console.log(data);
+  }); // }
 });
 var $follow = $('.c-ajaxFollow__icon');
 var followPostId;
