@@ -15,7 +15,12 @@ class CreateLessonimgsTable extends Migration
     {
         Schema::create('lessonimgs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('lesson_id')->nullable();
+            $table->string('path');
             $table->timestamps();
+
+            // 外部キー制約
+            $table->foreign('lesson_id')->references('id')->on('lessons');
         });
     }
 
@@ -25,7 +30,11 @@ class CreateLessonimgsTable extends Migration
      * @return void
      */
     public function down()
-    {
+    {   
+        Schema::table('lessonimgs', function (Blueprint $table) {
+            $table->dropForeign(['lesson_id']);
+            $table->dropColumn('lesson_id');
+        });
         Schema::dropIfExists('lessonimgs');
     }
 }
