@@ -27,6 +27,8 @@ class Product extends Model
          return $this->hasMany('App\Lesson');
      }
 
+  
+
     // 検索機能
     // public function scopeTagFilter($query, ?string $tag)
     // {

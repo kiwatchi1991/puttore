@@ -17,13 +17,18 @@ class LessonImgUploadController extends Controller
         Log::debug('<<<<<<<< imgupload ajax発動！>>>>>>>>>>>>>');
         Log::debug('<<<<<<<< $request 内容 >>>>>>>>>>>>>');
         Log::debug($request);
+        Log::debug($request->file);
 
-        //画像登録
         $Lessonimg = new Lessonimg;
-        $Lessonimg->fill($request->all())->save();
-        $isPic = $request->pic1;
+        $Lessonimg->path = $request->file;
+        $path = $request->file->store('public/lesson_images');
+        $Lessonimg->path = str_replace('public/', '', $path);
 
-        return response()->json('OK');
+        Log::debug('<<<<<<<< $Lessonimg 内容 >>>>>>>>>>>>>');
+        Log::debug($Lessonimg);
+        $Lessonimg->save();
+
+        return response()->json($Lessonimg->path);
     }
 
 }

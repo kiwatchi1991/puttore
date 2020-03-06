@@ -3,21 +3,23 @@ let $button = $('.c-addLesson__button');
     //レッスンの追加ボタンを押した時の
     $button.on('click', function (e) {
         e.preventDefault();
-    
+
         //レッスンのコピー
         let $copyTaget = $('.js-add__target:last-child');
         $copyTaget.clone().appendTo('#js-lesson__section');
-        
+
         let $newCopyTaget = $('.js-add__target:last-child');
         $newCopyTaget.find('input[type="hidden"]').remove();
+        $newCopyTaget.find('#input').empty();
+        $newCopyTaget.find('textarea').empty();
 
         load();
     })
 
-    
+
     let load = function () {
         console.log('window.load!!!');
-        
+
         let count = 0;
         let count1 = 1;
         $('.js-add__target').each(function(){
@@ -41,7 +43,7 @@ let $button = $('.c-addLesson__button');
 
         count += 1;
         count1 += 1;
-        
+
     })
 };
 window.onload = load();

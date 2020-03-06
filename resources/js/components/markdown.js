@@ -1,8 +1,14 @@
 const marked = require('marked');
 
-$('#lesson').keyup(function () {
-    var html = marked($(this).val());
-    $('#preview').html(html);
+let markdownpreview = function (btn) {
+  // var html = marked($(this).val());
+  var html = marked(btn.val());
+  $('#preview').html(html);
+};
+
+$('#lesson').on('keyup', function(){
+  let btn = $(this);
+  markdownpreview(btn);
 });
 
 
@@ -16,13 +22,13 @@ $insert_btn.on('change',function(){
     // let postImgFile = $this.data('follow');
 
     let file = this.files[0];
-    let formData = new FormData(); 
+    let formData = new FormData();
     console.log('formData append前');
     console.log(...formData.entries());
     formData.append('file',file);
     // let json = JSON.parse(formData['result']);
 
-    // formData.onload = function(){ 
+    // formData.onload = function(){
     console.log('file');
     console.log(file);
     console.log('file.val');
@@ -43,8 +49,12 @@ $insert_btn.on('change',function(){
         data:formData,
     })
     // Ajaxリクエストが成功した場合
-    .done(function () {
+    .done(function (data) {
+      let target = $('#lesson');
         console.log('ここまで4');
+        console.log(data);
+        target.val('![代替テキスト](/storage/' + data + ')');
+        target.trigger('keyup');
 
   })
   // Ajaxリクエストが失敗した場合
