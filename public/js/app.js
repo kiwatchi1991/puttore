@@ -51643,6 +51643,8 @@ $button.on('click', function (e) {
   $copyTaget.clone().appendTo('#js-lesson__section');
   var $newCopyTaget = $('.js-add__target:last-child');
   $newCopyTaget.find('input[type="hidden"]').remove();
+  $newCopyTaget.find('#input').empty();
+  $newCopyTaget.find('textarea').empty();
   load();
 });
 
@@ -51954,10 +51956,11 @@ $insert_btn.on('change', function () {
     data: formData
   }) // Ajaxリクエストが成功した場合
   .done(function (data) {
+    var target = $('#lesson');
     console.log('ここまで4');
     console.log(data);
-    $('#lesson').val('![代替テキスト](/storage/' + data + ')');
-    $('#lesson').trigger('keyup');
+    target.val('![代替テキスト](/storage/' + data + ')');
+    target.trigger('keyup');
   }) // Ajaxリクエストが失敗した場合
   .fail(function (data) {
     console.log('エラー');
