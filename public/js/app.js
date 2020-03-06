@@ -51905,9 +51905,15 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
 
-$('#lesson').keyup(function () {
-  var html = marked($(this).val());
+var markdownpreview = function markdownpreview(btn) {
+  // var html = marked($(this).val());
+  var html = marked(btn.val());
   $('#preview').html(html);
+};
+
+$('#lesson').on('keyup', function () {
+  var btn = $(this);
+  markdownpreview(btn);
 }); //画像を挿入
 
 var $insert_btn = $('.js-uploadimg');
@@ -51925,7 +51931,7 @@ $insert_btn.on('change', function () {
   (_console = console).log.apply(_console, _toConsumableArray(formData.entries()));
 
   formData.append('file', file); // let json = JSON.parse(formData['result']);
-  // formData.onload = function(){ 
+  // formData.onload = function(){
 
   console.log('file');
   console.log(file);
@@ -51947,8 +51953,11 @@ $insert_btn.on('change', function () {
     contentType: false,
     data: formData
   }) // Ajaxリクエストが成功した場合
-  .done(function () {
+  .done(function (data) {
     console.log('ここまで4');
+    console.log(data);
+    $('#lesson').val('![代替テキスト](/storage/' + data + ')');
+    $('#lesson').trigger('keyup');
   }) // Ajaxリクエストが失敗した場合
   .fail(function (data) {
     console.log('エラー');
