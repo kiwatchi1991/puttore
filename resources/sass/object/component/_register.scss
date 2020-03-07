@@ -1,4 +1,4 @@
-.c-login{
+.c-register{
     &__inner{
         padding: 30px;
     }
@@ -87,7 +87,7 @@
     &__btn{
         color: #ffffff;
     }
-    &__to-register{
+    &__to-login{
         text-align: center;
         color: $dark;
         margin-top: 32px;
