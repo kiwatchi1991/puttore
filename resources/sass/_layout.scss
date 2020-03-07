@@ -1,9 +1,9 @@
 body{
-    padding-top: 80px;
-    background: $bg;
+    padding-top: $header;
+    color: $main-text;
 }
 
 input{
     box-sizing: border-box;
     border:none;
-}
+} 

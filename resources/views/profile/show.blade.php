@@ -31,7 +31,7 @@
 <div class="c-pageNum"> 全 <span class="c-totalNum">{{ $all_products->count() }}</span> 件中 {{ $pageNum_from }} 〜 {{ $pageNum_to }} 件</div>
         <div class="p-product__area">
             @foreach ($products as $product)
-            <div class="p-product__block">
+            <div class="c-product__block">
             <a class="c-product__link" href="{{ route('products.show', $product->id) }}">
             {{-- プロダクトID {{ $product->id }} --}}
            
