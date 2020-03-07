@@ -1,8 +1,9 @@
-.header{
-    height: 90px;
-    background: #bab4b4;
+body{
+    padding-top: 80px;
+    background: $bg;
 }
-.header__inner{
-    display: flex;
-    justify-content: space-between;
+
+input{
+    box-sizing: border-box;
+    border:none;
 }

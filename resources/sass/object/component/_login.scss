@@ -1,0 +1,101 @@
+.c-login{
+    &__inner{
+        padding: 30px;
+    }
+    &__title{
+        font-size: 24px;
+        color: $dark;
+    }
+    &__form-area{
+        margin-top: 24px;
+    }
+    &__input-area{
+        margin-top: 24px;
+    }
+    &__input-label{
+        color: $main-text;
+        padding: 5px 0;
+        font-size: 10px;
+    }
+    &__input{
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 8px;
+    }
+    &__remember{
+        margin-top: 16px;
+        font-size: 10px;
+        &__checkbox{
+            display: none;
+        }
+        &__label{
+            padding-left: 20px;
+            position:relative;
+            margin-right: 20px;
+            line-height: 17px;
+            display: inline-block;
+            &::before{
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 15px;
+                height: 15px;
+                border-radius: 4px;
+                background: #ffffff;
+            }
+        }
+        &__checkbox:checked + .c-login__remember__label{
+            color: $dark;
+            &::after{
+                content: "";
+                display: block;
+                position: absolute;
+                top: -5px;
+                left: 5px;
+                width: 7px;
+                height: 14px;
+                transform: rotate(40deg);
+                border-bottom: 3px solid $dark;
+                border-right: 3px solid $dark;
+            }
+        }
+    }
+    &__forget{
+        margin-top: 8px;
+        display: inline-block;
+        font-size: 10px;
+        &__link{
+            color: $dark;
+            text-decoration: underline;
+            &:visited{
+                color: $dark;
+            }
+        }
+    }
+    &__button{
+        margin: 24px auto 0;
+        text-align: center;
+        width: 75%;
+        color: #ffffff;
+        background: orange;
+        padding: 10px;
+        border-radius: 7px;
+    }
+    &__btn{
+        color: #ffffff;
+    }
+    &__to-register{
+        text-align: center;
+        color: $dark;
+        margin-top: 32px;
+        border-top: 3px solid #dark;
+        padding-top: 32px;
+        color: #00ac7d;
+    }
+    
+
+}
+

@@ -24,6 +24,7 @@
 @import 'object/component/profile';
 @import 'object/component/cart';
 @import 'object/component/message';
+@import 'object/component/login';
 
 
 //project
@@ -31,8 +32,8 @@
 @import 'object/project/productBlock';
 @import 'object/project/productRegister';
 
+@import 'layout';
 @import 'userRegister';
-@import 'login';
 
 // Bootstrap
 // @import '~bootstrap/scss/bootstrap';

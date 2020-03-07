@@ -1,5 +1,5 @@
 .c-top{
-    color: $text;
+    color: $main-text;
 
     &__fv{
         padding: 0 16px 16px;
@@ -16,7 +16,7 @@
         
     }
     &__text{
-        color: $text;
+        color: $main-text;
         &--fvMsg{
             font-size: 12px;
         }

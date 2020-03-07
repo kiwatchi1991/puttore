@@ -51634,8 +51634,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var $button = $('.c-addLesson__button'); //レッスンの追加ボタンを押した時の
-
+//レッスンの追加ボタンを押した時
+var $button = $('.c-addLesson__button');
 $button.on('click', function (e) {
   e.preventDefault(); //レッスンのコピー
 
@@ -51644,9 +51644,18 @@ $button.on('click', function (e) {
   var $newCopyTaget = $('.js-add__target:last-child');
   $newCopyTaget.find('input[type="hidden"]').remove();
   $newCopyTaget.find('#input').empty();
-  $newCopyTaget.find('textarea').empty();
+  $newCopyTaget.find('textarea').empty(); //load()でnumberの振り直し
+
   load();
-});
+  var dom = document.getElementsByClassName('js-toggleTab');
+
+  for (var i = 0; i < dom.length; i++) {
+    dom[i].addEventListener('click', function () {
+      var btn = $(this);
+      toggleTab(btn);
+    });
+  }
+}); //初期読み込み時、レッスンにnumber付与
 
 var load = function load() {
   console.log('window.load!!!');
@@ -51671,9 +51680,54 @@ var load = function load() {
     count += 1;
     count1 += 1;
   });
-};
+}; //初期読み込み時、レッスン付与
+
 
 window.onload = load();
+var $head = $('.js-toggleTab');
+var $block = $('.js-lesson__block'); //タブ切り替え処理
+
+var toggleTab = function toggleTab(e) {
+  console.log('e');
+  console.log(e);
+  console.log($(e));
+  var $parent1 = $(e).parents('.p-lesson__lesson'); //logよう
+
+  var $parent2 = $(e).parents('.p-lesson__lesson'); //logよう
+
+  var $areaInput = $(e).parents('.p-lesson__lesson').find('.js-lesson__block--input');
+  var $areaPreview = $(e).parents('.p-lesson__lesson').find('.js-lesson__block--preview');
+  console.log('parent1');
+  console.log($parent1);
+  console.log('parent2');
+  console.log($parent2);
+  console.log('$areaInput');
+  console.log($areaInput);
+  console.log('$areaPreview');
+  console.log($areaPreview);
+  var target = $(e).attr('data-status');
+  $head.removeClass('active');
+  $block.removeClass('active');
+  $areaInput.removeClass('active');
+  $areaPreview.removeClass('active');
+  console.log('target');
+  console.log(target);
+
+  switch (target) {
+    case 'input':
+      $areaInput.addClass('active');
+      break;
+
+    case 'preview':
+      $areaPreview.addClass('active');
+      break;
+  }
+};
+
+$head.on('click', function () {
+  var btn = $(this);
+  toggleTab(btn);
+});
 
 /***/ }),
 
@@ -52072,25 +52126,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var $head = $('.js-toggleTab');
-var $block = $('.js-lesson__block');
-var $areaInput = $('.js-lesson__block--input');
-var $areaPreview = $('.js-lesson__block--preview');
-$head.on('click', function (e) {
-  var target = $(e.target).attr('data-status');
-  $head.removeClass('active');
-  $block.removeClass('active');
 
-  switch (target) {
-    case 'input':
-      $areaInput.addClass('active');
-      break;
-
-    case 'preview':
-      $areaPreview.addClass('active');
-      break;
-  }
-});
 
 /***/ }),
 

@@ -145,13 +145,12 @@ a:visited {
 }
 
 .header {
-  height: 40px;
+  height: 80px;
   background: #bab4b4;
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
   background-color: #fff;
 }
 
@@ -162,15 +161,9 @@ a:visited {
           justify-content: space-between;
 }
 
-body {
-  padding-top: 40px;
-}
-
 .l-auth__inner {
-  border: 1px solid #000;
   width: 240px;
   margin: 60px auto;
-  text-align: center;
   padding: 30px 0;
 }
 
@@ -203,7 +196,7 @@ body {
 }
 
 .c-top {
-  color: #3cb371;
+  color: #5C5F5E;
 }
 
 .c-top__fv {
@@ -212,7 +205,7 @@ body {
 
 .c-top__fvImg {
   height: 250px;
-  background: #f0fff0;
+  background: #E5F6F2;
 }
 
 .c-top__fvMsg h2 {
@@ -221,7 +214,7 @@ body {
 }
 
 .c-top__text {
-  color: #3cb371;
+  color: #5C5F5E;
 }
 
 .c-top__text--fvMsg {
@@ -256,7 +249,7 @@ body {
 
 .c-top__outputSample {
   text-align: center;
-  background: #f0fff0;
+  background: #E5F6F2;
 }
 
 .c-top__outputImgs {
@@ -1842,6 +1835,121 @@ body {
   overflow-wrap: break-word;
 }
 
+.c-login__inner {
+  padding: 30px;
+}
+
+.c-login__title {
+  font-size: 24px;
+  color: #00ac7d;
+}
+
+.c-login__form-area {
+  margin-top: 24px;
+}
+
+.c-login__input-area {
+  margin-top: 24px;
+}
+
+.c-login__input-label {
+  color: #5C5F5E;
+  padding: 5px 0;
+  font-size: 10px;
+}
+
+.c-login__input {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.c-login__remember {
+  margin-top: 16px;
+  font-size: 10px;
+}
+
+.c-login__remember__checkbox {
+  display: none;
+}
+
+.c-login__remember__label {
+  padding-left: 20px;
+  position: relative;
+  margin-right: 20px;
+  line-height: 17px;
+  display: inline-block;
+}
+
+.c-login__remember__label::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.c-login__remember__checkbox:checked + .c-login__remember__label {
+  color: #00ac7d;
+}
+
+.c-login__remember__checkbox:checked + .c-login__remember__label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 7px;
+  height: 14px;
+  -webkit-transform: rotate(40deg);
+          transform: rotate(40deg);
+  border-bottom: 3px solid #00ac7d;
+  border-right: 3px solid #00ac7d;
+}
+
+.c-login__forget {
+  margin-top: 8px;
+  display: inline-block;
+  font-size: 10px;
+}
+
+.c-login__forget__link {
+  color: #00ac7d;
+  text-decoration: underline;
+}
+
+.c-login__forget__link:visited {
+  color: #00ac7d;
+}
+
+.c-login__button {
+  margin: 24px auto 0;
+  text-align: center;
+  width: 75%;
+  color: #ffffff;
+  background: orange;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.c-login__btn {
+  color: #ffffff;
+}
+
+.c-login__to-register {
+  text-align: center;
+  color: #00ac7d;
+  margin-top: 32px;
+  border-top: 3px solid #dark;
+  padding-top: 32px;
+  color: #00ac7d;
+}
+
 .global-nav {
   position: fixed;
   right: -320px;
@@ -1893,6 +2001,16 @@ body {
   margin-top: 5px;
 }
 
+body {
+  padding-top: 80px;
+  background: #E5F6F2;
+}
+
+input {
+  box-sizing: border-box;
+  border: none;
+}
+
 .register .register__wrapper {
   display: -webkit-box;
   display: flex;
@@ -1909,25 +2027,6 @@ body {
 }
 
 .register .register__input-area {
-  border: solid 1px #000;
-}
-
-.login .login__wrapper {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  text-align: center;
-}
-
-@media (min-width: 481px) {
-  .login .login__wrapper {
-    background-color: red;
-  }
-}
-
-.login .login__input-area {
   border: solid 1px #000;
 }
 
