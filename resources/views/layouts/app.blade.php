@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,20 +18,25 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
     {{-- slick(カルーセルのプラグイン) --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}" />
     {{-- // Add the new slick-theme.css if you want the default styling --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}" />
 
     {{-- Datepicker --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/vader/jquery-ui.min.css">
 
     {{-- マークダウン --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+
+    {{-- Cropper（画像トリミング） --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.css" rel="stylesheet" type="text/css"
+        media="all" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
-    <div >
+    <div>
         <nav class="header">
             <div class="header__inner">
                 <div class="header__logo">
@@ -39,7 +44,9 @@
                         <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
                     </a>
                 </div>
-                <button class="" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="{{ __('Toggle navigation') }}">
                     <span class=""></span>
                 </button>
 
@@ -48,74 +55,77 @@
                     <ul class="">
 
                     </ul>
-                   
+
                     <!-- Right Side Of Navbar -->
                     <ul class="">
                         <div>
 
                             <nav class="global-nav">
-                             <ul class="global-nav__list">
-                                 
-                                 @auth
-                                 ユーザーID:{{ $user->id }}　メールアドレス{{ $user->email }}
-                                 @endauth
+                                <ul class="global-nav__list">
 
-                               <li class="global-nav__item"><a href="{{ route('products.new') }}">New</a></li>
-                               <li class="global-nav__item"><a href="{{ route('products') }}">index</a></li>
-                             <li class="global-nav__item"><a href=" {{ route('products.mypage') }}" >mypage</a></li>
-                             <li class="global-nav__item"><a href=" {{ route('bords') }}" >bords</a></li>
-                             <li class="global-nav__item"><a href=" {{ route('carts') }}" >carts</a></li>
-                             <li class="global-nav__item"><a href=" {{ route('contact.index') }}" >contacts</a></li>
-                               <li class="global-nav__item">
-                           
-                                 <a onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();" href="{{ route('logout') }}">Logout</a>
-                                 {{-- <form action="/logout" method="POST" id="logout__form" style="display:none;"></form> --}}
-                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                               </li>
-                               <li>
-                                @guest
-                                <li class="global-nav__item">
-                                    <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                                @if (Route::has('register'))
+                                    @auth
+                                    ユーザーID:{{ $user->id }}　メールアドレス{{ $user->email }}
+                                    @endauth
+
+                                    <li class="global-nav__item"><a href="{{ route('products.new') }}">New</a></li>
+                                    <li class="global-nav__item"><a href="{{ route('products') }}">index</a></li>
+                                    <li class="global-nav__item"><a href=" {{ route('products.mypage') }}">mypage</a>
+                                    </li>
+                                    <li class="global-nav__item"><a href=" {{ route('bords') }}">bords</a></li>
+                                    <li class="global-nav__item"><a href=" {{ route('carts') }}">carts</a></li>
+                                    <li class="global-nav__item"><a href=" {{ route('contact.index') }}">contacts</a>
+                                    </li>
+                                    <li class="global-nav__item">
+
+                                        <a onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();"
+                                            href="{{ route('logout') }}">Logout</a>
+                                        {{-- <form action="/logout" method="POST" id="logout__form" style="display:none;"></form> --}}
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                    <li>
+                                        @guest
+                                    <li class="global-nav__item">
+                                        <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @if (Route::has('register'))
                                     <li class="global-nav__item">
                                         <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
                                     @endif
                                     @else
                                     @endguest
-                               </li>
-                             </ul>
-                           </nav>
-                           <div class="hamburger" id="js-hamburger">
-                             <span class="hamburger__line hamburger__line--1"></span>
-                             <span class="hamburger__line hamburger__line--2"></span>
-                             <span class="hamburger__line hamburger__line--3"></span>
-                           </div>
-                           <div class="black-bg" id="js-black-bg">
-                           </div>
-                           </div>
-               
-                            {{-- <li class="nav-item dropdown">
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="hamburger" id="js-hamburger">
+                                <span class="hamburger__line hamburger__line--1"></span>
+                                <span class="hamburger__line hamburger__line--2"></span>
+                                <span class="hamburger__line hamburger__line--3"></span>
+                            </div>
+                            <div class="black-bg" id="js-black-bg">
+                            </div>
+                        </div>
+
+                        {{-- <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                        </a>
 
-                                <div class="" aria-labelledby="navbarDropdown">
-                                    <a class="" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                        <div class="" aria-labelledby="navbarDropdown">
+                            <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                {{ __('Logout') }}
+                            </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li> --}}
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -128,7 +138,14 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script> src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"</script>
+    <script>
+        src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"
+    </script>
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+    {{-- Copper（画像トリミング）読み込み --}}
+    {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.6/jquery.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/3.1.6/cropper.min.js"></script>
 </body>
+
 </html>

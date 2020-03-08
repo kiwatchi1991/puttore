@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Intervention\Image\Facades\Image;
 // use App\Users;
 use App\Product;
 use App\Category;
@@ -26,10 +27,10 @@ class ProfilesController extends Controller
 
         Log::debug('SHOW!!!');
         // $product = Product::find($id);
-        
+
         // ユーザー情報の取得
         $user = User::find($id);
-        
+
         Log::debug('$user');
         Log::debug($user);
 
@@ -40,16 +41,16 @@ class ProfilesController extends Controller
         $products = Auth::user()->products()->paginate(10);
 
         //ページング用変数 始点
-        $pageNum_from =  $products->currentPage()*10-9;
+        $pageNum_from =  $products->currentPage() * 10 - 9;
         //ページング用変数 終点
-        $pageNum_to = $products->currentPage()*10;
+        $pageNum_to = $products->currentPage() * 10;
 
         //価格をカンマ入れて表示
 
         //画像有無判定フラグ
         $is_image = false;
         if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
-        $is_image = true;
+            $is_image = true;
         }
 
         $product_category = Product::all();
@@ -57,20 +58,20 @@ class ProfilesController extends Controller
 
 
 
-        
+
         return view('profile.show', [
-        'products' => $products,
-        'product_categories' => $product_category,
-        'product_difficulties' => $product_difficulty,
-        'all_products'=>$all_products,
-        'pageNum_from' => $pageNum_from,
-        'pageNum_to' => $pageNum_to,
-        'is_image' => $is_image,
-        // 'category' => $category,
-        // 'difficult' => $difficult,
-        // 'product' => $product,
-        'user' => $user,
-        // 'categoryAndDifficulty' => $categoryAndDifficulty,
+            'products' => $products,
+            'product_categories' => $product_category,
+            'product_difficulties' => $product_difficulty,
+            'all_products' => $all_products,
+            'pageNum_from' => $pageNum_from,
+            'pageNum_to' => $pageNum_to,
+            'is_image' => $is_image,
+            // 'category' => $category,
+            // 'difficult' => $difficult,
+            // 'product' => $product,
+            'user' => $user,
+            // 'categoryAndDifficulty' => $categoryAndDifficulty,
         ]);
     }
 
@@ -99,19 +100,31 @@ class ProfilesController extends Controller
         if (!ctype_digit($id)) {
             return redirect('/products/mypage')->with('flash_message', __('Invalid operation was performed.'));
         }
-        
-        Log::debug('プロフィール更新');
+        Log::debug('<<<<<<<<<<<<     request       >>>>>>>>>>>>>>');
+        Log::debug($request);
+
         $user = User::find($id);
         $user->fill($request->all())->save();
-        
+
+        $image = Image::make(file_get_contents($request->pic))->crop(50, 50, 0, 0);
+        $user->pic = $image; //追加
+        $user->save(); //追加
+
+
+        // ->crop(100, 100, 0, 0)
         $path = $request->pic->store('public/profile_images');
+
+
         Log::debug('$request->pic');
         Log::debug($request->pic);
         $user->pic = str_replace('public/', '', $path);
+
+        Log::debug('<<<<<<<<<<<<     整形後 image       >>>>>>>>>>>>>>');
+        Log::debug($image);
+
         $user->save();
 
-        return redirect('/products/mypage')->with('flash_message', __('Registered.'));
-
+        return redirect()->route('profile.show', $id)->with('flash_message', __('Registered.'));
     }
 
     /**
@@ -120,36 +133,33 @@ class ProfilesController extends Controller
 
     //表示
     public function deleteShow(Request $request, $id)
-  {
-    // GETパラメータが数字かどうかをチェックする
-    // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
+    {
+        // GETパラメータが数字かどうかをチェックする
+        // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
         if (!ctype_digit($id)) {
             return redirect('/profiles')->with('flash_message', __('Invalid operation was performed.'));
         }
 
         $user = User::find($id);
         return view('profile.delete', ['user' => $user]);
-
-  }
+    }
 
     //削除
     public function deleteData(Request $request, $id)
-  {
-    Log::debug('<< deleteData >>');
-    Log::debug($request);
-    Log::debug($id);
+    {
+        Log::debug('<< deleteData >>');
+        Log::debug($request);
+        Log::debug($id);
 
-    // GETパラメータが数字かどうかをチェックする
-    // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
-    if (!ctype_digit($id)) {
-        return redirect('/profiles')->with('flash_message', __('Invalid operation was performed.'));
+        // GETパラメータが数字かどうかをチェックする
+        // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
+        if (!ctype_digit($id)) {
+            return redirect('/profiles')->with('flash_message', __('Invalid operation was performed.'));
+        }
+
+        $user = User::find($request->input('id'));
+        $user->delete();
+
+        return redirect('/products/mypage')->with('flash_message', __('Registered.'));
     }
-
-    $user = User::find($request->input('id'));
-    $user->delete();
-
-    return redirect('/products/mypage')->with('flash_message', __('Registered.'));
-
-  }
-
 }
