@@ -18,6 +18,7 @@
             </span>
             @enderror
         </div>
+
         {{-- 言語選択 --}}
         <div class="c-searchBox__categories">
             <p class="c-searchBox__title">1. 言語を選んでね</p>
@@ -44,47 +45,12 @@
             @endforeach
         </div>
 
-        <div class="p-input__tag">
-            <ul class="p-tags">
-                {{-- <p>1.言語を選んでね</p> --}}
-                <li for="lang" class="c-tag__list">
-                    <div class="c-tag__title">言語</div>
-                    <ul class="c-tag__lists">
-                        @foreach ($category as $categories)
-                        <li>
-                            <label for="lang{{ $categories->id }}" class="c-tag__label">
-                                <input id="lang{{ $categories->id }}" type="checkbox"
-                                    class="c-tag__checkbox @error('lang') is-invalid @enderror" name="lang[]"
-                                    value="{{ $categories->id }}" autocomplete="lang">{{ $categories->name }}
-                            </label>
-                        </li>
-                        @endforeach
-                    </ul>
-                </li>
-                {{-- <p>２.難易度を選んでね</p> --}}
-                <li for="lang" class="c-tag__list">
-                    <div class="c-tag__title">難易度</div>
-                    <ul class="c-tag__lists">
-                        @foreach ($difficult as $difficults)
-                        <li>
-                            <label for="difficult{{ $difficults->id }}" class="c-tag__label">
-                                <input id="difficult{{ $difficults->id }}" type="checkbox"
-                                    class="c-tag__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
-                                    value="{{ $difficults->id }}" autocomplete="difficult">{{ $difficults->name }}
-                            </label>
-                        </li>
+        @error('name')
+        <span class="" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
 
-                        @endforeach
-                    </ul>
-                </li>
-            </ul>
-            @error('name')
-            <span class="" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-
-        </div>
 
         {{-- 説明 --}}
         <div class="p-input__detail">
