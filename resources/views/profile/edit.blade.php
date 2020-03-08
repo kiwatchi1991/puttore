@@ -2,25 +2,22 @@
 
 @section('content')
 
-<section class="register">
-    <div class="l-profile__inner">
-    <div class="c-pageTitle">プロフィールを編集する</div>
+    <div class="c-profileEdit">
+    <div class="c-profileEdit__title">プロフィールを編集する</div>
 
         <form method="POST" action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">
             @csrf
 
             {{-- 画像 --}}
-            <div class="c-input__area">
-                <label for="pic"
-                    >プロフィール画像</label>
-
+            <div class="c-profileEdit__area">
                     <div class="c-image__preview">
-                        <p class="c-delete__file">消す</p>
-                        <label class="c-area__drop">
+                        <label class="js-area__drop">
                             <input class="c-input__file" type="file" name="pic" >
-                        <img src="/storage/{{ $user->pic }}" alt=""  class="c-prev__img">
-                        ドラッグ＆ドロップ
+                            <img src="/storage/{{ $user->pic }}" alt=""  class="c-prev__img">
+                            ドラッグ＆ドロップ
                         </label>
+                        {{-- 画像削除 --}}
+                        <p class="c-delete__file">消す</p>
                     </div>
 
                     @error('pic')
@@ -91,14 +88,5 @@
         </form>
 
     </div>
-</section>
-
-            
-
-ユーザーID
-{{ $user->id }}
-ああ
-
-
 
 @endsection

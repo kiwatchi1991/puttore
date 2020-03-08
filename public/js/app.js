@@ -52060,7 +52060,7 @@ $follow.on('click', function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var $dropArea = $('.c-area__drop');
+var $dropArea = $('.js-area__drop');
 var $fileInput = $('.c-input__file');
 var $deletebtn = $('.c-delete__file');
 $dropArea.on('dragover', function (e) {

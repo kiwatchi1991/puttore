@@ -34,9 +34,11 @@
     <div >
         <nav class="header">
             <div class="header__inner">
-                <a class="" href="{{ url('/products/mypage') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                <div class="header__logo">
+                    <a class="" href="{{ url('/products/mypage') }}">
+                        <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
+                    </a>
+                </div>
                 <button class="" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class=""></span>
                 </button>

@@ -3,6 +3,8 @@
 @section('content')
 {{-- @if (empty($isOrder)) --}}
     
+<div class="c-productShow">
+
 <div>
     <div class="c-product__img">
         <ul>
@@ -24,77 +26,102 @@
             </a>
         </div>
         @endif
+        {{-- タイトル --}}
         <div class="c-productShow__title">
-            <h2>「タイトル」: {{ $product->name }}</h2>
+            <h2>{{ $product->name }}</h2>
         </div>
-        <div class="c-productShow__detail">
-            <p>　レッスン内容(無料部分):{{ $product->detail}}</p>
+
+        {{--　更新日  --}}
+        <div class="c-productShow__updated">
+            <p>{{ $product->updated_at }}</p>
         </div>
+
+        {{-- 価格 --}}
+        <div class="">
+            <p class="c-productShow__price @if($discount_price) is-inactive @endif">
+                ¥ {{ $product->default_price }}</p>
+            @if($discount_price)
+                    {{ $discount_price->discount_price }}
+            @else
+            @endif
+        </div>
+
+        {{-- タグ --}}
         <div class="c-tag__block">
 
             {{-- 言語表示 --}}
             @foreach ($categoryAndDifficulty->find($product->id)->categories as $category)
 
-            <div class="c-tag c-tag--category">{{ $category->name }}</div>
+            <div class="c-tag c-tag--category {{ $category->class_name }}">{{ $category->name }}</div>
             @endforeach
 
             {{-- 難易度表示 --}}
             @foreach ($categoryAndDifficulty->find($product->id)->difficulties as $difficulty)
 
-            <div class="c-tag c-tag--difficulty">{{ $difficulty->name }}</div>
+            <div class="c-tag c-tag--difficulty {{ $difficulty->class_name }}">{{ $difficulty->name }}</div>
 
             @endforeach
         </div>
-        <div class="c-productShow__username">
-            <p>出品者 : {{ $user[0]->account_name }}</p>
-        </div>
-        {{-- <button type="submit" class="c-button c-ajaxFollow__icon @if($follow) is-active  @endif" data-follow="{{ $user[0]->id }}">
-            フォローする
-        </button> --}}
-        <div class="c-productShow__updated">
-            <p>最終更新日 : {{ $product->updated_at }}</p>
-        </div>
-        <div class="">
-          <p class="c-productShow__price @if($discount_price) is-inactive @endif">
-            ¥ {{ $product->default_price }}</p>
-          @if($discount_price)
-                {{ $discount_price->discount_price }}
-          @else
-          @endif
-        </div>
 
-        {{-- カートに追加する --}}
-        <div class="c-button__block">
-            <form method="POST" action="{{ route('ajaxcarts') }}">
-                @csrf
-                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                <input type="hidden" name="type" value="add">
-                <button type="submit" class="c-button c-ajaxCart__icon js-ajaxCart__icon @if($cart) is-inCart  @endif" data-add_cart="{{ $product->id }}">
-                    カートに追加する
-                </button>
-            </form>
+        {{-- 出品者 --}}
+        <div class="c-productShow__user">
+            <div class="c-productShow__userimg">
+                <img src="/storage/{{ $user[0]->pic }}" alt="">
+            </div>
+            <div class="c-productShow__username">
+                <p>{{ $user[0]->account_name }}</p>
+            </div>
         </div>
-
-        {{-- ほしいものに追加する --}}
-        <div class="c-button__block">
-            <button type="submit" class="c-button c-ajaxLike__icon @if($liked) is-active  @endif" data-like="{{ $product->id }}">
-               ほしいものリストに追加する
-            </button>
-        </div>
-        
-        {{-- カリキュラム --}}
-        <div class="">
-            <h2>カリキュラム</h2>
-            @foreach ($lessons as $lesson)
-            　<p>LESSON {{ $lesson->number }} <span> {{ $lesson->title }}</span></p>   
-            @endforeach
+        {{-- レッスン内容 --}}
+        <div class="c-productShow__detail">
+            <p>{{ $product->detail}}</p>
         </div>
 
         {{-- 今すぐ購入するボタン --}}
-        <div class="c-button__block">
+        {{-- <div class="c-productShow__buynow">
             <form method="post" action="{{ route('orders.create',$product->id) }}">
                     @csrf
-                    <button type="submit" class="c-button">
+                    <button type="submit" class="">
+
+                        <script
+                        type="text/javascript"
+                        src="https://checkout.pay.jp/"
+                        class="payjp-button"
+                        id="payjp-button"
+                        data-key="pk_test_65b86d16158dad1607ce9b69"
+                        data-on-created="onCreated"
+                        data-text="今すぐ購入する"
+                        data-submit-text="pay"
+                        ></script>
+                </button>
+            </form>
+        </div> --}}
+        
+        {{-- カリキュラム --}}
+        <div class="c-productShow__curriculum">
+            <div class="c-productShow__curriculum__head"><h2>カリキュラム</h2></div>
+                <div class="c-productShow__lessons">
+                    @foreach ($lessons as $lesson)
+                        <div class="c-productShow__lesson">
+                            <div class="c-productShow__lesson__number">LESSON {{ $lesson->number }}</div>
+                            <div class="c-productShow__lesson__title"> {{ $lesson->title }}</div>
+                        </div>
+                    @endforeach
+            </div>
+        </div>
+
+        {{-- ほしいものに追加する --}}
+        <div class="c-productShow__like">
+            <button type="submit" class="c-ajaxLike__icon @if($liked) is-active  @endif" data-like="{{ $product->id }}">
+            ほしいものリストに追加する
+            </button>
+        </div>
+
+         {{-- 今すぐ購入するボタン --}}
+         <div class="c-productShow__buynow">
+            <form method="post" action="{{ route('orders.create',$product->id) }}">
+                    @csrf
+                    <button type="submit" class="">
 
                         <script
                         type="text/javascript"
@@ -109,6 +136,7 @@
                 </button>
             </form>
         </div>
+
 </div>
 
 {{-- 購入済みの場合 --}}
@@ -158,6 +186,6 @@
 
 {{-- @endif --}}
 
-
+</div>
 
 @endsection

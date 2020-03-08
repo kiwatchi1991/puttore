@@ -173,7 +173,7 @@
                 {{-- 画像 --}}
                 <div class="c-image__preview">
                     <p class="c-delete__file">消す</p>
-                    <label class="c-area__drop">
+                    <label class="js-area__drop">
                         <input class="c-input__file" type="file" name="pic1" >
                         <img src="/storage/{{ $product->pic1 }}" alt=""  class="c-prev__img">
                     ドラッグ＆ドロップ

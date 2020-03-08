@@ -157,7 +157,7 @@
                             <ul>
                                 <li>
                                     <p class="c-delete__file">消す</p>
-                                    <label class="c-area__drop">
+                                    <label class="js-area__drop">
                                         <input class="c-input__file" type="file" name="pic1" >
                                         <img src="" alt=""  class="c-prev__img">
                                         ドラッグ＆ドロップ
@@ -165,7 +165,7 @@
                                 </li>
                                 <li>
                                     <p class="c-delete__file">消す</p>
-                                    <label class="c-area__drop">
+                                    <label class="js-area__drop">
                                         <input class="c-input__file" type="file" name="pic2" >
                                         <img src="" alt=""  class="c-prev__img">
                                         ドラッグ＆ドロップ
@@ -173,7 +173,7 @@
                                 </li>
                                 <li>
                                     <p class="c-delete__file">消す</p>
-                                    <label class="c-area__drop">
+                                    <label class="js-area__drop">
                                         <input class="c-input__file" type="file" name="pic3" >
                                         <img src="" alt=""  class="c-prev__img">
                                         ドラッグ＆ドロップ
@@ -181,7 +181,7 @@
                                 </li>
                                 <li>
                                     <p class="c-delete__file">消す</p>
-                                    <label class="c-area__drop">
+                                    <label class="js-area__drop">
                                         <input class="c-input__file" type="file" name="pic4" >
                                         <img src="" alt=""  class="c-prev__img">
                                         ドラッグ＆ドロップ
@@ -189,7 +189,7 @@
                                 </li>
                                 <li>
                                     <p class="c-delete__file">消す</p>
-                                    <label class="c-area__drop">
+                                    <label class="js-area__drop">
                                         <input class="c-input__file" type="file" name="pic5" >
                                         <img src="" alt=""  class="c-prev__img">
                                         ドラッグ＆ドロップ

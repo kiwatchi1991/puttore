@@ -40,45 +40,47 @@
     </div>
 </div>
 <div class="c-product__title"><h2>一覧 / 検索結果</h2></div>
+<div class="c-pagination">
+    {{ $products->links('vendor.pagination.simple-default') }}
+</div>
+{{-- <div class="c-paging">{{ $pageNum_from }} - {{ $pageNum_to }} /<span class="c-paging__totalNum">{{ $products->count() }}</span></div> --}}
+<div class="p-product__area">
+    @foreach ($products as $product)
+    <div class="c-product__block">
+        
+        <a class="c-product__link" href="{{ route('products.show', $product->id) }}">
+    
+            <div class="c-image__block">
+                    <img class="c-image" src="/storage/{{ $product->pic1 }}">
+            </div>
+            <div class="c-tag__block">
+                
+                {{-- 言語表示 --}}
+                @foreach ($product_categories->find($product->id)->categories as $category)
 
-<div class="c-paging">{{ $pageNum_from }} - {{ $pageNum_to }} /<span class="c-paging__totalNum">{{ $products->count() }}</span></div>
-    <div class="p-product__area">
-        @foreach ($products as $product)
-        <div class="c-product__block">
-            
-            <a class="c-product__link" href="{{ route('products.show', $product->id) }}">
-              
-                        <div class="c-image__block">
-                                <img class="c-image" src="/storage/{{ $product->pic1 }}">
-                        </div>
-                        <div class="c-tag__block">
-                            
-                            {{-- 言語表示 --}}
-                            @foreach ($product_categories->find($product->id)->categories as $category)
-            
-                            <div class="c-tag c-tag--category {{ $category->class_name }}">{{ $category->name }}</div>
-                            @endforeach 
-                            
-                            {{-- 難易度表示 --}}
-                            @foreach ($product_difficulties->find($product->id)->difficulties as $difficulty)
-                            
-                            <div class="c-tag c-tag--difficulty {{ $difficulty->class_name }}">{{ $difficulty->name }}</div>
-            
-                            @endforeach
-                        </div>
-                        <div class="c-contents__block"> 
-            
-                            <div class="c-contents__title">{{ $product->name }}</div>
-                            <div class="c-contents__price">¥ {{ number_format($product->default_price) }}</div>
-                            <div class="c-contents__detail">{{ $product->detail }}</div>
+                <div class="c-tag c-tag--category {{ $category->class_name }}">{{ $category->name }}</div>
+                @endforeach 
+                
+                {{-- 難易度表示 --}}
+                @foreach ($product_difficulties->find($product->id)->difficulties as $difficulty)
+                
+                <div class="c-tag c-tag--difficulty {{ $difficulty->class_name }}">{{ $difficulty->name }}</div>
 
-                        </div>
-                    </a>
+                @endforeach
+            </div>
+            <div class="c-contents__block"> 
+
+                <div class="c-contents__title">{{ $product->name }}</div>
+                <div class="c-contents__price">¥ {{ number_format($product->default_price) }}</div>
+                <div class="c-contents__detail">{{ $product->detail }}</div>
+
+            </div>
+           </a>
         </div>
-        </div>
-        @endforeach
-        <div class="c-pagination">
-            {{ $products->links() }}
-        </div>
+    @endforeach
+</div>
+
+<div class="c-pagination">
+    {{ $products->links('vendor.pagination.simple-default') }}
 </div>
 @endsection

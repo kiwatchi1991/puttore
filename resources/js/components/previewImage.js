@@ -1,4 +1,4 @@
-let $dropArea = $('.c-area__drop');
+let $dropArea = $('.js-area__drop');
 let $fileInput = $('.c-input__file');
 let $deletebtn = $('.c-delete__file')
 $dropArea.on('dragover', function(e){

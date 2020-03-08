@@ -19,6 +19,13 @@
     margin: 32px auto 0;
     color: $dark;
   }
+  &__img{
+    background: white;
+    width: 280px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 15px;
+  }
 }
 
 //ページング件数表示
@@ -113,6 +120,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 15px;
+
 }
 
 .c-image{
@@ -122,10 +130,21 @@
 
 .c-tag{
   font-size: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 3px 10px;
-  margin-left: 5px;
+  margin-left: 10px;
   margin-bottom: 10px;
+  &--category{
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+  &--difficulty{
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+
   &.html{
     background: $html;
   }
@@ -173,49 +192,146 @@
       margin-top: 20px;
   }
 }
-// .c-contents__price{
-//   margin-top: 20px;
-// }
-// .c-contents__detail{
-//     margin-top: 20px;
-// }
 
-.c-lesson__number{
+
+.c-lesson{
+
+  &__number{
     text-align: left;
-}
-
-.c-lesson__block{
+  }
+  
+  &__block{
     margin-top: 30px;
     &--preview{
-        width: 100%;
-        border: 1px solid #333;
-        height: 200px;
+      width: 100%;
+      border: 1px solid #333;
+      height: 200px;
     }
-}
+  }
 
-
-.c-lesson__header{
+  
+  &__header{
     display: flex;
-}
-
-.c-lesson__lesson{
+  }
+  
+  &__lesson{
     display: none;
     height: 250px;
     text-align: left;
     &--preview{
-        padding: 24px 16px;
-        height: auto;
+      padding: 24px 16px;
+      height: auto;
     }
     &.active{
-        display: block;
+      display: block;
     }
-
-
-.c-productShow__price{
-    margin-top: 16px;
-  &.is-inactive{
-    text-decoration:line-through;
+    
   }
+}
+
+.c-productShow{
+  margin-bottom: 100px; //あとで消す
+  background: $bg;
+  padding: 20px;
+  &__price{
+    margin-top: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    color: $dark;
+
+    &.is-inactive{
+      text-decoration:line-through;
+    }
+  }
+  
+  &__title{
+    margin-top: 16px;
+    font-size: 20px; 
+    line-height: 1.2;
+  }
+
+  &__detail{
+    margin-top: 16px;
+    line-height: 1.2;
+    font-size: 12px;
+  }
+  &__user{
+    display: flex;
+  }
+ &__userimg{
+   img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+   }
+ }
+  &__username{
+    margin-left: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
+  &__updated{
+    margin-top: 3px;
+    font-size: 10px;
+  }
+  &__like{
+    margin: 8px auto 0;
+    z-index: 3;
+    background: $dark;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    box-sizing: border-box;
+  }
+  &__buynow{
+    margin: 8px auto 0;
+    z-index: 3;
+    background: orange;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    box-sizing: border-box;
+    &#payjp_checkout_box input[type=button]{
+      background-image: none !important;
+      background: $bg !important;
+    }
+  }
+  &__curriculum{
+    margin-top: 32px;
+    &__head{
+      color: $dark;
+    }
+  }
+
+  &__lessons{
+    margin-top: 32px;
+  }
+  &__lesson{
+    margin-top: 24px;
+    &__number{
+      
+    }
+    &__title{
+      margin-top: 12px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+  }
+  &__curriculumBlock{
+    margin-top: 32px;
+  }
+
+}
+
+//支払いボタンのスタイル上書き
+#payjp_checkout_box input[type=button]{
+  background-image: none !important;
+  background: orange !important;
+  border: none !important;
+  padding: 0 !important;
 }
 
 .c-product__input-area{
@@ -243,29 +359,6 @@
     text-align: right;
 }
 
-.c-productShow__title{
-    margin-top: 16px;
-}
-
-.c-productShow__detail{
-    margin-top: 16px;
-}
-
-.c-productShow__username{
-    margin-top: 16px;
-}
-.c-productShow__updated{
-    margin-top: 16px;
-}
-
-.c-productShow__curriculumBlock{
-    margin-top: 32px;
-}
-
-.c-productShow__curriculum{
-    border: 1px solid #333;
-    margin-top: 32px;
-}
 
 //ページネーションはDOM自動生成なので、自動で付与されたclass名にスタイルをあてる
 .c-pagination{
@@ -286,16 +379,35 @@
     .page-link{
         text-decoration: none;
     }
-
+    &__prev{
+      &--angle{
+        font-size: 25px;
+        color: $dark;
+      }
+      &.inactive{
+        color: $easy;
+      }
+    }
+    &__next{
+      &--angle{
+        color: $dark;
+        font-size: 25px;
+      }
+      &.inactive{
+        color: $easy;
+      }
+    }
+    &__count{
+      margin: 0 25px;
+      line-height: initial;
+    }
 
 }
 .c-ajaxLike__icon{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    z-index: 3;
+    color: white;
+    font-size: 12px;
     &.is-active{
         color:red;
-
     }
 }
 
@@ -305,8 +417,9 @@
     }
 }
 .c-ajaxCart__icon{
+    color: white;
+    font-size: 12px;
     &.is-inCart{
         color: red;
     }
-}
 }

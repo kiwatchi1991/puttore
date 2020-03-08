@@ -477,7 +477,7 @@ class ProductsController extends Controller
         // ユーザー情報の取得
         $user = DB::table('users')
         ->join('products', 'users.id', '=', 'products.user_id')
-        ->select('users.id', 'users.account_name')
+        ->select('users.id', 'users.account_name','users.pic')
         ->where('products.id',$id)
         ->get();
 
