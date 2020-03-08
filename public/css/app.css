@@ -684,6 +684,18 @@ a:visited {
   display: block;
 }
 
+.c-productNew {
+  background: #E5F6F2;
+  padding: 30px;
+}
+
+.c-productNew__input-area {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .c-productShow {
   margin-bottom: 100px;
   background: #E5F6F2;

@@ -229,6 +229,17 @@
   }
 }
 
+.c-productNew{
+  background: $bg;
+  padding: 30px;
+    &__input-area{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      border-radius: 5px;
+    }
+}
+
 .c-productShow{
   margin-bottom: 100px; //あとで消す
   background: $bg;

@@ -107,12 +107,17 @@ class ProfilesController extends Controller
         $user->fill($request->all())->save();
 
         $image = Image::make(file_get_contents($request->pic))->crop(50, 50, 0, 0);
+        Log::debug('$user　前');
+        Log::debug($user);
         $user->pic = $image; //追加
+        Log::debug('$user　後');
+        Log::debug($user);
         $user->save(); //追加
 
 
-        // ->crop(100, 100, 0, 0)
-        $path = $request->pic->store('public/profile_images');
+        // $path = $request->pic->store('public/profile_images'); //もともとこっち
+        // $path = $image->store('public/profile_images');//もともとこっち
+        $path = $image->store('public/profile_images');
 
 
         Log::debug('$request->pic');
