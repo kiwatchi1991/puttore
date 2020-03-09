@@ -1,15 +1,15 @@
-const marked = require('marked');
+// const marked = require('marked');
 
-let markdownpreview = function (btn) {
-  // var html = marked($(this).val());
-  var html = marked(btn.val());
-  $('#preview').html(html);
-};
+// let markdownpreview = function (btn) {
+//   // var html = marked($(this).val());
+//   var html = marked(btn.val());
+//   $('.js-lesson__block--preview').html(html);
+// };
 
-$('#lesson').on('keyup', function(){
-  let btn = $(this);
-  markdownpreview(btn);
-});
+// $('.js-marked__textarea').on('keyup', function(){
+//   let btn = $(this);
+//   markdownpreview(btn);
+// });
 
 
 
