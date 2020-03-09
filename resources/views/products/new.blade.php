@@ -19,44 +19,54 @@
             @enderror
         </div>
 
-        {{-- 言語選択 --}}
-        <div class="c-searchBox__categories">
-            <p class="c-searchBox__title">1. 言語を選んでね</p>
-            @foreach ($category as $categories)
-            <input id="c-{{ $categories->id }}" type="checkbox"
-                class="c-searchBox__checkbox @error('lang') is-invalid @enderror" name="lang[]"
-                value="{{ $categories->id }}" autocomplete="lang" autofocus>
-            <label class="c-searchBox__label" for="c-{{ $categories->id }}">
-                {{ $categories->name }}
-            </label>
-            @endforeach
+        <div class="c-productNew__tagbox">
+
+            {{-- 言語選択 --}}
+            <div class="c-productNew__categories">
+                <p class="c-productNew__title">1. 言語を選んでね</p>
+                @foreach ($category as $categories)
+                <input id="c-{{ $categories->id }}" type="checkbox"
+                    class="c-productNew__checkbox @error('lang') is-invalid @enderror" name="lang[]"
+                    value="{{ $categories->id }}" autocomplete="lang" autofocus>
+                <label class="c-productNew__label" for="c-{{ $categories->id }}">
+                    {{ $categories->name }}
+                </label>
+                @endforeach
+            </div>
+
+            {{-- 難易度選択 --}}
+            <div class="c-productNew__difficults">
+                <p class="c-productNew__title">2. 難易度を選んでね</p>
+                @foreach ($difficult as $difficults)
+                <input id="d-{{ $difficults->id }}" type="checkbox"
+                    class="c-productNew__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
+                    value="{{ $difficults->id }}" autocomplete="difficult" autofocus>
+                <label class="c-productNew__label" for="d-{{ $difficults->id }}">
+                    {{ $difficults->name }}
+                </label>
+                @endforeach
+            </div>
+
+            @error('name')
+            <span class="" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+
         </div>
-
-        {{-- 難易度選択 --}}
-        <div class="c-searchBox__difficults">
-            <p class="c-searchBox__title">2. 難易度を選んでね</p>
-            @foreach ($difficult as $difficults)
-            <input id="d-{{ $difficults->id }}" type="checkbox"
-                class="c-searchBox__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
-                value="{{ $difficults->id }}" autocomplete="difficult" autofocus>
-            <label class="c-searchBox__label" for="d-{{ $difficults->id }}">
-                {{ $difficults->name }}
-            </label>
-            @endforeach
-        </div>
-
-        @error('name')
-        <span class="" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-
 
         {{-- 説明 --}}
-        <div class="p-input__detail">
-            <input id="detail" type="text" class="c-productNew__input-area @error('detail') is-invalid @enderror"
-                name="detail" value="{{ old('detail') }}" autocomplete="detail" placeholder="説明（無料で見れる部分）">
+        <div class="c-productNew__detail">
+            {{-- <input id="detail" type="text" class="c-productNew__input-area @error('detail') is-invalid @enderror"
+                name="detail" value="{{ old('detail') }}" autocomplete="detail" placeholder="説明（無料で見れる部分）"> --}}
 
+            <textarea id="detail" type="text"
+                class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
+                data-input="detail" name="" value="{{ old('detail') }}" rows="7">説明文
+            </textarea>
+            <div class="c-productNew__modal">
+                書き方のヒントは<span>こちら</span>
+            </div>
             @error('detail')
             <span class="" role="alert">
                 <strong>{{ $message }}</strong>
@@ -66,11 +76,11 @@
 
         {{-- レッスン内容 --}}
 
-        <div class="p-lesson" id="js-lesson__section">
-            <div class="c-lesson__block js-add__target">
+        <div class="c-productNew__lessons" id="js-lesson__section">
+            <div class="c-productNew__lesson__inner js-add__target">
                 {{-- レッスン１　Number --}}
                 <div class="">
-                    <div class="c-lesson__number">レッスン<input id="number" type="number"
+                    <div class="c-productNew__number">レッスン<input id="number" type="number"
                             class="c-productNew__input-area--number @error('number') is-invalid @enderror"
                             data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
 
@@ -94,31 +104,44 @@
                 </div>
 
                 {{-- レッスン１ lesson --}}
-                <div class="p-lesson__lesson">
+                <div class="c-productNew__lesson__block js-productNew__lesson">
 
-                    <div class="c-lesson__header">
-                        <div class="js-toggleTab js-toggleTab__input active" data-status="input">本文</div>
-                        <div class="js-toggleTab js-toggleTab__preview" data-status="preview">ぷれびゅー</div>
+                    <div class="c-productNew__lesson__header">
+                        <p class="c-productNew__lesson__header__title">本文</p>
+                        {{-- 編集アイコン --}}
+                        <div class="c-productNew__lesson__header__toggleIcon js-toggleTab js-toggleTab__input"
+                            data-status="input">
+                            <i class="far fa-edit"></i>
+                        </div>
+                        {{-- プレビューアイコン --}}
+                        <div class="c-productNew__lesson__header__toggleIcon js-toggleTab js-toggleTab__preview active"
+                            data-status="preview">
+                            <i class="far fa-eye"></i>
+                        </div>
                         <div class="js-insertImg" data-status="preview">
                             <form method="POST" action="{{ route('products.imgupload') }}"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <input class="js-uploadimg" type="file" name="lesson_pic">
+                                <label for="uploadimg" class="c-productNew__header__label">
+                                    <i class="far fa-image"></i>
+                                    <input id="uploadimg" class="c-productNew__lesson__header__input js-uploadimg"
+                                        type="file" name="lesson_pic">
+                                </label>
                             </form>
-                            画像を挿入
                         </div>
                     </div>
 
-                    <div class="c-lesson__lesson js-lesson__block js-lesson__block--input active">
+                    <div
+                        class="c-productNew__lesson c-productNew__lesson--input js-lesson__block js-lesson__block--input active">
                         <textarea id="lesson" type="text"
-                            class="c-productNew__input-area c-productNew__input-area--textarea @error('lesson') is-invalid @enderror"
+                            class="c-productNew__lesson--textarea @error('lesson') is-invalid @enderror"
                             data-input="lessson" name="" value="{{ old('lesson') }}" autocomplete="lesson"
                             placeholder="lesson１" 　>{{ old('lesson') }}
-                                        </textarea>
-
+                        </textarea>
                     </div>
+
                     <div id="preview"
-                        class="c-productNew__input-area c-lesson__lesson c-lesson__lesson--preview js-lesson__block js-lesson__block--preview ">
+                        class="c-productNew__lesson c-productNew__lesson--preview js-lesson__block js-lesson__block--preview ">
                     </div>
 
                     @error('lesson')

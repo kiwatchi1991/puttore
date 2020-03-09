@@ -194,40 +194,40 @@
 }
 
 
-.c-lesson{
+// .c-lesson{
+//   &__number{
+//     text-align: left;
+//   }
+  
+//   &__block{
+//     margin-top: 30px;
+//     &--preview{
+//       width: 100%;
+//       border: 1px solid #333;
+//       height: 200px;
+//     }
+//   }
 
-  &__number{
-    text-align: left;
-  }
   
-  &__block{
-    margin-top: 30px;
-    &--preview{
-      width: 100%;
-      border: 1px solid #333;
-      height: 200px;
-    }
-  }
-
+//   &__header{
+//     display: flex;
+//     background: #fff;
+//   }
   
-  &__header{
-    display: flex;
-  }
-  
-  &__lesson{
-    display: none;
-    height: 250px;
-    text-align: left;
-    &--preview{
-      padding: 24px 16px;
-      height: auto;
-    }
-    &.active{
-      display: block;
-    }
+//   &__lesson{
+//     display: none;
+//     height: 250px;
+//     text-align: left;
+//     &--preview{
+//       padding: 24px 16px;
+//       height: auto;
+//     }
+//     &.active{
+//       display: block;
+//     }
     
-  }
-}
+//   }
+// }
 
 .c-productNew{
   background: $bg;
@@ -237,7 +237,135 @@
       box-sizing: border-box;
       padding: 10px;
       border-radius: 5px;
+      border: none;
+      margin-top: 16px;
+       &--detail{
+        min-height: 250px;
+        max-height: 500px;
+      }
     }
+    &__tagbox{
+      background: white;
+      margin-top: 32px;
+      padding: 16px 16px 16px 0;
+      border-radius: 5px;
+    }
+    &__categories{
+        margin-top: 8px;
+    }
+    &__difficults{
+      margin-top: 32px;
+    }
+    &__title{
+      font-size: 12px;
+      margin-left: 16px;
+    }
+    &__detail{
+      margin-top: 24px;
+    }
+    &__modal{
+      font-size: 10px;
+      margin: 5px 0 0 3px;
+    }
+    &__checkbox{
+      display: none;
+    }
+    &__label{
+        padding-left: 20px;
+        position:relative;
+        margin-left: 16px;
+        margin-top: 16px;
+        line-height: 17px;
+        display: inline-block;
+        font-size: 12px;
+        &::before{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 13px;
+            height: 13px;
+            border-radius: 4px;
+            background: #ffffff;
+            border: 1px solid #333;
+        }
+    }
+    &__checkbox:checked + .c-productNew__label{
+        &::before{
+          background: $dark;
+          border: none;
+          width: 14px;
+          height: 14px;
+        }
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 2px;
+            left: 5px;
+            width: 4px;
+            height: 8px;
+            transform: rotate(45deg);
+            border-bottom: 1px solid #fff;
+            border-right: 1px solid #fff;
+        }
+    }
+    &__lessons{
+      margin-top: 56px;
+    }
+    &__lesson{
+      display: none;
+      height: 250px;
+      text-align: left;
+        &__block{
+          margin-top: 16px;
+        }
+        &__inner{
+          margin-top: 40px;
+        }
+        &__header{
+          display: flex;
+          justify-content: flex-end;
+          background: #fff;
+          padding-right: 15px;
+          padding-top: 8px;
+          font-size: 24px;
+          &__title{
+            width: 100%;
+            padding-left: 16px;
+            padding-top: 5px;
+            font-size: 16px;
+          }
+          &__input{
+            display: none;
+          }
+          &__toggleIcon{
+            display: none;
+            margin-right: 16px;
+            &.active{
+              display: block;
+           }
+        }
+    }
+    &.active{
+      display: block;
+    }
+    &--textarea{
+      min-height: 250px;
+      width: 100%;
+      box-sizing: border-box;
+      max-height: 500px;
+    }
+    &--preview{
+      padding: 24px 16px;
+      min-height: 250px;
+      background: #fff;
+      max-height: 700px;
+    }
+    
+  }
+
 }
 
 .c-productShow{
@@ -306,8 +434,8 @@
     border-radius: 7px;
     box-sizing: border-box;
     &#payjp_checkout_box input[type=button]{
-      background-image: none !important;
       background: $bg !important;
+      background-image: none !important;
     }
   }
   &__curriculum{

@@ -60,19 +60,19 @@ let load = function () {
 window.onload = load();
 
 
+//タブ切り替え処理
 let $head = $('.js-toggleTab');
 let $block = $('.js-lesson__block');
-//タブ切り替え処理
 var toggleTab = function (e) {
 
     console.log('e');
     console.log(e);
     console.log($(e));
     
-    let $parent1 = $(e).parents('.p-lesson__lesson');//logよう
-    let $parent2 = $(e).parents('.p-lesson__lesson');//logよう
-    let $areaInput = $(e).parents('.p-lesson__lesson').find('.js-lesson__block--input');
-    let $areaPreview = $(e).parents('.p-lesson__lesson').find('.js-lesson__block--preview');
+    let $parent1 = $(e).parents('.js-productNew__lesson');//logよう
+    let $parent2 = $(e).parents('.js-productNew__lesson');//logよう
+    let $areaInput = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--input');
+    let $areaPreview = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--preview');
     
     console.log('parent1');
     console.log($parent1);
@@ -88,16 +88,20 @@ var toggleTab = function (e) {
     $block.removeClass('active');
     $areaInput.removeClass('active');
     $areaPreview.removeClass('active');
+    $('.js-toggleTab__input').removeClass('active');
+    $('.js-toggleTab__preview').removeClass('active');
     
     console.log('target');
     console.log(target);
 
     switch (target) {
         case 'input':
+        $('.js-toggleTab__preview').addClass('active');
         $areaInput.addClass('active');
         break;
-    
+        
         case 'preview':
+        $('.js-toggleTab__input').addClass('active');
         $areaPreview.addClass('active');
         break;
      }

@@ -51477,8 +51477,6 @@ __webpack_require__(/*! ./components/ajaxFollow */ "./resources/js/components/aj
 
 __webpack_require__(/*! ./components/ajaxCart */ "./resources/js/components/ajaxCart.js");
 
-__webpack_require__(/*! ./components/toggle-lessonTab */ "./resources/js/components/toggle-lessonTab.js");
-
 __webpack_require__(/*! ./components/date-picker */ "./resources/js/components/date-picker.js");
 
 __webpack_require__(/*! ./components/slick */ "./resources/js/components/slick.js"); // const Sample = require('vue');
@@ -51683,20 +51681,21 @@ var load = function load() {
 }; //初期読み込み時、レッスン付与
 
 
-window.onload = load();
+window.onload = load(); //タブ切り替え処理
+
 var $head = $('.js-toggleTab');
-var $block = $('.js-lesson__block'); //タブ切り替え処理
+var $block = $('.js-lesson__block');
 
 var toggleTab = function toggleTab(e) {
   console.log('e');
   console.log(e);
   console.log($(e));
-  var $parent1 = $(e).parents('.p-lesson__lesson'); //logよう
+  var $parent1 = $(e).parents('.js-productNew__lesson'); //logよう
 
-  var $parent2 = $(e).parents('.p-lesson__lesson'); //logよう
+  var $parent2 = $(e).parents('.js-productNew__lesson'); //logよう
 
-  var $areaInput = $(e).parents('.p-lesson__lesson').find('.js-lesson__block--input');
-  var $areaPreview = $(e).parents('.p-lesson__lesson').find('.js-lesson__block--preview');
+  var $areaInput = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--input');
+  var $areaPreview = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--preview');
   console.log('parent1');
   console.log($parent1);
   console.log('parent2');
@@ -51710,15 +51709,19 @@ var toggleTab = function toggleTab(e) {
   $block.removeClass('active');
   $areaInput.removeClass('active');
   $areaPreview.removeClass('active');
+  $('.js-toggleTab__input').removeClass('active');
+  $('.js-toggleTab__preview').removeClass('active');
   console.log('target');
   console.log(target);
 
   switch (target) {
     case 'input':
+      $('.js-toggleTab__preview').addClass('active');
       $areaInput.addClass('active');
       break;
 
     case 'preview':
+      $('.js-toggleTab__input').addClass('active');
       $areaPreview.addClass('active');
       break;
   }
@@ -52138,17 +52141,6 @@ $(document).ready(function () {
 
   });
 });
-
-/***/ }),
-
-/***/ "./resources/js/components/toggle-lessonTab.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/components/toggle-lessonTab.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 
