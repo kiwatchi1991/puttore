@@ -813,6 +813,15 @@ a:visited {
   max-height: 700px;
 }
 
+.c-productNew__image__input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
 .c-productShow {
   margin-bottom: 100px;
   background: #E5F6F2;

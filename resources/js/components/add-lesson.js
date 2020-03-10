@@ -1,33 +1,27 @@
 //レッスン削除ボタンを押したとき
 let $deleteIcon = $('.js-deleteIcon');
-$deleteIcon.on('click', function () {
-    console.log('delteイベントクリック！') 
-    
+
+let deleteLesson = function (e) {
+
     //削除対象のDOM
-    let $deleteTarget = $(this).parents('.js-add__target');
+    let $deleteTarget = $(e).parents('.js-add__target');
+    //レッスンの数
+    let lessonsCount = $('.js-add__target').length;
     
-    let checkFirstLessonBlock = $deleteTarget.count() == 1;
-    if (checkFirstLessonBlock) {
+    if (lessonsCount === 1) {
         alert('現在レッスンは一つなので削除することはできません')
     } else {
-        
-        
         let confirm_result = window.confirm('レッスンを削除します。元に戻せなくなりますが、本当によろしいですか？');
         if (confirm_result) {
-            
             //レッスンの削除
-            console.log('$deleteTarget') 
-            console.log($deleteTarget) 
             $deleteTarget.remove();
         } else {
             //処理をしない
         }
     }
-    
 
     load();
-
-});
+}
 
 //レッスンの追加ボタンを押した時
 let $button = $('.c-addLesson__button');
@@ -45,14 +39,21 @@ $button.on('click', function (e) {
 
     //load()でnumberの振り直し
     load();
-
     setToggleEvent();
-
     setMarkedEvent();
-    
+    setDeleteLessonEvent();
 });
 
-
+//クリックでレッスン削除イベントを再付与
+let setDeleteLessonEvent = function () {
+    let deleteBtn = document.getElementsByClassName('js-deleteIcon');
+    for (let i = 0; i < deleteBtn.length; i++){
+        deleteBtn[i].addEventListener('click', function () {
+            let btn = $(this);
+            deleteLesson(btn);
+        })
+    }
+}
 
 //クリックでタブ切り替えするイベントを再付与
 let setToggleEvent = function () {
@@ -90,11 +91,17 @@ var markdownpreview = function (option) {
     $(option).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
 };
 
+//初期状態でマークダウンプレビューイベントを付与
 $('.js-marked__textarea').on('keyup', function(){
   let btn = $(this);
   markdownpreview(btn);
 });
 
+//初期表示でレッスン削除イベント付与
+$('.js-deleteIcon').on('click', function () {
+    let btn = $(this);
+    deleteLesson(btn);
+})
 
 //初期読み込み時、レッスンにnumber付与
 let load = function () {

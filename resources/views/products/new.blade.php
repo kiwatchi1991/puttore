@@ -170,46 +170,41 @@
         </div>
 
         {{-- 画像 --}}
-        <div class="c-image__preview">
+        <div class="c-productNew__images">
             <ul>
                 <li>
                     <p class="js-delete__file">消す</p>
-                    <label class="js-area__drop">
-                        <input class="js-input__file" type="file" name="pic1">
-                        <img src="" alt="" class="c-prev__img js-prev__img">
-                        ドラッグ＆ドロップ
+                    <label class="c-productNew__image__area js-area__drop">
+                        <input class="c-productNew__image__input js-input__file" type="file" name="pic1">
+                        <img src="/storage/images/noimage.png" alt="" class="c-prev__img js-prev__img">
                     </label>
                 </li>
                 <li>
                     <p class="js-delete__file">消す</p>
-                    <label class="js-area__drop">
-                        <input class="js-input__file" type="file" name="pic2">
+                    <label class="c-productNew__image__area js-area__drop">
+                        <input class="c-productNew__image__input js-input__file" type="file" name="pic2">
                         <img src="" alt="" class="c-prev__img js-prev__img">
-                        ドラッグ＆ドロップ
                     </label>
                 </li>
                 <li>
                     <p class="js-delete__file">消す</p>
-                    <label class="js-area__drop">
-                        <input class="js-input__file" type="file" name="pic3">
+                    <label class="c-productNew__image__area js-area__drop">
+                        <input class="c-productNew__image__input js-input__file" type="file" name="pic3">
                         <img src="" alt="" class="c-prev__img js-prev__img">
-                        ドラッグ＆ドロップ
                     </label>
                 </li>
                 <li>
                     <p class="js-delete__file">消す</p>
-                    <label class="js-area__drop">
-                        <input class="js-input__file" type="file" name="pic4">
+                    <label class="c-productNew__image__area js-area__drop">
+                        <input class="c-productNew__image__input js-input__file" type="file" name="pic4">
                         <img src="" alt="" class="c-prev__img js-prev__img">
-                        ドラッグ＆ドロップ
                     </label>
                 </li>
                 <li>
                     <p class="js-delete__file">消す</p>
-                    <label class="js-area__drop">
-                        <input class="js-input__file" type="file" name="pic5">
+                    <label class="c-productNew__image__area js-area__drop">
+                        <input class="c-productNew__image__input js-input__file" type="file" name="pic5">
                         <img src="" alt="" class="c-prev__img js-prev__img">
-                        ドラッグ＆ドロップ
                     </label>
                 </li>
             </ul>

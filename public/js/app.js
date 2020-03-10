@@ -1899,78 +1899,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MarkdownPanel.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MarkdownPanel.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
-/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  },
-  computed: {
-    convertMarkdown: function convertMarkdown() {
-      // index.htmlでv-html="convertMarkdown"が付与されている要素（エレメント）とバイディングされている。
-      // 入力されたデータをHTMLに変換して表示させる。
-      return marked__WEBPACK_IMPORTED_MODULE_0___default()(this.input);
-    }
-  },
-  methods: {},
-  data: function data() {
-    return {
-      input: '' // index.htmlでv-model="input"が付与されている要素と双方向データバインディングされている。
-
-    };
-  }
-});
-$('#edit').keyup(function () {
-  var html = marked__WEBPACK_IMPORTED_MODULE_0___default()($(this).val());
-  $('#preview').html(html);
-}); // $('#form').on('submit', function(e){
-//      $('input[name="lessons[0][lesson]"]').val(e.target.value);
-//     e.preventDefault();
-//     // return false;
-//     $.post( 'https://httpbin.org/post', $('#form').serialize() )
-// .done(function( data ) {
-//     console.log( data.form );
-// })
-
-/***/ }),
-
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -39232,167 +39160,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MarkdownPanel.vue?vue&type=template&id=0a58790c&":
-/*!****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MarkdownPanel.vue?vue&type=template&id=0a58790c& ***!
-  \****************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.input,
-          expression: "input"
-        }
-      ],
-      staticClass: "textarea",
-      attrs: {
-        id: "lesson",
-        name: "lessons[0][lesson]",
-        type: "text",
-        placeholder: "レッスン１"
-      },
-      domProps: { value: _vm.input },
-      on: {
-        input: [
-          function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.input = $event.target.value
-          },
-          _vm.inputLesson
-        ]
-      }
-    })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/vue/dist/vue.common.dev.js":
 /*!*************************************************!*\
   !*** ./node_modules/vue/dist/vue.common.dev.js ***!
@@ -51559,67 +51326,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   !*** ./resources/js/components/MarkdownPanel.vue ***!
   \***************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _MarkdownPanel_vue_vue_type_template_id_0a58790c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MarkdownPanel.vue?vue&type=template&id=0a58790c& */ "./resources/js/components/MarkdownPanel.vue?vue&type=template&id=0a58790c&");
-/* harmony import */ var _MarkdownPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MarkdownPanel.vue?vue&type=script&lang=js& */ "./resources/js/components/MarkdownPanel.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _MarkdownPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _MarkdownPanel_vue_vue_type_template_id_0a58790c___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _MarkdownPanel_vue_vue_type_template_id_0a58790c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/MarkdownPanel.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/MarkdownPanel.vue?vue&type=script&lang=js&":
-/*!****************************************************************************!*\
-  !*** ./resources/js/components/MarkdownPanel.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MarkdownPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MarkdownPanel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MarkdownPanel.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MarkdownPanel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/MarkdownPanel.vue?vue&type=template&id=0a58790c&":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/MarkdownPanel.vue?vue&type=template&id=0a58790c& ***!
-  \**********************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MarkdownPanel_vue_vue_type_template_id_0a58790c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MarkdownPanel.vue?vue&type=template&id=0a58790c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MarkdownPanel.vue?vue&type=template&id=0a58790c&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MarkdownPanel_vue_vue_type_template_id_0a58790c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MarkdownPanel_vue_vue_type_template_id_0a58790c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
+throw new Error("Module build failed (from ./node_modules/eslint-loader/dist/cjs.js):\nError: ENOENT: no such file or directory, open '/Applications/MAMP/htdocs/JISAKU/resources/js/components/MarkdownPanel.vue'");
 
 /***/ }),
 
@@ -51634,28 +51343,28 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 //レッスン削除ボタンを押したとき
 var $deleteIcon = $('.js-deleteIcon');
-$deleteIcon.on('click', function () {
-  console.log('delteイベントクリック！'); //削除対象のDOM
 
-  var $deleteTarget = $(this).parents('.js-add__target');
-  var checkFirstLessonBlock = $deleteTarget.count() == 1;
+var deleteLesson = function deleteLesson(e) {
+  //削除対象のDOM
+  var $deleteTarget = $(e).parents('.js-add__target'); //レッスンの数
 
-  if (checkFirstLessonBlock) {
+  var lessonsCount = $('.js-add__target').length;
+
+  if (lessonsCount === 1) {
     alert('現在レッスンは一つなので削除することはできません');
   } else {
     var confirm_result = window.confirm('レッスンを削除します。元に戻せなくなりますが、本当によろしいですか？');
 
     if (confirm_result) {
       //レッスンの削除
-      console.log('$deleteTarget');
-      console.log($deleteTarget);
       $deleteTarget.remove();
     } else {//処理をしない
     }
   }
 
   load();
-}); //レッスンの追加ボタンを押した時
+}; //レッスンの追加ボタンを押した時
+
 
 var $button = $('.c-addLesson__button');
 $button.on('click', function (e) {
@@ -51671,7 +51380,20 @@ $button.on('click', function (e) {
   load();
   setToggleEvent();
   setMarkedEvent();
-}); //クリックでタブ切り替えするイベントを再付与
+  setDeleteLessonEvent();
+}); //クリックでレッスン削除イベントを再付与
+
+var setDeleteLessonEvent = function setDeleteLessonEvent() {
+  var deleteBtn = document.getElementsByClassName('js-deleteIcon');
+
+  for (var i = 0; i < deleteBtn.length; i++) {
+    deleteBtn[i].addEventListener('click', function () {
+      var btn = $(this);
+      deleteLesson(btn);
+    });
+  }
+}; //クリックでタブ切り替えするイベントを再付与
+
 
 var setToggleEvent = function setToggleEvent() {
   var dom = document.getElementsByClassName('js-toggleTab');
@@ -51709,11 +51431,17 @@ var markdownpreview = function markdownpreview(option) {
   console.log(option);
   console.log(html);
   $(option).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
-};
+}; //初期状態でマークダウンプレビューイベントを付与
+
 
 $('.js-marked__textarea').on('keyup', function () {
   var btn = $(this);
   markdownpreview(btn);
+}); //初期表示でレッスン削除イベント付与
+
+$('.js-deleteIcon').on('click', function () {
+  var btn = $(this);
+  deleteLesson(btn);
 }); //初期読み込み時、レッスンにnumber付与
 
 var load = function load() {
