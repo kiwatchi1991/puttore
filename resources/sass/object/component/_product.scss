@@ -256,6 +256,15 @@
     &__difficults{
       margin-top: 32px;
     }
+    &__topWrapper{
+      display: flex;
+      justify-content: space-between;
+      color: $dark;
+    }
+    &__deleteLesson{
+      font-size: 26px;
+      margin-right: 12px;
+    }
     &__title{
       font-size: 12px;
       margin-left: 16px;
@@ -302,13 +311,13 @@
             content: "";
             display: block;
             position: absolute;
-            top: 2px;
-            left: 5px;
+            top: 1px;
+            left: 4px;
             width: 4px;
             height: 8px;
             transform: rotate(45deg);
-            border-bottom: 1px solid #fff;
-            border-right: 1px solid #fff;
+            border-bottom: 2px solid #fff;
+            border-right: 2px solid #fff;
         }
     }
     &__lessons{
@@ -343,10 +352,14 @@
           &__toggleIcon{
             display: none;
             margin-right: 16px;
+            color: $dark;
             &.active{
               display: block;
-           }
-        }
+            }
+          }
+          &__imgIcon{
+            color: $dark;
+          }
     }
     &.active{
       display: block;
@@ -363,21 +376,76 @@
       background: #fff;
       max-height: 700px;
     }
+    &__addBtn{
+      text-align: center;
+      margin-top: 16px;
+      &__btn{
+        color: $dark;
+      }
+    }
+  }
+  &__skills{
+    margin-top: 32px;
+    &__title{
+      color: $dark;
+  
+    }
   }
   &__images{
-
+    margin-top: 32px;
+    &__half{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
   }
   &__image{
     &__area{
-      
+      width: 30%;
+      height: 100px;
+      background: #f6f5f4;
+      color: #ccc;
+      text-align: center;
+      line-height: 140px;
+      position: relative;
+      display: inline-block;
+      background-image:url('/storage/images/add_img.png');
+      background-position: center;
+      background-size: contain;
+      border-radius: 15px;
     }
     &__input{
-      width: 100%;
+      width: 30%;
       height: 100%;
       position: absolute;
       top: 0;
       left: 0;
       display: none;
+    }
+    &__img{
+      width: 100%;
+      max-height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 15px;
+    }
+  }
+  &__submit{
+  margin: 8px auto 0;
+  text-align: center;
+  width: 75%;
+  color: #ffffff;
+  background: orange;
+  padding: 10px;
+  border-radius: 10px;
+    &--draft{
+      margin-top: 32px;
+      background: $easy;
+    }
+    &__button{
+      color: #ffffff;
+      font-size: 14px;
     }
   }
 

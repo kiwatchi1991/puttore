@@ -60,7 +60,7 @@
 
             <textarea id="detail" type="text"
                 class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
-                data-input="detail" name="" value="{{ old('detail') }}" rows="7">説明文
+                data-input="detail" name="detail" value="{{ old('detail') }}" rows="7">説明文
             </textarea>
             <div class="c-productNew__modal">
                 書き方のヒントは<span>こちら</span>
@@ -77,11 +77,12 @@
         <div class="c-productNew__lessons" id="js-lesson__section">
             <div class="c-productNew__lesson__inner js-add__target">
                 {{-- レッスン１　Number --}}
-                <div class="">
-                    <div class="c-productNew__number">レッスン<input id="number" type="number"
+                <div class="c-productNew__topWrapper">
+                    <div class="c-productNew__number">LESSON <span id="lesson_num"></span>
+                        <input id="number" type="hidden"
                             class="c-productNew__input-area--number @error('number') is-invalid @enderror"
                             data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
-                    <div class="c-productNew__deleteLesson js-deleteIcon">削除する</div>
+                    <div class="c-productNew__deleteLesson js-deleteIcon"><i class="far fa-trash-alt"></i></div>
                     @error('number')
                     <span class="" role="alert">
                         <strong>{{ $message }}</strong>
@@ -116,7 +117,8 @@
                             data-status="preview">
                             <i class="far fa-eye"></i>
                         </div>
-                        <div class="js-insertImg" data-status="preview">
+                        {{-- 画像アイコン --}}
+                        <div class="c-productNew__lesson__header__imgIcon js-insertImg" data-status="preview">
 
                             <label for="uploadimg" class="c-productNew__header__label">
                                 <i class="far fa-image"></i>
@@ -129,7 +131,7 @@
 
                     <div
                         class="c-productNew__lesson c-productNew__lesson--input js-lesson__block js-lesson__block--input active">
-                        <textarea type="text"
+                        <textarea type="text" id="lesson"
                             class="c-productNew__lesson--textarea js-marked__textarea @error('lesson') is-invalid @enderror"
                             data-input="lessson" name="" value="{{ old('lesson') }}" autocomplete="lesson"
                             placeholder="lesson１" 　>{{ old('lesson') }}
@@ -149,8 +151,8 @@
 
             </div>
         </div>
-        <div>
-            <button class="c-addLesson__button"><i class="fas fa-plus-circle"></i>追加する</button>
+        <div class="c-productNew__lesson__addBtn">
+            <button class="c-productNew__lesson__addBtn__btn"><i class="fas fa-plus-circle"></i> LESSONを追加する</button>
         </div>
 
         {{-- 価格 --}}
@@ -169,48 +171,65 @@
             </div>
         </div>
 
+        {{-- 必要スキル --}}
+        <div class="c-productNew__skills">
+            <p class="c-productNew__skills__title">受講に必要なスキル</p>
+            <textarea id="skills" type="text"
+                class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
+                data-input="skills" name="skills" value="{{ old('skills') }}" rows="7">
+            </textarea>
+            @error('skills')
+            <span class="" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+
         {{-- 画像 --}}
         <div class="c-productNew__images">
-            <ul>
-                <li>
-                    <p class="js-delete__file">消す</p>
-                    <label class="c-productNew__image__area js-area__drop">
-                        <input class="c-productNew__image__input js-input__file" type="file" name="pic1">
-                        <img src="/storage/images/noimage.png" alt="" class="c-prev__img js-prev__img">
-                    </label>
-                </li>
-                <li>
-                    <p class="js-delete__file">消す</p>
-                    <label class="c-productNew__image__area js-area__drop">
-                        <input class="c-productNew__image__input js-input__file" type="file" name="pic2">
-                        <img src="" alt="" class="c-prev__img js-prev__img">
-                    </label>
-                </li>
-                <li>
-                    <p class="js-delete__file">消す</p>
-                    <label class="c-productNew__image__area js-area__drop">
-                        <input class="c-productNew__image__input js-input__file" type="file" name="pic3">
-                        <img src="" alt="" class="c-prev__img js-prev__img">
-                    </label>
-                </li>
-                <li>
-                    <p class="js-delete__file">消す</p>
-                    <label class="c-productNew__image__area js-area__drop">
-                        <input class="c-productNew__image__input js-input__file" type="file" name="pic4">
-                        <img src="" alt="" class="c-prev__img js-prev__img">
-                    </label>
-                </li>
-                <li>
-                    <p class="js-delete__file">消す</p>
-                    <label class="c-productNew__image__area js-area__drop">
-                        <input class="c-productNew__image__input js-input__file" type="file" name="pic5">
-                        <img src="" alt="" class="c-prev__img js-prev__img">
-                    </label>
-                </li>
-            </ul>
+            <div class="c-productNew__images__half">
+                {{-- 画像1 --}}
+                <label class="c-productNew__image__area js-area__drop">
+                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic1">
+                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                </label>
+                {{-- 画像2 --}}
+                <label class="c-productNew__image__area js-area__drop">
+                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic2">
+                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                </label>
+                {{-- 画像3 --}}
+                <label class="c-productNew__image__area js-area__drop">
+                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic3">
+                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                </label>
+            </div>
+
+            <div class="c-productNew__images__half">
+                {{-- 画像4 --}}
+                <label class="c-productNew__image__area js-area__drop">
+                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic4">
+                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                </label>
+                {{--画像5 --}}
+                <label class="c-productNew__image__area js-area__drop">
+                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic5">
+                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                </label>
+                {{--画像6 --}}
+                <label class="c-productNew__image__area js-area__drop">
+                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic6">
+                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                </label>
+            </div>
         </div>
-        <div class="c-submit__button">
-            <button type="submit" class="button">
+        <div class="c-productNew__submit c-productNew__submit--draft">
+            <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft">
+                下書き保存する
+            </button>
+        </div>
+        <div class="c-productNew__submit ">
+            <button type="submit" class="c-productNew__submit__button">
                 登録する
             </button>
         </div>

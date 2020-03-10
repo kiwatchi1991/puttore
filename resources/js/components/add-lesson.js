@@ -119,12 +119,14 @@ let load = function () {
     //コピー後のそれぞれのinput要素DOMを定義
     let $targetHidden = $('#hidden',this);
     let $targetNumber = $('#number',this);
+    let $targetLessonNum = $('#lesson_num',this);
     let $targetTitle = $('#title',this);
     let $targetLesson = $('#lesson',this);
 
     //カウントアップした数字をそれぞれのinputタグのname属性にセット
     $targetHidden.prop('name','lessons[' + count + '][id]');
     $targetNumber.prop('name','lessons[' + count + '][number]').val(count1);
+    $targetLessonNum.html(count1);
     $targetTitle.prop('name','lessons[' + count + '][title]');
     $targetLesson.prop('name','lessons[' + count + '][lesson]');
 
