@@ -5,8 +5,6 @@
 
     <form id="form" method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data">
         @csrf
-        {{-- 名前 --}}
-        {{-- <label for="name" class="">名前</label> --}}
 
         <div class="">
             <input id="name" type="text" class="c-productNew__input-area @error('name') is-invalid @enderror"
@@ -83,7 +81,7 @@
                     <div class="c-productNew__number">レッスン<input id="number" type="number"
                             class="c-productNew__input-area--number @error('number') is-invalid @enderror"
                             data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
-
+                    <div class="c-productNew__deleteLesson js-deleteIcon">削除する</div>
                     @error('number')
                     <span class="" role="alert">
                         <strong>{{ $message }}</strong>
@@ -119,22 +117,20 @@
                             <i class="far fa-eye"></i>
                         </div>
                         <div class="js-insertImg" data-status="preview">
-                            <form method="POST" action="{{ route('products.imgupload') }}"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <label for="uploadimg" class="c-productNew__header__label">
-                                    <i class="far fa-image"></i>
-                                    <input id="uploadimg" class="c-productNew__lesson__header__input js-uploadimg"
-                                        type="file" name="lesson_pic">
-                                </label>
-                            </form>
+
+                            <label for="uploadimg" class="c-productNew__header__label">
+                                <i class="far fa-image"></i>
+                                <input id="uploadimg" class="c-productNew__lesson__header__input js-uploadimg"
+                                    type="file" name="lesson_pic">
+                            </label>
+
                         </div>
                     </div>
 
                     <div
                         class="c-productNew__lesson c-productNew__lesson--input js-lesson__block js-lesson__block--input active">
-                        <textarea id="lesson" type="text"
-                            class="c-productNew__lesson--textarea @error('lesson') is-invalid @enderror"
+                        <textarea type="text"
+                            class="c-productNew__lesson--textarea js-marked__textarea @error('lesson') is-invalid @enderror"
                             data-input="lessson" name="" value="{{ old('lesson') }}" autocomplete="lesson"
                             placeholder="lesson１" 　>{{ old('lesson') }}
                         </textarea>
@@ -220,7 +216,7 @@
         </div>
         <div class="c-submit__button">
             <button type="submit" class="button">
-                {{ __('Register') }}
+                登録する
             </button>
         </div>
     </form>

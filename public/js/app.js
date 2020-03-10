@@ -51628,11 +51628,35 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/js/components/add-lesson.js ***!
   \***********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-//レッスンの追加ボタンを押した時
+//レッスン削除ボタンを押したとき
+var $deleteIcon = $('.js-deleteIcon');
+$deleteIcon.on('click', function () {
+  console.log('delteイベントクリック！'); //削除対象のDOM
+
+  var $deleteTarget = $(this).parents('.js-add__target');
+  var checkFirstLessonBlock = $deleteTarget.count() == 1;
+
+  if (checkFirstLessonBlock) {
+    alert('現在レッスンは一つなので削除することはできません');
+  } else {
+    var confirm_result = window.confirm('レッスンを削除します。元に戻せなくなりますが、本当によろしいですか？');
+
+    if (confirm_result) {
+      //レッスンの削除
+      console.log('$deleteTarget');
+      console.log($deleteTarget);
+      $deleteTarget.remove();
+    } else {//処理をしない
+    }
+  }
+
+  load();
+}); //レッスンの追加ボタンを押した時
+
 var $button = $('.c-addLesson__button');
 $button.on('click', function (e) {
   e.preventDefault(); //レッスンのコピー
@@ -51645,14 +51669,51 @@ $button.on('click', function (e) {
   $newCopyTaget.find('textarea').empty(); //load()でnumberの振り直し
 
   load();
+  setToggleEvent();
+  setMarkedEvent();
+}); //クリックでタブ切り替えするイベントを再付与
+
+var setToggleEvent = function setToggleEvent() {
   var dom = document.getElementsByClassName('js-toggleTab');
 
-  for (var i = 0; i < dom.length; i++) {
+  var _loop = function _loop(i) {
     dom[i].addEventListener('click', function () {
+      console.log(dom[i]);
       var btn = $(this);
       toggleTab(btn);
     });
+  };
+
+  for (var i = 0; i < dom.length; i++) {
+    _loop(i);
   }
+}; //マークダウンプレビューイベント再付与
+
+
+var setMarkedEvent = function setMarkedEvent() {
+  console.log('マークダウンいべんと再付与');
+  var $markedDom = document.getElementsByClassName('js-marked__textarea');
+
+  for (var i = 0; i < $markedDom.length; i++) {
+    $markedDom[i].addEventListener('keyup', function () {
+      var target = $(this);
+      markdownpreview(target);
+    });
+  }
+};
+
+var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
+
+var markdownpreview = function markdownpreview(option) {
+  var html = marked(option.val());
+  console.log(option);
+  console.log(html);
+  $(option).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
+};
+
+$('.js-marked__textarea').on('keyup', function () {
+  var btn = $(this);
+  markdownpreview(btn);
 }); //初期読み込み時、レッスンにnumber付与
 
 var load = function load() {
@@ -51684,44 +51745,39 @@ var load = function load() {
 window.onload = load(); //タブ切り替え処理
 
 var $head = $('.js-toggleTab');
-var $block = $('.js-lesson__block');
 
 var toggleTab = function toggleTab(e) {
   console.log('e');
-  console.log(e);
-  console.log($(e));
-  var $parent1 = $(e).parents('.js-productNew__lesson'); //logよう
+  console.log(e); // console.log($(e));
 
-  var $parent2 = $(e).parents('.js-productNew__lesson'); //logよう
+  var $parent1 = $(e).parents('.js-productNew__lesson'); //logよう
 
   var $areaInput = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--input');
   var $areaPreview = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--preview');
+  var $iconPreview = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__preview');
+  var $iconEdit = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__input');
   console.log('parent1');
   console.log($parent1);
-  console.log('parent2');
-  console.log($parent2);
   console.log('$areaInput');
   console.log($areaInput);
   console.log('$areaPreview');
   console.log($areaPreview);
   var target = $(e).attr('data-status');
-  $head.removeClass('active');
-  $block.removeClass('active');
   $areaInput.removeClass('active');
   $areaPreview.removeClass('active');
-  $('.js-toggleTab__input').removeClass('active');
-  $('.js-toggleTab__preview').removeClass('active');
+  $iconEdit.removeClass('active');
+  $iconPreview.removeClass('active');
   console.log('target');
   console.log(target);
 
   switch (target) {
     case 'input':
-      $('.js-toggleTab__preview').addClass('active');
+      $iconPreview.addClass('active');
       $areaInput.addClass('active');
       break;
 
     case 'preview':
-      $('.js-toggleTab__input').addClass('active');
+      $iconEdit.addClass('active');
       $areaPreview.addClass('active');
       break;
   }
@@ -51952,7 +52008,7 @@ $(function () {
   !*** ./resources/js/components/markdown.js ***!
   \*********************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -51962,19 +52018,17 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
-
-var markdownpreview = function markdownpreview(btn) {
-  // var html = marked($(this).val());
-  var html = marked(btn.val());
-  $('#preview').html(html);
-};
-
-$('#lesson').on('keyup', function () {
-  var btn = $(this);
-  markdownpreview(btn);
-}); //画像を挿入
-
+// const marked = require('marked');
+// let markdownpreview = function (btn) {
+//   // var html = marked($(this).val());
+//   var html = marked(btn.val());
+//   $('.js-lesson__block--preview').html(html);
+// };
+// $('.js-marked__textarea').on('keyup', function(){
+//   let btn = $(this);
+//   markdownpreview(btn);
+// });
+//画像を挿入
 var $insert_btn = $('.js-uploadimg');
 $insert_btn.on('change', function () {
   var _console, _console2;

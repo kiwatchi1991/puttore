@@ -1,3 +1,33 @@
+//レッスン削除ボタンを押したとき
+let $deleteIcon = $('.js-deleteIcon');
+$deleteIcon.on('click', function () {
+    console.log('delteイベントクリック！') 
+    
+    //削除対象のDOM
+    let $deleteTarget = $(this).parents('.js-add__target');
+    
+    let checkFirstLessonBlock = $deleteTarget.count() == 1;
+    if (checkFirstLessonBlock) {
+        alert('現在レッスンは一つなので削除することはできません')
+    } else {
+        
+        
+        let confirm_result = window.confirm('レッスンを削除します。元に戻せなくなりますが、本当によろしいですか？');
+        if (confirm_result) {
+            
+            //レッスンの削除
+            console.log('$deleteTarget') 
+            console.log($deleteTarget) 
+            $deleteTarget.remove();
+        } else {
+            //処理をしない
+        }
+    }
+    
+
+    load();
+
+});
 
 //レッスンの追加ボタンを押した時
 let $button = $('.c-addLesson__button');
@@ -16,14 +46,55 @@ $button.on('click', function (e) {
     //load()でnumberの振り直し
     load();
 
-    let dom =  document.getElementsByClassName('js-toggleTab');
-    for(var i=0; i<dom.length; i++ ){
-        dom[i].addEventListener('click',function(){
-        let btn = $(this);
-        toggleTab(btn);
-    });
-}
+    setToggleEvent();
+
+    setMarkedEvent();
+    
 });
+
+
+
+//クリックでタブ切り替えするイベントを再付与
+let setToggleEvent = function () {
+    let dom =  document.getElementsByClassName('js-toggleTab');
+    for(let i=0; i<dom.length; i++ ){
+        dom[i].addEventListener('click',function(){
+            console.log(dom[i]);
+            let btn = $(this);
+            toggleTab(btn);      
+        });
+    }
+}
+
+
+//マークダウンプレビューイベント再付与
+let setMarkedEvent = function () {
+    console.log('マークダウンいべんと再付与');
+    
+    let $markedDom = document.getElementsByClassName('js-marked__textarea');
+    for(let i=0; i<$markedDom.length; i++ ){
+        $markedDom[i].addEventListener('keyup', function () {
+            let target = $(this);
+            markdownpreview(target);
+        });
+    }
+}
+
+
+const marked = require('marked');
+
+var markdownpreview = function (option) {
+    var html = marked(option.val());
+    console.log(option);
+    console.log(html);
+    $(option).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
+};
+
+$('.js-marked__textarea').on('keyup', function(){
+  let btn = $(this);
+  markdownpreview(btn);
+});
+
 
 //初期読み込み時、レッスンにnumber付与
 let load = function () {
@@ -62,46 +133,42 @@ window.onload = load();
 
 //タブ切り替え処理
 let $head = $('.js-toggleTab');
-let $block = $('.js-lesson__block');
 var toggleTab = function (e) {
 
     console.log('e');
     console.log(e);
-    console.log($(e));
+    // console.log($(e));
     
     let $parent1 = $(e).parents('.js-productNew__lesson');//logよう
-    let $parent2 = $(e).parents('.js-productNew__lesson');//logよう
     let $areaInput = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--input');
     let $areaPreview = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--preview');
+    let $iconPreview = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__preview');
+    let $iconEdit = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__input');
     
     console.log('parent1');
     console.log($parent1);
-    console.log('parent2');
-    console.log($parent2);
     console.log('$areaInput');
     console.log($areaInput);
     console.log('$areaPreview');
     console.log($areaPreview);
     
     let target = $(e).attr('data-status');
-    $head.removeClass('active');
-    $block.removeClass('active');
     $areaInput.removeClass('active');
     $areaPreview.removeClass('active');
-    $('.js-toggleTab__input').removeClass('active');
-    $('.js-toggleTab__preview').removeClass('active');
+    $iconEdit.removeClass('active');
+    $iconPreview.removeClass('active');
     
     console.log('target');
     console.log(target);
 
     switch (target) {
         case 'input':
-        $('.js-toggleTab__preview').addClass('active');
+        $iconPreview.addClass('active');
         $areaInput.addClass('active');
         break;
         
         case 'preview':
-        $('.js-toggleTab__input').addClass('active');
+        $iconEdit.addClass('active');
         $areaPreview.addClass('active');
         break;
      }
