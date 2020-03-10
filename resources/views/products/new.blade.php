@@ -81,7 +81,7 @@
                     <div class="c-productNew__number">レッスン<input id="number" type="number"
                             class="c-productNew__input-area--number @error('number') is-invalid @enderror"
                             data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
-
+                    <div class="c-productNew__deleteLesson js-deleteIcon">削除する</div>
                     @error('number')
                     <span class="" role="alert">
                         <strong>{{ $message }}</strong>

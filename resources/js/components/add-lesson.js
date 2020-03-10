@@ -1,3 +1,33 @@
+//レッスン削除ボタンを押したとき
+let $deleteIcon = $('.js-deleteIcon');
+$deleteIcon.on('click', function () {
+    console.log('delteイベントクリック！') 
+    
+    //削除対象のDOM
+    let $deleteTarget = $(this).parents('.js-add__target');
+    
+    let checkFirstLessonBlock = $deleteTarget.count() == 1;
+    if (checkFirstLessonBlock) {
+        alert('現在レッスンは一つなので削除することはできません')
+    } else {
+        
+        
+        let confirm_result = window.confirm('レッスンを削除します。元に戻せなくなりますが、本当によろしいですか？');
+        if (confirm_result) {
+            
+            //レッスンの削除
+            console.log('$deleteTarget') 
+            console.log($deleteTarget) 
+            $deleteTarget.remove();
+        } else {
+            //処理をしない
+        }
+    }
+    
+
+    load();
+
+});
 
 //レッスンの追加ボタンを押した時
 let $button = $('.c-addLesson__button');

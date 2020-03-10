@@ -12,7 +12,6 @@
 // });
 
 
-
 //画像を挿入
 let $insert_btn =  $('.js-uploadimg');
 $insert_btn.on('change',function(){

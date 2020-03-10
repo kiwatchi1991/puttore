@@ -51632,7 +51632,31 @@ __webpack_require__.r(__webpack_exports__);
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-//レッスンの追加ボタンを押した時
+//レッスン削除ボタンを押したとき
+var $deleteIcon = $('.js-deleteIcon');
+$deleteIcon.on('click', function () {
+  console.log('delteイベントクリック！'); //削除対象のDOM
+
+  var $deleteTarget = $(this).parents('.js-add__target');
+  var checkFirstLessonBlock = $deleteTarget.count() == 1;
+
+  if (checkFirstLessonBlock) {
+    alert('現在レッスンは一つなので削除することはできません');
+  } else {
+    var confirm_result = window.confirm('レッスンを削除します。元に戻せなくなりますが、本当によろしいですか？');
+
+    if (confirm_result) {
+      //レッスンの削除
+      console.log('$deleteTarget');
+      console.log($deleteTarget);
+      $deleteTarget.remove();
+    } else {//処理をしない
+    }
+  }
+
+  load();
+}); //レッスンの追加ボタンを押した時
+
 var $button = $('.c-addLesson__button');
 $button.on('click', function (e) {
   e.preventDefault(); //レッスンのコピー
