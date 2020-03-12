@@ -1,55 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="new">
-    <section class="new__wrapper">
+<div class="c-productNew">
         <div class="">レッスン内容登録</div>
 
-        <div class="">
             <form method="POST" action="{{ route('products.update',$product->id) }}" enctype="multipart/form-data" >
                 @csrf
                 {{-- 名前 --}}
                 <div class="">
-                    <label for="name" class="">名前</label>
+                    <input id="name" type="text" class="c-productNew__input-area @error('name') is-invalid @enderror"
+                        name="name" value="{{ old('name') }}" autocomplete="name" placeholder="教材のタイトル（例：Twitter風アプリを作ろう）">
 
-                    <div class="">
-                        <input id="name" type="text" class="new__input-area @error('name') is-invalid @enderror"
-                            name="name" value="{{ $product->name }}" autocomplete="name" autofocus>
+                    @error('name')
+                    <span class="" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                 </div>
 
-                        @error('name')
-                        <span class="" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
+          <div class="c-productNew__tagbox">
+
                 {{-- 言語選択 --}}
-                <div class="searchbox">
-                    <div class="serchbox__inner">
-                        <p>1.言語を選んでね</p>
-                    <div for="lang" class="">言語</div>
+                <div class="c-productNew__categories">
+                <p class="c-productNew__title">1. 言語を選んでね</p>
 
-                    <div class="">
+                @foreach ($category as $categories)
+                <input id="c-{{ $categories->id }}" type="checkbox"
+                    class="c-productNew__checkbox @error('lang') is-invalid @enderror" name="lang[]"
+                    value="{{ $categories->id }}" autocomplete="lang"
+                    @if(
+                    $product->categories->contains(function ($category1) use ($categories) {
+                        return $category1->id === $categories->id;
+                    })
+                    ) checked @endif>
+                <label class="c-productNew__label" for="c-{{ $categories->id }}">
+                    {{ $categories->name }}
+                </label>
+                @endforeach
 
-                        @foreach ($category as $categories)
-                            <input id="lang" type="checkbox" class="new__input-area @error('lang') is-invalid @enderror"
-                                name="lang[]" value="{{ $categories->id }}" autocomplete="lang" autofocus
-                                @if(
-                                $product->categories->contains(function ($category1) use ($categories) {
-                                    return $category1->id === $categories->id;
-                                })
-                                ) checked @endif>{{ $categories->name }}
-                        @endforeach
-
-                        @foreach ($difficult as $difficults)
-                            <input id="difficult" type="checkbox" class="new__input-area @error('difficult') is-invalid @enderror"
-                                name="difficult[]" value="{{ $difficults->id }}" autocomplete="difficult" autofocus
-                                @if(
-                                $product->difficulties->contains(function ($difficult1) use ($difficults) {
-                                    return $difficult1->id === $difficults->id;
-                                })
-                                ) checked @endif>{{ $difficults->name }}
-                        @endforeach
+                {{-- 難易度選択 --}}
+            <div class="c-productNew__difficults">
+                <p class="c-productNew__title">2. 難易度を選んでね</p>
+                @foreach ($difficult as $difficults)
+                <input id="d-{{ $difficults->id }}" type="checkbox"
+                    class="c-productNew__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
+                    value="{{ $difficults->id }}" autocomplete="difficult"
+                    @if(
+                    $product->difficulties->contains(function ($difficult1) use ($difficults) {
+                        return $difficult1->id === $difficults->id;
+                    })
+                    ) checked @endif>
+                <label class="c-productNew__label" for="d-{{ $difficults->id }}">
+                    {{ $difficults->name }}
+                </label>
+                @endforeach
+            </div>
 
                         @error('name')
                         <span class="" role="alert">
@@ -205,7 +210,5 @@
                     {{ __('Register') }}
                 </button>
         </form>
-    </div>
-</section>
 </div>
 @endsection
