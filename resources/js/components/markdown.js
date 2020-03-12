@@ -1,15 +1,9 @@
-// const marked = require('marked');
+const marked = require('marked');
 
-// let markdownpreview = function (btn) {
-//   // var html = marked($(this).val());
-//   var html = marked(btn.val());
-//   $('.js-lesson__block--preview').html(html);
-// };
-
-// $('.js-marked__textarea').on('keyup', function(){
-//   let btn = $(this);
-//   markdownpreview(btn);
-// });
+  let $getData = $('#js-lessonShow__getText');
+  var html = marked($getData.val());
+  console.log(html);
+  $('#js-lessonShow__preview').html(html);
 
 
 //画像を挿入

@@ -1,12 +1,15 @@
 .c-lessonShow{
-  margin-bottom: 100px; //あとで消す
   background: $bg;
   padding: 20px;
+    &__inner{
+        background: white;
+        padding: 16px;
+    }
   &__price{
     margin-top: 16px;
     font-size: 20px;
     font-weight: bold;
-    color: $dark;
+    color: $main-color;
 
     &.is-inactive{
       text-decoration:line-through;
@@ -16,7 +19,7 @@
     text-align: right;
     margin-top: 16px;
     font-size: 20px;
-    color: $dark;
+    color: $main-color;
   }
   &__title{
     margin-top: 16px;
@@ -36,6 +39,7 @@
     background-image: url('/storage/images/noavatar.png'); 
     background-position: center;
     background-size: contain;
+    border:1px solid $main-text;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -58,7 +62,7 @@
   &__like{
     margin: 8px auto 0;
     z-index: 3;
-    background: $dark;
+    background: $main-color;
     text-align: center;
     width: 100%;
     padding: 10px;
@@ -82,7 +86,7 @@
   &__curriculum{
     margin-top: 32px;
     &__head{
-      color: $dark;
+      color: $main-color;
     }
   }
 
@@ -99,21 +103,38 @@
       line-height: 1.5;
       font-size: 14px;
     }
+    &__contents{
+
+    }
   }
   &__curriculumBlock{
     margin-top: 32px;
   }
+  &__toLessons{
+    margin-top: 60px;
+  }
   &__toLesson{
-    margin: 60px auto 0;
+    margin: 0 auto;
     z-index: 3;
-    background: orange;
+    background: $high-gr;
     color: white;
     text-align: center;
-    width: 100%;
+    width: 75%;
     font-size: 12px;
     padding: 14px;
-    border-radius: 7px;
     box-sizing: border-box;
+    border-bottom: 1px solid $main-color;
+    padding: 14px 14px 14px 24px;
+    a{
+        color: $main-text;
+    }
+    &:first-child{
+        border-radius: 5px 5px 0 0;
+    }
+    &:last-child{
+        border-radius: 0 0 5px 5px;
+        border-bottom: none;
+    }
   }
   &__toBord{
     margin: 16px auto 0;
@@ -133,7 +154,7 @@
   &__toLessonPage{
     padding: 16px;
     font-size: 12px;
-    border-bottom: 1px solid $dark;
+    border-bottom: 1px solid $main-color;
     color: #585858;
     background: #CBEDE4;
     a{

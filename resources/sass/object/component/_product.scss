@@ -17,7 +17,7 @@
   &__title{
     width: 280px;
     margin: 32px auto 0;
-    color: $dark;
+    color: $main-color;
   }
   &__img{
     background: white;
@@ -52,7 +52,7 @@
     &__difficults{
       margin-top: 20px;
       padding-top: 20px;
-      border-top: 3px solid $dark;
+      border-top: 3px solid $main-color;
     }
     &__title{
       font-size: 12px;
@@ -82,7 +82,7 @@
     }
     &__checkbox:checked + .c-searchBox__label{
         &::before{
-          background: $dark;
+          background: $main-color;
         }
         &::after{
             content: "";
@@ -185,7 +185,7 @@
     &__price{
       margin-top: 20px;
       font-size: 20px;
-      color: $dark;
+      color: $main-color;
       font-weight: bold;
     }
     &__detail{
@@ -259,7 +259,7 @@
     &__topWrapper{
       display: flex;
       justify-content: space-between;
-      color: $dark;
+      color: $main-color;
     }
     &__deleteLesson{
       font-size: 26px;
@@ -302,7 +302,7 @@
     }
     &__checkbox:checked + .c-productNew__label{
         &::before{
-          background: $dark;
+          background: $main-color;
           border: none;
           width: 14px;
           height: 14px;
@@ -353,13 +353,13 @@
           &__toggleIcon{
             display: none;
             margin-right: 16px;
-            color: $dark;
+            color: $main-color;
             &.active{
               display: block;
             }
           }
           &__imgIcon{
-            color: $dark;
+            color: $main-color;
           }
     }
     &.active{
@@ -381,14 +381,14 @@
       text-align: center;
       margin-top: 16px;
       &__btn{
-        color: $dark;
+        color: $main-color;
       }
     }
   }
   &__skills{
     margin-top: 32px;
     &__title{
-      color: $dark;
+      color: $main-color;
   
     }
   }
@@ -460,7 +460,7 @@
     margin-top: 16px;
     font-size: 20px;
     font-weight: bold;
-    color: $dark;
+    color: $main-color;
 
     &.is-inactive{
       text-decoration:line-through;
@@ -470,7 +470,7 @@
     text-align: right;
     margin-top: 16px;
     font-size: 20px;
-    color: $dark;
+    color: $main-color;
   }
   &__title{
     margin-top: 16px;
@@ -512,7 +512,7 @@
   &__like{
     margin: 8px auto 0;
     z-index: 3;
-    background: $dark;
+    background: $main-color;
     text-align: center;
     width: 100%;
     padding: 10px;
@@ -536,7 +536,7 @@
   &__curriculum{
     margin-top: 32px;
     &__head{
-      color: $dark;
+      color: $main-color;
     }
   }
 
@@ -587,7 +587,7 @@
   &__toLessonPage{
     padding: 16px;
     font-size: 12px;
-    border-bottom: 1px solid $dark;
+    border-bottom: 1px solid $main-color;
     color: #585858;
     background: #CBEDE4;
     a{
@@ -660,7 +660,7 @@
     &__prev{
       &--angle{
         font-size: 25px;
-        color: $dark;
+        color: $main-color;
       }
       &.inactive{
         color: $easy;
@@ -668,7 +668,7 @@
     }
     &__next{
       &--angle{
-        color: $dark;
+        color: $main-color;
         font-size: 25px;
       }
       &.inactive{

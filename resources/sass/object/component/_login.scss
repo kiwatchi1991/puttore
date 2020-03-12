@@ -4,7 +4,7 @@
     }
     &__title{
         font-size: 24px;
-        color: $dark;
+        color: $main-color;
     }
     &__form-area{
         margin-top: 24px;
@@ -48,7 +48,7 @@
             }
         }
         &__checkbox:checked + .c-login__remember__label{
-            color: $dark;
+            color: $main-color;
             &::after{
                 content: "";
                 display: block;
@@ -58,8 +58,8 @@
                 width: 7px;
                 height: 14px;
                 transform: rotate(40deg);
-                border-bottom: 3px solid $dark;
-                border-right: 3px solid $dark;
+                border-bottom: 3px solid $main-color;
+                border-right: 3px solid $main-color;
             }
         }
     }
@@ -68,10 +68,10 @@
         display: inline-block;
         font-size: 10px;
         &__link{
-            color: $dark;
+            color: $main-color;
             text-decoration: underline;
             &:visited{
-                color: $dark;
+                color: $main-color;
             }
         }
     }
@@ -89,9 +89,9 @@
     }
     &__to-register{
         text-align: center;
-        color: $dark;
+        color: $main-color;
         margin-top: 32px;
-        border-top: 3px solid $dark;
+        border-top: 3px solid $main-color;
         padding-top: 32px;
     }
     

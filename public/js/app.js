@@ -39434,7 +39434,7 @@ $(function () {
   !*** ./resources/js/components/markdown.js ***!
   \*********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -39444,17 +39444,13 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-// const marked = require('marked');
-// let markdownpreview = function (btn) {
-//   // var html = marked($(this).val());
-//   var html = marked(btn.val());
-//   $('.js-lesson__block--preview').html(html);
-// };
-// $('.js-marked__textarea').on('keyup', function(){
-//   let btn = $(this);
-//   markdownpreview(btn);
-// });
-//画像を挿入
+var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
+
+var $getData = $('#js-lessonShow__getText');
+var html = marked($getData.val());
+console.log(html);
+$('#js-lessonShow__preview').html(html); //画像を挿入
+
 var $insert_btn = $('.js-uploadimg');
 $insert_btn.on('change', function () {
   var _console, _console2;
