@@ -765,7 +765,7 @@ a:visited {
 
 .c-productNew__lesson {
   display: none;
-  height: 250px;
+  min-height: 250px;
   text-align: left;
 }
 
@@ -930,6 +930,13 @@ a:visited {
   text-decoration: line-through;
 }
 
+.c-productShow__editIcon {
+  text-align: right;
+  margin-top: 16px;
+  font-size: 20px;
+  color: #00ac7d;
+}
+
 .c-productShow__title {
   margin-top: 16px;
   font-size: 20px;
@@ -945,6 +952,15 @@ a:visited {
 .c-productShow__user {
   display: -webkit-box;
   display: flex;
+}
+
+.c-productShow__userimg {
+  background-image: url("/storage/images/noavatar.png");
+  background-position: center;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .c-productShow__userimg img {
@@ -1018,6 +1034,52 @@ a:visited {
 
 .c-productShow__curriculumBlock {
   margin-top: 32px;
+}
+
+.c-productShow__toLesson {
+  margin: 60px auto 0;
+  z-index: 3;
+  background: orange;
+  color: white;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  padding: 14px;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+.c-productShow__toBord {
+  margin: 16px auto 0;
+  z-index: 3;
+  background: #7DD4BC;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  padding: 14px;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+.c-productShow__toLessonPage {
+  padding: 16px;
+  font-size: 12px;
+  border-bottom: 1px solid #00ac7d;
+  color: #585858;
+  background: #CBEDE4;
+}
+
+.c-productShow__toLessonPage a {
+  color: #585858;
+}
+
+.c-productShow__toLessonPage:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.c-productShow__toLessonPage:last-child {
+  border-radius: 0 0 8px 8px;
+  border-bottom: none;
 }
 
 #payjp_checkout_box input[type=button] {
@@ -2597,6 +2659,175 @@ a:visited {
 #preview .task-list-item input {
   margin: 0 0.2em 0.25em -1.6em;
   vertical-align: middle;
+}
+
+.c-lessonShow {
+  margin-bottom: 100px;
+  background: #E5F6F2;
+  padding: 20px;
+}
+
+.c-lessonShow__price {
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ac7d;
+}
+
+.c-lessonShow__price.is-inactive {
+  text-decoration: line-through;
+}
+
+.c-lessonShow__editIcon {
+  text-align: right;
+  margin-top: 16px;
+  font-size: 20px;
+  color: #00ac7d;
+}
+
+.c-lessonShow__title {
+  margin-top: 16px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.c-lessonShow__detail {
+  margin-top: 16px;
+  line-height: 1.2;
+  font-size: 12px;
+}
+
+.c-lessonShow__user {
+  display: -webkit-box;
+  display: flex;
+}
+
+.c-lessonShow__userimg {
+  background-image: url("/storage/images/noavatar.png");
+  background-position: center;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.c-lessonShow__userimg img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.c-lessonShow__username {
+  margin-left: 10px;
+  font-size: 12px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.c-lessonShow__updated {
+  margin-top: 3px;
+  font-size: 10px;
+}
+
+.c-lessonShow__like {
+  margin: 8px auto 0;
+  z-index: 3;
+  background: #00ac7d;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+.c-lessonShow__buynow {
+  margin: 8px auto 0;
+  z-index: 3;
+  background: orange;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+.c-lessonShow__buynow#payjp_checkout_box input[type=button] {
+  background: #E5F6F2 !important;
+  background-image: none !important;
+}
+
+.c-lessonShow__curriculum {
+  margin-top: 32px;
+}
+
+.c-lessonShow__curriculum__head {
+  color: #00ac7d;
+}
+
+.c-lessonShow__lessons {
+  margin-top: 32px;
+}
+
+.c-lessonShow__lesson {
+  margin-top: 24px;
+}
+
+.c-lessonShow__lesson__title {
+  margin-top: 12px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.c-lessonShow__curriculumBlock {
+  margin-top: 32px;
+}
+
+.c-lessonShow__toLesson {
+  margin: 60px auto 0;
+  z-index: 3;
+  background: orange;
+  color: white;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  padding: 14px;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+.c-lessonShow__toBord {
+  margin: 16px auto 0;
+  z-index: 3;
+  background: #7DD4BC;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  padding: 14px;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+.c-lessonShow__toLessonPage {
+  padding: 16px;
+  font-size: 12px;
+  border-bottom: 1px solid #00ac7d;
+  color: #585858;
+  background: #CBEDE4;
+}
+
+.c-lessonShow__toLessonPage a {
+  color: #585858;
+}
+
+.c-lessonShow__toLessonPage:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.c-lessonShow__toLessonPage:last-child {
+  border-radius: 0 0 8px 8px;
+  border-bottom: none;
 }
 
 .p-input__tag {

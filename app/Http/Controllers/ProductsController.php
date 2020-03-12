@@ -408,18 +408,19 @@ class ProductsController extends Controller
     public function shows($id)
     {
 
-        // if (!ctype_digit($id)) {
-        //     return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
-        // }
+        if (!ctype_digit($id)) {
+            return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
+        }
 
         Log::debug('SHOW!!!');
         $product = Product::find($id);
 
         // 購入済みかどうかを判断（これによって表示するページが違う）
-        $isOrder = DB::table('orders')
+        $myOrder = DB::table('orders')
             ->where('user_id', Auth::user()->id)
             ->where('product_id', $id)
-            ->get();
+            ->count();
+        $isOrder = ($myOrder == 0) ? false : true;
         Log::debug('<<<<<<<<<  isOrder   >>>>>>>>>>>>>>>>>>');
         Log::debug($isOrder);
 
