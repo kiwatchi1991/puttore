@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'detail', 'default_price', 'pic1', 'pic2', 'pic3', 'pic4', 'pic5'];
-    
+    protected $fillable = ['name', 'detail', 'default_price', 'pic1', 'pic2', 'pic3', 'pic4', 'pic5', 'skills'];
+
     //多対多のリレーションを作る
     //カテゴリー
     public function categories()
@@ -21,13 +21,13 @@ class Product extends Model
         return $this->belongsToMany('App\Difficulty');
     }
 
-     // 1対多のリレーションを作る
-     public function lessons()
-     {
-         return $this->hasMany('App\Lesson');
-     }
+    // 1対多のリレーションを作る
+    public function lessons()
+    {
+        return $this->hasMany('App\Lesson');
+    }
 
-  
+
 
     // 検索機能
     // public function scopeTagFilter($query, ?string $tag)
@@ -38,4 +38,3 @@ class Product extends Model
     //     return $query;
     // }
 }
-

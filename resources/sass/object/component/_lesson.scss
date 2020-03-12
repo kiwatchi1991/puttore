@@ -1,0 +1,151 @@
+.c-lessonShow{
+  margin-bottom: 100px; //あとで消す
+  background: $bg;
+  padding: 20px;
+  &__price{
+    margin-top: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    color: $dark;
+
+    &.is-inactive{
+      text-decoration:line-through;
+    }
+  }
+  &__editIcon{
+    text-align: right;
+    margin-top: 16px;
+    font-size: 20px;
+    color: $dark;
+  }
+  &__title{
+    margin-top: 16px;
+    font-size: 20px; 
+    line-height: 1.2;
+  }
+
+  &__detail{
+    margin-top: 16px;
+    line-height: 1.2;
+    font-size: 12px;
+  }
+  &__user{
+    display: flex;
+  }
+ &__userimg{
+    background-image: url('/storage/images/noavatar.png'); 
+    background-position: center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+   img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+   }
+ }
+  &__username{
+    margin-left: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
+  &__updated{
+    margin-top: 3px;
+    font-size: 10px;
+  }
+  &__like{
+    margin: 8px auto 0;
+    z-index: 3;
+    background: $dark;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    box-sizing: border-box;
+  }
+  &__buynow{
+    margin: 8px auto 0;
+    z-index: 3;
+    background: orange;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    box-sizing: border-box;
+    &#payjp_checkout_box input[type=button]{
+      background: $bg !important;
+      background-image: none !important;
+    }
+  }
+  &__curriculum{
+    margin-top: 32px;
+    &__head{
+      color: $dark;
+    }
+  }
+
+  &__lessons{
+    margin-top: 32px;
+  }
+  &__lesson{
+    margin-top: 24px;
+    &__number{
+      
+    }
+    &__title{
+      margin-top: 12px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+  }
+  &__curriculumBlock{
+    margin-top: 32px;
+  }
+  &__toLesson{
+    margin: 60px auto 0;
+    z-index: 3;
+    background: orange;
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    padding: 14px;
+    border-radius: 7px;
+    box-sizing: border-box;
+  }
+  &__toBord{
+    margin: 16px auto 0;
+    z-index: 3; 
+    background: #7DD4BC;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    padding: 14px;
+    border-radius: 7px;
+    box-sizing: border-box;
+  }
+
+  &__toLessonPages{
+  
+  }
+  &__toLessonPage{
+    padding: 16px;
+    font-size: 12px;
+    border-bottom: 1px solid $dark;
+    color: #585858;
+    background: #CBEDE4;
+    a{
+      color: #585858;
+    }
+    &:first-child{
+      border-radius: 8px 8px 0 0;
+    }
+    &:last-child{
+      border-radius: 0 0 8px 8px;
+      border-bottom: none;
+    }
+  }
+
+}

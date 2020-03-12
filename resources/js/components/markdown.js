@@ -52,8 +52,8 @@ $insert_btn.on('change',function(){
       let target = $('#lesson');
         console.log('ここまで4');
         console.log(data);
-        target.val('![代替テキスト](/storage/' + data + ')');
-        target.trigger('keyup');
+        target.val(target.val() + '\n\n![代替テキスト](/storage/' + data + ')\n\n');
+        target.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
 
   })
   // Ajaxリクエストが失敗した場合

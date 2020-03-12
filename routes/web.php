@@ -33,7 +33,11 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/products/ajaxfollow',  'FollowsController@ajaxfollow')->name('products.ajaxfollow');
     //レッスンの画像アップロード
     Route::post('/products/imgupload',  'LessonImgUploadController@imgupload')->name('products.imgupload');
-    
+
+    //レッスン詳細
+    Route::get('/products/{p_id}/{l_id}',  'LessonShowController@index')->name('lessons');
+
+
     //カート
     Route::get('/carts',  'CartsController@index')->name('carts');
     Route::post('/carts',  'CartsController@ajaxcart')->name('ajaxcarts');
@@ -45,7 +49,7 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/bords/{id}',  'BordsController@show')->name('bords.show');
     Route::post('/bords',  'MessagesController@create')->name('messages.create');
 
-    
+
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
     //ユーザー
@@ -65,7 +69,7 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/contacts/finish', 'ContactController@send')->name('contact.send'); //完了画面
     Route::get('/contacts/finish', 'ContactController@finish')->name('contact.finish'); //完了画面
 
-    
+
 
 });
 

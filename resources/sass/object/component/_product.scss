@@ -256,6 +256,15 @@
     &__difficults{
       margin-top: 32px;
     }
+    &__topWrapper{
+      display: flex;
+      justify-content: space-between;
+      color: $dark;
+    }
+    &__deleteLesson{
+      font-size: 26px;
+      margin-right: 12px;
+    }
     &__title{
       font-size: 12px;
       margin-left: 16px;
@@ -302,13 +311,13 @@
             content: "";
             display: block;
             position: absolute;
-            top: 2px;
-            left: 5px;
+            top: 1px;
+            left: 4px;
             width: 4px;
             height: 8px;
             transform: rotate(45deg);
-            border-bottom: 1px solid #fff;
-            border-right: 1px solid #fff;
+            border-bottom: 2px solid #fff;
+            border-right: 2px solid #fff;
         }
     }
     &__lessons{
@@ -316,7 +325,8 @@
     }
     &__lesson{
       display: none;
-      height: 250px;
+      min-height: 250px;
+      
       text-align: left;
         &__block{
           margin-top: 16px;
@@ -343,10 +353,14 @@
           &__toggleIcon{
             display: none;
             margin-right: 16px;
+            color: $dark;
             &.active{
               display: block;
-           }
-        }
+            }
+          }
+          &__imgIcon{
+            color: $dark;
+          }
     }
     &.active{
       display: block;
@@ -363,7 +377,77 @@
       background: #fff;
       max-height: 700px;
     }
-    
+    &__addBtn{
+      text-align: center;
+      margin-top: 16px;
+      &__btn{
+        color: $dark;
+      }
+    }
+  }
+  &__skills{
+    margin-top: 32px;
+    &__title{
+      color: $dark;
+  
+    }
+  }
+  &__images{
+    margin-top: 32px;
+    &__half{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+  }
+  &__image{
+    &__area{
+      width: 30%;
+      height: 100px;
+      background: #f6f5f4;
+      color: #ccc;
+      text-align: center;
+      line-height: 140px;
+      position: relative;
+      display: inline-block;
+      background-image:url('/storage/images/add_img.png');
+      background-position: center;
+      background-size: contain;
+      border-radius: 15px;
+    }
+    &__input{
+      width: 30%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+    &__img{
+      width: 100%;
+      max-height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 15px;
+    }
+  }
+  &__submit{
+  margin: 8px auto 0;
+  text-align: center;
+  width: 75%;
+  color: #ffffff;
+  background: orange;
+  padding: 10px;
+  border-radius: 10px;
+    &--draft{
+      margin-top: 32px;
+      background: $easy;
+    }
+    &__button{
+      color: #ffffff;
+      font-size: 14px;
+    }
   }
 
 }
@@ -382,7 +466,12 @@
       text-decoration:line-through;
     }
   }
-  
+  &__editIcon{
+    text-align: right;
+    margin-top: 16px;
+    font-size: 20px;
+    color: $dark;
+  }
   &__title{
     margin-top: 16px;
     font-size: 20px; 
@@ -398,6 +487,12 @@
     display: flex;
   }
  &__userimg{
+    background-image: url('/storage/images/noavatar.png'); 
+    background-position: center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
    img{
     height: 50px;
     width: 50px;
@@ -461,6 +556,50 @@
   }
   &__curriculumBlock{
     margin-top: 32px;
+  }
+  &__toLesson{
+    margin: 60px auto 0;
+    z-index: 3;
+    background: orange;
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    padding: 14px;
+    border-radius: 7px;
+    box-sizing: border-box;
+  }
+  &__toBord{
+    margin: 16px auto 0;
+    z-index: 3; 
+    background: #7DD4BC;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    padding: 14px;
+    border-radius: 7px;
+    box-sizing: border-box;
+  }
+
+  &__toLessonPages{
+  
+  }
+  &__toLessonPage{
+    padding: 16px;
+    font-size: 12px;
+    border-bottom: 1px solid $dark;
+    color: #585858;
+    background: #CBEDE4;
+    a{
+      color: #585858;
+    }
+    &:first-child{
+      border-radius: 8px 8px 0 0;
+    }
+    &:last-child{
+      border-radius: 0 0 8px 8px;
+      border-bottom: none;
+    }
   }
 
 }
