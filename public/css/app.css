@@ -1293,6 +1293,11 @@ a:visited {
   display: flex;
 }
 
+.c-bord__half--top {
+  display: -webkit-box;
+  display: flex;
+}
+
 .c-bord__userImg {
   width: 50px;
   height: 50px;
@@ -1311,15 +1316,25 @@ a:visited {
 
 .c-bord__order {
   padding: 5px 12px;
-  border-radius: 10px;
+  border-radius: 5px;
+  font-size: 10px;
 }
 
 .c-bord__order.buy {
-  background: blue;
+  background: #7DD4BB;
 }
 
 .c-bord__order.sell {
-  background: pink;
+  background: white;
+  color: #00ac7d;
+  border: 1px solid #00ac7d;
+}
+
+.c-bord__title {
+  margin-left: 8px;
+  font-size: 12px;
+  padding-top: 5px;
+  white-space: nowrap;
 }
 
 .c-profile {
@@ -1431,7 +1446,58 @@ a:visited {
 }
 
 .c-messages__head {
-  height: 50px;
+  height: 45px;
+  display: -webkit-box;
+  display: flex;
+  border-top: 1px solid #00ac7d;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.c-messages__head__order {
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 10px;
+  height: 12px;
+}
+
+.c-messages__head__order.buy {
+  background: #7DD4BB;
+}
+
+.c-messages__head__order.sell {
+  background: white;
+  color: #00ac7d;
+  border: 1px solid #00ac7d;
+}
+
+.c-messages__head__userImg {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.c-messages__head__userImg__wrapper {
+  background-image: url("/storage/images/noavatar.png");
+  background-position: center;
+  background-size: contain;
+  margin-left: 16px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.c-messages__head__title {
+  margin-left: 16px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.c-messages__inner {
+  background: #E5F6F2;
+  padding: 32px 0 0 0;
 }
 
 .c-message {

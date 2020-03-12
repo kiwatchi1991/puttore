@@ -6,38 +6,42 @@
 
 <div class="c-bords">
     @foreach ($bords as $bord)
-    
+
     @php
 
     $buy_userId = $bord->user_id;
     $sell_userId = $bord->{'p.user_id'};
     $order_type = ($buy_userId == $id) ? "購入" : "販売";
     $class_order_type = ($buy_userId == $id) ? "buy" : "sell";
-    
+
     if($order_type == "購入"){
-        $pic = $user->find($sell_userId)->pic;
+    $pic = $user->find($sell_userId)->pic;
     }else{
-        $pic = $user->find($buy_userId)->pic;
+    $pic = $user->find($buy_userId)->pic;
     }
     @endphp
 
     <a class="c-bord__list" href="{{ route('bords.show',$bord->id) }}">
         <div class="c-bord__inner">
 
-            <div class="c-bord__userImg__wrapper">
-                <img src="/storage/{{ $pic }}" alt="" class="c-bord__userImg">
+            <div class="c-bord__half--left">
+                <div class="c-bord__userImg__wrapper">
+                    <img src="/storage/{{ $pic }}" alt="" class="c-bord__userImg">
+                </div>
             </div>
-            <div>
-                <div class="c-bord__order {{$class_order_type}}">
-                   {{ $order_type }}
+
+            <div class="c-bord__half--right">
+                <div class="c-bord__half--top">
+                    <div class="c-bord__order {{$class_order_type}}">
+                        {{ $order_type }}
+                    </div>
+                    <div class="c-bord__title">
+                        @php echo mb_strimwidth( $bord->name, 0, 20, '…', 'UTF-8' ); @endphp
+                    </div>
                 </div>
-                <div class="c-bord__title">
-                   {{ $bord->name }} 
+                <div class="c-bord__half--bottom">
+
                 </div>
-                <div class="c-bord__msg">
-                    
-                </div>
-            
             </div>
         </div>
     </a>

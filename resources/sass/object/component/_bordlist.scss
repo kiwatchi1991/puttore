@@ -20,6 +20,15 @@
     &__inner{
         display: flex;
     }
+    &__half{
+        &--left{
+            
+        }
+        &--top{
+            display: flex;
+        }
+        
+    }
     &__userImg{
         width: 50px;
         height: 50px;
@@ -36,20 +45,24 @@
     }
     &__order{
         padding: 5px 12px;
-        border-radius: 10px;
+        border-radius: 5px;
+        font-size: 10px;
         &.buy{
-            background: blue;
+            background:  $high-gr;
         }
         &.sell{
-            background: pink;
+            background: white;
+            color: $main-color;
+            border: 1px solid #00ac7d;
         }
     }
     &__title{
-
+        margin-left: 8px;
+        font-size: 12px;
+        padding-top: 5px;
+        white-space: nowrap;
     }
-    &__msg{
-
-    }
+    
   
 
     

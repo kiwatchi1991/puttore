@@ -1,6 +1,48 @@
 .c-messages{
+
     &__head{
-        height: 50px;
+        height:45px;
+        display: flex;
+        border-top: 1px solid $main-color;
+        align-items: center;
+        justify-content: center;
+        &__order{
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 10px;
+            height: 12px;
+            &.buy{
+                background:  $high-gr;
+            }
+            &.sell{
+                background: white;
+                color: $main-color;
+                border: 1px solid #00ac7d;
+            }
+        }
+        &__userImg{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            &__wrapper{
+                background-image: url('/storage/images/noavatar.png'); 
+                background-position: center;
+                background-size: contain;
+                margin-left: 16px;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+            }
+        }
+        &__title{
+        margin-left: 16px;
+        font-size: 16px;
+        white-space: nowrap;
+        }
+    }
+    &__inner{
+        background: $bg;
+        padding: 32px 0 0 0;
     }
 }
 

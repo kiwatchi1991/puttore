@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-use Illuminate\Http\Request;//api用に追加
+use Illuminate\Http\Request; //api用に追加
 
 class LoginController extends Controller
 {
@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/products/mypage';
+    protected $redirectTo = '/products';
 
     /**
      * Create a new controller instance.
