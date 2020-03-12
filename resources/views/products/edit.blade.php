@@ -150,8 +150,9 @@
                     <label for="default_price" class="">割引価格</label>
                     <div class="">
 
+
                         <input id="discount_price"  class="new__input-area @error('discount_price') is-invalid @enderror"
-                        name="discount_price" value="{{ $discount_price->discount_price }}" autocomplete="discount_price" autofocus>
+                        name="discount_price" value="@if($discount_price) {{ $discount_price->discount_price }} @endif" autocomplete="discount_price" >
 
                         {{-- @error('discount_price')
                           <span class="" role="alert">
@@ -162,11 +163,11 @@
                       </div>
                     <div class="">
                         <input type="text" name="start_date" class="new__input-area js-date_picker @error('sale_price') is-invalid @enderror"
-                          value="{{ $discount_price->start_date }}">開始日
+                          value="@if($discount_price){{ $discount_price->start_date }} @endif">開始日
                     </div>
                     <div>
                         <input type="text" name="end_date" class="new__input-area js-date_picker @error('sale_price') is-invalid @enderror"
-                          value="{{ $discount_price->end_date }}">終了日
+                          value="@if($discount_price){{ $discount_price->end_date }} @endif">終了日
                     </div>
                 </div>
 
