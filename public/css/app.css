@@ -1274,13 +1274,18 @@ a:visited {
   height: 50px;
   line-height: 50px;
   text-align: center;
-  border-bottom: 1px solid #333;
+  border-top: 1px solid #00ac7d;
 }
 
 .c-bord__list {
-  border: 1px solid #333;
+  border-bottom: 1px solid #00ac7d;
   display: block;
   padding: 10px;
+  background: #E5F6F2;
+}
+
+.c-bord__list:last-child {
+  border-bottom: none;
 }
 
 .c-bord__inner {
@@ -1289,13 +1294,19 @@ a:visited {
 }
 
 .c-bord__userImg {
-  width: 65px;
-  height: 64px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 
 .c-bord__userImg__wrapper {
+  background-image: url("/storage/images/noavatar.png");
+  background-position: center;
+  background-size: contain;
   margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .c-bord__order {

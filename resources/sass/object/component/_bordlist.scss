@@ -3,25 +3,35 @@
         height: 50px;
         line-height: 50px;
         text-align: center;
-        border-bottom: $test;
+        border-top: 1px solid $main-color;
     }
 }
 
 .c-bord{
     &__list{
-        border: $test;
+        border-bottom:1px solid $main-color;
         display: block;
         padding: 10px;
+        background: $bg;
+        &:last-child{
+            border-bottom: none;
+        }
     }
     &__inner{
         display: flex;
     }
     &__userImg{
-        width: 65px;
-        height: 64px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         &__wrapper{
+            background-image: url('/storage/images/noavatar.png'); 
+            background-position: center;
+            background-size: contain;
             margin-right: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
         }
     }
     &__order{

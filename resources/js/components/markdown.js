@@ -1,9 +1,12 @@
 const marked = require('marked');
 
-  let $getData = $('#js-lessonShow__getText');
+
+let $getData = $('#js-lessonShow__getText');
+if ($getData) {
   var html = marked($getData.val());
   console.log(html);
   $('#js-lessonShow__preview').html(html);
+}
 
 
 //画像を挿入

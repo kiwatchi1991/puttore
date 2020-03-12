@@ -39447,9 +39447,13 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
 
 var $getData = $('#js-lessonShow__getText');
-var html = marked($getData.val());
-console.log(html);
-$('#js-lessonShow__preview').html(html); //画像を挿入
+
+if ($getData) {
+  var html = marked($getData.val());
+  console.log(html);
+  $('#js-lessonShow__preview').html(html);
+} //画像を挿入
+
 
 var $insert_btn = $('.js-uploadimg');
 $insert_btn.on('change', function () {
