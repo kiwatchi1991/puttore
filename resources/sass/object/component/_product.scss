@@ -232,21 +232,28 @@
 .c-productNew{
   background: $bg;
   padding: 30px;
+    &__title__label{
+      font-size: 14px;
+      color: $main-color;
+      margin-top: 8px;
+      &--tags{
+        margin-top: 24px;
+      }
+    }
     &__input-area{
       width: 100%;
       box-sizing: border-box;
       padding: 10px;
       border-radius: 5px;
       border: none;
-      margin-top: 16px;
+      margin-top: 8px;
        &--detail{
-        min-height: 250px;
         max-height: 500px;
       }
     }
     &__tagbox{
       background: white;
-      margin-top: 32px;
+      margin-top: 8px;
       padding: 16px 16px 16px 0;
       border-radius: 5px;
     }
@@ -260,6 +267,7 @@
       display: flex;
       justify-content: space-between;
       color: $main-color;
+      align-items: baseline;
     }
     &__deleteLesson{
       font-size: 26px;
@@ -345,7 +353,7 @@
             width: 100%;
             padding-left: 16px;
             padding-top: 5px;
-            font-size: 16px;
+            font-size: 12px;
           }
           &__input{
             display: none;
@@ -448,6 +456,13 @@
       color: #ffffff;
       font-size: 14px;
     }
+  }
+  &__error{
+    font-size: 12px;
+    padding-left: 8px;
+    color: red;
+    margin-top: 8px;
+    display: block;
   }
 
 }
@@ -627,7 +642,6 @@
       border: none;
       margin-top: 16px;
        &--detail{
-        min-height: 250px;
         max-height: 500px;
       }
     }

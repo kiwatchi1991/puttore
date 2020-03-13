@@ -7,18 +7,19 @@
         @csrf
 
         <div class="">
+            <p class="c-productNew__title__label">タイトル</p>
             <input id="name" type="text" class="c-productNew__input-area @error('name') is-invalid @enderror"
                 name="name" value="{{ old('name') }}" autocomplete="name" placeholder="教材のタイトル（例：Twitter風アプリを作ろう）">
 
             @error('name')
-            <span class="" role="alert">
+            <span class="c-productNew__error" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
         </div>
 
+        <p class="c-productNew__title__label c-productNew__title__label--tags">言語・難易度選択</p>
         <div class="c-productNew__tagbox">
-
             {{-- 言語選択 --}}
             <div class="c-productNew__categories">
                 <p class="c-productNew__title">1. 言語を選んでね</p>
@@ -44,29 +45,31 @@
                 </label>
                 @endforeach
             </div>
-
-            @error('name')
-            <span class="" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-
         </div>
+        @error('lang')
+        <span class="c-productNew__error" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+        @error('difficult')
+        <span class="c-productNew__error" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
 
         {{-- 説明 --}}
         <div class="c-productNew__detail">
-            {{-- <input id="detail" type="text" class="c-productNew__input-area @error('detail') is-invalid @enderror"
-                name="detail" value="{{ old('detail') }}" autocomplete="detail" placeholder="説明（無料で見れる部分）"> --}}
+            <p class="c-productNew__title__label">説明文</p>
 
             <textarea id="detail" type="text"
                 class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
-                data-input="detail" name="detail" value="{{ old('detail') }}" rows="7">説明文
+                data-input="detail" name="detail" value="{{ old('detail') }}" rows="7">
             </textarea>
             <div class="c-productNew__modal">
                 書き方のヒントは<span>こちら</span>
             </div>
             @error('detail')
-            <span class="" role="alert">
+            <span class="c-productNew__error" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
@@ -84,7 +87,7 @@
                             data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
                     <div class="c-productNew__deleteLesson js-deleteIcon"><i class="far fa-trash-alt"></i></div>
                     @error('number')
-                    <span class="" role="alert">
+                    <span class="c-productNew__error" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
@@ -96,7 +99,7 @@
                         placeholder="レッスンのタイトル" placeholder="title１">
 
                     @error('title')
-                    <span class="" role="alert">
+                    <span class="c-productNew__error" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
@@ -143,7 +146,7 @@
                     </div>
 
                     @error('lesson')
-                    <span class="" role="alert">
+                    <span class="c-productNew__error" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
@@ -157,12 +160,13 @@
 
         {{-- 価格 --}}
         <div class="">
+            <p class="c-productNew__title__label">価格</p>
             <input id="default_price" type="text"
                 class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
                 name="default_price" value="{{ old('default_price') }}" autocomplete="default_price" placeholder="価格">
 
             @error('default_price')
-            <span class="" role="alert">
+            <span class="c-productNew__error" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
@@ -170,13 +174,13 @@
 
         {{-- 必要スキル --}}
         <div class="c-productNew__skills">
-            <p class="c-productNew__skills__title">受講に必要なスキル</p>
+            <p class="c-productNew__title__label">受講に必要なスキル</p>
             <textarea id="skills" type="text"
                 class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
                 data-input="skills" name="skills" value="{{ old('skills') }}" rows="7">
             </textarea>
             @error('skills')
-            <span class="" role="alert">
+            <span class="c-productNew__error" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
@@ -184,6 +188,7 @@
 
         {{-- 画像 --}}
         <div class="c-productNew__images">
+            <p class="c-productNew__title__label">画像</p>
             <div class="c-productNew__images__half">
                 {{-- 画像1 --}}
                 <label class="c-productNew__image__area js-area__drop">

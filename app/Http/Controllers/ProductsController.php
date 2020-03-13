@@ -200,15 +200,16 @@ class ProductsController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'detail' => 'string|max:255',
-            // 'lesson' => 'string|max:255',
-            // 'free_flg' => 'string|max:255',
-            // 'pic1' => 'string|max:255',
-            // 'pic2' => 'string|max:255',
-            // 'pic3' => 'string|max:255',
-            // 'pic4' => 'string|max:255',
-            // 'pic5' => 'string|max:255',
-            // 'pic5' => 'string|max:255',
+            'detail' => 'required|string|max:255',
+            'default_price' => 'required',
+            'lang' => 'required',
+            'difficult' => 'required',
+            'skills' => 'required|string|max:255',
+            'pic1' => 'string|max:255',
+            'pic2' => 'string|max:255',
+            'pic3' => 'string|max:255',
+            'pic4' => 'string|max:255',
+            'pic5' => 'string|max:255',
         ]);
 
         Log::debug('これからDBへデータ挿入');
