@@ -1,6 +1,5 @@
 let $dropArea = $('.js-area__drop');
 let $productFileInput = $('.js-input__file--product');
-let $profileFileInput = $('.js-input__file--profile');
 let $deletebtn = $('.js-delete__file');
 $dropArea.on('dragover', function(e){
   e.stopPropagation();
@@ -21,18 +20,19 @@ $productFileInput.on('change', function () {
       $img = $(this).siblings('.js-prev__img'), // 3 jQueryのsiblingsメソッドで兄弟のimg取得
       fileReader = new FileReader();  // 4 ファイルを読み込むFileReaderオブジェクト
   
-//5. 読み込みが完了した際のイベントハンドラ。imgのsrcにデータをセット
-  fileReader.onload = function(event) {
-//読み込んだデータをimgに設定
-  $img.attr('src', event.target.result).show();
-  };
-  
-// 6. 画像読み込み
-  fileReader.readAsDataURL(file);
-});
-
-
-
+      //5. 読み込みが完了した際のイベントハンドラ。imgのsrcにデータをセット
+      fileReader.onload = function(event) {
+        //読み込んだデータをimgに設定
+        $img.attr('src', event.target.result).show();
+      };
+      
+      // 6. 画像読み込み
+      fileReader.readAsDataURL(file);
+    });
+    
+    
+    
+let $profileFileInput = $('.js-input__file--profile');
 
 //プロフィール画像プレビュー
 $profileFileInput.on('change', function () {
@@ -54,25 +54,25 @@ $profileFileInput.on('change', function () {
   fileReader.readAsDataURL(file);
   
     // 初期設定
-	var options =
-	{
-	aspectRatio: 1 / 1,
-	viewMode:1,
-	crop: function(e) {
-		var cropData = $('#js-profile__img').cropper('getData');
-	$('#upload-image-x').val(Math.floor(cropData.x));
-	$('#upload-image-y').val(Math.floor(cropData.y));
-	$('#upload-image-w').val(Math.floor(cropData.width));
-	$('#upload-image-h').val(Math.floor(cropData.height));
-		},
-		zoomable:false,
-		minCropBoxWidth:162,
-		minCropBoxHeight:162
-	}
+	// var options =
+	// {
+	// aspectRatio: 1 / 1,
+	// viewMode:1,
+	// crop: function(e) {
+	// 	var cropData = $('#js-profile__img').cropper('getData');
+	// $('#upload-image-x').val(Math.floor(cropData.x));
+	// $('#upload-image-y').val(Math.floor(cropData.y));
+	// $('#upload-image-w').val(Math.floor(cropData.width));
+	// $('#upload-image-h').val(Math.floor(cropData.height));
+	// 	},
+	// 	zoomable:false,
+	// 	minCropBoxWidth:162,
+	// 	minCropBoxHeight:162
+	// }
 
         // 初期設定をセットする
-	$('#js-profile__img').cropper(options);
-	$('#js-profile__img').cropper('replace',URL.createObjectURL(this.files[0]));
+	// $('#js-profile__img').cropper(options);
+	// $('#js-profile__img').cropper('replace',URL.createObjectURL(this.files[0]));
 
 
   //画像トリミング

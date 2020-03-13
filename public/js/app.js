@@ -39570,7 +39570,26 @@ $follow.on('click', function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Applications/MAMP/htdocs/JISAKU/resources/js/components/postdraft.js: Invalid left-hand side in assignment expression (13:12)\n\n\u001b[0m \u001b[90m 11 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 | \u001b[39m        \u001b[36mif\u001b[39m (postType \u001b[33m==\u001b[39m \u001b[32m'draft'\u001b[39m) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 | \u001b[39m            $(e)\u001b[33m.\u001b[39mfind(input[type\u001b[33m=\u001b[39mhidden])\u001b[33m.\u001b[39mprop(\u001b[32m'name'\u001b[39m) \u001b[33m=\u001b[39m \u001b[32m\"draft\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 | \u001b[39m        } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (postType \u001b[33m==\u001b[39m \u001b[32m'register'\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m 15 | \u001b[39m            $(e)\u001b[33m.\u001b[39mfind(input[type\u001b[33m=\u001b[39mhidden])\u001b[33m.\u001b[39mprop(\u001b[32m'name'\u001b[39m) \u001b[33m=\u001b[39m \u001b[32m\"register\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 16 | \u001b[39m        }\u001b[0m\n    at Parser.raise (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:7013:17)\n    at Parser.checkLVal (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:8878:16)\n    at Parser.parseMaybeAssign (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9025:12)\n    at Parser.parseExpression (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:8950:23)\n    at Parser.parseStatementContent (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10787:23)\n    at Parser.parseStatement (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10658:17)\n    at Parser.parseBlockOrModuleBlockBody (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11234:25)\n    at Parser.parseBlockBody (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11221:10)\n    at Parser.parseBlock (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11205:10)\n    at Parser.parseStatementContent (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10734:21)\n    at Parser.parseStatement (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10658:17)\n    at Parser.parseIfStatement (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11012:28)\n    at Parser.parseStatementContent (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10703:21)\n    at Parser.parseStatement (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10658:17)\n    at Parser.parseBlockOrModuleBlockBody (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11234:25)\n    at Parser.parseBlockBody (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11221:10)\n    at Parser.parseBlock (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11205:10)\n    at Parser.parseFunctionBody (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10220:24)\n    at Parser.parseFunctionBodyAndFinish (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10190:10)\n    at withTopicForbiddingContext (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11364:12)\n    at Parser.withTopicForbiddingContext (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10533:14)\n    at Parser.parseFunction (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11363:10)\n    at Parser.parseFunctionExpression (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9680:17)\n    at Parser.parseExprAtom (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9588:21)\n    at Parser.parseExprSubscripts (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9219:23)\n    at Parser.parseMaybeUnary (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9199:21)\n    at Parser.parseExprOps (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9067:23)\n    at Parser.parseMaybeConditional (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9040:23)\n    at Parser.parseMaybeAssign (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9000:21)\n    at Parser.parseExprListItem (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10295:18)\n    at Parser.parseCallExpressionArguments (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9404:22)\n    at Parser.parseSubscript (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9310:31)\n    at Parser.parseSubscripts (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9240:19)\n    at Parser.parseExprSubscripts (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9229:17)\n    at Parser.parseMaybeUnary (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9199:21)\n    at Parser.parseExprOps (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9067:23)");
+var postdraft = function postdraft() {
+  console.log('postdraftイベント発生');
+  $('.js-isCheck-postType').on('click', function (e) {
+    // e.preventDefault();
+    console.log('clickイベント発生'); // var that = $(this);
+
+    var postType = $(this).data('type');
+    console.log('postType');
+    console.log(postType);
+
+    if (postType == 'draft') {
+      $(e).find('input[type=hidden]').prop('name', 'draft');
+    } else if (postType == 'register') {
+      $(e).find('input[type=hidden]').prop('name', 'register');
+    } // $('#form').submit();
+
+  });
+};
+
+window.onload = postdraft();
 
 /***/ }),
 
@@ -39583,7 +39602,6 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 
 var $dropArea = $('.js-area__drop');
 var $productFileInput = $('.js-input__file--product');
-var $profileFileInput = $('.js-input__file--profile');
 var $deletebtn = $('.js-delete__file');
 $dropArea.on('dragover', function (e) {
   e.stopPropagation();
@@ -39612,7 +39630,8 @@ $productFileInput.on('change', function () {
 
 
   fileReader.readAsDataURL(file);
-}); //プロフィール画像プレビュー
+});
+var $profileFileInput = $('.js-input__file--profile'); //プロフィール画像プレビュー
 
 $profileFileInput.on('change', function () {
   console.log('changeイベントはっせい！');
@@ -39631,24 +39650,25 @@ $profileFileInput.on('change', function () {
 
 
   fileReader.readAsDataURL(file); // 初期設定
-
-  var options = {
-    aspectRatio: 1 / 1,
-    viewMode: 1,
-    crop: function crop(e) {
-      var cropData = $('#js-profile__img').cropper('getData');
-      $('#upload-image-x').val(Math.floor(cropData.x));
-      $('#upload-image-y').val(Math.floor(cropData.y));
-      $('#upload-image-w').val(Math.floor(cropData.width));
-      $('#upload-image-h').val(Math.floor(cropData.height));
-    },
-    zoomable: false,
-    minCropBoxWidth: 162,
-    minCropBoxHeight: 162
-  }; // 初期設定をセットする
-
-  $('#js-profile__img').cropper(options);
-  $('#js-profile__img').cropper('replace', URL.createObjectURL(this.files[0])); //画像トリミング
+  // var options =
+  // {
+  // aspectRatio: 1 / 1,
+  // viewMode:1,
+  // crop: function(e) {
+  // 	var cropData = $('#js-profile__img').cropper('getData');
+  // $('#upload-image-x').val(Math.floor(cropData.x));
+  // $('#upload-image-y').val(Math.floor(cropData.y));
+  // $('#upload-image-w').val(Math.floor(cropData.width));
+  // $('#upload-image-h').val(Math.floor(cropData.height));
+  // 	},
+  // 	zoomable:false,
+  // 	minCropBoxWidth:162,
+  // 	minCropBoxHeight:162
+  // }
+  // 初期設定をセットする
+  // $('#js-profile__img').cropper(options);
+  // $('#js-profile__img').cropper('replace',URL.createObjectURL(this.files[0]));
+  //画像トリミング
   // $('#js-profile__img').cropper({
   //   aspectRatio: 1 / 1
   // });

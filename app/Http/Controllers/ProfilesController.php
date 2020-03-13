@@ -106,26 +106,25 @@ class ProfilesController extends Controller
         $user = User::find($id);
         $user->fill($request->all())->save();
 
-        $image = Image::make(file_get_contents($request->pic))->crop(50, 50, 0, 0);
-        Log::debug('$user　前');
-        Log::debug($user);
-        $user->pic = $image; //追加
-        Log::debug('$user　後');
-        Log::debug($user);
-        $user->save(); //追加
+        // 整形して入れたいのはこっち
+        // $image = Image::make(file_get_contents($request->pic))->crop(50, 50, 0, 0);
+        // Log::debug('$user　前');
+        // Log::debug($user);
+        // $user->pic = $image; //追加
+        // Log::debug('$user　後');
+        // Log::debug($user);
+        // $user->save(); //追加
 
+        // $path = $image->store('public/profile_images');
+        // Log::debug('<<<<<<<<<<<<     整形後 image       >>>>>>>>>>>>>>');
+        // Log::debug($image);
 
-        // $path = $request->pic->store('public/profile_images'); //もともとこっち
-        // $path = $image->store('public/profile_images');//もともとこっち
-        $path = $image->store('public/profile_images');
-
+        $path = $request->pic->store('public/profile_images'); //もともとこっち
 
         Log::debug('$request->pic');
         Log::debug($request->pic);
         $user->pic = str_replace('public/', '', $path);
 
-        Log::debug('<<<<<<<<<<<<     整形後 image       >>>>>>>>>>>>>>');
-        Log::debug($image);
 
         $user->save();
 

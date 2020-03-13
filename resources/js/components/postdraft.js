@@ -4,18 +4,18 @@ let postdraft = function () {
         // e.preventDefault();
         console.log('clickイベント発生');
     
-        var that = $(this);
+        // var that = $(this);
         let postType = $(this).data('type');
         console.log('postType');
         console.log(postType);
 
         if (postType == 'draft') {
-            $(e).find(input[type=hidden]).prop('name') = "draft";
+            $(e).find('input[type=hidden]').prop('name','draft');
         } else if (postType == 'register') {
-            $(e).find(input[type=hidden]).prop('name') = "register";
+            $(e).find('input[type=hidden]').prop('name','register');
         }
 
         // $('#form').submit();
     });
 }
-// window.onload = postdraft();
+window.onload = postdraft();

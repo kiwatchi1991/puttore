@@ -23,9 +23,12 @@
 
                     </label>
                 </div>
-                <input class="c-profileEdit__img__input js-input__file" type="file" name="pic">
+                <label for="img" class="c-profileEdit__img__text">
+                    <input class="c-profileEdit__img__input js-input__file--profile" type="file" name="pic" id="img">
+                    画像を変更する
+                </label>
                 {{-- 画像削除 --}}
-                <p class="js-delete__file">消す</p>
+                {{-- <p class="js-delete__file">消す</p> --}}
 
                 @error('pic')
                 <span role="alert">
@@ -85,8 +88,8 @@
                 </div>
 
                 {{-- 保存ボタン --}}
-                <div class="c-button__block">
-                    <button type="submit" class="c-button">
+                <div class="c-profileEdit__submit">
+                    <button type="submit" class="c-profileEdit__button">
                         登録する
                     </button>
                 </div>
