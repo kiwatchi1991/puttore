@@ -38960,17 +38960,13 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./components/markdown */ "./resources/js/components/markdown.js");
+
 __webpack_require__(/*! ./components/hamgurger */ "./resources/js/components/hamgurger.js");
 
 __webpack_require__(/*! ./components/previewImage */ "./resources/js/components/previewImage.js");
 
-__webpack_require__(/*! ./components/drop-down */ "./resources/js/components/drop-down.js");
-
 __webpack_require__(/*! ./components/add-lesson */ "./resources/js/components/add-lesson.js");
-
-__webpack_require__(/*! ./components/markdown */ "./resources/js/components/markdown.js");
-
-__webpack_require__(/*! ./components/postdraft */ "./resources/js/components/postdraft.js");
 
 __webpack_require__(/*! ./components/ajaxLike */ "./resources/js/components/ajaxLike.js");
 
@@ -38979,8 +38975,6 @@ __webpack_require__(/*! ./components/ajaxFollow */ "./resources/js/components/aj
 __webpack_require__(/*! ./components/ajaxCart */ "./resources/js/components/ajaxCart.js");
 
 __webpack_require__(/*! ./components/date-picker */ "./resources/js/components/date-picker.js");
-
-__webpack_require__(/*! ./components/slick */ "./resources/js/components/slick.js");
 
 /***/ }),
 
@@ -39040,8 +39034,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 //レッスン削除ボタンを押したとき
-var $deleteIcon = $('.js-deleteIcon');
-
+// let $deleteIcon = $('.js-deleteIcon');
 var deleteLesson = function deleteLesson(e) {
   //削除対象のDOM
   var $deleteTarget = $(e).parents('.js-add__target'); //レッスンの数
@@ -39089,9 +39082,10 @@ var deleteLesson = function deleteLesson(e) {
 }; //レッスンの追加ボタンを押した時
 
 
-var $button = $('.c-addLesson__button');
+var $button = $('.js-addLesson__button');
 $button.on('click', function (e) {
-  e.preventDefault(); //レッスンのコピー
+  e.preventDefault();
+  console.log('レッスン追加イベント'); //レッスンのコピー
 
   var $copyTaget = $('.js-add__target:last-child');
   $copyTaget.clone().appendTo('#js-lesson__section');
@@ -39410,25 +39404,6 @@ $(function () {
 
 /***/ }),
 
-/***/ "./resources/js/components/drop-down.js":
-/*!**********************************************!*\
-  !*** ./resources/js/components/drop-down.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(function () {
-  console.log('loaded！！！');
-  $('.c-tag__list').hover(function () {
-    console.log('click！！！');
-    $('.c-tag__lists:not(:animated)', this).slideDown();
-  }, function () {
-    $('.c-tag__lists', this).slideUp();
-  });
-});
-
-/***/ }),
-
 /***/ "./resources/js/components/hamgurger.js":
 /*!**********************************************!*\
   !*** ./resources/js/components/hamgurger.js ***!
@@ -39471,11 +39446,12 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
+var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js"); //レッスン詳細のマークダウンをプレビューする
+
 
 var $getData = $('#js-lessonShow__getText');
 
-if ($getData) {
+if (!$getData == null && !$getData == undefined) {
   var html = marked($getData.val());
   console.log(html);
   $('#js-lessonShow__preview').html(html);
@@ -39563,36 +39539,6 @@ $follow.on('click', function () {
 
 /***/ }),
 
-/***/ "./resources/js/components/postdraft.js":
-/*!**********************************************!*\
-  !*** ./resources/js/components/postdraft.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var postdraft = function postdraft() {
-  console.log('postdraftイベント発生');
-  $('.js-isCheck-postType').on('click', function (e) {
-    // e.preventDefault();
-    console.log('clickイベント発生'); // var that = $(this);
-
-    var postType = $(this).data('type');
-    console.log('postType');
-    console.log(postType);
-
-    if (postType == 'draft') {
-      $(e).find('input[type=hidden]').prop('name', 'draft');
-    } else if (postType == 'register') {
-      $(e).find('input[type=hidden]').prop('name', 'register');
-    } // $('#form').submit();
-
-  });
-};
-
-window.onload = postdraft();
-
-/***/ }),
-
 /***/ "./resources/js/components/previewImage.js":
 /*!*************************************************!*\
   !*** ./resources/js/components/previewImage.js ***!
@@ -39677,28 +39623,6 @@ $profileFileInput.on('change', function () {
 $deletebtn.on('click', function () {
   $('.js-prev__img').attr('src', '').show();
 }); // const cropper = require('cropper');
-
-/***/ }),
-
-/***/ "./resources/js/components/slick.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/slick.js ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  $('.c-image__preview ul').slick({
-    infinite: true,
-    //スライドのループ有効化
-    dots: true,
-    //ドットのナビゲーションを表示
-    centerMode: true,
-    //要素を中央寄せ
-    centerPadding: '10%' //両サイドの見えている部分のサイズ
-
-  });
-});
 
 /***/ }),
 

@@ -1,12 +1,13 @@
-const marked = require('marked');
+let marked = require('marked');
 
-
+//レッスン詳細のマークダウンをプレビューする
 let $getData = $('#js-lessonShow__getText');
-if ($getData) {
+if (!$getData == null && !$getData == undefined) {
   var html = marked($getData.val());
   console.log(html);
   $('#js-lessonShow__preview').html(html);
 }
+
 
 
 //画像を挿入

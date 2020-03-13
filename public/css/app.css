@@ -971,6 +971,13 @@ a:visited {
   font-size: 14px;
 }
 
+#payjp_checkout_box input[type=button] {
+  background: orange !important;
+  background-image: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
 .c-productShow {
   margin-bottom: 100px;
   background: #E5F6F2;
@@ -1415,13 +1422,6 @@ a:visited {
 .c-productEdit__submit__button {
   color: #ffffff;
   font-size: 14px;
-}
-
-#payjp_checkout_box input[type=button] {
-  background-image: none !important;
-  background: orange !important;
-  border: none !important;
-  padding: 0 !important;
 }
 
 .c-product__input-area {
@@ -1925,6 +1925,7 @@ a:visited {
 
 .c-login__inner {
   padding: 30px;
+  background: #E5F6F2;
 }
 
 .c-login__title {
@@ -2039,6 +2040,7 @@ a:visited {
 
 .c-register__inner {
   padding: 30px;
+  background: #E5F6F2;
 }
 
 .c-register__title {

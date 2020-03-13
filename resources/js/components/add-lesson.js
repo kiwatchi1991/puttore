@@ -1,5 +1,5 @@
 //レッスン削除ボタンを押したとき
-let $deleteIcon = $('.js-deleteIcon');
+// let $deleteIcon = $('.js-deleteIcon');
 
 let deleteLesson = function (e) {
 
@@ -49,10 +49,10 @@ let deleteLesson = function (e) {
 }
 
 //レッスンの追加ボタンを押した時
-let $button = $('.c-addLesson__button');
+let $button = $('.js-addLesson__button');
 $button.on('click', function (e) {
     e.preventDefault();
-
+    console.log('レッスン追加イベント');
     //レッスンのコピー
     let $copyTaget = $('.js-add__target:last-child');
     $copyTaget.clone().appendTo('#js-lesson__section');
@@ -108,6 +108,8 @@ let setMarkedEvent = function () {
 
 
 const marked = require('marked');
+
+
 
 var markdownpreview = function (option) {
     var html = marked(option.val());

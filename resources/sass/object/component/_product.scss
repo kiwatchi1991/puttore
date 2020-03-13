@@ -451,6 +451,13 @@
   }
 
 }
+//支払いボタンのスタイル上書き
+#payjp_checkout_box input[type=button]{
+  background: orange !important;
+  background-image: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
 
 .c-productShow{
   margin-bottom: 100px; //あとで消す
@@ -833,13 +840,7 @@
 
 }
 
-//支払いボタンのスタイル上書き
-#payjp_checkout_box input[type=button]{
-  background-image: none !important;
-  background: orange !important;
-  border: none !important;
-  padding: 0 !important;
-}
+
 
 .c-product__input-area{
     border: solid 1px #000;
