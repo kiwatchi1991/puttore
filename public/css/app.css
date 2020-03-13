@@ -356,6 +356,10 @@ a:visited {
   padding: 32px 0 32px 24px;
 }
 
+.global-nav__item__link.first {
+  margin-top: 80px;
+}
+
 .global-nav__item__link.auth {
   display: inline-block;
   width: 33%;
@@ -1897,7 +1901,29 @@ a:visited {
 
 .c-messages__inner {
   background: #E5F6F2;
-  padding: 32px 0 0 0;
+  padding: 32px 0 48px 0;
+}
+
+.c-messages__inputArea {
+  height: 45px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+.c-messages__input {
+  width: 100%;
+  padding-left: 16px;
+}
+
+.c-messages__button {
+  width: 25vw;
+  margin: 10px 10px 0 0;
+  background: #00ac7d;
+  color: white;
+  border: none;
+  border-radius: 10px;
 }
 
 .c-message {

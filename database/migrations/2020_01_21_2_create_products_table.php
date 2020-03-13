@@ -26,14 +26,13 @@ class CreateProductsTable extends Migration
             $table->string('pic4')->nullable();
             $table->string('pic5')->nullable();
             $table->tinyInteger('price_flg')->default(0);
-            $table->decimal('default_price', 10)->nullable();
+            $table->decimal('default_price', 10, 0)->nullable();
             $table->tinyInteger('open_flg')->default(0);
             $table->tinyInteger('delete_flg')->default(0);
             $table->timestamps();
 
             // 外部キー制約
             $table->foreign('user_id')->references('id')->on('users');
-
         });
     }
 
@@ -50,6 +49,5 @@ class CreateProductsTable extends Migration
             $table->dropColumn('user_id');
         });
         Schema::dropIfExists('products');
-
     }
 }

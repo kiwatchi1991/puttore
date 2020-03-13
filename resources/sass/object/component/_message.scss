@@ -42,7 +42,24 @@
     }
     &__inner{
         background: $bg;
-        padding: 32px 0 0 0;
+        padding: 32px 0 48px 0;
+    }
+     &__inputArea{
+        height: 45px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__input{
+        width: 100%;
+        padding-left: 16px;
+    }
+    &__button{
+        width: 25vw;
+        margin: 10px 10px 0 0;
+        background: $main-color;
+        color: white;
+        border:none;
+        border-radius: 10px;
     }
 }
 

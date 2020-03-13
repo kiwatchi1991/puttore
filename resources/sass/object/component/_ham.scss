@@ -57,6 +57,9 @@
         border-top: 1px solid $high-gr;
         padding: 32px 0 32px 24px;
       }
+      &.first{
+        margin-top: 80px;
+      }
       &.auth{
         display: inline-block;
         width: 33%;

@@ -50,17 +50,16 @@ $pic = $user->find($buy_userId)->pic;
     @endforeach
 </div>
 
-<div class="c-bords__inputArea">
-    {{-- : {{ $order }} --}}
-    <form method="POST" action="{{ route('messages.create',$ordersId) }}">
+{{-- : {{ $order }} --}}
+<form method="POST" action="{{ route('messages.create',$ordersId) }}">
+    <div class="c-messages__inputArea">
         @csrf
-        <input type="text" name="messages" value="{{ old('messages') }}">
+        <input class="c-messages__input" type="text" name="messages" placeholder="ここにメッセージを入力してください"
+            value="{{ old('messages') }}">
         <input type="hidden" value="{{ $order->id }}" name="id">
-        <button type="submit">
+        <button type="submit" class="c-messages__button">
             送信
         </button>
-    </form>
-
-</div>
-
+    </div>
+</form>
 @endsection

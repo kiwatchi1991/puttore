@@ -74,7 +74,8 @@
                                     @endauth
 
                                     <li class="global-nav__item">
-                                        <a href="{{ route('products') }}" class="global-nav__item__link">作品を見る</a>
+                                        <a href="{{ route('products') }}"
+                                            class="global-nav__item__link @guest first @endguest">作品を見る</a>
                                     </li>
                                     <li class="global-nav__item">
                                         <a href="{{ route('products.new') }}" class="global-nav__item__link">出品する</a>
@@ -104,21 +105,6 @@
                                         <a href=" {{ route('register') }}" class="global-nav__item__link auth">新規登録</a>
                                     </li>
                                     @endguest
-
-                                    </li>
-                                    <li>
-                                        @guest
-                                    <li class="global-nav__item">
-                                        <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                    </li>
-                                    @if (Route::has('register'))
-                                    <li class="global-nav__item">
-                                        <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
-                                    @endif
-                                    @else
-                                    @endguest
-                                    </li>
                                 </ul>
                             </nav>
                             <div class="hamburger" id="js-hamburger">
