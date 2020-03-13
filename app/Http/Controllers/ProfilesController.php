@@ -119,14 +119,15 @@ class ProfilesController extends Controller
         // Log::debug('<<<<<<<<<<<<     整形後 image       >>>>>>>>>>>>>>');
         // Log::debug($image);
 
-        $path = $request->pic->store('public/profile_images'); //もともとこっち
+        if ($request->pic) {
 
-        Log::debug('$request->pic');
-        Log::debug($request->pic);
-        $user->pic = str_replace('public/', '', $path);
+            $path = $request->pic->store('public/profile_images'); //もともとこっち
 
-
-        $user->save();
+            Log::debug('$request->pic');
+            Log::debug($request->pic);
+            $user->pic = str_replace('public/', '', $path);
+            $user->save();
+        }
 
         return redirect()->route('profile.show', $id)->with('flash_message', __('Registered.'));
     }

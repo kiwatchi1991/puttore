@@ -316,7 +316,7 @@ a:visited {
 
 .global-nav {
   position: fixed;
-  right: -320px;
+  right: -100vw;
   /* これで隠れる */
   top: 0;
   width: 100vw;
@@ -1808,7 +1808,7 @@ a:visited {
 }
 
 .c-profileEdit__submit {
-  margin: 8px auto 0;
+  margin: 32px auto 0;
   text-align: center;
   width: 75%;
   color: #ffffff;
