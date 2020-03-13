@@ -95,17 +95,13 @@
   }
   &__lesson{
     margin-top: 24px;
-    &__number{
-      
-    }
+ 
     &__title{
       margin-top: 12px;
       line-height: 1.5;
       font-size: 14px;
     }
-    &__contents{
-
-    }
+ 
   }
   &__curriculumBlock{
     margin-top: 32px;
@@ -121,7 +117,6 @@
     text-align: center;
     width: 75%;
     font-size: 12px;
-    padding: 14px;
     box-sizing: border-box;
     border-bottom: 1px solid $main-color;
     padding: 14px 14px 14px 24px;
@@ -148,9 +143,6 @@
     box-sizing: border-box;
   }
 
-  &__toLessonPages{
-  
-  }
   &__toLessonPage{
     padding: 16px;
     font-size: 12px;

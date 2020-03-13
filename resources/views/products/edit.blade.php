@@ -3,7 +3,7 @@
 @section('content')
 <div class="c-productEdit">
 
-    <form method="POST" action="{{ route('products.update',$product->id) }}" enctype="multipart/form-data">
+    <form id="form" method="POST" action="{{ route('products.update',$product->id) }}" enctype="multipart/form-data">
         @csrf
         {{-- 名前 --}}
         <div class="">
@@ -81,7 +81,7 @@
         <div id="c-productNew__lessons">
             @foreach( $lessons as $lesson )
             <div class="c-productNew__lesson__inner js-add__target">
-
+                <input id="hidden" type="hidden" name="" value="{{ $lesson->id }}">
                 {{-- レッスン　Number --}}
                 <div class="c-productNew__topWrapper">
                     <div class="c-productNew__number">LESSON <span id="lesson_num">{{ $lesson->number }}</span>
@@ -273,12 +273,14 @@
 
 
 
-        <div class="c-productNew__submit c-productNew__submit--draft">
+        <div class="c-productNew__submit c-productNew__submit--draft" data-type="draft">
+            <input type="hidden" name="" class="js-postType" value="">
             <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft">
                 下書き保存する
             </button>
         </div>
-        <div class="c-productNew__submit ">
+        <div class="c-productNew__submit js-isCheck-postType" data-type="register">
+            <input type="hidden" name="" value="">
             <button type="submit" class="c-productNew__submit__button">
                 登録する
             </button>

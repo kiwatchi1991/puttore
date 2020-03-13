@@ -34,6 +34,9 @@ Route::group(['middleware' => 'check'], function () {
     //レッスンの画像アップロード
     Route::post('/products/imgupload',  'LessonImgUploadController@imgupload')->name('products.imgupload');
 
+    //レッスン編集画面で削除ボタンを押したときに、DBに既にあるレッスンだった場合はDBから削除
+    Route::post('/products/ajaxLessonDelete',  'ProductsController@ajaxLessonDelete')->name('products.ajaxLessonDelete');
+
     //レッスン詳細
     Route::get('/products/{p_id}/{l_id}',  'LessonShowController@index')->name('lessons');
 
@@ -50,7 +53,6 @@ Route::group(['middleware' => 'check'], function () {
     Route::post('/bords',  'MessagesController@create')->name('messages.create');
 
 
-    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
     //ユーザー
     Route::get('/profile/{id}/edit', 'ProfilesController@edit')->name('profile.edit');
@@ -58,6 +60,7 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/profile/{id}',  'ProfilesController@show')->name('profile.show');
     Route::get('/profile/{id}/delete',  'ProfilesController@deleteShow')->name('profile.deleteShow');
     Route::post('/profile/{id}/delete',  'ProfilesController@deleteData')->name('profile.deleteData');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
     //パスワード変更
     Route::get('changepassword', 'HomeController@showChangePasswordForm');
@@ -72,7 +75,3 @@ Route::group(['middleware' => 'check'], function () {
 
 
 });
-
-// Route::get('/{any?}', function () {
-//     return view('index');
-// })->where('any', '.+');

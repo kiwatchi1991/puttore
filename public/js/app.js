@@ -38970,6 +38970,8 @@ __webpack_require__(/*! ./components/add-lesson */ "./resources/js/components/ad
 
 __webpack_require__(/*! ./components/markdown */ "./resources/js/components/markdown.js");
 
+__webpack_require__(/*! ./components/postdraft */ "./resources/js/components/postdraft.js");
+
 __webpack_require__(/*! ./components/ajaxLike */ "./resources/js/components/ajaxLike.js");
 
 __webpack_require__(/*! ./components/ajaxFollow */ "./resources/js/components/ajaxFollow.js");
@@ -39052,7 +39054,32 @@ var deleteLesson = function deleteLesson(e) {
     var confirm_result = window.confirm('レッスンを削除します。元に戻せなくなりますが、本当によろしいですか？');
 
     if (confirm_result) {
-      //レッスンの削除
+      //DBにすでにあるものだったら、DBから削除
+      var $deleteTargetData = $deleteTarget.find('#hidden');
+      var deleteTargetId = $deleteTargetData.val();
+
+      if ($deleteTargetData) {
+        $.ajax({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          url: '/products/ajaxLessonDelete',
+          type: 'POST',
+          dataType: 'json',
+          data: {
+            'lessonId': deleteTargetId
+          }
+        }) // Ajaxリクエストが成功した場合
+        .done(function () {
+          console.log('ここまで4');
+        }) // Ajaxリクエストが失敗した場合
+        .fail(function (data) {
+          console.log('エラー');
+          console.log(data);
+        });
+      } //レッスンを画面から削除
+
+
       $deleteTarget.remove();
     } else {//処理をしない
     }
@@ -39533,6 +39560,17 @@ $follow.on('click', function () {
     console.log(data);
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/postdraft.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/postdraft.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Applications/MAMP/htdocs/JISAKU/resources/js/components/postdraft.js: Invalid left-hand side in assignment expression (13:12)\n\n\u001b[0m \u001b[90m 11 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 | \u001b[39m        \u001b[36mif\u001b[39m (postType \u001b[33m==\u001b[39m \u001b[32m'draft'\u001b[39m) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 | \u001b[39m            $(e)\u001b[33m.\u001b[39mfind(input[type\u001b[33m=\u001b[39mhidden])\u001b[33m.\u001b[39mprop(\u001b[32m'name'\u001b[39m) \u001b[33m=\u001b[39m \u001b[32m\"draft\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 | \u001b[39m        } \u001b[36melse\u001b[39m \u001b[36mif\u001b[39m (postType \u001b[33m==\u001b[39m \u001b[32m'register'\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m 15 | \u001b[39m            $(e)\u001b[33m.\u001b[39mfind(input[type\u001b[33m=\u001b[39mhidden])\u001b[33m.\u001b[39mprop(\u001b[32m'name'\u001b[39m) \u001b[33m=\u001b[39m \u001b[32m\"register\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 16 | \u001b[39m        }\u001b[0m\n    at Parser.raise (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:7013:17)\n    at Parser.checkLVal (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:8878:16)\n    at Parser.parseMaybeAssign (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9025:12)\n    at Parser.parseExpression (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:8950:23)\n    at Parser.parseStatementContent (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10787:23)\n    at Parser.parseStatement (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10658:17)\n    at Parser.parseBlockOrModuleBlockBody (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11234:25)\n    at Parser.parseBlockBody (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11221:10)\n    at Parser.parseBlock (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11205:10)\n    at Parser.parseStatementContent (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10734:21)\n    at Parser.parseStatement (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10658:17)\n    at Parser.parseIfStatement (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11012:28)\n    at Parser.parseStatementContent (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10703:21)\n    at Parser.parseStatement (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10658:17)\n    at Parser.parseBlockOrModuleBlockBody (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11234:25)\n    at Parser.parseBlockBody (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11221:10)\n    at Parser.parseBlock (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11205:10)\n    at Parser.parseFunctionBody (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10220:24)\n    at Parser.parseFunctionBodyAndFinish (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10190:10)\n    at withTopicForbiddingContext (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11364:12)\n    at Parser.withTopicForbiddingContext (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10533:14)\n    at Parser.parseFunction (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:11363:10)\n    at Parser.parseFunctionExpression (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9680:17)\n    at Parser.parseExprAtom (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9588:21)\n    at Parser.parseExprSubscripts (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9219:23)\n    at Parser.parseMaybeUnary (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9199:21)\n    at Parser.parseExprOps (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9067:23)\n    at Parser.parseMaybeConditional (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9040:23)\n    at Parser.parseMaybeAssign (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9000:21)\n    at Parser.parseExprListItem (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:10295:18)\n    at Parser.parseCallExpressionArguments (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9404:22)\n    at Parser.parseSubscript (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9310:31)\n    at Parser.parseSubscripts (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9240:19)\n    at Parser.parseExprSubscripts (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9229:17)\n    at Parser.parseMaybeUnary (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9199:21)\n    at Parser.parseExprOps (/Applications/MAMP/htdocs/JISAKU/node_modules/@babel/parser/lib/index.js:9067:23)");
 
 /***/ }),
 

@@ -1,16 +1,3 @@
-.global-nav {
-  position: fixed;
-  right: -320px; /* これで隠れる */
-  top: 0;
-  width: 300px; /* スマホに収まるくらい */
-  height: 100vh;
-  padding-top: 40px;
-  background-color: #fff;
-  transition: all .6s;
-  z-index: 200;
-  overflow-y: auto; /* メニューが多くなったらスクロールできるように */
-}
-
 .hamburger {
     position: absolute;
     right: 0;
@@ -28,55 +15,95 @@
       transition: all .6s;
     }
     &__line--1 {
-      top: 14px;
+      top: 19px;
     }
     &__line--2 {
-      top: 21px;
+      top: 26px;
     }
     &__line--3 {
-      top: 28px;
+      top: 33px;
     }
 }
-  // .hamburger__line {
-  //   position: absolute;
-  //   left: 11px;
-  //   width: 18px;
-  //   height: 1px;
-  //   background-color: #111;
-  //   transition: all .6s;
-  // }
+.global-nav{
+     position: fixed;
+    right: -320px; /* これで隠れる */
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 40px;
+    background-color: $bg;
+    transition: all .6s;
+    z-index: 200;
+    overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+    font-size: 18px;
+    font-weight: bold;
 
-  // .hamburger__line--1 {
-  //   top: 14px;
-  // }
-
-  // .hamburger__line--2 {
-  //   top: 20px;
-  // }
-
-  // .hamburger__line--3 {
-  //   top: 26px;
-  // }
-  .global-nav__list {
+  &__list {
     margin: 0;
     padding: 0;
     list-style: none;
   }
+  
+  &__item {
+    padding: 0 32px;
+    color: $main-text;
+    &__link {
+      display: block;
+      padding: 16px 16px 16px 24px;
+      border-bottom: 1px solid $high-gr;
+      text-decoration: none;
+      color: #111;
+      &--profile{
+        border-top: 1px solid $high-gr;
+        padding: 32px 0 32px 24px;
+      }
+      &.auth{
+        display: inline-block;
+        width: 33%;
+        &:first-child{
+          position: relative;
+          &::after{
+                content:'';
+                display: block;
+                background: $high-gr;
+                height: 24px;
+                width: 1px;
+                position: absolute;
+                top: 10px;
+                right: -1;
+          }
+        }
+      }
+    }
+    &--profile{
+         margin-top: 64px;
+    }
+    &__profile{
+      display: flex;
+      align-items: center;
+        &__img{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            &__wrapper{
+              background-image:url('/storage/images/noavatar.png');
+              background-position: center;
+              background-size: contain;
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+            }
+          }
+        &__name{
+          font-weight: bold;
+          font-size: 18px;
+          margin-left: 16px;
+        }
 
-  .global-nav__item {
-    text-align: center;
-    padding: 0 14px;
-  }
+    }
+}
 
-  .global-nav__item a {
-    display: block;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-    text-decoration: none;
-    color: #111;
-  }
-
-  .global-nav__item a:hover {
+  &__item a:hover {
     background-color: #eee;
   }
 
@@ -95,28 +122,31 @@
     transition: all .6s;
     cursor: pointer;
   }
+}
 
-  /* 表示された時用のCSS */
-  .nav-open .global-nav {
+/* 表示された時用のCSS */
+.nav-open{
+  .global-nav {
     right: 0;
   }
-
-  .nav-open .black-bg {
+  
+  .black-bg {
     opacity: .8;
     visibility: visible;
   }
-
-  .nav-open .hamburger__line--1 {
+  
+  .hamburger__line--1 {
     transform: rotate(45deg);
-    top: 20px;
+    top: 30px;
   }
-
-  .nav-open .hamburger__line--2 {
+  
+  .hamburger__line--2 {
     width: 0;
     left: 50%;
   }
   
-  .nav-open .hamburger__line--3 {
+  .hamburger__line--3 {
     transform: rotate(-45deg);
-    top: 20px;
+    top: 30px;
   }
+}

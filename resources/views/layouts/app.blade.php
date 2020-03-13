@@ -16,6 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
     {{-- slick(カルーセルのプラグイン) --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}" />
@@ -40,7 +41,7 @@
         <nav class="header">
             <div class="header__inner">
                 <div class="header__logo">
-                    <a class="" href="{{ url('/products/mypage') }}">
+                    <a class="" href="{{ url('/') }}">
                         <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
                     </a>
                 </div>
@@ -54,27 +55,56 @@
                                 <ul class="global-nav__list">
 
                                     @auth
-                                    ユーザーID:{{ $user->id }}　メールアドレス{{ $user->email }}
+
+                                    <li class="global-nav__item global-nav__item--profile">
+                                        <a href="{{ route('profile.show',$user->id) }}"
+                                            class="global-nav__item__link lobal-nav__item__link--profile">
+                                            <div class="global-nav__item__profile">
+                                                <div class="global-nav__item__profile__img__wrapper">
+                                                    @if($user->pic)
+                                                    <img class="global-nav__item__profile__img"
+                                                        {{-- src="{{ /storage/ $user->pic  }}" alt=""> --}}
+                                                    src="/storage/{{ $user->pic }}" alt="">
+                                                    @endif
+                                                </div>
+                                                <span
+                                                    class="global-nav__item__profile__name">{{ $user->account_name }}</span>
+                                            </div>
+                                        </a></li>
                                     @endauth
 
-                                    <li class="global-nav__item"><a href="{{ route('products.new') }}">New</a></li>
-                                    <li class="global-nav__item"><a href="{{ route('products') }}">index</a></li>
-                                    <li class="global-nav__item"><a href=" {{ route('products.mypage') }}">mypage</a>
-                                    </li>
-                                    <li class="global-nav__item"><a href=" {{ route('bords') }}">bords</a></li>
-                                    <li class="global-nav__item"><a href=" {{ route('carts') }}">carts</a></li>
-                                    <li class="global-nav__item"><a href=" {{ route('contact.index') }}">contacts</a>
+                                    <li class="global-nav__item">
+                                        <a href="{{ route('products') }}" class="global-nav__item__link">作品を見る</a>
                                     </li>
                                     <li class="global-nav__item">
-
+                                        <a href="{{ route('products.new') }}" class="global-nav__item__link">出品する</a>
+                                    </li>
+                                    @auth
+                                    <li class="global-nav__item">
+                                        <a href=" {{ route('profile.show',$user->id) }}"
+                                            class="global-nav__item__link">マイページ</a>
+                                    </li>
+                                    <li class="global-nav__item">
+                                        <a href=" {{ route('bords') }}" class="global-nav__item__link">メッセージボード</a>
+                                    </li>
+                                    <li class="global-nav__item">
                                         <a onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();"
-                                            href="{{ route('logout') }}">Logout</a>
+                                             document.getElementById('logout-form').submit();"
+                                            href="{{ route('logout') }}" class="global-nav__item__link">ログアウト</a>
                                         {{-- <form action="/logout" method="POST" id="logout__form" style="display:none;"></form> --}}
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             style="display: none;">
                                             @csrf
                                         </form>
+                                    </li>
+                                    @endauth
+                                    @guest
+                                    <li class="global-nav__item">
+                                        <a href=" {{ route('login') }}" class="global-nav__item__link auth">ログイン</a>
+                                        <a href=" {{ route('register') }}" class="global-nav__item__link auth">新規登録</a>
+                                    </li>
+                                    @endguest
+
                                     </li>
                                     <li>
                                         @guest

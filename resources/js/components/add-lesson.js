@@ -13,8 +13,33 @@ let deleteLesson = function (e) {
     } else {
         let confirm_result = window.confirm('レッスンを削除します。元に戻せなくなりますが、本当によろしいですか？');
         if (confirm_result) {
-            //レッスンの削除
+            //DBにすでにあるものだったら、DBから削除
+            let $deleteTargetData = $deleteTarget.find('#hidden');
+            let deleteTargetId = $deleteTargetData.val();
+            if ($deleteTargetData) {
+                 $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: '/products/ajaxLessonDelete',
+                    type: 'POST',
+                    dataType: 'json',
+                    data:{ 'lessonId':deleteTargetId},
+                        })
+                        // Ajaxリクエストが成功した場合
+                        .done(function () {
+                            console.log('ここまで4');
+                    })
+                    // Ajaxリクエストが失敗した場合
+                    .fail(function (data) {
+                        console.log('エラー');
+                        console.log(data);
+                    });
+            }
+
+            //レッスンを画面から削除
             $deleteTarget.remove();
+
         } else {
             //処理をしない
         }

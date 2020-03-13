@@ -556,9 +556,6 @@
   }
   &__lesson{
     margin-top: 24px;
-    &__number{
-      
-    }
     &__title{
       margin-top: 12px;
       line-height: 1.5;
@@ -592,9 +589,6 @@
     box-sizing: border-box;
   }
 
-  &__toLessonPages{
-  
-  }
   &__toLessonPage{
     padding: 16px;
     font-size: 12px;
@@ -857,9 +851,6 @@
     &--textarea{
         height: 100%;
     }
-    // &--price{
-    //     width: 100px;
-    // }
 }
 
 .c-submit__button{

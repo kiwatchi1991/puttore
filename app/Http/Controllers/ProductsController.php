@@ -123,11 +123,6 @@ class ProductsController extends Controller
         // 言語の登録
         $categories_name = $request->input('lang'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
 
-        Log::debug('$productの内容');
-        Log::debug([$product]);
-        Log::debug('$categories_nameの内容');
-        Log::debug($categories_name);
-
         $category_ids = [];
         foreach ($categories_name as $category_name) {
             if (!empty($category_name)) {
@@ -545,5 +540,24 @@ class ProductsController extends Controller
         Product::find($id)->delete();
 
         return redirect('/products')->with('flash_message', __('Deleted.'));
+    }
+
+    /**
+     * レッスン削除（非同期）
+     */
+    public function ajaxLessonDelete(Request $request)
+    {
+        Log::debug('<<<<<<<< ajaxLessonDelete発動！>>>>>>>>>>>>>');
+        Log::debug('<<<<<<<< $request 内容 >>>>>>>>>>>>>');
+        Log::debug($request);
+
+        $lesson_id = $request->lessonId;
+
+        $delete_target_lesson = Lesson::where('id', $lesson_id);
+        if ($delete_target_lesson) {
+            Log::debug('<<<<<<<< LESSON　削除処理　>>>>>>>>>>>>>');
+            $delete_target_lesson->delete();
+            return response()->json();
+        }
     }
 }
