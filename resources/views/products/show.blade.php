@@ -5,7 +5,7 @@
 
 <div class="c-productShow">
 
-    <div class="c-product__img">
+    <div class="c-productShow__img">
         <ul>
             @foreach($product_imgs as $product_img)
             @if($product_img)

@@ -226,21 +226,25 @@ class ProductsController extends Controller
         if ($request->pic1) {
             $path = $request->pic1->store('public/profile_images');
             $product->pic1 = str_replace('public/', '', $path);
+            $product->save();
         }
         if ($request->pic2) {
 
             $path = $request->pic2->store('public/profile_images');
             $product->pic2 = str_replace('public/', '', $path);
+            $product->save();
         }
         if ($request->pic3) {
 
             $path = $request->pic3->store('public/profile_images');
             $product->pic3 = str_replace('public/', '', $path);
+            $product->save();
         }
 
         if ($request->pic4) {
             $path = $request->pic4->store('public/profile_images');
             $product->pic4 = str_replace('public/', '', $path);
+            $product->save();
         }
 
         if ($request->pic5) {

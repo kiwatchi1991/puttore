@@ -456,6 +456,17 @@
   margin-bottom: 100px; //あとで消す
   background: $bg;
   padding: 20px;
+  &__img{
+    background: white;
+    width: 280px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    img{
+      width: 100%;
+    }
+  }
   &__price{
     margin-top: 16px;
     font-size: 20px;
@@ -675,7 +686,7 @@
             border: 1px solid #333;
         }
     }
-    &__checkbox:checked + .c-productNew__label{
+    &__checkbox:checked + .c-productEdit__label{
         &::before{
           background: $main-color;
           border: none;
@@ -778,7 +789,8 @@
   &__image{
     &__area{
       width: 30%;
-      height: 100px;
+      height: 80px;
+      overflow: hidden;
       background: #f6f5f4;
       color: #ccc;
       text-align: center;

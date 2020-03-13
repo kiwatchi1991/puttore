@@ -919,6 +919,19 @@ a:visited {
   padding: 20px;
 }
 
+.c-productShow__img {
+  background: white;
+  width: 280px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.c-productShow__img img {
+  width: 100%;
+}
+
 .c-productShow__price {
   margin-top: 16px;
   font-size: 20px;
@@ -1170,14 +1183,14 @@ a:visited {
   border: 1px solid #333;
 }
 
-.c-productEdit__checkbox:checked + .c-productNew__label::before {
+.c-productEdit__checkbox:checked + .c-productEdit__label::before {
   background: #00ac7d;
   border: none;
   width: 14px;
   height: 14px;
 }
 
-.c-productEdit__checkbox:checked + .c-productNew__label::after {
+.c-productEdit__checkbox:checked + .c-productEdit__label::after {
   content: "";
   display: block;
   position: absolute;
@@ -1294,7 +1307,8 @@ a:visited {
 
 .c-productEdit__image__area {
   width: 30%;
-  height: 100px;
+  height: 80px;
+  overflow: hidden;
   background: #f6f5f4;
   color: #ccc;
   text-align: center;

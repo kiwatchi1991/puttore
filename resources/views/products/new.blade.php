@@ -157,18 +157,15 @@
 
         {{-- 価格 --}}
         <div class="">
-            <div class="">
-                <input id="default_price" type="text"
-                    class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
-                    name="default_price" value="{{ old('default_price') }}" autocomplete="default_price"
-                    placeholder="価格">
+            <input id="default_price" type="text"
+                class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
+                name="default_price" value="{{ old('default_price') }}" autocomplete="default_price" placeholder="価格">
 
-                @error('default_price')
-                <span class="" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
+            @error('default_price')
+            <span class="" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
         {{-- 必要スキル --}}
