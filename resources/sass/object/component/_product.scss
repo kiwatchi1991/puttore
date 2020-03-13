@@ -604,6 +604,229 @@
 
 }
 
+.c-productEdit{
+  background: $bg;
+  padding: 30px;
+    &__input-area{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-top: 16px;
+       &--detail{
+        min-height: 250px;
+        max-height: 500px;
+      }
+    }
+    &__tagbox{
+      background: white;
+      margin-top: 32px;
+      padding: 16px 16px 16px 0;
+      border-radius: 5px;
+    }
+    &__categories{
+        margin-top: 8px;
+    }
+    &__difficults{
+      margin-top: 32px;
+    }
+    &__topWrapper{
+      display: flex;
+      justify-content: space-between;
+      color: $main-color;
+    }
+    &__deleteLesson{
+      font-size: 26px;
+      margin-right: 12px;
+    }
+    &__title{
+      font-size: 12px;
+      margin-left: 16px;
+    }
+    &__detail{
+      margin-top: 24px;
+    }
+    &__modal{
+      font-size: 10px;
+      margin: 5px 0 0 3px;
+    }
+    &__checkbox{
+      display: none;
+    }
+    &__label{
+        padding-left: 20px;
+        position:relative;
+        margin-left: 16px;
+        margin-top: 16px;
+        line-height: 17px;
+        display: inline-block;
+        font-size: 12px;
+        &::before{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 13px;
+            height: 13px;
+            border-radius: 4px;
+            background: #ffffff;
+            border: 1px solid #333;
+        }
+    }
+    &__checkbox:checked + .c-productNew__label{
+        &::before{
+          background: $main-color;
+          border: none;
+          width: 14px;
+          height: 14px;
+        }
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 1px;
+            left: 4px;
+            width: 4px;
+            height: 8px;
+            transform: rotate(45deg);
+            border-bottom: 2px solid #fff;
+            border-right: 2px solid #fff;
+        }
+    }
+    &__lessons{
+      margin-top: 56px;
+    }
+    &__lesson{
+      display: none;
+      min-height: 250px;
+      
+      text-align: left;
+        &__block{
+          margin-top: 16px;
+        }
+        &__inner{
+          margin-top: 40px;
+        }
+        &__header{
+          display: flex;
+          justify-content: flex-end;
+          background: #fff;
+          padding-right: 15px;
+          padding-top: 8px;
+          font-size: 24px;
+          &__title{
+            width: 100%;
+            padding-left: 16px;
+            padding-top: 5px;
+            font-size: 16px;
+          }
+          &__input{
+            display: none;
+          }
+          &__toggleIcon{
+            display: none;
+            margin-right: 16px;
+            color: $main-color;
+            &.active{
+              display: block;
+            }
+          }
+          &__imgIcon{
+            color: $main-color;
+          }
+    }
+    &.active{
+      display: block;
+    }
+    &--textarea{
+      min-height: 250px;
+      width: 100%;
+      box-sizing: border-box;
+      max-height: 500px;
+    }
+    &--preview{
+      padding: 24px 16px;
+      min-height: 250px;
+      background: #fff;
+      max-height: 700px;
+    }
+    &__addBtn{
+      text-align: center;
+      margin-top: 16px;
+      &__btn{
+        color: $main-color;
+      }
+    }
+  }
+  &__skills{
+    margin-top: 32px;
+    &__title{
+      color: $main-color;
+  
+    }
+  }
+  &__images{
+    margin-top: 32px;
+    &__half{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+  }
+  &__image{
+    &__area{
+      width: 30%;
+      height: 100px;
+      background: #f6f5f4;
+      color: #ccc;
+      text-align: center;
+      line-height: 140px;
+      position: relative;
+      display: inline-block;
+      background-image:url('/storage/images/add_img.png');
+      background-position: center;
+      background-size: contain;
+      border-radius: 15px;
+    }
+    &__input{
+      width: 30%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+    &__img{
+      width: 100%;
+      max-height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 15px;
+    }
+  }
+  &__submit{
+  margin: 8px auto 0;
+  text-align: center;
+  width: 75%;
+  color: #ffffff;
+  background: orange;
+  padding: 10px;
+  border-radius: 10px;
+    &--draft{
+      margin-top: 32px;
+      background: $easy;
+    }
+    &__button{
+      color: #ffffff;
+      font-size: 14px;
+    }
+  }
+
+}
+
 //支払いボタンのスタイル上書き
 #payjp_checkout_box input[type=button]{
   background-image: none !important;

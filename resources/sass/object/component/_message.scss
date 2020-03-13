@@ -48,13 +48,37 @@
 
 
 .c-message{
-    padding: 15px;
-    border: 1px solid #333;
-    width: 250px;
-    margin: 30px auto 0 15px;
-        &.self{
-            color: red;
-            margin: 30px 15px 0 auto;
-            overflow-wrap: break-word;
+    display: flex;
+    align-items: flex-end;
+    &__userImg{
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        &__wrapper{
+                background-image: url('/storage/images/noavatar.png'); 
+                background-position: center;
+                background-size: contain;
+                margin-left: 16px;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+            }
         }
+    &__msg{
+        font-size: 12px;
+        line-height: 1.5;
+        padding: 10px 20px;
+        width: 220px;
+        margin: 20px 35px 0 auto;
+        box-sizing: border-box;
+        background: $low-gr;
+        border-radius: 10px 10px 0 10px;
+        &.inself{
+            margin: 30px auto 0 15px;
+            overflow-wrap: break-word;
+            background: $high-gr;
+            border-radius: 10px 10px 10px 0;
+
+        }
+    }
 }

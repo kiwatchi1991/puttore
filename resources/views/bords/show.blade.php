@@ -35,9 +35,18 @@ $pic = $user->find($buy_userId)->pic;
     @foreach ($messages as $message)
     @php
     //メッセージの、自分と相手の判断
-    $send_userId = $message->send_user_id;
+    $recieve_userId = $message->recieve_user_id;
     @endphp
-    <div class="c-message @if($send_userId == $self_user_id) self @endif">{{ $message->msg }}</div>
+    <div class="c-message">
+        @if($recieve_userId == $self_user_id)
+        <div class="c-message__userImg__wrapper">
+            <img src="/storage/{{ $pic }}" alt="" class="c-message__userImg">
+        </div>
+        @endif
+        <div class="c-message__msg @if($recieve_userId == $self_user_id) inself @endif">
+            {{ $message->msg }}
+        </div>
+    </div>
     @endforeach
 </div>
 

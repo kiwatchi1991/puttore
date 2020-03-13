@@ -1082,6 +1082,269 @@ a:visited {
   border-bottom: none;
 }
 
+.c-productEdit {
+  background: #E5F6F2;
+  padding: 30px;
+}
+
+.c-productEdit__input-area {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 16px;
+}
+
+.c-productEdit__input-area--detail {
+  min-height: 250px;
+  max-height: 500px;
+}
+
+.c-productEdit__tagbox {
+  background: white;
+  margin-top: 32px;
+  padding: 16px 16px 16px 0;
+  border-radius: 5px;
+}
+
+.c-productEdit__categories {
+  margin-top: 8px;
+}
+
+.c-productEdit__difficults {
+  margin-top: 32px;
+}
+
+.c-productEdit__topWrapper {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  color: #00ac7d;
+}
+
+.c-productEdit__deleteLesson {
+  font-size: 26px;
+  margin-right: 12px;
+}
+
+.c-productEdit__title {
+  font-size: 12px;
+  margin-left: 16px;
+}
+
+.c-productEdit__detail {
+  margin-top: 24px;
+}
+
+.c-productEdit__modal {
+  font-size: 10px;
+  margin: 5px 0 0 3px;
+}
+
+.c-productEdit__checkbox {
+  display: none;
+}
+
+.c-productEdit__label {
+  padding-left: 20px;
+  position: relative;
+  margin-left: 16px;
+  margin-top: 16px;
+  line-height: 17px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.c-productEdit__label::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid #333;
+}
+
+.c-productEdit__checkbox:checked + .c-productNew__label::before {
+  background: #00ac7d;
+  border: none;
+  width: 14px;
+  height: 14px;
+}
+
+.c-productEdit__checkbox:checked + .c-productNew__label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  width: 4px;
+  height: 8px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+.c-productEdit__lessons {
+  margin-top: 56px;
+}
+
+.c-productEdit__lesson {
+  display: none;
+  min-height: 250px;
+  text-align: left;
+}
+
+.c-productEdit__lesson__block {
+  margin-top: 16px;
+}
+
+.c-productEdit__lesson__inner {
+  margin-top: 40px;
+}
+
+.c-productEdit__lesson__header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+  background: #fff;
+  padding-right: 15px;
+  padding-top: 8px;
+  font-size: 24px;
+}
+
+.c-productEdit__lesson__header__title {
+  width: 100%;
+  padding-left: 16px;
+  padding-top: 5px;
+  font-size: 16px;
+}
+
+.c-productEdit__lesson__header__input {
+  display: none;
+}
+
+.c-productEdit__lesson__header__toggleIcon {
+  display: none;
+  margin-right: 16px;
+  color: #00ac7d;
+}
+
+.c-productEdit__lesson__header__toggleIcon.active {
+  display: block;
+}
+
+.c-productEdit__lesson__header__imgIcon {
+  color: #00ac7d;
+}
+
+.c-productEdit__lesson.active {
+  display: block;
+}
+
+.c-productEdit__lesson--textarea {
+  min-height: 250px;
+  width: 100%;
+  box-sizing: border-box;
+  max-height: 500px;
+}
+
+.c-productEdit__lesson--preview {
+  padding: 24px 16px;
+  min-height: 250px;
+  background: #fff;
+  max-height: 700px;
+}
+
+.c-productEdit__lesson__addBtn {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.c-productEdit__lesson__addBtn__btn {
+  color: #00ac7d;
+}
+
+.c-productEdit__skills {
+  margin-top: 32px;
+}
+
+.c-productEdit__skills__title {
+  color: #00ac7d;
+}
+
+.c-productEdit__images {
+  margin-top: 32px;
+}
+
+.c-productEdit__images__half {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  margin-top: 16px;
+}
+
+.c-productEdit__image__area {
+  width: 30%;
+  height: 100px;
+  background: #f6f5f4;
+  color: #ccc;
+  text-align: center;
+  line-height: 140px;
+  position: relative;
+  display: inline-block;
+  background-image: url("/storage/images/add_img.png");
+  background-position: center;
+  background-size: contain;
+  border-radius: 15px;
+}
+
+.c-productEdit__image__input {
+  width: 30%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.c-productEdit__image__img {
+  width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+}
+
+.c-productEdit__submit {
+  margin: 8px auto 0;
+  text-align: center;
+  width: 75%;
+  color: #ffffff;
+  background: orange;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.c-productEdit__submit--draft {
+  margin-top: 32px;
+  background: #E0E0E0;
+}
+
+.c-productEdit__submit__button {
+  color: #ffffff;
+  font-size: 14px;
+}
+
 #payjp_checkout_box input[type=button] {
   background-image: none !important;
   background: orange !important;
@@ -1501,16 +1764,44 @@ a:visited {
 }
 
 .c-message {
-  padding: 15px;
-  border: 1px solid #333;
-  width: 250px;
-  margin: 30px auto 0 15px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: end;
+          align-items: flex-end;
 }
 
-.c-message.self {
-  color: red;
-  margin: 30px 15px 0 auto;
+.c-message__userImg {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.c-message__userImg__wrapper {
+  background-image: url("/storage/images/noavatar.png");
+  background-position: center;
+  background-size: contain;
+  margin-left: 16px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.c-message__msg {
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 10px 20px;
+  width: 220px;
+  margin: 20px 35px 0 auto;
+  box-sizing: border-box;
+  background: #CBEDE4;
+  border-radius: 10px 10px 0 10px;
+}
+
+.c-message__msg.inself {
+  margin: 30px auto 0 15px;
   overflow-wrap: break-word;
+  background: #7DD4BB;
+  border-radius: 10px 10px 10px 0;
 }
 
 .c-login__inner {
