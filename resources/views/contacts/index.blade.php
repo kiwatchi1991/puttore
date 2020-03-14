@@ -12,7 +12,7 @@
 
                     <label class="c-contact__label">メールアドレス</label>
                     <div>
-                        <input class="c-contact__input" name="email" value="{{ old('email') }}" type="text">
+                        <input class="c-contact__input" name="email" value="{{ old('email') }}" type="email">
                     </div>
                     @if ($errors->has('email'))
                     <p class="c-contact__error">{{ $errors->first('email') }}</p>

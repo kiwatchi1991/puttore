@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title','お問い合わせ')
 @section('content')
-<h1>{{ __('送信完了') }}</h1>
-
+<div class="c-contact">
+    <h1 class="c-contact__title">{{ __('送信完了') }}</h1>
+</div>
 @endsection

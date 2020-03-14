@@ -3940,6 +3940,64 @@ footer {
   margin-top: 8px;
 }
 
+.c-passReset {
+  background: #E5F6F2;
+  padding: 32px;
+}
+
+.c-passReset__title {
+  color: #00ac7d;
+  font-size: 24px;
+}
+
+.c-passReset__label {
+  color: #484848;
+  font-size: 10px;
+  padding: 5px 0;
+}
+
+.c-passReset__input {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.c-passReset__input-area {
+  margin-top: 24px;
+}
+
+.c-passReset__submit {
+  margin: 24px auto 0;
+  display: block;
+  text-align: center;
+  width: 75%;
+  color: white;
+  background: orange;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.c-passReset__submit--post {
+  background: orange;
+}
+
+.c-passReset__error {
+  font-size: 12px;
+  padding-left: 8px;
+  color: red;
+  margin-top: 8px;
+  display: block;
+}
+
+.c-passReset__prev-area {
+  margin-top: 32px;
+}
+
+.c-passReset__prev {
+  margin-top: 8px;
+}
+
 .p-input__tag {
   margin-top: 5px;
 }
