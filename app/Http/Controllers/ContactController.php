@@ -65,7 +65,7 @@ class ContactController extends Controller
 
             //DBへ登録
             $contacts = new Contact;
-            Auth::user()->contacts()->save($contacts->fill($request->all()));
+            $contacts->fill($request->all())->save();
 
             Log::debug('<<<<<    mail送信処理開始   >>>>>>>>>>');
             Log::debug('$inputs内容');
