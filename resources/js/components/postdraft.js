@@ -15,7 +15,7 @@ let postdraft = function () {
             $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('register');
         }
 
-        // $('#form').submit();
+        $('#form').submit();
     });
 }
 window.onload = postdraft();

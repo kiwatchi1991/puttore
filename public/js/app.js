@@ -39619,8 +39619,9 @@ var postdraft = function postdraft() {
       $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('draft');
     } else if (postType == 'register') {
       $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('register');
-    } // $('#form').submit();
+    }
 
+    $('#form').submit();
   });
 };
 
