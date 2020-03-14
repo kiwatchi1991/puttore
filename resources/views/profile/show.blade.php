@@ -35,7 +35,7 @@
 
 {{-- 購入作品 --}}
 @if ($user->id === Auth::id())
-<div class="c-profile__title--sale">
+<div class="c-profile__title__product">
     <h2>購入作品一覧</h2>
 </div>
 
@@ -75,19 +75,30 @@
 </div>
 @endif
 
-@if ($drafts)
 {{-- 下書き --}}
-<div class="c-profile__title--draft">
+<div class="c-profile__title__product">
     <h2>下書き保存中の作品</h2>
 </div>
+@if ($drafts)
 
 <div class="c-profile__draft">
     <ul class="c-profile__draft__container js-draft__container">
         @foreach ($drafts as $draft)
         <li class="c-profile__draft__list js-draft__item">
-            <div class="c-profile__draft__item">
-                {{ $draft->name }}
-            </div>
+            <a href="{{ route('products.show', $draft->id) }}">
+                <div class="c-profile__draft__item">
+                    <div class="c-profile__draft__img__container">
+                        @if($draft->pic1)
+                        <img src="/storage/{{ $draft->pic1 }}" alt="">
+                        @else
+                        <img src="/storage/images/noimage.png" alt="">
+                        @endif
+                    </div>
+                    <p>{{ $draft->name }}</p>
+                    <p class="c-profile__draft__update">更新日</p>
+                    <p class="c-profile__draft__update">{{ $draft->updated_at->format('Y年m月d日 H時i分')}}</p>
+                </div>
+            </a>
         </li>
         @endforeach
     </ul>
@@ -97,12 +108,10 @@
 
 
 {{-- 出品作品 --}}
-<div class="c-profile__title--sale">
+<div class="c-profile__title__product">
     <h2>出品作品一覧</h2>
 </div>
 
-{{-- <div class="c-paging">{{ $pageNum_from }} - {{ $pageNum_to }} /<span
-    class="c-paging__totalNum">{{ $products->count() }}</span></div> --}}
 <div class="c-pagination">
     {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
 </div>
@@ -112,7 +121,11 @@
 
         <a class="c-product__link" href="{{ route('products.show', $product->id) }}">
             <div class="c-image__block">
+                @if($product->pic1)
                 <img class="c-image" src="/storage/{{ $product->pic1 }}">
+                @else
+                <img class="c-image" src="/storage/images/noimage.png">
+                @endif
             </div>
             <div class="c-tag__block">
 

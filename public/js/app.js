@@ -39411,9 +39411,11 @@ var buyContainerWidth = buyItemWidth * buyItemNum;
 $buyContainer.attr('style', 'width:' + buyContainerWidth + 'px');
 var $draftContainer = $('.js-draft__container');
 var draftItemNum = $('.js-draft__item').length;
-var draftItemWidth = $('.js-draft__item').innerWidth();
+var setPadding = 8;
+var draftItemWidth = $('.js-draft__item').innerWidth() + setPadding;
 var draftContainerWidth = draftItemWidth * draftItemNum;
 $draftContainer.attr('style', 'width:' + draftContainerWidth + 'px');
+$('.js-draft__item').attr('style', 'padding-right:' + setPadding + 'px');
 
 /***/ }),
 
