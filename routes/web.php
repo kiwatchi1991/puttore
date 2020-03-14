@@ -18,12 +18,12 @@
 
 Auth::routes();
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/', function () {
+    return view('index');
+});
+Route::get('/',  'indexController@index')->name('home');
 
 Route::group(['middleware' => 'check'], function () {
-    Route::get('/',  'homeController@index')->name('home');
     Route::get('/products/new', 'ProductsController@new')->name('products.new');
     Route::post('/products/new', 'ProductsController@create')->name('products.create');
     Route::get('/products',  'ProductsController@index')->name('products');
