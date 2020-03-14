@@ -25,10 +25,10 @@ class LessonShowController extends Controller
     public function index($p_id, $l_id)
     {
         if (!ctype_digit($p_id)) {
-            return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products')->with('flash_message', __('もう一度やり直してください'));
         }
         if (!ctype_digit($l_id)) {
-            return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products')->with('flash_message', __('もう一度やり直してください'));
         }
 
         Log::debug('<<<<<<<<   LESSON >>>>>>>>>>>');

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','作品詳細')
 @section('content')
 {{-- @if (empty($isOrder)) --}}
 

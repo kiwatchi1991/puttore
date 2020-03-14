@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title','TOP')
 @section('content')
 <div class="c-top__fv">
     <div class="c-top__fvImg">
@@ -9,12 +10,12 @@
         <h2 class="c-top__text">プログラミング<br>学習中のあなたへ</h2>
         <p class="c-top__text c-top__text--fvMsg">「どのくらいのレベルで作ればいいの？」</p>
         <p class="c-top__text c-top__text--fvMsg">「アウトプットしたいけど、何を作ればいいの？」</p>
-        
+
         <h3 class="c-top__text c-top__text--subject">テキスト型アウトプット教材サービス</h3>
         <h1 class="c-top__text c-top__text--title">『ぷっとれ』</h1>
 
         <div class="c-top__button">
-            <a class="c-top__button--link" href="{{ route('products') }}" >教材を見てみる</a>
+            <a class="c-top__button--link" href="{{ route('products') }}">教材を見てみる</a>
         </div>
 
     </div>
@@ -54,7 +55,7 @@
     </div>
     <div class="c-top__features__title">
 
-    <h2>『ぷっとれ』の特徴</h2>
+        <h2>『ぷっとれ』の特徴</h2>
     </div>
     <div class="c-top__feature">
         <h3 class="c-top__feature__title">初心者OK</h3>
@@ -82,7 +83,7 @@
         <h2>さあ、アウトプットしよう！</h2>
     </div>
     <div class="c-top__button">
-        <a class="c-top__button--link" href="{{ route('products') }}" >教材を見てみる</a>
+        <a class="c-top__button--link" href="{{ route('products') }}">教材を見てみる</a>
     </div>
 </div>
 @section('content')

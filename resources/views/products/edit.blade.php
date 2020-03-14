@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','作品編集')
 @section('content')
 <div class="c-productEdit">
 

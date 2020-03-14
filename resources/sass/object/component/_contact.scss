@@ -1,0 +1,51 @@
+.c-contact{
+    background: $bg;
+    padding: 32px;
+    &__title{
+        color: $main-color;
+        font-size: 24px;
+    }
+
+    &__label{
+        color: $main-text;
+        font-size: 10px;
+        padding: 5px 0;
+    }
+    &__input{
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 8px;
+    }
+    &__input-area{
+        margin-top: 24px;
+    }
+    &__submit{
+        margin: 24px auto 0;
+        display: block;
+        text-align: center;
+        width: 75%;
+        color: white;
+        background: $main-text;
+        padding: 10px;
+        border-radius: 7px;
+        &--post{
+            background: orange;
+        }
+    }
+    &__error{
+        font-size: 12px;
+        padding-left: 8px;
+        color: red;
+        margin-top: 8px;
+        display: block;
+    }
+    //確認画面
+    &__prev-area{
+        margin-top: 32px;
+    }
+    &__prev{
+        margin-top: 8px;
+
+    }
+}

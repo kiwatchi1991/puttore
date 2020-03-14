@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','トークルーム一覧')
 @section('content')
 
 <div class="c-bords__head">取引一覧</div>

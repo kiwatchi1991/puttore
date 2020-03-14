@@ -65,7 +65,7 @@ class ProductsController extends Controller
         Log::debug($request);
         // GETパラメータが数字かどうかをチェックする
         if (!ctype_digit($id)) {
-            return redirect('/products/edit')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products/edit')->with('flash_message', __('もう一度やり直してください'));
         }
 
         //画像登録
@@ -74,7 +74,7 @@ class ProductsController extends Controller
         $isPic = $request->pic1;
         //画像に変更がない場合は処理をしない
         if ($isPic) {
-            $path = $isPic->pic1->store('public/product_images');
+            $path = $isPic->store('public/product_images');
             $product->pic1 = str_replace('public/', '', $path);
             $product->save();
         }
@@ -406,7 +406,7 @@ class ProductsController extends Controller
     {
 
         if (!ctype_digit($id)) {
-            return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products')->with('flash_message', __('もう一度やり直してください'));
         }
 
         Log::debug('SHOW!!!');
@@ -491,7 +491,7 @@ class ProductsController extends Controller
         // GETパラメータが数字かどうかをチェックする
         // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
         if (!ctype_digit($id)) {
-            return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products/new')->with('flash_message', __('もう一度やり直してください'));
         }
 
         $product = Product::find($id);
@@ -524,7 +524,7 @@ class ProductsController extends Controller
     {
         // GETパラメータが数字かどうかをチェックする
         if (!ctype_digit($id)) {
-            return redirect('/products/new')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products/new')->with('flash_message', __('もう一度やり直してください'));
         }
 
         // $drill = Drill::find($id);

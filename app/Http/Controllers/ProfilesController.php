@@ -22,7 +22,7 @@ class ProfilesController extends Controller
     public function show($id)
     {
         if (!ctype_digit($id)) {
-            return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products')->with('flash_message', __('もう一度やり直してください'));
         }
 
         Log::debug('SHOW!!!');
@@ -80,10 +80,14 @@ class ProfilesController extends Controller
      */
     public function edit($id)
     {
+        //自分以外は編集権限を持たない
+        if ($id != Auth::user()->id) {
+            return redirect('/');
+        }
         // GETパラメータが数字かどうかをチェックする
         // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
         if (!ctype_digit($id)) {
-            return redirect('/products')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products')->with('flash_message', __('もう一度やり直してください'));
         }
 
         $user = User::find($id);
@@ -98,7 +102,7 @@ class ProfilesController extends Controller
         Log::debug('プロフィール更新');
         // GETパラメータが数字かどうかをチェックする
         if (!ctype_digit($id)) {
-            return redirect('/products/mypage')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/products/mypage')->with('flash_message', __('もう一度やり直してください'));
         }
         Log::debug('<<<<<<<<<<<<     request       >>>>>>>>>>>>>>');
         Log::debug($request);
@@ -129,7 +133,7 @@ class ProfilesController extends Controller
             $user->save();
         }
 
-        return redirect()->route('profile.show', $id)->with('flash_message', __('Registered.'));
+        return redirect()->route('profile.show', $id)->with('flash_message', 'プロフィールを変更しました');
     }
 
     /**
@@ -142,7 +146,7 @@ class ProfilesController extends Controller
         // GETパラメータが数字かどうかをチェックする
         // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
         if (!ctype_digit($id)) {
-            return redirect('/profiles')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/profiles')->with('flash_message', __('もう一度やり直してください'));
         }
 
         $user = User::find($id);
@@ -159,12 +163,12 @@ class ProfilesController extends Controller
         // GETパラメータが数字かどうかをチェックする
         // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
         if (!ctype_digit($id)) {
-            return redirect('/profiles')->with('flash_message', __('Invalid operation was performed.'));
+            return redirect('/profiles')->with('flash_message', __('もう一度やり直してください'));
         }
 
         $user = User::find($request->input('id'));
         $user->delete();
 
-        return redirect('/products/mypage')->with('flash_message', __('Registered.'));
+        return redirect('/products/mypage')->with('flash_message', '削除しました');
     }
 }

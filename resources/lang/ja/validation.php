@@ -75,6 +75,8 @@ return [
     'unique'               => ':attributeは既に存在します。',
     'url'                  => ':attributeを正しい書式にしてください。',
 
+    'body' => '本文',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -103,6 +105,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'body' => 'お問いあわせ内容',
+        'email' => 'メールアドレス',
+        'title' => 'タイトル',
+
+    ],
 
 ];

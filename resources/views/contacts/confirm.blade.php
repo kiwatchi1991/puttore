@@ -1,36 +1,41 @@
 @extends('layouts.app')
-
+@section('title','お問い合わせ')
 @section('content')
-<form method="POST" action="{{ route('contact.send') }}">
-    @csrf
+<div class="c-contact">
+    <h2 class="c-contact__title">お問い合わせ内容確認</h2>
+    <form method="POST" action="{{ route('contact.send') }}">
+        @csrf
 
-    <label>メールアドレス</label>
-    {{ $inputs['email'] }}
-    <input
-        name="email"
-        value="{{ $inputs['email'] }}"
-        type="hidden">
+        <div class="c-contact__prev-area c-contact__prev-area__mail">
+            <label class="c-contact__label">メールアドレス</label>
+            <div class="c-contact__prev">
+                {{ $inputs['email'] }}
+            </div>
+            <input name="email" value="{{ $inputs['email'] }}" type="hidden">
+        </div>
 
-    <label>タイトル</label>
-    {{ $inputs['title'] }}
-    <input
-        name="title"
-        value="{{ $inputs['title'] }}"
-        type="hidden">
+        <div class="c-contact__prev-area c-contact__prev-area__mail">
+            <label class="c-contact__label">タイトル</label>
+            <div class="c-contact__prev">
+                {{ $inputs['title'] }}
+            </div>
+            <input name="title" value="{{ $inputs['title'] }}" type="hidden">
+        </div>
 
 
-    <label>お問い合わせ内容</label>
-    {!! nl2br(e($inputs['body'])) !!}
-    <input
-        name="body"
-        value="{{ $inputs['body'] }}"
-        type="hidden">
+        <div class="c-contact__prev-area c-contact__prev-area__mail">
+            <label class="c-contact__label">お問い合わせ内容</label>
+            <div class="c-contact__prev">
+                {!! nl2br(e($inputs['body'])) !!}
+            </div>
+            <input name="body" value="{{ $inputs['body'] }}" type="hidden">
+        </div>
 
-    <button type="submit" name="action" value="back">
-        入力内容修正
-    </button>
-    <button type="submit" name="action" value="submit">
-        送信する
-    </button>
-</form>
-@endsection
+        <button type="submit" name="action" value="back" class="c-contact__submit">
+            入力内容修正
+        </button>
+        <button type="submit" name="action" value="submit" class="c-contact__submit c-contact__submit--post">
+            送信する
+        </button>
+    </form>
+    @endsection

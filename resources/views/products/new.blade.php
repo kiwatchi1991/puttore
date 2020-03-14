@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','出品')
 @section('content')
 <div class="c-productNew">
 
@@ -226,12 +226,12 @@
             </div>
         </div>
         <div class="c-productNew__submit c-productNew__submit--draft">
-            {{-- <button type="submit"
+            <button type="submit"
                 class="c-productNew__submit__button c-productNew__submit__button--draft js-isCheck-postType"
                 data-type="draft">
                 下書き保存する
                 <input type="hidden" name="" class="js-postType" value="">
-            </button> --}}
+            </button>
         </div>
         <div class="c-productNew__submit ">
             <button type="submit" class="c-productNew__submit__button js-isCheck-postType" data-type="register">

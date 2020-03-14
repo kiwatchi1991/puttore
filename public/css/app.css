@@ -635,12 +635,14 @@ a:visited {
   width: 75%;
   color: #ffffff;
   background: orange;
-  padding: 10px;
   border-radius: 7px;
 }
 
 .c-searchBox__button {
+  padding: 10px;
   color: #ffffff;
+  height: 100%;
+  width: 100%;
 }
 
 .c-image__block {
@@ -967,6 +969,7 @@ a:visited {
   background-position: center;
   background-size: contain;
   border-radius: 15px;
+  overflow: hidden;
 }
 
 .c-productNew__image__input {
@@ -979,7 +982,6 @@ a:visited {
 }
 
 .c-productNew__image__img {
-  width: 100%;
   max-height: 100%;
   position: absolute;
   top: 0;
@@ -993,7 +995,6 @@ a:visited {
   width: 75%;
   color: #ffffff;
   background: orange;
-  padding: 10px;
   border-radius: 10px;
 }
 
@@ -1003,6 +1004,9 @@ a:visited {
 }
 
 .c-productNew__submit__button {
+  padding: 10px;
+  height: 100%;
+  width: 100%;
   color: #ffffff;
   font-size: 14px;
 }
@@ -1479,6 +1483,7 @@ a:visited {
   background-position: center;
   background-size: contain;
   border-radius: 15px;
+  overflow: hidden;
 }
 
 .c-productEdit__image__input {
@@ -1491,7 +1496,6 @@ a:visited {
 }
 
 .c-productEdit__image__img {
-  width: 100%;
   max-height: 100%;
   position: absolute;
   top: 0;
@@ -1505,7 +1509,6 @@ a:visited {
   width: 75%;
   color: #ffffff;
   background: orange;
-  padding: 10px;
   border-radius: 10px;
 }
 
@@ -1515,6 +1518,9 @@ a:visited {
 }
 
 .c-productEdit__submit__button {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
   color: #ffffff;
   font-size: 14px;
 }
@@ -1817,6 +1823,38 @@ a:visited {
   font-size: 12px;
 }
 
+.c-profile__buy {
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  overflow-x: scroll;
+  margin-left: 16px;
+  margin-top: 32px;
+  background: #E5F6F2;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.c-profile__buy__container {
+  height: 100%;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.c-profile__buy__list {
+  height: 100%;
+  width: 100px;
+  position: relative;
+  float: left;
+}
+
+.c-profile__buy__item {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border: 1px solid #333;
+}
+
 .c-profileEdit {
   background: #E5F6F2;
   padding: 30px;
@@ -1908,11 +1946,13 @@ a:visited {
   width: 75%;
   color: #ffffff;
   background: orange;
-  padding: 10px;
   border-radius: 10px;
 }
 
 .c-profileEdit__submit__button {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
   color: #ffffff;
   font-size: 14px;
 }
@@ -2155,11 +2195,13 @@ a:visited {
   width: 75%;
   color: #ffffff;
   background: orange;
-  padding: 10px;
   border-radius: 7px;
 }
 
 .c-login__btn {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
   color: #ffffff;
 }
 
@@ -2270,11 +2312,13 @@ a:visited {
   width: 75%;
   color: #ffffff;
   background: orange;
-  padding: 10px;
   border-radius: 7px;
 }
 
 .c-register__btn {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
   color: #ffffff;
 }
 
@@ -3763,6 +3807,71 @@ a:visited {
   display: block;
 }
 
+footer {
+  width: 100%;
+  background: white;
+  bottom: 0;
+  border-top: 1px solid #00ac7d;
+}
+
+.c-contact {
+  background: #E5F6F2;
+  padding: 32px;
+}
+
+.c-contact__title {
+  color: #00ac7d;
+  font-size: 24px;
+}
+
+.c-contact__label {
+  color: #484848;
+  font-size: 10px;
+  padding: 5px 0;
+}
+
+.c-contact__input {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.c-contact__input-area {
+  margin-top: 24px;
+}
+
+.c-contact__submit {
+  margin: 24px auto 0;
+  display: block;
+  text-align: center;
+  width: 75%;
+  color: white;
+  background: #484848;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.c-contact__submit--post {
+  background: orange;
+}
+
+.c-contact__error {
+  font-size: 12px;
+  padding-left: 8px;
+  color: red;
+  margin-top: 8px;
+  display: block;
+}
+
+.c-contact__prev-area {
+  margin-top: 32px;
+}
+
+.c-contact__prev {
+  margin-top: 8px;
+}
+
 .p-input__tag {
   margin-top: 5px;
 }
@@ -3786,14 +3895,44 @@ a:visited {
   margin-top: 5px;
 }
 
+html {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
 body {
-  padding-top: 60px;
+  margin: 0;
+  height: 100%;
+  width: 100%;
   color: #484848;
   font-family: "Montserrat", "Noto Sans JP", sans-serif;
+}
+
+main {
+  padding-top: 60px;
 }
 
 input {
   box-sizing: border-box;
   border: none;
+}
+
+textarea {
+  border: none;
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: auto !important;
+  height: 100%;
+  min-height: 100%;
 }
 

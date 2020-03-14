@@ -8,9 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
+    <title>ぷっとれ | @yield('title')</title>
+    <link rel=”icon” href=“/images/favicon.ico”> <!-- Scripts -->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -37,7 +36,7 @@
 </head>
 
 <body>
-    <div>
+    <div class="container">
         <nav class="header">
             <div class="header__inner">
                 <div class="header__logo">
@@ -130,6 +129,21 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer>
+            <div class="header__logo">
+                <a class="" href="{{ url('/') }}">
+                    <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
+                </a>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="">ぷっとれについて</a></li>
+                    <li><a href="">利用規約</a></li>
+                    <li><a href="">プライバシーポリシー</a></li>
+                    <li><a href="{{ route('contact.index') }}">お問い合わせ</a></li>
+                </ul>
+            </div>
+        </footer>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
     {{-- <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script> --}}

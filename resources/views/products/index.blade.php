@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','作品一覧')
 @section('content')
 <div class="c-searchBox">
     <div class="c-searchBox__inner">

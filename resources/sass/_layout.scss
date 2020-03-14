@@ -1,10 +1,38 @@
+html{
+     margin: 0;
+    height: 100%;
+    width: 100%;
+}
 body{
-    padding-top: $header-height;
+    margin: 0;
+    height: 100%;
+    width: 100%;
     color: $main-text;
     font-family: "Montserrat", "Noto Sans JP", sans-serif;
 }
-
+main{
+    padding-top: $header-height;
+}
 input{
     box-sizing: border-box;
     border:none;
 } 
+
+textarea{
+    border:none;
+    box-sizing: border-box;
+}
+
+button{
+    border: none;
+    background:none;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    height: auto !important;
+    height: 100%;
+    min-height: 100%;
+    // background: $bg;
+}

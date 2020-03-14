@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','トークルーム')
 @section('content')
 @php
 

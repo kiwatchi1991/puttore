@@ -25,27 +25,30 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $title =  'TOP';
+        return view('index')->with('title', $title);
     }
 
     /**
      * パスワード変更 表示
      */
-    public function showChangePasswordForm() {
+    public function showChangePasswordForm()
+    {
         return view('auth.changepassword');
     }
 
     /**
      * パスワード変更 処理
      */
-    public function changePassword(Request $request) {
+    public function changePassword(Request $request)
+    {
         //現在のパスワードが正しいかを調べる
-        if(!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             return redirect()->back()->with('change_password_error', '現在のパスワードが間違っています。');
         }
 
         //現在のパスワードと新しいパスワードが違っているかを調べる
-        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0) {
+        if (strcmp($request->get('current-password'), $request->get('new-password')) == 0) {
             return redirect()->back()->with('change_password_error', '新しいパスワードが現在のパスワードと同じです。違うパスワードを設定してください。');
         }
 
@@ -61,8 +64,5 @@ class HomeController extends Controller
         $user->save();
 
         return redirect()->back()->with('change_password_success', 'パスワードを変更しました。');
-        
     }
-
-    
 }
