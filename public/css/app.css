@@ -1109,6 +1109,23 @@ a:visited {
   line-height: 1.2;
 }
 
+.c-productShow__title__text {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.c-productShow__draft {
+  background: #818181;
+  color: white;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 7px 15px;
+  border-radius: 5px;
+  margin-left: 16px;
+}
+
 .c-productShow__detail {
   margin-top: 16px;
   line-height: 1.2;
@@ -1849,6 +1866,38 @@ a:visited {
 }
 
 .c-profile__buy__item {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border: 1px solid #333;
+}
+
+.c-profile__draft {
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  overflow-x: scroll;
+  margin-left: 16px;
+  margin-top: 32px;
+  background: #E5F6F2;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.c-profile__draft__container {
+  height: 100%;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.c-profile__draft__list {
+  height: 100%;
+  width: 100px;
+  position: relative;
+  float: left;
+}
+
+.c-profile__draft__item {
   width: 100px;
   height: 100px;
   background: white;

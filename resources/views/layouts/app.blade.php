@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>ぷっとれ | @yield('title')</title>
-    <link rel=”icon” href=“/images/favicon.ico”> <!-- Scripts -->
+    <link rel="icon" href="/storage/images/fav.ico"> <!-- Scripts -->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

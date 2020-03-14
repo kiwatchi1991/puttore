@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Intervention\Image\Facades\Image;
-// use App\Users;
+use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\Category;
 use App\Difficulty;
@@ -37,8 +37,14 @@ class ProfilesController extends Controller
         // $categoryAndDifficulty = Product::all();
         //プロダクト件数
         $all_products = Auth::user()->products()->get();
+
+        // 下書き保存中の作品数
+        $drafts = Auth::user()->products()
+            ->where('open_flg', 1)
+            ->get();
+
         //ログインユーザーのプロダクト（ページング）
-        $products = Auth::user()->products()->paginate(10);
+        $products = Auth::user()->products()->latest()->paginate(10);
 
         //ページング用変数 始点
         $pageNum_from =  $products->currentPage() * 10 - 9;
@@ -67,11 +73,8 @@ class ProfilesController extends Controller
             'pageNum_from' => $pageNum_from,
             'pageNum_to' => $pageNum_to,
             'is_image' => $is_image,
-            // 'category' => $category,
-            // 'difficult' => $difficult,
-            // 'product' => $product,
             'user' => $user,
-            // 'categoryAndDifficulty' => $categoryAndDifficulty,
+            'drafts' => $drafts,
         ]);
     }
 

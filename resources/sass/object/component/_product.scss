@@ -549,8 +549,20 @@
     margin-top: 16px;
     font-size: 20px; 
     line-height: 1.2;
+    &__text{
+      display: flex;
+      align-items: center;
+    }
   }
-
+  &__draft{
+    background: $hard;
+    color: white;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 7px 15px;
+    border-radius: 5px;
+    margin-left: 16px;
+  }
   &__detail{
     margin-top: 16px;
     line-height: 1.2;

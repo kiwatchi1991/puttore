@@ -39404,39 +39404,16 @@ $like.on('click', function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// let currentItemNum = 1;
 var $buyContainer = $('.js-buy__container');
 var buyItemNum = $('.js-buy__item').length;
 var buyItemWidth = $('.js-buy__item').innerWidth();
-var buyContainerWidth = buyItemWidth * buyItemNum; // let DURATION = 500;
-
-$buyContainer.attr('style', 'width:' + buyContainerWidth + 'px'); // $('.js-buy__next').on('click', function () {
-//   if (currentItemNum < buyItemNum) {
-//     $buyContainer.animate({ left: '-=' + buyItemWidth + 'px' }, DURATION);
-//     currentItemNum++;
-//   }
-//     toggleOpacity();
-// });
-// $('.js-buy__prev').on('click', function () {
-//   if (currentItemNum > 1) {
-//     $buyContainer.animate({ left: '+=' + buyItemWidth + 'px' }, DURATION);
-//     currentItemNum--;
-//     }
-//     toggleOpacity();
-// });
-// let toggleOpacity = function () {
-//     if (currentItemNum == 1) {
-//         $('.js-buy__prev').attr('style', 'opacity:' + 0.5);
-//     } else {
-//         $('.js-buy__prev').attr('style', 'opacity:' + 1);
-//     }
-//     if (currentItemNum == buyItemNum) {
-//         $('.js-buy__next').attr('style', 'opacity:' + 0.5);
-//     } else {
-//         $('.js-buy__next').attr('style', 'opacity:' + 1);
-//     }
-// }
-// toggleOpacity();
+var buyContainerWidth = buyItemWidth * buyItemNum;
+$buyContainer.attr('style', 'width:' + buyContainerWidth + 'px');
+var $draftContainer = $('.js-draft__container');
+var draftItemNum = $('.js-draft__item').length;
+var draftItemWidth = $('.js-draft__item').innerWidth();
+var draftContainerWidth = draftItemWidth * draftItemNum;
+$draftContainer.attr('style', 'width:' + draftContainerWidth + 'px');
 
 /***/ }),
 
@@ -39522,13 +39499,13 @@ $('.js-slider__prev').on('click', function () {
 
 var toggleOpacity = function toggleOpacity() {
   if (currentItemNum == 1) {
-    $('.js-slider__prev').attr('style', 'opacity:' + 0.5);
+    $('.js-slider__prev').attr('style', 'opacity:' + 0.3);
   } else {
     $('.js-slider__prev').attr('style', 'opacity:' + 1);
   }
 
   if (currentItemNum == slideItemNum) {
-    $('.js-slider__next').attr('style', 'opacity:' + 0.5);
+    $('.js-slider__next').attr('style', 'opacity:' + 0.3);
   } else {
     $('.js-slider__next').attr('style', 'opacity:' + 1);
   }
@@ -39626,24 +39603,26 @@ $follow.on('click', function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// let postdraft = function () {
-//     console.log('postdraftイベント発生');
-//     $('.js-isCheck-postType').on('click', function (e) {
-//         e.preventDefault();
-//         console.log('clickイベント発生');
-//         // var that = $(this);
-//         let postType = $(this).data('type');
-//         console.log('postType');
-//         console.log(postType);
-//         if (postType == 'draft') {
-//             $(this).find('input[type=hidden]').prop('name','draft');
-//         } else if (postType == 'register') {
-//             $(this).find('input[type=hidden]').prop('name','register');
-//         }
-//         $('#form').submit();
-//     });
-// }
-// window.onload = postdraft();
+var postdraft = function postdraft() {
+  console.log('postdraftイベント発生');
+  $('.js-isCheck-postType').on('click', function (e) {
+    e.preventDefault();
+    console.log('clickイベント発生'); // var that = $(this);
+
+    var postType = $(this).data('type');
+    console.log('postType');
+    console.log(postType);
+
+    if (postType == 'draft') {
+      $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('draft');
+    } else if (postType == 'register') {
+      $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('register');
+    } // $('#form').submit();
+
+  });
+};
+
+window.onload = postdraft();
 
 /***/ }),
 

@@ -72,6 +72,35 @@
             border: 1px solid #333;
         }
     }
+    &__draft{
+        height: 100px;
+        overflow: hidden;
+        position: relative;
+        overflow-x: scroll;
+        margin-left: 16px;
+        margin-top: 32px;
+        background:$bg;
+        padding: 10px;
+        border-radius: 5px;
+        &__container{
+            height: 100%;
+            position: relative;
+            -webkit-overflow-scrolling: touch;
+        }
+        &__list{
+            height: 100%;
+            width: 100px;
+            position: relative;
+            float: left;
+
+        }
+        &__item{
+            width: 100px;
+            height: 100px;
+            background: white;
+            border: 1px solid #333;
+        }
+    }
 }
 
 .c-profileEdit{

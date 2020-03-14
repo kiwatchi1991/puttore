@@ -32,6 +32,7 @@
     </div>
 </div>
 
+
 {{-- 購入作品 --}}
 @if ($user->id === Auth::id())
 <div class="c-profile__title--sale">
@@ -74,13 +75,37 @@
 </div>
 @endif
 
+@if ($drafts)
+{{-- 下書き --}}
+<div class="c-profile__title--draft">
+    <h2>下書き保存中の作品</h2>
+</div>
+
+<div class="c-profile__draft">
+    <ul class="c-profile__draft__container js-draft__container">
+        @foreach ($drafts as $draft)
+        <li class="c-profile__draft__list js-draft__item">
+            <div class="c-profile__draft__item">
+                {{ $draft->name }}
+            </div>
+        </li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+
+
 {{-- 出品作品 --}}
 <div class="c-profile__title--sale">
     <h2>出品作品一覧</h2>
 </div>
 
-<div class="c-paging">{{ $pageNum_from }} - {{ $pageNum_to }} /<span
-        class="c-paging__totalNum">{{ $products->count() }}</span></div>
+{{-- <div class="c-paging">{{ $pageNum_from }} - {{ $pageNum_to }} /<span
+    class="c-paging__totalNum">{{ $products->count() }}</span></div> --}}
+<div class="c-pagination">
+    {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
+</div>
 <div class="p-product__area">
     @foreach ($products as $product)
     <div class="c-product__block">

@@ -272,18 +272,18 @@
         </div>
 
 
-
-        <div class="c-productNew__submit c-productNew__submit--draft" data-type="draft">
-            <input type="hidden" name="" class="js-postType" value="">
-            <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft">
-                下書き保存する
-            </button>
-        </div>
-        <div class="c-productNew__submit js-isCheck-postType" data-type="register">
-            <input type="hidden" name="" value="">
-            <button type="submit" class="c-productNew__submit__button">
-                登録する
-            </button>
+        <div class="js-postType__parentDom">
+            <input type="hidden" name="postType" class="js-postType" value="">
+            <div class="c-productNew__submit c-productNew__submit--draft js-isCheck-postType" data-type="draft">
+                <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft">
+                    下書き保存する
+                </button>
+            </div>
+            <div class="c-productNew__submit js-isCheck-postType" data-type="register">
+                <button type="submit" class="c-productNew__submit__button">
+                    登録する
+                </button>
+            </div>
         </div>
     </form>
 </div>

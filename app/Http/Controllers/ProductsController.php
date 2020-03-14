@@ -55,14 +55,12 @@ class ProductsController extends Controller
      * 更新機能
      */
 
-    public function update(Request $request, $id)
+    public function update(CreateProductRequest $request, $id)
     {
 
         Log::debug('---------------------------------');
         Log::debug('<<<<<< product update >>>>>>>>>>>');
         Log::debug('---------------------------------');
-        Log::debug('$request');
-        Log::debug($request);
         // GETパラメータが数字かどうかをチェックする
         if (!ctype_digit($id)) {
             return redirect('/products/edit')->with('flash_message', __('もう一度やり直してください'));
@@ -71,11 +69,41 @@ class ProductsController extends Controller
         //画像登録
         $product = Product::find($id);
         $product->fill($request->all())->save();
-        $isPic = $request->pic1;
         //画像に変更がない場合は処理をしない
-        if ($isPic) {
-            $path = $isPic->store('public/product_images');
+        $isPic1 = $request->pic1;
+        if ($isPic1) {
+            $path = $isPic1->store('public/product_images');
             $product->pic1 = str_replace('public/', '', $path);
+            $product->save();
+        }
+        $isPic2 = $request->pic2;
+        if ($isPic2) {
+            $path = $isPic2->store('public/product_images');
+            $product->pic2 = str_replace('public/', '', $path);
+            $product->save();
+        }
+        $isPic3 = $request->pic3;
+        if ($isPic3) {
+            $path = $isPic3->store('public/product_images');
+            $product->pic3 = str_replace('public/', '', $path);
+            $product->save();
+        }
+        $isPic4 = $request->pic4;
+        if ($isPic4) {
+            $path = $isPic4->store('public/product_images');
+            $product->pic4 = str_replace('public/', '', $path);
+            $product->save();
+        }
+        $isPic5 = $request->pic5;
+        if ($isPic5) {
+            $path = $isPic5->store('public/product_images');
+            $product->pic5 = str_replace('public/', '', $path);
+            $product->save();
+        }
+        $isPic6 = $request->pic6;
+        if ($isPic6) {
+            $path = $isPic6->store('public/product_images');
+            $product->pic6 = str_replace('public/', '', $path);
             $product->save();
         }
 
@@ -90,17 +118,6 @@ class ProductsController extends Controller
             //すでにあるレッスンなら、更新
             if (isset($lesson['id'])) {
                 $lesson1 = Lesson::find($lesson['id']);
-                Log::debug('<<<<<<<<<<<<  $lesson1 >>>>>>>>>>>>>>>>>>>>>>>');
-                Log::debug('<<<<<<<<<<<<  $lesson1 >>>>>>>>>>>>>>>>>>>>>>>');
-                Log::debug('<<<<<<<<<<<<  $lesson1 >>>>>>>>>>>>>>>>>>>>>>>');
-                Log::debug($lesson1);
-                Log::debug('<<<<<<<<<<<<  $lesson >>>>>>>>>>>>>>>>>>>>>>>');
-                Log::debug($lesson['number']);
-                Log::debug($lesson['title']);
-                Log::debug($lesson['lesson']);
-                Log::debug($lesson1->number);
-                Log::debug($lesson1->title);
-                Log::debug($lesson1->lesson);
 
                 $lesson1->number = $lesson['number'];
                 $lesson1->title = $lesson['title'];
@@ -115,10 +132,6 @@ class ProductsController extends Controller
                 $newLessons->title = $lesson['title'];
                 $newLessons->lesson = $lesson['lesson'];
                 $newLessons->save();
-                // Log::debug('$lessonsの内容');
-                // Log::debug($lessons);
-                // $product->lessons()->createMany($request->input('lessons'));
-
             }
         }
 
@@ -131,15 +144,9 @@ class ProductsController extends Controller
                 $category = Category::firstOrCreate([
                     'id' => $category_name,
                 ]);
-
-                Log::debug('$categoryの内容');
-                Log::debug($category);
-
                 $category_ids[] = $category->id;
             }
         }
-        Log::debug('$category_ids[]の内容');
-        Log::debug($category_ids);
 
         // 言語中間テーブル
         $product->categories()->sync($category_ids);
@@ -148,21 +155,12 @@ class ProductsController extends Controller
         // 難易度の登録
         $difficulties_name = $request->input('difficult'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
 
-        Log::debug('$productの内容');
-        Log::debug([$product]);
-        Log::debug('$difficulties_nameの内容');
-        Log::debug($difficulties_name);
-
         $difficulty_ids = [];
         foreach ($difficulties_name as $difficulty_name) {
             if (!empty($difficulty_name)) {
                 $difficulty = Category::firstOrCreate([
                     'id' => $difficulty_name,
                 ]);
-
-                Log::debug('$difficultyの内容');
-                Log::debug($difficulty);
-
                 $difficulty_ids[] = $difficulty->id;
             }
         }
@@ -184,11 +182,18 @@ class ProductsController extends Controller
             $discount_price->save();
         } else {
             Log::debug('<<<<      割 引価格の入力がない！  >>>>>>>>>>>>>');
-            Log::debug('<<<<      割 引価格の入力がない！  >>>>>>>>>>>>>');
-            Log::debug('<<<<      割 引価格の入力がない！  >>>>>>>>>>>>>');
         }
 
-        return redirect()->route('products.show', $id)->with('flash_message', '作品を更新して公開しました');
+        //下書きの時は、公開フラグを1にする
+        if ($request->postType == 'draft') {
+            $product->open_flg = 1;
+            $product->save();
+            return redirect()->route('products.show', $id)->with('flash_message', '作品を下書き保存しました');
+        } else {
+            $product->open_flg = 0;
+            $product->save();
+            return redirect()->route('products.show', $id)->with('flash_message', '作品を更新して公開しました');
+        }
     }
 
     /**

@@ -20,6 +20,7 @@
         </ul>
     </div>
     <div class="l-productShow__wrapper">
+
         {{-- 自分の作品の場合は編集ボタンを表示 --}}
         @if ($product->user_id === Auth::id())
 
@@ -32,7 +33,9 @@
 
         {{-- タイトル --}}
         <div class="c-productShow__title">
-            <h2>{{ $product->name }}</h2>
+            <h2 class="c-productShow__title__text">{{ $product->name }} @if($product->open_flg == 1) <span
+                    class="c-productShow__draft">下書き保存中</span>@endif
+            </h2>
         </div>
 
         {{--　更新日  --}}

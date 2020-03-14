@@ -29,12 +29,12 @@ $('.js-slider__prev').on('click', function () {
 let toggleOpacity = function () {
     
     if (currentItemNum == 1) {
-        $('.js-slider__prev').attr('style', 'opacity:' + 0.5);
+        $('.js-slider__prev').attr('style', 'opacity:' + 0.3);
     } else {
         $('.js-slider__prev').attr('style', 'opacity:' + 1);
     }
     if (currentItemNum == slideItemNum) {
-        $('.js-slider__next').attr('style', 'opacity:' + 0.5);
+        $('.js-slider__next').attr('style', 'opacity:' + 0.3);
     } else {
         $('.js-slider__next').attr('style', 'opacity:' + 1);
     }
