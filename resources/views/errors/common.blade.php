@@ -41,6 +41,9 @@ break;
 }
 }
 @endphp
-<h1>{{ $status_code }} {{ $message }}</h1>
+<div class="c-error">
+
+    <h1 class="c-error__msg"><span class="c-error__status">{{ $status_code }}</span> <br> {{ $message }}</h1>
+</div>
 
 @endsection

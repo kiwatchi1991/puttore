@@ -2,11 +2,15 @@
 
 namespace App\Exceptions;
 
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
+
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -48,13 +52,12 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
-
     /**
      * 共通エラーページ
      */
-    // protected function renderHttpException(\Symfony\Component\HttpKernel\Exception\HttpException $e)
-    // {
-    //     $status = $e->getStatusCode();
-    //     return response()->view("errors.common", ['exception' => $e], $status);
-    // }
+    protected function renderHttpException(HttpExceptionInterface $e)
+    {
+        $status = $e->getStatusCode();
+        return response()->view("errors.common", ['exception' => $e], $status);
+    }
 }

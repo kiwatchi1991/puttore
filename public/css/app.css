@@ -3741,6 +3741,28 @@ a:visited {
   border-bottom: none;
 }
 
+.c-error {
+  background: #E5F6F2;
+  padding: 32px;
+  height: 90vh;
+  display: -webkit-box;
+  display: flex;
+  box-sizing: border-box;
+  -webkit-box-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.c-error__msg {
+  margin-top: 32px;
+  font-size: 20px;
+}
+
+.c-error__status {
+  font-size: 40px;
+  display: block;
+}
+
 .p-input__tag {
   margin-top: 5px;
 }

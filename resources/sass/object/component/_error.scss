@@ -1,0 +1,17 @@
+.c-error{
+    background: $bg;
+    padding: 32px;
+    height: 90vh;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    &__msg{
+        margin-top: 32px;
+        font-size: 20px;
+    }
+    &__status{
+        font-size: 40px;
+        display: block;
+    }
+}
