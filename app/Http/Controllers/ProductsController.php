@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateProductRequest;
+
 use App\Product;
 use App\Category;
 use App\Difficulty;
@@ -72,7 +74,7 @@ class ProductsController extends Controller
         $isPic = $request->pic1;
         //画像に変更がない場合は処理をしない
         if ($isPic) {
-            $path = $isPic->pic1->store('public/profile_images');
+            $path = $isPic->pic1->store('public/product_images');
             $product->pic1 = str_replace('public/', '', $path);
             $product->save();
         }
@@ -186,33 +188,16 @@ class ProductsController extends Controller
             Log::debug('<<<<      割 引価格の入力がない！  >>>>>>>>>>>>>');
         }
 
-        return redirect()->route('products.show', $id)->with('flash_message', __('Registered.'));
+        return redirect()->route('products.show', $id)->with('flash_message', '作品を更新して公開しました');
     }
 
     /**
      * コンテンツ登録
      */
-    public function create(Request $request)
+    public function create(CreateProductRequest $request)
     {
 
         Log::debug('コントローラー：<<<<   create   >>>>>>>>>');
-
-        // 下書きではなく登録のときだけバリデーションチェック
-        // if($request->register){
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'detail' => 'required|string|max:255',
-            // 'default_price' => 'required',
-            // 'lang' => 'required',
-            // 'difficult' => 'required',
-            // 'skills' => 'required|string|max:255',
-            // 'pic1' => 'string|max:255',
-            // 'pic2' => 'string|max:255',
-            // 'pic3' => 'string|max:255',
-            // 'pic4' => 'string|max:255',
-            // 'pic5' => 'string|max:255',
-        ]);
-        // }
 
         Log::debug('これからDBへデータ挿入');
         Log::debug($request);
@@ -222,31 +207,31 @@ class ProductsController extends Controller
         Auth::user()->products()->save($product->fill($request->all()));
         Log::debug($request->pic1);
         if ($request->pic1) {
-            $path = $request->pic1->store('public/profile_images');
+            $path = $request->pic1->store('public/product_images');
             $product->pic1 = str_replace('public/', '', $path);
             $product->save();
         }
         if ($request->pic2) {
 
-            $path = $request->pic2->store('public/profile_images');
+            $path = $request->pic2->store('public/product_images');
             $product->pic2 = str_replace('public/', '', $path);
             $product->save();
         }
         if ($request->pic3) {
 
-            $path = $request->pic3->store('public/profile_images');
+            $path = $request->pic3->store('public/product_images');
             $product->pic3 = str_replace('public/', '', $path);
             $product->save();
         }
 
         if ($request->pic4) {
-            $path = $request->pic4->store('public/profile_images');
+            $path = $request->pic4->store('public/product_images');
             $product->pic4 = str_replace('public/', '', $path);
             $product->save();
         }
 
         if ($request->pic5) {
-            $path = $request->pic5->store('public/profile_images');
+            $path = $request->pic5->store('public/product_images');
             $product->pic5 = str_replace('public/', '', $path);
             $product->save();
         }
@@ -319,7 +304,7 @@ class ProductsController extends Controller
 
         // リダイレクトする
         // その時にsessionフラッシュにメッセージを入れる
-        return redirect('/products')->with('flash_message', __('Registered.'));
+        return redirect('/products')->with('flash_message', '作品を公開しました');
     }
 
     /**
@@ -388,7 +373,7 @@ class ProductsController extends Controller
 
         //画像有無判定フラグ
         $is_image = false;
-        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
+        if (Storage::disk('local')->exists('public/product_images/' . Auth::id() . '.jpg')) {
             $is_image = true;
         }
 
@@ -452,9 +437,6 @@ class ProductsController extends Controller
 
         //各種情報取得
         $product_id = $id;
-        //カート情報取得
-        $my_id = Auth::user()->id;
-        $cart = Cart::where('user_id', $my_id)->where('product_id', $product_id)->count();
 
         //フォロー情報取得
         $user_id = $user[0]->id;
@@ -491,7 +473,6 @@ class ProductsController extends Controller
             'product' => $product,
             'user' => $user,
             'categoryAndDifficulty' => $categoryAndDifficulty,
-            'cart' => $cart,
             'follow' => $follow,
             'liked' => $liked,
             'discount_price' => $discount_price,
@@ -552,7 +533,7 @@ class ProductsController extends Controller
         // こう書いた方がスマート
         Product::find($id)->delete();
 
-        return redirect('/products')->with('flash_message', __('Deleted.'));
+        return redirect('/products')->with('flash_message', '削除しました');
     }
 
     /**

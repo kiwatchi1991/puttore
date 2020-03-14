@@ -51,7 +51,7 @@ $pic = $user->find($buy_userId)->pic;
 </div>
 
 {{-- : {{ $order }} --}}
-<form method="POST" action="{{ route('messages.create',$ordersId) }}">
+<form class="c-messages__form" method="POST" action="{{ route('messages.create',$ordersId) }}">
     <div class="c-messages__inputArea">
         @csrf
         <input class="c-messages__input" type="text" name="messages" placeholder="ここにメッセージを入力してください"

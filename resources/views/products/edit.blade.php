@@ -243,12 +243,12 @@
                 {{-- 画像2 --}}
                 <label class="c-productNew__image__area js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic2">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    <img src="/storage/{{ $product->pic2 }}" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
                 {{-- 画像3 --}}
                 <label class="c-productNew__image__area js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic3">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    <img src="/storage/{{ $product->pic3}}" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
             </div>
 
@@ -256,17 +256,17 @@
                 {{-- 画像4 --}}
                 <label class="c-productNew__image__area js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic4">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    <img src="/storage/{{ $product->pic4 }}" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
                 {{--画像5 --}}
                 <label class="c-productNew__image__area js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic5">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    <img src="/storage/{{ $product->pic5 }}" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
                 {{--画像6 --}}
                 <label class="c-productNew__image__area js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic6">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    <img src="/storage/{{ $product->pic6 }}" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
             </div>
         </div>

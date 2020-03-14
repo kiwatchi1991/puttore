@@ -6,11 +6,14 @@
 <div class="c-productShow">
 
     <div class="c-productShow__img">
-        <ul>
+        <img class="c-productShow__slider__nav prev js-slider__prev" src="/storage/images/angle-prev.png" alt="">
+        <img class="c-productShow__slider__nav next js-slider__next" src="/storage/images/angle-next.png" alt="">
+        <ul class="c-productShow__slider__container js-slider__container">
             @foreach($product_imgs as $product_img)
             @if($product_img)
-            <li>
-                <img src="/storage/{{ $product_img  }}" alt="">
+            <li class="c-productShow__slider__item js-slider__item">
+
+                <img class="c-productShow__slider__item__img" src="/storage/{{ $product_img  }}" alt="">
             </li>
             @endif
             @endforeach
@@ -93,8 +96,16 @@
             </div>
         </div>
 
+        {{-- 受講における必要スキル --}}
+        <div class="c-productShow__requireSkills">
+            <div class="c-productShow__requireSkills__head">
+                <h2>受講に必要なスキル</h2>
+            </div>
+            <div class="c-productShow__requireSkills__text">{{ $product->skills }}</div>
+        </div>
+
         {{-- ↓↓↓↓　購入済みの場合はお気に入り・購入ボタン表示しない --}}
-        @if(!$isOrder)
+        @if(!$isOrder && !$product->user_id === Auth::id())
         {{-- ほしいものに追加する --}}
         <div class="c-productShow__like">
             <button type="submit" class="c-ajaxLike__icon @if($liked) is-active  @endif" data-like="{{ $product->id }}">
@@ -118,9 +129,9 @@
         {{-- ↑↑↑　購入済みの場合はお気に入り・購入ボタン表示しない --}}
 
         {{-- ↓↓↓↓　購入前の場合はLESSONページへボタンとメッセージボードへボタンを表示しない --}}
-        @if($isOrder)
+        @if($isOrder || $product->user_id === Auth::id())
         <div class="c-productShow__toLesson">
-            <a href="{{ route('lessons',$product->id ,1) }}">LESSONページへ</a>
+            <a href="{{ route('lessons',[$product->id ,1]) }}">LESSONページへ</a>
         </div>
         <div class="c-productShow__toBord">
             <a href="{{ route('bords') }}">メッセージボードへ</a>

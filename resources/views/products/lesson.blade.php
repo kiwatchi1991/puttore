@@ -50,7 +50,7 @@
         <div class="c-lessonShow__toLessons">
             @foreach ($all_lessons as $all_lesson)
 
-            <div class="c-lessonShow__toLesson">
+            <div class="c-lessonShow__toLesson @if($l_id == $all_lesson->number)active @endif">
                 <a href="{{ route('lessons',['p_id' => $p_id ,'l_id' => $all_lesson->number]) }}">LESSON
                     {{$all_lesson->number}}</a>
             </div>
@@ -58,4 +58,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection　▶︎

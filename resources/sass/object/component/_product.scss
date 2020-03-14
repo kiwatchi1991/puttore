@@ -134,6 +134,7 @@
   padding: 3px 10px;
   margin-left: 10px;
   margin-bottom: 10px;
+  line-height: 1.1;
   &--category{
     &:first-child{
       margin-left: 0;
@@ -480,13 +481,45 @@
   padding: 20px;
   &__img{
     background: white;
-    width: 280px;
     height: 150px;
     margin: 0 auto;
     border-radius: 15px;
     overflow: hidden;
-    img{
-      width: 100%;
+    position: relative;
+  }
+  &__slider{
+    &__container{
+      height: 100%;
+      position: relative;
+    }
+    &__item{
+      height: 100%;
+      width: 90vw;
+      position: relative;
+      float: left;
+      &__img{
+        width: 100%;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          margin: auto;
+      }
+    }
+    &__nav{
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      cursor: pointer;
+      z-index: 1;
+      top: 50%;
+      transform: translateY(-50%);
+      &.prev{
+        left: 6px;
+      }
+      &.next{
+        right: 12px;
+      }
     }
   }
   &__price{
@@ -504,6 +537,9 @@
     margin-top: 16px;
     font-size: 20px;
     color: $main-color;
+    >a{
+      color: $main-color;
+    }
   }
   &__title{
     margin-top: 16px;
@@ -543,7 +579,7 @@
     font-size: 10px;
   }
   &__like{
-    margin: 8px auto 0;
+    margin: 64px auto 0;
     z-index: 3;
     background: $main-color;
     text-align: center;
@@ -586,6 +622,15 @@
   }
   &__curriculumBlock{
     margin-top: 32px;
+  }
+  &__requireSkills{
+    margin-top: 64px;
+    &__head{
+      color: $main-color;
+    }
+    &__text{
+      margin-top: 32px;
+    }
   }
   &__toLesson{
     margin: 60px auto 0;

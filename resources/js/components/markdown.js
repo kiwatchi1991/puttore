@@ -1,13 +1,15 @@
 let marked = require('marked');
 
 //レッスン詳細のマークダウンをプレビューする
-let $getData = $('#js-lessonShow__getText');
-if (!$getData == null && !$getData == undefined) {
-  var html = marked($getData.val());
-  console.log(html);
-  $('#js-lessonShow__preview').html(html);
-}
 
+let lessonPreview = function () {
+  let $getData = $('#js-lessonShow__getText');
+  if ($getData.length) {
+    let lessonhtml = marked($getData.val());
+    $('#js-lessonShow__preview').html(lessonhtml);
+ }
+}
+window.load = lessonPreview();
 
 
 //画像を挿入
@@ -15,25 +17,10 @@ let $insert_btn =  $('.js-uploadimg');
 $insert_btn.on('change',function(){
     console.log('画像を挿入ボタンクリック！！！ajax処理開始');
     console.log('ここまで1');
-    console.log('ここまで2');
-    // let postImgFile = $this.data('follow');
 
     let file = this.files[0];
     let formData = new FormData();
-    console.log('formData append前');
-    console.log(...formData.entries());
     formData.append('file',file);
-    // let json = JSON.parse(formData['result']);
-
-    // formData.onload = function(){
-    console.log('file');
-    console.log(file);
-    console.log('file.val');
-    // console.log(file.prop('files'));
-    console.log('formData append後');
-    console.log(...formData.entries());
-    console.log('ここまで3');
-
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -48,8 +35,6 @@ $insert_btn.on('change',function(){
     // Ajaxリクエストが成功した場合
     .done(function (data) {
       let target = $('#lesson');
-        console.log('ここまで4');
-        console.log(data);
         target.val(target.val() + '\n\n![代替テキスト](/storage/' + data + ')\n\n');
         target.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
 
@@ -59,9 +44,6 @@ $insert_btn.on('change',function(){
     console.log('エラー');
     console.log(data);
  })
-
-// }
-
 })
 
 let $follow = $('.c-ajaxFollow__icon');

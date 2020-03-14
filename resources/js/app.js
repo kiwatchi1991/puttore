@@ -11,3 +11,4 @@ require('./components/ajaxCart');
 require('./components/date-picker');
 require('./components/postdraft');
 require('./components/sessionFlash');
+require('./components/imgSlider');

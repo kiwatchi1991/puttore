@@ -182,6 +182,7 @@ a:visited {
   font-weight: bold;
   color: #000;
   opacity: 0.8;
+  z-index: 99;
 }
 
 .l-product .l-product__wrapper {
@@ -665,6 +666,7 @@ a:visited {
   padding: 3px 10px;
   margin-left: 10px;
   margin-bottom: 10px;
+  line-height: 1.1;
 }
 
 .c-tag--category:first-child {
@@ -1028,15 +1030,51 @@ a:visited {
 
 .c-productShow__img {
   background: white;
-  width: 280px;
   height: 150px;
   margin: 0 auto;
   border-radius: 15px;
   overflow: hidden;
+  position: relative;
 }
 
-.c-productShow__img img {
+.c-productShow__slider__container {
+  height: 100%;
+  position: relative;
+}
+
+.c-productShow__slider__item {
+  height: 100%;
+  width: 90vw;
+  position: relative;
+  float: left;
+}
+
+.c-productShow__slider__item__img {
   width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.c-productShow__slider__nav {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.c-productShow__slider__nav.prev {
+  left: 6px;
+}
+
+.c-productShow__slider__nav.next {
+  right: 12px;
 }
 
 .c-productShow__price {
@@ -1054,6 +1092,10 @@ a:visited {
   text-align: right;
   margin-top: 16px;
   font-size: 20px;
+  color: #00ac7d;
+}
+
+.c-productShow__editIcon > a {
   color: #00ac7d;
 }
 
@@ -1104,7 +1146,7 @@ a:visited {
 }
 
 .c-productShow__like {
-  margin: 8px auto 0;
+  margin: 64px auto 0;
   z-index: 3;
   background: #00ac7d;
   text-align: center;
@@ -1153,6 +1195,18 @@ a:visited {
 }
 
 .c-productShow__curriculumBlock {
+  margin-top: 32px;
+}
+
+.c-productShow__requireSkills {
+  margin-top: 64px;
+}
+
+.c-productShow__requireSkills__head {
+  color: #00ac7d;
+}
+
+.c-productShow__requireSkills__text {
   margin-top: 32px;
 }
 
@@ -1877,6 +1931,9 @@ a:visited {
           align-items: center;
   -webkit-box-pack: center;
           justify-content: center;
+  position: fixed;
+  width: 100%;
+  background: white;
 }
 
 .c-messages__head__order {
@@ -1920,7 +1977,16 @@ a:visited {
 
 .c-messages__inner {
   background: #E5F6F2;
-  padding: 32px 0 48px 0;
+  padding: 48px 0 100px 0;
+  min-height: 100vh;
+}
+
+.c-messages__form {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  background: white;
 }
 
 .c-messages__inputArea {
@@ -1929,16 +1995,20 @@ a:visited {
   display: flex;
   -webkit-box-pack: end;
           justify-content: flex-end;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .c-messages__input {
   width: 100%;
   padding-left: 16px;
+  height: 100%;
 }
 
 .c-messages__button {
   width: 25vw;
-  margin: 10px 10px 0 0;
+  height: 35px;
+  margin: auto 10px;
   background: #00ac7d;
   color: white;
   border: none;
@@ -3479,6 +3549,7 @@ a:visited {
 .c-lessonShow__inner {
   background: white;
   padding: 16px;
+  border-radius: 10px;
 }
 
 .c-lessonShow__price {
@@ -3589,10 +3660,18 @@ a:visited {
   margin-top: 24px;
 }
 
+.c-lessonShow__lesson__number {
+  font-size: 24px;
+}
+
 .c-lessonShow__lesson__title {
   margin-top: 12px;
   line-height: 1.5;
-  font-size: 14px;
+  font-size: 20px;
+}
+
+.c-lessonShow__lesson__contents {
+  margin-top: 32q;
 }
 
 .c-lessonShow__curriculumBlock {

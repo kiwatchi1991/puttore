@@ -38980,6 +38980,8 @@ __webpack_require__(/*! ./components/postdraft */ "./resources/js/components/pos
 
 __webpack_require__(/*! ./components/sessionFlash */ "./resources/js/components/sessionFlash.js");
 
+__webpack_require__(/*! ./components/imgSlider */ "./resources/js/components/imgSlider.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39435,6 +39437,62 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/js/components/imgSlider.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/imgSlider.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var currentItemNum = 1;
+var $slideContainer = $('.js-slider__container');
+var slideItemNum = $('.js-slider__item').length;
+var slideItemWidth = $('.js-slider__item').innerWidth();
+var slideContainerWidth = slideItemWidth * slideItemNum;
+var DURATION = 500;
+$slideContainer.attr('style', 'width:' + slideContainerWidth + 'px');
+console.log('slideItemNum' + slideItemNum);
+console.log('slideItemWidth' + slideItemWidth);
+console.log('slideContainerWidth' + slideContainerWidth);
+$('.js-slider__next').on('click', function () {
+  if (currentItemNum < slideItemNum) {
+    $slideContainer.animate({
+      left: '-=' + slideItemWidth + 'px'
+    }, DURATION);
+    currentItemNum++;
+  }
+
+  toggleOpacity();
+});
+$('.js-slider__prev').on('click', function () {
+  if (currentItemNum > 1) {
+    $slideContainer.animate({
+      left: '+=' + slideItemWidth + 'px'
+    }, DURATION);
+    currentItemNum--;
+  }
+
+  toggleOpacity();
+});
+
+var toggleOpacity = function toggleOpacity() {
+  if (currentItemNum == 1) {
+    $('.js-slider__prev').attr('style', 'opacity:' + 0.5);
+  } else {
+    $('.js-slider__prev').attr('style', 'opacity:' + 1);
+  }
+
+  if (currentItemNum == slideItemNum) {
+    $('.js-slider__next').attr('style', 'opacity:' + 0.5);
+  } else {
+    $('.js-slider__next').attr('style', 'opacity:' + 1);
+  }
+};
+
+toggleOpacity();
+
+/***/ }),
+
 /***/ "./resources/js/components/markdown.js":
 /*!*********************************************!*\
   !*** ./resources/js/components/markdown.js ***!
@@ -39442,52 +39500,27 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js"); //レッスン詳細のマークダウンをプレビューする
 
 
-var $getData = $('#js-lessonShow__getText');
+var lessonPreview = function lessonPreview() {
+  var $getData = $('#js-lessonShow__getText');
 
-if (!$getData == null && !$getData == undefined) {
-  var html = marked($getData.val());
-  console.log(html);
-  $('#js-lessonShow__preview').html(html);
-} //画像を挿入
+  if ($getData.length) {
+    var lessonhtml = marked($getData.val());
+    $('#js-lessonShow__preview').html(lessonhtml);
+  }
+};
 
+window.load = lessonPreview(); //画像を挿入
 
 var $insert_btn = $('.js-uploadimg');
 $insert_btn.on('change', function () {
-  var _console, _console2;
-
   console.log('画像を挿入ボタンクリック！！！ajax処理開始');
   console.log('ここまで1');
-  console.log('ここまで2'); // let postImgFile = $this.data('follow');
-
   var file = this.files[0];
   var formData = new FormData();
-  console.log('formData append前');
-
-  (_console = console).log.apply(_console, _toConsumableArray(formData.entries()));
-
-  formData.append('file', file); // let json = JSON.parse(formData['result']);
-  // formData.onload = function(){
-
-  console.log('file');
-  console.log(file);
-  console.log('file.val'); // console.log(file.prop('files'));
-
-  console.log('formData append後');
-
-  (_console2 = console).log.apply(_console2, _toConsumableArray(formData.entries()));
-
-  console.log('ここまで3');
+  formData.append('file', file);
   $.ajax({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -39501,15 +39534,13 @@ $insert_btn.on('change', function () {
   }) // Ajaxリクエストが成功した場合
   .done(function (data) {
     var target = $('#lesson');
-    console.log('ここまで4');
-    console.log(data);
     target.val(target.val() + '\n\n![代替テキスト](/storage/' + data + ')\n\n');
     target.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
   }) // Ajaxリクエストが失敗した場合
   .fail(function (data) {
     console.log('エラー');
     console.log(data);
-  }); // }
+  });
 });
 var $follow = $('.c-ajaxFollow__icon');
 var followPostId;
