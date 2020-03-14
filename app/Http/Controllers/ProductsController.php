@@ -338,6 +338,7 @@ class ProductsController extends Controller
          */
 
 
+        $categorieIds = [];
         //カテゴリーと難易度両方あるパターン
         if ($request->get('lang') && $request->get('difficult')) {
             //カテゴリー
@@ -364,6 +365,12 @@ class ProductsController extends Controller
         } else {
             $products = Product::latest()->paginate(10);
         }
+
+        Log::debug(' <<<<<<   $products->first()   >>>>>>>');
+        Log::debug($products->first());
+        Log::debug($categorieIds);
+        Log::debug($difficultiesIds);
+
 
         //プロダクト件数
         $all_products = Product::all();
@@ -396,6 +403,9 @@ class ProductsController extends Controller
             'is_image' => $is_image,
             'category' => $category,
             'difficult' => $difficult,
+            'categorieIds' => $categorieIds,
+            'difficultiesIds' => $difficultiesIds,
+
         ]);
 
         // return redirect('/products')->with('flash_message', __('検索したよ'));

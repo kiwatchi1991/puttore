@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Log;
 
 
-use Illuminate\Http\Request;//api用に追加
+use Illuminate\Http\Request; //api用に追加
 
 class RegisterController extends Controller
 {
@@ -36,10 +36,8 @@ class RegisterController extends Controller
     // protected $redirectTo = '/profile/{$id}/edit';
     protected function redirectTo()
     {
-        // $id = Auth::user()->id;
-        // Log::debug($id);
-        return '/products/mypage';
-}
+        return '/products';
+    }
 
     /**
      * Create a new controller instance.
@@ -81,7 +79,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
 
             // 追加登録
-        redirect('/products/mypage')->with('flash_message', __('Registered.'))
+            redirect('/products')->with('flash_message', 'ユーザー登録しました')
 
         ]);
     }

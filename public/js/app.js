@@ -38976,6 +38976,10 @@ __webpack_require__(/*! ./components/ajaxCart */ "./resources/js/components/ajax
 
 __webpack_require__(/*! ./components/date-picker */ "./resources/js/components/date-picker.js");
 
+__webpack_require__(/*! ./components/postdraft */ "./resources/js/components/postdraft.js");
+
+__webpack_require__(/*! ./components/sessionFlash */ "./resources/js/components/sessionFlash.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39539,6 +39543,37 @@ $follow.on('click', function () {
 
 /***/ }),
 
+/***/ "./resources/js/components/postdraft.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/postdraft.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var postdraft = function postdraft() {
+  console.log('postdraftイベント発生');
+  $('.js-isCheck-postType').on('click', function (e) {
+    e.preventDefault();
+    console.log('clickイベント発生'); // var that = $(this);
+
+    var postType = $(this).data('type');
+    console.log('postType');
+    console.log(postType);
+
+    if (postType == 'draft') {
+      $(this).find('input[type=hidden]').prop('name', 'draft');
+    } else if (postType == 'register') {
+      $(this).find('input[type=hidden]').prop('name', 'register');
+    }
+
+    $('#form').submit();
+  });
+};
+
+window.onload = postdraft();
+
+/***/ }),
+
 /***/ "./resources/js/components/previewImage.js":
 /*!*************************************************!*\
   !*** ./resources/js/components/previewImage.js ***!
@@ -39623,6 +39658,27 @@ $profileFileInput.on('change', function () {
 $deletebtn.on('click', function () {
   $('.js-prev__img').attr('src', '').show();
 }); // const cropper = require('cropper');
+
+/***/ }),
+
+/***/ "./resources/js/components/sessionFlash.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/sessionFlash.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// フラッシュメッセージのfadeout
+$(function () {
+  var $sessionFlash = $('.js-sessionMessage');
+
+  if ($sessionFlash) {
+    $sessionFlash.slideToggle('slow');
+    setTimeout(function () {
+      $sessionFlash.slideToggle('slow');
+    }, 5000);
+  }
+});
 
 /***/ }),
 

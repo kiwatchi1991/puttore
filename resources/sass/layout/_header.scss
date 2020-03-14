@@ -15,3 +15,19 @@
 .header__logo{
     margin: 15px 0 0 15px;
 }
+
+.c-header__sessionMessage{
+        width: 100%;
+        height: 50px;
+        background: $main-color;
+        display: block;
+        position: absolute;
+        top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: bold;
+        color: #000;
+        opacity: 0.8;
+}

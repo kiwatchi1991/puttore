@@ -21,12 +21,13 @@ Auth::routes();
 Route::get('/', function () {
     return view('index');
 });
+
 Route::get('/',  'indexController@index')->name('home');
+Route::get('/products',  'ProductsController@index')->name('products');
 
 Route::group(['middleware' => 'check'], function () {
     Route::get('/products/new', 'ProductsController@new')->name('products.new');
     Route::post('/products/new', 'ProductsController@create')->name('products.create');
-    Route::get('/products',  'ProductsController@index')->name('products');
     Route::post('/products',  'ProductsController@index')->name('products');
     Route::get('/products/{id}/edit', 'ProductsController@edit')->name('products.edit');
     Route::post('/products/{id}/edit', 'ProductsController@update')->name('products.update');

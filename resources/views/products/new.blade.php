@@ -37,7 +37,7 @@
             <div class="c-productNew__difficults">
                 <p class="c-productNew__title">2. 難易度を選んでね</p>
                 @foreach ($difficult as $difficults)
-                <input id="d-{{ $difficults->id }}" type="checkbox"
+                <input id="d-{{ $difficults->id }}" type="radio"
                     class="c-productNew__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
                     value="{{ $difficults->id }}" autocomplete="difficult" autofocus>
                 <label class="c-productNew__label" for="d-{{ $difficults->id }}">
@@ -226,13 +226,17 @@
             </div>
         </div>
         <div class="c-productNew__submit c-productNew__submit--draft">
-            <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft">
+            <button type="submit"
+                class="c-productNew__submit__button c-productNew__submit__button--draft js-isCheck-postType"
+                data-type="draft">
                 下書き保存する
             </button>
+            <input type="hidden" name="" class="js-postType" value="">
         </div>
         <div class="c-productNew__submit ">
-            <button type="submit" class="c-productNew__submit__button">
+            <button type="submit" class="c-productNew__submit__button js-isCheck-postType" data-type="register">
                 登録する
+                <input type="hidden" name="" class="js-postType" value="">
             </button>
         </div>
     </form>

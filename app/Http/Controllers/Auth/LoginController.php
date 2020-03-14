@@ -27,7 +27,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/products';
+
+    protected function redirectTo()
+    {
+        redirect('/products')->with('flash_message', 'ログインしました');
+    }
 
     /**
      * Create a new controller instance.
@@ -39,6 +43,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    //api用に追加
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
 
+        return redirect('/')->with('flash_message', 'ログアウトしました');
+    }
 }
