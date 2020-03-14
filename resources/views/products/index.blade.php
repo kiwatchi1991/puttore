@@ -13,8 +13,9 @@
 
                 <input id="c-{{ $categories->id }}" type="checkbox"
                     class="c-searchBox__checkbox @error('lang') is-invalid @enderror" name="lang[]"
-                    value="{{ $categories->id }}" autocompplete="lang" @if(in_array($categories->id,
-                old('lang'),app('request')->input('lang')))checked @endif>
+                    value="{{ $categories->id }}" autocompplete="lang" @if(!$categorieIds==null)
+                    @if(in_array($categories->id,
+                $categorieIds))checked @endif @endif>
                 <label class="c-searchBox__label" for="c-{{ $categories->id }}">
                     {{ $categories->name }}
                 </label>
@@ -47,7 +48,7 @@
     <h2>一覧 / 検索結果</h2>
 </div>
 <div class="c-pagination">
-    {{ $products->links('vendor.pagination.simple-default') }}
+    {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
 </div>
 {{-- <div class="c-paging">{{ $pageNum_from }} - {{ $pageNum_to }} /<span
     class="c-paging__totalNum">{{ $products->count() }}</span></div> --}}

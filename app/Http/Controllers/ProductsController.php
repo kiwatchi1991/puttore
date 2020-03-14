@@ -195,22 +195,24 @@ class ProductsController extends Controller
     public function create(Request $request)
     {
 
-        Log::debug('コントローラー：create');
+        Log::debug('コントローラー：<<<<   create   >>>>>>>>>');
 
-
+        // 下書きではなく登録のときだけバリデーションチェック
+        // if($request->register){
         $request->validate([
             'name' => 'required|string|max:255',
             'detail' => 'required|string|max:255',
-            'default_price' => 'required',
-            'lang' => 'required',
-            'difficult' => 'required',
-            'skills' => 'required|string|max:255',
-            'pic1' => 'string|max:255',
-            'pic2' => 'string|max:255',
-            'pic3' => 'string|max:255',
-            'pic4' => 'string|max:255',
-            'pic5' => 'string|max:255',
+            // 'default_price' => 'required',
+            // 'lang' => 'required',
+            // 'difficult' => 'required',
+            // 'skills' => 'required|string|max:255',
+            // 'pic1' => 'string|max:255',
+            // 'pic2' => 'string|max:255',
+            // 'pic3' => 'string|max:255',
+            // 'pic4' => 'string|max:255',
+            // 'pic5' => 'string|max:255',
         ]);
+        // }
 
         Log::debug('これからDBへデータ挿入');
         Log::debug($request);
@@ -338,7 +340,7 @@ class ProductsController extends Controller
          */
 
 
-        $categorieIds = [];
+
         //カテゴリーと難易度両方あるパターン
         if ($request->get('lang') && $request->get('difficult')) {
             //カテゴリー
