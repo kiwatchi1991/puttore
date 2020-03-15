@@ -1,0 +1,26 @@
+.c-mypage{
+    &__nav{
+        height: 45px;
+        width: 100%;
+        display: flex;
+        border-bottom: 3px solid $main-color;
+        &__list{
+            width: 50%;
+            font-size: 12px;
+            background: white;
+            &.active{
+                background: $main-color;
+                color: white;
+            }
+            a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                line-height: 1.35;
+            }
+        }
+    }
+}

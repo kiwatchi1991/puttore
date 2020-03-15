@@ -61,7 +61,6 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/products/{id}/edit', 'ProductsController@edit')->name('products.edit');
     Route::post('/products/{id}/edit', 'ProductsController@update')->name('products.update');
     Route::post('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
-    Route::get('/products/mypage', 'ProductsController@mypage')->name('products.mypage');
     Route::get('/products/{id}',  'ProductsController@shows')->name('products.show');
     Route::post('/products/ajaxlike',  'LikesController@ajaxlike')->name('products.ajaxlike');
     Route::post('/products/ajaxfollow',  'FollowsController@ajaxfollow')->name('products.ajaxfollow');
@@ -79,6 +78,9 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/carts',  'CartsController@index')->name('carts');
     Route::post('/carts',  'CartsController@ajaxcart')->name('ajaxcarts');
 
+    //マイページ
+    Route::get('/mypage',  'mypageController@index')->name('mypage');
+    Route::get('/mypage/order',  'mypageController@order')->name('mypage.order');
 
     //注文・トークルーム
     Route::post('/products/{id}',  'OrdersController@create')->name('orders.create');

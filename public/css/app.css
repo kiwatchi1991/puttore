@@ -152,7 +152,9 @@ a:visited {
   top: 0;
   width: 100%;
   background-color: #fff;
-  z-index: 1;
+  z-index: 10;
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.16);
+  opacity: 0.9;
 }
 
 .header__inner {
@@ -4299,6 +4301,38 @@ a:visited {
   padding: 3px 5px;
   background: #E0E0E0;
   margin-left: 8px;
+}
+
+.c-mypage__nav {
+  height: 45px;
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  border-bottom: 3px solid #00ac7d;
+}
+
+.c-mypage__nav__list {
+  width: 50%;
+  font-size: 12px;
+  background: white;
+}
+
+.c-mypage__nav__list.active {
+  background: #00ac7d;
+  color: white;
+}
+
+.c-mypage__nav__list a {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 1.35;
 }
 
 .p-input__tag {

@@ -114,15 +114,22 @@ class adminController extends Controller
     {
         Log::debug($request);
         //並べかえ（降順/昇順が押された場合）
+
+        // ユーザー情報の取得
+        $products = DB::table('products')
+            ->join('users', 'products.user_id', '=', 'users_id')
+            ->select('products.title', 'users.email',)
+            ->get();
+
         $sortFlg = $request->sort;
         if (isset($sortFlg)) {
             if ($sortFlg == '1') {
-                $products = Product::latest()->get();
+                $products = $products::latest()->get();
             } elseif ($sortFlg == '0') {
-                $products = Product::all();
+                $products = $products::all();
             }
         } else {
-            $products = Product::all();
+            $products = $products::all();
         }
 
 
