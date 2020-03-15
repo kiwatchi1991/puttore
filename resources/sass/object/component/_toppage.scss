@@ -1,32 +1,59 @@
 .c-top{
-    color: $main-text;
-
+    &__container{
+        color: $normal-text;
+    }
     &__fv{
-        padding: 0 16px 16px;
+        padding: $header-height 0 50px;
     }
     &__fvImg{
-        height: 250px;
+        display: flex;
+        justify-content: center;
+        height: 185px;
+        width: 185px;
+        align-items: center;
         background: $bg;
+        margin: 0 auto;
+        border-radius: 50%;
+
+        &__img{
+            width: 185px;
+            height: 120px;
+        }
     }
     &__fvMsg{
-        h2{
-            font-size: 24px;
-            margin: 24px 0;
+        &__head{
+            color: $main-color;
+            font-size: 20px;
+            font-weight: normal;
+            line-height: 1.35;
+            letter-spacing: 3;
+            width: 300px;
+            margin: 16px auto 0 16px;
+        }
+        &__text{
+            width: 300px;
+            margin: 16px auto 0 16px;
+            font-size: 13px;
+            line-height: 1.6;
+            letter-spacing: -0.5;
         }
         
+        &__subject{
+            margin-top: 16px;
+            text-align: center;
+            font-size: 17px;
+            color: $main-color;
+            font-weight: normal;
+        }
+        &__title{
+            display: none;
+            margin-top: 16px;
+            text-align: center;
+        }
     }
     &__text{
-        color: $main-text;
         &--fvMsg{
             font-size: 12px;
-        }
-        &--subject{
-            margin-top: 16px;
-            text-align: center;
-        }
-        &--title{
-            margin-top: 16px;
-            text-align: center;
         }
         &--recommend{
             font-size: 10px;
@@ -34,52 +61,157 @@
     }
     &__button{
         text-align: center;
-        margin-top: 10px;
+        width: 268px;
+        margin: 24px auto 0;
         &--link{
             display: inline-block;
-            padding: 15px 40px;
+            padding: 15px 0px;
             border-radius: 40px;
             background: orange;
+            width: 100%;
+            color: white;
+            &:visited{
+                color: white;
+            }
         }
     }
-    &__outputSample{
+    &__output{
         text-align: center;
         background: $bg;
-    }
-    &__outputImgs{
-        text-align: center;
-    }
-    &__outputImg{
-        border: $test;
-        height: 100px;
-        width: 100px;
-        margin: 24px auto 0;
+        padding: 35px 0 25px 0;
+        &__head{
+            font-size: 22px;
+            font-weight: normal;
+        }
+        &__text__sample{
+            margin-top: 16px;
+        }
+        &__Imgs{
+            text-align: center;
+        }
+        &__Img{
+            height: 95px;
+            width: 250px;
+            margin: 24px auto 0;
+            position: relative;
+            padding-top: 135px;
+            text-align: left;
+            padding-left: 50px;
+            font-size: 12px;
+            &--left{
+                text-align: right;
+                padding-right: 35px;
+                padding-left: 0;
+            }
+            img{
+                position: absolute;
+                top: 0;right: 0;
+                right: 0;
+                left: 0;
+                margin: 0 auto;
+            }
+        }
     }
     &__recommends{
-        padding: 0 10px;
+        padding: 32px 0 64px;
+        &__head{
+            text-align:center;
+            font-size: 22px;
+            font-weight: normal;
+            color: $main-color;
+        }
     }
     &__recommend{
         text-align: center;
-        border: $test;
-    }
-    &__recommendImg{
-        width: 100px;
-        height: 100px;
-        border: $test;
-        margin: 0 auto;
+        margin: 50px auto 0; 
+        &__head{
+            font-weight: normal;
+            padding-bottom: 16px;
+        }
+        &__Img{
+            background: $bg;
+            border-radius: 50%;
+            height: 235px;
+            width: 235px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            img{
+                padding-bottom: 16px;
+                width: 95px;
+            }
+            &--how{
+                img{
+                    width: 150px;
+                }
+            }
+        }
+        &__text{
+            font-size: 12px;
+            line-height: 1.35;
+            margin-bottom: -24px;
+        }
     }
 
     &__features{
-        padding: 0 10px;
-        border: $test;
+        padding: 36px 0 36px;
+        background: $bg;
+        &__inner{
+            width: 260px;
+            margin: 0 auto;
+        }
+        &__subject{
+            color: $main-color;
+            letter-spacing: 1.5;
+            font-size: 17px;
+        }
         &__title{
-            
+            color: $main-color;
+            font-size: 23px;
+            font-weight: normal;
             text-align: center;
+            margin-top: 32px;
         }
     }
 
     &__feature{
-        margin-top: 24px;
-
+        margin-top: 32px;
+        &:first-child{
+            margin-top: 36px;
+        }
+        &__title{
+            background: white;
+            border-radius: 10px;
+            padding: 15px 12px;
+            display: inline-block;
+            font-weight: normal;
+        }
+        &__text{
+            margin-top: 16px;
+            line-height: 1.45;
+            font-size: 13px;
+            letter-spacing: 1.3;
+        }
+    }
+    &__end{
+        &__subject{
+            color: $main-color;
+            font-size: 17px;
+            line-height: 1.41;
+            width: 240px;
+            margin: 36px auto 0;
+            letter-spacing: -0.64;
+        }
+        &__title{
+            margin-top: 42px;
+            color: $main-color;
+            font-weight: normal;
+            font-size: 23px;
+            text-align: center;
+            letter-spacing: -2.15
+            ;
+        }
     }
 }

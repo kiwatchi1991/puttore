@@ -1,7 +1,27 @@
-footer{
+#footer{
     width: 100%;
     background: white;
     // position: absolute;
     bottom: 0;
     border-top: 1px solid $main-color;
+}
+
+.c-footer{
+    &__inner{
+    display: flex;
+    background: $bg;
+    padding: 16px 24px;
+    justify-content: space-between;
+    }
+    &__list{
+        font-size: 10px;
+        letter-spacing: 0.3;
+        &__link{
+            padding: 3px 0;
+            display: inline-block;
+        }
+    }
+    &__small{
+        margin-top: 8px;
+    }
 }
