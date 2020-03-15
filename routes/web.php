@@ -22,6 +22,27 @@ Route::get('/', function () {
     return view('index');
 });
 
+//管理画面
+//ユーザー
+Route::get('/admin/users',  'adminController@userIndex')->name('admin.user');
+Route::post('/admin/users',  'adminController@userIndex')->name('admin.user.search');
+Route::get('/admin/users/{id}',  'adminController@userEdit')->name('admin.user.edit');
+Route::post('/admin/users/{id}',  'adminController@userUpdate')->name('admin.user.update');
+Route::get('/admin/users/delete/{id}',  'adminController@userDeleteConfirm')->name('admin.user.delete.confirm');
+Route::post('/admin/users/delete/{id?}',  'adminController@userDeleteConfirm')->name('admin.user.deletes.confirm');
+Route::post('/admin/users/delete/{id}',  'adminController@userDelete')->name('admin.user.delete');
+
+//プロダクト
+Route::get('/admin/products',  'adminController@productIndex')->name('admin.product');
+Route::post('/admin/products',  'adminController@productIndex')->name('admin.product.search');
+Route::get('/admin/products/{id}',  'adminController@productEdit')->name('admin.product.edit');
+Route::post('/admin/products/{id}',  'adminController@productUpdate')->name('admin.product.update');
+Route::get('/admin/products/delete/{id}',  'adminController@productDeleteConfirm')->name('admin.product.delete.confirm');
+Route::post('/admin/products/delete/{id?}',  'adminController@productDeleteConfirm')->name('admin.product.deletes.confirm');
+Route::post('/admin/products/delete/{id}',  'adminController@productDelete')->name('admin.product.delete');
+
+
+
 Route::get('/',  'indexController@index')->name('home');
 Route::get('/products',  'ProductsController@index')->name('products');
 
@@ -31,6 +52,8 @@ Route::post('/contacts/confirm', 'ContactController@confirm')->name('contact.con
 Route::post('/contacts/finish', 'ContactController@send')->name('contact.send'); //完了画面
 Route::get('/contacts/finish', 'ContactController@finish')->name('contact.finish'); //完了画面
 
+
+//ログインユーザーのみ
 Route::group(['middleware' => 'check'], function () {
     Route::get('/products/new', 'ProductsController@new')->name('products.new');
     Route::post('/products/new', 'ProductsController@create')->name('products.create');
