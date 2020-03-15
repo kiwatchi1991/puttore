@@ -11,8 +11,8 @@
             <label for="email" class="c-passReset__label">メールアドレス</label>
 
             <div>
-                <input class="c-passReset__input" name="email"
-                    value="{{ old('email') }} @error('email') is-invalid @enderror" required type="email">
+                <input class="c-passReset__input @error('email') is-invalid @enderror" name="email"
+                    value="{{ old('email') }}" required type="email">
             </div>
             @error('email')
             <span class="c-passReset__error" role="alert">

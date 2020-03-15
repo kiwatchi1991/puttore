@@ -4320,6 +4320,7 @@ a:visited {
 .c-mypage__nav__list.active {
   background: #00ac7d;
   color: white;
+  border-radius: 10px 10px 0 0;
 }
 
 .c-mypage__nav__list a {

@@ -10,9 +10,9 @@
 
 <div class="c-profile__title__product">
     <h2>購入履歴</h2>
-    @if($drafts->count() == 0)
+    {{-- @if($drafts->count() == 0) --}}
     <p style="margin-top: 32px">現在ありません</p>
-    @endif
+    {{-- @endif --}}
 </div>
 
 
@@ -20,9 +20,9 @@
 
 <div class="c-profile__title__product">
     <h2>販売履歴</h2>
-    @if($drafts->count() == 0)
+    {{-- @if($drafts->count() == 0) --}}
     <p style="margin-top: 32px">現在ありません</p>
-    @endif
+    {{-- @endif --}}
 </div>
 
 

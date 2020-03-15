@@ -82,8 +82,7 @@
                                 </li>
                                 @auth
                                 <li class="global-nav__item">
-                                    <a href=" {{ route('profile.show',$user->id) }}"
-                                        class="global-nav__item__link">マイページ</a>
+                                    <a href=" {{ route('mypage',$user->id) }}" class="global-nav__item__link">マイページ</a>
                                 </li>
                                 <li class="global-nav__item">
                                     <a href=" {{ route('bords') }}" class="global-nav__item__link">メッセージボード</a>
