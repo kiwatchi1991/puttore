@@ -52,15 +52,15 @@ class mypageController extends Controller
             'buy_products' => $buy_products,
         ]);
     }
-    public function order(Request $request)
-    {
-        //売上履歴
-        $sale_history = DB::table('orders')
-            ->join('products','orders.products_id', '=','products.id')
-            ->where('products.user_id', Auth::user()->id)
-            ->join('users','orders.user_id','=','users.id')
-            ->select('')
+    // public function order(Request $request)
+    // {
+    //     //売上履歴
+    //     $sale_history = DB::table('orders')
+    //         ->join('products','orders.products_id', '=','products.id')
+    //         ->where('products.user_id', Auth::user()->id)
+    //         ->join('users','orders.user_id','=','users.id')
+    //         ->select('')
 
-        return view('mypage.order', []);
-    }
+    //     }
+
 }
