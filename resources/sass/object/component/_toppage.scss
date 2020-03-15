@@ -3,7 +3,7 @@
         color: $normal-text;
     }
     &__fv{
-        padding: $header-height 0 50px;
+        padding: 115px 0 50px;
     }
     &__fvImg{
         display: flex;
@@ -27,12 +27,12 @@
             font-weight: normal;
             line-height: 1.35;
             letter-spacing: 3;
-            width: 300px;
-            margin: 16px auto 0 16px;
+            width: 280px;
+            margin: 16px auto 0;
         }
         &__text{
             width: 300px;
-            margin: 16px auto 0 16px;
+            margin: 16px auto;
             font-size: 13px;
             line-height: 1.6;
             letter-spacing: -0.5;
