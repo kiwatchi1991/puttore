@@ -8,7 +8,7 @@
 
         <div class="">
             <p class="c-productNew__title__label">タイトル</p>
-            <input id="name" type="text" class="c-productNew__input-area @error('name') is-invalid @enderror"
+            <input id="name" type="text" class="c-productNew__input-area @error('name') is-invalid @enderror" required
                 name="name" value="{{ old('name') }}" autocomplete="name" placeholder="教材のタイトル（例：Twitter風アプリを作ろう）">
 
             @error('name')
@@ -63,7 +63,7 @@
 
             <textarea id="detail" type="text"
                 class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
-                data-input="detail" name="detail" value="{{ old('detail') }}" rows="7">
+                required data-input="detail" name="detail" value="{{ old('detail') }}" rows="7">
             </textarea>
             <div class="c-productNew__modal">
                 書き方のヒントは<span>こちら</span>
@@ -95,7 +95,7 @@
                 {{-- 　　レッスン1　title --}}
                 <div class="">
                     <input id="title" type="text" class="c-productNew__input-area @error('title') is-invalid @enderror"
-                        data-input="title" name="" value="{{ old('title') }}" autocomplete="title"
+                        required data-input="title" name="" value="{{ old('title') }}" autocomplete="title"
                         placeholder="レッスンのタイトル" placeholder="title１">
 
                     @error('title')

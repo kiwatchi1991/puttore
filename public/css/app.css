@@ -4404,3 +4404,11 @@ button {
   min-height: 100%;
 }
 
+.error {
+  font-size: 12px;
+  padding-left: 8px;
+  color: red;
+  margin-top: 8px;
+  display: block;
+}
+

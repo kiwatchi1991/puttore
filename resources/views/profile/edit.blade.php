@@ -89,7 +89,7 @@
 
                 {{-- 保存ボタン --}}
                 <div class="c-profileEdit__submit">
-                    <button type="submit" class="c-profileEdit__button">
+                    <button type="submit" class="c-profileEdit__submit__button">
                         登録する
                     </button>
                 </div>

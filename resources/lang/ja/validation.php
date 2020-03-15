@@ -109,6 +109,13 @@ return [
         'body' => 'お問いあわせ内容',
         'email' => 'メールアドレス',
         'title' => 'タイトル',
+        'password' => 'パスワード',
+        'name' => '教材タイトル',
+        'lang' => '言語',
+        'difficult' => '難易度',
+        'detail' => '説明文',
+        'default_price' => '価格',
+        'skills' => '受講に必要なスキル',
 
     ],
 
