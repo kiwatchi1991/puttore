@@ -4336,6 +4336,10 @@ a:visited {
   background: white;
 }
 
+.c-mypage__nav__list .small {
+  font-size: 10px;
+}
+
 .c-mypage__nav__list.active {
   background: #00ac7d;
   color: white;
@@ -4353,6 +4357,68 @@ a:visited {
   height: 100%;
   text-align: center;
   line-height: 1.35;
+}
+
+.c-mypage__title {
+  margin-top: 0;
+  padding-top: 32px;
+  text-align: center;
+  color: #00ac7d;
+  font-size: 18px;
+}
+
+.c-mypage__editLink {
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: underline;
+  color: #00ac7d;
+  margin-left: 8px;
+}
+
+.c-mypage__editLink__wrapper {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.c-mypage__account {
+  width: 280px;
+  margin: 0 auto;
+  padding: 16px;
+  background: #E5F6F2;
+}
+
+.c-mypage__account__inner {
+  background: white;
+  padding: 0 16px 64px;
+}
+
+.c-mypage__account__list {
+  margin-top: 24px;
+}
+
+.c-mypage__account__list__label {
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.c-mypage__account__list.img {
+  text-align: center;
+}
+
+.c-mypage__account__list img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.c-mypage__account__list--withdraw {
+  margin-top: 120px;
+  font-size: 1px;
+}
+
+.c-mypage__account__label {
+  font-weight: bold;
+  padding-bottom: 8px;
 }
 
 .p-input__tag {

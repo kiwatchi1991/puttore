@@ -17,11 +17,19 @@ use Illuminate\Support\Facades\Log;
 
 class mypageController extends Controller
 {
-    /**
-     * 一覧機能
-     */
 
     public function index(Request $request)
+    {
+        $user = Auth::user();
+
+        return view('mypage.index', compact('user'));
+    }
+
+    /**
+     * プロダクト一覧機能
+     */
+
+    public function products(Request $request)
     {
         // 下書き保存中の作品数
         $drafts = Auth::user()->products()
@@ -44,7 +52,7 @@ class mypageController extends Controller
         Log::debug('$buy_products');
         Log::debug($buy_products);
 
-        return view('mypage.index', [
+        return view('mypage.product', [
             'products' => $products,
             'product_categories' => $product_category,
             'product_difficulties' => $product_difficulty,

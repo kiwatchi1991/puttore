@@ -92,6 +92,7 @@ Route::group(['middleware' => 'check'], function () {
 
     //マイページ
     Route::get('/mypage',  'mypageController@index')->name('mypage');
+    Route::get('/mypage/products',  'mypageController@products')->name('mypage.products');
     Route::get('/mypage/order',  'mypageController@order')->name('mypage.order');
 
     //注文・トークルーム
