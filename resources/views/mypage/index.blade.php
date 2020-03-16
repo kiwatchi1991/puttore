@@ -44,7 +44,7 @@
             ●●●●●●●●●
         </div>
         <div class="c-mypage__account__list c-mypage__account__list--withdraw">
-            <a href="">退会する</a>
+            <a href="{{ route('profile.deleteShow',$user->id) }}">退会する</a>
         </div>
 
     </div>

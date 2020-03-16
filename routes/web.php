@@ -114,4 +114,8 @@ Route::group(['middleware' => 'check'], function () {
     //パスワード変更
     Route::get('changepassword', 'HomeController@showChangePasswordForm');
     Route::post('changepassword', 'HomeController@changePassword')->name('changepassword');
+
+    // メールアドレス確認メールを送信
+    Route::get('/changeEmail', 'ChangeEmailController@index');
+    Route::post('/email', 'ChangeEmailController@sendChangeEmailLink');
 });
