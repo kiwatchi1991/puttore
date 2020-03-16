@@ -34,7 +34,7 @@
             {{ $user->account_detail }}
         </div>
         <div class="c-mypage__account__list">
-            <p class="c-mypage__account__label">メールアドレス <span class="c-mypage__editLink"><a href="">
+            <p class="c-mypage__account__label">メールアドレス <span class="c-mypage__editLink"><a href="/changeEmail">
                         変更</a></span></p>
             {{ $user->email }}
         </div>
