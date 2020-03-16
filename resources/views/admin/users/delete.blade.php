@@ -7,8 +7,10 @@
 <div class="c-admin__confirm">ほんとうに削除しますか？</div>
 
 <div class="admin__userEdit">
-    <form method="POST" action="{{ route('admin.user.delete',$user->id) }}">
+    <form method="POST" action="{{ route('admin.user.delete') }}">
         @csrf
+        @foreach($users as $user)
+        <input type="hidden" name="delete_id[]" value="{{ $user->id }}">
         <div class="c-admin__user__info">
             <div class="c-admin__user__info__list">
                 <div class="c-admin__user__data">id </div>
@@ -50,9 +52,11 @@
             </div>
 
         </div>
+        @endforeach
         <div class="c-admin__userEdit__btn">
             <button type="submit" class="c-admin__btn">削除する</button>
         </div>
+
     </form>
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     @endsection
