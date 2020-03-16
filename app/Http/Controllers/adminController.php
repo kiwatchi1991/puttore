@@ -62,14 +62,18 @@ class adminController extends Controller
 
     public function userUpdate(Request $request, $id)
     {
+      Log::debug('<< userUpdate >>');
+      Log::debug($request);
         $user = User::find($id);
-        $user->group = $request->group;
-        $user->save();
+        if(!empty($request->group)){
+          $user->group = $request->group;
+          $user->save();
+        }
         return redirect()->route('admin.user')->with('flash_message', 'ユーザー情報を更新しました');
     }
 
     //削除前確認
-    public function userDeleteConfirm(Request $request, $id)
+    public function userDeleteConfirm(Request $request)
     {
         Log::debug('<< deleteConfirm >>');
         Log::debug($request);
@@ -117,8 +121,8 @@ class adminController extends Controller
 
         // ユーザー情報の取得
         $products = DB::table('products')
-            ->join('users', 'products.user_id', '=', 'users_id')
-            ->select('products.title', 'users.email',)
+            ->join('users', 'products.user_id', '=', 'users.id')
+            ->select('products.id','products.name','products.user_id', 'users.email')
             ->get();
 
         $sortFlg = $request->sort;
@@ -126,10 +130,10 @@ class adminController extends Controller
             if ($sortFlg == '1') {
                 $products = $products::latest()->get();
             } elseif ($sortFlg == '0') {
-                $products = $products::all();
+                $products = $products;
             }
         } else {
-            $products = $products::all();
+            $products = $products;
         }
 
 
@@ -142,6 +146,24 @@ class adminController extends Controller
 
         return view('admin.products.index', [
             'products' => $products,
+        ]);
+    }
+
+    //プロダクト詳細（閲覧のみ）
+    public function productShow(Request $request, $id)
+    {
+        Log::debug('<< productShow >>');
+        Log::debug($request);
+        Log::debug($id);
+
+        // $deleteIds[] = $request->get('delete_id');
+
+        // foreach ($deleteIds as $deleteId) {
+            $product = Product::find($id);
+        // }
+
+        return view('admin.products.show', [
+            'product' => $product,
         ]);
     }
 }

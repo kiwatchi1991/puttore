@@ -35,7 +35,7 @@ Route::post('/admin/users/delete/{id}',  'adminController@userDelete')->name('ad
 //プロダクト
 Route::get('/admin/products',  'adminController@productIndex')->name('admin.product');
 Route::post('/admin/products',  'adminController@productIndex')->name('admin.product.search');
-Route::get('/admin/products/{id}',  'adminController@productEdit')->name('admin.product.edit');
+Route::get('/admin/products/{id}',  'adminController@productShow')->name('admin.product.show');
 Route::post('/admin/products/{id}',  'adminController@productUpdate')->name('admin.product.update');
 Route::get('/admin/products/delete/{id}',  'adminController@productDeleteConfirm')->name('admin.product.delete.confirm');
 Route::post('/admin/products/delete/{id?}',  'adminController@productDeleteConfirm')->name('admin.product.deletes.confirm');
