@@ -3,10 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Product extends Model
 {
     protected $fillable = ['name', 'detail', 'default_price', 'pic1', 'pic2', 'pic3', 'pic4', 'pic5', 'skills'];
+
+
+    /**
+     * 削除済みユーザー以外を表示する
+     */
+    use SoftDeletes;
+
+    protected $table = 'products';
+    protected $dates = ['deleted_at'];
 
     //多対多のリレーションを作る
     //カテゴリー

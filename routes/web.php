@@ -32,6 +32,7 @@ Route::post('/admin/users/delete/{id?}',  'adminController@userDelete')->name('a
 Route::get('/admin/users/{id}/edit',  'adminController@userEdit')->name('admin.user.edit');
 Route::post('/admin/users/{id}',  'adminController@userUpdate')->name('admin.user.update');
 
+//管理画面
 //プロダクト
 Route::get('/admin/products',  'adminController@productIndex')->name('admin.product');
 Route::post('/admin/products',  'adminController@productIndex')->name('admin.product.search');
@@ -39,14 +40,18 @@ Route::get('/admin/products/{id}',  'adminController@productShow')->name('admin.
 Route::get('/admin/products/delete/{id}',  'adminController@productDeleteConfirm')->name('admin.product.delete.confirm');
 Route::post('/admin/products/delete/{id?}',  'adminController@productDelete')->name('admin.product.delete');
 
+//管理画面
 //注文台帳
 Route::get('/admin/orders',  'adminController@orderIndex')->name('admin.order');
 Route::post('/admin/orders',  'adminController@orderIndex')->name('admin.order.search');
 Route::get('/admin/orders/{id}',  'adminController@orderShow')->name('admin.order.show');
-Route::post('/admin/orders/{id}',  'adminController@orderUpdate')->name('admin.order.update');
-Route::get('/admin/orders/delete/{id}',  'adminController@orderDeleteConfirm')->name('admin.order.delete.confirm');
-Route::post('/admin/orders/delete/{id?}',  'adminController@orderDeleteConfirm')->name('admin.order.deletes.confirm');
-Route::post('/admin/orders/delete/{id}',  'adminController@orderDelete')->name('admin.order.delete');
+
+//管理画面
+//お問い合わせ台帳
+Route::get('/admin/contacts',  'adminController@contactIndex')->name('admin.contact');
+Route::post('/admin/contacts',  'adminController@contactIndex')->name('admin.contact.search');
+Route::get('/admin/contacts/{id}',  'adminController@contactShow')->name('admin.contact.show');
+
 
 
 

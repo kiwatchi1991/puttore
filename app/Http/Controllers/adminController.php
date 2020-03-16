@@ -15,6 +15,7 @@ use App\Like;
 use App\Lesson;
 use App\Order;
 use App\User;
+use App\Contact;
 use App\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -142,21 +143,22 @@ class adminController extends Controller
     Log::debug($request);
     //並べかえ（降順/昇順が押された場合）
 
-    // ユーザー情報の取得
-    $products = DB::table('products')
-      ->join('users', 'products.user_id', '=', 'users.id')
-      ->select('products.id', 'products.name', 'products.user_id', 'users.email')
-      ->get();
+    // product情報の取得
+    $products = Product::join('users', 'products.user_id', '=', 'users.id')
+      ->select('products.id', 'products.name', 'products.user_id', 'users.email');
+
+    // 初期表示
+    if (empty($request->sort) && empty($request->keyword)) {
+      $products = $products->get();
+    }
 
     $sortFlg = $request->sort;
     if (isset($sortFlg)) {
       if ($sortFlg == '1') {
-        $products = $products::latest()->get();
+        $products = $products->get();
       } elseif ($sortFlg == '0') {
-        $products = $products;
+        $products = $products->orderBy('products.id', 'desc')->get();
       }
-    } else {
-      $products = $products;
     }
 
 
@@ -164,7 +166,7 @@ class adminController extends Controller
     $keyword = $request->keyword;
     if (!empty($keyword)) {
       Log::debug('キーワード検索の処理に入ってる');
-      $products = Product::where('email', 'like', '%' . $keyword . '%')->get();
+      $products = $products->where('email', 'like', '%' . $keyword . '%')->get();
     }
 
     return view('admin.products.index', [
@@ -248,27 +250,98 @@ class adminController extends Controller
   // 注文一覧表示
   public function orderIndex(Request $request)
   {
-    Log::debug($request);
-    //並べかえ（降順/昇順が押された場合）
+    Log::debug('orderIndex');
 
     //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
-    $id = Auth::user()->id;
-    $bords = Order::join('products', 'orders.product_id', 'products.id')
-      ->orWhere('products.user_id', $id)
+    $orders = Order::join('products', 'orders.product_id', 'products.id')
       ->join('users', 'products.user_id', 'users.id')
-      ->select('orders.id', 'orders.user_id', 'users.pic', 'products.id as p.id', 'products.user_id as p.user_id', 'products.name')
-      ->get();
+      ->select('orders.id', 'orders.user_id as buy.u_id', 'sale_price', 'products.user_id as sale.u_id', 'products.name');
 
+    // 初期表示
+    if (empty($request->sort) && empty($request->keyword)) {
+      $orders = $orders->get();
+    }
+
+    Log::debug('$orders');
+    Log::debug($orders);
+
+    //並べかえ（降順/昇順が押された場合）
+    $sortFlg = $request->sort;
+    if (isset($sortFlg)) {
+      if ($sortFlg == '1') {
+        $orders = $orders->get();
+      } elseif ($sortFlg == '0') {
+        $orders = $orders->orderBy('orders.id', 'desc')->get();
+      }
+    }
+
+    return view('admin.orders.index', [
+      'orders' => $orders,
+    ]);
+  }
+
+  //注文詳細（閲覧のみ）
+  public function orderShow(Request $request, $id)
+  {
+    Log::debug('<< orderShow >>');
+    Log::debug($request);
+    Log::debug($id);
+
+    // $deleteIds[] = $request->get('delete_id');
+
+    // foreach ($deleteIds as $deleteId) {
+    $order = Order::find($id);
+    // }
+
+    return view('admin.orders.show', [
+      'order' => $order,
+    ]);
+  }
+
+  // =================================
+  // =======   お問い合わせ  ==============
+  // =================================
+  public function contactIndex(Request $request)
+  {
+    Log::debug($request);
+
+    //並べかえ（降順/昇順が押された場合）
 
     $sortFlg = $request->sort;
     if (isset($sortFlg)) {
       if ($sortFlg == '1') {
-        $orders = $orders::latest()->get();
+        $contacts = Contact::latest()->get();
       } elseif ($sortFlg == '0') {
-        $orders = $orders;
+        $contacts = Contact::all();
       }
     } else {
-      $orders = $orders;
+      $contacts = Contact::all();
     }
+
+
+    //キーワード検索
+    $keyword = $request->keyword;
+    if (!empty($keyword)) {
+      Log::debug('キーワード検索の処理に入ってる');
+      $contacts = Contact::where('email', 'like', '%' . $keyword . '%')->get();
+    }
+
+    return view('admin.contacts.index', [
+      'contacts' => $contacts,
+    ]);
+  }
+
+  //注文詳細（閲覧のみ）
+  public function contactShow(Request $request, $id)
+  {
+    Log::debug('<< contactShow >>');
+    Log::debug($request);
+    Log::debug($id);
+
+    $cotact = Contact::find($id);
+
+    return view('admin.contacts.show', [
+      'contact' => $cotact,
+    ]);
   }
 }

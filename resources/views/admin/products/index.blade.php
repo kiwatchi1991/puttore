@@ -21,7 +21,7 @@
 </div>
 
 <div class="c-admin__delete">
-    <form method="POST" action="{{ route('admin.user.deletes.confirm') }}">
+    <form method="POST" action="">
         @csrf
         <input class="c-admin__delete__btn" type="submit" value="一括削除">
 
@@ -31,7 +31,7 @@
             <div class="c-admin__users">
                 @foreach ($products as $product)
                 <div class="c-admin__user__list">
-                    <input type="checkbox" name="delete_id" value="{{ $product->id }}">
+                    <input type="checkbox" name="delete_id[][0]" value="{{ $product->id }}">
                     <div class="c-admin__user__element id">id <span>{{$product->id}}</span></div>
                     <div class="c-admin__user__element email">ユーザーメールアドレス<span>@php echo mb_strimwidth($product->email,
                             0,
