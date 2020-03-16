@@ -4,12 +4,12 @@
 <div class="c-admin__head">
     <div class="c-admin__sort">
         並べ替え
-        <a class="c-admin__sort__list" href="{{ route('admin.user','sort=0')}}">id 降順</a>
-        <a class="c-admin__sort__list" href="{{ route('admin.user','sort=1')}}">id 昇順</a>
+        <a class="c-admin__sort__list" href="{{ route('admin.product','sort=0')}}">id 降順</a>
+        <a class="c-admin__sort__list" href="{{ route('admin.product','sort=1')}}">id 昇順</a>
     </div>
 
     <div class="c-admin__search">
-        <form class="" method="post" action="{{ route('admin.user.search') }}">
+        <form class="" method="post" action="{{ route('admin.product.search') }}">
             @csrf
             <div class="">
                 <input class="c-admin__input" type="text" name="keyword" value="" placeholder="メールアドレスで検索">
