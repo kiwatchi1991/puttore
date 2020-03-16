@@ -51,7 +51,11 @@
                     <div>
 
                         <nav class="global-nav">
-                            <div class="cover"></div>
+                            <div class="global-nav__logo">
+                                <a class="global-nav__logo__link" href="{{ url('/') }}">
+                                    <img src="/storage/images/logo.png" alt="ぷっとれ" width="200">
+                                </a>
+                            </div>
                             <ul class="global-nav__list">
 
                                 @auth
