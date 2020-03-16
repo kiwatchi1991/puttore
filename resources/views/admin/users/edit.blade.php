@@ -5,7 +5,7 @@
 <div class="c-admin__title">ユーザー編集画面</div>
 
 <div class="admin__userEdit">
-    <form method="POST" action="{{ route('admin.user.update',$user->id[]) }}">
+    <form method="POST" action="{{ route('admin.user.update',$user->id) }}">
         @csrf
         <div class="c-admin__user__info">
             <div class="c-admin__user__info__list">
