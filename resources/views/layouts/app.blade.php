@@ -53,7 +53,7 @@
                         <nav class="global-nav">
                             <div class="global-nav__logo">
                                 <a class="global-nav__logo__link" href="{{ url('/') }}">
-                                    <img src="/storage/images/logo.png" alt="ぷっとれ" width="200">
+                                    <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
                                 </a>
                             </div>
                             <ul class="global-nav__list">
@@ -103,8 +103,10 @@
                                 </li>
                                 @endauth
                                 @guest
-                                <li class="global-nav__item">
+                                <li class="global-nav__item global-nav__item--auth">
                                     <a href=" {{ route('login') }}" class="global-nav__item__link auth">ログイン</a>
+                                </li>
+                                <li class="global-nav__item global-nav__item--auth">
                                     <a href=" {{ route('register') }}" class="global-nav__item__link auth">新規登録</a>
                                 </li>
                                 @endguest
