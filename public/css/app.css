@@ -536,12 +536,12 @@ a:visited {
   font-size: 14px;
 }
 
-.global-nav__item--auth:first-child {
+.global-nav__item--auth.first {
   position: relative;
   margin-top: 32px;
 }
 
-.global-nav__item--auth:first-child::after {
+.global-nav__item--auth.first::after {
   content: "";
   display: block;
   background: #7DD4BB;

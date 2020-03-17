@@ -61,7 +61,7 @@
     &--auth{
       font-size: 14px;
 
-      &:first-child{
+      &.first{
         position: relative;
         margin-top: 32px;
         &::after{

@@ -103,7 +103,7 @@
                                 </li>
                                 @endauth
                                 @guest
-                                <li class="global-nav__item global-nav__item--auth">
+                                <li class="global-nav__item global-nav__item--auth first">
                                     <a href=" {{ route('login') }}" class="global-nav__item__link auth">ログイン</a>
                                 </li>
                                 <li class="global-nav__item global-nav__item--auth">
