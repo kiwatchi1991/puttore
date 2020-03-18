@@ -9,6 +9,22 @@
 
 
 <div class="c-profile__title__product">
+    <h2>販売履歴</h2>
+    {{-- @if($drafts->count() == 0) --}}
+    <p style="margin-top: 32px">現在ありません</p>
+    {{-- @endif --}}
+    @foreach ($sale_histories as $sale_history)
+    {{ $sale_history->created_at }}
+
+    @endforeach
+</div>
+
+
+
+
+
+
+<div class="c-profile__title__product">
     <h2>購入履歴</h2>
     {{-- @if($drafts->count() == 0) --}}
     <p style="margin-top: 32px">現在ありません</p>
@@ -18,12 +34,6 @@
 
 
 
-<div class="c-profile__title__product">
-    <h2>販売履歴</h2>
-    {{-- @if($drafts->count() == 0) --}}
-    <p style="margin-top: 32px">現在ありません</p>
-    {{-- @endif --}}
-</div>
 
 
 

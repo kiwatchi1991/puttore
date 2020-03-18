@@ -33,6 +33,14 @@
         text-align: center;
         color: $main-color;
         font-size: 18px;
+        &--bank{
+            color: $main-text;
+            font-size: 16px;
+            line-height: 1.5;
+            font-weight: bold;
+            margin-top: 32px;
+            padding-bottom: 32px;
+        }
     }
     &__editLink{
         font-size: 12px;

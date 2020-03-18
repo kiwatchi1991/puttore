@@ -43,6 +43,25 @@
                         変更</a></span></p>
             ●●●●●●●●●
         </div>
+
+        <div class="c-mypage__title c-mypage__title--bank">
+            <p>下記は売上金の振込のため<br>必要な項目です</p>
+        </div>
+
+        <div class="c-mypage__account__list">
+            <p class="c-mypage__account__label">銀行名 <span class="c-mypage__editLink"><a
+                        href="{{route('profile.edit',$user->id)}}">
+                        変更</a></span></p>
+            {{ $user->bank_name }}
+        </div>
+        <div class="c-mypage__account__list">
+            <p class="c-mypage__account__label">支店 <span class="c-mypage__editLink"></span></p>
+            {{ $user->bank_branch }}
+        </div>
+        <div class="c-mypage__account__list">
+            <p class="c-mypage__account__label">口座番号 <span class="c-mypage__editLink"></span></p>
+            {{ $user->bank_account_num }}
+        </div>
         <div class="c-mypage__account__list c-mypage__account__list--withdraw">
             <a href="{{ route('profile.deleteShow',$user->id) }}">退会する</a>
         </div>
