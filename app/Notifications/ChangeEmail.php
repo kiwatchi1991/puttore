@@ -25,7 +25,8 @@ class ChangeEmail extends Notification
 
     public function toMail($notifiable)
     {
-        Log::debug('ChangeEmail.phpの処理');
+        Log::debug('<<  この処理 3  >>>>');
+
         return (new MailMessage)
             ->subject('メールアドレス変更') // 件名
             ->view('emails.changeEmail') // メールテンプレートの指定
@@ -33,10 +34,13 @@ class ChangeEmail extends Notification
                 'メールアドレス変更',
                 url('reset', $this->token) //アクセスするURL
             );
+        Log::debug('<<  この処理 4  >>>>');
     }
 
     public function toArray($notifiable)
     {
+        Log::debug('<<  この処理 5   >>>>');
+
         return [
             //
         ];

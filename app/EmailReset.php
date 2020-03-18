@@ -3,11 +3,15 @@
 namespace App;
 
 use App\Notifications\ChangeEmail;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\Notifiable;
 
 class EmailReset extends Model
 {
+    use Notifiable;
+
     protected $fillable = [
         'user_id',
         'new_email',
@@ -21,7 +25,12 @@ class EmailReset extends Model
      */
     public function sendEmailResetNotification($token)
     {
-        $this->notify(new ChangeEmail($token));
+        // use \Illuminate\Notifications\Notifiable;
+        Log::debug('<<  この処理 1  >>>>');
+        Log::debug('$this');
+        Log::debug($this);
+        Notification::send($this, new ChangeEmail($token));
+        Log::debug('<<  この処理 2  >>>>');
     }
 
     /**
