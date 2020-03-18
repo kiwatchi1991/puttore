@@ -20,12 +20,11 @@ class CreateBordTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->tinyInteger('delete_flg')->default(0);
             $table->timestamps();
-            
+
             // 外部キー制約
             $table->foreign('sale-user_id')->references('id')->on('users');
             $table->foreign('buy-user_id')->references('id')->on('users');
             $table->foreign('product_id')->references('id')->on('products');
-            
         });
     }
 
@@ -36,15 +35,14 @@ class CreateBordTable extends Migration
      */
     public function down()
     {
-        Schema::table('bord', function (Blueprint $table) {
+        Schema::table('bords', function (Blueprint $table) {
             $table->dropForeign(['sale-user_id']);
             $table->dropColumn('sale-user_id');
             $table->dropForeign(['buy-user_id']);
             $table->dropColumn('buy-user_id');
             $table->dropForeign(['product_id']);
             $table->dropColumn('product_id');
-            });
-        Schema::dropIfExists('bord');
-        
+        });
+        Schema::dropIfExists('bords');
     }
 }
