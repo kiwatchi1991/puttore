@@ -420,11 +420,16 @@ class ProductsController extends Controller
         // 購入済みかどうかを判断（これによって表示するページが違う）
         $myOrder = DB::table('orders')
             ->where('user_id', Auth::user()->id)
-            ->where('product_id', $id)
-            ->count();
-        $isOrder = ($myOrder == 0) ? false : true;
+            ->where('product_id', $id);
+
+
+        // $isOrder = false;
+        $isOrder = ($myOrder->count() > 0) ? true : false;
+        Log::debug('<<<<<<<<<  myOrder   >>>>>>>>>>>>>>>>>>');
+        // Log::debug();
         Log::debug('<<<<<<<<<  isOrder   >>>>>>>>>>>>>>>>>>');
         Log::debug($isOrder);
+        Log::debug(!$isOrder);
 
 
 

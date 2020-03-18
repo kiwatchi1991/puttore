@@ -67,8 +67,16 @@ class mypageController extends Controller
             ->where('products.user_id', Auth::user()->id)
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->join('users', 'orders.user_id', '=', 'users.id')
-            // ->select('')
-            ->get();
+
+            ->get()
+            ->groupBy(function ($row) {
+                return $row->created_at->format('m');
+            })
+            ->map(function ($day) {
+                return $day->sum('count');
+            });
+
+        Log::debug('$sale_histories');
         Log::debug($sale_histories);
         return view('mypage.order', [
             'sale_histories' => $sale_histories,

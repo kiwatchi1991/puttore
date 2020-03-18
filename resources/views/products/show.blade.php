@@ -108,7 +108,7 @@
         </div>
 
         {{-- ↓↓↓↓　購入済みの場合はお気に入り・購入ボタン表示しない --}}
-        @if(!$isOrder && !$product->user_id === Auth::id())
+        @if(!$isOrder && $product->user_id !== Auth::id())
         {{-- ほしいものに追加する --}}
         <div class="c-productShow__like">
             <button type="submit" class="c-ajaxLike__icon @if($liked) is-active  @endif" data-like="{{ $product->id }}">
