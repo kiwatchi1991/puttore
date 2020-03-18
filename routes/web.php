@@ -37,6 +37,7 @@ Route::post('/admin/users/{id}',  'adminController@userUpdate')->name('admin.use
 Route::get('/admin/products',  'adminController@productIndex')->name('admin.product');
 Route::post('/admin/products',  'adminController@productIndex')->name('admin.product.search');
 Route::get('/admin/products/{id}',  'adminController@productShow')->name('admin.product.show');
+Route::post('/admin/products/delete/{id}',  'adminController@productDeleteConfirm')->name('admin.product.delete.confirm');
 Route::get('/admin/products/delete/{id}',  'adminController@productDeleteConfirm')->name('admin.product.delete.confirm');
 Route::post('/admin/products/delete/{id?}',  'adminController@productDelete')->name('admin.product.delete');
 
@@ -117,5 +118,6 @@ Route::group(['middleware' => 'check'], function () {
 
     // メールアドレス確認メールを送信
     Route::get('/changeEmail', 'ChangeEmailController@index');
+    Route::get('/reset/{token}', 'ChangeEmailController@reset');
     Route::post('/email', 'ChangeEmailController@sendChangeEmailLink');
 });

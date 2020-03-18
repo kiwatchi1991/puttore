@@ -21,7 +21,8 @@
 </div>
 
 <div class="c-admin__delete">
-    <form method="POST" action="">
+    {{-- <form method="POST" action="/admin/products/delete/{{ delete_id[]}}"> --}}
+    <form method="POST" action="{{route('admin.product.delete.confirm','delete_id[]')}}">
         @csrf
         <input class="c-admin__delete__btn" type="submit" value="一括削除">
 
