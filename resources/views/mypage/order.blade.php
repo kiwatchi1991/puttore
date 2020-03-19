@@ -7,6 +7,9 @@
     <div class="c-mypage__nav__listactive"><a href="/mypage/order">販売管理</a></div>
 </div>
 
+@foreach ($sale_histories as $sale_history)
+{{ $sale_history }}
+@endforeach
 
 <div class="c-mypage__order">
     <div class="c-mypage__sale">
