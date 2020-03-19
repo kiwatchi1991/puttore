@@ -8,6 +8,7 @@ use App\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use App\Product;
+use App\Order;
 use App\Category;
 use App\Difficulty;
 use App\CategoryProduct;
@@ -63,15 +64,15 @@ class mypageController extends Controller
     public function order(Request $request)
     {
         //売上履歴
-        $sale_histories = DB::table('orders')
+        $sale_histories = Order::query()
             ->where('products.user_id', Auth::user()->id)
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->join('users', 'orders.user_id', '=', 'users.id')
 
-            ->get();
-        // ->groupBy(function ($row) {
-        //     return $row->created_at->format('m');
-        // })
+            ->get()
+            ->groupBy(function ($row) {
+                return $row->created_at->format('m');
+            });
         // ->map(function ($day) {
         //     return $day->sum('count');
         // });

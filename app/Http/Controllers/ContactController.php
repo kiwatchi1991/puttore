@@ -75,13 +75,13 @@ class ContactController extends Controller
             //入力されたメールアドレスにメールを送信
             Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
 
-            Log::debug(['メール送信']);
+            Log::debug('メール送信');
             //再送信を防ぐためにトークンを再発行
             $request->session()->regenerateToken();
 
-            Log::debug(['トークン再発行']);
+            Log::debug('トークン再発行');
             //送信完了ページのviewを表示
-            Log::debug(['これからリダイレクト']);
+            Log::debug('これからリダイレクト');
             return view('contacts.finish');
         }
     }
