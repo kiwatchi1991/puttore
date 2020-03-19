@@ -3825,6 +3825,39 @@ a:visited {
   vertical-align: middle;
 }
 
+.c-lessonShow__lesson__contents:first-child,
+#preview:first-child {
+  margin-top: 0;
+}
+
+.c-lessonShow__lesson__contents h1,
+#preview h1 {
+  font-size: 27px;
+  border-bottom: 1px solid #ddd;
+  margin: 56px 0 24px;
+}
+
+.c-lessonShow__lesson__contents h2,
+#preview h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ddd;
+  margin: 56px 0 24px;
+}
+
+.c-lessonShow__lesson__contents h3,
+#preview h3 {
+  font-size: 21px;
+  border-bottom: 1px solid #ddd;
+  margin: 56px 0 24px;
+}
+
+.c-lessonShow__lesson__contents h4,
+#preview h4 {
+  font-size: 19px;
+  border-bottom: 1px solid #ddd;
+  margin: 56px 0 24px;
+}
+
 .c-lessonShow {
   background: #E5F6F2;
   padding: 20px;
@@ -4211,10 +4244,17 @@ a:visited {
   border: 1px solid #333;
   -webkit-box-align: center;
           align-items: center;
-  padding: 8px;
+  padding: 10px 8px;
+  margin-bottom: 12px;
+  min-height: 60px;
+  text-align: center;
+  line-height: 1.5;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
 }
 
 .c-admin__user__element {
+  width: 85px;
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -4224,20 +4264,49 @@ a:visited {
 
 .c-admin__user__element.id {
   margin-left: 8px;
+  text-align: center;
 }
 
 .c-admin__user__element.email {
-  margin-right: 32px;
+  width: 250px;
+  margin-right: 16px;
   margin-left: 8px;
-  width: 130px;
 }
 
 .c-admin__user__element.name {
   margin-left: 8px;
 }
 
+.c-admin__user__element.title {
+  width: 250px;
+}
+
+.c-admin__user__edit {
+  padding: 8px 24px;
+  background: gray;
+  color: #fff !important;
+  white-space: nowrap;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c-admin__user__edit:hover {
+  opacity: 0.8;
+}
+
 .c-admin__user__delete {
-  margin-left: 32px;
+  padding: 8px 24px;
+  background: #252525;
+  color: #fff !important;
+  margin-left: 16px;
+  white-space: nowrap;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c-admin__user__delete:hover {
+  opacity: 0.8;
 }
 
 .c-admin__user__info {
@@ -4250,12 +4319,21 @@ a:visited {
   margin-top: 24px;
   margin-right: 16px;
   margin-bottom: 8px;
+  font-weight: bold;
 }
 
 .c-admin__userEdit__btn {
-  margin-top: 16px;
+  margin-top: 32px;
   margin-left: auto;
-  text-align: right;
+  text-align: center;
+}
+
+.c-admin__checkbox {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  padding: 5px;
+  margin: 5px;
+  border-radius: 0;
 }
 
 .c-admin__header__text {
@@ -4269,20 +4347,19 @@ a:visited {
   margin-top: 32px;
 }
 
-.c-admin__input {
-  border: 1px solid #333;
-}
-
 .c-admin__btn {
-  padding: 10px;
-  background: #E0E0E0;
+  padding: 10px 100px;
+  background: gray;
   border-radius: 3px;
+  color: #fff !important;
 }
 
 .c-admin__title {
   text-align: center;
-  font-size: 20px;
-  margin-top: 32px;
+  font-size: 32px;
+  margin-bottom: 24px;
+  padding-top: 64px;
+  border-top: 1px solid #00ac7d;
 }
 
 .c-admin__confirm {
@@ -4290,18 +4367,6 @@ a:visited {
   margin-bottom: 16px;
   text-align: center;
   color: red;
-}
-
-.c-admin__sort {
-  margin-left: 8px;
-}
-
-.c-admin__sort__list {
-  margin-left: 8px;
-  border: 1px solid #333;
-  padding: 3px 5px;
-  font-size: 12px;
-  border-radius: 3px;
 }
 
 .c-admin__search {
@@ -4312,6 +4377,13 @@ a:visited {
 .c-admin__search__btn {
   padding: 3px 5px;
   background: #E0E0E0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c-admin__search__btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .c-admin__delete {
@@ -4322,6 +4394,98 @@ a:visited {
   padding: 3px 5px;
   background: #E0E0E0;
   margin-left: 8px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c-admin__delete__btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.c-admin__sort {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  margin-bottom: 32px;
+}
+
+.c-admin__sort .c-admin__sort {
+  margin-left: 8px;
+}
+
+.c-admin__sort .c-admin__sort__list {
+  margin-left: 8px;
+  padding: 3px 5px;
+  font-size: 12px;
+  border: none;
+  background: gray;
+  border-radius: 3px;
+}
+
+.c-admin__sort a {
+  color: #fff;
+}
+
+.c-admin__sort__title {
+  font-size: 20px;
+}
+
+.c-admin__search__wrap {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.c-admin__input {
+  width: 268px;
+  height: 50px;
+  font-size: 14px;
+  margin: 0 auto;
+  margin-bottom: 32px;
+  border: none;
+  background: #E5F6F2;
+  text-align: center;
+}
+
+.c-admin__search__btn {
+  padding: 15px 0px;
+  border-radius: 40px;
+  background: gray;
+  font-size: 14px;
+  width: 100%;
+  color: #fff;
+  width: 268px;
+  margin: 0 auto;
+  -webkit-appearance: none;
+}
+
+.c-admin__delete__btnWrap {
+  margin-top: 32px;
+  margin-bottom: 64px;
+  text-align: center;
+  margin-left: 8px;
+}
+
+.c-admin__delete__btn {
+  padding: 15px 0px;
+  border-radius: 40px;
+  background: #252525;
+  width: 100%;
+  color: #fff;
+  width: 268px;
+  margin: 0 auto;
+  font-size: 14px;
+  -webkit-appearance: none;
+}
+
+.c-admin__mb {
+  margin-bottom: 64px;
 }
 
 .c-mypage__order {

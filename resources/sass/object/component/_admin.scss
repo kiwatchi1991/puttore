@@ -12,25 +12,54 @@
     display: flex;
     border:1px solid #333;
     align-items: center;
-    padding: 8px;
+    padding: 10px 8px;
+    margin-bottom: 12px;
+    min-height: 60px;
+    text-align: center;
+    line-height: 1.5;
+    justify-content:space-between ;
     }
     &__element{
+        width: 85px;
         display: flex;
         flex-direction: column;
         &.id{
             margin-left: 8px;
+            text-align: center;
         }
         &.email{
-            margin-right: 32px;
+            width: 250px;
+            margin-right: 16px;
             margin-left: 8px;
-            width: 130px;
         }
         &.name{
           margin-left: 8px;
         }
+        &.title{
+          width: 250px;
+        }
+    }
+    &__edit{
+      padding: 8px 24px;
+      background: gray;
+      color: #fff !important;
+      white-space: nowrap;
+      position: relative;
+      transition: all .3s;
+      &:hover{
+        opacity: 0.8;
+      }
     }
     &__delete{
-        margin-left: 32px;
+      padding: 8px 24px;
+      background: #252525;
+      color: #fff !important;
+      margin-left: 16px;
+      white-space: nowrap;
+      transition: all .3s;
+      &:hover{
+        opacity: 0.8;
+      }
     }
     //編集画面
     &__info{
@@ -42,12 +71,20 @@
         margin-top: 24px;
         margin-right: 16px;
         margin-bottom: 8px;
+        font-weight: bold;
     }
 }
 .c-admin__userEdit__btn{
-    margin-top: 16px;
+    margin-top: 32px;
     margin-left: auto;
-    text-align: right;
+    text-align: center;
+
+}
+.c-admin__checkbox{
+  transform: scale(1.5);
+  padding: 5px;
+  margin: 5px;
+  border-radius: 0;
 }
 
 //共通要素
@@ -60,19 +97,19 @@
 .c-admin__head{
     margin-top: 32px;
 }
-.c-admin__input{
-    border: 1px solid #333;
-}
-.c-admin__btn{
-    padding: 10px;
-    background: $easy;
-    border-radius: 3px;
 
+.c-admin__btn{
+    padding: 10px 100px;
+    background: gray;
+    border-radius: 3px;
+    color: #fff !important;
 }
 .c-admin__title{
     text-align: center;
-    font-size: 20px;
-    margin-top: 32px;
+    font-size: 32px;
+    margin-bottom: 24px;
+    padding-top: 64px;
+    border-top: 1px solid #00ac7d;
 }
 .c-admin__confirm{
     margin-top: 16px;
@@ -80,22 +117,18 @@
     text-align: center;
     color: red;
 }
-.c-admin__sort{
-    margin-left: 8px;
-    &__list{
-        margin-left: 8px;
-        border: 1px solid #333;
-        padding: 3px 5px;
-        font-size: 12px;
-        border-radius: 3px;
-    }
-}
+
 .c-admin__search{
     margin-top: 32px;
     margin-left: 8px;
     &__btn{
         padding: 3px 5px;
         background: $easy;
+        transition: all .3s;
+        &:hover{
+          cursor: pointer;
+          opacity: 0.8;
+        }
     }
 }
 .c-admin__delete{
@@ -104,5 +137,97 @@
           padding: 3px 5px;
         background: $easy;
         margin-left: 8px;
+        transition: all .3s;
+        &:hover{
+          cursor: pointer;
+          opacity: 0.8;
+        }
     }
+}
+
+//======================
+//管理画面ボタン
+//======================
+
+//並べ替えボタン
+//===========================
+.c-admin__sort{
+  .c-admin__sort{
+    margin-left: 8px;
+    &__list{
+        margin-left: 8px;
+        padding: 3px 5px;
+        font-size: 12px;
+        border: none;
+        background: gray;
+        border-radius: 3px;
+    }
+}
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+  a{
+    color: #fff;
+  }
+}
+.c-admin__sort__title{
+  font-size: 20px;
+}
+
+//検索フォーム
+//===============================
+
+.c-admin__search__wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.c-admin__input{
+  width: 268px;
+  height: 50px;
+  font-size: 14px;
+  margin: 0 auto;
+  margin-bottom: 32px;
+  border: none;
+  background: #E5F6F2;
+  text-align: center;
+}
+
+.c-admin__search__btn{
+  padding: 15px 0px;
+  border-radius: 40px;
+  background: gray;
+  font-size: 14px;
+  width: 100%;
+  color: #fff;
+  width: 268px;
+  margin: 0 auto;
+  -webkit-appearance: none;
+}
+
+//削除ボタン
+//===============================
+.c-admin__delete__btnWrap{
+  margin-top: 32px;
+  margin-bottom: 64px;
+  text-align: center;
+  margin-left: 8px;
+}
+.c-admin__delete__btn{
+    padding: 15px 0px;
+    border-radius: 40px;
+    background: rgb(37, 37, 37);
+    width: 100%;
+    color: #fff;
+    width: 268px;
+    margin: 0 auto;
+    font-size: 14px;
+    -webkit-appearance: none;
+}
+
+//検索フォームの下の余白調整用
+//=====================================================
+.c-admin__mb{
+  margin-bottom: 64px;
 }
