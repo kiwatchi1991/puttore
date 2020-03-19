@@ -4324,6 +4324,10 @@ a:visited {
   margin-left: 8px;
 }
 
+.c-mypage__order {
+  text-align: center;
+}
+
 .c-mypage__nav {
   height: 45px;
   width: 100%;
@@ -4430,6 +4434,93 @@ a:visited {
 .c-mypage__account__label {
   font-weight: bold;
   padding-bottom: 8px;
+}
+
+.c-mypage__sale__thisMonth {
+  display: -webkit-box;
+  display: flex;
+  justify-content: space-around;
+  -webkit-box-align: center;
+          align-items: center;
+  background: #CBEDE4;
+  width: 300px;
+  margin: 0 auto;
+  padding: 10px 0;
+  border-radius: 5px;
+  margin-top: 16px;
+}
+
+.c-mypage__sale__thisMonth__total {
+  color: #00ac7d;
+}
+
+.c-mypage__sale__thisMonth__price {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.c-mypage__sale__thisMonth__detail {
+  padding: 5px 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #00ac7d;
+}
+
+.c-mypage__sale__untransferred {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.c-mypage__sale__untransferred__wrapper {
+  box-sizing: border-box;
+  padding: 16px 22px;
+  margin: 16px auto;
+  border: 5px solid #CBEDE4;
+  width: 300px;
+  margin-top: 16px;
+}
+
+.c-mypage__sale__untransferred__price {
+  font-size: 18px;
+}
+
+.c-mypage__sale__untransferred__empty {
+  width: 45px;
+  height: 10px;
+}
+
+.c-mypage__sale__untransferred__text {
+  font-size: 11px;
+  margin-top: 8px;
+  display: block;
+  line-height: 1.35;
+}
+
+.c-mypage__sale__done {
+  margin: 16px auto 0;
+  display: inline-block;
+}
+
+.c-mypage__sale__done thead {
+  background: #E5F6F2;
+  font-size: 14px;
+}
+
+.c-mypage__sale__done th {
+  padding: 8px 0;
+}
+
+.c-mypage__sale__done tr {
+  border-bottom: 1px solid #E5F6F2;
+}
+
+.c-mypage__sale__done td {
+  padding: 10px 12px;
+  font-size: 14px;
 }
 
 .p-input__tag {

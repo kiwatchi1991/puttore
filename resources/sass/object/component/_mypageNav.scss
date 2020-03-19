@@ -1,4 +1,7 @@
 .c-mypage{
+    &__order{
+        text-align: center;
+    }
     &__nav{
         height: 45px;
         width: 100%;
@@ -84,6 +87,77 @@
         &__label{
             font-weight: bold;
             padding-bottom: 8px;
+        }
+    }
+    &__sale__thisMonth{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: $low-gr;
+        width: 300px;
+        margin: 0 auto;
+        padding: 10px 0;
+        border-radius: 5px;
+        margin-top: 16px;
+        &__total{
+            color:$main-color;
+        }
+        &__price{
+            font-weight: bold;
+            font-size: 18px;
+        }
+        &__detail{
+            padding: 5px 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            color: $main-color;
+        }
+    }
+    &__sale__untransferred{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__wrapper{
+            box-sizing: border-box;
+            padding:16px 22px;
+            margin: 16px auto;
+            border: 5px solid $low-gr;
+            width: 300px;
+            margin-top: 16px;
+        }
+        &__total{
+        }
+        &__price{
+            font-size: 18px;
+        }   
+        &__empty{
+            width: 45px;
+            height: 10px;
+        }
+        &__text{
+            font-size: 11px;
+            margin-top: 8px;
+            display: block;
+            line-height: 1.35;
+        }
+    }
+    &__sale__done{
+        margin: 16px auto 0;
+        display: inline-block;
+        thead{
+            background: $bg;
+            font-size: 14px;
+        }
+        th{
+            padding: 8px 0;
+            
+        }
+        tr{
+            border-bottom: 1px solid $bg;
+        }
+        td{
+            padding: 10px 12px;
+            font-size: 14px;
         }
     }
 }

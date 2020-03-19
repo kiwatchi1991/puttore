@@ -68,13 +68,13 @@ class mypageController extends Controller
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->join('users', 'orders.user_id', '=', 'users.id')
 
-            ->get()
-            ->groupBy(function ($row) {
-                return $row->created_at->format('m');
-            })
-            ->map(function ($day) {
-                return $day->sum('count');
-            });
+            ->get();
+        // ->groupBy(function ($row) {
+        //     return $row->created_at->format('m');
+        // })
+        // ->map(function ($day) {
+        //     return $day->sum('count');
+        // });
 
         Log::debug('$sale_histories');
         Log::debug($sale_histories);
