@@ -84,4 +84,28 @@ class mypageController extends Controller
             'sale_histories' => $sale_histories,
         ]);
     }
+
+    public function orderMonth(Request $request)
+    {
+        //売上履歴
+        $sale_histories = Order::query()
+            ->where('products.user_id', Auth::user()->id)
+            ->join('products', 'orders.product_id', '=', 'products.id')
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->select('orders.id', 'orders.created_at as created_at', 'sale_price')
+            // ->orderBy('orders.created_date')
+            ->get()
+            ->groupBy(function ($row) {
+                return $row->created_at->format('m');
+            });
+        // ->map(function ($day) {
+        //     return $day->sum('count');
+        // });
+
+        Log::debug('$sale_histories');
+        Log::debug($sale_histories);
+        return view('mypage.orderMonth', [
+            'sale_histories' => $sale_histories,
+        ]);
+    }
 }
