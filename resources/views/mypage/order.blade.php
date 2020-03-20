@@ -43,7 +43,7 @@
                 <div class="c-mypage__sale__untransferred__price">¥ {{ number_format($price) }}
                     @endforeach
                 </div>
-                <div class="c-mypage__sale__untransferred__request"><a href=""
+                <div class="c-mypage__sale__untransferred__request js-request-transfer"><a href="/mypage/transfer"
                         class="c-mypage__sale__untransferred__request__link">振込依頼</a></div>
             </div>
             　　 <p class="c-mypage__sale__untransferred__text">

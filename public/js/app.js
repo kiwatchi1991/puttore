@@ -38984,6 +38984,8 @@ __webpack_require__(/*! ./components/imgSlider */ "./resources/js/components/img
 
 __webpack_require__(/*! ./components/buyimgSlider */ "./resources/js/components/buyimgSlider.js");
 
+__webpack_require__(/*! ./components/request-transfer */ "./resources/js/components/request-transfer.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39713,6 +39715,27 @@ $profileFileInput.on('change', function () {
 $deletebtn.on('click', function () {
   $('.js-prev__img').attr('src', '').show();
 }); // const cropper = require('cropper');
+
+/***/ }),
+
+/***/ "./resources/js/components/request-transfer.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/request-transfer.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('.js-request-transfer').on('click', function (e) {
+  e.preventDefault();
+  var confirm_result = window.confirm('振込依頼をします。よろしいですか？');
+
+  if (confirm_result) {
+    console.log('OK');
+    location.href = '/mypage/transfer';
+  } else {
+    console.log('ダメ');
+  }
+});
 
 /***/ }),
 

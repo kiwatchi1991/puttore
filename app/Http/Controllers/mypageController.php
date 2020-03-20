@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Log;
 
 class mypageController extends Controller
 {
+    public function requestTransfer(Request $request)
+    {
+        Log::debug('<<<<    requesttransfer    >>>>>>>>>>>');
+        return;
+    }
 
     public function index(Request $request)
     {
