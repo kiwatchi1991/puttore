@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Carbon;
+use App\Transfer;
 use App\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,37 @@ class mypageController extends Controller
 {
     public function requestTransfer(Request $request)
     {
-        Log::debug('<<<<    requesttransfer    >>>>>>>>>>>');
+        Log::debug('<<<<<<    requesttransfer    >>>>>>>>>>>');
+        //==================プライスフラグを見て、各売上の手数料を引いて振込額を決める
+        $untransferred = Order::query()
+            ->join('products', 'orders.product_id', '=', 'products.id')
+            ->where('products.user_id', Auth::user()->id)
+            ->where('status', 0)
+            ->where('orders.created_at', '<', Carbon::now()->startOfMonth())
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $untransferred_price = $untransferred->groupBy(function ($row) {
+            return $row->status;
+        })
+            ->map(function ($day) {
+                return $day->sum('sale_price');
+            });
+
+        //==================振込テーブルに新規レコードをつくる
+
+        $transfer = new Transfer;
+        $transfer->user_id = Auth::user()->id;
+        $transfer->price =
+            $transfer->from_bank_id = 1;
+        $transfer->save();
+
+
+        //オーダーに結びつく振込テーブルidを格納
+        //statusを１に
+
+
         return;
     }
 
