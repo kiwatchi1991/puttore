@@ -4,7 +4,7 @@
 {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 <div class="c-admin__title">ユーザー削除画面</div>
 
-<div class="c-admin__confirm">ほんとうに削除しますか？</div>
+<div class="c-admin__confirm">以下の情報を削除しますか？</div>
 
 <div class="admin__userEdit">
     <form method="POST" action="{{ route('admin.user.delete') }}">

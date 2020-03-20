@@ -15,7 +15,7 @@
     <form method="POST" action="{{ route('admin.user.deletes.confirm') }}">
         @csrf
         <div class="c-admin__delete__btnWrap">
-          <input class="c-admin__delete__btn" type="submit" value="一括削除">
+          <input class="c-admin__delete__btn" type="submit" value="選択した情報を削除">
         </div>
         <div class="c-admin__title">注文一覧</div>
 

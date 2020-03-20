@@ -10,16 +10,16 @@
         <div class="c-admin__user__info">
             <div class="c-admin__user__info__list">
                 <div class="c-admin__user__data">id </div>
-                <span>{{ $user->id }}</span>
+                <span class="c-admin__user__info__item">{{ $user->id }}</span>
             </div>
             <div class="c-admin__user__info__list">
-                <div class="c-admin__user__data">group</div>
+                <div class="c-admin__user__data">group（0：一般ユーザー　１：管理者）</div>
                 <span><input class="c-admin__input" type="text" name="group" id="" value="{{ $user->group }}"></span>
             </div>
 
             <div class="c-admin__user__info__list">
                 <div class="c-admin__user__data">名前</div>
-                <span>{{ $user->account_name }}</span>
+                <span class="c-admin__user__info__item>{{ $user->account_name }}</span>
             </div>
 
             <div class="c-admin__user__info__list">
@@ -49,7 +49,7 @@
 
         </div>
         <div class="c-admin__userEdit__btn">
-            <button type="submit" class="c-admin__btn">編集する</button>
+            <button type="submit" class="c-admin__btn">編集内容を保存する</button>
         </div>
     </form>
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}

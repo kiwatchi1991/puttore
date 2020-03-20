@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="c-admin__title">プロダクト削除画面</div>
-<div class="c-admin__confirm">本当に削除しますか？</div>
+<div class="c-admin__confirm">以下の情報を削除しますか？</div>
 <div class="admin__userEdit">
     <form method="POST" action="{{ route('admin.product.delete') }}">
         @csrf
