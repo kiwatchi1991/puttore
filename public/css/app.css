@@ -4379,8 +4379,14 @@ a:visited {
 }
 
 .c-admin__search__btn {
-  padding: 3px 5px;
-  background: #E0E0E0;
+  padding: 15px 0px;
+  border-radius: 40px;
+  background: gray;
+  font-size: 14px;
+  color: #fff;
+  width: 268px;
+  margin: 0 auto;
+  -webkit-appearance: none;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -4395,8 +4401,14 @@ a:visited {
 }
 
 .c-admin__delete__btn {
-  padding: 3px 5px;
-  background: #E0E0E0;
+  padding: 15px 0px;
+  border-radius: 40px;
+  background: #252525;
+  color: #fff;
+  width: 268px;
+  margin: 0 auto;
+  font-size: 14px;
+  -webkit-appearance: none;
   margin-left: 8px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -4457,35 +4469,11 @@ a:visited {
   text-align: center;
 }
 
-.c-admin__search__btn {
-  padding: 15px 0px;
-  border-radius: 40px;
-  background: gray;
-  font-size: 14px;
-  width: 100%;
-  color: #fff;
-  width: 268px;
-  margin: 0 auto;
-  -webkit-appearance: none;
-}
-
 .c-admin__delete__btnWrap {
   margin-top: 32px;
   margin-bottom: 64px;
   text-align: center;
   margin-left: 8px;
-}
-
-.c-admin__delete__btn {
-  padding: 15px 0px;
-  border-radius: 40px;
-  background: #252525;
-  width: 100%;
-  color: #fff;
-  width: 268px;
-  margin: 0 auto;
-  font-size: 14px;
-  -webkit-appearance: none;
 }
 
 .c-admin__mb {
@@ -4739,6 +4727,58 @@ a:visited {
 
 .c-mypage__sale__nothing {
   margin-top: 32px;
+}
+
+.c-authChange__container {
+  margin: 24px 10px;
+}
+
+.c-authChange__title {
+  margin: 32px 0;
+  text-align: center;
+  color: #00ac7d;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.c-authChange__form--text {
+  margin-bottom: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+}
+
+.c-authChange__form--body {
+  margin: 16px 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.c-authChange__form--input {
+  margin-bottom: 24px;
+  padding: 15px 5px;
+  background: #E5F6F2;
+  width: 300px;
+}
+
+.c-authChange__form--button {
+  width: 268px;
+  margin: 0 auto;
+}
+
+.c-authChange__form--submit {
+  padding: 10px 0px;
+  border-radius: 40px;
+  font-size: 16px;
+  background: orange;
+  width: 100%;
+  color: white;
+  -webkit-appearance: none;
 }
 
 .p-input__tag {

@@ -126,8 +126,14 @@
     margin-top: 32px;
     margin-left: 8px;
     &__btn{
-        padding: 3px 5px;
-        background: $easy;
+        padding: 15px 0px;
+        border-radius: 40px;
+        background: gray;
+        font-size: 14px;
+        color: #fff;
+        width: 268px;
+        margin: 0 auto;
+        -webkit-appearance: none;
         transition: all .3s;
         &:hover{
           cursor: pointer;
@@ -138,8 +144,14 @@
 .c-admin__delete{
     margin-top: 16px;
     &__btn{
-          padding: 3px 5px;
-        background: $easy;
+        padding: 15px 0px;
+        border-radius: 40px;
+        background: rgb(37, 37, 37);
+        color: #fff;
+        width: 268px;
+        margin: 0 auto;
+        font-size: 14px;
+        -webkit-appearance: none;
         margin-left: 8px;
         transition: all .3s;
         &:hover{
@@ -198,18 +210,6 @@
   text-align: center;
 }
 
-.c-admin__search__btn{
-  padding: 15px 0px;
-  border-radius: 40px;
-  background: gray;
-  font-size: 14px;
-  width: 100%;
-  color: #fff;
-  width: 268px;
-  margin: 0 auto;
-  -webkit-appearance: none;
-}
-
 //削除ボタン
 //===============================
 .c-admin__delete__btnWrap{
@@ -217,17 +217,6 @@
   margin-bottom: 64px;
   text-align: center;
   margin-left: 8px;
-}
-.c-admin__delete__btn{
-    padding: 15px 0px;
-    border-radius: 40px;
-    background: rgb(37, 37, 37);
-    width: 100%;
-    color: #fff;
-    width: 268px;
-    margin: 0 auto;
-    font-size: 14px;
-    -webkit-appearance: none;
 }
 
 //検索フォームの下の余白調整用

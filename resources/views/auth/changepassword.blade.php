@@ -2,10 +2,11 @@
 @section('title','パスワード変更')
 @section('content')
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">パスワード変更</div>
+  <div class="">
+    <div class="">
+
+      <div class="c-authChange__container">
+        <div class="c-authChange__title">パスワード変更</div>
 
         @if (session('change_password_error'))
         <div class="container mt-2">
@@ -23,23 +24,22 @@
         </div>
         @endif
 
-        <div class="card-body">
-          <form method="POST" action="{{route('changepassword')}}">
+
+        <div class="c-authChange__form">
+          <form method="POST" action="{{route('changepassword')}}" class="c-authChange__form--body">
             @csrf
-            <div class="form-group">
-              <label for="current">
+            <div>
+              <label for="current" class="c-authChange__form--text">
                 現在のパスワード
               </label>
-              <div>
-                <input id="current" type="password" class="form-control" name="current-password" required autofocus>
-              </div>
+              <input id="current" type="password" class="c-authChange__form--input" name="current-password" required autofocus>
             </div>
             <div class="form-group">
-              <label for="password">
-                新しいのパスワード
+              <label for="password" class="c-authChange__form--text">
+                新しいパスワード
               </label>
               <div>
-                <input id="password" type="password" class="form-control" name="new-password" required>
+                <input id="password" type="password" class="c-authChange__form--input" name="new-password" required>
                 @if ($errors->has('new-password'))
                 <span class="help-block">
                   <strong>{{ $errors->first('new-password') }}</strong>
@@ -48,15 +48,15 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="confirm">
-                新しいのパスワード（確認用）
+              <label for="confirm" class="c-authChange__form--text">
+                新しいパスワード（確認用）
               </label>
               <div>
-                <input id="confirm" type="password" class="form-control" name="new-password_confirmation" required>
+                <input id="confirm" type="password" class="c-authChange__form--input" name="new-password_confirmation" required>
               </div>
             </div>
-            <div>
-              <button type="submit" class="btn btn-primary">変更</button>
+            <div class="c-authChange__form--button">
+              <input type="submit" class="c-authChange__form--submit" value="変更">
             </div>
           </form>
         </div>
