@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Carbon;
 use App\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
@@ -93,11 +94,12 @@ class mypageController extends Controller
 
 
         //====================未振込依頼売上履歴
+
         $untransferred = Order::query()
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('products.user_id', Auth::user()->id)
-            ->whereIn('status', [1, 2])
-            // ->whereMonth('orders.created_at', date("m"))
+            ->where('status', 0)
+            ->where('orders.created_at', '<', Carbon::now()->startOfMonth())
             ->join('users', 'orders.user_id', '=', 'users.id')
             ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
             ->orderBy('created_at', 'desc')
@@ -105,12 +107,16 @@ class mypageController extends Controller
 
 
         $untransferred_price = $untransferred->groupBy(function ($row) {
-            return $row->created_at->format('Y年m');
+            return $row->status;
         })
             ->map(function ($day) {
                 return $day->sum('sale_price');
             });
 
+        Log::debug('$untransferred');
+        Log::debug($untransferred);
+        Log::debug('$untransferred_price');
+        Log::debug($untransferred_price);
 
 
         //====================振込依頼済みの売上履歴
@@ -129,10 +135,6 @@ class mypageController extends Controller
                 return $day->sum('sale_price');
             });
 
-        Log::debug('$untransferred');
-        Log::debug($untransferred);
-        Log::debug('$untransferred_price');
-        Log::debug($untransferred_price);
 
         return view('mypage.order', [
             'sales' => $sales,

@@ -39,7 +39,10 @@
         <div class="c-mypage__sale__untransferred__wrapper">
             <div class="c-mypage__sale__untransferred">
                 <div class="c-mypage__sale__untransferred__total">総額</div>
-                <div class="c-mypage__sale__untransferred__price">¥ {{  number_format($untransferred_price) }}</div>
+                @foreach($untransferred_price as $mon => $price)
+                <div class="c-mypage__sale__untransferred__price">¥ {{ number_format($price) }}
+                    @endforeach
+                </div>
                 <div class="c-mypage__sale__untransferred__request"><a href=""
                         class="c-mypage__sale__untransferred__request__link">振込依頼</a></div>
             </div>
