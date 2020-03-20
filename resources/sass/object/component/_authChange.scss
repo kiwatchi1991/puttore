@@ -1,22 +1,22 @@
 .c-authChange__container{
-  margin: 24px 10px;
+  padding:24px 10px;
+  background: #E5F6F2;
 }
 
 .c-authChange__title{
     margin: 32px 0;
-    text-align: center;
     color: #00ac7d;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 24px;
 }
 
 .c-authChange__form{
-
   &--text{
     margin-bottom: 12px;
-    font-weight: bold;
-    font-size: 14px;
+    font-size: 10px;
     display: block;
+    @include pc{
+        // text-align: center;
+      }
   }
 
   &--body{
@@ -24,23 +24,29 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @include pc{
+        // text-align: center;
+      }
   }
 
   &--input{
+    margin: 0 auto;
     margin-bottom: 24px;
-    padding: 15px 5px ;
-    background: #E5F6F2;
-    width: 300px;
+    padding: 10px;
+    background: #fff;
+    width: 100%;
   }
   &--button{
-    width: 268px;
+    width: 75%;
     margin: 0 auto;
+    @include pc{
+
+    }
   }
 
   &--submit{
     padding: 10px 0px;
-    border-radius: 40px;
-    font-size: 16px;
+    border-radius: 7px;
     background: orange;
     width: 100%;
     color: white;
