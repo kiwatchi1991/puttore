@@ -65,47 +65,50 @@ class mypageController extends Controller
     {
         //売上履歴
         $sale_histories = Order::query()
-            ->where('products.user_id', Auth::user()->id)
             ->join('products', 'orders.product_id', '=', 'products.id')
+            ->where('products.user_id', Auth::user()->id)
             ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price')
-            // ->orderBy('orders.created_date')
-            ->get()
-            ->groupBy(function ($row) {
-                return $row->created_at->format('m');
-            });
-        // ->map(function ($day) {
-        //     return $day->sum('count');
-        // });
+            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        Log::debug('$sale_histories');
-        Log::debug($sale_histories);
+        $sales = $sale_histories->groupBy(function ($row) {
+            return $row->created_at->format('Y年m月');
+        })
+            ->map(function ($day) {
+                return $day->sum('sale_price');
+            });
+
+        Log::debug('$sales');
+        Log::debug($sales);
         return view('mypage.order', [
-            'sale_histories' => $sale_histories,
+            'sales' => $sales,
         ]);
     }
 
-    public function orderMonth(Request $request)
+    public function orderMonth(Request $request, $month)
     {
+        Log::debug('$month');
+        Log::debug($month);
         //売上履歴
-        $sale_histories = Order::query()
-            ->where('products.user_id', Auth::user()->id)
+        $sales = Order::query()
             ->join('products', 'orders.product_id', '=', 'products.id')
-            ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price')
-            // ->orderBy('orders.created_date')
-            ->get()
-            ->groupBy(function ($row) {
-                return $row->created_at->format('m');
-            });
-        // ->map(function ($day) {
-        //     return $day->sum('count');
-        // });
+            ->where('products.user_id', Auth::user()->id)
+            ->where('orders.created_at', $month)
+            // ->where('orders.created_at'->format("Y年m月"), $month)
 
-        Log::debug('$sale_histories');
-        Log::debug($sale_histories);
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status', 'products.name')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $this_month = $sales->first();
+
+        Log::debug('$sales');
+        Log::debug($sales);
         return view('mypage.orderMonth', [
-            'sale_histories' => $sale_histories,
+            'sales' => $sales,
+            'month' => $month,
         ]);
     }
 }

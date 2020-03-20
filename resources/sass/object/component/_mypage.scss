@@ -160,4 +160,34 @@
             font-size: 14px;
         }
     }
+    &__sale__month{
+        margin: 16px auto 0;
+        display: inline-block;
+        thead{
+            background: $bg;
+            font-size: 14px;
+        }
+        th{
+            padding: 8px 0;
+        }
+        tr{
+            border-bottom: 1px solid $bg;
+        }
+        td{
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+    }
+    &__sale__list{
+
+        &--day{
+            min-width: 120px;
+        }
+        &--title{
+            min-width: 100px;
+        }
+        &--price{
+            min-width: 100px;
+        }
+    }
 }

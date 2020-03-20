@@ -7,9 +7,13 @@
     <div class="c-mypage__nav__listactive"><a href="/mypage/order">販売管理</a></div>
 </div>
 
-@foreach ($sale_histories as $sale_history)
-{{ $sale_history }}
-@endforeach
+
+
+{{-- @if($sale_history->status == 0)
+    未振込はこっち
+    {{ $sale_history }}
+
+@endif --}}
 
 <div class="c-mypage__order">
     <div class="c-mypage__sale">
@@ -54,24 +58,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($sales as $mon => $sale)
+
+
                     <tr>
-                        <td>2019年3月</td>
-                        <td>¥ 2000</td>
+                        <td>{{ $mon }}</td>
+                        <td>¥ {{ number_format($sale) }}</td>
                         <td>振込済</td>
-                        <td>詳細</td>
+                        <td><a href="{{ route('mypage.order.show',$mon) }}">詳細</a></td>
                     </tr>
-                    <tr>
-                        <td>2019年3月</td>
-                        <td>¥ 2000</td>
-                        <td>振込済</td>
-                        <td>詳細</td>
-                    </tr>
-                    <tr>
-                        <td>2019年3月</td>
-                        <td>¥ 2000</td>
-                        <td>振込済</td>
-                        <td>詳細</td>
-                    </tr>
+                    @endforeach
+
                 </tbody>
             </table>
         </div>
