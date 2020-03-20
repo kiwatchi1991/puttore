@@ -4733,6 +4733,10 @@ a:visited {
   min-width: 100px;
 }
 
+.c-mypage__sale__list--status {
+  min-width: 100px;
+}
+
 .c-mypage__sale__nothing {
   margin-top: 32px;
 }

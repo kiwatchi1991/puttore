@@ -18,7 +18,7 @@
 <div class="c-mypage__order">
     <div class="c-mypage__sale">
         <div class="c-profile__title__product">
-            <h2>{{$month}} の売上</h2>
+            <h2>{{ $year_month }} の売上</h2>
         </div>
 
         <div class="c-mypage__sale__month">

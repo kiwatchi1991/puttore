@@ -27,8 +27,10 @@
         {{-- @endif --}}
         <div class="c-mypage__sale__thisMonth">
             <div class="c-mypage__sale__thisMonth__total">総額</div>
-            <div class="c-mypage__sale__thisMonth__price">¥ 1,000</div>
-            <div class="c-mypage__sale__thisMonth__detail"><a href="">詳細</a></div>
+            @foreach($thisMonth as $mon => $price)
+            <div class="c-mypage__sale__thisMonth__price">¥ {{ number_format($price) }}</div>
+            @endforeach
+            <div class="c-mypage__sale__thisMonth__detail"><a href="{{ route('mypage.order.show',$mon) }}">詳細</a></div>
         </div>
 
         <div class="c-profile__title__product">
@@ -37,7 +39,7 @@
         <div class="c-mypage__sale__untransferred__wrapper">
             <div class="c-mypage__sale__untransferred">
                 <div class="c-mypage__sale__untransferred__total">総額</div>
-                <div class="c-mypage__sale__untransferred__price">¥ 1,000</div>
+                <div class="c-mypage__sale__untransferred__price">¥ {{  number_format($untransferred_price) }}</div>
                 <div class="c-mypage__sale__untransferred__request"><a href=""
                         class="c-mypage__sale__untransferred__request__link">振込依頼</a></div>
             </div>
@@ -54,16 +56,16 @@
             <table>
                 <thead>
                     <tr>
-                        <th>期間</th>
-                        <th>売上</th>
-                        <th>状況</th>
+                        <th class="c-mypage__sale__list c-mypage__sale__list--day">期間</th>
+                        <th class="c-mypage__sale__list c-mypage__sale__list--price">売上</th>
+                        <th class="c-mypage__sale__list c-mypage__sale__list--status">状況</th>
                         <th> </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($sales as $mon => $sale)
                     <tr>
-                        <td>{{ $mon }}</td>
+                        <td>{{ $mon }}月</td>
                         <td>¥ {{ number_format($sale) }}</td>
                         <td>振込済</td>
                         <td><a href="{{ route('mypage.order.show',$mon) }}">詳細</a></td>

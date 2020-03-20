@@ -61,41 +61,106 @@ class mypageController extends Controller
             'buy_products' => $buy_products,
         ]);
     }
+
+    /**
+     * 注文管理機能
+     */
+
     public function order(Request $request)
     {
-        //売上履歴
-        $sale_histories = Order::query()
+        //====================今月の売上
+        $thisMonth = Order::query()
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('products.user_id', Auth::user()->id)
             ->join('users', 'orders.user_id', '=', 'users.id')
             ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
             ->orderBy('created_at', 'desc')
+            //今月に絞る
+            ->whereYear('orders.created_at', date("Y"))
+            ->whereMonth('orders.created_at', date("m"))
+            ->get()
+
+
+            ->groupBy(function ($row) {
+                return $row->created_at->format('Y年m');
+            })
+            ->map(function ($day) {
+                return $day->sum('sale_price');
+            });
+
+        Log::debug('$thisMonth');
+        Log::debug($thisMonth);
+
+
+        //====================未振込依頼売上履歴
+        $untransferred = Order::query()
+            ->join('products', 'orders.product_id', '=', 'products.id')
+            ->where('products.user_id', Auth::user()->id)
+            ->whereIn('status', [1, 2])
+            // ->whereMonth('orders.created_at', date("m"))
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
+            ->orderBy('created_at', 'desc')
             ->get();
 
-        $sales = $sale_histories->groupBy(function ($row) {
-            return $row->created_at->format('Y年m月');
+
+        $untransferred_price = $untransferred->groupBy(function ($row) {
+            return $row->created_at->format('Y年m');
         })
             ->map(function ($day) {
                 return $day->sum('sale_price');
             });
 
-        Log::debug('$sales');
-        Log::debug($sales);
+
+
+        //====================振込依頼済みの売上履歴
+        $sale_histories = Order::query()
+            ->join('products', 'orders.product_id', '=', 'products.id')
+            ->whereIn('status', [1, 2])
+            ->where('products.user_id', Auth::user()->id)
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $sales = $sale_histories->groupBy(function ($row) {
+            return $row->created_at->format('Y年m');
+        })
+            ->map(function ($day) {
+                return $day->sum('sale_price');
+            });
+
+        Log::debug('$untransferred');
+        Log::debug($untransferred);
+        Log::debug('$untransferred_price');
+        Log::debug($untransferred_price);
+
         return view('mypage.order', [
             'sales' => $sales,
+            'thisMonth' => $thisMonth,
+            'untransferred' => $untransferred,
+            'untransferred_price' => $untransferred_price,
         ]);
     }
 
-    public function orderMonth(Request $request, $month)
+    //1ヶ月の売上リスト
+    public function orderMonth(Request $request, $year_month)
     {
-        Log::debug('$month');
-        Log::debug($month);
-        //売上履歴
+        Log::debug('$year_month');
+        Log::debug($year_month);
+        $targetYear = substr($year_month, 0, 4);
+        $targetMonth = substr($year_month, 7, 2);
+        Log::debug('$tergetYear');
+        Log::debug($targetYear);
+        Log::debug('$targetMonth');
+        Log::debug($targetMonth);
+
+
+        //売上履歴（振込依頼済）
         $sales = Order::query()
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('products.user_id', Auth::user()->id)
-            // ->where('orders.created_at', $month)
-            // ->where('orders.created_at'->format("Y年m月"), $month)
+            ->whereYear('orders.created_at', $targetYear)
+            ->whereMonth('orders.created_at', $targetMonth)
 
             ->join('users', 'orders.user_id', '=', 'users.id')
             ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status', 'products.name')
@@ -106,7 +171,7 @@ class mypageController extends Controller
         Log::debug($sales);
         return view('mypage.orderMonth', [
             'sales' => $sales,
-            'month' => $month,
+            'year_month' => $year_month,
         ]);
     }
 }
