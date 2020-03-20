@@ -47,7 +47,7 @@
                         class="c-mypage__sale__untransferred__request__link">振込依頼</a></div>
             </div>
             　　 <p class="c-mypage__sale__untransferred__text">
-                前月末時点での未振込の売上金総額が1,000円以下の場合は振込を翌月に繰越します。</p>　
+                前月末時点での未振込の売上金総額が5,000円以下の場合は振込を翌月に繰越します。</p>　
         </div>
 
 
