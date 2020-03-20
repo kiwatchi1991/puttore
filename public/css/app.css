@@ -4656,9 +4656,16 @@ a:visited {
   font-size: 18px;
 }
 
-.c-mypage__sale__untransferred__empty {
-  width: 45px;
-  height: 10px;
+.c-mypage__sale__untransferred__request__link {
+  font-size: 10px;
+  padding: 5px;
+  border-radius: 3px;
+  background: #00ac7d;
+  color: white;
+}
+
+.c-mypage__sale__untransferred__request__link:visited {
+  color: white;
 }
 
 .c-mypage__sale__untransferred__text {
@@ -4692,7 +4699,7 @@ a:visited {
 }
 
 .c-mypage__sale__month {
-  margin: 16px auto 0;
+  margin: 40px auto 0;
   display: inline-block;
 }
 
@@ -4724,6 +4731,10 @@ a:visited {
 
 .c-mypage__sale__list--price {
   min-width: 100px;
+}
+
+.c-mypage__sale__nothing {
+  margin-top: 32px;
 }
 
 .p-input__tag {

@@ -94,15 +94,13 @@ class mypageController extends Controller
         $sales = Order::query()
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('products.user_id', Auth::user()->id)
-            ->where('orders.created_at', $month)
+            // ->where('orders.created_at', $month)
             // ->where('orders.created_at'->format("Y年m月"), $month)
 
             ->join('users', 'orders.user_id', '=', 'users.id')
             ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status', 'products.name')
             ->orderBy('created_at', 'desc')
             ->get();
-
-        $this_month = $sales->first();
 
         Log::debug('$sales');
         Log::debug($sales);

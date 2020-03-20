@@ -43,9 +43,11 @@
 
                 </tbody>
             </table>
-            @if ($sales->count() == 0)
-            ありません
-            @endif
+            <div class="c-mypage__sale__nothing">
+                @if ($sales->count() == 0)
+                ありません
+                @endif
+            </div>
         </div>
 
     </div>

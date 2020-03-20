@@ -38,11 +38,14 @@
             <div class="c-mypage__sale__untransferred">
                 <div class="c-mypage__sale__untransferred__total">総額</div>
                 <div class="c-mypage__sale__untransferred__price">¥ 1,000</div>
-                <div class="c-mypage__sale__untransferred__empty"></div>
+                <div class="c-mypage__sale__untransferred__request"><a href=""
+                        class="c-mypage__sale__untransferred__request__link">振込依頼</a></div>
             </div>
             　　 <p class="c-mypage__sale__untransferred__text">
                 前月末時点での未振込の売上金総額が1,000円以下の場合は振込を翌月に繰越します。</p>　
         </div>
+
+
         <div class="c-profile__title__product">
             <p style="margin-top: 32px">処理済みの売上</p>
         </div>
@@ -59,8 +62,6 @@
                 </thead>
                 <tbody>
                     @foreach ($sales as $mon => $sale)
-
-
                     <tr>
                         <td>{{ $mon }}</td>
                         <td>¥ {{ number_format($sale) }}</td>
