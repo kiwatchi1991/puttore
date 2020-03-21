@@ -4861,3 +4861,11 @@ button {
   display: block;
 }
 
+.required {
+  padding: 3px 5px;
+  background: #00ac7d;
+  color: white;
+  border-radius: 3px;
+  font-size: 14px;
+}
+

@@ -23,7 +23,7 @@
 </div>
 
 <div class="c-admin__delete">
-    <form method="post" action="">
+    <form method="post" action="{{route('admin.transfer.update.confirm','update_id[]')}}">
         @csrf
         <div class="c-admin__delete__btnWrap">
             <input class="c-admin__delete__btn" type="submit" value="選択した情報を削除">

@@ -58,6 +58,7 @@ Route::get('/admin/contacts/{id}',  'adminController@contactShow')->name('admin.
 Route::get('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer');
 Route::get('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
 Route::post('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
+Route::post('/admin/transfer/update/{id?}',  'adminController@transferUpdate')->name('admin.transfer.update');
 
 
 

@@ -48,3 +48,10 @@ button{
     margin-top: 8px;
     display: block;
 }
+.required{
+    padding: 3px 5px;
+    background: $main-color;
+    color: white;
+    border-radius: 3px;
+    font-size: 14px
+}

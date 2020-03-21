@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use AddTransferIdToOrders;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateProductRequest;
 
@@ -386,25 +387,32 @@ class adminController extends Controller
     ]);
   }
   // =================================
-  //  削除前確認 ======================
+  //  更新前確認 ======================
   // =================================
   public function transferUpdateConfirm(Request $request, $id)
   {
-    Log::debug('<< transferdeleteConfirm >>');
+    Log::debug('<< transferUpdateConfirm >>');
     Log::debug($request);
+
+
 
     //一括ボタンからの場合
 
+
+    $transfers = Transfer::join('users', 'transfers.user_id', 'users.id')
+      ->join('from_banks', 'transfers.from_bank_id', 'from_banks.id')
+      ->select('transfers.id', 'transfers.transfer_price', 'transfers.transferred_price', 'transfers.commission', 'transfers.created_at', 'transfers.payment_date', 'users.id as u.id', 'users.account_name', 'users.email', 'from_banks.name as bank_name'); //振込元銀行情報は今後変更していく
     if (!empty($request->get('update_id'))) {
 
       $updateIds = $request->get('update_id');
       Log::debug('$updateIds');
       Log::debug($updateIds);
-
-      $transfers = Transfer::whereIn('id', $updateIds)->get();
+      $transfers = $transfers->whereIn('transfers.id', $updateIds)->get();
     } else if (!empty($id)) {
-      $transfers = Transfer::where('id', $id)->get();
+      $transfers = $transfers->where('transfers.id', $id)->get();
     }
+
+
 
     Log::debug('$transfers');
     Log::debug($transfers);
@@ -412,5 +420,28 @@ class adminController extends Controller
     return view('admin.transfers.update', [
       'transfers' => $transfers,
     ]);
+  }
+
+  //削除
+  public function transferUpdate(Request $request)
+  {
+
+    Log::debug('<< transferUpdate >>');
+    Log::debug($request);
+
+    if (!empty($request->get('update_id'))) {
+
+      $updateIds = $request->get('update_id');
+      Log::debug('$updateIds');
+      Log::debug($updateIds);
+      $transfers = Transfer::whereIn('id', $updateIds)->update(['status' => 2], ['payment_date' => $request->payment_date]);
+    }
+
+    // $transfers = 
+    // else if (!empty($id)) {
+    //   $users = Product::find($id)->delete();
+    // }
+
+    return redirect('/admin/transfer')->with('flash_message', 'ステータスを更新しました');
   }
 }
