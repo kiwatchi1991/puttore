@@ -53,6 +53,11 @@ Route::get('/admin/contacts',  'adminController@contactIndex')->name('admin.cont
 Route::post('/admin/contacts',  'adminController@contactIndex')->name('admin.contact.search');
 Route::get('/admin/contacts/{id}',  'adminController@contactShow')->name('admin.contact.show');
 
+//管理画面
+//振込依頼
+Route::get('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer');
+Route::get('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
+Route::post('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
 
 
 

@@ -17,6 +17,7 @@ use App\Order;
 use App\User;
 use App\Contact;
 use App\CategoryProduct;
+use App\Transfer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -93,15 +94,12 @@ class adminController extends Controller
 
       $users = User::whereIn('id', $deleteIds)->get();
     } else if (!empty($id)) {
-      // $users =  collect([User::find($id)]);
       $users = User::where('id', $id)->get();
-      // $users = User::whereIn('id', $id)->get();
     }
 
     Log::debug('$users');
     Log::debug($users);
     Log::debug('$users->count()');
-    // Log::debug($users->get()->count());
 
     return view('admin.users.delete', [
       'users' => $users,
@@ -342,6 +340,77 @@ class adminController extends Controller
 
     return view('admin.contacts.show', [
       'contact' => $cotact,
+    ]);
+  }
+
+
+  // =================================
+  // =======   振込依頼  ==============
+  // =================================
+
+  // 注文一覧表示
+  public function transferIndex(Request $request)
+  {
+    Log::debug('transferIndex');
+
+    //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
+    $transfers = Transfer::join('users', 'transfers.user_id', 'users.id')
+      ->select('transfers.id', 'transfer_price', 'payment_date', 'users.email',)
+      ->get();
+
+    // Order::join('products', 'orders.product_id', 'products.id')
+    //   ->join('users', 'products.user_id', 'users.id')
+    //   ->select('orders.id', 'orders.user_id as buy.u_id', 'sale_price', 'products.user_id as sale.u_id', 'products.name');
+
+
+    // 初期表示
+    // if (empty($request->sort) && empty($request->keyword)) {
+    //   $orders = $orders->get();
+    // }
+
+    Log::debug('$transfers');
+    Log::debug($transfers);
+
+    //並べかえ（降順/昇順が押された場合）
+    // $sortFlg = $request->sort;
+    // if (isset($sortFlg)) {
+    //   if ($sortFlg == '1') {
+    //     $orders = $orders->get();
+    //   } elseif ($sortFlg == '0') {
+    //     $orders = $orders->orderBy('orders.id', 'desc')->get();
+    //   }
+    // }
+
+    return view('admin.transfers.index', [
+      'transfers' => $transfers,
+    ]);
+  }
+  // =================================
+  //  削除前確認 ======================
+  // =================================
+  public function transferUpdateConfirm(Request $request, $id)
+  {
+    Log::debug('<< transferdeleteConfirm >>');
+    Log::debug($request);
+
+    //一括ボタンからの場合
+
+    if (!empty($request->get('update_id'))) {
+
+      $updateIds = $request->get('update_id');
+      Log::debug('$updateIds');
+      Log::debug($updateIds);
+
+      $transfers = Transfer::whereIn('id', $updateIds)->get();
+    } else if (!empty($id)) {
+      $transfers = Transfer::where('id', $id)->get();
+    }
+
+    Log::debug('$transfers');
+    Log::debug($transfers);
+
+    return view('admin.transfers.update', [
+      'transfers' => $transfers,
     ]);
   }
 }

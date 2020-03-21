@@ -4642,6 +4642,11 @@ a:visited {
 
 .c-mypage__sale__untransferred__price {
   font-size: 18px;
+  min-width: 80px;
+}
+
+.c-mypage__sale__untransferred__request {
+  width: 50px;
 }
 
 .c-mypage__sale__untransferred__request__link {
@@ -4682,7 +4687,7 @@ a:visited {
 }
 
 .c-mypage__sale__done td {
-  padding: 10px 12px;
+  padding: 10px 0;
   font-size: 14px;
 }
 
@@ -4710,19 +4715,19 @@ a:visited {
 }
 
 .c-mypage__sale__list--day {
-  min-width: 120px;
+  min-width: 100px;
 }
 
 .c-mypage__sale__list--title {
-  min-width: 100px;
+  min-width: 95px;
 }
 
 .c-mypage__sale__list--price {
-  min-width: 100px;
+  min-width: 90px;
 }
 
 .c-mypage__sale__list--status {
-  min-width: 100px;
+  min-width: 80px;
 }
 
 .c-mypage__sale__nothing {

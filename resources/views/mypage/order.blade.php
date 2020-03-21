@@ -39,15 +39,30 @@
         <div class="c-mypage__sale__untransferred__wrapper">
             <div class="c-mypage__sale__untransferred">
                 <div class="c-mypage__sale__untransferred__total">総額</div>
+
                 @foreach($untransferred_price as $mon => $price)
                 <div class="c-mypage__sale__untransferred__price">¥ {{ number_format($price) }}
-                    @endforeach
                 </div>
-                <div class="c-mypage__sale__untransferred__request js-request-transfer"><a href="/mypage/transfer"
-                        class="c-mypage__sale__untransferred__request__link">振込依頼</a></div>
+                @endforeach
+
+                {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
+                @if ($untransferred_price->count()==0)
+                <div class="c-mypage__sale__untransferred__price">¥ 0</div>
+                @endif
+
+                <div class="c-mypage__sale__untransferred__request js-request-transfer">
+
+                    {{-- 5000円以下の場合は表示しない --}}
+                    @foreach($untransferred_price as $mon => $price)
+                    @if ($price > 5000)
+                    <a href="/mypage/transfer" class="c-mypage__sale__untransferred__request__link">振込依頼</a>
+                    @endif
+                    @endforeach
+
+                </div>
             </div>
             　　 <p class="c-mypage__sale__untransferred__text">
-                前月末時点での未振込の売上金総額が5,000円以下の場合は振込を翌月に繰越します。</p>　
+                前月末時点での未振込の売上金総額が5,000円以上になると、振込依頼ができるようになります。</p>　
         </div>
 
 
@@ -70,7 +85,9 @@
                     <tr>
                         <td>{{ $mon }}月</td>
                         <td>¥ {{ number_format($sale) }}</td>
-                        <td>振込済</td>
+                        <td>
+
+                            振込済</td>
                         <td><a href="{{ route('mypage.order.show',$mon) }}">詳細</a></td>
                     </tr>
                     @endforeach
@@ -81,29 +98,5 @@
 
     </div>
 </div>
-
-
-
-
-
-
-<div class="c-profile__title__product">
-    <h2>購入履歴</h2>
-    {{-- @if($drafts->count() == 0) --}}
-    <p style="margin-top: 32px">現在ありません</p>
-    {{-- @endif --}}
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+{{ $sale_histories }}
 @endsection
