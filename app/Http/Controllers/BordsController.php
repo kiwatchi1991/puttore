@@ -30,6 +30,8 @@ class BordsController extends Controller
             ->select('orders.id', 'orders.user_id', 'users.pic', 'products.id as p.id', 'products.user_id as p.user_id', 'products.name')
             ->get();
 
+        // $sale_user = User::where('id', $bords->{'p.user_id'});
+
         $user = User::all();
 
         Log::debug('$bords↓↓');
@@ -39,6 +41,7 @@ class BordsController extends Controller
             'bords' => $bords,
             'id' => $id,
             'user' => $user,
+            // 'sale_user' => $sale_user,
         ]);
     }
 

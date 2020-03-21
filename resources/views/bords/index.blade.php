@@ -16,9 +16,10 @@
     $class_order_type = ($buy_userId == $id) ? "buy" : "sell";
 
     if($order_type == "購入"){
-    // $pic = $user::find($sell_userId)->pic;
+    $pic = $sale_user->pic;
     // $pic = $user->where('id',$sell_userId)->pic;
     }else{
+    $pic= $sale_user->pic;
     // $pic = User::find($buy_userId)->pic;
     // $pic = $user::find($buy_userId)->pic;
     }

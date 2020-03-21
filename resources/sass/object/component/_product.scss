@@ -1,4 +1,14 @@
 .c-product{
+  &__area{
+    @include pc{
+    width: 690px;
+    margin: 60px auto 90px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    }
+  }
   &__block{
     width: 280px;
     margin: 30px auto 0;
@@ -10,6 +20,11 @@
     box-sizing: border-box;
     background: $p_bg;
     border-radius: 10px;
+    @include pc{
+      width: 210px;
+      padding: 0;
+      margin: 32px 0 0 0;
+    }
     &:hover{
       opacity: 0.6;
     }
@@ -18,6 +33,16 @@
     width: 280px;
     margin: 32px auto 0;
     color: $main-color;
+    @include pc{
+      width: 520px;
+      font-size: 30px;
+      margin: 64px auto 0;
+      letter-spacing: 3px;
+      h2{
+      font-weight: normal;
+
+      }
+    }
   }
   &__img{
     background: white;
@@ -34,6 +59,10 @@
     margin-top: 20px;
     background: $bg;
     padding: 10px 0;
+    @include pc{
+      margin:0 auto;
+      width: 690px;
+    }
 }
 .c-product__link{
     cursor: pointer;
@@ -42,10 +71,17 @@
 //検索ボックス
 .c-searchBox{
     background: $bg;
+    @include pc{
+      background: #fff;
+    }
     &__inner{
         padding: 24px;
+        @include pc{
+          width: 520px;
+          margin: 0 auto;
+        }
     }
-    
+
     &__categories{
         margin-top: 8px;
     }
@@ -53,9 +89,28 @@
       margin-top: 20px;
       padding-top: 20px;
       border-top: 3px solid $main-color;
+      @include pc{
+        border: none;
+      }
     }
     &__title{
       font-size: 12px;
+      @include pc{
+        font-size: 16px;
+      }
+    }
+    &__body{
+      @include pc{
+        width: 100%;
+        margin-top: 5px;
+        padding: 10px 0 20px 50px;
+        background: $bg;
+        box-sizing: border-box;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+
+      }
     }
     &__checkbox{
       display: none;
@@ -68,6 +123,10 @@
         line-height: 17px;
         display: inline-block;
         font-size: 12px;
+        @include pc{
+          width: 25%;
+          font-size: 16px;
+        }
         &::before{
             content: "";
             display: block;
@@ -104,12 +163,19 @@
       color: #ffffff;
       background: orange;
       border-radius: 7px;
+      @include pc{
+        width: 100%;
+        margin: 32px auto 0;
+      }
     }
     &__button{
       padding: 10px;
       color: #ffffff;
       height: 100%;
-      width: 100%; 
+      width: 100%;
+      @include pc{
+        font-size: 16px;
+      }
     }
 
 }
@@ -199,7 +265,7 @@
 //   &__number{
 //     text-align: left;
 //   }
-  
+
 //   &__block{
 //     margin-top: 30px;
 //     &--preview{
@@ -209,12 +275,12 @@
 //     }
 //   }
 
-  
+
 //   &__header{
 //     display: flex;
 //     background: #fff;
 //   }
-  
+
 //   &__lesson{
 //     display: none;
 //     height: 250px;
@@ -226,7 +292,7 @@
 //     &.active{
 //       display: block;
 //     }
-    
+
 //   }
 // }
 
@@ -335,7 +401,7 @@
     &__lesson{
       display: none;
       min-height: 250px;
-      
+
       text-align: left;
         &__block{
           margin-top: 16px;
@@ -398,7 +464,7 @@
     margin-top: 32px;
     &__title{
       color: $main-color;
-  
+
     }
   }
   &__images{
@@ -448,6 +514,9 @@
   color: #ffffff;
   background: orange;
   border-radius: 10px;
+  @include pc{
+    width: 100%;
+  }
   &--draft{
     margin-top: 32px;
     background: $easy;
@@ -545,7 +614,7 @@
   }
   &__title{
     margin-top: 16px;
-    font-size: 20px; 
+    font-size: 20px;
     line-height: 1.2;
     &__text{
       display: flex;
@@ -570,7 +639,7 @@
     display: flex;
   }
  &__userimg{
-    background-image: url('/storage/images/noavatar.png'); 
+    background-image: url('/storage/images/noavatar.png');
     background-position: center;
     background-size: contain;
     width: 50px;
@@ -660,7 +729,7 @@
   }
   &__toBord{
     margin: 16px auto 0;
-    z-index: 3; 
+    z-index: 3;
     background: #7DD4BC;
     text-align: center;
     width: 100%;
@@ -786,7 +855,7 @@
     &__lesson{
       display: none;
       min-height: 250px;
-      
+
       text-align: left;
         &__block{
           margin-top: 16px;
@@ -849,7 +918,7 @@
     margin-top: 32px;
     &__title{
       color: $main-color;
-  
+
     }
   }
   &__images{
@@ -910,7 +979,7 @@
     height: 100%;
       color: #ffffff;
       font-size: 14px;
-      
+
     }
   }
 
@@ -981,6 +1050,9 @@
     &__count{
       margin: 0 25px;
       line-height: initial;
+      @include pc{
+        font-size: 20px;
+      }
     }
 
 }
