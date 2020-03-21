@@ -66,6 +66,11 @@ Route::post('/admin/transfer/update/{id?}',  'adminController@transferUpdate')->
 Route::get('/',  'indexController@index')->name('home');
 Route::get('/products',  'ProductsController@index')->name('products');
 
+// 利用規約ページ
+Route::get('/home/agreement', 'indexController@agreement')->name('home.agreement');
+Route::get('/home/policy', 'indexController@policy')->name('home.policy');
+Route::get('/home/tokutei', 'indexController@tokutei')->name('home.tokutei');
+
 //お問い合わせ
 Route::get('/contacts', 'ContactController@index')->name('contact.index'); //入力画面
 Route::post('/contacts/confirm', 'ContactController@confirm')->name('contact.confirm'); //確認画面
@@ -130,4 +135,6 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/changeEmail', 'ChangeEmailController@index');
     Route::get('/reset/{token}', 'ChangeEmailController@reset');
     Route::post('/email', 'ChangeEmailController@sendChangeEmailLink');
+
+
 });
