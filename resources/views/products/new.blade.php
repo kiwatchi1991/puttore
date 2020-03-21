@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section('title','出品')
 @section('content')
+
+{{-- モーダルウインドウ --}}
+<div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+        <p>ここにモーダルウィンドウで表示したいコンテンツを入れます。モーダルウィンドウを閉じる場合は下の「閉じる」をクリックするか、背景の黒い部分をクリックしても閉じることができます。</p>
+        <a class="js-modal-close" href="">閉じる</a>
+    </div>
+</div>
+
 <div class="c-productNew">
     <p class="c-productNew__title__head">コンテンツ登録</p>
     <form id="form" method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data">
@@ -69,13 +79,7 @@
             </textarea>
             <div class="c-productNew__modal">
                 書き方のヒントは<a href="" class="js-modal-open">こちら</a>
-                <div class="modal js-modal">
-                    <div class="modal__bg js-modal-close"></div>
-                    <div class="modal__content">
-                        <p>ここにモーダルウィンドウで表示したいコンテンツを入れます。モーダルウィンドウを閉じる場合は下の「閉じる」をクリックするか、背景の黒い部分をクリックしても閉じることができます。</p>
-                        <a class="js-modal-close" href="">閉じる</a>
-                    </div>
-                </div>
+
             </div>
             @error('detail')
             <span class="c-productNew__error" role="alert">
