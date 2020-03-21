@@ -3,8 +3,10 @@
 @section('content')
 
 <div class="c-mypage__nav">
+    <div class="c-mypage__nav__list"><a href="/mypage">アカウント</a></div>
     <div class="c-mypage__nav__list"><a href="/mypage">作品一覧<br>（下書き / 購入 / 販売）</a></div>
-    <div class="c-mypage__nav__listactive"><a href="/mypage/order">販売管理</a></div>
+    <div class="c-mypage__nav__list active"><a href="/mypage/order">販売管理</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage/paid">振込履歴</a></div>
 </div>
 
 
@@ -28,7 +30,8 @@
         <div class="c-mypage__sale__thisMonth">
             <div class="c-mypage__sale__thisMonth__total">総額</div>
             @foreach($thisMonth as $mon => $price)
-            <div class="c-mypage__sale__thisMonth__price">¥ {{ number_format($price) }}</div>
+            <div class="c-mypage__sale__thisMonth__price">¥ {{ number_format($price) }}
+            </div>
             @endforeach
             <div class="c-mypage__sale__thisMonth__detail"><a href="{{ route('mypage.order.show',$mon) }}">詳細</a></div>
         </div>
@@ -82,15 +85,20 @@
                 </thead>
                 <tbody>
                     @foreach ($sales as $mon => $sale)
+                    {{-- $sale[0]は金額、$sale[1]は判定フラグ trueは申請中,falseは振込済 --}}
                     <tr>
                         <td>{{ $mon }}月</td>
-                        <td>¥ {{ number_format($sale) }}</td>
+                        <td>@if($sale > 0) ¥ {{ number_format($sale[0]) }} @endif</td>
                         <td>
-
-                            振込済</td>
+                            @if($sale[1])申請中 @else 振込済 @endif
+                        </td>
                         <td><a href="{{ route('mypage.order.show',$mon) }}">詳細</a></td>
                     </tr>
                     @endforeach
+                    {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
+                    @if ($untransferred_price->count()==0)
+                    <div class="c-mypage__sale__untransferred__price">ありません</div>
+                    @endif
 
                 </tbody>
             </table>
@@ -98,5 +106,5 @@
 
     </div>
 </div>
-{{ $sale_histories }}
+{{-- {{ $sale_histories }} --}}
 @endsection

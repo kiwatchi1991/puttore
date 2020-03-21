@@ -19,6 +19,7 @@ use App\User;
 use App\Contact;
 use App\CategoryProduct;
 use App\Transfer;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -429,18 +430,14 @@ class adminController extends Controller
     Log::debug('<< transferUpdate >>');
     Log::debug($request);
 
-    if (!empty($request->get('update_id'))) {
+    if (!empty($request->get('update'))) {
 
-      $updateIds = $request->get('update_id');
+      $updateIds = $request->get('update');
+      // $paid_date = $request->get('paid_date');
       Log::debug('$updateIds');
       Log::debug($updateIds);
-      $transfers = Transfer::whereIn('id', $updateIds)->update(['status' => 2], ['payment_date' => $request->payment_date]);
+      Transfer::whereIn('id', $updateIds)->update(['status' => 2, 'paid_date' => Carbon::parse($updateIds[$updateIds]['paid_date'])]);
     }
-
-    // $transfers = 
-    // else if (!empty($id)) {
-    //   $users = Product::find($id)->delete();
-    // }
 
     return redirect('/admin/transfer')->with('flash_message', 'ステータスを更新しました');
   }

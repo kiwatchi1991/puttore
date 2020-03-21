@@ -11,7 +11,7 @@
     <form method="POST" action="{{ route('admin.transfer.update') }}">
         @csrf
         @foreach($transfers as $transfer)
-        <input type="hidden" name="update_id[]" value="{{ $transfer->id }}">
+        <input type="hidden" name="update[{{ $transfer->id }}][id]" value="{{ $transfer->id }}">
         <div class="c-admin__user__info">
             <div class="c-admin__user__info__list">
                 <div class="c-admin__user__data">id </div>
@@ -64,8 +64,8 @@
 
             <div class="c-admin__user__info__list">
                 <div class="c-admin__user__data">振込日 <span class="required">必須</span></div>
-                <span><input class="c-admin__input js-date_picker" type="text" name="payment_date[{{ $transfer->id }}]"
-                        id="" value="" required></span>
+                <span><input class="c-admin__input js-date_picker" type="text"
+                        name="update[{{ $transfer->id }}][paid_date]" id="" value="" required></span>
             </div>
 
         </div>

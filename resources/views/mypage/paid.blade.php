@@ -20,7 +20,7 @@
 <div class="c-mypage__order">
     <div class="c-mypage__sale">
         <div class="c-profile__title__product">
-            <h2>{{ $year_month }} の売上</h2>
+            <h2>振込履歴</h2>
         </div>
 
         <div class="c-mypage__sale__month">
@@ -33,20 +33,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($sales as $sale)
+                    @foreach ($paids as $paid)
                     <tr>
                         <td class="c-mypage__sale__list c-mypage__sale__list--day">
-                            {{$sale->created_at->format('Y年m月d日')}}</td>
-                        <td class="c-mypage__sale__list c-mypage__sale__list--title">{{$sale->name}}</td>
+                            {{$paid->created_at->format('Y年m月d日')}}</td>
+                        <td class="c-mypage__sale__list c-mypage__sale__list--title">{{$paid->name}}</td>
                         <td class="c-mypage__sale__list c-mypage__sale__list--price">¥
-                            {{number_format($sale->sale_price)}}</td>
+                            {{number_format($paid->sale_price)}}</td>
                     </tr>
                     @endforeach
 
                 </tbody>
             </table>
             <div class="c-mypage__sale__nothing">
-                @if ($sales->count() == 0)
+                @if ($paid->count() == 0)
                 ありません
                 @endif
             </div>

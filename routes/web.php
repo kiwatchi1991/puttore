@@ -103,6 +103,7 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/mypage/order',  'mypageController@order')->name('mypage.order');
     Route::get('/mypage/order/{month}',  'mypageController@orderMonth')->name('mypage.order.show');
     Route::get('/mypage/transfer',  'mypageController@requestTransfer')->name('mypage.order.transfer');
+    Route::get('/mypage/paid',  'mypageController@paid')->name('mypage.order.paid');
 
     //注文・トークルーム
     Route::post('/products/{id}',  'OrdersController@create')->name('orders.create');

@@ -26,7 +26,7 @@
     <form method="post" action="{{route('admin.transfer.update.confirm','update_id[]')}}">
         @csrf
         <div class="c-admin__delete__btnWrap">
-            <input class="c-admin__delete__btn" type="submit" value="選択した情報を削除">
+            <input class="c-admin__delete__btn" type="submit" value="選択した情報を更新">
         </div>
         <div class="c-admin__title">振込依頼一覧</div>
 

@@ -7,7 +7,8 @@
     <div class="c-mypage__nav__list"><a href="/mypage/products">作品一覧<br><span class="small"><br>（下書き / 購入 /
                 販売）</span></a>
     </div>
-    <div class="c-mypage__nav__list"><a href="/mypage/order">販売管理</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage/paid">販売管理</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage/paid">振込履歴</a></div>
 </div>
 <div class="c-mypage__account">
     <div class="c-mypage__account__inner">

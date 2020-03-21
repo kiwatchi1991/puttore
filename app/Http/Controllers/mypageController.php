@@ -214,9 +214,13 @@ class mypageController extends Controller
             return $row->created_at->format('Y年m');
         })
             ->map(function ($day) {
-                return $day->sum('sale_price');
+                return [$day->sum('sale_price'), $day->filter(function ($d) {
+                    return $d->status == 1;
+                })->count() > 0];
             });
 
+        Log::debug('$sales');
+        Log::debug($sales);
 
         return view('mypage.order', [
             'sales' => $sales,
@@ -258,6 +262,19 @@ class mypageController extends Controller
         return view('mypage.orderMonth', [
             'sales' => $sales,
             'year_month' => $year_month,
+        ]);
+    }
+
+    //=============================================
+    //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝振込履歴ページ
+    //=============================================
+    public function paid(Request $request)
+    {
+        $paids = Transfer::where('user_id', Auth::user()->id)
+            ->get();
+
+        return view('mypage.paid', [
+            'paids' => $paids,
         ]);
     }
 }
