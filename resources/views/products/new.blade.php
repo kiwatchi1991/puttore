@@ -2,14 +2,14 @@
 @section('title','出品')
 @section('content')
 <div class="c-productNew">
-
+    <p class="c-productNew__title__head">コンテンツ登録</p>
     <form id="form" method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="">
             <p class="c-productNew__title__label">タイトル</p>
             <input id="name" type="text" class="c-productNew__input-area @error('name') is-invalid @enderror" required
-                name="name" value="{{ old('name') }}" autocomplete="name" placeholder="教材のタイトル（例：Twitter風アプリを作ろう）">
+                name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう">
 
             @error('name')
             <span class="c-productNew__error" role="alert">
@@ -23,10 +23,12 @@
             {{-- 言語選択 --}}
             <div class="c-productNew__categories">
                 <p class="c-productNew__title">1. 言語を選んでね</p>
+
                 @foreach ($category as $categories)
                 <input id="c-{{ $categories->id }}" type="checkbox"
                     class="c-productNew__checkbox @error('lang') is-invalid @enderror" name="lang[]"
-                    value="{{ $categories->id }}" autocomplete="lang" autofocus>
+                    value="{{ $categories->id }}" autocomplete="lang" autofocus @if (in_array($categories->id,
+                old('lang',[]))) checked @endif>
                 <label class="c-productNew__label" for="c-{{ $categories->id }}">
                     {{ $categories->name }}
                 </label>
@@ -63,10 +65,17 @@
 
             <textarea id="detail" type="text"
                 class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
-                required data-input="detail" name="detail" value="{{ old('detail') }}" rows="7">
+                required data-input="detail" name="detail" value="{{ old('detail') }}" rows="4">
             </textarea>
             <div class="c-productNew__modal">
-                書き方のヒントは<span>こちら</span>
+                書き方のヒントは<a href="" class="js-modal-open">こちら</a>
+                <div class="modal js-modal">
+                    <div class="modal__bg js-modal-close"></div>
+                    <div class="modal__content">
+                        <p>ここにモーダルウィンドウで表示したいコンテンツを入れます。モーダルウィンドウを閉じる場合は下の「閉じる」をクリックするか、背景の黒い部分をクリックしても閉じることができます。</p>
+                        <a class="js-modal-close" href="">閉じる</a>
+                    </div>
+                </div>
             </div>
             @error('detail')
             <span class="c-productNew__error" role="alert">

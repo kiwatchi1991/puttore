@@ -1,5 +1,4 @@
 //レッスン削除ボタンを押したとき
-// let $deleteIcon = $('.js-deleteIcon');
 
 let deleteLesson = function (e) {
 
@@ -59,8 +58,8 @@ $button.on('click', function (e) {
 
     let $newCopyTaget = $('.js-add__target:last-child');
     $newCopyTaget.find('input[type="hidden"]').remove();
-    $newCopyTaget.find('#input').empty();
-    $newCopyTaget.find('textarea').empty();
+    $newCopyTaget.find('#input').val('');
+    $newCopyTaget.find('textarea').val('');
 
     //load()でnumberの振り直し
     load();
@@ -69,7 +68,19 @@ $button.on('click', function (e) {
     setDeleteLessonEvent();
 });
 
-//クリックでレッスン削除イベントを再付与
+
+//========  クリックでレッスン削除イベントを再付与
+let setEvent = function () {
+    let deleteBtn = document.getElementsByClassName('js-deleteIcon');
+    for (let i = 0; i < deleteBtn.length; i++){
+        deleteBtn[i].addEventListener('click', function () {
+            let btn = $(this);
+            deleteLesson(btn);
+        })
+    }
+}
+
+//========  クリックでレッスン削除イベントを再付与
 let setDeleteLessonEvent = function () {
     let deleteBtn = document.getElementsByClassName('js-deleteIcon');
     for (let i = 0; i < deleteBtn.length; i++){
@@ -80,12 +91,11 @@ let setDeleteLessonEvent = function () {
     }
 }
 
-//クリックでタブ切り替えするイベントを再付与
+//======  クリックでタブ切り替えするイベントを再付与
 let setToggleEvent = function () {
     let dom =  document.getElementsByClassName('js-toggleTab');
     for(let i=0; i<dom.length; i++ ){
         dom[i].addEventListener('click',function(){
-            console.log(dom[i]);
             let btn = $(this);
             toggleTab(btn);      
         });
@@ -93,9 +103,8 @@ let setToggleEvent = function () {
 }
 
 
-//マークダウンプレビューイベント再付与
+//=====   マークダウンプレビューイベント再付与
 let setMarkedEvent = function () {
-    console.log('マークダウンいべんと再付与');
     
     let $markedDom = document.getElementsByClassName('js-marked__textarea');
     for(let i=0; i<$markedDom.length; i++ ){
@@ -109,12 +118,8 @@ let setMarkedEvent = function () {
 
 const marked = require('marked');
 
-
-
 var markdownpreview = function (option) {
     var html = marked(option.val());
-    console.log(option);
-    console.log(html);
     $(option).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
 };
 
@@ -132,17 +137,11 @@ $('.js-deleteIcon').on('click', function () {
 
 //初期読み込み時、レッスンにnumber付与
 let load = function () {
-    console.log('window.load!!!');
 
     let count = 0;
     let count1 = 1;
     $('.js-add__target').each(function(){
 
-    console.log(typeof count);
-    console.log(typeof count1);
-    console.log(count);
-    console.log(count1);
-    // $(this).prop('value',count);
     //コピー後のそれぞれのinput要素DOMを定義
     let $targetHidden = $('#hidden',this);
     let $targetNumber = $('#number',this);
@@ -171,31 +170,16 @@ window.onload = load();
 let $head = $('.js-toggleTab');
 var toggleTab = function (e) {
 
-    console.log('e');
-    console.log(e);
-    // console.log($(e));
-    
-    let $parent1 = $(e).parents('.js-productNew__lesson');//logよう
     let $areaInput = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--input');
     let $areaPreview = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--preview');
     let $iconPreview = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__preview');
     let $iconEdit = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__input');
-    
-    console.log('parent1');
-    console.log($parent1);
-    console.log('$areaInput');
-    console.log($areaInput);
-    console.log('$areaPreview');
-    console.log($areaPreview);
     
     let target = $(e).attr('data-status');
     $areaInput.removeClass('active');
     $areaPreview.removeClass('active');
     $iconEdit.removeClass('active');
     $iconPreview.removeClass('active');
-    
-    console.log('target');
-    console.log(target);
 
     switch (target) {
         case 'input':

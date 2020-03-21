@@ -38990,6 +38990,8 @@ __webpack_require__(/*! ./components/footerFixed */ "./resources/js/components/f
 
 __webpack_require__(/*! ./components/footerHide */ "./resources/js/components/footerHide.js");
 
+__webpack_require__(/*! ./components/lessonModal */ "./resources/js/components/lessonModal.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39045,10 +39047,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 //レッスン削除ボタンを押したとき
-// let $deleteIcon = $('.js-deleteIcon');
 var deleteLesson = function deleteLesson(e) {
   //削除対象のDOM
   var $deleteTarget = $(e).parents('.js-add__target'); //レッスンの数
@@ -39105,14 +39104,26 @@ $button.on('click', function (e) {
   $copyTaget.clone().appendTo('#js-lesson__section');
   var $newCopyTaget = $('.js-add__target:last-child');
   $newCopyTaget.find('input[type="hidden"]').remove();
-  $newCopyTaget.find('#input').empty();
-  $newCopyTaget.find('textarea').empty(); //load()でnumberの振り直し
+  $newCopyTaget.find('#input').val('');
+  $newCopyTaget.find('textarea').val(''); //load()でnumberの振り直し
 
   load();
   setToggleEvent();
   setMarkedEvent();
   setDeleteLessonEvent();
-}); //クリックでレッスン削除イベントを再付与
+}); //========  クリックでレッスン削除イベントを再付与
+
+var setEvent = function setEvent() {
+  var deleteBtn = document.getElementsByClassName('js-deleteIcon');
+
+  for (var i = 0; i < deleteBtn.length; i++) {
+    deleteBtn[i].addEventListener('click', function () {
+      var btn = $(this);
+      deleteLesson(btn);
+    });
+  }
+}; //========  クリックでレッスン削除イベントを再付与
+
 
 var setDeleteLessonEvent = function setDeleteLessonEvent() {
   var deleteBtn = document.getElementsByClassName('js-deleteIcon');
@@ -39123,28 +39134,22 @@ var setDeleteLessonEvent = function setDeleteLessonEvent() {
       deleteLesson(btn);
     });
   }
-}; //クリックでタブ切り替えするイベントを再付与
+}; //======  クリックでタブ切り替えするイベントを再付与
 
 
 var setToggleEvent = function setToggleEvent() {
   var dom = document.getElementsByClassName('js-toggleTab');
 
-  var _loop = function _loop(i) {
+  for (var i = 0; i < dom.length; i++) {
     dom[i].addEventListener('click', function () {
-      console.log(dom[i]);
       var btn = $(this);
       toggleTab(btn);
     });
-  };
-
-  for (var i = 0; i < dom.length; i++) {
-    _loop(i);
   }
-}; //マークダウンプレビューイベント再付与
+}; //=====   マークダウンプレビューイベント再付与
 
 
 var setMarkedEvent = function setMarkedEvent() {
-  console.log('マークダウンいべんと再付与');
   var $markedDom = document.getElementsByClassName('js-marked__textarea');
 
   for (var i = 0; i < $markedDom.length; i++) {
@@ -39159,8 +39164,6 @@ var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked
 
 var markdownpreview = function markdownpreview(option) {
   var html = marked(option.val());
-  console.log(option);
-  console.log(html);
   $(option).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
 }; //初期状態でマークダウンプレビューイベントを付与
 
@@ -39176,16 +39179,10 @@ $('.js-deleteIcon').on('click', function () {
 }); //初期読み込み時、レッスンにnumber付与
 
 var load = function load() {
-  console.log('window.load!!!');
   var count = 0;
   var count1 = 1;
   $('.js-add__target').each(function () {
-    console.log(_typeof(count));
-    console.log(_typeof(count1));
-    console.log(count);
-    console.log(count1); // $(this).prop('value',count);
     //コピー後のそれぞれのinput要素DOMを定義
-
     var $targetHidden = $('#hidden', this);
     var $targetNumber = $('#number', this);
     var $targetLessonNum = $('#lesson_num', this);
@@ -39208,28 +39205,15 @@ window.onload = load(); //タブ切り替え処理
 var $head = $('.js-toggleTab');
 
 var toggleTab = function toggleTab(e) {
-  console.log('e');
-  console.log(e); // console.log($(e));
-
-  var $parent1 = $(e).parents('.js-productNew__lesson'); //logよう
-
   var $areaInput = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--input');
   var $areaPreview = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--preview');
   var $iconPreview = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__preview');
   var $iconEdit = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__input');
-  console.log('parent1');
-  console.log($parent1);
-  console.log('$areaInput');
-  console.log($areaInput);
-  console.log('$areaPreview');
-  console.log($areaPreview);
   var target = $(e).attr('data-status');
   $areaInput.removeClass('active');
   $areaPreview.removeClass('active');
   $iconEdit.removeClass('active');
   $iconPreview.removeClass('active');
-  console.log('target');
-  console.log(target);
 
   switch (target) {
     case 'input':
@@ -39617,6 +39601,27 @@ toggleOpacity();
 
 /***/ }),
 
+/***/ "./resources/js/components/lessonModal.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/lessonModal.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  console.log('lessonModal');
+  $('.js-modal-open').on('click', function () {
+    $('.js-modal').fadeIn();
+    return false;
+  });
+  $('.js-modal-close').on('click', function () {
+    $('.js-modal').fadeOut();
+    return false;
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/markdown.js":
 /*!*********************************************!*\
   !*** ./resources/js/components/markdown.js ***!
@@ -39785,34 +39790,12 @@ $profileFileInput.on('change', function () {
   }; //       6. 画像読み込み
 
 
-  fileReader.readAsDataURL(file); // 初期設定
-  // var options =
-  // {
-  // aspectRatio: 1 / 1,
-  // viewMode:1,
-  // crop: function(e) {
-  // 	var cropData = $('#js-profile__img').cropper('getData');
-  // $('#upload-image-x').val(Math.floor(cropData.x));
-  // $('#upload-image-y').val(Math.floor(cropData.y));
-  // $('#upload-image-w').val(Math.floor(cropData.width));
-  // $('#upload-image-h').val(Math.floor(cropData.height));
-  // 	},
-  // 	zoomable:false,
-  // 	minCropBoxWidth:162,
-  // 	minCropBoxHeight:162
-  // }
-  // 初期設定をセットする
-  // $('#js-profile__img').cropper(options);
-  // $('#js-profile__img').cropper('replace',URL.createObjectURL(this.files[0]));
-  //画像トリミング
-  // $('#js-profile__img').cropper({
-  //   aspectRatio: 1 / 1
-  // });
+  fileReader.readAsDataURL(file);
 }); //削除処理
 
 $deletebtn.on('click', function () {
   $('.js-prev__img').attr('src', '').show();
-}); // const cropper = require('cropper');
+});
 
 /***/ }),
 

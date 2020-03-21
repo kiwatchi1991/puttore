@@ -32,7 +32,7 @@ class BordsController extends Controller
 
         // $sale_user = User::where('id', $bords->{'p.user_id'});
 
-        $user = User::all;
+        $user = User::all();
 
         Log::debug('$bords↓↓');
         Log::debug($bords);

@@ -28,7 +28,8 @@ class mypageController extends Controller
     public function requestTransfer(Request $request)
     {
         Log::debug('<<<<<<    requesttransfer    >>>>>>>>>>>');
-        //==================プライスフラグを見て、各売上の手数料を引いて振込額を決める
+
+        //=========   プライスフラグを見て、各売上の手数料を引いて振込額を決める
         $untransferred = Order::query()
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('products.user_id', Auth::user()->id)
@@ -39,6 +40,8 @@ class mypageController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
+        // =========      各売上の手数料を引いて振込額を決める
+        //$transfer_price_before 振込手数料を引く前の金額
         $transfer_price_before = $untransferred->groupBy(function ($row) {
             return $row->status;
         })
@@ -59,7 +62,7 @@ class mypageController extends Controller
             //FromBank::find(1)->commission1がメイン
             $commission = FromBank::find(1)->commission1;
         } else {
-            //FromBank::find(1)がメイン
+            //FromBank::find(1)->commission1がメイン
             $commission = FromBank::find(1)->commission1;
         }
 
@@ -69,37 +72,21 @@ class mypageController extends Controller
         $transfer->user_id = Auth::user()->id;
         //振込手数料を引いたものを振込む
         $transfer->transfer_price = $transfer_price_before; //運営が振り込む金額
-        $transfer->transferred_price = $transfer_price_after; //運営手数料を引いて実際に振り込まれる金額
+        $transfer->transferred_price = $transfer_price_after; //システム手数料を引いて実際に振り込まれる金額
         $transfer->commission = $commission;
         $transfer->from_bank_id = 1;
         $transfer->payment_date = Carbon::parse('last day of next month');
         $transfer->save();
 
-        Log::debug('新規に作った振込依頼テーブル');
-        Log::debug($transfer);
-
         //オーダーに結びつく振込テーブルidを格納
-        Log::debug('$untransferred');
-        Log::debug($untransferred);
 
-        // $ids = $untransferred->select('id');
         $ids = $untransferred->pluck('id');
-        Log::debug('$ids');
-        Log::debug($ids);
 
-        // foreach ($untransferred as  => $id) {
-        //     $ids = $id;
-        // };
+        //新規作成した振込依頼テーブルに結びつく注文情報を更新
+        $orders = Order::whereIn('id', $ids)->update(['status' => 1]); //１は申請中（振込前）
+        $orders = Order::whereIn('id', $ids)->update(['transfer_id' => $transfer->id]);
 
-        $orders = Order::whereIn('id', $ids)->update(['status' => 1]);
-
-        Log::debug('該当する注文を検索し、statusを0にする');
-        // Log::debug([$orders]);
-
-        //statusを１に
-
-
-        return;
+        return redirect()->route('mypage.order');
     }
 
     public function index(Request $request)
@@ -231,7 +218,7 @@ class mypageController extends Controller
         ]);
     }
     //=============================================
-    //========  1ヶ月の売上リストページ ==============
+    //========  1ヶ月の売上リストページ   ============
     //=============================================
     public function orderMonth(Request $request, $year_month)
     {
@@ -266,7 +253,7 @@ class mypageController extends Controller
     }
 
     //=============================================
-    //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝振込履歴ページ
+    //==========        振込履歴ページ     ==========
     //=============================================
     public function paid(Request $request)
     {

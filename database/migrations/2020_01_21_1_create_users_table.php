@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('account_detail')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('pic')->nullable();
+            $table->string('pic')->nullable()->default('images/noavatar.png');
             $table->rememberToken();
             $table->tinyInteger('delete_flg')->default(0);
             $table->timestamps();
@@ -36,6 +36,5 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-        
     }
 }

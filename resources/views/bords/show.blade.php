@@ -10,9 +10,9 @@ $order_type = ($buy_userId == $self_user_id) ? "購入" : "販売";
 $class_order_type = ($buy_userId == $self_user_id) ? "buy" : "sell";
 
 if($order_type == "購入"){
-$pic = $user->find($sell_userId)->pic;
+$pic = ($user->find($sell_userId)->pic) ? $user->find($sell_userId)->pic : '';
 }else{
-$pic = $user->find($buy_userId)->pic;
+$pic = ($user->find($buy_userId)->pic) ? $user->find($buy_userId)->pic : '';
 }
 
 

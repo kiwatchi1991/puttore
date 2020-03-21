@@ -17,11 +17,14 @@ main{
 input{
     box-sizing: border-box;
     border:none;
+    font-size: 16px;
 } 
 
 textarea{
     border:none;
     box-sizing: border-box;
+    font-size: 16px;
+    padding: 16px;
 }
 
 a:visited{

@@ -15,26 +15,18 @@
     $class_order_type = ($buy_userId == $id) ? "buy" : "sell";
 
     if($order_type == "購入"){
-    // $pic = $sale_user->pic;
-    // $pic = $user->find('id',$sell_userId)->pic;
+    $pic = $user->find($sell_userId);
     }else{
-    // $pic= $sale_user->pic;
-    // $pic = User::find($buy_userId)->pic;
-    // $pic = $user->find($buy_userId)->pic;
+    $pic = $user->find($buy_userId);
     }
     @endphp
 
-    {{ $user->find($sell_userId) }}
-    {{ $buy_userId }}
-    {{ $sell_userId }}
-    {{ $order_type }}
-    {{ $class_order_type }}
     <a class="c-bord__list" href="{{ route('bords.show',$bord->id) }}">
         <div class="c-bord__inner">
 
             <div class="c-bord__half--left">
                 <div class="c-bord__userImg__wrapper">
-                    {{-- <img src="/storage/{{ $pic }}" alt="" class="c-bord__userImg"> --}}
+                    <img src="/storage/{{ $pic->pic }}" alt="" class="c-bord__userImg">
                 </div>
             </div>
 
@@ -54,13 +46,5 @@
         </div>
     </a>
     @endforeach
-    <script type="text/javascript">
-        window.load = function(){
-    
-            if($('#footer-none')){
-                $('#footer').hide();
-            }
-        }
-    </script>
 </div>
 @endsection

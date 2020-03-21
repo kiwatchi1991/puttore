@@ -260,45 +260,16 @@
   }
 }
 
-
-// .c-lesson{
-//   &__number{
-//     text-align: left;
-//   }
-
-//   &__block{
-//     margin-top: 30px;
-//     &--preview{
-//       width: 100%;
-//       border: 1px solid #333;
-//       height: 200px;
-//     }
-//   }
-
-
-//   &__header{
-//     display: flex;
-//     background: #fff;
-//   }
-
-//   &__lesson{
-//     display: none;
-//     height: 250px;
-//     text-align: left;
-//     &--preview{
-//       padding: 24px 16px;
-//       height: auto;
-//     }
-//     &.active{
-//       display: block;
-//     }
-
-//   }
-// }
-
 .c-productNew{
   background: $bg;
   padding: 30px;
+    &__title__head{
+      font-size: 23px;
+      line-height:31px;
+      letter-spacing: 0.7px;
+      color: $main-color;
+      padding-bottom: 24px;
+    }
     &__title__label{
       font-size: 14px;
       color: $main-color;
@@ -450,6 +421,7 @@
       padding: 24px 16px;
       min-height: 250px;
       background: #fff;
+      box-sizing: border-box;
       max-height: 700px;
     }
     &__addBtn{

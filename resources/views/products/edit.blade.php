@@ -7,6 +7,7 @@
         @csrf
         {{-- 名前 --}}
         <div class="">
+            <p class="c-productNew__title__label">タイトル</p>
             <input id="name" type="text" class="c-productEdit__input-area @error('name') is-invalid @enderror"
                 name="name" value="{{ $product->name }}" autocomplete="name" placeholder="教材のタイトル（例：Twitter風アプリを作ろう）">
 
@@ -16,7 +17,7 @@
             </span>
             @enderror
         </div>
-
+        <p class="c-productNew__title__label c-productNew__title__label--tags">言語・難易度選択</p>
         <div class="c-productEdit__tagbox">
 
             {{-- 言語選択 --}}
@@ -26,10 +27,12 @@
                 @foreach ($category as $categories)
                 <input id="c-{{ $categories->id }}" type="checkbox"
                     class="c-productEdit__checkbox @error('lang') is-invalid @enderror" name="lang[]"
-                    value="{{ $categories->id }}" autocomplete="lang" @if( $product->categories->contains(function
-                ($category1) use ($categories) {
-                return $category1->id === $categories->id;
-                })
+                    value="{{ $categories->id }}" autocomplete="lang" @if( // $product->categories->contains(function
+                // ($category1) use ($categories) {
+                // return $category1->id === $categories->id;
+                // })
+                in_array($categories->id, old('lang', $product->categories->pluck('id')->toArray()))
+
                 ) checked @endif>
                 <label class="c-productEdit__label" for="c-{{ $categories->id }}">
                     {{ $categories->name }}
@@ -62,7 +65,7 @@
         </div>
         {{-- 説明 --}}
         <div class="c-productEdit__detail">
-
+            <p class="c-productNew__title__label">説明文</p>
             <textarea id="detail" type="text"
                 class="c-productEdit__input-area c-productEdit__input-area--detail @error('detail') is-invalid @enderror"
                 data-input="detail" name="detail" value="{{ old('detail') }}" rows="7">{{ $product->detail }}
@@ -174,6 +177,7 @@
 
         {{-- 価格 --}}
         <div class="">
+            <p class="c-productNew__title__label">価格</p>
             <input id="default_price" type="text"
                 class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
                 name="default_price" value="{{ $product->default_price }}" autocomplete="default_price"
@@ -191,7 +195,7 @@
 
         {{-- 割引価格 --}}
         <div class="">
-            <label for="default_price" class="">割引価格</label>
+            <p class="c-productNew__title__label">割引価格</p>
             <div class="">
 
 
@@ -207,14 +211,14 @@
 
             </div>
             <div class="">
-                <input type="text" name="start_date"
+                開始日<input type="text" name="start_date"
                     class="new__input-area js-date_picker @error('sale_price') is-invalid @enderror"
-                    value="@if($discount_price){{ $discount_price->start_date }} @endif">開始日
+                    value="@if($discount_price){{ $discount_price->start_date }} @endif">
             </div>
             <div>
-                <input type="text" name="end_date"
+                終了日<input type="text" name="end_date"
                     class="new__input-area js-date_picker @error('sale_price') is-invalid @enderror"
-                    value="@if($discount_price){{ $discount_price->end_date }} @endif">終了日
+                    value="@if($discount_price){{ $discount_price->end_date }} @endif">
             </div>
         </div>
 
