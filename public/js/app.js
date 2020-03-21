@@ -38986,6 +38986,8 @@ __webpack_require__(/*! ./components/buyimgSlider */ "./resources/js/components/
 
 __webpack_require__(/*! ./components/request-transfer */ "./resources/js/components/request-transfer.js");
 
+__webpack_require__(/*! ./components/footerFixed */ "./resources/js/components/footerFixed.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39041,7 +39043,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 //レッスン削除ボタンを押したとき
 // let $deleteIcon = $('.js-deleteIcon');
@@ -39436,6 +39438,87 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/js/components/footerFixed.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/footerFixed.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*--------------------------------------------------------------------------*
+ *
+ *  footerFixed.js
+ *
+ *  MIT-style license.
+ *
+ *  2007 Kazuma Nishihata [to-R]
+ *  http://blog.webcreativepark.net
+ *
+ *--------------------------------------------------------------------------*/
+new function () {
+  var footerId = "footer"; //メイン
+
+  function footerFixed() {
+    //ドキュメントの高さ
+    var dh = document.getElementsByTagName("body")[0].clientHeight; //フッターのtopからの位置
+
+    document.getElementById(footerId).style.top = "0px";
+    var ft = document.getElementById(footerId).offsetTop; //フッターの高さ
+
+    var fh = document.getElementById(footerId).offsetHeight; //ウィンドウの高さ
+
+    if (window.innerHeight) {
+      var wh = window.innerHeight;
+    } else if (document.documentElement && document.documentElement.clientHeight != 0) {
+      var wh = document.documentElement.clientHeight;
+    }
+
+    if (ft + fh < wh) {
+      document.getElementById(footerId).style.position = "relative";
+      document.getElementById(footerId).style.top = wh - fh - ft - 1 + "px";
+    }
+  } //文字サイズ
+
+
+  function checkFontSize(func) {
+    //判定要素の追加
+    var e = document.createElement("div");
+    var s = document.createTextNode("S");
+    e.appendChild(s);
+    e.style.visibility = "hidden";
+    e.style.position = "absolute";
+    e.style.top = "0";
+    document.body.appendChild(e);
+    var defHeight = e.offsetHeight; //判定関数
+
+    function checkBoxSize() {
+      if (defHeight != e.offsetHeight) {
+        func();
+        defHeight = e.offsetHeight;
+      }
+    }
+
+    setInterval(checkBoxSize, 1000);
+  } //イベントリスナー
+
+
+  function addEvent(elm, listener, fn) {
+    try {
+      elm.addEventListener(listener, fn, false);
+    } catch (e) {
+      elm.attachEvent("on" + listener, fn);
+    }
+  }
+
+  addEvent(window, "load", footerFixed);
+  addEvent(window, "load", function () {
+    checkFontSize(footerFixed);
+  });
+  addEvent(window, "resize", footerFixed);
+}();
+
+/***/ }),
+
 /***/ "./resources/js/components/hamgurger.js":
 /*!**********************************************!*\
   !*** ./resources/js/components/hamgurger.js ***!
@@ -39767,7 +39850,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\n\n    @include px{\n   ^\n      Undefined mixin.\n   ╷\n80 │ ┌     @include px{\n81 │ │       font-size: 15px;\n82 │ └     }\n   ╵\n  resources/sass/object/component/_authChange.scss 80:5  @import\n  stdin 35:9                                             root stylesheet\n      in /Applications/MAMP/htdocs/PUTTORE/resources/sass/object/component/_authChange.scss (line 80, column 5)\n    at /Applications/MAMP/htdocs/PUTTORE/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Applications/MAMP/htdocs/PUTTORE/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Applications/MAMP/htdocs/PUTTORE/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Applications/MAMP/htdocs/PUTTORE/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at /Applications/MAMP/htdocs/PUTTORE/node_modules/sass-loader/dist/index.js:89:7\n    at Function.call$2 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:87203:16)\n    at _render_closure1.call$2 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:76994:12)\n    at _RootZone.runBinary$3$3 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:25521:18)\n    at _RootZone.runBinary$3 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:25525:19)\n    at _FutureListener.handleError$1 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:23975:19)\n    at _Future__propagateToListeners_handleError.call$0 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:24271:40)\n    at Object._Future__propagateToListeners (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:3500:88)\n    at _Future._completeError$2 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:24099:9)\n    at _AsyncAwaitCompleter.completeError$2 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:23491:12)\n    at Object._asyncRethrow (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:3256:17)\n    at /Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:13326:20\n    at _wrapJsFunctionForAsync_closure.$protected (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:3279:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:23512:12)\n    at _awaitOnObject_closure0.call$2 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:23504:25)\n    at _RootZone.runBinary$3$3 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:25521:18)\n    at _RootZone.runBinary$3 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:25525:19)\n    at _FutureListener.handleError$1 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:23975:19)\n    at _Future__propagateToListeners_handleError.call$0 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:24271:40)\n    at Object._Future__propagateToListeners (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:3500:88)\n    at _Future._completeError$2 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:24099:9)\n    at _AsyncAwaitCompleter.completeError$2 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:23491:12)\n    at Object._asyncRethrow (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:3256:17)\n    at /Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:15981:20\n    at _wrapJsFunctionForAsync_closure.$protected (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:3279:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:23512:12)\n    at _awaitOnObject_closure0.call$2 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:23504:25)\n    at _RootZone.runBinary$3$3 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:25521:18)\n    at _RootZone.runBinary$3 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:25525:19)\n    at _FutureListener.handleError$1 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:23975:19)\n    at _Future__propagateToListeners_handleError.call$0 (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:24271:40)\n    at Object._Future__propagateToListeners (/Applications/MAMP/htdocs/PUTTORE/node_modules/sass/sass.dart.js:3500:88)");
 
 /***/ }),
 
@@ -39778,8 +39861,8 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/JISAKU/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/JISAKU/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/PUTTORE/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/PUTTORE/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

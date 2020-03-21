@@ -6,7 +6,9 @@
     <div class="">
 
       <div class="c-authChange__container">
-        <div class="c-authChange__title">パスワード変更</div>
+        <p class="c-authChange__title">パスワード変更</p>
+        <p class="c-authChange__title--under">Change Password</p>
+
 
         @if (session('change_password_error'))
         <div class="container mt-2">

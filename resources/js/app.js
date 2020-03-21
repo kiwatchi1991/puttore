@@ -14,3 +14,4 @@ require('./components/sessionFlash');
 require('./components/imgSlider');
 require('./components/buyimgSlider');
 require('./components/request-transfer');
+require('./components/footerFixed');

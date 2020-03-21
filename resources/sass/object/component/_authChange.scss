@@ -1,15 +1,40 @@
 .c-authChange__container{
   padding:24px 10px;
   background: #E5F6F2;
+  @include pc{
+    width: 520px;
+    margin: 0 auto;
+    background: #fff;
+  }
 }
 
 .c-authChange__title{
     margin: 32px 0;
     color: #00ac7d;
     font-size: 24px;
+    @include pc{
+      margin-top: 80px;
+      margin-bottom: 10px;
+      font-size: 30px;
+      text-align: center;
+      letter-spacing: 3px;
+    }
+    &--under{
+      display: none;
+      color: $main-color;
+      text-align: center;
+      @include pc {
+        display: block;
+        font-size: 18px;
+        letter-spacing: 3px;
+      }
+    }
 }
 
 .c-authChange__form{
+  @include pc{
+    margin-top: 60px;
+  }
   &--text{
     margin-bottom: 12px;
     font-size: 10px;
@@ -31,12 +56,17 @@
     background: #fff;
     width: 100%;
     border-radius: 5px;
+    @include pc{
+      background: $low-gr;
+      font-size: 15px;
+    }
   }
   &--button{
     width: 75%;
     margin: 0 auto;
     @include pc{
-
+      width: 100%;
+      font-size: 15px;
     }
   }
 
@@ -47,5 +77,8 @@
     width: 100%;
     color: white;
     -webkit-appearance: none;
+    @include px{
+      font-size: 15px;
+    }
   }
 }

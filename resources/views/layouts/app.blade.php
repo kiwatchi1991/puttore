@@ -218,7 +218,7 @@
         </div>
         <div class="c-footer__logo--img">
           <a class="" href="{{ url('/') }}">
-            <img src="/storage/images/logo.png" alt="ぷっとれ" width="150">
+            <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
           </a>
         </div>
       </div>
