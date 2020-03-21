@@ -9,36 +9,30 @@
     <div class="c-mypage__nav__list"><a href="/mypage/paid">振込履歴</a></div>
 </div>
 
-
-
-{{-- @if($sale_history->status == 0)
-    未振込はこっち
-    {{ $sale_history }}
-
-@endif --}}
-
 <div class="c-mypage__order">
     <div class="c-mypage__sale">
         <div class="c-profile__title__product">
             <h2>振込履歴</h2>
         </div>
 
-        <div class="c-mypage__sale__month">
+        <div class="c-mypage__sale__paid">
             <table>
                 <thead>
                     <tr>
-                        <th class="c-mypage__sale__list c-mypage__sale__list--day">購入日</th>
-                        <th class="c-mypage__sale__list c-mypage__sale__list--title">タイトル</th>
-                        <th class="c-mypage__sale__list c-mypage__sale__list--price">価格</th>
+                        <th class="c-mypage__sele__list c-mypage__sele__list--request">振込依頼日</th>
+                        <th class="c-mypage__sele__list c-mypage__sele__list--done">振込日</th>
+                        <th class="c-mypage__sele__list c-mypage__sele__list--price">振込額</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($paids as $paid)
                     <tr>
-                        <td class="c-mypage__sale__list c-mypage__sale__list--day">
+                        <td class="c-mypage__sele__list c-mypage__sele__list--day">
                             {{$paid->created_at->format('Y年m月d日')}}</td>
-                        <td class="c-mypage__sale__list c-mypage__sale__list--title">{{$paid->name}}</td>
-                        <td class="c-mypage__sale__list c-mypage__sale__list--price">¥
+                        <td class="c-mypage__sele__list c-mypage__sele__list--title">
+                            {{$paid->paid_date }}</td>
+                        @php echo var_dump($paid->paid_date) @endphp
+                        <td class="c-mypage__sele__list c-mypage__sele__list--price">¥
                             {{number_format($paid->sale_price)}}</td>
                     </tr>
                     @endforeach

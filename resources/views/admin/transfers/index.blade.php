@@ -5,8 +5,8 @@
     <div class="c-admin__sort">
         <p class="c-admin__sort__title">並べ替え</p>
         <div class="p-admin__sort__listWrap">
-            {{-- <a class="c-admin__sort__list" href="{{ route('admin.transfer','sort=0')}}">id 降順▼</a> --}}
-            {{-- <a class="c-admin__sort__list" href="{{ route('admin.transfer','sort=1')}}">id 昇順▲</a> --}}
+            <a class="c-admin__sort__list" href="{{ route('admin.transfer','sort=0')}}">id 降順▼</a>
+            <a class="c-admin__sort__list" href="{{ route('admin.transfer','sort=1')}}">id 昇順▲</a>
         </div>
     </div>
 

@@ -37,9 +37,9 @@ class adminController extends Controller
     $sortFlg = $request->sort;
     if (isset($sortFlg)) {
       if ($sortFlg == '1') {
-        $users = User::latest()->get();
-      } elseif ($sortFlg == '0') {
         $users = User::all();
+      } elseif ($sortFlg == '0') {
+        $users = User::latest()->get();
       }
     } else {
       $users = User::all();
@@ -157,7 +157,8 @@ class adminController extends Controller
       if ($sortFlg == '1') {
         $products = $products->get();
       } elseif ($sortFlg == '0') {
-        $products = $products->orderBy('products.id', 'desc')->get();
+        $products = $products->orderBy('products.id', 'desc');
+        // $products = $products->latest()->get();
       }
     }
 
@@ -350,38 +351,38 @@ class adminController extends Controller
   // =======   振込依頼  ==============
   // =================================
 
-  // 注文一覧表示
+  // 振込依頼一覧表示
   public function transferIndex(Request $request)
   {
     Log::debug('transferIndex');
 
     //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
     $transfers = Transfer::join('users', 'transfers.user_id', 'users.id')
-      ->select('transfers.id', 'transfer_price', 'payment_date', 'users.email',)
-      ->get();
-
-    // Order::join('products', 'orders.product_id', 'products.id')
-    //   ->join('users', 'products.user_id', 'users.id')
-    //   ->select('orders.id', 'orders.user_id as buy.u_id', 'sale_price', 'products.user_id as sale.u_id', 'products.name');
-
+      ->select('transfers.id', 'transfer_price', 'payment_date', 'users.email');
 
     // 初期表示
     // if (empty($request->sort) && empty($request->keyword)) {
-    //   $orders = $orders->get();
+    //   $transfers = $transfers->get();
+    //   Log::debug('通ってないこと確認');
     // }
 
+
+    Log::debug('$request');
+    Log::debug($request);
     Log::debug('$transfers');
     Log::debug($transfers);
 
-    //並べかえ（降順/昇順が押された場合）
-    // $sortFlg = $request->sort;
-    // if (isset($sortFlg)) {
-    //   if ($sortFlg == '1') {
-    //     $orders = $orders->get();
-    //   } elseif ($sortFlg == '0') {
-    //     $orders = $orders->orderBy('orders.id', 'desc')->get();
-    //   }
-    // }
+    // 並べかえ（降順/昇順が押された場合）
+    $sortFlg = $request->sort;
+    if (isset($sortFlg)) {
+      if ($sortFlg == '1') {
+        $transfers = $transfers->get();
+      } elseif ($sortFlg == '0') {
+        $transfers = $transfers->orderBy('transfers.id', 'desc');
+      }
+    } else {
+      $transfers = $transfers->get();
+    }
 
     return view('admin.transfers.index', [
       'transfers' => $transfers,
@@ -433,10 +434,13 @@ class adminController extends Controller
     if (!empty($request->get('update'))) {
 
       $updateIds = $request->get('update');
-      // $paid_date = $request->get('paid_date');
       Log::debug('$updateIds');
       Log::debug($updateIds);
-      Transfer::whereIn('id', $updateIds)->update(['status' => 2, 'paid_date' => Carbon::parse($updateIds[$updateIds]['paid_date'])]);
+      foreach ($updateIds as $updateId) {
+        Log::alert('$updateId');
+        Log::alert($updateId);
+        Transfer::whereIn('id', $updateId)->update(['status' => 2, 'paid_date' => Carbon::parse($updateId['paid_date'])]);
+      }
     }
 
     return redirect('/admin/transfer')->with('flash_message', 'ステータスを更新しました');

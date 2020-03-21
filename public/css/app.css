@@ -5275,6 +5275,29 @@ a:visited {
   font-size: 14px;
 }
 
+.c-mypage__sale__paid {
+  margin: 40px auto 0;
+  display: inline-block;
+}
+
+.c-mypage__sale__paid thead {
+  background: #E5F6F2;
+  font-size: 14px;
+}
+
+.c-mypage__sale__paid th {
+  padding: 8px 0;
+}
+
+.c-mypage__sale__paid tr {
+  border-bottom: 1px solid #E5F6F2;
+}
+
+.c-mypage__sale__paid td {
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
 .c-mypage__sale__list--day {
   min-width: 100px;
 }

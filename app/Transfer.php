@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transfer extends Model
 {
-    //
+    protected $dates = [
+        'paid_date'
+    ];
 }
