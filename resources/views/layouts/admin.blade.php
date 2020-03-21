@@ -74,20 +74,20 @@
                                 @endauth
 
                                 <li class="global-nav__item">
-                                    <a href="{{ route('products') }}"
-                                        class="global-nav__item__link @guest first @endguest">作品を見る</a>
+                                  <a href="{{ route('admin.user') }}"
+                                  class="global-nav__item__link @guest first @endguest">ユーザー一覧</a>
                                 </li>
                                 <li class="global-nav__item">
-                                    <a href="{{ route('products.new') }}" class="global-nav__item__link">出品する</a>
+                                  <a href="{{ route('admin.product') }}" class="global-nav__item__link">プロダクト一覧</a>
                                 </li>
+                                <li class="global-nav__item">
+                                  <a href="{{ route('admin.contact') }}" class="global-nav__item__link">お問い合わせ一覧</a>
+                                </li>
+                                <li class="global-nav__item">
+                                  <a href="{{ route('admin.order') }}" class="global-nav__item__link">注文一覧</a>
+                                </li>
+
                                 @auth
-                                <li class="global-nav__item">
-                                    <a href=" {{ route('profile.show',$user->id) }}"
-                                        class="global-nav__item__link">マイページ</a>
-                                </li>
-                                <li class="global-nav__item">
-                                    <a href=" {{ route('bords') }}" class="global-nav__item__link">メッセージボード</a>
-                                </li>
                                 <li class="global-nav__item">
                                     <a onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();"

@@ -6,6 +6,9 @@
     height: 60px;
     cursor: pointer;
     z-index: 300;
+    @include pc{
+      display: none;
+    }
     &__line {
       position: absolute;
       left: 11px;
@@ -51,7 +54,7 @@
     padding: 0;
     list-style: none;
   }
-  
+
   &__item {
     margin-left: 64px;
     color: $main-text;
@@ -88,7 +91,7 @@
         border-top: 1px solid $high-gr;
         padding: 32px 0 32px 24px;
       }
-   
+
     }
     &--profile{
          margin-top: 64px;
@@ -122,7 +125,7 @@
     background-color: #eee;
   }
 
-  
+
 
   .black-bg {
     position: fixed;
@@ -147,24 +150,26 @@
   .global-nav {
     right: 0;
   }
-  
+
   .black-bg {
     opacity: .8;
     visibility: visible;
   }
-  
+
   .hamburger__line--1 {
     transform: rotate(45deg);
     top: 30px;
   }
-  
+
   .hamburger__line--2 {
     width: 0;
     left: 50%;
   }
-  
+
   .hamburger__line--3 {
     transform: rotate(-45deg);
     top: 30px;
   }
 }
+
+

@@ -35,7 +35,7 @@ $header-height : 60px;
 $test : 1px solid #333;
 
 // メディアクエリ
-$pc: 481px; // PC
+$pc: 768px; // PC
 
 @mixin pc {
   @media (min-width: ($pc)) {

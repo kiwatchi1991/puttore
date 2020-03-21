@@ -14,9 +14,6 @@
     margin-bottom: 12px;
     font-size: 10px;
     display: block;
-    @include pc{
-        // text-align: center;
-      }
   }
 
   &--body{
@@ -24,9 +21,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @include pc{
-        // text-align: center;
-      }
+
   }
 
   &--input{
@@ -35,6 +30,7 @@
     padding: 10px;
     background: #fff;
     width: 100%;
+    border-radius: 5px;
   }
   &--button{
     width: 75%;

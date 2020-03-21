@@ -9,14 +9,27 @@
     z-index: 10;
     box-shadow: 0 0px 6px rgba(0, 0, 0, 0.16);
     opacity: .9;
+    @include pc{
+      height: 70px;
+      background: $main-color;
+    }
 }
 .header__inner{
     display: flex;
     justify-content: space-between;
+    @include pc{
+      margin: 0 auto;
+      max-width: 834px;
+    }
 }
 
 .header__logo{
     margin: 15px 0 0 15px;
+    @include pc{
+      margin: 10px 0px;
+      position: relative;
+      top: -8px;
+    }
 }
 
 .c-header__sessionMessage{
@@ -34,4 +47,43 @@
         color: #000;
         opacity: 0.8;
         z-index: 99;
+}
+
+//PC時のヘッダーナビゲーションメニュー
+//==============================
+.global-nav__pc{
+  display: none;
+  height: 70px;
+  width: 450px;
+  @include pc{
+    display: block;
+  }
+  &--wrap{
+    height: 70px;
+  }
+  &--list{
+    height: 100%;
+    display: flex;
+    font-size: 15px;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    color: $sub-text;
+  }
+
+  &__profile{
+    &__img__wrapper{
+      background-image: url("/storage/images/noavatar.png");
+      background-position: center;
+      background-size: contain;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    &__img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    }
+  }
 }
