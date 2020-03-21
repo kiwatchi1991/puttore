@@ -5,18 +5,18 @@
     <div class="c-admin__sort">
         <p class="c-admin__sort__title">並べ替え</p>
         <div class="p-admin__sort__listWrap">
-            <a class="c-admin__sort__list" href="{{ route('admin.transfer','sort=0')}}">id 降順▼</a>
-            <a class="c-admin__sort__list" href="{{ route('admin.transfer','sort=1')}}">id 昇順▲</a>
+            <a class="c-admin__sort__list" href="{{ route('admin.transfer','sort=1')}}">id 降順▼</a>
+            <a class="c-admin__sort__list" href="{{ route('admin.transfer','sort=0')}}">id 昇順▲</a>
         </div>
     </div>
 
     <div class="c-admin__search">
-        {{-- <form class="" method="post" action="{{ route('admin.transfer.search') }}"> --}}
-        @csrf
-        <div class="c-admin__search__wrap">
-            <input class="c-admin__input" type="text" name="keyword" value="" placeholder="メールアドレスで検索">
-            <input class="c-admin__search__btn" type="submit" value="検索">
-        </div>
+        <form class="" method="post" action="{{ route('admin.transfer.search') }}">
+            @csrf
+            <div class="c-admin__search__wrap">
+                <input class="c-admin__input" type="text" name="keyword" value="" placeholder="メールアドレスで検索">
+                <input class="c-admin__search__btn" type="submit" value="検索">
+            </div>
         </form>
     </div>
 

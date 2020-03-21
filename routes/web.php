@@ -56,6 +56,7 @@ Route::get('/admin/contacts/{id}',  'adminController@contactShow')->name('admin.
 //管理画面
 //振込依頼
 Route::get('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer');
+Route::post('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer.search');
 Route::get('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
 Route::post('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
 Route::post('/admin/transfer/update/{id?}',  'adminController@transferUpdate')->name('admin.transfer.update');

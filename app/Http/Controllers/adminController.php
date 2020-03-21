@@ -30,36 +30,23 @@ class adminController extends Controller
   // =================================
   // =======   ユーザー  ==============
   // =================================
+
   public function userIndex(Request $request)
   {
-    Log::debug($request);
-    //並べかえ（降順/昇順が押された場合）
-    $sortFlg = $request->sort;
-    if (isset($sortFlg)) {
-      if ($sortFlg == '1') {
-        $users = User::all();
-      } elseif ($sortFlg == '0') {
-        $users = User::latest()->get();
-      }
-    } else {
-      $users = User::all();
-    }
 
-
-    //キーワード検索
     $keyword = $request->keyword;
-    if (!empty($keyword)) {
-      Log::debug('キーワード検索の処理に入ってる');
-      $users = User::where('email', 'like', '%' . $keyword . '%')->get();
-    }
+    $users = User::when($request->keyword, function ($query) use ($keyword) {
+      $query->where('email', 'like', '%' . $keyword . '%');
+    })
+      ->orderBy('users.id', $request->sort == 0 ? 'asc' : 'desc')
+      ->get();
 
     return view('admin.users.index', [
       'users' => $users,
     ]);
   }
 
-
-
+  //＝＝＝＝＝＝＝＝＝＝＝＝＝　ユーザー 編集　＝＝＝＝＝
   public function userEdit($id)
   {
     $user = User::find($id);
@@ -68,6 +55,7 @@ class adminController extends Controller
     ]);
   }
 
+  // ================== ユーザー 更新　＝＝＝＝＝＝＝＝
   public function userUpdate(Request $request, $id)
   {
     Log::debug('<< userUpdate >>');
@@ -80,7 +68,7 @@ class adminController extends Controller
     return redirect()->route('admin.user')->with('flash_message', 'ユーザー情報を更新しました');
   }
 
-  //削除前確認）
+  // =================  ユーザー　削除前確認 =============
   public function userDeleteConfirm(Request $request, $id)
   {
     Log::debug('<< deleteConfirm >>');
@@ -108,16 +96,10 @@ class adminController extends Controller
     ]);
   }
 
-  //削除
+  // ==============  ユーザー削除 =========
   public function userDelete(Request $request)
   {
-    // GETパラメータが数字かどうかをチェックする
-    // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
-    // if(!empty($id)){
-    //   if (!ctype_digit($id)) {
-    //     return redirect('/admin/users')->with('flash_message', __('もう一度やり直してください'));
-    //   }
-    // }
+
     Log::debug('<< deleteData >>');
     Log::debug($request);
 
@@ -135,65 +117,45 @@ class adminController extends Controller
   }
 
   // =================================
-  // =======    プロダクト  ==============
+  // =======    プロダクト  ============
   // =================================
-  // プロダクト一覧表示
+
+  //  =========== プロダクト一覧表示  ========== 
   public function productIndex(Request $request)
   {
     Log::debug($request);
     //並べかえ（降順/昇順が押された場合）
 
     // product情報の取得
-    $products = Product::join('users', 'products.user_id', '=', 'users.id')
-      ->select('products.id', 'products.name', 'products.user_id', 'users.email');
-
-    // 初期表示
-    if (empty($request->sort) && empty($request->keyword)) {
-      $products = $products->get();
-    }
-
-    $sortFlg = $request->sort;
-    if (isset($sortFlg)) {
-      if ($sortFlg == '1') {
-        $products = $products->get();
-      } elseif ($sortFlg == '0') {
-        $products = $products->orderBy('products.id', 'desc');
-        // $products = $products->latest()->get();
-      }
-    }
-
-
-    //キーワード検索
     $keyword = $request->keyword;
-    if (!empty($keyword)) {
-      Log::debug('キーワード検索の処理に入ってる');
-      $products = $products->where('email', 'like', '%' . $keyword . '%')->get();
-    }
+    $products = Product::join('users', 'products.user_id', '=', 'users.id')
+      ->select('products.id', 'products.name', 'products.user_id', 'users.email')
+      ->when($request->keyword, function ($query) use ($keyword) {
+        $query->where('email', 'like', '%' . $keyword . '%');
+      })
+      ->orderBy('products.id', $request->sort == 0 ? 'asc' : 'desc')
+      ->get();
 
     return view('admin.products.index', [
       'products' => $products,
     ]);
   }
 
-  //プロダクト詳細（閲覧のみ）
+  //========== プロダクト詳細（閲覧のみ） ========
   public function productShow(Request $request, $id)
   {
     Log::debug('<< productShow >>');
     Log::debug($request);
     Log::debug($id);
 
-    // $deleteIds[] = $request->get('delete_id');
-
-    // foreach ($deleteIds as $deleteId) {
     $product = Product::find($id);
-    // }
 
     return view('admin.products.show', [
       'product' => $product,
     ]);
   }
 
-  //削除前確認）
+  //===========  プロダクト削除前確認 ============
   public function productDeleteConfirm(Request $request, $id)
   {
     Log::debug('<< productdeleteConfirm >>');
@@ -209,9 +171,7 @@ class adminController extends Controller
 
       $products = Product::whereIn('id', $deleteIds)->get();
     } else if (!empty($id)) {
-      // $products =  collect([User::find($id)]);
       $products = Product::where('id', $id)->get();
-      // $products = User::whereIn('id', $id)->get();
     }
 
     Log::debug('$products');
@@ -222,7 +182,7 @@ class adminController extends Controller
     ]);
   }
 
-  //削除
+  // =======  プロダクト削除　==============
   public function productDelete(Request $request)
   {
 
@@ -236,9 +196,6 @@ class adminController extends Controller
       Log::debug($deleteIds);
       $users = Product::whereIn('id', $deleteIds)->delete();
     }
-    // else if (!empty($id)) {
-    //   $users = Product::find($id)->delete();
-    // }
 
     return redirect('/admin/products')->with('flash_message', '削除しました');
   }
@@ -248,7 +205,7 @@ class adminController extends Controller
   // =======   注文台帳  ==============
   // =================================
 
-  // 注文一覧表示
+  //================  注文一覧表示 ==========
   public function orderIndex(Request $request)
   {
     Log::debug('orderIndex');
@@ -256,43 +213,23 @@ class adminController extends Controller
     //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
     $orders = Order::join('products', 'orders.product_id', 'products.id')
       ->join('users', 'products.user_id', 'users.id')
-      ->select('orders.id', 'orders.user_id as buy.u_id', 'sale_price', 'products.user_id as sale.u_id', 'products.name');
-
-    // 初期表示
-    if (empty($request->sort) && empty($request->keyword)) {
-      $orders = $orders->get();
-    }
-
-    Log::debug('$orders');
-    Log::debug($orders);
-
-    //並べかえ（降順/昇順が押された場合）
-    $sortFlg = $request->sort;
-    if (isset($sortFlg)) {
-      if ($sortFlg == '1') {
-        $orders = $orders->get();
-      } elseif ($sortFlg == '0') {
-        $orders = $orders->orderBy('orders.id', 'desc')->get();
-      }
-    }
+      ->select('orders.id', 'orders.user_id as buy.u_id', 'sale_price', 'products.user_id as sale.u_id', 'products.name')
+      ->orderBy('orders.id', $request->sort == 0 ? 'asc' : 'desc')
+      ->get();
 
     return view('admin.orders.index', [
       'orders' => $orders,
     ]);
   }
 
-  //注文詳細（閲覧のみ）
+  // ===========  注文詳細（閲覧のみ） =========-
   public function orderShow(Request $request, $id)
   {
     Log::debug('<< orderShow >>');
     Log::debug($request);
     Log::debug($id);
 
-    // $deleteIds[] = $request->get('delete_id');
-
-    // foreach ($deleteIds as $deleteId) {
     $order = Order::find($id);
-    // }
 
     return view('admin.orders.show', [
       'order' => $order,
@@ -300,39 +237,29 @@ class adminController extends Controller
   }
 
   // =================================
-  // =======   お問い合わせ  ==============
+  // =======   お問い合わせ  ===========
   // =================================
+
+  // =========  お問い合わせ一覧表示 ==========
   public function contactIndex(Request $request)
   {
     Log::debug($request);
 
-    //並べかえ（降順/昇順が押された場合）
-
-    $sortFlg = $request->sort;
-    if (isset($sortFlg)) {
-      if ($sortFlg == '1') {
-        $contacts = Contact::latest()->get();
-      } elseif ($sortFlg == '0') {
-        $contacts = Contact::all();
-      }
-    } else {
-      $contacts = Contact::all();
-    }
-
-
     //キーワード検索
     $keyword = $request->keyword;
-    if (!empty($keyword)) {
-      Log::debug('キーワード検索の処理に入ってる');
-      $contacts = Contact::where('email', 'like', '%' . $keyword . '%')->get();
-    }
+    $contacts = Contact::when($request->keyword, function ($query) use ($keyword) {
+      $query->where('email', 'like', '%' . $keyword . '%');
+    })
+      //並べかえ（降順/昇順が押された場合）
+      ->orderBy('id', $request->sort == 0 ? 'asc' : 'desc')
+      ->get();
 
     return view('admin.contacts.index', [
       'contacts' => $contacts,
     ]);
   }
 
-  //注文詳細（閲覧のみ）
+  //============　お問い合わせ詳細（閲覧のみ） =========
   public function contactShow(Request $request, $id)
   {
     Log::debug('<< contactShow >>');
@@ -351,64 +278,32 @@ class adminController extends Controller
   // =======   振込依頼  ==============
   // =================================
 
-  // 振込依頼一覧表示
+  //  ========  振込依頼一覧表示 ============
   public function transferIndex(Request $request)
   {
-    Log::debug('transferIndex');
     $keyword = $request->keyword;
+
     //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
     $transfers = Transfer::join('users', 'transfers.user_id', 'users.id')
       ->select('transfers.id', 'transfer_price', 'payment_date', 'users.email')
-      ->when($request->keyword, function ($query) {
-        $query->where('email', 'like', '%' . keyword . '%');
+      ->when($request->keyword, function ($query) use ($keyword) {
+        $query->where('email', 'like', '%' . $keyword . '%');
       })
-      ->orderBy(
-        'transfers.id',
-        $request->sort && $request->sort == '0' ? 'desc' : 'asc'
-      )
+      ->orderBy('transfers.id', $request->sort == 0 ? 'asc' : 'desc')
       ->get();
-
-    // 初期表示
-    // if (empty($request->sort) && empty($request->keyword)) {
-    //   $transfers = $transfers->get();
-    //   Log::debug('通ってないこと確認');
-    // }
-
-
-    // Log::debug('$request');
-    // Log::debug($request);
-    // Log::debug('$transfers');
-    // Log::debug($transfers);
-
-    // 並べかえ（降順/昇順が押された場合）
-    // $sortFlg = $request->sort;
-    // if (isset($sortFlg)) {
-    //   if ($sortFlg == '1') {
-    //     $transfers = $transfers->get();
-    //   } elseif ($sortFlg == '0') {
-    //     $transfers = $transfers->orderBy('transfers.id', 'desc');
-    //   }
-    // } else {
-    // $transfers = $transfers->get();
-    // }
 
     return view('admin.transfers.index', [
       'transfers' => $transfers,
     ]);
   }
-  // =================================
-  //  更新前確認 ======================
-  // =================================
+
+  // =========  振込依頼 更新前確認   ==========
   public function transferUpdateConfirm(Request $request, $id)
   {
     Log::debug('<< transferUpdateConfirm >>');
     Log::debug($request);
 
-
-
     //一括ボタンからの場合
-
-
     $transfers = Transfer::join('users', 'transfers.user_id', 'users.id')
       ->join('from_banks', 'transfers.from_bank_id', 'from_banks.id')
       ->select('transfers.id', 'transfers.transfer_price', 'transfers.transferred_price', 'transfers.commission', 'transfers.created_at', 'transfers.payment_date', 'users.id as u.id', 'users.account_name', 'users.email', 'from_banks.name as bank_name'); //振込元銀行情報は今後変更していく
@@ -422,8 +317,6 @@ class adminController extends Controller
       $transfers = $transfers->where('transfers.id', $id)->get();
     }
 
-
-
     Log::debug('$transfers');
     Log::debug($transfers);
 
@@ -432,7 +325,7 @@ class adminController extends Controller
     ]);
   }
 
-  //削除
+  // ========  振込依頼　更新 ==============
   public function transferUpdate(Request $request)
   {
 

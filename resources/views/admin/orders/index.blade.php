@@ -5,8 +5,8 @@
     <div class="c-admin__sort">
         <p class="c-admin__sort__title">並べ替え</p>
         <div class="p-admin__sort__listWrap">
-          <a class="c-admin__sort__list" href="{{ route('admin.order','sort=0')}}">id 降順</a>
-          <a class="c-admin__sort__list" href="{{ route('admin.order','sort=1')}}">id 昇順</a>
+            <a class="c-admin__sort__list" href="{{ route('admin.order','sort=1')}}">id 降順</a>
+            <a class="c-admin__sort__list" href="{{ route('admin.order','sort=0')}}">id 昇順</a>
         </div>
     </div>
 </div>
@@ -15,7 +15,7 @@
     <form method="POST" action="{{ route('admin.user.deletes.confirm') }}">
         @csrf
         <div class="c-admin__delete__btnWrap">
-          <input class="c-admin__delete__btn" type="submit" value="選択した情報を削除">
+            <input class="c-admin__delete__btn" type="submit" value="選択した情報を削除">
         </div>
         <div class="c-admin__title">注文一覧</div>
 

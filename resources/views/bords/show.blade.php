@@ -18,7 +18,7 @@ $pic = $user->find($buy_userId)->pic;
 
 
 @endphp
-
+<div class="footer-none"></div>
 <div class="c-messages__head">
     {{-- <div class="c-messages__head__order {{$class_order_type}}">
     {{ $order_type }}

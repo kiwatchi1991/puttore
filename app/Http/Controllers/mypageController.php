@@ -151,7 +151,7 @@ class mypageController extends Controller
 
     public function order(Request $request)
     {
-        //====================今月の売上
+        //========  今月の売上 ==============
         $thisMonth = Order::query()
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('products.user_id', Auth::user()->id)
@@ -175,7 +175,7 @@ class mypageController extends Controller
         Log::debug($thisMonth);
 
 
-        //====================未振込依頼売上履歴
+        //=========   未振込依頼売上履歴  ==============
 
         $untransferred = Order::query()
             ->join('products', 'orders.product_id', '=', 'products.id')
@@ -201,7 +201,7 @@ class mypageController extends Controller
         Log::debug($untransferred_price);
 
 
-        //====================振込依頼済みの売上履歴
+        //==========  振込依頼済みの売上履歴  ==============
         $sale_histories = Order::query()
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->whereIn('status', [1, 2])
@@ -231,7 +231,7 @@ class mypageController extends Controller
         ]);
     }
     //=============================================
-    //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝1ヶ月の売上リストページ
+    //========  1ヶ月の売上リストページ ==============
     //=============================================
     public function orderMonth(Request $request, $year_month)
     {
