@@ -355,10 +355,18 @@ class adminController extends Controller
   public function transferIndex(Request $request)
   {
     Log::debug('transferIndex');
-
+    $keyword = $request->keyword;
     //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
     $transfers = Transfer::join('users', 'transfers.user_id', 'users.id')
-      ->select('transfers.id', 'transfer_price', 'payment_date', 'users.email');
+      ->select('transfers.id', 'transfer_price', 'payment_date', 'users.email')
+      ->when($request->keyword, function ($query) {
+        $query->where('email', 'like', '%' . keyword . '%');
+      })
+      ->orderBy(
+        'transfers.id',
+        $request->sort && $request->sort == '0' ? 'desc' : 'asc'
+      )
+      ->get();
 
     // 初期表示
     // if (empty($request->sort) && empty($request->keyword)) {
@@ -367,22 +375,22 @@ class adminController extends Controller
     // }
 
 
-    Log::debug('$request');
-    Log::debug($request);
-    Log::debug('$transfers');
-    Log::debug($transfers);
+    // Log::debug('$request');
+    // Log::debug($request);
+    // Log::debug('$transfers');
+    // Log::debug($transfers);
 
     // 並べかえ（降順/昇順が押された場合）
-    $sortFlg = $request->sort;
-    if (isset($sortFlg)) {
-      if ($sortFlg == '1') {
-        $transfers = $transfers->get();
-      } elseif ($sortFlg == '0') {
-        $transfers = $transfers->orderBy('transfers.id', 'desc');
-      }
-    } else {
-      $transfers = $transfers->get();
-    }
+    // $sortFlg = $request->sort;
+    // if (isset($sortFlg)) {
+    //   if ($sortFlg == '1') {
+    //     $transfers = $transfers->get();
+    //   } elseif ($sortFlg == '0') {
+    //     $transfers = $transfers->orderBy('transfers.id', 'desc');
+    //   }
+    // } else {
+    // $transfers = $transfers->get();
+    // }
 
     return view('admin.transfers.index', [
       'transfers' => $transfers,

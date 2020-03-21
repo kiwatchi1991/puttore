@@ -15,3 +15,4 @@ require('./components/imgSlider');
 require('./components/buyimgSlider');
 require('./components/request-transfer');
 require('./components/footerFixed');
+require('./components/footerHide');

@@ -5294,7 +5294,7 @@ a:visited {
 }
 
 .c-mypage__sale__paid td {
-  padding: 10px 12px;
+  padding: 10px 0;
   font-size: 14px;
 }
 
@@ -5311,6 +5311,14 @@ a:visited {
 }
 
 .c-mypage__sale__list--status {
+  min-width: 80px;
+}
+
+.c-mypage__sale__list--request {
+  min-width: 80px;
+}
+
+.c-mypage__sale__list--done {
   min-width: 80px;
 }
 

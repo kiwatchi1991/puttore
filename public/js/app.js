@@ -38988,6 +38988,8 @@ __webpack_require__(/*! ./components/request-transfer */ "./resources/js/compone
 
 __webpack_require__(/*! ./components/footerFixed */ "./resources/js/components/footerFixed.js");
 
+__webpack_require__(/*! ./components/footerHide */ "./resources/js/components/footerHide.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39516,6 +39518,19 @@ new function () {
   });
   addEvent(window, "resize", footerFixed);
 }();
+
+/***/ }),
+
+/***/ "./resources/js/components/footerHide.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/footerHide.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+if ($('.footer-none')) {
+  $('#footer').hide();
+}
 
 /***/ }),
 
