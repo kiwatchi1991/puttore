@@ -123,37 +123,6 @@ $button.on('click', function (e) {
     // setLessonUploadImg($lessonUploadImgTarget[0]);
 });
 
-
-// ======  クリックでレッスンへの画像登録イベントを再付与
-// let setLessonUploadImg = function (option) {
-//     // let $insert_btn = document.getElementsByClassName('js-lessonUploadImg').lastChild;
-//     // for (let i = 0; i < $insert_btn.length; i++) {
-//         console.log('option');
-//         console.log(option);
-//         console.log($(option));
-//         console.log('レッスン画像登録イベント再付与');
-//         console.log('option[0]');
-//         console.log(option[0]);
-//         option.addEventListener('change', function () {
-//             let target = $(this);
-//             console.log('target'); 
-//             console.log(target); 
-//             lessonUploadImg(target);
-//         })
-//     // }
-// }
-
-//========  クリックでレッスン画像アップロードイベントを再付与
-// let setUploadImgEvent = function () {
-//     let deleteBtn = document.getElementsByClassName('js-deleteIcon');
-//     for (let i = 0; i < deleteBtn.length; i++){
-//         deleteBtn[i].addEventListener('click', function () {
-//             let btn = $(this);
-//             deleteLesson(btn);
-//         })
-//     }
-// }
-
 //========  クリックでレッスン削除イベントを再付与
 let setDeleteLessonEvent = function () {
     let deleteBtn = document.getElementsByClassName('js-deleteIcon');
@@ -176,20 +145,6 @@ let setToggleEvent = function () {
     }
 }
 
-
-//=====   マークダウンプレビューイベント再付与
-// let setMarkedEvent = function () {
-    
-//     let $markedDom = document.getElementsByClassName('js-marked__textarea');
-//     for(let i=0; i<$markedDom.length; i++ ){
-//         $markedDom[i].addEventListener('keyup', function () {
-//             let target = $(this);
-//             markdownpreview(target);
-//         });
-//     }
-// }
-
-
 const marked = require('marked');
 $(document).on('keyup', '.js-marked__textarea', function (e) {
     // let $targetArea = $('.js-marked__textarea', this);
@@ -201,23 +156,6 @@ $(document).on('keyup', '.js-marked__textarea', function (e) {
     var html = marked($(this).val());
     $(this).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
 });
-
-// var markdownpreview = function (option) {
-//     var html = marked(option.val());
-//     $(option).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
-// };
-
-//初期状態でレッスン画像登録イベントを付与
-// $('.js-lessonUploadImg').on('change', function () {
-//     let input = $(this);
-//     lessonUploadImg(input);
-// })
-
-//初期状態でマークダウンプレビューイベントを付与
-// $('.js-marked__textarea').on('keyup', function(){
-//   let btn = $(this);
-//   markdownpreview(btn);
-// });
 
 //初期表示でレッスン削除イベント付与
 $('.js-deleteIcon').on('click', function () {
