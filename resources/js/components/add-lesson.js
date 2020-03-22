@@ -51,12 +51,6 @@ let deleteLesson = function (e) {
 // =============================================
 $(document).on('change', '.js-lessonUploadImg', function (e) {
     
-    //   option.on('change',function(){
-    console.log('画像を挿入ボタンクリック！！！ajax処理開始');
-    console.log('ここまで1');
-    console.log('this');
-    console.log(this);
-    console.log($(this));
     let $tgt = $(this);
 
     let file = this.files[0];
@@ -76,14 +70,6 @@ $(document).on('change', '.js-lessonUploadImg', function (e) {
         // Ajaxリクエストが成功した場合
         .done(function (data) {
             let target = $tgt.parents('.js-productNew__lesson').find('.js-marked__textarea');
-            console.log('e')
-            console.log($(e))
-            console.log('e.parents')
-            console.log($(e).parents('.js-productNew__lesson'))
-            console.log('$(e).parents.find')
-            console.log($(e).parents('.js-productNew__lesson').find('.js-marked__textarea'))
-            console.log('target')
-            // console.log(target)
             target.val(target.val() + '\n\n![代替テキスト](/storage/' + data + ')\n\n');
             target.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
 
@@ -96,9 +82,9 @@ $(document).on('change', '.js-lessonUploadImg', function (e) {
     // })
 });
 
-// ====================================
-//レッスンの追加ボタンを押した時
-// ====================================
+// ===============================================
+// ==============    レッスンの追加ボタンを押した時
+// ===============================================
 let $button = $('.js-addLesson__button');
 $button.on('click', function (e) {
     e.preventDefault();
@@ -108,19 +94,11 @@ $button.on('click', function (e) {
     $copyTaget.clone().appendTo('#js-lesson__section');
 
     let $newCopyTaget = $('.js-add__target:last-child');
-    // $newCopyTaget.find('textarea').trigger('keyup');
     $newCopyTaget.find('textarea').val('').keyup();
-    
-    // let $lessonUploadImgTarget = $newCopyTaget.find('.js-lessonUploadImg');
-    // console.log('$lessonUploadImgTarget');
-    // console.log($lessonUploadImgTarget[0]);
 
     //load()でnumberの振り直し
     load();
-    setToggleEvent();
-    // setMarkedEvent();
     setDeleteLessonEvent();
-    // setLessonUploadImg($lessonUploadImgTarget[0]);
 });
 
 //========  クリックでレッスン削除イベントを再付与
@@ -134,25 +112,8 @@ let setDeleteLessonEvent = function () {
     }
 }
 
-//======  クリックでタブ切り替えするイベントを再付与
-let setToggleEvent = function () {
-    let dom =  document.getElementsByClassName('js-toggleTab');
-    for(let i=0; i<dom.length; i++ ){
-        dom[i].addEventListener('click',function(){
-            let btn = $(this);
-            toggleTab(btn);      
-        });
-    }
-}
-
 const marked = require('marked');
-$(document).on('keyup', '.js-marked__textarea', function (e) {
-    // let $targetArea = $('.js-marked__textarea', this);
-    console.log('this');
-    console.log(this);
-    console.log('e');
-    console.log(e);
-    console.log($(e));
+$(document).on('keyup', '.js-marked__textarea', function () {
     var html = marked($(this).val());
     $(this).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
 });
@@ -199,15 +160,15 @@ window.onload = load();
 
 
 //タブ切り替え処理
-let $head = $('.js-toggleTab');
-var toggleTab = function (e) {
+$(document).on('click', '.js-toggleTab', function () {
 
-    let $areaInput = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--input');
-    let $areaPreview = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--preview');
-    let $iconPreview = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__preview');
-    let $iconEdit = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__input');
+    let $that = $(this);
+    let $areaInput = $that.parents('.js-productNew__lesson').find('.js-lesson__block--input');
+    let $areaPreview = $that.parents('.js-productNew__lesson').find('.js-lesson__block--preview');
+    let $iconPreview = $that.parents('.js-productNew__lesson').find('.js-toggleTab__preview');
+    let $iconEdit = $that.parents('.js-productNew__lesson').find('.js-toggleTab__input');
     
-    let target = $(e).attr('data-status');
+    let target = $that.attr('data-status');
     $areaInput.removeClass('active');
     $areaPreview.removeClass('active');
     $iconEdit.removeClass('active');
@@ -215,18 +176,13 @@ var toggleTab = function (e) {
 
     switch (target) {
         case 'input':
-        $iconPreview.addClass('active');
-        $areaInput.addClass('active');
-        break;
-        
-        case 'preview':
-        $iconEdit.addClass('active');
-        $areaPreview.addClass('active');
-        break;
-     }
-};
-
-$head.on('click', function(){
-    let btn = $(this);
-    toggleTab(btn);
+            $iconPreview.addClass('active');
+            $areaInput.addClass('active');
+            break;
+            
+            case 'preview':
+                $iconEdit.addClass('active');
+                $areaPreview.addClass('active');
+                break;
+            }
 });
