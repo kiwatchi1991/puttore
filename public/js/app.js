@@ -39047,10 +39047,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-//レッスン削除ボタンを押したとき
-var deleteLesson = function deleteLesson(e) {
-  //削除対象のDOM
-  var $deleteTarget = $(e).parents('.js-add__target'); //レッスンの数
+//=========================================
+//=======    レッスン削除イベント
+//=========================================
+$(document).on('click', '.js-deleteIcon', function () {
+  var $that = $(this); //削除対象のDOM
+
+  var $deleteTarget = $that.parents('.js-add__target'); //レッスンの数
 
   var lessonsCount = $('.js-add__target').length;
 
@@ -39092,8 +39095,38 @@ var deleteLesson = function deleteLesson(e) {
   }
 
   load();
-}; //レッスンの追加ボタンを押した時
+}); // =============================================
+// ======   レッスンへの画像登録イベント      =======
+// =============================================
 
+$(document).on('change', '.js-lessonUploadImg', function () {
+  var $tgt = $(this);
+  var file = this.files[0];
+  var formData = new FormData();
+  formData.append('file', file);
+  $.ajax({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    url: '/products/imgupload',
+    type: 'POST',
+    dataType: 'json',
+    processData: false,
+    contentType: false,
+    data: formData
+  }) // Ajaxリクエストが成功した場合
+  .done(function (data) {
+    var target = $tgt.parents('.js-productNew__lesson').find('.js-marked__textarea');
+    target.val(target.val() + '\n\n![代替テキスト](/storage/' + data + ')\n\n');
+    target.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
+  }) // Ajaxリクエストが失敗した場合
+  .fail(function (data) {
+    console.log('エラー');
+    console.log(data);
+  });
+}); // ===============================================
+// ==============    レッスンの追加ボタンを押した時
+// ===============================================
 
 var $button = $('.js-addLesson__button');
 $button.on('click', function (e) {
@@ -39103,80 +39136,21 @@ $button.on('click', function (e) {
   var $copyTaget = $('.js-add__target:last-child');
   $copyTaget.clone().appendTo('#js-lesson__section');
   var $newCopyTaget = $('.js-add__target:last-child');
-  $newCopyTaget.find('input[type="hidden"]').remove();
-  $newCopyTaget.find('#input').val('');
-  $newCopyTaget.find('textarea').val(''); //load()でnumberの振り直し
+  $newCopyTaget.find('textarea').val('').keyup(); //load()でnumberの振り直し
 
   load();
-  setToggleEvent();
-  setMarkedEvent();
-  setDeleteLessonEvent();
-}); //========  クリックでレッスン削除イベントを再付与
-
-var setEvent = function setEvent() {
-  var deleteBtn = document.getElementsByClassName('js-deleteIcon');
-
-  for (var i = 0; i < deleteBtn.length; i++) {
-    deleteBtn[i].addEventListener('click', function () {
-      var btn = $(this);
-      deleteLesson(btn);
-    });
-  }
-}; //========  クリックでレッスン削除イベントを再付与
-
-
-var setDeleteLessonEvent = function setDeleteLessonEvent() {
-  var deleteBtn = document.getElementsByClassName('js-deleteIcon');
-
-  for (var i = 0; i < deleteBtn.length; i++) {
-    deleteBtn[i].addEventListener('click', function () {
-      var btn = $(this);
-      deleteLesson(btn);
-    });
-  }
-}; //======  クリックでタブ切り替えするイベントを再付与
-
-
-var setToggleEvent = function setToggleEvent() {
-  var dom = document.getElementsByClassName('js-toggleTab');
-
-  for (var i = 0; i < dom.length; i++) {
-    dom[i].addEventListener('click', function () {
-      var btn = $(this);
-      toggleTab(btn);
-    });
-  }
-}; //=====   マークダウンプレビューイベント再付与
-
-
-var setMarkedEvent = function setMarkedEvent() {
-  var $markedDom = document.getElementsByClassName('js-marked__textarea');
-
-  for (var i = 0; i < $markedDom.length; i++) {
-    $markedDom[i].addEventListener('keyup', function () {
-      var target = $(this);
-      markdownpreview(target);
-    });
-  }
-};
+}); //==========================================
+//==========   マークダウンプレビューイベント
+//==========================================
 
 var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
 
-var markdownpreview = function markdownpreview(option) {
-  var html = marked(option.val());
-  $(option).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
-}; //初期状態でマークダウンプレビューイベントを付与
-
-
-$('.js-marked__textarea').on('keyup', function () {
-  var btn = $(this);
-  markdownpreview(btn);
-}); //初期表示でレッスン削除イベント付与
-
-$('.js-deleteIcon').on('click', function () {
-  var btn = $(this);
-  deleteLesson(btn);
-}); //初期読み込み時、レッスンにnumber付与
+$(document).on('keyup', '.js-marked__textarea', function () {
+  var html = marked($(this).val());
+  $(this).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
+}); //===========================================
+//==========    レッスンへのnumber付与
+//===========================================
 
 var load = function load() {
   var count = 0;
@@ -39187,29 +39161,34 @@ var load = function load() {
     var $targetNumber = $('#number', this);
     var $targetLessonNum = $('#lesson_num', this);
     var $targetTitle = $('#title', this);
-    var $targetLesson = $('#lesson', this); //カウントアップした数字をそれぞれのinputタグのname属性にセット
+    var $targetLesson = $('#lesson', this);
+    var $imgInputlabel = $('.js-imgInputlabel', this);
+    var $imgUploadInput = $('.js-lessonUploadImg', this); //カウントアップした数字をそれぞれのinputタグのname属性にセット
 
     $targetHidden.prop('name', 'lessons[' + count + '][id]');
     $targetNumber.prop('name', 'lessons[' + count + '][number]').val(count1);
     $targetLessonNum.html(count1);
     $targetTitle.prop('name', 'lessons[' + count + '][title]');
     $targetLesson.prop('name', 'lessons[' + count + '][lesson]');
+    $imgInputlabel.prop('for', 'uploadimg[' + count + ']');
+    $imgUploadInput.prop('id', 'uploadimg[' + count + ']');
     count += 1;
     count1 += 1;
   });
 }; //初期読み込み時、レッスン付与
 
 
-window.onload = load(); //タブ切り替え処理
+window.onload = load(); //============================================
+//=============     タブ切り替え処理
+//============================================
 
-var $head = $('.js-toggleTab');
-
-var toggleTab = function toggleTab(e) {
-  var $areaInput = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--input');
-  var $areaPreview = $(e).parents('.js-productNew__lesson').find('.js-lesson__block--preview');
-  var $iconPreview = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__preview');
-  var $iconEdit = $(e).parents('.js-productNew__lesson').find('.js-toggleTab__input');
-  var target = $(e).attr('data-status');
+$(document).on('click', '.js-toggleTab', function () {
+  var $that = $(this);
+  var $areaInput = $that.parents('.js-productNew__lesson').find('.js-lesson__block--input');
+  var $areaPreview = $that.parents('.js-productNew__lesson').find('.js-lesson__block--preview');
+  var $iconPreview = $that.parents('.js-productNew__lesson').find('.js-toggleTab__preview');
+  var $iconEdit = $that.parents('.js-productNew__lesson').find('.js-toggleTab__input');
+  var target = $that.attr('data-status');
   $areaInput.removeClass('active');
   $areaPreview.removeClass('active');
   $iconEdit.removeClass('active');
@@ -39226,11 +39205,6 @@ var toggleTab = function toggleTab(e) {
       $areaPreview.addClass('active');
       break;
   }
-};
-
-$head.on('click', function () {
-  var btn = $(this);
-  toggleTab(btn);
 });
 
 /***/ }),
@@ -39642,35 +39616,15 @@ var lessonPreview = function lessonPreview() {
 };
 
 window.load = lessonPreview(); //画像を挿入
+// let setLessonUploadImg = function () {
+//   let $insert_btn = document.getElementsByClassName('js-lessonUploadImg');
+//   for (let i = 0; i < $insert_btn.length; i++){
+//     $insert_btn[i].addEventListener('change',function () {
+//       let target = $(this);
+//       lessonUploadImg(target);
+//     })
+//   }
 
-var $insert_btn = $('.js-uploadimg');
-$insert_btn.on('change', function () {
-  console.log('画像を挿入ボタンクリック！！！ajax処理開始');
-  console.log('ここまで1');
-  var file = this.files[0];
-  var formData = new FormData();
-  formData.append('file', file);
-  $.ajax({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    url: '/products/imgupload',
-    type: 'POST',
-    dataType: 'json',
-    processData: false,
-    contentType: false,
-    data: formData
-  }) // Ajaxリクエストが成功した場合
-  .done(function (data) {
-    var target = $('#lesson');
-    target.val(target.val() + '\n\n![代替テキスト](/storage/' + data + ')\n\n');
-    target.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
-  }) // Ajaxリクエストが失敗した場合
-  .fail(function (data) {
-    console.log('エラー');
-    console.log(data);
-  });
-});
 var $follow = $('.c-ajaxFollow__icon');
 var followPostId;
 $follow.on('click', function () {

@@ -43,6 +43,7 @@ $(document).on('click', '.js-deleteIcon', function () {
     }
     load();
 });
+
 // =============================================
 // ======   レッスンへの画像登録イベント      =======
 // =============================================
@@ -76,7 +77,6 @@ $(document).on('change', '.js-lessonUploadImg', function () {
             console.log('エラー');
             console.log(data);
         })
-    // })
 });
 
 // ===============================================
@@ -97,33 +97,39 @@ $button.on('click', function (e) {
     load();
 });
 
+//==========================================
+//==========   マークダウンプレビューイベント
+//==========================================
 const marked = require('marked');
 $(document).on('keyup', '.js-marked__textarea', function () {
     var html = marked($(this).val());
     $(this).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
 });
 
-//初期読み込み時、レッスンにnumber付与
+//===========================================
+//==========    レッスンへのnumber付与
+//===========================================
+
 let load = function () {
 
-    let count = 0;
-    let count1 = 1;
-    $('.js-add__target').each(function(){
+let count = 0;
+let count1 = 1;
+$('.js-add__target').each(function () {
 
     //コピー後のそれぞれのinput要素DOMを定義
-    let $targetHidden = $('#hidden',this);
-    let $targetNumber = $('#number',this);
-    let $targetLessonNum = $('#lesson_num',this);
-    let $targetTitle = $('#title',this);
+    let $targetHidden = $('#hidden', this);
+    let $targetNumber = $('#number', this);
+    let $targetLessonNum = $('#lesson_num', this);
+    let $targetTitle = $('#title', this);
     let $targetLesson = $('#lesson', this);
     let $imgInputlabel = $('.js-imgInputlabel', this);
     let $imgUploadInput = $('.js-lessonUploadImg', this);
 
     //カウントアップした数字をそれぞれのinputタグのname属性にセット
-    $targetHidden.prop('name','lessons[' + count + '][id]');
-    $targetNumber.prop('name','lessons[' + count + '][number]').val(count1);
+    $targetHidden.prop('name', 'lessons[' + count + '][id]');
+    $targetNumber.prop('name', 'lessons[' + count + '][number]').val(count1);
     $targetLessonNum.html(count1);
-    $targetTitle.prop('name','lessons[' + count + '][title]');
+    $targetTitle.prop('name', 'lessons[' + count + '][title]');
     $targetLesson.prop('name', 'lessons[' + count + '][lesson]');
     $imgInputlabel.prop('for', 'uploadimg[' + count + ']');
     $imgUploadInput.prop('id', 'uploadimg[' + count + ']');
@@ -131,14 +137,15 @@ let load = function () {
     count += 1;
     count1 += 1;
 
-    })
+})
 };
 
 //初期読み込み時、レッスン付与
 window.onload = load();
 
-
-//タブ切り替え処理
+//============================================
+//=============     タブ切り替え処理
+//============================================
 $(document).on('click', '.js-toggleTab', function () {
 
     let $that = $(this);
