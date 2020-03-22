@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section('title','作品編集')
 @section('content')
+
+{{-- モーダルウインドウ --}}
+<div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+        <p>ここにモーダルウィンドウで表示したいコンテンツを入れます。モーダルウィンドウを閉じる場合は下の「閉じる」をクリックするか、背景の黒い部分をクリックしても閉じることができます。</p>
+        <a class="js-modal-close" href="">閉じる</a>
+    </div>
+</div>
+
 <div class="c-productEdit">
 
     <form id="form" method="POST" action="{{ route('products.update',$product->id) }}" enctype="multipart/form-data">
@@ -71,7 +81,7 @@
                 data-input="detail" name="detail" value="{{ old('detail') }}" rows="7">{{ $product->detail }}
                     </textarea>
             <div class="c-productEdit__modal">
-                書き方のヒントは<span>こちら</span>
+                書き方のヒントは<a href="" class="js-modal-open c-productNew__modal__link">こちら</a>
             </div>
             @error('detail')
             <span class="" role="alert">
@@ -132,9 +142,9 @@
                         {{-- 画像アイコン --}}
                         <div class="c-productNew__lesson__header__imgIcon js-insertImg" data-status="preview">
 
-                            <label for="uploadimg" class="c-productNew__header__label">
+                            <label for="uploadimg" class="c-productNew__header__label js-imgInputlabel">
                                 <i class="far fa-image"></i>
-                                <input id="uploadimg" class="c-productNew__lesson__header__input js-uploadimg"
+                                <input id="uploadimg" class="c-productNew__lesson__header__input js-lessonUploadImg"
                                     type="file" name="lesson_pic">
                             </label>
 

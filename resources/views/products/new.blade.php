@@ -17,7 +17,7 @@
         @csrf
 
         <div class="">
-            <p class="c-productNew__title__label">タイトル</p>
+            <p class="c-productNew__title__label">タイトル<span class="required">必須</span></p>
             <input id="name" type="text" class="c-productNew__input-area @error('name') is-invalid @enderror" required
                 name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう">
 
@@ -78,7 +78,7 @@
                 required data-input="detail" name="detail" value="{{ old('detail') }}" rows="4">
             </textarea>
             <div class="c-productNew__modal">
-                書き方のヒントは<a href="" class="js-modal-open">こちら</a>
+                書き方のヒントは<a href="" class="js-modal-open c-productNew__modal__link">こちら</a>
 
             </div>
             @error('detail')
@@ -136,9 +136,9 @@
                         {{-- 画像アイコン --}}
                         <div class="c-productNew__lesson__header__imgIcon js-insertImg" data-status="preview">
 
-                            <label for="uploadimg" class="c-productNew__header__label">
+                            <label for="uploadimg" class="c-productNew__header__label js-imgInputlabel">
                                 <i class="far fa-image"></i>
-                                <input id="uploadimg" class="c-productNew__lesson__header__input js-uploadimg"
+                                <input id="uploadimg" class="c-productNew__lesson__header__input js-lessonUploadImg"
                                     type="file" name="lesson_pic">
                             </label>
 

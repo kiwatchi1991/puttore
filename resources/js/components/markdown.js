@@ -13,38 +13,17 @@ window.load = lessonPreview();
 
 
 //画像を挿入
-let $insert_btn =  $('.js-uploadimg');
-$insert_btn.on('change',function(){
-    console.log('画像を挿入ボタンクリック！！！ajax処理開始');
-    console.log('ここまで1');
+// let setLessonUploadImg = function () {
+  
+//   let $insert_btn = document.getElementsByClassName('js-lessonUploadImg');
+//   for (let i = 0; i < $insert_btn.length; i++){
+//     $insert_btn[i].addEventListener('change',function () {
+//       let target = $(this);
+//       lessonUploadImg(target);
+//     })
+//   }
 
-    let file = this.files[0];
-    let formData = new FormData();
-    formData.append('file',file);
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: '/products/imgupload',
-        type: 'POST',
-        dataType: 'json',
-        processData: false,
-        contentType : false,
-        data:formData,
-    })
-    // Ajaxリクエストが成功した場合
-    .done(function (data) {
-      let target = $('#lesson');
-        target.val(target.val() + '\n\n![代替テキスト](/storage/' + data + ')\n\n');
-        target.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
 
-  })
-  // Ajaxリクエストが失敗した場合
-  .fail(function (data) {
-    console.log('エラー');
-    console.log(data);
- })
-})
 
 let $follow = $('.c-ajaxFollow__icon');
 let followPostId;
