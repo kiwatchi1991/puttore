@@ -77,4 +77,5 @@
 
 
   </div>
-  @section('content')
+</div>
+@section('content')
