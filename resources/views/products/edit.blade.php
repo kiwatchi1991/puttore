@@ -13,7 +13,8 @@
 
 <div class="c-productEdit">
 
-    <form id="form" method="POST" action="{{ route('products.update',$product->id) }}" enctype="multipart/form-data">
+    <form id="form-product" method="POST" action="{{ route('products.update',$product->id) }}"
+        enctype="multipart/form-data">
         @csrf
         {{-- 名前 --}}
         <div class="">
@@ -37,13 +38,8 @@
                 @foreach ($category as $categories)
                 <input id="c-{{ $categories->id }}" type="checkbox"
                     class="c-productEdit__checkbox @error('lang') is-invalid @enderror" name="lang[]"
-                    value="{{ $categories->id }}" autocomplete="lang" @if( // $product->categories->contains(function
-                // ($category1) use ($categories) {
-                // return $category1->id === $categories->id;
-                // })
-                in_array($categories->id, old('lang', $product->categories->pluck('id')->toArray()))
-
-                ) checked @endif>
+                    value="{{ $categories->id }}" autocomplete="lang" @if(in_array($categories->id, old('lang',
+                $product->categories->pluck('id')->toArray()))) checked @endif>
                 <label class="c-productEdit__label" for="c-{{ $categories->id }}">
                     {{ $categories->name }}
                 </label>
@@ -78,8 +74,7 @@
             <p class="c-productNew__title__label">説明文</p>
             <textarea id="detail" type="text"
                 class="c-productEdit__input-area c-productEdit__input-area--detail @error('detail') is-invalid @enderror"
-                data-input="detail" name="detail" value="{{ old('detail') }}" rows="7">{{ $product->detail }}
-                    </textarea>
+                data-input="detail" name="detail" value="{{ old('detail') }}" rows="7">{{ $product->detail }}</textarea>
             <div class="c-productEdit__modal">
                 書き方のヒントは<a href="" class="js-modal-open c-productNew__modal__link">こちら</a>
             </div>
@@ -156,8 +151,7 @@
                         <textarea type="text" id="lesson"
                             class="c-productNew__lesson--textarea js-marked__textarea @error('lesson') is-invalid @enderror"
                             data-input="lessson" name="" value="{{ old('lesson') }}" autocomplete="lesson"
-                            placeholder="lesson１" 　>{{ $lesson->lesson }}
-                                            </textarea>
+                            placeholder="lessonの内容">{{ $lesson->lesson }}</textarea>
                     </div>
 
                     <div id="preview"
@@ -254,7 +248,21 @@
                     <img src="/storage/{{ $product->pic3}}" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
             </div>
-
+            @error('pic1')
+            <span class="c-productNew__error" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            @error('pic2')
+            <span class="c-productNew__error" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            @error('pic2')
+            <span class="c-productNew__error" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
             <div class="c-productNew__images__half">
                 {{-- 画像4 --}}
                 <label class="c-productNew__image__area js-area__drop">
@@ -273,7 +281,21 @@
                 </label>
             </div>
         </div>
-
+        @error('pic4')
+        <span class="c-productNew__error" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+        @error('pic5')
+        <span class="c-productNew__error" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+        @error('pic6')
+        <span class="c-productNew__error" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
 
         <div class="js-postType__parentDom">
             <input type="hidden" name="postType" class="js-postType" value="">

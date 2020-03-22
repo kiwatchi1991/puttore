@@ -1535,7 +1535,7 @@ a:visited {
 
 .c-productNew__lesson {
   display: none;
-  min-height: 250px;
+  min-height: 300px;
   text-align: left;
 }
 
@@ -1588,7 +1588,7 @@ a:visited {
 }
 
 .c-productNew__lesson--textarea {
-  min-height: 250px;
+  min-height: 300px;
   width: 100%;
   box-sizing: border-box;
   max-height: 500px;
@@ -1596,7 +1596,7 @@ a:visited {
 
 .c-productNew__lesson--preview {
   padding: 24px 16px;
-  min-height: 250px;
+  min-height: 300px;
   background: #fff;
   box-sizing: border-box;
   max-height: 700px;
@@ -1633,7 +1633,7 @@ a:visited {
 
 .c-productNew__image__area {
   width: 30%;
-  height: 100px;
+  height: 25vw;
   background: #f6f5f4;
   color: #ccc;
   text-align: center;
@@ -2090,7 +2090,7 @@ a:visited {
 
 .c-productEdit__lesson {
   display: none;
-  min-height: 250px;
+  min-height: 300px;
   text-align: left;
 }
 
@@ -2143,7 +2143,7 @@ a:visited {
 }
 
 .c-productEdit__lesson--textarea {
-  min-height: 250px;
+  min-height: 300px;
   width: 100%;
   box-sizing: border-box;
   max-height: 500px;
@@ -2151,7 +2151,7 @@ a:visited {
 
 .c-productEdit__lesson--preview {
   padding: 24px 16px;
-  min-height: 250px;
+  min-height: 300px;
   background: #fff;
   max-height: 700px;
 }
@@ -2195,7 +2195,7 @@ a:visited {
 
 .c-productEdit__image__area {
   width: 30%;
-  height: 80px;
+  height: 25vw;
   overflow: hidden;
   background: #f6f5f4;
   color: #ccc;
@@ -5720,6 +5720,13 @@ input {
   box-sizing: border-box;
   border: none;
   font-size: 16px;
+}
+
+div,
+span,
+p {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 textarea {

@@ -91,8 +91,41 @@ $button.on('click', function (e) {
     $copyTaget.clone().appendTo('#js-lesson__section');
 
     let $newCopyTaget = $('.js-add__target:last-child');
+    $newCopyTaget.find('#input').val('').keyup();
     $newCopyTaget.find('textarea').val('').keyup();
+    
+    //初期表示をプレビューではなく入力に
+    $newCopyTaget.find('.js-lesson__block--input').removeClass('active');
+    $newCopyTaget.find('.js-lesson__block--preview').removeClass('active');
+    $newCopyTaget.find('.js-toggleTab__preview').removeClass('active');
+    $newCopyTaget.find('.js-toggleTab__input').removeClass('active');
 
+    $newCopyTaget.find('.js-lesson__block--input').addClass('active');
+    $newCopyTaget.find('.js-toggleTab__input').addClass('active');
+
+
+//  let $areaInput = $that.parents('.js-productNew__lesson').find('.js-lesson__block--input');
+//     let $areaPreview = $that.parents('.js-productNew__lesson').find('.js-lesson__block--preview');
+//     let $iconPreview = $that.parents('.js-productNew__lesson').find('.js-toggleTab__preview');
+//     let $iconEdit = $that.parents('.js-productNew__lesson').find('.js-toggleTab__input');
+    
+//     let target = $that.attr('data-status');
+//     $areaInput.removeClass('active');
+//     $areaPreview.removeClass('active');
+//     $iconEdit.removeClass('active');
+//     $iconPreview.removeClass('active');
+
+//     switch (target) {
+//         case 'input':
+//             $iconPreview.addClass('active');
+//             $areaInput.addClass('active');
+//             break;
+            
+//             case 'preview':
+//                 $iconEdit.addClass('active');
+//                 $areaPreview.addClass('active');
+//                 break;
+//             }
     //load()でnumberの振り直し
     load();
 });

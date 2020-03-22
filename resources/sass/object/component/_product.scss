@@ -378,7 +378,7 @@
     }
     &__lesson{
       display: none;
-      min-height: 250px;
+      min-height: 300px;
 
       text-align: left;
         &__block{
@@ -419,14 +419,14 @@
       display: block;
     }
     &--textarea{
-      min-height: 250px;
+      min-height: 300px;
       width: 100%;
       box-sizing: border-box;
       max-height: 500px;
     }
     &--preview{
       padding: 24px 16px;
-      min-height: 250px;
+      min-height: 300px;
       background: #fff;
       box-sizing: border-box;
       max-height: 700px;
@@ -457,7 +457,7 @@
   &__image{
     &__area{
       width: 30%;
-      height: 100px;
+      height: 25vw;
       background: #f6f5f4;
       color: #ccc;
       text-align: center;
@@ -848,7 +848,7 @@
     }
     &__lesson{
       display: none;
-      min-height: 250px;
+      min-height: 300px;
 
       text-align: left;
         &__block{
@@ -889,14 +889,14 @@
       display: block;
     }
     &--textarea{
-      min-height: 250px;
+      min-height: 300px;
       width: 100%;
       box-sizing: border-box;
       max-height: 500px;
     }
     &--preview{
       padding: 24px 16px;
-      min-height: 250px;
+      min-height: 300px;
       background: #fff;
       max-height: 700px;
     }
@@ -932,7 +932,7 @@
   &__image{
     &__area{
       width: 30%;
-      height: 80px;
+      height: 25vw;
       overflow: hidden;
       background: #f6f5f4;
       color: #ccc;

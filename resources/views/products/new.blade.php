@@ -13,13 +13,13 @@
 
 <div class="c-productNew">
     <p class="c-productNew__title__head">コンテンツ登録</p>
-    <form id="form" method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data">
+    <form id="form-product" method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="">
             <p class="c-productNew__title__label">タイトル<span class="required">必須</span></p>
-            <input id="name" type="text" class="c-productNew__input-area @error('name') is-invalid @enderror" required
-                name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう">
+            <input id="name" type="text" class="c-productNew__input-area @error('name')is-invalid @enderror" name="name"
+                value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう" required>
 
             @error('name')
             <span class="c-productNew__error" role="alert">
@@ -75,17 +75,16 @@
 
             <textarea id="detail" type="text"
                 class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
-                required data-input="detail" name="detail" value="{{ old('detail') }}" rows="4">
-            </textarea>
-            <div class="c-productNew__modal">
-                書き方のヒントは<a href="" class="js-modal-open c-productNew__modal__link">こちら</a>
-
-            </div>
+                required data-input="detail" name="detail" rows="4">{{ old('detail') }}</textarea>
             @error('detail')
             <span class="c-productNew__error" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
+            <div class="c-productNew__modal">
+                書き方のヒントは<a href="" class="js-modal-open c-productNew__modal__link">こちら</a>
+
+            </div>
         </div>
 
         {{-- レッスン内容 --}}
@@ -108,7 +107,7 @@
                 {{-- 　　レッスン1　title --}}
                 <div class="">
                     <input id="title" type="text" class="c-productNew__input-area @error('title') is-invalid @enderror"
-                        required data-input="title" name="" value="{{ old('title') }}" autocomplete="title"
+                        required data-input="title" name="" value="{{ old('lessons[][title]') }}" autocomplete="title"
                         placeholder="レッスンのタイトル" placeholder="title１">
 
                     @error('title')
@@ -149,9 +148,8 @@
                         class="c-productNew__lesson c-productNew__lesson--input js-lesson__block js-lesson__block--input active">
                         <textarea type="text" id="lesson"
                             class="c-productNew__lesson--textarea js-marked__textarea @error('lesson') is-invalid @enderror"
-                            data-input="lessson" name="" value="{{ old('lesson') }}" autocomplete="lesson"
-                            placeholder="lesson１" 　>{{ old('lesson') }}
-                        </textarea>
+                            data-input="lessson" name="" value="" autocomplete="lesson"
+                            placeholder="lessonの内容">{{ old('lessons[][lesson]') }}</textarea>
                     </div>
 
                     <div id="preview"
@@ -190,8 +188,7 @@
             <p class="c-productNew__title__label">受講に必要なスキル</p>
             <textarea id="skills" type="text"
                 class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
-                data-input="skills" name="skills" value="{{ old('skills') }}" rows="7">
-            </textarea>
+                data-input="skills" name="skills" value="{{ old('skills') }}" rows="7">{{ old('skills') }}</textarea>
             @error('skills')
             <span class="c-productNew__error" role="alert">
                 <strong>{{ $message }}</strong>
@@ -219,7 +216,21 @@
                     <img src="" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
             </div>
-
+            @error('pic1')
+            <span class="c-productNew__error" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            @error('pic2')
+            <span class="c-productNew__error" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            @error('pic2')
+            <span class="c-productNew__error" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
             <div class="c-productNew__images__half">
                 {{-- 画像4 --}}
                 <label class="c-productNew__image__area js-area__drop">
@@ -238,6 +249,21 @@
                 </label>
             </div>
         </div>
+        @error('pic4')
+        <span class="c-productNew__error" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+        @error('pic5')
+        <span class="c-productNew__error" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+        @error('pic6')
+        <span class="c-productNew__error" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
         <div class="c-productNew__submit c-productNew__submit--draft">
             <button type="submit"
                 class="c-productNew__submit__button c-productNew__submit__button--draft js-isCheck-postType"
