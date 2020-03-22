@@ -1,12 +1,12 @@
-//レッスン削除ボタンを押したとき
-
-let deleteLesson = function (e) {
-
+//=========================================
+//=======    レッスン削除イベント
+//=========================================
+$(document).on('click', '.js-deleteIcon', function () {
+    let $that = $(this);
     //削除対象のDOM
-    let $deleteTarget = $(e).parents('.js-add__target');
+    let $deleteTarget = $that.parents('.js-add__target');
     //レッスンの数
     let lessonsCount = $('.js-add__target').length;
-    
     if (lessonsCount === 1) {
         alert('現在レッスンは一つなので削除することはできません')
     } else {
@@ -16,18 +16,18 @@ let deleteLesson = function (e) {
             let $deleteTargetData = $deleteTarget.find('#hidden');
             let deleteTargetId = $deleteTargetData.val();
             if ($deleteTargetData) {
-                 $.ajax({
+                $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     url: '/products/ajaxLessonDelete',
                     type: 'POST',
                     dataType: 'json',
-                    data:{ 'lessonId':deleteTargetId},
-                        })
-                        // Ajaxリクエストが成功した場合
-                        .done(function () {
-                            console.log('ここまで4');
+                    data: { 'lessonId': deleteTargetId },
+                })
+                    // Ajaxリクエストが成功した場合
+                    .done(function () {
+                        console.log('ここまで4');
                     })
                     // Ajaxリクエストが失敗した場合
                     .fail(function (data) {
@@ -35,21 +35,18 @@ let deleteLesson = function (e) {
                         console.log(data);
                     });
             }
-
             //レッスンを画面から削除
             $deleteTarget.remove();
-
         } else {
             //処理をしない
         }
     }
-
     load();
-}
+});
 // =============================================
 // ======   レッスンへの画像登録イベント      =======
 // =============================================
-$(document).on('change', '.js-lessonUploadImg', function (e) {
+$(document).on('change', '.js-lessonUploadImg', function () {
     
     let $tgt = $(this);
 
@@ -98,31 +95,13 @@ $button.on('click', function (e) {
 
     //load()でnumberの振り直し
     load();
-    setDeleteLessonEvent();
 });
-
-//========  クリックでレッスン削除イベントを再付与
-let setDeleteLessonEvent = function () {
-    let deleteBtn = document.getElementsByClassName('js-deleteIcon');
-    for (let i = 0; i < deleteBtn.length; i++){
-        deleteBtn[i].addEventListener('click', function () {
-            let btn = $(this);
-            deleteLesson(btn);
-        })
-    }
-}
 
 const marked = require('marked');
 $(document).on('keyup', '.js-marked__textarea', function () {
     var html = marked($(this).val());
     $(this).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
 });
-
-//初期表示でレッスン削除イベント付与
-$('.js-deleteIcon').on('click', function () {
-    let btn = $(this);
-    deleteLesson(btn);
-})
 
 //初期読み込み時、レッスンにnumber付与
 let load = function () {
