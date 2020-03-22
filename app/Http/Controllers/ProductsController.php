@@ -14,6 +14,7 @@ use App\Follow;
 use App\Like;
 use App\Lesson;
 use App\CategoryProduct;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -177,8 +178,8 @@ class ProductsController extends Controller
             $discount_price = new Discount;
             $discount_price->product_id = $id;
             $discount_price->discount_price = $request->discount_price;
-            $discount_price->start_date = $request->start_date;
-            $discount_price->end_date = $request->end_date;
+            $discount_price->start_date = Carbon::parse($request->start_date);
+            $discount_price->end_date = Carbon::parse($request->end_date);
             $discount_price->save();
         } else {
             Log::debug('<<<<      割 引価格の入力がない！  >>>>>>>>>>>>>');

@@ -321,6 +321,13 @@
     &__modal{
       font-size: 10px;
       margin: 5px 0 0 3px;
+      @include pc{
+        font-size: 14px;
+        letter-spacing: -0.04px;
+      }
+      &__link{
+        color:$main-color;
+      }
     }
     &__checkbox{
       display: none;
@@ -519,12 +526,11 @@
 }
 
 .c-productShow{
-  margin-bottom: 100px; //あとで消す
   background: $bg;
   padding: 20px;
   &__img{
     background: white;
-    height: 150px;
+    height: 50vw;
     margin: 0 auto;
     border-radius: 15px;
     overflow: hidden;
@@ -534,6 +540,14 @@
     &__container{
       height: 100%;
       position: relative;
+    }
+    &__noimage{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
     }
     &__item{
       height: 100%;
@@ -573,6 +587,16 @@
 
     &.is-inactive{
       text-decoration:line-through;
+    }
+    &--discount{
+      margin-top: 8px;
+      color: red;
+    }
+    &__discount{
+      font-size: 14px;
+      padding: 3px 12px;
+      background: white;
+      border-radius: 5px;
     }
   }
   &__editIcon{
@@ -885,6 +909,12 @@
         color: $main-color;
       }
     }
+  }
+  &__price{
+    margin-top: 32px;
+  }
+  &__discount-price {
+    margin-top: 32px;
   }
   &__skills{
     margin-top: 32px;

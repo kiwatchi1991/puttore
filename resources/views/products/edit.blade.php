@@ -164,12 +164,6 @@
                         class="c-productNew__lesson c-productNew__lesson--preview js-lesson__block js-lesson__block--preview ">
                     </div>
 
-                    {{-- <textarea id="lesson" type="text" class="new__input-area @error('lesson') is-invalid @enderror"
-                        name="" value="{{ $lesson->lesson }}" autocomplete="lesson" autofocus
-                    placeholder="lesson１">{{ $lesson->lesson }}
-                    </textarea>
-                    <div id="preview">ぷれびゅー</div> --}}
-
                     @error('lesson')
                     <span class="" role="alert">
                         <strong>{{ $message }}</strong>
@@ -186,15 +180,12 @@
         </div>
 
         {{-- 価格 --}}
-        <div class="">
+        <div class="c-productEdit__price">
             <p class="c-productNew__title__label">価格</p>
-            <input id="default_price" type="text"
+            <input id="default_price" type="tel"
                 class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
                 name="default_price" value="{{ $product->default_price }}" autocomplete="default_price"
                 placeholder="価格">
-
-            {{-- <input id="default_price" type="text" class="new__input-area @error('default_price') is-invalid @enderror"
-                name="default_price" value="{{ $product->default_price }}" autocomplete="default_price" autofocus> --}}
 
             @error('default_price')
             <span class="" role="alert">
@@ -204,12 +195,11 @@
         </div>
 
         {{-- 割引価格 --}}
-        <div class="">
+        <div class="c-productEdit__discount-price">
             <p class="c-productNew__title__label">割引価格</p>
             <div class="">
-
-
-                <input id="discount_price" class="new__input-area @error('discount_price') is-invalid @enderror"
+                <input id="discount_price"
+                    class="c-productNew__input-area c-productNew__input-area--price @error('discount_price') is-invalid @enderror"
                     name="discount_price" value="@if($discount_price) {{ $discount_price->discount_price }} @endif"
                     autocomplete="discount_price">
 
@@ -218,16 +208,15 @@
             <strong>{{ $message }}</strong>
                 </span>
                 @enderror --}}
-
             </div>
-            <div class="">
-                開始日<input type="text" name="start_date"
-                    class="new__input-area js-date_picker @error('sale_price') is-invalid @enderror"
+            <div class="c-productEdit__discount-price__date">
+                <span class="c-productEdit__discount-price__label">開始日</span><input type="text" name="start_date"
+                    class="c-productNew__input-area js-date_picker @error('sale_price') is-invalid @enderror"
                     value="@if($discount_price){{ $discount_price->start_date }} @endif">
             </div>
-            <div>
-                終了日<input type="text" name="end_date"
-                    class="new__input-area js-date_picker @error('sale_price') is-invalid @enderror"
+            <div class="c-productEdit__discount-price__date">
+                <span class="c-productEdit__discount-price__label">終了日</span><input type="text" name="end_date"
+                    class="c-productNew__input-area js-date_picker @error('sale_price') is-invalid @enderror"
                     value="@if($discount_price){{ $discount_price->end_date }} @endif">
             </div>
         </div>

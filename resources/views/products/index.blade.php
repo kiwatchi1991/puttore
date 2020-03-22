@@ -27,16 +27,16 @@
       <div class="c-searchBox__difficults">
         <p class="c-searchBox__title">2. 難易度を選んでね</p>
         <div class="c-searchBox__body">
-        @foreach ($difficult as $difficults)
-        <input id="d-{{ $difficults->id }}" type="checkbox"
+          @foreach ($difficult as $difficults)
+          <input id="d-{{ $difficults->id }}" type="checkbox"
             class="c-searchBox__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
             value="{{ $difficults->id }}" autocomplete="difficult" autofocus>
-        <label class="c-searchBox__label" for="d-{{ $difficults->id }}">
+          <label class="c-searchBox__label" for="d-{{ $difficults->id }}">
             {{ $difficults->name }}
-        </label>
-        @endforeach
+          </label>
+          @endforeach
         </div>
-    </div>
+      </div>
 
       {{-- 送信ボタン --}}
       <div class="c-searchBox__submit">
@@ -62,7 +62,7 @@
     <a class="c-product__link" href="{{ route('products.show', $product->id) }}">
 
       <div class="c-image__block">
-        <img class="c-image" src="/storage/{{ $product->pic1 }}">
+        <img class="c-image" src="/storage/{{($product->pic1)?$product->pic1:"images/noimage.png"}}">
       </div>
       <div class="c-tag__block">
 

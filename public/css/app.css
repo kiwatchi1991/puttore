@@ -207,6 +207,7 @@ a:visited {
   font-weight: bold;
   color: #000;
   opacity: 0.8;
+  color: white;
   z-index: 99;
 }
 
@@ -1469,6 +1470,17 @@ a:visited {
   margin: 5px 0 0 3px;
 }
 
+@media (min-width: 768px) {
+  .c-productNew__modal {
+    font-size: 14px;
+    letter-spacing: -0.04px;
+  }
+}
+
+.c-productNew__modal__link {
+  color: #00ac7d;
+}
+
 .c-productNew__checkbox {
   display: none;
 }
@@ -1696,14 +1708,13 @@ a:visited {
 }
 
 .c-productShow {
-  margin-bottom: 100px;
   background: #E5F6F2;
   padding: 20px;
 }
 
 .c-productShow__img {
   background: white;
-  height: 150px;
+  height: 50vw;
   margin: 0 auto;
   border-radius: 15px;
   overflow: hidden;
@@ -1713,6 +1724,15 @@ a:visited {
 .c-productShow__slider__container {
   height: 100%;
   position: relative;
+}
+
+.c-productShow__slider__noimage {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
 }
 
 .c-productShow__slider__item {
@@ -1759,6 +1779,18 @@ a:visited {
 
 .c-productShow__price.is-inactive {
   text-decoration: line-through;
+}
+
+.c-productShow__price--discount {
+  margin-top: 8px;
+  color: red;
+}
+
+.c-productShow__price__discount {
+  font-size: 14px;
+  padding: 3px 12px;
+  background: white;
+  border-radius: 5px;
 }
 
 .c-productShow__editIcon {
@@ -2133,6 +2165,14 @@ a:visited {
 
 .c-productEdit__lesson__addBtn__btn {
   color: #00ac7d;
+}
+
+.c-productEdit__price {
+  margin-top: 32px;
+}
+
+.c-productEdit__discount-price {
+  margin-top: 32px;
 }
 
 .c-productEdit__skills {

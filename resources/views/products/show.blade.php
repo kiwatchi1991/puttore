@@ -6,17 +6,25 @@
 <div class="c-productShow">
 
     <div class="c-productShow__img">
+        {{-- 画像がなかったらスライダーボタンを表示しない --}}
+        @if($product_imgs[0] !== null)
         <img class="c-productShow__slider__nav prev js-slider__prev" src="/storage/images/angle-prev.png" alt="">
         <img class="c-productShow__slider__nav next js-slider__next" src="/storage/images/angle-next.png" alt="">
+        @endif
         <ul class="c-productShow__slider__container js-slider__container">
             @foreach($product_imgs as $product_img)
+            {{-- 画像がある分だけ表示する --}}
             @if($product_img)
             <li class="c-productShow__slider__item js-slider__item">
-
                 <img class="c-productShow__slider__item__img" src="/storage/{{ $product_img  }}" alt="">
             </li>
             @endif
             @endforeach
+
+            {{-- 画像がなかったら、１枚だけnoimageを表示する --}}
+            @if($product_imgs[0] == null)
+            <img class="c-productShow__slider__noimage" src="/storage/images/noimage.png" alt="">
+            @endif
         </ul>
     </div>
     <div class="l-productShow__wrapper">
@@ -46,11 +54,13 @@
         {{-- 価格 --}}
         <div class="">
             <p class="c-productShow__price @if($discount_price) is-inactive @endif">
-                ¥ {{ $product->default_price }}</p>
-            @if($discount_price)
-            {{ $discount_price->discount_price }}
-            @else
-            @endif
+                ¥ {{ number_format($product->default_price) }}</p>
+            <p class="c-productShow__price c-productShow__price--discount">
+                @if($discount_price)
+                ¥ {{ number_format($discount_price->discount_price) }}
+                @endif
+                <span class="c-productShow__price__discount">{{$discount_price->end_date}}まで　セール価格</span>
+            </p>
         </div>
 
         {{-- タグ --}}
