@@ -48,7 +48,7 @@
 
         {{--　更新日  --}}
         <div class="c-productShow__updated">
-            <p>{{ $product->updated_at }}</p>
+            <p>更新日 : {{ $product->updated_at->format('Y-m-d') }}</p>
         </div>
 
         {{-- 価格 --}}
