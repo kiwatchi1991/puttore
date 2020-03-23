@@ -40,7 +40,7 @@
 <div class="c-pagination">
     {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
 </div>
-<div class="p-product__area">
+<div class="c-product__area">
     @foreach ($products as $product)
     <div class="c-product__block">
 
@@ -78,7 +78,9 @@
     </div>
     @endforeach
 </div>
-
+<div class="c-pagination">
+    {{ $products->links('vendor.pagination.simple-default') }}
+</div>
 </div>
 
 @endsection
