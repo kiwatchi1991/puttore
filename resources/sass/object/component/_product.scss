@@ -1,7 +1,7 @@
 .c-product{
   &__area{
     @include pc{
-    width: 690px;
+    width: 900px;
     margin: 60px auto 90px;
     display: flex;
     flex-wrap: wrap;
@@ -20,11 +20,6 @@
     box-sizing: border-box;
     background: $p_bg;
     border-radius: 10px;
-    @include pc{
-      width: 210px;
-      padding: 0;
-      margin: 32px 0 0 0;
-    }
     &:hover{
       opacity: 0.6;
     }
@@ -202,18 +197,18 @@
   margin-bottom: 10px;
   line-height: 1.1;
   @include pc{
-      font-size: 15px;
+      font-size: 12px;
     }
-  &--category{
-    &:first-child{
-      margin-left: 0;
-    }
-  }
-  &--difficulty{
-    &:first-child{
-      margin-left: 0;
-    }
-  }
+  // &--category{
+  //   &:first-child{
+  //     margin-left: 0;
+  //   }
+  // }
+  // &--difficulty{
+  //   &:first-child{
+  //     margin-left: 0;
+  //   }
+  // }
 
   &.html{
     background: $html;
@@ -229,6 +224,9 @@
   }
   &.phpfw{
     background: $phpfw;
+  }
+  &.ruby{
+    background: $ruby;
   }
   &.easy{
     background: $easy;

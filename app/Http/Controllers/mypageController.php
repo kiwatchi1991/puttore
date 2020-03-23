@@ -293,9 +293,9 @@ class mypageController extends Controller
         ]);
     }
     //=============================================
-    //==========       下書き　ページ     ==========
+    //==========       お気に入り　ページ     ==========
     //=============================================
-    public function like(Request $request)
+    public function like()
     {
         $likeIds = Like::where('likes.user_id', Auth::user()->id)->get('product_id');
         $products = Product::whereIn('id', $likeIds)->get();
@@ -311,10 +311,44 @@ class mypageController extends Controller
             'product_difficulties' => $product_difficulty,
         ]);
     }
-    public function buy(Request $request)
+
+    //=============================================
+    //==========       購入作品　ページ     ==========
+    //=============================================
+    public function buy()
     {
+        $productsIds =  Order::where('orders.user_id', Auth::user()->id)->get('product_id');
+        $products = Product::whereIn('id', $productsIds)->get();
+
+        Log::debug(' <<<<<<   マイページ（ 購入作品　）   >>>>>>>');
+
+        $product_category = Product::all();
+        $product_difficulty = Product::all();
+
+        return view('mypage.buy', [
+            'products' => $products,
+            'product_categories' => $product_category,
+            'product_difficulties' => $product_difficulty,
+        ]);
     }
+    //=============================================
+    //==========       出品作品　ページ     ==========
+    //=============================================
     public function sale(Request $request)
     {
+        $products = Product::where('user_id', Auth::user()->id)
+            ->where('open_flg', 0)
+            ->latest()->get();
+
+        Log::debug(' <<<<<<   マイページ（ 出品作品　）   >>>>>>>');
+
+        $product_category = Product::all();
+        $product_difficulty = Product::all();
+
+        return view('mypage.sale', [
+            'products' => $products,
+            'product_categories' => $product_category,
+            'product_difficulties' => $product_difficulty,
+        ]);
     }
 }
