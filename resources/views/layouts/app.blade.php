@@ -17,11 +17,6 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
-  {{-- slick(カルーセルのプラグイン) --}}
-  {{-- <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}" /> --}}
-  {{-- // Add the new slick-theme.css if you want the default styling --}}
-  {{-- <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}" /> --}}
-
   {{-- Datepicker --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/vader/jquery-ui.min.css">
 
@@ -36,7 +31,6 @@
 </head>
 
 <body>
-  {{-- <div class="container"> --}}
   <nav class="header">
     <div class="header__inner">
       <div class="header__logo">
@@ -75,8 +69,7 @@
                 @auth
 
                 <li class="global-nav__item global-nav__item--profile">
-                  <a href="{{ route('profile.show',$user->id) }}"
-                    class="global-nav__item__link lobal-nav__item__link--profile">
+                  <a href="{{ route('mypage') }}" class="global-nav__item__link lobal-nav__item__link--profile">
                     <div class="global-nav__item__profile">
                       <div class="global-nav__item__profile__img__wrapper">
                         @if($user->pic)
@@ -138,36 +131,22 @@
           <ul class="global-nav__pc--list">
             @auth
             <li class="">
-              <a href="{{ route('profile.show',$user->id) }}"
-                class="global-nav__item__link lobal-nav__item__link--profile">
+              <a href="{{ route('mypage') }}" class="global-nav__item__link lobal-nav__item__link--profile">
                 <div class="global-nav__item__profile">
                   <div class="global-nav__pc__profile__img__wrapper">
                     @if($user->pic)
-                    <img class="global-nav__pc__profile__img" {{-- src="{{ /storage/ $user->pic  }}" alt=""> --}}
-                    src="/storage/{{ $user->pic }}" alt="">
+                    <img class="global-nav__pc__profile__img" src="/storage/{{ $user->pic }}" alt="">
                     @endif
                   </div>
-                  {{-- <span class="global-nav__item__profile__name">{{ $user->account_name }}</span> --}}
                 </div>
               </a></li>
 
             @endauth
             @auth
-            {{-- <li class="">
-            <a href=" {{ route('mypage') }}" class="global-nav__item__link">マイページ</a>
-            </li> --}}
             <li class="">
               <a href=" {{ route('bords') }}" class="global-nav__item__link">メッセージボード</a>
             </li>
-            {{-- <li class="">
-            <a onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();"
-              href="{{ route('logout') }}" class="global-nav__item__link">ログアウト</a>
-            <form action="/logout" method="POST" id="logout__form" style="display:none;"></form>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
-            </form>
-            </li> --}}
+
             @endauth
 
             <li class="">
