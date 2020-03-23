@@ -267,15 +267,15 @@
         </span>
         @enderror
         <div class="c-productNew__submit c-productNew__submit--draft">
-            <button type="submit"
-                class="c-productNew__submit__button c-productNew__submit__button--draft js-isCheck-postType"
-                data-type="draft">
+            <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft"
+                data-type="draft" name="postType" value="draft">
                 下書き保存する
                 <input type="hidden" name="" class="js-postType" value="">
             </button>
         </div>
         <div class="c-productNew__submit ">
-            <button type="submit" class="c-productNew__submit__button js-isCheck-postType" data-type="register">
+            <button type="submit" class="c-productNew__submit__button" data-type="register" name="postType"
+                value="register">
                 登録する
                 <input type="hidden" name="" class="js-postType" value="">
             </button>
