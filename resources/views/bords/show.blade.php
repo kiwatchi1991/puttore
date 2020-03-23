@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('title','トークルーム')
 @section('content')
+
+<div class="c-messages__title">トークルーム</div>
+
+
 @php
 
 //購入販売の判断
@@ -48,18 +52,19 @@ $pic = ($user->find($buy_userId)->pic) ? $user->find($buy_userId)->pic : '';
         </div>
     </div>
     @endforeach
+    <form class="c-messages__form" method="POST" action="{{ route('messages.create',$ordersId) }}">
+      <div class="c-messages__inputArea">
+          @csrf
+          <input class="c-messages__input" type="text" name="messages" placeholder="ここにメッセージを入力してください"
+              value="{{ old('messages') }}">
+          <input type="hidden" value="{{ $order->id }}" name="id">
+          <button type="submit" class="c-messages__button">
+              送信
+          </button>
+      </div>
+  </form>
 </div>
 
 {{-- : {{ $order }} --}}
-<form class="c-messages__form" method="POST" action="{{ route('messages.create',$ordersId) }}">
-    <div class="c-messages__inputArea">
-        @csrf
-        <input class="c-messages__input" type="text" name="messages" placeholder="ここにメッセージを入力してください"
-            value="{{ old('messages') }}">
-        <input type="hidden" value="{{ $order->id }}" name="id">
-        <button type="submit" class="c-messages__button">
-            送信
-        </button>
-    </div>
-</form>
+
 @endsection

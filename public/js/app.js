@@ -39136,35 +39136,7 @@ $button.on('click', function (e) {
   var $copyTaget = $('.js-add__target:last-child');
   $copyTaget.clone().appendTo('#js-lesson__section');
   var $newCopyTaget = $('.js-add__target:last-child');
-  $newCopyTaget.find('input[type="hidden"]').remove();
-  $newCopyTaget.find('#title').val('').keyup();
-  $newCopyTaget.find('textarea').val('').keyup(); //初期表示をプレビューではなく入力に
-
-  $newCopyTaget.find('.js-lesson__block--input').removeClass('active');
-  $newCopyTaget.find('.js-lesson__block--preview').removeClass('active');
-  $newCopyTaget.find('.js-toggleTab__preview').removeClass('active');
-  $newCopyTaget.find('.js-toggleTab__input').removeClass('active');
-  $newCopyTaget.find('.js-lesson__block--input').addClass('active');
-  $newCopyTaget.find('.js-toggleTab__input').addClass('active'); //  let $areaInput = $that.parents('.js-productNew__lesson').find('.js-lesson__block--input');
-  //     let $areaPreview = $that.parents('.js-productNew__lesson').find('.js-lesson__block--preview');
-  //     let $iconPreview = $that.parents('.js-productNew__lesson').find('.js-toggleTab__preview');
-  //     let $iconEdit = $that.parents('.js-productNew__lesson').find('.js-toggleTab__input');
-  //     let target = $that.attr('data-status');
-  //     $areaInput.removeClass('active');
-  //     $areaPreview.removeClass('active');
-  //     $iconEdit.removeClass('active');
-  //     $iconPreview.removeClass('active');
-  //     switch (target) {
-  //         case 'input':
-  //             $iconPreview.addClass('active');
-  //             $areaInput.addClass('active');
-  //             break;
-  //             case 'preview':
-  //                 $iconEdit.addClass('active');
-  //                 $areaPreview.addClass('active');
-  //                 break;
-  //             }
-  //load()でnumberの振り直し
+  $newCopyTaget.find('textarea').val('').keyup(); //load()でnumberの振り直し
 
   load();
 }); //==========================================
@@ -39701,26 +39673,14 @@ var postdraft = function postdraft() {
     var postType = $(this).data('type');
     console.log('postType');
     console.log(postType);
-    var $form = $('#form-product');
 
     if (postType == 'draft') {
       $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('draft');
     } else if (postType == 'register') {
-      // if($form.find(':invalid').length === 0)
-      // if($(input).checkValidity())
-      // {
-      // $(btn).prop('disabled', true);
-      $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('register'); // $form.submit();
-      // }
-      // else
-      // {
-      //ツールチップを表示
-      // $form.find(':invalid').show();
-      // $form.reportValidity();
-      // }
+      $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('register');
     }
 
-    $form.submit();
+    $('#form').submit();
   });
 };
 
@@ -39853,8 +39813,8 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/JISAKU/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/JISAKU/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/PUTTORE/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/PUTTORE/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -2507,6 +2507,25 @@ a:visited {
   border-top: 1px solid #00ac7d;
 }
 
+@media (min-width: 768px) {
+  .c-bords__head {
+    width: 520px;
+    margin: 36px auto 0;
+    text-align: left;
+    font-size: 30px;
+    color: #00ac7d;
+    border: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-bords {
+    width: 520px;
+    margin: 24px auto 0;
+    border-top: 1px solid #00ac7d;
+  }
+}
+
 .c-bord__list {
   border-bottom: 1px solid #00ac7d;
   display: block;
@@ -2516,6 +2535,12 @@ a:visited {
 
 .c-bord__list:last-child {
   border-bottom: none;
+}
+
+@media (min-width: 768px) {
+  .c-bord__list {
+    border: none;
+  }
 }
 
 .c-bord__inner {
@@ -2565,6 +2590,12 @@ a:visited {
   font-size: 12px;
   padding-top: 5px;
   white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .c-bord__title {
+    font-size: 16px;
+  }
 }
 
 .c-profile {
@@ -2808,6 +2839,17 @@ a:visited {
   margin-top: 16px;
 }
 
+@media (min-width: 768px) {
+  .c-messages__title {
+    width: 520px;
+    margin: 36px auto 0;
+    text-align: left;
+    font-size: 30px;
+    color: #00ac7d;
+    border: none;
+  }
+}
+
 .c-messages__head {
   height: 45px;
   display: -webkit-box;
@@ -2822,49 +2864,93 @@ a:visited {
   background: white;
 }
 
-.c-messages__head__order {
-  padding: 5px 12px;
-  border-radius: 5px;
-  font-size: 10px;
-  height: 12px;
+@media (min-width: 768px) {
+  .c-messages__head {
+    position: static;
+    width: 520px;
+    margin: 24px auto 0;
+    font-size: 16px;
+    text-align: left;
+    -webkit-box-pack: left;
+            justify-content: left;
+  }
+
+  .c-messages__head__order {
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 10px;
+    height: 12px;
+  }
+
+  .c-messages__head__order.buy {
+    background: #7DD4BB;
+  }
+
+  .c-messages__head__order.sell {
+    background: white;
+    color: #00ac7d;
+    border: 1px solid #00ac7d;
+  }
+
+  .c-messages__head__userImg {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+
+  .c-messages__head__userImg__wrapper {
+    background-image: url("/storage/images/noavatar.png");
+    background-position: center;
+    background-size: contain;
+    margin-left: 16px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
 }
 
-.c-messages__head__order.buy {
-  background: #7DD4BB;
+@media (min-width: 768px) and (min-width: 768px) {
+  .c-messages__head__userImg__wrapper {
+    position: relative;
+    display: inline-block;
+    margin-left: 32px;
+  }
+
+  .c-messages__head__userImg__wrapper::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border: 0px;
+    border-top: solid 2px #333;
+    border-right: solid 2px #333;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    margin-top: -4px;
+  }
 }
 
-.c-messages__head__order.sell {
-  background: white;
-  color: #00ac7d;
-  border: 1px solid #00ac7d;
-}
-
-.c-messages__head__userImg {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-}
-
-.c-messages__head__userImg__wrapper {
-  background-image: url("/storage/images/noavatar.png");
-  background-position: center;
-  background-size: contain;
-  margin-left: 16px;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-}
-
-.c-messages__head__title {
-  margin-left: 16px;
-  font-size: 16px;
-  white-space: nowrap;
+@media (min-width: 768px) {
+  .c-messages__head__title {
+    margin-left: 16px;
+    font-size: 16px;
+    white-space: nowrap;
+  }
 }
 
 .c-messages__inner {
   background: #E5F6F2;
   padding: 48px 0 100px 0;
   min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+  .c-messages__inner {
+    width: 520px;
+    margin: 0 auto;
+  }
 }
 
 .c-messages__form {
@@ -2875,6 +2961,14 @@ a:visited {
   background: white;
 }
 
+@media (min-width: 768px) {
+  .c-messages__form {
+    position: static;
+    width: 450px;
+    margin: 42px auto 0;
+  }
+}
+
 .c-messages__inputArea {
   height: 45px;
   display: -webkit-box;
@@ -2883,6 +2977,16 @@ a:visited {
           justify-content: flex-end;
   -webkit-box-align: center;
           align-items: center;
+}
+
+@media (min-width: 768px) {
+  .c-messages__inputArea {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    -webkit-box-pack: center;
+            justify-content: center;
+  }
 }
 
 .c-messages__input {
@@ -2899,6 +3003,14 @@ a:visited {
   color: white;
   border: none;
   border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+  .c-messages__button {
+    width: 65px;
+    height: 24px;
+    margin-top: 16px;
+  }
 }
 
 .c-message {
@@ -2940,6 +3052,12 @@ a:visited {
   overflow-wrap: break-word;
   background: #7DD4BB;
   border-radius: 10px 10px 10px 0;
+}
+
+@media (min-width: 768px) {
+  .footer-none {
+    display: none;
+  }
 }
 
 .c-login__inner {
