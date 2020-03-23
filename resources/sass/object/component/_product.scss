@@ -195,12 +195,15 @@
 }
 
 .c-tag{
-  font-size: 10px;
+  font-size: 11px;
   border-radius: 5px;
   padding: 3px 10px;
   margin-left: 10px;
   margin-bottom: 10px;
   line-height: 1.1;
+  @include pc{
+      font-size: 15px;
+    }
   &--category{
     &:first-child{
       margin-left: 0;
@@ -527,7 +530,13 @@
 
 .c-productShow{
   background: $bg;
-  padding: 20px;
+  padding: 20px 20px 48px;
+  &__inner{
+    @include pc{
+      width: 520px;
+      margin: 0 auto;
+    }
+  }
   &__img{
     background: white;
     height: 50vw;
@@ -535,6 +544,9 @@
     border-radius: 15px;
     overflow: hidden;
     position: relative;
+    @include pc{
+      height: 290px;
+    }
   }
   &__slider{
     &__container{
@@ -581,12 +593,15 @@
   }
   &__price{
     margin-top: 16px;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     color: $main-color;
+    line-height: 31px;
+    letter-spacing: 0.76px;
 
     &.is-inactive{
       text-decoration:line-through;
+      font-size: 16px;
     }
     &--discount{
       margin-top: 8px;
@@ -613,6 +628,14 @@
     &__text{
       display: flex;
       align-items: center;
+      font-size: 23px;
+      line-height: 20px;
+      letter-spacing: -0.13px;
+      @include pc{
+        font-size: 35px;
+        line-height: 1.35;
+        letter-spacing: 1.06px;
+      }
     }
   }
   &__draft{
@@ -627,7 +650,9 @@
   &__detail{
     margin-top: 16px;
     line-height: 1.2;
-    font-size: 12px;
+    font-size: 13px;
+    line-height: 1.38;
+    letter-spacing: 0.4px;
   }
   &__user{
     display: flex;
@@ -647,13 +672,17 @@
  }
   &__username{
     margin-left: 10px;
-    font-size: 12px;
+    font-size: 13px;
     display: flex;
     align-items: center;
   }
   &__updated{
-    margin-top: 3px;
+    margin-top: 8px;
     font-size: 10px;
+    @include pc{
+      font-size: 13px;
+    }
+
   }
   &__like{
     margin: 64px auto 0;
@@ -680,21 +709,27 @@
     }
   }
   &__curriculum{
-    margin-top: 32px;
+    margin-top: 24px;
     &__head{
       color: $main-color;
+      font-size: 23px;
+      line-height: 1.35;
     }
   }
 
   &__lessons{
-    margin-top: 32px;
   }
   &__lesson{
     margin-top: 24px;
+    &__number{
+      font-size: 17px;
+      letter-spacing: 0.08px;
+    }
     &__title{
-      margin-top: 12px;
-      line-height: 1.5;
-      font-size: 14px;
+      margin-top: 8px;
+      line-height: 1.38;
+      font-size: 13px;
+      letter-spacing: 0.04px;
     }
   }
   &__curriculumBlock{
@@ -704,9 +739,14 @@
     margin-top: 64px;
     &__head{
       color: $main-color;
+      font-size: 23px;
+      line-height: 1.35;
     }
     &__text{
-      margin-top: 32px;
+      margin-top: 20px;
+      font-size: 11px;
+      line-height: 1.35;
+      letter-spacing: 0.33px;
     }
   }
   &__toLesson{
@@ -716,10 +756,16 @@
     color: white;
     text-align: center;
     width: 100%;
-    font-size: 12px;
+    font-size: 15px;
+    letter-spacing: -0.24px;
     padding: 14px;
-    border-radius: 7px;
+    border-radius: 11px;
     box-sizing: border-box;
+    &__link{
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+    }
   }
   &__toBord{
     margin: 16px auto 0;
@@ -727,10 +773,16 @@
     background: #7DD4BC;
     text-align: center;
     width: 100%;
-    font-size: 12px;
+    font-size: 15px;
+    letter-spacing: -0.24px;
     padding: 14px;
-    border-radius: 7px;
+    border-radius: 11px;
     box-sizing: border-box;
+    &__link{
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+    }
   }
 
   &__toLessonPage{

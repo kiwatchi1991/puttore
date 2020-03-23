@@ -86,7 +86,7 @@
         </div>
 
         {{-- レッスン --}}
-        <div id="c-productNew__lessons">
+        <div class="c-productNew__lessons" id="js-lesson__section">
             @foreach( $lessons as $lesson )
             <div class="c-productNew__lesson__inner js-add__target">
                 <input id="hidden" type="hidden" name="" value="{{ $lesson->id }}">
@@ -169,7 +169,7 @@
             @endforeach
         </div>
         {{-- レッスン追加ボタン --}}
-        <div class="c-productNew__lesson__addBtn">
+        <div class="c-productNew__lesson__addBtn js-addLesson__button">
             <button class="c-productNew__lesson__addBtn__btn"><i class="fas fa-plus-circle"></i> LESSONを追加する</button>
         </div>
 

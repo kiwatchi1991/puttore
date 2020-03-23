@@ -13,6 +13,10 @@ body{
 }
 main{
     padding-top: $header-height;
+    @include pc{
+    padding-top: 70px;
+}
+
 }
 input{
     box-sizing: border-box;

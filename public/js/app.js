@@ -39136,7 +39136,8 @@ $button.on('click', function (e) {
   var $copyTaget = $('.js-add__target:last-child');
   $copyTaget.clone().appendTo('#js-lesson__section');
   var $newCopyTaget = $('.js-add__target:last-child');
-  $newCopyTaget.find('#input').val('').keyup();
+  $newCopyTaget.find('input[type="hidden"]').remove();
+  $newCopyTaget.find('#title').val('').keyup();
   $newCopyTaget.find('textarea').val('').keyup(); //初期表示をプレビューではなく入力に
 
   $newCopyTaget.find('.js-lesson__block--input').removeClass('active');

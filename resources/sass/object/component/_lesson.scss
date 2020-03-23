@@ -5,7 +5,17 @@
         background: white;
         padding: 16px;
         border-radius: 10px;
+        @include pc{
+          padding-top: 90px;
+         }
+        &__contents{
+          @include pc{
+          width: 520px;
+          margin: 0 auto;
+         }
+        }
     }
+
   &__price{
     margin-top: 16px;
     font-size: 20px;
@@ -26,6 +36,11 @@
     margin-top: 16px;
     font-size: 20px; 
     line-height: 1.2;
+    @include pc{
+      letter-spacing: 1.13px;
+      line-height: 1.38;
+      font-size: 37px;
+    }
   }
 
   &__detail{
@@ -55,6 +70,9 @@
     font-size: 12px;
     display: flex;
     align-items: center;
+    @include pc{
+      font-size: 20px;
+    }
   }
   &__updated{
     margin-top: 3px;
@@ -96,18 +114,41 @@
   }
   &__lesson{
     margin-top: 24px;
- 
+    @include pc{
+      margin-top: 50px;
+    }
+    &__head{
+      @include pc{
+        display: flex;
+        align-items: baseline;
+        border-bottom: 1px solid $main-color;
+    }
+    }
     &__number{
       font-size: 24px;
+      &__num{
+        @include pc{
+          font-size: 40px;
+      }
+      }
     }
     &__title{
-
       margin-top: 12px;
       line-height: 1.5;
       font-size: 20px;
+      @include pc{
+        margin-top: 0;
+        margin-left: 32px;
+        letter-spacing: -0.77px;
+        font-size: 25px;
+        }
     }
     &__contents{
-      margin-top: 32q;
+      margin-top: 32px;
+      @include pc{
+      font-size: 17px;
+      line-height: 1.6;
+      }
     }
  
   }
@@ -130,6 +171,18 @@
     padding: 14px 14px 14px 24px;
     a{
         color: $main-text;
+      }
+    &__number{
+      @include pc{
+        font-size: 40px;
+      }
+    }
+      &__title{
+        display: none;
+        @include pc{
+          display: inline;
+          font-size: 20px;
+        }
     }
     &:first-child{
         border-radius: 5px 5px 0 0;
