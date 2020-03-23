@@ -56,7 +56,7 @@
     padding: 10px 0;
     @include pc{
       margin:0 auto;
-      width: 690px;
+      width: 900px;
     }
 }
 .c-product__link{
@@ -72,7 +72,7 @@
     &__inner{
         padding: 24px;
         @include pc{
-          width: 520px;
+          width: 800px;
           margin: 0 auto;
         }
     }
@@ -119,7 +119,7 @@
         display: inline-block;
         font-size: 12px;
         @include pc{
-          width: 25%;
+          width: 28%;
           font-size: 16px;
         }
         &::before{
@@ -240,14 +240,13 @@
   }
   &__block{
     display: flex;
-    padding: 15px 10px 5px 5px;
+    padding: 15px 10px 8px 5px;
     flex-wrap: wrap;
   }
 }
 
 .c-contents{
     &__block{
-    margin-top: 10px;
     padding: 0 15px 15px;
     }
     &__title{
