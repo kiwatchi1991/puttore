@@ -45,7 +45,7 @@
 
                     <div class="c-contents__title">{{ $product->name }}</div>
                     <div class="c-contents__price">¥ {{ number_format($product->default_price) }}</div>
-                    <div class="c-contents__detail">{{ $product->detail }}</div>
+                    <div class="c-contents__detail">{{ mb_strimwidth($product->detail, 0, 50, "...") }}</div>
 
                 </div>
             </a>
@@ -53,9 +53,9 @@
         @endforeach
     </div>
 
-    <div class="c-pagination">
+    {{-- <div class="c-pagination">
         {{ $products->links('vendor.pagination.simple-default') }}
-    </div>
+</div> --}}
 </div>
 
 @endsection

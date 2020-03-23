@@ -272,9 +272,9 @@ class mypageController extends Controller
     public function draft(Request $request)
     {
 
-        $products = Product::where('id', Auth::user()->id)
+        $products = Product::where('user_id', Auth::user()->id)
             ->where('open_flg', 1)
-            ->latest()->paginate(10);
+            ->latest()->get();
 
         Log::debug(' <<<<<<   マイページ（　下書き　）   >>>>>>>');
 
@@ -284,9 +284,9 @@ class mypageController extends Controller
         // $products = Product::paginate(10);
 
         //ページング用変数 始点
-        $pageNum_from =  $products->currentPage() * 10 - 9;
+        // $pageNum_from =  $products->currentPage() * 10 - 9;
         //ページング用変数 終点
-        $pageNum_to = $products->currentPage() * 10;
+        // $pageNum_to = $products->currentPage() * 10;
 
         //画像有無判定フラグ
         $is_image = false;
@@ -297,13 +297,17 @@ class mypageController extends Controller
         $product_category = Product::all();
         $product_difficulty = Product::all();
 
-        return view('mypage/draft', [
+        Log::debug('$products');
+        Log::debug($products);
+
+
+        return view('mypage.draft', [
             'products' => $products,
             'product_categories' => $product_category,
             'product_difficulties' => $product_difficulty,
             'all_products' => $all_products,
-            'pageNum_from' => $pageNum_from,
-            'pageNum_to' => $pageNum_to,
+            // 'pageNum_from' => $pageNum_from,
+            // 'pageNum_to' => $pageNum_to,
             'is_image' => $is_image,
 
         ]);
