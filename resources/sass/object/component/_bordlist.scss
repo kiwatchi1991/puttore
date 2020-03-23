@@ -29,11 +29,11 @@
         display: block;
         padding: 10px;
         background: $bg;
+        &.sell{
+            background: $p_bg;
+        }
         &:last-child{
             border-bottom: none;
-        }
-        @include pc{
-          border: none;
         }
     }
     &__inner{

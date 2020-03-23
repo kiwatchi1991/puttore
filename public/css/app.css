@@ -2538,14 +2538,12 @@ a:visited {
   background: #E5F6F2;
 }
 
-.c-bord__list:last-child {
-  border-bottom: none;
+.c-bord__list.sell {
+  background: rgba(229, 246, 242, 0.5);
 }
 
-@media (min-width: 768px) {
-  .c-bord__list {
-    border: none;
-  }
+.c-bord__list:last-child {
+  border-bottom: none;
 }
 
 .c-bord__inner {

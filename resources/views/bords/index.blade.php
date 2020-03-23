@@ -25,7 +25,7 @@
 
 
 
-    <a class="c-bord__list" href="{{ route('bords.show',$bord->id) }}">
+    <a class="c-bord__list {{$class_order_type}}" href="{{ route('bords.show',$bord->id) }}">
         <div class="c-bord__inner">
 
             <div class="c-bord__half--left">
