@@ -5891,6 +5891,13 @@ a:visited {
   font-size: 23px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__products__title {
+    margin-top: 32px;
+    text-align: center;
+  }
+}
+
 .c-authChange__container {
   padding: 24px 10px;
   background: #E5F6F2;
@@ -6035,18 +6042,32 @@ a:visited {
 .c-home {
   margin-top: 100px;
   width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .c-home__wrap {
-  width: 843px;
+  width: 100%;
   margin: 0 auto;
 }
 
+@media (min-width: 768px) {
+  .c-home__wrap {
+    width: 843px;
+  }
+}
+
 .c-home__title {
-  font-size: 32px;
+  font-size: 24px;
   text-align: center;
   margin-bottom: 80px;
   padding-top: 80px;
+}
+
+@media (min-width: 768px) {
+  .c-home__title {
+    font-size: 32px;
+  }
 }
 
 .c-home__text {
@@ -6065,13 +6086,19 @@ a:visited {
 }
 
 .c-home__table__th {
-  width: 200px;
+  width: 84px;
   padding: 10px;
   background: #E5F6F2;
   font-weight: normal;
   border-bottom: 1px solid #CBEDE4;
   line-height: 1.5;
   vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+  .c-home__table__th {
+    width: 200px;
+  }
 }
 
 .c-home__table__td {
