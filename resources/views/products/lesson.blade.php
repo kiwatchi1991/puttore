@@ -42,7 +42,8 @@
             <div class="c-lessonShow__lesson">
                 <div class="c-lessonShow__lesson__head">
 
-                    <div class="c-lessonShow__lesson__number">LESSON {{ $this_lesson->number }}</div>
+                    <div class="c-lessonShow__lesson__number">LESSON <span
+                            class="c-lessonShow__lesson__number__num">{{ $this_lesson->number }}</span></div>
                     <div class="c-lessonShow__lesson__title"> {{ $this_lesson->title }}</div>
                 </div>
                 <div id="js-lessonShow__preview" class="c-lessonShow__lesson__contents">
@@ -58,7 +59,8 @@
                 <div class="c-lessonShow__toLesson @if($l_id == $all_lesson->number)active @endif">
                     <a href="{{ route('lessons',['p_id' => $p_id ,'l_id' => $all_lesson->number]) }}">LESSON
                         <span class="c-lessonShow__toLesson__number">{{$all_lesson->number}}</span>
-                        <span class="c-lessonShow__toLesson__title">{{ $all_lesson->title }}</span>
+                        <span
+                            class="c-lessonShow__toLesson__title">{{ mb_strimwidth($all_lesson->title,0,30,'...') }}</span>
                     </a>
                 </div>
                 @endforeach

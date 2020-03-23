@@ -90,6 +90,7 @@
         {{-- レッスン内容 --}}
 
         <div class="c-productNew__lessons" id="js-lesson__section">
+            @foreach( $lessons as $lesson )
             <div class="c-productNew__lesson__inner js-add__target">
                 {{-- レッスン１　Number --}}
                 <div class="c-productNew__topWrapper">
@@ -107,7 +108,7 @@
                 {{-- 　　レッスン1　title --}}
                 <div class="">
                     <input id="title" type="text" class="c-productNew__input-area @error('title') is-invalid @enderror"
-                        required data-input="title" name="" value="{{ old('lessons[][title]') }}" autocomplete="title"
+                        required data-input="title" name="" value="{{$lesson->title}}" autocomplete="title"
                         placeholder="レッスンのタイトル" placeholder="title１">
 
                     @error('title')
@@ -149,7 +150,7 @@
                         <textarea type="text" id="lesson"
                             class="c-productNew__lesson--textarea js-marked__textarea @error('lesson') is-invalid @enderror"
                             data-input="lessson" name="" value="" autocomplete="lesson"
-                            placeholder="lessonの内容">{{ old('lessons[][lesson]') }}</textarea>
+                            placeholder="lessonの内容">{{ $lesson->lesson }}</textarea>
                     </div>
 
                     <div id="preview"
@@ -164,6 +165,7 @@
                 </div>
 
             </div>
+            @endforeach
         </div>
         <div class="c-productNew__lesson__addBtn js-addLesson__button">
             <button class="c-productNew__lesson__addBtn__btn"><i class="fas fa-plus-circle"></i> LESSONを追加する</button>

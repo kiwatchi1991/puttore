@@ -135,6 +135,4 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/changeEmail', 'ChangeEmailController@index');
     Route::get('/reset/{token}', 'ChangeEmailController@reset');
     Route::post('/email', 'ChangeEmailController@sendChangeEmailLink');
-
-
 });

@@ -49,7 +49,23 @@ class ProductsController extends Controller
     {
         $category = Category::all();
         $difficult = Difficulty::all();
-        return view('products.new', ['category' => $category, 'difficult' => $difficult]);
+
+        // $lessons = new Lesson;
+        $collect = collect([]);
+        if (old('lessons')) {
+            foreach (old('lessons') as $l) {
+                $lesson = new Lesson($l);
+                $collect->push($lesson);
+            }
+        } else {
+            $collect->push(new Lesson());
+        }
+        $lessons = $collect;
+        return view('products.new', [
+            'category' => $category,
+            'difficult' => $difficult,
+            'lessons' => $lessons,
+        ]);
     }
 
     /**
@@ -196,6 +212,7 @@ class ProductsController extends Controller
             return redirect()->route('products.show', $id)->with('flash_message', '作品を更新して公開しました');
         }
     }
+
 
     /**
      * コンテンツ登録
@@ -515,7 +532,22 @@ class ProductsController extends Controller
         $category = Category::all();
         $difficult = Difficulty::all();
         $difficult = Difficulty::all();
-        $lessons = Lesson::where('product_id', $id)->get();
+        // $lessons = Lesson::where('product_id', $id)->get();
+        $lessons = null;
+        if (old('lessons')) {
+            $collect = collect([]);
+            foreach (old('lessons') as $l) {
+                if (isset($l['id']) && $lesson = $product->lessons()->find($l['id'])) {
+                    $lesson->fill($l);
+                } else {
+                    $lesson = new Lesson($l);
+                }
+                $collect->push($lesson);
+            }
+            $lessons = $collect;
+        } else {
+            $lessons = Lesson::where('product_id', $id)->get();
+        }
 
         return view('products.edit', [
             'product' => $product,

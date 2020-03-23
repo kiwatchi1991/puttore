@@ -91,7 +91,7 @@ $button.on('click', function (e) {
     $copyTaget.clone().appendTo('#js-lesson__section');
 
     let $newCopyTaget = $('.js-add__target:last-child');
-    $newCopyTaget.find('input[type="hidden"]').remove();
+    $newCopyTaget.find('#hidden').remove();
     $newCopyTaget.find('#title').val('').keyup();
     $newCopyTaget.find('textarea').val('').keyup();
     
