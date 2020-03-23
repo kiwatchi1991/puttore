@@ -39136,7 +39136,7 @@ $button.on('click', function (e) {
   var $copyTaget = $('.js-add__target:last-child');
   $copyTaget.clone().appendTo('#js-lesson__section');
   var $newCopyTaget = $('.js-add__target:last-child');
-  $newCopyTaget.find('#hidden').remove();
+  $newCopyTaget.find('input[type="hidden"]').remove();
   $newCopyTaget.find('#title').val('').keyup();
   $newCopyTaget.find('textarea').val('').keyup(); //初期表示をプレビューではなく入力に
 
@@ -39692,26 +39692,39 @@ $follow.on('click', function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// let postdraft = function () {
-//     console.log('postdraftイベント発生');
-//     $('.js-isCheck-postType').on('click', function (e) {
-//         e.preventDefault();
-//         console.log('clickイベント発生');
-//         // var that = $(this);
-//         let postType = $(this).data('type');
-//         console.log('postType');
-//         console.log(postType);
-//         let $form = $('#form-product');
-//         if (postType == 'draft') {
-//             $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('draft');
-//         } else if (postType == 'register') {
-//                 $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('register');
-//             }
-//             $form.submit();
-//             // $('input[name=submitBtn]').click();
-//     });
-// }
-// window.onload = postdraft();
+var postdraft = function postdraft() {
+  console.log('postdraftイベント発生');
+  $('.js-isCheck-postType').on('click', function (e) {
+    e.preventDefault();
+    console.log('clickイベント発生'); // var that = $(this);
+
+    var postType = $(this).data('type');
+    console.log('postType');
+    console.log(postType);
+    var $form = $('#form-product');
+
+    if (postType == 'draft') {
+      $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('draft');
+    } else if (postType == 'register') {
+      // if($form.find(':invalid').length === 0)
+      // if($(input).checkValidity())
+      // {
+      // $(btn).prop('disabled', true);
+      $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('register'); // $form.submit();
+      // }
+      // else
+      // {
+      //ツールチップを表示
+      // $form.find(':invalid').show();
+      // $form.reportValidity();
+      // }
+    }
+
+    $form.submit();
+  });
+};
+
+window.onload = postdraft();
 
 /***/ }),
 
@@ -39840,8 +39853,8 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/JISAKU/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/JISAKU/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/PUTTORE/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/PUTTORE/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
