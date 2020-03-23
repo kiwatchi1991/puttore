@@ -6058,15 +6058,17 @@ a:visited {
 }
 
 .c-home__title {
-  font-size: 24px;
+  font-size: 16px;
   text-align: center;
-  margin-bottom: 80px;
-  padding-top: 80px;
+  margin-bottom: 32px;
+  padding-top: 32px;
 }
 
 @media (min-width: 768px) {
   .c-home__title {
     font-size: 32px;
+    margin-bottom: 80px;
+    padding-top: 80px;
   }
 }
 
@@ -6074,10 +6076,29 @@ a:visited {
   margin-top: 32px;
 }
 
+.c-home__text__head {
+  font-size: 13px;
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .c-home__text__head {
+    font-size: 16px;
+  }
+}
+
 .c-home__text__body {
+  font-size: 13px;
+  padding: 0 20px;
   margin-top: 10px;
   letter-spacing: 2px;
   line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .c-home__text__body {
+    font-size: 16px;
+  }
 }
 
 .c-home__table {
