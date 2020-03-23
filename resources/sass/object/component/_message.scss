@@ -56,23 +56,9 @@
                   position: relative;
                   display: inline-block;
                   margin-left: 32px;
-                  &::before{
-                    content: '';
-                    width: 10px;
-                    height: 10px;
-                    border: 0px;
-                    border-top: solid 2px #333;
-                    border-right: solid 2px #333;
-                    -ms-transform: rotate(-135deg);
-                    -webkit-transform: rotate(-135deg);
-                    transform: rotate(-135deg);
-                    position: absolute;
-                    top: 50%;
-                    left: -25px;
-                    margin-top: -4px;
                   }
                 }
-            }
+
         }
         &__title{
         margin-left: 16px;
@@ -125,6 +111,9 @@
         border-radius: 10px;
         @include pc{
           width: 10vw;
+          &:hover{
+            cursor: pointer;
+          }
         }
         }
     }
@@ -146,6 +135,24 @@
                 width: 35px;
                 height: 35px;
                 border-radius: 50%;
+            }
+            &__item{
+              @include pc{
+                &::before{
+                  content: '';
+                  width: 10px;
+                  height: 10px;
+                  border: 0px;
+                  border-top: solid 2px #333;
+                  border-right: solid 2px #333;
+                  -ms-transform: rotate(-135deg);
+                  -webkit-transform: rotate(-135deg);
+                  transform: rotate(-135deg);
+                  position: absolute;
+                  margin-top: -7px;
+                  margin-left: 3px;
+              }
+            }
             }
         }
     &__msg{

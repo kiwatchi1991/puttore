@@ -38990,6 +38990,8 @@ __webpack_require__(/*! ./components/footerHide */ "./resources/js/components/fo
 
 __webpack_require__(/*! ./components/lessonModal */ "./resources/js/components/lessonModal.js");
 
+__webpack_require__(/*! ./components/bordList */ "./resources/js/components/bordList.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39393,6 +39395,19 @@ $like.on('click', function () {
     console.log('エラー');
     console.log(data);
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/bordList.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/bordList.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('.sell').parents('.c-bord__list').css('background', '#7DD4BB');
 });
 
 /***/ }),
@@ -39807,7 +39822,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\n\n>>>>>>> origin/feature/messages\n                              ^\n      Expected \"{\".\n    ╷\n119 │ >>>>>>> origin/feature/messages\n    │                                ^\n    ╵\n  resources/sass/object/component/_message.scss 119:32  @import\n  stdin 24:9                                            root stylesheet\n      in /Applications/MAMP/htdocs/JISAKU/resources/sass/object/component/_message.scss (line 119, column 32)\n    at runLoaders (/Applications/MAMP/htdocs/JISAKU/node_modules/webpack/lib/NormalModule.js:316:20)\n    at /Applications/MAMP/htdocs/JISAKU/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Applications/MAMP/htdocs/JISAKU/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Applications/MAMP/htdocs/JISAKU/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at render (/Applications/MAMP/htdocs/JISAKU/node_modules/sass-loader/dist/index.js:89:7)\n    at Function.call$2 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:56230:16)\n    at _render_closure1.call$2 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:34691:12)\n    at _RootZone.runBinary$3$3 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:20227:18)\n    at _RootZone.runBinary$3 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:20231:19)\n    at _FutureListener.handleError$1 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18696:19)\n    at _Future__propagateToListeners_handleError.call$0 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18984:40)\n    at Object._Future__propagateToListeners (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:3500:88)\n    at _Future._completeError$2 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18820:9)\n    at _AsyncAwaitCompleter.completeError$2 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18219:12)\n    at Object._asyncRethrow (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:3256:17)\n    at /Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:10615:20\n    at _wrapJsFunctionForAsync_closure.$protected (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:3279:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18240:12)\n    at _awaitOnObject_closure0.call$2 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18232:25)\n    at _RootZone.runBinary$3$3 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:20227:18)\n    at _RootZone.runBinary$3 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:20231:19)\n    at _FutureListener.handleError$1 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18696:19)\n    at _Future__propagateToListeners_handleError.call$0 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18984:40)\n    at Object._Future__propagateToListeners (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:3500:88)\n    at _Future._completeError$2 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18820:9)\n    at _AsyncAwaitCompleter.completeError$2 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18219:12)\n    at Object._asyncRethrow (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:3256:17)\n    at /Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:12510:20\n    at _wrapJsFunctionForAsync_closure.$protected (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:3279:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18240:12)\n    at _awaitOnObject_closure0.call$2 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18232:25)\n    at _RootZone.runBinary$3$3 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:20227:18)\n    at _RootZone.runBinary$3 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:20231:19)\n    at _FutureListener.handleError$1 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18696:19)\n    at _Future__propagateToListeners_handleError.call$0 (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:18984:40)\n    at Object._Future__propagateToListeners (/Applications/MAMP/htdocs/JISAKU/node_modules/sass/sass.dart.js:3500:88)");
 
 /***/ }),
 

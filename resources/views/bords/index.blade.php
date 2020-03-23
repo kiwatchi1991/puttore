@@ -4,6 +4,8 @@
 
 <div class="c-bords__head">取引一覧</div>
 
+
+
 <div class="c-bords">
     @foreach ($bords as $bord)
 
@@ -20,6 +22,8 @@
     $pic = $user->find($buy_userId);
     }
     @endphp
+
+
 
     <a class="c-bord__list" href="{{ route('bords.show',$bord->id) }}">
         <div class="c-bord__inner">
@@ -46,5 +50,8 @@
         </div>
     </a>
     @endforeach
+
+
+
 </div>
 @endsection

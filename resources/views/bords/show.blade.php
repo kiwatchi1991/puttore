@@ -27,6 +27,7 @@ $pic = ($user->find($buy_userId)->pic) ? $user->find($buy_userId)->pic : '';
     {{-- <div class="c-messages__head__order {{$class_order_type}}">
     {{ $order_type }}
 </div> --}}
+<a href="{{ route('bords') }}" class="c-message__userImg__item"></a>
 <div class="c-messages__head__userImg__wrapper">
     <img src="/storage/{{ $pic }}" alt="" class="c-messages__head__userImg">
 </div>
