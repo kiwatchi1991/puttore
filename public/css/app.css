@@ -5486,6 +5486,16 @@ a:visited {
   white-space: nowrap;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__nav {
+    height: 50px;
+    display: -webkit-box;
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
 .c-mypage__nav__list {
   width: 30%;
   font-size: 10px;
@@ -5493,6 +5503,12 @@ a:visited {
   display: inline-block;
   height: 95%;
   border-right: 1px solid #f8f8f8;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__nav__list {
+    font-size: 13px;
+  }
 }
 
 .c-mypage__nav__list .small {
@@ -5526,6 +5542,12 @@ a:visited {
   font-size: 18px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__title {
+    font-size: 23px;
+  }
+}
+
 .c-mypage__title--bank {
   color: #484848;
   font-size: 16px;
@@ -5535,12 +5557,24 @@ a:visited {
   padding-bottom: 32px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__title--bank {
+    font-size: 23px;
+  }
+}
+
 .c-mypage__editLink {
   font-size: 12px;
   font-weight: normal;
   text-decoration: underline;
   color: #00ac7d;
   margin-left: 8px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__editLink {
+    font-size: 14px;
+  }
 }
 
 .c-mypage__editLink__wrapper {
@@ -5555,13 +5589,32 @@ a:visited {
   background: #E5F6F2;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__account {
+    max-width: 600px;
+    margin: 60px auto;
+  }
+}
+
 .c-mypage__account__inner {
   background: white;
   padding: 0 16px 64px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__account__inner {
+    padding: 32px 40px 64px;
+  }
+}
+
 .c-mypage__account__list {
   margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__account__list {
+    font-size: 18px;
+  }
 }
 
 .c-mypage__account__list__label {
@@ -5577,6 +5630,13 @@ a:visited {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__account__list img {
+    height: 100px;
+    width: 100px;
+  }
 }
 
 .c-mypage__account__list--withdraw {
