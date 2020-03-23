@@ -1385,15 +1385,24 @@ a:visited {
   padding: 0 15px 15px;
 }
 
+.c-contents__title {
+  font-size: 17px;
+  line-height: 1.18;
+}
+
 .c-contents__price {
-  margin-top: 20px;
-  font-size: 20px;
+  margin-top: 8px;
+  font-size: 23px;
   color: #00ac7d;
   font-weight: bold;
+  line-height: 1.35;
+  letter-spacing: 0.7px;
+  margin-top: 8px;
 }
 
 .c-contents__detail {
-  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.38;
 }
 
 .c-productNew {
@@ -1917,6 +1926,11 @@ a:visited {
   box-sizing: border-box;
 }
 
+.c-productShow__like.is-active {
+  background: white;
+  border: 1px solid #00ac7d;
+}
+
 .c-productShow__buynow {
   margin: 8px auto 0;
   z-index: 3;
@@ -1931,6 +1945,10 @@ a:visited {
 .c-productShow__buynow#payjp_checkout_box input[type=button] {
   background: #E5F6F2 !important;
   background-image: none !important;
+}
+
+.c-productShow__buynow#payjp_checkout_box input[type=button] button {
+  font-size: 14px;
 }
 
 .c-productShow__curriculum {
@@ -2393,11 +2411,11 @@ a:visited {
 
 .c-ajaxLike__icon {
   color: white;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .c-ajaxLike__icon.is-active {
-  color: red;
+  color: #00ac7d;
 }
 
 .c-ajaxFollow__icon.is-active {

@@ -21,7 +21,15 @@ $like.on('click', function () {
     // Ajaxリクエストが成功した場合
     .done(function () {
         console.log('ここまで4');
-    $this.toggleClass('is-active');
+        $this.toggleClass('is-active');
+        if ($this.hasClass('is-active')) {
+          console.log('trueの処理');
+          $this.text('ほしいものリストに入っています ♡');
+        } else {
+          console.log('falseの処理');
+        $this.text('ほしいものリストに追加する ♡');
+      }
+      $this.parents('.c-productShow__like').toggleClass('is-active');
   })
   // Ajaxリクエストが失敗した場合
   .fail(function (data) {

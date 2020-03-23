@@ -38976,8 +38976,6 @@ __webpack_require__(/*! ./components/ajaxCart */ "./resources/js/components/ajax
 
 __webpack_require__(/*! ./components/date-picker */ "./resources/js/components/date-picker.js");
 
-__webpack_require__(/*! ./components/postdraft */ "./resources/js/components/postdraft.js");
-
 __webpack_require__(/*! ./components/sessionFlash */ "./resources/js/components/sessionFlash.js");
 
 __webpack_require__(/*! ./components/imgSlider */ "./resources/js/components/imgSlider.js");
@@ -39136,7 +39134,7 @@ $button.on('click', function (e) {
   var $copyTaget = $('.js-add__target:last-child');
   $copyTaget.clone().appendTo('#js-lesson__section');
   var $newCopyTaget = $('.js-add__target:last-child');
-  $newCopyTaget.find('input[type="hidden"]').remove();
+  $newCopyTaget.find('#hidden').remove();
   $newCopyTaget.find('#title').val('').keyup();
   $newCopyTaget.find('textarea').val('').keyup(); //初期表示をプレビューではなく入力に
 
@@ -39380,6 +39378,16 @@ $like.on('click', function () {
   .done(function () {
     console.log('ここまで4');
     $this.toggleClass('is-active');
+
+    if ($this.hasClass('is-active')) {
+      console.log('trueの処理');
+      $this.text('ほしいものリストに入っています ♡');
+    } else {
+      console.log('falseの処理');
+      $this.text('ほしいものリストに追加する ♡');
+    }
+
+    $this.parents('.c-productShow__like').toggleClass('is-active');
   }) // Ajaxリクエストが失敗した場合
   .fail(function (data) {
     console.log('エラー');
@@ -39685,49 +39693,6 @@ $follow.on('click', function () {
 
 /***/ }),
 
-/***/ "./resources/js/components/postdraft.js":
-/*!**********************************************!*\
-  !*** ./resources/js/components/postdraft.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var postdraft = function postdraft() {
-  console.log('postdraftイベント発生');
-  $('.js-isCheck-postType').on('click', function (e) {
-    e.preventDefault();
-    console.log('clickイベント発生'); // var that = $(this);
-
-    var postType = $(this).data('type');
-    console.log('postType');
-    console.log(postType);
-    var $form = $('#form-product');
-
-    if (postType == 'draft') {
-      $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('draft');
-    } else if (postType == 'register') {
-      // if($form.find(':invalid').length === 0)
-      // if($(input).checkValidity())
-      // {
-      // $(btn).prop('disabled', true);
-      $(this).parents('.js-postType__parentDom').find('input[type=hidden]').val('register'); // $form.submit();
-      // }
-      // else
-      // {
-      //ツールチップを表示
-      // $form.find(':invalid').show();
-      // $form.reportValidity();
-      // }
-    }
-
-    $form.submit();
-  });
-};
-
-window.onload = postdraft();
-
-/***/ }),
-
 /***/ "./resources/js/components/previewImage.js":
 /*!*************************************************!*\
   !*** ./resources/js/components/previewImage.js ***!
@@ -39853,8 +39818,8 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/PUTTORE/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/PUTTORE/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/JISAKU/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/JISAKU/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

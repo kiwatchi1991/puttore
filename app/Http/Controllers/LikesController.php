@@ -23,12 +23,12 @@ class LikesController extends Controller
 
         $product_id = $request->like;
 
-        $liked = Like::where('product_id',$product_id)->where('user_id',Auth::user()->id)->count();
-        if($liked > 0){
+        $liked = Like::where('product_id', $product_id)->where('user_id', Auth::user()->id)->count();
+        if ($liked > 0) {
             Log::debug('<<<<<<<< お気に入り削除処理　>>>>>>>>>>>>>');
-            $like = Like::where('product_id',$product_id)->where('user_id', Auth::user()->id)->delete();
+            $like = Like::where('product_id', $product_id)->where('user_id', Auth::user()->id)->delete();
             return response()->json($like);
-        }else{
+        } else {
             Log::debug('<<<<<<<< お気に入り追加処理　>>>>>>>>>>>>>');
             $like = new Like;
             $like->product_id = $product_id;
@@ -36,6 +36,5 @@ class LikesController extends Controller
             $like->save();
             return response()->json($like);
         }
-
     }
 }

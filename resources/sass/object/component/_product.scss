@@ -252,14 +252,22 @@
     margin-top: 10px;
     padding: 0 15px 15px;
     }
+    &__title{
+      font-size: 17px;
+      line-height: 1.18;
+    }
     &__price{
-      margin-top: 20px;
-      font-size: 20px;
+      margin-top: 8px;
+      font-size: 23px;
       color: $main-color;
       font-weight: bold;
+      line-height: 1.35;
+      letter-spacing: 0.7px;
+      margin-top: 8px;
     }
     &__detail{
-      margin-top: 20px;
+      font-size: 13px;
+      line-height: 1.38;
   }
 }
 
@@ -693,6 +701,10 @@
     padding: 10px;
     border-radius: 7px;
     box-sizing: border-box;
+    &.is-active{
+      background: white;
+      border: 1px solid $main-color;
+    }
   }
   &__buynow{
     margin: 8px auto 0;
@@ -706,6 +718,9 @@
     &#payjp_checkout_box input[type=button]{
       background: $bg !important;
       background-image: none !important;
+      button{
+        font-size: 14px;
+      }
     }
   }
   &__curriculum{
@@ -1111,9 +1126,9 @@
 }
 .c-ajaxLike__icon{
     color: white;
-    font-size: 12px;
+    font-size: 14px;
     &.is-active{
-        color:red;
+        color:$main-color;
     }
 }
 

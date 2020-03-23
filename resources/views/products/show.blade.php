@@ -59,8 +59,8 @@
                 <p class="c-productShow__price c-productShow__price--discount">
                     @if($discount_price)
                     ¥ {{ number_format($discount_price->discount_price) }}
-                    @endif
                     <span class="c-productShow__price__discount">{{$discount_price->end_date}}まで</span>
+                    @endif
                 </p>
             </div>
 
@@ -121,10 +121,10 @@
             {{-- ↓↓↓↓　購入済みの場合はお気に入り・購入ボタン表示しない --}}
             @if(!$isOrder && $product->user_id !== Auth::id())
             {{-- ほしいものに追加する --}}
-            <div class="c-productShow__like">
-                <button type="submit" class="c-ajaxLike__icon @if($liked) is-active  @endif"
+            <div class="c-productShow__like @if($liked) is-active @endif">
+                <button type="submit" class="c-ajaxLike__icon @if($liked) is-active @endif"
                     data-like="{{ $product->id }}">
-                    ほしいものリストに追加する
+                    @if($liked)ほしいものリストに入っています ♡@else ほしいものリストに追加する ♡@endif
                 </button>
             </div>
 

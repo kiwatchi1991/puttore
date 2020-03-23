@@ -270,14 +270,14 @@
             <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft"
                 data-type="draft" name="postType" value="draft">
                 下書き保存する
-                <input type="hidden" name="" class="js-postType" value="">
+                {{-- <input type="hidden" name="" class="js-postType" value=""> --}}
             </button>
         </div>
         <div class="c-productNew__submit ">
             <button type="submit" class="c-productNew__submit__button" data-type="register" name="postType"
                 value="register">
                 登録する
-                <input type="hidden" name="" class="js-postType" value="">
+                {{-- <input type="hidden" name="" class="js-postType" value=""> --}}
             </button>
         </div>
     </form>
