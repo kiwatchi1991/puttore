@@ -324,6 +324,16 @@ class ProductsController extends Controller
         $product->difficulties()->sync($difficulty_ids);
 
 
+        //下書きの時は、公開フラグを1にする
+        if ($request->postType == 'draft') {
+            $product->open_flg = 1;
+            $product->save();
+            // return redirect()->route('products.show', $id)->with('flash_message', '作品を下書き保存しました');
+        } else {
+            $product->open_flg = 0;
+            $product->save();
+            // return redirect()->route('products.show', $id)->with('flash_message', '作品を更新して公開しました');
+        }
 
         // リダイレクトする
         // その時にsessionフラッシュにメッセージを入れる

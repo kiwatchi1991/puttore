@@ -105,6 +105,10 @@ Route::group(['middleware' => 'check'], function () {
 
     //マイページ
     Route::get('/mypage',  'mypageController@index')->name('mypage');
+    Route::get('/mypage/draft',  'mypageController@draft')->name('mypage.draft');
+    Route::get('/mypage/like',  'mypageController@like')->name('mypage.like');
+    Route::get('/mypage/buy',  'mypageController@buy')->name('mypage.buy');
+    Route::get('/mypage/sale',  'mypageController@sale')->name('mypage.sale');
     Route::get('/mypage/products',  'mypageController@products')->name('mypage.products');
     Route::get('/mypage/order',  'mypageController@order')->name('mypage.order');
     Route::get('/mypage/order/{month}',  'mypageController@orderMonth')->name('mypage.order.show');

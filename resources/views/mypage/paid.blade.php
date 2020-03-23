@@ -4,10 +4,14 @@
 
 <div class="c-mypage__nav">
     <div class="c-mypage__nav__list"><a href="/mypage">アカウント</a></div>
-    <div class="c-mypage__nav__list"><a href="/mypage">作品一覧<br>（下書き / 購入 / 販売）</a></div>
-    <div class="c-mypage__nav__list active"><a href="/mypage/order">販売管理</a></div>
-    <div class="c-mypage__nav__list"><a href="/mypage/paid">振込履歴</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage">お気に入り</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage">下書き</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage">購入作品</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage">出品作品</a></a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage/order">販売管理</a></div>
+    <div class="c-mypage__nav__list active"><a href="/mypage/paid">振込履歴</a></div>
 </div>
+
 @yield('header')
 <div class="c-mypage__order">
     <div class="c-mypage__sale">
@@ -30,7 +34,7 @@
                         <td class="c-mypage__sale__list c-mypage__sale__list--day">
                             {{$paid->created_at->format('Y年m月d日')}}</td>
                         <td class="c-mypage__sale__list c-mypage__sale__list--title">
-                            {{$paid->paid_date }}</td>
+                            {{$paid->paid_date}}</td>
                         {{-- @php echo var_dump($paid->paid_date) @endphp --}}
                         <td class="c-mypage__sale__list c-mypage__sale__list--price">¥
                             {{number_format($paid->sale_price)}}</td>

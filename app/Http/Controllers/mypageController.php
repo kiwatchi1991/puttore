@@ -264,4 +264,57 @@ class mypageController extends Controller
             'paids' => $paids,
         ]);
     }
+
+    //=============================================
+    //==========       下書き　ページ     ==========
+    //=============================================
+
+    public function draft(Request $request)
+    {
+
+        $products = Product::where('id', Auth::user()->id)
+            ->where('open_flg', 1)
+            ->latest()->paginate(10);
+
+        Log::debug(' <<<<<<   マイページ（　下書き　）   >>>>>>>');
+
+        //プロダクト件数
+        $all_products = Product::all();
+        //全プロダクト（ページング）
+        // $products = Product::paginate(10);
+
+        //ページング用変数 始点
+        $pageNum_from =  $products->currentPage() * 10 - 9;
+        //ページング用変数 終点
+        $pageNum_to = $products->currentPage() * 10;
+
+        //画像有無判定フラグ
+        $is_image = false;
+        if (Storage::disk('local')->exists('public/product_images/' . Auth::id() . '.jpg')) {
+            $is_image = true;
+        }
+
+        $product_category = Product::all();
+        $product_difficulty = Product::all();
+
+        return view('mypage/draft', [
+            'products' => $products,
+            'product_categories' => $product_category,
+            'product_difficulties' => $product_difficulty,
+            'all_products' => $all_products,
+            'pageNum_from' => $pageNum_from,
+            'pageNum_to' => $pageNum_to,
+            'is_image' => $is_image,
+
+        ]);
+    }
+    public function like(Request $request)
+    {
+    }
+    public function buy(Request $request)
+    {
+    }
+    public function sale(Request $request)
+    {
+    }
 }

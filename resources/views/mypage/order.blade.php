@@ -4,83 +4,79 @@
 
 <div class="c-mypage__nav">
     <div class="c-mypage__nav__list"><a href="/mypage">アカウント</a></div>
-    <div class="c-mypage__nav__list"><a href="/mypage">作品一覧<br>（下書き / 購入 / 販売）</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage/like">お気に入り</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage/draft">下書き</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage/buy">購入作品</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage/sale">出品作品</a></a></div>
     <div class="c-mypage__nav__list active"><a href="/mypage/order">販売管理</a></div>
     <div class="c-mypage__nav__list"><a href="/mypage/paid">振込履歴</a></div>
 </div>
-
-
-
-{{-- @if($sale_history->status == 0)
-    未振込はこっち
-    {{ $sale_history }}
-
-@endif --}}
 
 <div class="c-mypage__order">
     <div class="c-mypage__sale">
         <div class="c-profile__title__product">
             <h2>販売履歴</h2>
         </div>
-        {{-- @if($drafts->count() == 0) --}}
-        <div class="c-profile__title__product">
-            <p>今月の売上</p>
-        </div>
-        {{-- @endif --}}
+
         <div class="c-mypage__sale__thisMonth">
-            <div class="c-mypage__sale__thisMonth__total">総額</div>
-            @foreach($thisMonth as $mon => $price)
-            <div class="c-mypage__sale__thisMonth__price">¥ {{ number_format($price) }}
+            <div class="c-mypage__sale__thisMonth__title">
+                <p>今月の売上</p>
             </div>
-            @endforeach
+            <div class="c-mypage__sale__thisMonth__price__wrapper">
+
+                <div class="c-mypage__sale__thisMonth__total">総額</div>
+                @foreach($thisMonth as $mon => $price)
+                <div class="c-mypage__sale__thisMonth__price">¥ {{ number_format($price) }}
+                </div>
+                @endforeach
+            </div>
             <div class="c-mypage__sale__thisMonth__detail"><a href="{{ route('mypage.order.show',$mon) }}">詳細</a></div>
         </div>
 
-        <div class="c-profile__title__product">
-            <p style="margin-top: 32px">未振込の売上</p>
-        </div>
-        <div class="c-mypage__sale__untransferred__wrapper">
-            <div class="c-mypage__sale__untransferred">
+        {{-- 未振込の計上 --}}
+        <div class="c-mypage__sale__untransferred">
+            <div class="c-mypage__sale__untransferred__title">
+                <p>未振込の売上</p>
+            </div>
+            <div class="c-mypage__sale__untransferred__price__wrapper">
                 <div class="c-mypage__sale__untransferred__total">総額</div>
 
                 @foreach($untransferred_price as $mon => $price)
                 <div class="c-mypage__sale__untransferred__price">¥ {{ number_format($price) }}
                 </div>
                 @endforeach
-
                 {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
                 @if ($untransferred_price->count()==0)
                 <div class="c-mypage__sale__untransferred__price">¥ 0</div>
                 @endif
 
-                <div class="c-mypage__sale__untransferred__request js-request-transfer">
-
-                    {{-- 5000円以下の場合は表示しない --}}
-                    @foreach($untransferred_price as $mon => $price)
-                    @if ($price > 5000)
-                    <a href="/mypage/transfer" class="c-mypage__sale__untransferred__request__link">振込依頼</a>
-                    @endif
-                    @endforeach
-
-                </div>
             </div>
-            　　 <p class="c-mypage__sale__untransferred__text">
+            <div class="c-mypage__sale__untransferred__request js-request-transfer">
+
+                {{-- 5000円以下の場合は表示しない --}}
+                @foreach($untransferred_price as $mon => $price)
+                @if ($price > 5000)
+                <a href="/mypage/transfer" class="c-mypage__sale__untransferred__request__link">振込依頼</a>
+                @endif
+                @endforeach
+
+            </div>
+            <p class="c-mypage__sale__untransferred__text">
                 前月末時点での未振込の売上金総額が5,000円以上になると、振込依頼ができるようになります。</p>　
         </div>
 
-
-        <div class="c-profile__title__product">
-            <p style="margin-top: 32px">処理済みの売上</p>
-        </div>
+        {{-- 処理済みの計上 --}}
 
         <div class="c-mypage__sale__done">
+            <div class="c-mypage__sale__done__title">
+                <p>処理済みの売上</p>
+            </div>
             <table>
                 <thead>
                     <tr>
                         <th class="c-mypage__sale__list c-mypage__sale__list--day">期間</th>
                         <th class="c-mypage__sale__list c-mypage__sale__list--price">売上</th>
                         <th class="c-mypage__sale__list c-mypage__sale__list--status">状況</th>
-                        <th> </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,14 +85,14 @@
                     <tr>
                         <td>{{ $mon }}月</td>
                         <td>@if($sale > 0) ¥ {{ number_format($sale[0]) }} @endif</td>
-                        <td>
+                        {{-- <td>
                             @if($sale[1])申請中 @else 振込済 @endif
-                        </td>
-                        <td><a href="{{ route('mypage.order.show',$mon) }}">詳細</a></td>
+                        </td> --}}
+                        <td><a href="{{ route('mypage.order.show',$mon) }}">@if($sale[1])申請中 @else 振込済 @endif</a></td>
                     </tr>
                     @endforeach
                     {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
-                    @if ($untransferred_price->count()==0)
+                    @if ($sales->count()==0)
                     <div class="c-mypage__sale__untransferred__price">ありません</div>
                     @endif
 
