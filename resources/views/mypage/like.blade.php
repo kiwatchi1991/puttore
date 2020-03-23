@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title','下書き保存')
+@section('title','お気に入り')
 @section('content')
 
 <div class="c-mypage__nav">
     <div class="c-mypage__nav__list"><a href="/mypage">アカウント</a></div>
-    <div class="c-mypage__nav__list"><a href="/mypage/like">お気に入り</a></div>
-    <div class="c-mypage__nav__list active"><a href="/mypage/draft">下書き</a></div>
+    <div class="c-mypage__nav__list active"><a href="/mypage/like">お気に入り</a></div>
+    <div class="c-mypage__nav__list"><a href="/mypage/draft">下書き</a></div>
     <div class="c-mypage__nav__list"><a href="/mypage/buy">購入作品</a></div>
     <div class="c-mypage__nav__list"><a href="/mypage/sale">出品作品</a></a></div>
     <div class="c-mypage__nav__list"><a href="/mypage/order">販売管理</a></div>
@@ -14,7 +14,7 @@
 
 <div class="c-mypage__products">
     <div class="c-mypage__products__title">
-        <h2>下書き保存一覧</h2>
+        <h2>お気に入り一覧</h2>
     </div>
 
     <div class="c-product__area">
@@ -52,6 +52,7 @@
         </div>
         @endforeach
     </div>
+
 </div>
 
 @endsection

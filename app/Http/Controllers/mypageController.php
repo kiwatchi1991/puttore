@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 use App\Transfer;
 use App\FromBank;
 use App\User;
+use App\Like;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use App\Product;
@@ -278,22 +279,6 @@ class mypageController extends Controller
 
         Log::debug(' <<<<<<   マイページ（　下書き　）   >>>>>>>');
 
-        //プロダクト件数
-        $all_products = Product::all();
-        //全プロダクト（ページング）
-        // $products = Product::paginate(10);
-
-        //ページング用変数 始点
-        // $pageNum_from =  $products->currentPage() * 10 - 9;
-        //ページング用変数 終点
-        // $pageNum_to = $products->currentPage() * 10;
-
-        //画像有無判定フラグ
-        $is_image = false;
-        if (Storage::disk('local')->exists('public/product_images/' . Auth::id() . '.jpg')) {
-            $is_image = true;
-        }
-
         $product_category = Product::all();
         $product_difficulty = Product::all();
 
@@ -305,15 +290,26 @@ class mypageController extends Controller
             'products' => $products,
             'product_categories' => $product_category,
             'product_difficulties' => $product_difficulty,
-            'all_products' => $all_products,
-            // 'pageNum_from' => $pageNum_from,
-            // 'pageNum_to' => $pageNum_to,
-            'is_image' => $is_image,
-
         ]);
     }
+    //=============================================
+    //==========       下書き　ページ     ==========
+    //=============================================
     public function like(Request $request)
     {
+        $likeIds = Like::where('likes.user_id', Auth::user()->id)->get('product_id');
+        $products = Product::whereIn('id', $likeIds)->get();
+
+        Log::debug(' <<<<<<   マイページ（　お気に入り　）   >>>>>>>');
+
+        $product_category = Product::all();
+        $product_difficulty = Product::all();
+
+        return view('mypage.like', [
+            'products' => $products,
+            'product_categories' => $product_category,
+            'product_difficulties' => $product_difficulty,
+        ]);
     }
     public function buy(Request $request)
     {
