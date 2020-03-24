@@ -271,6 +271,15 @@
 .c-productNew{
   background: $bg;
   padding: 30px;
+    @include pc{
+      background: white;
+    }
+    &__wrapper{
+      @include pc{
+        max-width: 900px;
+        margin: 0 auto;
+      }
+    }
     &__title__head{
       font-size: 23px;
       line-height:31px;
@@ -280,8 +289,11 @@
     }
     &__title__label{
       font-size: 14px;
-      color: $main-color;
+      color: $main-text;
       margin-top: 8px;
+      @include pc{
+        font-size: 18px;
+      }
       &--tags{
         margin-top: 24px;
       }
@@ -293,6 +305,9 @@
       border-radius: 5px;
       border: none;
       margin-top: 8px;
+      @include pc{
+        background: $bg;
+    }
        &--detail{
         max-height: 500px;
       }
@@ -302,6 +317,9 @@
       margin-top: 8px;
       padding: 16px 16px 16px 0;
       border-radius: 5px;
+      @include pc{
+        background: $bg;
+    }
     }
     &__categories{
         margin-top: 8px;
@@ -387,13 +405,27 @@
     &__lesson{
       display: none;
       min-height: 300px;
+      @include pc{
+        display: block;
+       }
 
       text-align: left;
         &__block{
           margin-top: 16px;
+          @include pc{
+             display: flex;
+             justify-content: space-between;
+           }
+
         }
         &__inner{
           margin-top: 40px;
+          }
+        &__pcWrapper{
+            @include pc{
+                width: 49%;
+              }
+
         }
         &__header{
           display: flex;
@@ -402,6 +434,10 @@
           padding-right: 15px;
           padding-top: 8px;
           font-size: 24px;
+          @include pc{
+            background: $bg;
+            border-radius: 8px 8px 0 0;
+          }
           &__title{
             width: 100%;
             padding-left: 16px;
@@ -415,8 +451,14 @@
             display: none;
             margin-right: 16px;
             color: $main-color;
-            &.active{
-              display: block;
+            @include pc{
+              display: none;
+           } 
+           &.active{
+             display: block;
+                @include pc{
+                  display: none;
+               } 
             }
           }
           &__imgIcon{
@@ -431,6 +473,11 @@
       width: 100%;
       box-sizing: border-box;
       max-height: 500px;
+      @include pc{
+        min-height: 300px;
+        background: $bg;
+        border-radius: 0 0 8px 8px;
+      }
     }
     &--preview{
       padding: 24px 16px;
@@ -438,14 +485,45 @@
       background: #fff;
       box-sizing: border-box;
       max-height: 700px;
+      overflow: auto;
+      @include pc{
+        width: 49%;
+        border: 1px solid $main-color;
+        border-radius: 8px;
+
+        max-height: 500px;
+      }
     }
     &__addBtn{
       text-align: center;
       margin-top: 16px;
       &__btn{
         color: $main-color;
+        @include pc{
+          font-size: 18px;
+        }
       }
     }
+  }
+  &__price{
+    @include pc{
+      width: 520px;
+      margin: 0 auto;
+    }
+    &--wrap{
+      @include pc{
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      }
+    }
+    &--icon{
+      @include pc{
+      font-size: 20px;
+      margin-right: 8px;
+      }
+    }
+
   }
   &__skills{
     margin-top: 32px;
@@ -477,6 +555,9 @@
       background-size: contain;
       border-radius: 15px;
       overflow: hidden;
+      @include pc{
+        border: 1px solid $main-color;
+     }
     }
     &__input{
       width: 30%;

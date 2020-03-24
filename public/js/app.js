@@ -39143,26 +39143,7 @@ $button.on('click', function (e) {
   $newCopyTaget.find('.js-toggleTab__preview').removeClass('active');
   $newCopyTaget.find('.js-toggleTab__input').removeClass('active');
   $newCopyTaget.find('.js-lesson__block--input').addClass('active');
-  $newCopyTaget.find('.js-toggleTab__input').addClass('active'); //  let $areaInput = $that.parents('.js-productNew__lesson').find('.js-lesson__block--input');
-  //     let $areaPreview = $that.parents('.js-productNew__lesson').find('.js-lesson__block--preview');
-  //     let $iconPreview = $that.parents('.js-productNew__lesson').find('.js-toggleTab__preview');
-  //     let $iconEdit = $that.parents('.js-productNew__lesson').find('.js-toggleTab__input');
-  //     let target = $that.attr('data-status');
-  //     $areaInput.removeClass('active');
-  //     $areaPreview.removeClass('active');
-  //     $iconEdit.removeClass('active');
-  //     $iconPreview.removeClass('active');
-  //     switch (target) {
-  //         case 'input':
-  //             $iconPreview.addClass('active');
-  //             $areaInput.addClass('active');
-  //             break;
-  //             case 'preview':
-  //                 $iconEdit.addClass('active');
-  //                 $areaPreview.addClass('active');
-  //                 break;
-  //             }
-  //load()でnumberの振り直し
+  $newCopyTaget.find('.js-toggleTab__input').addClass('active'); //load()でnumberの振り直し
 
   load();
 }); //==========================================
@@ -39173,7 +39154,7 @@ var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked
 
 $(document).on('keyup', '.js-marked__textarea', function () {
   var html = marked($(this).val());
-  $(this).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
+  $(this).parents('.js-add__target').find('.js-lesson__block--preview').html(html);
 }); //===========================================
 //==========    レッスンへのnumber付与
 //===========================================
@@ -39651,16 +39632,7 @@ var lessonPreview = function lessonPreview() {
   }
 };
 
-window.load = lessonPreview(); //画像を挿入
-// let setLessonUploadImg = function () {
-//   let $insert_btn = document.getElementsByClassName('js-lessonUploadImg');
-//   for (let i = 0; i < $insert_btn.length; i++){
-//     $insert_btn[i].addEventListener('change',function () {
-//       let target = $(this);
-//       lessonUploadImg(target);
-//     })
-//   }
-
+window.load = lessonPreview();
 var $follow = $('.c-ajaxFollow__icon');
 var followPostId;
 $follow.on('click', function () {

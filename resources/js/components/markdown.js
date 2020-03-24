@@ -11,20 +11,6 @@ let lessonPreview = function () {
 }
 window.load = lessonPreview();
 
-
-//画像を挿入
-// let setLessonUploadImg = function () {
-  
-//   let $insert_btn = document.getElementsByClassName('js-lessonUploadImg');
-//   for (let i = 0; i < $insert_btn.length; i++){
-//     $insert_btn[i].addEventListener('change',function () {
-//       let target = $(this);
-//       lessonUploadImg(target);
-//     })
-//   }
-
-
-
 let $follow = $('.c-ajaxFollow__icon');
 let followPostId;
 $follow.on('click', function () {

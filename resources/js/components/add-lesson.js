@@ -104,29 +104,6 @@ $button.on('click', function (e) {
     $newCopyTaget.find('.js-lesson__block--input').addClass('active');
     $newCopyTaget.find('.js-toggleTab__input').addClass('active');
 
-
-//  let $areaInput = $that.parents('.js-productNew__lesson').find('.js-lesson__block--input');
-//     let $areaPreview = $that.parents('.js-productNew__lesson').find('.js-lesson__block--preview');
-//     let $iconPreview = $that.parents('.js-productNew__lesson').find('.js-toggleTab__preview');
-//     let $iconEdit = $that.parents('.js-productNew__lesson').find('.js-toggleTab__input');
-    
-//     let target = $that.attr('data-status');
-//     $areaInput.removeClass('active');
-//     $areaPreview.removeClass('active');
-//     $iconEdit.removeClass('active');
-//     $iconPreview.removeClass('active');
-
-//     switch (target) {
-//         case 'input':
-//             $iconPreview.addClass('active');
-//             $areaInput.addClass('active');
-//             break;
-            
-//             case 'preview':
-//                 $iconEdit.addClass('active');
-//                 $areaPreview.addClass('active');
-//                 break;
-//             }
     //load()でnumberの振り直し
     load();
 });
@@ -137,7 +114,7 @@ $button.on('click', function (e) {
 const marked = require('marked');
 $(document).on('keyup', '.js-marked__textarea', function () {
     var html = marked($(this).val());
-    $(this).parents('.js-productNew__lesson').find('.js-lesson__block--preview').html(html);
+    $(this).parents('.js-add__target').find('.js-lesson__block--preview').html(html);
 });
 
 //===========================================

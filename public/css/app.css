@@ -1397,6 +1397,19 @@ a:visited {
   padding: 30px;
 }
 
+@media (min-width: 768px) {
+  .c-productNew {
+    background: white;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-productNew__wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
 .c-productNew__title__head {
   font-size: 23px;
   line-height: 31px;
@@ -1407,8 +1420,14 @@ a:visited {
 
 .c-productNew__title__label {
   font-size: 14px;
-  color: #00ac7d;
+  color: #484848;
   margin-top: 8px;
+}
+
+@media (min-width: 768px) {
+  .c-productNew__title__label {
+    font-size: 18px;
+  }
 }
 
 .c-productNew__title__label--tags {
@@ -1424,6 +1443,12 @@ a:visited {
   margin-top: 8px;
 }
 
+@media (min-width: 768px) {
+  .c-productNew__input-area {
+    background: #E5F6F2;
+  }
+}
+
 .c-productNew__input-area--detail {
   max-height: 500px;
 }
@@ -1433,6 +1458,12 @@ a:visited {
   margin-top: 8px;
   padding: 16px 16px 16px 0;
   border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .c-productNew__tagbox {
+    background: #E5F6F2;
+  }
 }
 
 .c-productNew__categories {
@@ -1541,12 +1572,33 @@ a:visited {
   text-align: left;
 }
 
+@media (min-width: 768px) {
+  .c-productNew__lesson {
+    display: block;
+  }
+}
+
 .c-productNew__lesson__block {
   margin-top: 16px;
 }
 
+@media (min-width: 768px) {
+  .c-productNew__lesson__block {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+  }
+}
+
 .c-productNew__lesson__inner {
   margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .c-productNew__lesson__pcWrapper {
+    width: 49%;
+  }
 }
 
 .c-productNew__lesson__header {
@@ -1558,6 +1610,13 @@ a:visited {
   padding-right: 15px;
   padding-top: 8px;
   font-size: 24px;
+}
+
+@media (min-width: 768px) {
+  .c-productNew__lesson__header {
+    background: #E5F6F2;
+    border-radius: 8px 8px 0 0;
+  }
 }
 
 .c-productNew__lesson__header__title {
@@ -1577,8 +1636,20 @@ a:visited {
   color: #00ac7d;
 }
 
+@media (min-width: 768px) {
+  .c-productNew__lesson__header__toggleIcon {
+    display: none;
+  }
+}
+
 .c-productNew__lesson__header__toggleIcon.active {
   display: block;
+}
+
+@media (min-width: 768px) {
+  .c-productNew__lesson__header__toggleIcon.active {
+    display: none;
+  }
 }
 
 .c-productNew__lesson__header__imgIcon {
@@ -1596,12 +1667,30 @@ a:visited {
   max-height: 500px;
 }
 
+@media (min-width: 768px) {
+  .c-productNew__lesson--textarea {
+    min-height: 300px;
+    background: #E5F6F2;
+    border-radius: 0 0 8px 8px;
+  }
+}
+
 .c-productNew__lesson--preview {
   padding: 24px 16px;
   min-height: 300px;
   background: #fff;
   box-sizing: border-box;
   max-height: 700px;
+  overflow: auto;
+}
+
+@media (min-width: 768px) {
+  .c-productNew__lesson--preview {
+    width: 49%;
+    border: 1px solid #00ac7d;
+    border-radius: 8px;
+    max-height: 500px;
+  }
 }
 
 .c-productNew__lesson__addBtn {
@@ -1611,6 +1700,37 @@ a:visited {
 
 .c-productNew__lesson__addBtn__btn {
   color: #00ac7d;
+}
+
+@media (min-width: 768px) {
+  .c-productNew__lesson__addBtn__btn {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-productNew__price {
+    width: 520px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-productNew__price--wrap {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: end;
+            justify-content: flex-end;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-productNew__price--icon {
+    font-size: 20px;
+    margin-right: 8px;
+  }
 }
 
 .c-productNew__skills {
@@ -1647,6 +1767,12 @@ a:visited {
   background-size: contain;
   border-radius: 15px;
   overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .c-productNew__image__area {
+    border: 1px solid #00ac7d;
+  }
 }
 
 .c-productNew__image__input {
@@ -6028,15 +6154,39 @@ a:visited {
   width: 100%;
 }
 
-.modal__content {
+.modal__contents {
   background: #fff;
   left: 50%;
-  padding: 40px;
+  padding: 0 40px 40px;
   position: absolute;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 60%;
+  width: 80%;
+  height: 70%;
+  overflow: hidden;
+}
+
+.modal__head__fixed {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.modal__contents__inner {
+  overflow: auto;
+  height: 100%;
+}
+
+.modal__content__header {
+  margin-top: 8px;
+}
+
+.modal__content {
+  margin-top: 8px;
+  background: #E5F6F2;
+  padding: 8px;
 }
 
 .c-home {

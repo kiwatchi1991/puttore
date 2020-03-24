@@ -16,12 +16,33 @@
     position: absolute;
     width: 100%;
 }
-.modal__content{
+.modal__contents{
     background: #fff;
     left: 50%;
-    padding: 40px;
+    padding: 0 40px 40px;
     position: absolute;
     top: 50%;
     transform: translate(-50%,-50%);
-    width: 60%;
+    width: 80%;
+    height: 70%;
+    overflow: hidden;
+}
+.modal__head__fixed{
+    display: flex;
+    justify-content: center;
+}
+.modal__contents__inner{
+    overflow: auto;
+    height: 100%;
+}
+.modal__title{
+
+}
+.modal__content__header{
+    margin-top: 8px;
+}
+.modal__content{
+    margin-top: 8px;
+    background: $bg;
+    padding: 8px;
 }
