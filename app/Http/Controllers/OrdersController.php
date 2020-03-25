@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Discount;
 use App\Order;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use Payjp\Charge;
 
@@ -77,10 +78,11 @@ class OrdersController extends Controller
     } else {
       $order->sale_price = Product::find($id)->default_price;
     }
+    $order->msg_updated_at = Carbon::now();
     $order->save();
 
     // リダイレクトする
     // その時にsessionフラッシュにメッセージを入れる
-    return redirect('/bords')->with('flash_message', __('Registered.'));
+    return redirect('/bords')->with('flash_message', ('購入しました！'));
   }
 }

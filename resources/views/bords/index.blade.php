@@ -21,6 +21,8 @@
     }else{
     $pic = $user->find($buy_userId);
     }
+
+    $firstmsg = $messages->where('order_id',$bord->id)->first();
     @endphp
 
 
@@ -44,7 +46,9 @@
                     </div>
                 </div>
                 <div class="c-bord__half--bottom">
-
+                    <p class="c-bord__latestMsg">
+                        {{ ($firstmsg)? mb_strimwidth($firstmsg->msg, 0, 30, '…', 'UTF-8'):'メッセージはありません' }}</p>
+                    <p class="c-bord__created">{{ $bord->msg_updated_at->format('Y-m-d H:i') }}</p>
                 </div>
             </div>
         </div>

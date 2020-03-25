@@ -115,7 +115,7 @@
         position:relative;
         margin-right: 15px;
         margin-top: 15px;
-        line-height: 17px;
+        line-height: 1.41;
         display: inline-block;
         font-size: 12px;
         @include pc{
@@ -193,22 +193,12 @@
   font-size: 11px;
   border-radius: 5px;
   padding: 3px 10px;
-  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 10px;
   line-height: 1.1;
   @include pc{
       font-size: 12px;
-    }
-  // &--category{
-  //   &:first-child{
-  //     margin-left: 0;
-  //   }
-  // }
-  // &--difficulty{
-  //   &:first-child{
-  //     margin-left: 0;
-  //   }
-  // }
+  }
 
   &.html{
     background: $html;
@@ -240,7 +230,7 @@
   }
   &__block{
     display: flex;
-    padding: 15px 10px 8px 5px;
+    padding: 15px 0 8px 12px;
     flex-wrap: wrap;
   }
 }
@@ -282,7 +272,7 @@
     }
     &__title__head{
       font-size: 23px;
-      line-height:31px;
+      line-height:1.35;
       letter-spacing: 0.7px;
       color: $main-color;
       padding-bottom: 24px;
@@ -370,7 +360,7 @@
         position:relative;
         margin-left: 16px;
         margin-top: 16px;
-        line-height: 17px;
+        line-height: 1.41;
         display: inline-block;
         font-size: 12px;
         &::before{
@@ -626,6 +616,7 @@
   background-image: none !important;
   border: none !important;
   padding: 0 !important;
+  font-size: 14px;
 }
 
 .c-productShow{
@@ -696,7 +687,7 @@
     font-size: 25px;
     font-weight: bold;
     color: $main-color;
-    line-height: 31px;
+    line-height: 1.24;
     letter-spacing: 0.76px;
 
     &.is-inactive{
@@ -725,11 +716,14 @@
     margin-top: 16px;
     font-size: 20px;
     line-height: 1.2;
+    @include pc{
+      margin-top: 32px;
+    }
     &__text{
       display: flex;
       align-items: center;
       font-size: 23px;
-      line-height: 20px;
+      line-height: 1.35;
       letter-spacing: -0.13px;
       @include pc{
         font-size: 35px;

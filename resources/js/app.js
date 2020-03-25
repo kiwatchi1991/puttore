@@ -16,4 +16,5 @@ require('./components/request-transfer');
 require('./components/footerFixed');
 require('./components/footerHide');
 require('./components/lessonModal');
+require('./components/val');
 

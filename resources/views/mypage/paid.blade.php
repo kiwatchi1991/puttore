@@ -34,7 +34,7 @@
                         <td class="c-mypage__sale__list c-mypage__sale__list--day">
                             {{$paid->created_at->format('Y年m月d日')}}</td>
                         <td class="c-mypage__sale__list c-mypage__sale__list--title">
-                            {{$paid->paid_date}}</td>
+                            {{$paid->paid_date->format('Y年m月d日')}}</td>
                         {{-- @php echo var_dump($paid->paid_date) @endphp --}}
                         <td class="c-mypage__sale__list c-mypage__sale__list--price">¥
                             {{number_format($paid->sale_price)}}</td>

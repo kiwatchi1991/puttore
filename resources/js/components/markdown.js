@@ -1,4 +1,22 @@
 let marked = require('marked');
+//==========================================
+//==========   マークダウンプレビューイベント
+//==========================================
+$(document).on('keyup', '.js-marked__textarea', function () {
+    var html = marked($(this).val());
+    $(this).parents('.js-add__target').find('.js-lesson__block--preview').html(html);
+});
+
+//編集画面では、最初から表示
+let editMarkdown = function () {
+  let $this = $('.js-marked__textarea');
+  var html = marked($this.val());
+  $this.parents('.js-add__target').find('.js-lesson__block--preview').html(html);
+}
+if ($('.js-edit-preview').length) {
+  window.load = editMarkdown();
+}
+
 
 //レッスン詳細のマークダウンをプレビューする
 

@@ -220,11 +220,9 @@
   <script>
     src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"
   </script>
-  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js">
+  </script>
 
-  {{-- Copper（画像トリミング）読み込み --}}
-  {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.6/jquery.min.js"></script> --}}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/3.1.6/cropper.min.js"></script>
 </body>
 
 </html>

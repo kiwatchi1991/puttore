@@ -108,14 +108,7 @@ $button.on('click', function (e) {
     load();
 });
 
-//==========================================
-//==========   マークダウンプレビューイベント
-//==========================================
-const marked = require('marked');
-$(document).on('keyup', '.js-marked__textarea', function () {
-    var html = marked($(this).val());
-    $(this).parents('.js-add__target').find('.js-lesson__block--preview').html(html);
-});
+
 
 //===========================================
 //==========    レッスンへのnumber付与

@@ -24,14 +24,14 @@ class BordsController extends Controller
         //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
         $id = Auth::user()->id;
         $bords = Order::where('orders.user_id', $id)
+            ->orderBy('msg_updated_at', 'desc')
             ->join('products', 'orders.product_id', 'products.id')
             ->orWhere('products.user_id', $id)
             ->join('users', 'products.user_id', 'users.id')
-            ->select('orders.id', 'orders.user_id', 'users.pic', 'products.id as p.id', 'products.user_id as p.user_id', 'products.name')
+            ->select('orders.id', 'orders.user_id', 'users.pic', 'products.id as p.id', 'products.user_id as p.user_id', 'products.name', 'msg_updated_at')
             ->get();
 
-        // $sale_user = User::where('id', $bords->{'p.user_id'});
-
+        $messages = Message::orderBy('id', 'desc')->get();
         $user = User::all();
 
         Log::debug('$bords↓↓');
@@ -41,7 +41,7 @@ class BordsController extends Controller
             'bords' => $bords,
             'id' => $id,
             'user' => $user,
-            // 'sale_user' => $sale_user,
+            'messages' => $messages,
         ]);
     }
 

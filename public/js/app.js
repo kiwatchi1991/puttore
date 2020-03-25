@@ -38990,6 +38990,8 @@ __webpack_require__(/*! ./components/footerHide */ "./resources/js/components/fo
 
 __webpack_require__(/*! ./components/lessonModal */ "./resources/js/components/lessonModal.js");
 
+__webpack_require__(/*! ./components/val */ "./resources/js/components/val.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39043,7 +39045,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   !*** ./resources/js/components/add-lesson.js ***!
   \***********************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 //=========================================
 //=======    レッスン削除イベント
@@ -39146,15 +39148,6 @@ $button.on('click', function (e) {
   $newCopyTaget.find('.js-toggleTab__input').addClass('active'); //load()でnumberの振り直し
 
   load();
-}); //==========================================
-//==========   マークダウンプレビューイベント
-//==========================================
-
-var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js");
-
-$(document).on('keyup', '.js-marked__textarea', function () {
-  var html = marked($(this).val());
-  $(this).parents('.js-add__target').find('.js-lesson__block--preview').html(html);
 }); //===========================================
 //==========    レッスンへのnumber付与
 //===========================================
@@ -39620,7 +39613,25 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js"); //レッスン詳細のマークダウンをプレビューする
+var marked = __webpack_require__(/*! marked */ "./node_modules/marked/src/marked.js"); //==========================================
+//==========   マークダウンプレビューイベント
+//==========================================
+
+
+$(document).on('keyup', '.js-marked__textarea', function () {
+  var html = marked($(this).val());
+  $(this).parents('.js-add__target').find('.js-lesson__block--preview').html(html);
+}); //編集画面では、最初から表示
+
+var editMarkdown = function editMarkdown() {
+  var $this = $('.js-marked__textarea');
+  var html = marked($this.val());
+  $this.parents('.js-add__target').find('.js-lesson__block--preview').html(html);
+};
+
+if ($('.js-edit-preview').length) {
+  window.load = editMarkdown();
+} //レッスン詳細のマークダウンをプレビューする
 
 
 var lessonPreview = function lessonPreview() {
@@ -39769,6 +39780,47 @@ $(function () {
     }, 5000);
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/val.js":
+/*!****************************************!*\
+  !*** ./resources/js/components/val.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+console.log('ばりデート読み込み！'); //入力項目の検証ルール定義
+
+var rules = {
+  name: {
+    required: true
+  } // num: "phone",
+  // address: {required: true, email: true},
+  // gender: {required: true}
+
+}; //入力項目ごとのエラーメッセージ定義
+
+var messages = {
+  name: {
+    required: '*名前を入力してください'
+  } // address: {
+  // required: "*メアドを入力してください"
+  // },
+  // gender: {
+  // required: "*性別を選択してください"
+  // }
+
+};
+$(function () {
+  $('#form-product').validate({
+    rules: rules,
+    messages: messages
+  });
+}); //     window.onbeforeunload = function(e) {
+//       e.preventDefault();
+//       return '';
+//   };
 
 /***/ }),
 

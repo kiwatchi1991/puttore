@@ -64,7 +64,7 @@
             <div class="">
                 <p class="c-productNew__title__label">タイトル<span class="required">必須</span></p>
                 <input id="name" type="text" class="c-productNew__input-area @error('name')is-invalid @enderror"
-                    name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう" required>
+                    name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう">
 
                 @error('name')
                 <span class="c-productNew__error" role="alert">
@@ -120,7 +120,7 @@
 
                 <textarea id="detail" type="text"
                     class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
-                    required data-input="detail" name="detail" rows="4">{{ old('detail') }}</textarea>
+                    data-input="detail" name="detail" rows="4">{{ old('detail') }}</textarea>
                 @error('detail')
                 <span class="c-productNew__error" role="alert">
                     <strong>{{ $message }}</strong>
@@ -156,7 +156,7 @@
                 {{-- 　　レッスン1　title --}}
                 <div class="">
                     <input id="title" type="text" class="c-productNew__input-area @error('title') is-invalid @enderror"
-                        required data-input="title" name="" value="{{$lesson->title}}" autocomplete="title"
+                        data-input="title" name="" value="{{$lesson->title}}" autocomplete="title"
                         placeholder="レッスンのタイトル" placeholder="title１">
 
                     @error('title')
@@ -344,7 +344,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 <script>
     hljs.initHighlightingOnLoad();
+    
 </script>
-<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
 
 @endsection

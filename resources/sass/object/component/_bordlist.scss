@@ -43,7 +43,20 @@
         &--top{
             display: flex;
         }
+        &--bottom{
+            margin-top: 8px;
+            padding-right: 20px;
+        }
 
+    }
+    &__latestMsg{
+        color: $normal-text;
+        font-size: 13px;
+    }
+    &__created{
+        color: $normal-text;
+        margin-top: 4px;
+        font-size: 11px;
     }
     &__userImg{
         width: 50px;
