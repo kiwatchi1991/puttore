@@ -297,6 +297,9 @@
       &--tags{
         margin-top: 24px;
       }
+      &--discount{
+        color: $main-color;
+      }
     }
     &__input-area{
       width: 100%;
@@ -311,6 +314,10 @@
        &--detail{
         max-height: 500px;
       }
+       &--discount{
+         border: 1px solid $main-color;
+         
+       }
     }
     &__tagbox{
       background: white;
@@ -511,13 +518,20 @@
       margin: 0 auto;
     }
     &--wrap{
-      @include pc{
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
+      width: 65%;
+      margin: 0 auto;
+      &.date{
+        justify-content: space-between;
+        margin: 16px auto 0;
+      }
+      @include pc{
       }
     }
     &--icon{
+      padding-right: 8px;
       @include pc{
       font-size: 20px;
       margin-right: 8px;
@@ -902,6 +916,9 @@
 .c-productEdit{
   background: $bg;
   padding: 30px;
+    @include pc{
+      background: white;
+    }
     &__input-area{
       width: 100%;
       box-sizing: border-box;
@@ -909,6 +926,9 @@
       border-radius: 5px;
       border: none;
       margin-top: 16px;
+      @include pc{
+        background: $bg;
+      }
        &--detail{
         max-height: 500px;
       }
@@ -918,6 +938,9 @@
       margin-top: 32px;
       padding: 16px 16px 16px 0;
       border-radius: 5px;
+      @include pc{
+        background: $bg;
+      }
     }
     &__categories{
         margin-top: 8px;
@@ -1057,8 +1080,14 @@
   &__price{
     margin-top: 32px;
   }
-  &__discount-price {
-    margin-top: 32px;
+  &__discount-price{
+    margin-top: 40px;
+    &__date{
+      width: 48%;
+    }
+    &__label{
+      font-size: 14px;
+    }
   }
   &__skills{
     margin-top: 32px;

@@ -1434,6 +1434,10 @@ a:visited {
   margin-top: 24px;
 }
 
+.c-productNew__title__label--discount {
+  color: #00ac7d;
+}
+
 .c-productNew__input-area {
   width: 100%;
   box-sizing: border-box;
@@ -1451,6 +1455,10 @@ a:visited {
 
 .c-productNew__input-area--detail {
   max-height: 500px;
+}
+
+.c-productNew__input-area--discount {
+  border: 1px solid #00ac7d;
 }
 
 .c-productNew__tagbox {
@@ -1715,15 +1723,25 @@ a:visited {
   }
 }
 
-@media (min-width: 768px) {
-  .c-productNew__price--wrap {
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-align: end;
-            align-items: flex-end;
-    -webkit-box-pack: end;
-            justify-content: flex-end;
-  }
+.c-productNew__price--wrap {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+  width: 65%;
+  margin: 0 auto;
+}
+
+.c-productNew__price--wrap.date {
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  margin: 16px auto 0;
+}
+
+.c-productNew__price--icon {
+  padding-right: 8px;
 }
 
 @media (min-width: 768px) {
@@ -2176,6 +2194,12 @@ a:visited {
   padding: 30px;
 }
 
+@media (min-width: 768px) {
+  .c-productEdit {
+    background: white;
+  }
+}
+
 .c-productEdit__input-area {
   width: 100%;
   box-sizing: border-box;
@@ -2183,6 +2207,12 @@ a:visited {
   border-radius: 5px;
   border: none;
   margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+  .c-productEdit__input-area {
+    background: #E5F6F2;
+  }
 }
 
 .c-productEdit__input-area--detail {
@@ -2194,6 +2224,12 @@ a:visited {
   margin-top: 32px;
   padding: 16px 16px 16px 0;
   border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .c-productEdit__tagbox {
+    background: #E5F6F2;
+  }
 }
 
 .c-productEdit__categories {
@@ -2365,7 +2401,15 @@ a:visited {
 }
 
 .c-productEdit__discount-price {
-  margin-top: 32px;
+  margin-top: 40px;
+}
+
+.c-productEdit__discount-price__date {
+  width: 48%;
+}
+
+.c-productEdit__discount-price__label {
+  font-size: 14px;
 }
 
 .c-productEdit__skills {
