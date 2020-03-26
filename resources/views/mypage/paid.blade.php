@@ -44,7 +44,7 @@
             </table>
             <div class="c-mypage__sale__nothing">
                 @if ($paids->count() == 0)
-                ありません
+                現在ありません
                 @endif
             </div>
         </div>
