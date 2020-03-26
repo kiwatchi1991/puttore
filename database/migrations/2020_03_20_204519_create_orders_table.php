@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
             $table->decimal('sale_price', 10, 0);
-            $table->decimal('transfer_price', 10, 0);
+            $table->decimal('transfer_price', 10, 0)->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
             $table->string('payjp_id');

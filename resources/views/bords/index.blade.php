@@ -32,7 +32,7 @@
 
             <div class="c-bord__half--left">
                 <div class="c-bord__userImg__wrapper">
-                    <img src="/storage/{{ $pic->pic }}" alt="" class="c-bord__userImg">
+                    <img src="/storage/{{($pic->pic)?$pic->pic:'images/noimage.png'}}" alt="" class="c-bord__userImg">
                 </div>
             </div>
 
