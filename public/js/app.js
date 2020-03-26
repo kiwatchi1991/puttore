@@ -39130,6 +39130,7 @@ $(document).on('change', '.js-lessonUploadImg', function () {
   }) // Ajaxリクエストが失敗した場合
   .fail(function (data) {
     console.log('エラー');
+    console.log('エラー');
     console.log(data);
   });
 }); // ===============================================
