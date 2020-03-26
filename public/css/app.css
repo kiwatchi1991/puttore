@@ -5019,13 +5019,13 @@ a:visited {
   }
 }
 
-.c-mypage__sale__list--text {
+.c-mypage__sale__list__text {
   font-size: 16px;
   margin-top: 8px;
 }
 
 @media (min-width: 768px) {
-  .c-mypage__sale__list--text {
+  .c-mypage__sale__list__text {
     font-size: 23px;
     margin-top: 24px;
   }
