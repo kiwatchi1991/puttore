@@ -39139,7 +39139,7 @@ $(document).on('change', '.js-lessonUploadImg', function () {
 var $button = $('.js-addLesson__button');
 $button.on('click', function (e) {
   e.preventDefault();
-  console.log('レッスン追加イベント'); //レッスンのコピー
+  console.log('レッスン追加イベント！'); //レッスンのコピー
 
   var $copyTaget = $('.js-add__target:last-child');
   $copyTaget.clone().appendTo('#js-lesson__section');
@@ -39823,7 +39823,8 @@ var rules = {
   },
   skills: {
     required: true
-  }
+  } // pic: {required: true},
+
 }; //入力項目ごとのエラーメッセージ定義
 
 var messages = {

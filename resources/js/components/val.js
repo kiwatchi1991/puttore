@@ -12,6 +12,7 @@ let rules = {
     lessons: {required: true},
     default_price: {required: true},
     skills: {required: true},
+    // pic: {required: true},
 };
 
 //入力項目ごとのエラーメッセージ定義

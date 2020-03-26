@@ -97,7 +97,7 @@ $(document).on('change', '.js-lessonUploadImg', function () {
 let $button = $('.js-addLesson__button');
 $button.on('click', function (e) {
     e.preventDefault();
-    console.log('レッスン追加イベント');
+    console.log('レッスン追加イベント！');
     //レッスンのコピー
     let $copyTaget = $('.js-add__target:last-child');
     $copyTaget.clone().appendTo('#js-lesson__section');
