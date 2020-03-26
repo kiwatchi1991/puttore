@@ -259,6 +259,7 @@ class mypageController extends Controller
     public function paid(Request $request)
     {
         $paids = Transfer::where('user_id', Auth::user()->id)
+            ->where('status', 2)
             ->get();
 
         return view('mypage.paid', [

@@ -1,29 +1,48 @@
-console.log('ばりデート読み込み！');
+// ==================================
+// 入力項目のフロントバリデーション
+// ==================================
+
+
 //入力項目の検証ルール定義
-var rules = {
-name: {required: true},
-// num: "phone",
-// address: {required: true, email: true},
-// gender: {required: true}
+let rules = {
+    name: {required: true},
+    lang: {required: true},
+    difficult: {required: true},
+    detail: {required: true},
+    lessons: {required: true},
+    default_price: {required: true},
+    skills: {required: true},
 };
 
 //入力項目ごとのエラーメッセージ定義
 var messages = {
-name: {
-required: '*名前を入力してください'
-},
-// address: {
-// required: "*メアドを入力してください"
-// },
-// gender: {
-// required: "*性別を選択してください"
-// }
+    name: {
+    required: 'タイトルを入力してください'
+    },
+    lang: {
+    required: '言語を選択してください'
+    },
+    difficult: {
+    required: '難易度を選択してください'
+    },
+    detail: {
+    required: 'レッスンを入力してください'
+    },
+    lessons: {
+    required: 'レッスンを入力してください'
+    },
+    default_price: {
+    required: '価格を入力してください'
+    },
+    skills: {
+    required: '価格を入力してください'
+    },
 };
 $(function(){
-$('#form-product').validate({
-rules: rules,
-messages: messages
-});
+    $('#form-product').validate({
+    rules: rules,
+    messages: messages
+    });
 });
 //     window.onbeforeunload = function(e) {
 //       e.preventDefault();

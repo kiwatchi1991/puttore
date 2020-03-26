@@ -57,7 +57,7 @@
     }
     &__remember{
         margin-top: 16px;
-        font-size: 10px;
+        font-size: 12px;
         &__checkbox{
             display: none;
         }
@@ -101,7 +101,7 @@
     &__forget{
         margin-top: 8px;
         display: inline-block;
-        font-size: 10px;
+        font-size: 12px;
         &__link{
             color: $main-color;
             text-decoration: underline;
@@ -126,6 +126,7 @@
         width: 100%;
         height: 100%;
         color: #ffffff;
+        font-size: 14px;
         @include pc{
           font-size: 15px;
         }

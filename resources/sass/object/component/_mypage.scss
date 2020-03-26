@@ -1,6 +1,20 @@
 .c-mypage{
     &__order{
         text-align: center;
+        padding: 32px 0 48px;
+    }
+    &__sale{
+
+      @include pc{
+        max-width: 900px;
+        margin: 64px auto;
+        width: 80%;
+      }
+      &__icon{
+        @include pc{
+          font-size: 30px;
+        }
+      }
     }
     &__nav{
         height: 45px;
@@ -14,6 +28,7 @@
             display: flex;
             width: 80%;
             margin: 0 auto;
+            overflow-x: inherit;
 
           }
         &__list{
@@ -129,14 +144,23 @@
     }
     &__sale__thisMonth{
         background: $bg;
-        width: 240px;
+        width: 280px;
         margin: 0 auto;
         padding: 10px 0;
         border-radius: 5px;
         margin-top: 16px;
+        @include pc{
+          margin-top: 70px;
+          width: 100%;
+          padding: 24px 0;
+        }
         &__title{
             color: $main-color;
             font-size: 13px;
+                @include pc{
+                font-size: 24px;
+                letter-spacing: 1px;
+            }
         }
         &__price__wrapper{
             display: flex;
@@ -144,10 +168,17 @@
             align-items: baseline;
             margin-top: 8px;
             padding-right: 16px;
+              @include pc{
+              margin-top: 24px;
+              padding-right: 0;
+
+            }
         }
         &__total{
             font-size: 10px;
-            
+              @include pc{
+              font-size: 16px;;
+            }
         }
         &__price{
             color:$main-color;
@@ -155,6 +186,13 @@
             font-size: 25px;
             letter-spacing: 0.76px;
             margin-left: 8px;
+              @include pc{
+              font-size: 40px;
+              margin-left: 20px;
+              font-weight: bold;
+              min-width: 180px;
+              letter-spacing: 2px;
+            }
         }
         &__detail{
             background-color: $main-color;
@@ -163,6 +201,9 @@
             width: 50px;
             margin: 16px auto 0;
             font-size: 10px;
+              @include pc{
+              font-size: 14px;
+            }
             a{
                 padding: 5px 10px;
                 display: inline-block;
@@ -173,26 +214,48 @@
             box-sizing: border-box;
             padding:16px 22px;
             margin: 30px auto 0;
-            width: 240px;
+            width: 280px;
             background: $p_bg;
+            @include pc{
+            width: 100%;
+            margin: 60px auto 0;
+            padding:24px 36px;
+            }
         &__title{
             font-size: 13px;
+            @include pc{
+              color: $main-color;
+              font-size: 24px;
+              letter-spacing: 1px;
+            }
         }
         &__price__wrapper{
             display: flex;
             justify-content: center;
             align-items: baseline;
             margin-top: 10px;
-
+            @include pc{
+              margin-top: 24px;
+            }
         }
         &__total{
             font-size: 10px;
+            @include pc{
+              font-size: 16px;
+            }
         }
         &__price{
             font-size: 23px;
             min-width: 80px;
             letter-spacing: 0.7px;
             color: $main-color;
+            @include pc{
+              font-size: 40px;
+              margin-left: 20px;
+              font-weight: bold;
+              min-width: 180px;
+              letter-spacing: 2px;
+            }
         }   
         &__request{
             width: 50px;
@@ -212,17 +275,35 @@
             margin-top: 14px;
             display: block;
             line-height: 1.375;
+            @include pc{
+              font-size: 14px;
+            margin-top: 24px;
+            }
         }
     }
     &__sale__done{
         margin: 30px auto 0;
         display: inline-block;
+        width: 280px;
+        @include pc{
+          width: 100%;
+          margin: 60px auto 0;
+        }
         &__title{
             font-size: 13px;
             letter-spacing: 0.4px;
+            @include pc{
+              font-size: 24px;
+              color: $main-color;
+              letter-spacing: 1px;
+            }
         }
         table{
             margin-top: 12px;
+            @include pc{
+              width: 100%;
+            margin-top: 24px;
+            }
         }
         thead{
             background: $bg;
@@ -241,6 +322,10 @@
         td{
             padding: 10px 0;
             font-size: 10px;
+            @include pc{
+                padding: 13px 0;
+                font-size: 16px;
+             }
             a{
                 padding: 3px 12px;
                 background: $main-color;
@@ -252,6 +337,15 @@
     &__sale__month{
         margin: 40px auto 0;
         display: inline-block;
+         @include pc{
+            width: 100%;
+        }
+        table{
+            @include pc{
+                width: 100%;
+                margin: 0 auto;
+           }
+        }
         thead{
             background: $bg;
             font-size: 14px;
@@ -266,11 +360,24 @@
         td{
             padding: 10px 0;
             font-size: 10px;
+             @include pc{
+                padding: 13px 0;
+                font-size: 16px;
+             }
         }
     }
     &__sale__paid{
         margin: 40px auto 0;
         display: inline-block;
+        @include pc{
+            width: 100%;
+        }
+        table{
+            @include pc{
+                width: 100%;
+                margin: 0 auto;
+           }
+        }
         thead{
             background: $bg;
             font-size: 14px;
@@ -285,27 +392,51 @@
         td{
             padding: 10px 0;
             font-size: 10px;
+             @include pc{
+                padding: 13px 0;
+                font-size: 16px;
+             }
         }
     }
     &__sale__list{
 
         &--day{
             min-width: 100px;
+            @include pc{
+              width: calc(100%/3);
+              font-size: 16px;
+            }
         }
         &--title{
             min-width: 95px;
         }
         &--price{
             min-width: 90px;
+            @include pc{
+              width: calc(100%/3);
+              font-size: 16px;
+            }
         }
         &--status{
             min-width: 80px;
+            @include pc{
+              width: calc(100%/3);
+              font-size: 16px;
+            }
         }
         &--request{
             min-width: 80px;
+             @include pc{
+              width: calc(100%/3);
+              font-size: 16px;
+            }
         }
         &--done{
             min-width: 80px;
+             @include pc{
+              width: calc(100%/3);
+              font-size: 16px;
+            }
         }
     }
     &__sale__nothing{

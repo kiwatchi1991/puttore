@@ -67,10 +67,22 @@ $(document).on('change', '.js-lessonUploadImg', function () {
     })
         // Ajaxリクエストが成功した場合
         .done(function (data) {
-            let target = $tgt.parents('.js-productNew__lesson').find('.js-marked__textarea');
-            target.val(target.val() + '\n\n![代替テキスト](/storage/' + data + ')\n\n');
-            target.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
+            //現在のカーソル位置を特定し、そこに画像を挿入する
+            let textarea = $tgt.parents('.js-productNew__lesson').find('.js-marked__textarea');
+            
+            let sentence = textarea.val();
+            let len      = sentence.length;
+            let pos = textarea.prop('selectionStart');
+            
+            let before   = sentence.substr(0, pos);
+            let word     = '\n\n![代替テキスト](/storage/' + data + ')\n\n';
+            let after    = sentence.substr(pos, len);
 
+            sentence = before + word + after;
+            textarea.val(sentence);
+            
+            textarea.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
+            
         })
         // Ajaxリクエストが失敗した場合
         .fail(function (data) {

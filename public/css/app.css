@@ -196,7 +196,7 @@ a:visited {
   background: #00ac7d;
   display: block;
   position: absolute;
-  top: 50px;
+  top: 60px;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -208,7 +208,13 @@ a:visited {
   color: #000;
   opacity: 0.8;
   color: white;
-  z-index: 99;
+  z-index: 6;
+}
+
+@media (min-width: 768px) {
+  .c-header__sessionMessage {
+    top: 70px;
+  }
 }
 
 .global-nav__pc {
@@ -279,10 +285,11 @@ a:visited {
 
 .c-top__container {
   color: #585858;
+  padding-bottom: 60px;
 }
 
 .c-top__fv {
-  padding: 115px 0 50px;
+  padding: 40px 0 50px;
 }
 
 @media (min-width: 768px) {
@@ -327,19 +334,8 @@ a:visited {
   }
 }
 
-.c-top__fvImg__img {
-  width: 185px;
-  height: 120px;
-}
-
-@media (min-width: 768px) {
-  .c-top__fvImg__img {
-    display: none;
-  }
-}
-
 .c-top__fvImg--pc {
-  display: none;
+  width: 185px;
 }
 
 @media (min-width: 768px) {
@@ -3035,6 +3031,10 @@ a:visited {
   margin-top: 16px;
 }
 
+.c-messages__title {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .c-messages__title {
     width: 520px;
@@ -3043,6 +3043,7 @@ a:visited {
     font-size: 30px;
     color: #00ac7d;
     border: none;
+    display: block;
   }
 }
 
@@ -3067,45 +3068,43 @@ a:visited {
     margin: 24px auto 0;
     font-size: 16px;
     text-align: left;
-    -webkit-box-pack: left;
-            justify-content: left;
-  }
-
-  .c-messages__head__order {
-    padding: 5px 12px;
-    border-radius: 5px;
-    font-size: 10px;
-    height: 12px;
-  }
-
-  .c-messages__head__order.buy {
-    background: #7DD4BB;
-  }
-
-  .c-messages__head__order.sell {
-    background: white;
-    color: #00ac7d;
-    border: 1px solid #00ac7d;
-  }
-
-  .c-messages__head__userImg {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-  }
-
-  .c-messages__head__userImg__wrapper {
-    background-image: url("/storage/images/noavatar.png");
-    background-position: center;
-    background-size: contain;
-    margin-left: 16px;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
   }
 }
 
-@media (min-width: 768px) and (min-width: 768px) {
+.c-messages__head__order {
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 10px;
+  height: 12px;
+}
+
+.c-messages__head__order.buy {
+  background: #7DD4BB;
+}
+
+.c-messages__head__order.sell {
+  background: white;
+  color: #00ac7d;
+  border: 1px solid #00ac7d;
+}
+
+.c-messages__head__userImg {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.c-messages__head__userImg__wrapper {
+  background-image: url("/storage/images/noavatar.png");
+  background-position: center;
+  background-size: contain;
+  margin-left: 16px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+@media (min-width: 768px) {
   .c-messages__head__userImg__wrapper {
     position: relative;
     display: inline-block;
@@ -3113,12 +3112,10 @@ a:visited {
   }
 }
 
-@media (min-width: 768px) {
-  .c-messages__head__title {
-    margin-left: 16px;
-    font-size: 16px;
-    white-space: nowrap;
-  }
+.c-messages__head__title {
+  margin-left: 16px;
+  font-size: 16px;
+  white-space: nowrap;
 }
 
 .c-messages__inner {
@@ -3196,6 +3193,13 @@ a:visited {
   display: flex;
   -webkit-box-align: end;
           align-items: flex-end;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+.c-message.inself {
+  -webkit-box-pack: start;
+          justify-content: flex-start;
 }
 
 .c-message__userImg {
@@ -3208,26 +3212,24 @@ a:visited {
   background-image: url("/storage/images/noavatar.png");
   background-position: center;
   background-size: contain;
-  margin-left: 16px;
+  margin: 0 0 18px 16px;
   width: 35px;
   height: 35px;
   border-radius: 50%;
 }
 
-@media (min-width: 768px) {
-  .c-message__userImg__item::before {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border: 0px;
-    border-top: solid 2px #333;
-    border-right: solid 2px #333;
-    -webkit-transform: rotate(-135deg);
-    transform: rotate(-135deg);
-    position: absolute;
-    margin-top: -7px;
-    margin-left: 3px;
-  }
+.c-message__userImg__item::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 0px;
+  border-top: solid 2px #333;
+  border-right: solid 2px #333;
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  position: absolute;
+  margin-top: -7px;
+  margin-left: -25px;
 }
 
 .c-message__msg {
@@ -3241,11 +3243,36 @@ a:visited {
   border-radius: 10px 10px 0 10px;
 }
 
+@media (min-width: 768px) {
+  .c-message__msg {
+    font-size: 13px;
+  }
+}
+
 .c-message__msg.inself {
   margin: 30px auto 0 15px;
   overflow-wrap: break-word;
   background: #7DD4BB;
   border-radius: 10px 10px 10px 0;
+}
+
+.c-message__postDate {
+  width: 220px;
+  text-align: right;
+  margin-top: 8px;
+  font-size: 10px;
+}
+
+@media (min-width: 768px) {
+  .c-message__postDate {
+    font-size: 11px;
+  }
+}
+
+.c-message__postDate.inself {
+  margin-right: 0;
+  margin-left: auto;
+  text-align: left;
 }
 
 .c-login__inner {
@@ -3325,7 +3352,7 @@ a:visited {
 
 .c-login__remember {
   margin-top: 16px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .c-login__remember__checkbox {
@@ -3379,7 +3406,7 @@ a:visited {
 .c-login__forget {
   margin-top: 8px;
   display: inline-block;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .c-login__forget__link {
@@ -3411,6 +3438,7 @@ a:visited {
   width: 100%;
   height: 100%;
   color: #ffffff;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -3590,6 +3618,7 @@ a:visited {
   width: 100%;
   height: 100%;
   color: #ffffff;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -3610,1294 +3639,6 @@ a:visited {
   .c-register__to-login {
     display: none;
   }
-}
-
-.c-lessonShow__lesson__contents .octicon,
-#preview .octicon {
-  display: inline-block;
-  fill: currentColor;
-  vertical-align: text-bottom;
-}
-
-.c-lessonShow__lesson__contents .anchor,
-#preview .anchor {
-  float: left;
-  line-height: 1;
-  margin-left: -20px;
-  padding-right: 4px;
-}
-
-.c-lessonShow__lesson__contents .anchor:focus,
-#preview .anchor:focus {
-  outline: none;
-}
-
-.c-lessonShow__lesson__contents h1 .octicon-link,
-.c-lessonShow__lesson__contents h2 .octicon-link,
-.c-lessonShow__lesson__contents h3 .octicon-link,
-.c-lessonShow__lesson__contents h4 .octicon-link,
-.c-lessonShow__lesson__contents h5 .octicon-link,
-.c-lessonShow__lesson__contents h6 .octicon-link,
-#preview h1 .octicon-link,
-#preview h2 .octicon-link,
-#preview h3 .octicon-link,
-#preview h4 .octicon-link,
-#preview h5 .octicon-link,
-#preview h6 .octicon-link {
-  color: #1b1f23;
-  vertical-align: middle;
-  visibility: hidden;
-}
-
-.c-lessonShow__lesson__contents h1:hover .anchor,
-.c-lessonShow__lesson__contents h2:hover .anchor,
-.c-lessonShow__lesson__contents h3:hover .anchor,
-.c-lessonShow__lesson__contents h4:hover .anchor,
-.c-lessonShow__lesson__contents h5:hover .anchor,
-.c-lessonShow__lesson__contents h6:hover .anchor,
-#preview h1:hover .anchor,
-#preview h2:hover .anchor,
-#preview h3:hover .anchor,
-#preview h4:hover .anchor,
-#preview h5:hover .anchor,
-#preview h6:hover .anchor {
-  text-decoration: none;
-}
-
-.c-lessonShow__lesson__contents h1:hover .anchor .octicon-link,
-.c-lessonShow__lesson__contents h2:hover .anchor .octicon-link,
-.c-lessonShow__lesson__contents h3:hover .anchor .octicon-link,
-.c-lessonShow__lesson__contents h4:hover .anchor .octicon-link,
-.c-lessonShow__lesson__contents h5:hover .anchor .octicon-link,
-.c-lessonShow__lesson__contents h6:hover .anchor .octicon-link,
-#preview h1:hover .anchor .octicon-link,
-#preview h2:hover .anchor .octicon-link,
-#preview h3:hover .anchor .octicon-link,
-#preview h4:hover .anchor .octicon-link,
-#preview h5:hover .anchor .octicon-link,
-#preview h6:hover .anchor .octicon-link {
-  visibility: visible;
-}
-
-.c-lessonShow__lesson__contents h1:hover .anchor .octicon-link:before,
-.c-lessonShow__lesson__contents h2:hover .anchor .octicon-link:before,
-.c-lessonShow__lesson__contents h3:hover .anchor .octicon-link:before,
-.c-lessonShow__lesson__contents h4:hover .anchor .octicon-link:before,
-.c-lessonShow__lesson__contents h5:hover .anchor .octicon-link:before,
-.c-lessonShow__lesson__contents h6:hover .anchor .octicon-link:before,
-#preview h1:hover .anchor .octicon-link:before,
-#preview h2:hover .anchor .octicon-link:before,
-#preview h3:hover .anchor .octicon-link:before,
-#preview h4:hover .anchor .octicon-link:before,
-#preview h5:hover .anchor .octicon-link:before,
-#preview h6:hover .anchor .octicon-link:before {
-  width: 16px;
-  height: 16px;
-  content: " ";
-  display: inline-block;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' width='16' height='16' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'%3E%3C/path%3E%3C/svg%3E");
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  line-height: 1.5;
-  color: #24292e;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  font-size: 16px;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-
-.c-lessonShow__lesson__contents details,
-#preview details {
-  display: block;
-}
-
-.c-lessonShow__lesson__contents summary,
-#preview summary {
-  display: list-item;
-}
-
-.c-lessonShow__lesson__contents a,
-#preview a {
-  background-color: initial;
-}
-
-.c-lessonShow__lesson__contents a:active,
-.c-lessonShow__lesson__contents a:hover,
-#preview a:active,
-#preview a:hover {
-  outline-width: 0;
-}
-
-.c-lessonShow__lesson__contents strong,
-#preview strong {
-  font-weight: inherit;
-  font-weight: bolder;
-}
-
-.c-lessonShow__lesson__contents h1,
-#preview h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-.c-lessonShow__lesson__contents img,
-#preview img {
-  border-style: none;
-}
-
-.c-lessonShow__lesson__contents code,
-.c-lessonShow__lesson__contents kbd,
-.c-lessonShow__lesson__contents pre,
-#preview code,
-#preview kbd,
-#preview pre {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-.c-lessonShow__lesson__contents hr,
-#preview hr {
-  box-sizing: initial;
-  height: 0;
-  overflow: visible;
-}
-
-.c-lessonShow__lesson__contents input,
-#preview input {
-  font: inherit;
-  margin: 0;
-}
-
-.c-lessonShow__lesson__contents input,
-#preview input {
-  overflow: visible;
-}
-
-.c-lessonShow__lesson__contents [type=checkbox],
-#preview [type=checkbox] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-.c-lessonShow__lesson__contents *,
-#preview * {
-  box-sizing: border-box;
-}
-
-.c-lessonShow__lesson__contents input,
-#preview input {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-.c-lessonShow__lesson__contents a,
-#preview a {
-  color: #0366d6;
-  text-decoration: none;
-}
-
-.c-lessonShow__lesson__contents a:hover,
-#preview a:hover {
-  text-decoration: underline;
-}
-
-.c-lessonShow__lesson__contents strong,
-#preview strong {
-  font-weight: 600;
-}
-
-.c-lessonShow__lesson__contents hr,
-#preview hr {
-  height: 0;
-  margin: 15px 0;
-  overflow: hidden;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid #dfe2e5;
-}
-
-.c-lessonShow__lesson__contents hr:after,
-.c-lessonShow__lesson__contents hr:before,
-#preview hr:after,
-#preview hr:before {
-  display: table;
-  content: "";
-}
-
-.c-lessonShow__lesson__contents hr:after,
-#preview hr:after {
-  clear: both;
-}
-
-.c-lessonShow__lesson__contents table,
-#preview table {
-  border-spacing: 0;
-  border-collapse: collapse;
-}
-
-.c-lessonShow__lesson__contents td,
-.c-lessonShow__lesson__contents th,
-#preview td,
-#preview th {
-  padding: 0;
-}
-
-.c-lessonShow__lesson__contents details summary,
-#preview details summary {
-  cursor: pointer;
-}
-
-.c-lessonShow__lesson__contents kbd,
-#preview kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-  line-height: 10px;
-  color: #444d56;
-  vertical-align: middle;
-  background-color: #fafbfc;
-  border: 1px solid #d1d5da;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #d1d5da;
-}
-
-.c-lessonShow__lesson__contents h1,
-.c-lessonShow__lesson__contents h2,
-.c-lessonShow__lesson__contents h3,
-.c-lessonShow__lesson__contents h4,
-.c-lessonShow__lesson__contents h5,
-.c-lessonShow__lesson__contents h6,
-#preview h1,
-#preview h2,
-#preview h3,
-#preview h4,
-#preview h5,
-#preview h6 {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.c-lessonShow__lesson__contents h1,
-#preview h1 {
-  font-size: 32px;
-}
-
-.c-lessonShow__lesson__contents h1,
-.c-lessonShow__lesson__contents h2,
-#preview h1,
-#preview h2 {
-  font-weight: 600;
-}
-
-.c-lessonShow__lesson__contents h2,
-#preview h2 {
-  font-size: 24px;
-}
-
-.c-lessonShow__lesson__contents h3,
-#preview h3 {
-  font-size: 20px;
-}
-
-.c-lessonShow__lesson__contents h3,
-.c-lessonShow__lesson__contents h4,
-#preview h3,
-#preview h4 {
-  font-weight: 600;
-}
-
-.c-lessonShow__lesson__contents h4,
-#preview h4 {
-  font-size: 16px;
-}
-
-.c-lessonShow__lesson__contents h5,
-#preview h5 {
-  font-size: 14px;
-}
-
-.c-lessonShow__lesson__contents h5,
-.c-lessonShow__lesson__contents h6,
-#preview h5,
-#preview h6 {
-  font-weight: 600;
-}
-
-.c-lessonShow__lesson__contents h6,
-#preview h6 {
-  font-size: 12px;
-}
-
-.c-lessonShow__lesson__contents p,
-#preview p {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-.c-lessonShow__lesson__contents blockquote,
-#preview blockquote {
-  margin: 0;
-}
-
-.c-lessonShow__lesson__contents ol,
-.c-lessonShow__lesson__contents ul,
-#preview ol,
-#preview ul {
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.c-lessonShow__lesson__contents ol ol,
-.c-lessonShow__lesson__contents ul ol,
-#preview ol ol,
-#preview ul ol {
-  list-style-type: lower-roman;
-}
-
-.c-lessonShow__lesson__contents ol ol ol,
-.c-lessonShow__lesson__contents ol ul ol,
-.c-lessonShow__lesson__contents ul ol ol,
-.c-lessonShow__lesson__contents ul ul ol,
-#preview ol ol ol,
-#preview ol ul ol,
-#preview ul ol ol,
-#preview ul ul ol {
-  list-style-type: lower-alpha;
-}
-
-.c-lessonShow__lesson__contents dd,
-#preview dd {
-  margin-left: 0;
-}
-
-.c-lessonShow__lesson__contents code,
-.c-lessonShow__lesson__contents pre,
-#preview code,
-#preview pre {
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-  font-size: 12px;
-}
-
-.c-lessonShow__lesson__contents pre,
-#preview pre {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.c-lessonShow__lesson__contents input::-webkit-inner-spin-button,
-.c-lessonShow__lesson__contents input::-webkit-outer-spin-button,
-#preview input::-webkit-inner-spin-button,
-#preview input::-webkit-outer-spin-button {
-  margin: 0;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.c-lessonShow__lesson__contents :checked + .radio-label,
-#preview :checked + .radio-label {
-  position: relative;
-  z-index: 1;
-  border-color: #0366d6;
-}
-
-.c-lessonShow__lesson__contents .border,
-#preview .border {
-  border: 1px solid #e1e4e8 !important;
-}
-
-.c-lessonShow__lesson__contents .border-0,
-#preview .border-0 {
-  border: 0 !important;
-}
-
-.c-lessonShow__lesson__contents .border-bottom,
-#preview .border-bottom {
-  border-bottom: 1px solid #e1e4e8 !important;
-}
-
-.c-lessonShow__lesson__contents .rounded-1,
-#preview .rounded-1 {
-  border-radius: 3px !important;
-}
-
-.c-lessonShow__lesson__contents .bg-white,
-#preview .bg-white {
-  background-color: #fff !important;
-}
-
-.c-lessonShow__lesson__contents .bg-gray-light,
-#preview .bg-gray-light {
-  background-color: #fafbfc !important;
-}
-
-.c-lessonShow__lesson__contents .text-gray-light,
-#preview .text-gray-light {
-  color: #6a737d !important;
-}
-
-.c-lessonShow__lesson__contents .mb-0,
-#preview .mb-0 {
-  margin-bottom: 0 !important;
-}
-
-.c-lessonShow__lesson__contents .my-2,
-#preview .my-2 {
-  margin-top: 8px !important;
-  margin-bottom: 8px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-0,
-#preview .pl-0 {
-  padding-left: 0 !important;
-}
-
-.c-lessonShow__lesson__contents .py-0,
-#preview .py-0 {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.c-lessonShow__lesson__contents .pl-1,
-#preview .pl-1 {
-  padding-left: 4px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-2,
-#preview .pl-2 {
-  padding-left: 8px !important;
-}
-
-.c-lessonShow__lesson__contents .py-2,
-#preview .py-2 {
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-3,
-.c-lessonShow__lesson__contents .px-3,
-#preview .pl-3,
-#preview .px-3 {
-  padding-left: 16px !important;
-}
-
-.c-lessonShow__lesson__contents .px-3,
-#preview .px-3 {
-  padding-right: 16px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-4,
-#preview .pl-4 {
-  padding-left: 24px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-5,
-#preview .pl-5 {
-  padding-left: 32px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-6,
-#preview .pl-6 {
-  padding-left: 40px !important;
-}
-
-.c-lessonShow__lesson__contents .f6,
-#preview .f6 {
-  font-size: 12px !important;
-}
-
-.c-lessonShow__lesson__contents .lh-condensed,
-#preview .lh-condensed {
-  line-height: 1.25 !important;
-}
-
-.c-lessonShow__lesson__contents .text-bold,
-#preview .text-bold {
-  font-weight: 600 !important;
-}
-
-.c-lessonShow__lesson__contents .pl-c,
-#preview .pl-c {
-  color: #6a737d;
-}
-
-.c-lessonShow__lesson__contents .pl-c1,
-.c-lessonShow__lesson__contents .pl-s .pl-v,
-#preview .pl-c1,
-#preview .pl-s .pl-v {
-  color: #005cc5;
-}
-
-.c-lessonShow__lesson__contents .pl-e,
-.c-lessonShow__lesson__contents .pl-en,
-#preview .pl-e,
-#preview .pl-en {
-  color: #6f42c1;
-}
-
-.c-lessonShow__lesson__contents .pl-s .pl-s1,
-.c-lessonShow__lesson__contents .pl-smi,
-#preview .pl-s .pl-s1,
-#preview .pl-smi {
-  color: #24292e;
-}
-
-.c-lessonShow__lesson__contents .pl-ent,
-#preview .pl-ent {
-  color: #22863a;
-}
-
-.c-lessonShow__lesson__contents .pl-k,
-#preview .pl-k {
-  color: #d73a49;
-}
-
-.c-lessonShow__lesson__contents .pl-pds,
-.c-lessonShow__lesson__contents .pl-s,
-.c-lessonShow__lesson__contents .pl-s .pl-pse .pl-s1,
-.c-lessonShow__lesson__contents .pl-sr,
-.c-lessonShow__lesson__contents .pl-sr .pl-cce,
-.c-lessonShow__lesson__contents .pl-sr .pl-sra,
-.c-lessonShow__lesson__contents .pl-sr .pl-sre,
-#preview .pl-pds,
-#preview .pl-s,
-#preview .pl-s .pl-pse .pl-s1,
-#preview .pl-sr,
-#preview .pl-sr .pl-cce,
-#preview .pl-sr .pl-sra,
-#preview .pl-sr .pl-sre {
-  color: #032f62;
-}
-
-.c-lessonShow__lesson__contents .pl-smw,
-.c-lessonShow__lesson__contents .pl-v,
-#preview .pl-smw,
-#preview .pl-v {
-  color: #e36209;
-}
-
-.c-lessonShow__lesson__contents .pl-bu,
-#preview .pl-bu {
-  color: #b31d28;
-}
-
-.c-lessonShow__lesson__contents .pl-ii,
-#preview .pl-ii {
-  color: #fafbfc;
-  background-color: #b31d28;
-}
-
-.c-lessonShow__lesson__contents .pl-c2,
-#preview .pl-c2 {
-  color: #fafbfc;
-  background-color: #d73a49;
-}
-
-.c-lessonShow__lesson__contents .pl-c2:before,
-#preview .pl-c2:before {
-  content: "^M";
-}
-
-.c-lessonShow__lesson__contents .pl-sr .pl-cce,
-#preview .pl-sr .pl-cce {
-  font-weight: 700;
-  color: #22863a;
-}
-
-.c-lessonShow__lesson__contents .pl-ml,
-#preview .pl-ml {
-  color: #735c0f;
-}
-
-.c-lessonShow__lesson__contents .pl-mh,
-.c-lessonShow__lesson__contents .pl-mh .pl-en,
-.c-lessonShow__lesson__contents .pl-ms,
-#preview .pl-mh,
-#preview .pl-mh .pl-en,
-#preview .pl-ms {
-  font-weight: 700;
-  color: #005cc5;
-}
-
-.c-lessonShow__lesson__contents .pl-mi,
-#preview .pl-mi {
-  font-style: italic;
-  color: #24292e;
-}
-
-.c-lessonShow__lesson__contents .pl-mb,
-#preview .pl-mb {
-  font-weight: 700;
-  color: #24292e;
-}
-
-.c-lessonShow__lesson__contents .pl-md,
-#preview .pl-md {
-  color: #b31d28;
-  background-color: #ffeef0;
-}
-
-.c-lessonShow__lesson__contents .pl-mi1,
-#preview .pl-mi1 {
-  color: #22863a;
-  background-color: #f0fff4;
-}
-
-.c-lessonShow__lesson__contents .pl-mc,
-#preview .pl-mc {
-  color: #e36209;
-  background-color: #ffebda;
-}
-
-.c-lessonShow__lesson__contents .pl-mi2,
-#preview .pl-mi2 {
-  color: #f6f8fa;
-  background-color: #005cc5;
-}
-
-.c-lessonShow__lesson__contents .pl-mdr,
-#preview .pl-mdr {
-  font-weight: 700;
-  color: #6f42c1;
-}
-
-.c-lessonShow__lesson__contents .pl-ba,
-#preview .pl-ba {
-  color: #586069;
-}
-
-.c-lessonShow__lesson__contents .pl-sg,
-#preview .pl-sg {
-  color: #959da5;
-}
-
-.c-lessonShow__lesson__contents .pl-corl,
-#preview .pl-corl {
-  text-decoration: underline;
-  color: #032f62;
-}
-
-.c-lessonShow__lesson__contents .mb-0,
-#preview .mb-0 {
-  margin-bottom: 0 !important;
-}
-
-.c-lessonShow__lesson__contents .my-2,
-#preview .my-2 {
-  margin-bottom: 8px !important;
-}
-
-.c-lessonShow__lesson__contents .my-2,
-#preview .my-2 {
-  margin-top: 8px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-0,
-#preview .pl-0 {
-  padding-left: 0 !important;
-}
-
-.c-lessonShow__lesson__contents .py-0,
-#preview .py-0 {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.c-lessonShow__lesson__contents .pl-1,
-#preview .pl-1 {
-  padding-left: 4px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-2,
-#preview .pl-2 {
-  padding-left: 8px !important;
-}
-
-.c-lessonShow__lesson__contents .py-2,
-#preview .py-2 {
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-3,
-#preview .pl-3 {
-  padding-left: 16px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-4,
-#preview .pl-4 {
-  padding-left: 24px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-5,
-#preview .pl-5 {
-  padding-left: 32px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-6,
-#preview .pl-6 {
-  padding-left: 40px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-7,
-#preview .pl-7 {
-  padding-left: 48px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-8,
-#preview .pl-8 {
-  padding-left: 64px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-9,
-#preview .pl-9 {
-  padding-left: 80px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-10,
-#preview .pl-10 {
-  padding-left: 96px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-11,
-#preview .pl-11 {
-  padding-left: 112px !important;
-}
-
-.c-lessonShow__lesson__contents .pl-12,
-#preview .pl-12 {
-  padding-left: 128px !important;
-}
-
-.c-lessonShow__lesson__contents hr,
-#preview hr {
-  border-bottom-color: #eee;
-}
-
-.c-lessonShow__lesson__contents kbd,
-#preview kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-  line-height: 10px;
-  color: #444d56;
-  vertical-align: middle;
-  background-color: #fafbfc;
-  border: 1px solid #d1d5da;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #d1d5da;
-}
-
-.c-lessonShow__lesson__contents .body:after,
-.c-lessonShow__lesson__contents .body:before,
-#preview .body:after,
-#preview .body:before {
-  display: table;
-  content: "";
-}
-
-.c-lessonShow__lesson__contents .body:after,
-#preview .body:after {
-  clear: both;
-}
-
-.c-lessonShow__lesson__contents .body > :first-child,
-#preview .body > :first-child {
-  margin-top: 0 !important;
-}
-
-.c-lessonShow__lesson__contents .body > :last-child,
-#preview .body > :last-child {
-  margin-bottom: 0 !important;
-}
-
-.c-lessonShow__lesson__contents a:not([href]),
-#preview a:not([href]) {
-  color: inherit;
-  text-decoration: none;
-}
-
-.c-lessonShow__lesson__contents blockquote,
-.c-lessonShow__lesson__contents details,
-.c-lessonShow__lesson__contents dl,
-.c-lessonShow__lesson__contents ol,
-.c-lessonShow__lesson__contents p,
-.c-lessonShow__lesson__contents pre,
-.c-lessonShow__lesson__contents table,
-.c-lessonShow__lesson__contents ul,
-#preview blockquote,
-#preview details,
-#preview dl,
-#preview ol,
-#preview p,
-#preview pre,
-#preview table,
-#preview ul {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.c-lessonShow__lesson__contents hr,
-#preview hr {
-  height: 0.25em;
-  padding: 0;
-  margin: 24px 0;
-  background-color: #e1e4e8;
-  border: 0;
-}
-
-.c-lessonShow__lesson__contents blockquote,
-#preview blockquote {
-  padding: 0 1em;
-  color: #6a737d;
-  border-left: 0.25em solid #dfe2e5;
-}
-
-.c-lessonShow__lesson__contents blockquote > :first-child,
-#preview blockquote > :first-child {
-  margin-top: 0;
-}
-
-.c-lessonShow__lesson__contents blockquote > :last-child,
-#preview blockquote > :last-child {
-  margin-bottom: 0;
-}
-
-.c-lessonShow__lesson__contents h1,
-.c-lessonShow__lesson__contents h2,
-.c-lessonShow__lesson__contents h3,
-.c-lessonShow__lesson__contents h4,
-.c-lessonShow__lesson__contents h5,
-.c-lessonShow__lesson__contents h6,
-#preview h1,
-#preview h2,
-#preview h3,
-#preview h4,
-#preview h5,
-#preview h6 {
-  margin-top: 24px;
-  margin-bottom: 16px;
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-.c-lessonShow__lesson__contents h1,
-#preview h1 {
-  font-size: 2em;
-}
-
-.c-lessonShow__lesson__contents h1,
-.c-lessonShow__lesson__contents h2,
-#preview h1,
-#preview h2 {
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid #eaecef;
-}
-
-.c-lessonShow__lesson__contents h2,
-#preview h2 {
-  font-size: 1.5em;
-}
-
-.c-lessonShow__lesson__contents h3,
-#preview h3 {
-  font-size: 1.25em;
-}
-
-.c-lessonShow__lesson__contents h4,
-#preview h4 {
-  font-size: 1em;
-}
-
-.c-lessonShow__lesson__contents h5,
-#preview h5 {
-  font-size: 0.875em;
-}
-
-.c-lessonShow__lesson__contents h6,
-#preview h6 {
-  font-size: 0.85em;
-  color: #6a737d;
-}
-
-.c-lessonShow__lesson__contents ol,
-.c-lessonShow__lesson__contents ul,
-#preview ol,
-#preview ul {
-  padding-left: 2em;
-}
-
-.c-lessonShow__lesson__contents ol ol,
-.c-lessonShow__lesson__contents ol ul,
-.c-lessonShow__lesson__contents ul ol,
-.c-lessonShow__lesson__contents ul ul,
-#preview ol ol,
-#preview ol ul,
-#preview ul ol,
-#preview ul ul {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.c-lessonShow__lesson__contents li,
-#preview li {
-  word-wrap: break-all;
-}
-
-.c-lessonShow__lesson__contents li > p,
-#preview li > p {
-  margin-top: 16px;
-}
-
-.c-lessonShow__lesson__contents li + li,
-#preview li + li {
-  margin-top: 0.25em;
-}
-
-.c-lessonShow__lesson__contents dl,
-#preview dl {
-  padding: 0;
-}
-
-.c-lessonShow__lesson__contents dl dt,
-#preview dl dt {
-  padding: 0;
-  margin-top: 16px;
-  font-size: 1em;
-  font-style: italic;
-  font-weight: 600;
-}
-
-.c-lessonShow__lesson__contents dl dd,
-#preview dl dd {
-  padding: 0 16px;
-  margin-bottom: 16px;
-}
-
-.c-lessonShow__lesson__contents table,
-#preview table {
-  display: block;
-  width: 100%;
-  overflow: auto;
-}
-
-.c-lessonShow__lesson__contents table th,
-#preview table th {
-  font-weight: 600;
-}
-
-.c-lessonShow__lesson__contents table td,
-.c-lessonShow__lesson__contents table th,
-#preview table td,
-#preview table th {
-  padding: 6px 13px;
-  border: 1px solid #dfe2e5;
-}
-
-.c-lessonShow__lesson__contents table tr,
-#preview table tr {
-  background-color: #fff;
-  border-top: 1px solid #c6cbd1;
-}
-
-.c-lessonShow__lesson__contents table tr:nth-child(2n),
-#preview table tr:nth-child(2n) {
-  background-color: #f6f8fa;
-}
-
-.c-lessonShow__lesson__contents img,
-#preview img {
-  max-width: 100%;
-  box-sizing: initial;
-  background-color: #fff;
-}
-
-.c-lessonShow__lesson__contents img[align=right],
-#preview img[align=right] {
-  padding-left: 20px;
-}
-
-.c-lessonShow__lesson__contents img[align=left],
-#preview img[align=left] {
-  padding-right: 20px;
-}
-
-.c-lessonShow__lesson__contents code,
-#preview code {
-  padding: 0.2em 0.4em;
-  margin: 0;
-  font-size: 85%;
-  background-color: rgba(27, 31, 35, 0.05);
-  border-radius: 3px;
-}
-
-.c-lessonShow__lesson__contents pre,
-#preview pre {
-  word-wrap: normal;
-}
-
-.c-lessonShow__lesson__contents pre > code,
-#preview pre > code {
-  padding: 0;
-  margin: 0;
-  font-size: 100%;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
-}
-
-.c-lessonShow__lesson__contents .highlight,
-#preview .highlight {
-  margin-bottom: 16px;
-}
-
-.c-lessonShow__lesson__contents .highlight pre,
-#preview .highlight pre {
-  margin-bottom: 0;
-  word-break: normal;
-}
-
-.c-lessonShow__lesson__contents .highlight pre,
-.c-lessonShow__lesson__contents pre,
-#preview .highlight pre,
-#preview pre {
-  padding: 16px;
-  overflow: auto;
-  font-size: 85%;
-  line-height: 1.45;
-  background-color: #f6f8fa;
-  border-radius: 3px;
-}
-
-.c-lessonShow__lesson__contents pre code,
-#preview pre code {
-  display: inline;
-  max-width: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: initial;
-  border: 0;
-}
-
-.c-lessonShow__lesson__contents .commit-tease-sha,
-#preview .commit-tease-sha {
-  display: inline-block;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-  font-size: 90%;
-  color: #444d56;
-}
-
-.c-lessonShow__lesson__contents .full-commit .btn-outline:not(:disabled):hover,
-#preview .full-commit .btn-outline:not(:disabled):hover {
-  color: #005cc5;
-  border-color: #005cc5;
-}
-
-.c-lessonShow__lesson__contents .blob-wrapper,
-#preview .blob-wrapper {
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.c-lessonShow__lesson__contents .blob-wrapper-embedded,
-#preview .blob-wrapper-embedded {
-  max-height: 240px;
-  overflow-y: auto;
-}
-
-.c-lessonShow__lesson__contents .blob-num,
-#preview .blob-num {
-  width: 1%;
-  min-width: 50px;
-  padding-right: 10px;
-  padding-left: 10px;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-  font-size: 12px;
-  line-height: 20px;
-  color: rgba(27, 31, 35, 0.3);
-  text-align: right;
-  white-space: nowrap;
-  vertical-align: top;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c-lessonShow__lesson__contents .blob-num:hover,
-#preview .blob-num:hover {
-  color: rgba(27, 31, 35, 0.6);
-}
-
-.c-lessonShow__lesson__contents .blob-num:before,
-#preview .blob-num:before {
-  content: attr(data-line-number);
-}
-
-.c-lessonShow__lesson__contents .blob-code,
-#preview .blob-code {
-  position: relative;
-  padding-right: 10px;
-  padding-left: 10px;
-  line-height: 20px;
-  vertical-align: top;
-}
-
-.c-lessonShow__lesson__contents .blob-code-inner,
-#preview .blob-code-inner {
-  overflow: visible;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-  font-size: 12px;
-  color: #24292e;
-  word-wrap: normal;
-  white-space: pre;
-}
-
-.c-lessonShow__lesson__contents .pl-token.active,
-.c-lessonShow__lesson__contents .pl-token:hover,
-#preview .pl-token.active,
-#preview .pl-token:hover {
-  cursor: pointer;
-  background: #ffea7f;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="1"],
-#preview .tab-size[data-tab-size="1"] {
-  -moz-tab-size: 1;
-  -o-tab-size: 1;
-     tab-size: 1;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="2"],
-#preview .tab-size[data-tab-size="2"] {
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
-     tab-size: 2;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="3"],
-#preview .tab-size[data-tab-size="3"] {
-  -moz-tab-size: 3;
-  -o-tab-size: 3;
-     tab-size: 3;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="4"],
-#preview .tab-size[data-tab-size="4"] {
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-     tab-size: 4;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="5"],
-#preview .tab-size[data-tab-size="5"] {
-  -moz-tab-size: 5;
-  -o-tab-size: 5;
-     tab-size: 5;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="6"],
-#preview .tab-size[data-tab-size="6"] {
-  -moz-tab-size: 6;
-  -o-tab-size: 6;
-     tab-size: 6;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="7"],
-#preview .tab-size[data-tab-size="7"] {
-  -moz-tab-size: 7;
-  -o-tab-size: 7;
-     tab-size: 7;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="8"],
-#preview .tab-size[data-tab-size="8"] {
-  -moz-tab-size: 8;
-  -o-tab-size: 8;
-     tab-size: 8;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="9"],
-#preview .tab-size[data-tab-size="9"] {
-  -moz-tab-size: 9;
-  -o-tab-size: 9;
-     tab-size: 9;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="10"],
-#preview .tab-size[data-tab-size="10"] {
-  -moz-tab-size: 10;
-  -o-tab-size: 10;
-     tab-size: 10;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="11"],
-#preview .tab-size[data-tab-size="11"] {
-  -moz-tab-size: 11;
-  -o-tab-size: 11;
-     tab-size: 11;
-}
-
-.c-lessonShow__lesson__contents .tab-size[data-tab-size="12"],
-#preview .tab-size[data-tab-size="12"] {
-  -moz-tab-size: 12;
-  -o-tab-size: 12;
-     tab-size: 12;
-}
-
-.c-lessonShow__lesson__contents .task-list-item,
-#preview .task-list-item {
-  list-style-type: none;
-}
-
-.c-lessonShow__lesson__contents .task-list-item + .task-list-item,
-#preview .task-list-item + .task-list-item {
-  margin-top: 3px;
-}
-
-.c-lessonShow__lesson__contents .task-list-item input,
-#preview .task-list-item input {
-  margin: 0 0.2em 0.25em -1.6em;
-  vertical-align: middle;
-}
-
-.c-lessonShow__lesson__contents:first-child,
-#preview:first-child {
-  margin-top: 0;
-}
-
-.c-lessonShow__lesson__contents h1,
-#preview h1 {
-  font-size: 27px;
-  border-bottom: 1px solid #ddd;
-  margin: 56px 0 24px;
-}
-
-.c-lessonShow__lesson__contents h2,
-#preview h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #ddd;
-  margin: 56px 0 24px;
-}
-
-.c-lessonShow__lesson__contents h3,
-#preview h3 {
-  font-size: 21px;
-  border-bottom: 1px solid #ddd;
-  margin: 56px 0 24px;
-}
-
-.c-lessonShow__lesson__contents h4,
-#preview h4 {
-  font-size: 19px;
-  border-bottom: 1px solid #ddd;
-  margin: 56px 0 24px;
 }
 
 .c-lessonShow {
@@ -5671,6 +4412,21 @@ a:visited {
 
 .c-mypage__order {
   text-align: center;
+  padding: 32px 0 48px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale {
+    max-width: 900px;
+    margin: 64px auto;
+    width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__icon {
+    font-size: 30px;
+  }
 }
 
 .c-mypage__nav {
@@ -5689,6 +4445,7 @@ a:visited {
     display: flex;
     width: 80%;
     margin: 0 auto;
+    overflow-x: inherit;
   }
 }
 
@@ -5847,16 +4604,31 @@ a:visited {
 
 .c-mypage__sale__thisMonth {
   background: #E5F6F2;
-  width: 240px;
+  width: 280px;
   margin: 0 auto;
   padding: 10px 0;
   border-radius: 5px;
   margin-top: 16px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__thisMonth {
+    margin-top: 70px;
+    width: 100%;
+    padding: 24px 0;
+  }
+}
+
 .c-mypage__sale__thisMonth__title {
   color: #00ac7d;
   font-size: 13px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__thisMonth__title {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
 }
 
 .c-mypage__sale__thisMonth__price__wrapper {
@@ -5870,8 +4642,21 @@ a:visited {
   padding-right: 16px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__thisMonth__price__wrapper {
+    margin-top: 24px;
+    padding-right: 0;
+  }
+}
+
 .c-mypage__sale__thisMonth__total {
   font-size: 10px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__thisMonth__total {
+    font-size: 16px;
+  }
 }
 
 .c-mypage__sale__thisMonth__price {
@@ -5880,6 +4665,16 @@ a:visited {
   font-size: 25px;
   letter-spacing: 0.76px;
   margin-left: 8px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__thisMonth__price {
+    font-size: 40px;
+    margin-left: 20px;
+    font-weight: bold;
+    min-width: 180px;
+    letter-spacing: 2px;
+  }
 }
 
 .c-mypage__sale__thisMonth__detail {
@@ -5891,6 +4686,12 @@ a:visited {
   font-size: 10px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__thisMonth__detail {
+    font-size: 14px;
+  }
+}
+
 .c-mypage__sale__thisMonth__detail a {
   padding: 5px 10px;
   display: inline-block;
@@ -5900,12 +4701,28 @@ a:visited {
   box-sizing: border-box;
   padding: 16px 22px;
   margin: 30px auto 0;
-  width: 240px;
+  width: 280px;
   background: rgba(229, 246, 242, 0.5);
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__untransferred {
+    width: 100%;
+    margin: 60px auto 0;
+    padding: 24px 36px;
+  }
 }
 
 .c-mypage__sale__untransferred__title {
   font-size: 13px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__untransferred__title {
+    color: #00ac7d;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
 }
 
 .c-mypage__sale__untransferred__price__wrapper {
@@ -5918,8 +4735,20 @@ a:visited {
   margin-top: 10px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__untransferred__price__wrapper {
+    margin-top: 24px;
+  }
+}
+
 .c-mypage__sale__untransferred__total {
   font-size: 10px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__untransferred__total {
+    font-size: 16px;
+  }
 }
 
 .c-mypage__sale__untransferred__price {
@@ -5927,6 +4756,16 @@ a:visited {
   min-width: 80px;
   letter-spacing: 0.7px;
   color: #00ac7d;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__untransferred__price {
+    font-size: 40px;
+    margin-left: 20px;
+    font-weight: bold;
+    min-width: 180px;
+    letter-spacing: 2px;
+  }
 }
 
 .c-mypage__sale__untransferred__request {
@@ -5952,9 +4791,24 @@ a:visited {
   line-height: 1.375;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__untransferred__text {
+    font-size: 14px;
+    margin-top: 24px;
+  }
+}
+
 .c-mypage__sale__done {
   margin: 30px auto 0;
   display: inline-block;
+  width: 280px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__done {
+    width: 100%;
+    margin: 60px auto 0;
+  }
 }
 
 .c-mypage__sale__done__title {
@@ -5962,8 +4816,23 @@ a:visited {
   letter-spacing: 0.4px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__done__title {
+    font-size: 24px;
+    color: #00ac7d;
+    letter-spacing: 1px;
+  }
+}
+
 .c-mypage__sale__done table {
   margin-top: 12px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__done table {
+    width: 100%;
+    margin-top: 24px;
+  }
 }
 
 .c-mypage__sale__done thead {
@@ -5989,6 +4858,13 @@ a:visited {
   font-size: 10px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__done td {
+    padding: 13px 0;
+    font-size: 16px;
+  }
+}
+
 .c-mypage__sale__done td a {
   padding: 3px 12px;
   background: #00ac7d;
@@ -5999,6 +4875,19 @@ a:visited {
 .c-mypage__sale__month {
   margin: 40px auto 0;
   display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__month {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__month table {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 .c-mypage__sale__month thead {
@@ -6020,9 +4909,29 @@ a:visited {
   font-size: 10px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__month td {
+    padding: 13px 0;
+    font-size: 16px;
+  }
+}
+
 .c-mypage__sale__paid {
   margin: 40px auto 0;
   display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__paid {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__paid table {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 .c-mypage__sale__paid thead {
@@ -6044,8 +4953,22 @@ a:visited {
   font-size: 10px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__paid td {
+    padding: 13px 0;
+    font-size: 16px;
+  }
+}
+
 .c-mypage__sale__list--day {
   min-width: 100px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__list--day {
+    width: calc(100%/3);
+    font-size: 16px;
+  }
 }
 
 .c-mypage__sale__list--title {
@@ -6056,16 +4979,44 @@ a:visited {
   min-width: 90px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__list--price {
+    width: calc(100%/3);
+    font-size: 16px;
+  }
+}
+
 .c-mypage__sale__list--status {
   min-width: 80px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__list--status {
+    width: calc(100%/3);
+    font-size: 16px;
+  }
 }
 
 .c-mypage__sale__list--request {
   min-width: 80px;
 }
 
+@media (min-width: 768px) {
+  .c-mypage__sale__list--request {
+    width: calc(100%/3);
+    font-size: 16px;
+  }
+}
+
 .c-mypage__sale__list--done {
   min-width: 80px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__list--done {
+    width: calc(100%/3);
+    font-size: 16px;
+  }
 }
 
 .c-mypage__sale__nothing {
@@ -6087,6 +5038,26 @@ a:visited {
 @media (min-width: 768px) {
   .c-mypage__products__title {
     margin-top: 32px;
+    text-align: center;
+  }
+}
+
+.c-mypage__products__title--sale {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__products__title--sale {
+    text-align: center;
+  }
+}
+
+.c-mypage__products__title--paid {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__products__title--paid {
     text-align: center;
   }
 }
@@ -6440,10 +5411,12 @@ button {
 }
 
 .required {
+  margin-left: 8px;
   padding: 3px 5px;
-  background: #00ac7d;
+  background: #FFB400;
   color: white;
   border-radius: 3px;
   font-size: 14px;
+  vertical-align: top;
 }
 

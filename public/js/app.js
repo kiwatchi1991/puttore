@@ -39116,9 +39116,17 @@ $(document).on('change', '.js-lessonUploadImg', function () {
     data: formData
   }) // Ajaxリクエストが成功した場合
   .done(function (data) {
-    var target = $tgt.parents('.js-productNew__lesson').find('.js-marked__textarea');
-    target.val(target.val() + '\n\n![代替テキスト](/storage/' + data + ')\n\n');
-    target.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
+    //現在のカーソル位置を特定し、そこに画像を挿入する
+    var textarea = $tgt.parents('.js-productNew__lesson').find('.js-marked__textarea');
+    var sentence = textarea.val();
+    var len = sentence.length;
+    var pos = textarea.prop('selectionStart');
+    var before = sentence.substr(0, pos);
+    var word = '\n\n![代替テキスト](/storage/' + data + ')\n\n';
+    var after = sentence.substr(pos, len);
+    sentence = before + word + after;
+    textarea.val(sentence);
+    textarea.trigger('keyup'); //keyupイベントを強制的に発生させて、プレビューできるようにする
   }) // Ajaxリクエストが失敗した場合
   .fail(function (data) {
     console.log('エラー');
@@ -39790,27 +39798,56 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-console.log('ばりデート読み込み！'); //入力項目の検証ルール定義
-
+// ==================================
+// 入力項目のフロントバリデーション
+// ==================================
+//入力項目の検証ルール定義
 var rules = {
   name: {
     required: true
-  } // num: "phone",
-  // address: {required: true, email: true},
-  // gender: {required: true}
-
+  },
+  lang: {
+    required: true
+  },
+  difficult: {
+    required: true
+  },
+  detail: {
+    required: true
+  },
+  lessons: {
+    required: true
+  },
+  default_price: {
+    required: true
+  },
+  skills: {
+    required: true
+  }
 }; //入力項目ごとのエラーメッセージ定義
 
 var messages = {
   name: {
-    required: '*名前を入力してください'
-  } // address: {
-  // required: "*メアドを入力してください"
-  // },
-  // gender: {
-  // required: "*性別を選択してください"
-  // }
-
+    required: 'タイトルを入力してください'
+  },
+  lang: {
+    required: '言語を選択してください'
+  },
+  difficult: {
+    required: '難易度を選択してください'
+  },
+  detail: {
+    required: 'レッスンを入力してください'
+  },
+  lessons: {
+    required: 'レッスンを入力してください'
+  },
+  default_price: {
+    required: '価格を入力してください'
+  },
+  skills: {
+    required: '価格を入力してください'
+  }
 };
 $(function () {
   $('#form-product').validate({

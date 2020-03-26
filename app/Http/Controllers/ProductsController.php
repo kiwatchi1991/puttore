@@ -328,16 +328,17 @@ class ProductsController extends Controller
         if ($request->postType == 'draft') {
             $product->open_flg = 1;
             $product->save();
-            // return redirect()->route('products.show', $id)->with('flash_message', '作品を下書き保存しました');
+            return redirect()->route('products.show', $product->id)->with('flash_message', '作品を下書き保存しました');
         } else {
             $product->open_flg = 0;
             $product->save();
-            // return redirect()->route('products.show', $id)->with('flash_message', '作品を更新して公開しました');
+            return redirect()->route('lessons', ['p_id' => $product->id, 'l_id' => 1])->with('flash_message', '作品を公開しました');
         }
+
 
         // リダイレクトする
         // その時にsessionフラッシュにメッセージを入れる
-        return redirect('/products')->with('flash_message', '作品を公開しました');
+        // return redirect('/products')->with('flash_message', '作品を公開しました');
     }
 
     /**
@@ -368,23 +369,26 @@ class ProductsController extends Controller
                 //難易度
                 ->whereHas('difficulties', function ($query) use ($difficultiesIds) {
                     $query->whereIn('difficulty_id', $difficultiesIds);
-                })->latest()->paginate(10);
+                })->where('open_flg', 0)->latest()->paginate(10);
             //カテゴリーしかないパターン
         } else if ($request->get('lang')) {
             $products = Product::whereHas('categories', function ($query) use ($categorieIds) {
                 $query->whereIn('category_id', $categorieIds);
-            })->latest()->paginate(10);
+            })->where('open_flg', 0)->latest()->paginate(10);
 
             //難易度しかないパターン
         } else if ($request->get('difficult')) {
             $products = Product::whereHas('difficulties', function ($query) use ($difficultiesIds) {
                 $query->whereIn('difficulty_id', $difficultiesIds);
-            })->latest()->paginate(10);
+            })->where('open_flg', 0)->latest()->paginate(10);
 
             //両方ないパターン（初期表示）
         } else {
-            $products = Product::latest()->paginate(10);
+            $products = Product::where('open_flg', 0)->latest()->paginate(10);
         }
+
+        //
+        // $products = $products->where('open_flg', 0);
 
         Log::debug(' <<<<<<   $products->first()   >>>>>>>');
         Log::debug($products->first());

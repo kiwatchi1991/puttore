@@ -10,5 +10,17 @@
             margin-top: 32px;
             text-align: center;
         }
+        &--sale{
+            text-align: left;
+            @include pc{
+            text-align: center;
+          }
+        }
+        &--paid{
+            text-align: left;
+            @include pc{
+            text-align: center;
+            }
+        }
     }
 }

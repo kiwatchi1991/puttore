@@ -5,7 +5,7 @@
 <div class="c-top__container">
   <div class="c-top__fv">
     <div class="c-top__fvImg">
-      <img class="c-top__fvImg__img" src="/storage/images/fv-image.png" alt="" width="185" height="120">
+      {{-- <img class="c-top__fvImg__img" src="/storage/images/fv-image.png" alt="" width="185" height="120"> --}}
       <img class="c-top__fvImg--pc" src="/storage/images/fv-image.png" alt="">
     </div>
     <div class="c-top__fvMsg">
@@ -14,9 +14,6 @@
 
       <h3 class="c-top__fvMsg c-top__fvMsg__subject">テキスト型アウトプット教材サービス</h3>
       <h1 class="c-top__fvMsg c-top__fvMsg__title">『ぷっとれ』</h1>
-      <div class="c-top__fvMsg--img">
-        <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
-      </div>
       <div class="c-top__fvMsg--img--pc">
         <img src="/storage/images/logo.png" alt="ぷっとれ" width="150">
       </div>
@@ -129,7 +126,7 @@
 
   <div class="c-top__end">
     <div class="c-top__end__subject">
-      プログラミングは、<br>アウトプットしなければ<br  class="c-top__features--br">絶対に上達しません！
+      プログラミングは、<br>アウトプットしなければ<br class="c-top__features--br">絶対に上達しません！
     </div>
     <h2 class="c-top__end__title">さあ、アウトプットしよう！</h2>
     <div class="c-top__button">
@@ -137,4 +134,4 @@
     </div>
   </div>
 </div>
-@section('content')
+@endsection

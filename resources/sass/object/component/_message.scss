@@ -1,5 +1,6 @@
 .c-messages{
   &__title{
+    display: none;
     @include pc{
     width: 520px;
     margin: 36px auto 0;
@@ -7,65 +8,65 @@
     font-size: 30px;
     color: #00ac7d;
     border: none;
+    display: block;
     }
   }
 
-    &__head{
-        height:45px;
-        display: flex;
-        border-top: 1px solid $main-color;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        width: 100%;
-        background: white;
-        @include pc{
-          position: static;
-          width: 520px;
-          margin: 24px auto 0;
-          font-size: 16px;
-          text-align: left;
-          justify-content: left;
-        &__order{
-            padding: 5px 12px;
-            border-radius: 5px;
-            font-size: 10px;
-            height: 12px;
-            &.buy{
-                background:  $high-gr;
-            }
-            &.sell{
-                background: white;
-                color: $main-color;
-                border: 1px solid #00ac7d;
-            }
-        }
-        &__userImg{
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            &__wrapper{
-                background-image: url('/storage/images/noavatar.png');
-                background-position: center;
-                background-size: contain;
-                margin-left: 16px;
-                width: 35px;
-                height: 35px;
-                border-radius: 50%;
-                @include pc{
-                  position: relative;
-                  display: inline-block;
-                  margin-left: 32px;
-                  }
-                }
-
-        }
-        &__title{
-        margin-left: 16px;
+  &__head{
+      height:45px;
+      display: flex;
+      border-top: 1px solid $main-color;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      width: 100%;
+      background: white;
+      @include pc{
+        position: static;
+        width: 520px;
+        margin: 24px auto 0;
         font-size: 16px;
-        white-space: nowrap;
+        text-align: left;
+      }
+      &__order{
+          padding: 5px 12px;
+          border-radius: 5px;
+          font-size: 10px;
+          height: 12px;
+          &.buy{
+              background:  $high-gr;
+          }
+          &.sell{
+              background: white;
+              color: $main-color;
+              border: 1px solid #00ac7d;
+          }
+      }
+      &__userImg{
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          &__wrapper{
+              background-image: url('/storage/images/noavatar.png');
+              background-position: center;
+              background-size: contain;
+              margin-left: 16px;
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              @include pc{
+                position: relative;
+                display: inline-block;
+                margin-left: 32px;
                 }
-        }
+              }
+
+      }
+      &__title{
+      margin-left: 16px;
+      font-size: 16px;
+      white-space: nowrap;
+              }
     }
     &__inner{
         background: $bg;
@@ -115,14 +116,18 @@
             cursor: pointer;
           }
         }
-        }
-    }
+      }
+}
 
 
 
 .c-message{
     display: flex;
     align-items: flex-end;
+    justify-content: flex-end;
+    &.inself{
+      justify-content: flex-start;
+    }
     &__userImg{
         width: 35px;
         height: 35px;
@@ -131,26 +136,26 @@
                 background-image: url('/storage/images/noavatar.png');
                 background-position: center;
                 background-size: contain;
-                margin-left: 16px;
+                margin: 0 0 18px 16px;
                 width: 35px;
                 height: 35px;
                 border-radius: 50%;
             }
             &__item{
+              &::before{
+                content: '';
+                width: 10px;
+                height: 10px;
+                border: 0px;
+                border-top: solid 2px #333;
+                border-right: solid 2px #333;
+                -ms-transform: rotate(-135deg);
+                -webkit-transform: rotate(-135deg);
+                transform: rotate(-135deg);
+                position: absolute;
+                margin-top: -7px;
+                margin-left: -25px;
               @include pc{
-                &::before{
-                  content: '';
-                  width: 10px;
-                  height: 10px;
-                  border: 0px;
-                  border-top: solid 2px #333;
-                  border-right: solid 2px #333;
-                  -ms-transform: rotate(-135deg);
-                  -webkit-transform: rotate(-135deg);
-                  transform: rotate(-135deg);
-                  position: absolute;
-                  margin-top: -7px;
-                  margin-left: 3px;
               }
             }
             }
@@ -164,12 +169,28 @@
         box-sizing: border-box;
         background: $low-gr;
         border-radius: 10px 10px 0 10px;
+        @include pc{
+          font-size: 13px;
+       }
         &.inself{
             margin: 30px auto 0 15px;
             overflow-wrap: break-word;
             background: $high-gr;
             border-radius: 10px 10px 10px 0;
-
         }
+    }
+    &__postDate{
+      width: 220px;
+      text-align: right;
+      margin-top: 8px;
+      font-size: 10px;
+       @include pc{
+          font-size: 11px;
+       }
+      &.inself{
+        margin-right: 0;
+        margin-left: auto;
+        text-align: left;
+      }
     }
 }

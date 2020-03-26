@@ -14,8 +14,8 @@
 
 <div class="c-mypage__order">
     <div class="c-mypage__sale">
-        <div class="c-profile__title__product">
-            <h2>販売履歴</h2>
+        <div class="c-mypage__products__title c-mypage__products__title--sale">
+            <h2>販売管理</h2>
         </div>
 
         <div class="c-mypage__sale__thisMonth">
@@ -26,7 +26,8 @@
 
                 <div class="c-mypage__sale__thisMonth__total">総額</div>
                 @foreach($thisMonth as $mon => $price)
-                <div class="c-mypage__sale__thisMonth__price">¥ {{ number_format($price) }}
+                <div class="c-mypage__sale__thisMonth__price"><span class="c-mypage__sale__icon">¥</span>
+                    {{ number_format($price) }}
                 </div>
                 @endforeach
             </div>
@@ -42,12 +43,13 @@
                 <div class="c-mypage__sale__untransferred__total">総額</div>
 
                 @foreach($untransferred_price as $mon => $price)
-                <div class="c-mypage__sale__untransferred__price">¥ {{ number_format($price) }}
+                <div class="c-mypage__sale__untransferred__price"><span class="c-mypage__sale__icon">¥</span>
+                    {{ number_format($price) }}
                 </div>
                 @endforeach
                 {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
                 @if ($untransferred_price->count()==0)
-                <div class="c-mypage__sale__untransferred__price">¥ 0</div>
+                <div class="c-mypage__sale__untransferred__price"><span class="c-mypage__sale__icon">¥</span> 0</div>
                 @endif
 
             </div>
@@ -93,7 +95,7 @@
                     @endforeach
                     {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
                     @if ($sales->count()==0)
-                    <div class="c-mypage__sale__untransferred__price">ありません</div>
+                    <div class="c-mypage__sale__untransferred__price">※処理済みの売上はありません。</div>
                     @endif
 
                 </tbody>

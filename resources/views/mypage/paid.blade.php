@@ -15,7 +15,7 @@
 @yield('header')
 <div class="c-mypage__order">
     <div class="c-mypage__sale">
-        <div class="c-profile__title__product">
+        <div class="c-mypage__products__title c-mypage__products--paid">
             <h2>振込履歴</h2>
         </div>
 
@@ -35,7 +35,6 @@
                             {{$paid->created_at->format('Y年m月d日')}}</td>
                         <td class="c-mypage__sale__list c-mypage__sale__list--title">
                             {{$paid->paid_date->format('Y年m月d日')}}</td>
-                        {{-- @php echo var_dump($paid->paid_date) @endphp --}}
                         <td class="c-mypage__sale__list c-mypage__sale__list--price">¥
                             {{number_format($paid->sale_price)}}</td>
                     </tr>

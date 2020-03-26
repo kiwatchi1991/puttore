@@ -22,7 +22,7 @@ input{
     box-sizing: border-box;
     border:none;
     font-size: 16px;
-} 
+}
 div,span,p{
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -60,9 +60,11 @@ button{
     display: block;
 }
 .required{
+    margin-left: 8px;
     padding: 3px 5px;
-    background: $main-color;
+    background: $btn;
     color: white;
     border-radius: 3px;
-    font-size: 14px
+    font-size: 14px;
+    vertical-align: top;
 }

@@ -38,7 +38,7 @@
         background: $main-color;
         display: block;
         position: absolute;
-        top: 50px;
+        top: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -47,7 +47,10 @@
         color: #000;
         opacity: 0.8;
         color: white;
-        z-index: 99;
+        z-index: 6;
+        @include pc{
+        top: 70px;
+      }
 }
 
 //PC時のヘッダーナビゲーションメニュー

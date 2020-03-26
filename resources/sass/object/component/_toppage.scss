@@ -1,9 +1,10 @@
 .c-top{
     &__container{
         color: $normal-text;
+        padding-bottom: 60px;
     }
     &__fv{
-        padding: 115px 0 50px;
+        padding: 40px 0 50px;
         @include pc{
         display: flex;
         flex-direction: row-reverse;
@@ -23,22 +24,23 @@
         background: $bg;
         margin: 0 auto;
         border-radius: 50%;
-        @include pc{
-        height: 434px;
-        width: 434px;
-        margin: 0;
-        border-radius: 50%;
-        }
+          @include pc{
+          height: 434px;
+          width: 434px;
+          margin: 0;
+          border-radius: 50%;
+          }
 
-        &__img{
-            width: 185px;
-            height: 120px;
-            @include pc{
-              display: none;
-            }
-        }
+        // &__img{
+        //     width: 185px;
+        //     height: 120px;
+        //     @include pc{
+        //       display: none;
+        //     }
+        // }
         &--pc{
-          display: none;
+          // display: none;
+          width: 185px;
           @include pc{
             display: block;
             width: 434px;

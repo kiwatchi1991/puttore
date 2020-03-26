@@ -82,7 +82,7 @@
                     @foreach ($category as $categories)
                     <input id="c-{{ $categories->id }}" type="checkbox"
                         class="c-productNew__checkbox @error('lang') is-invalid @enderror" name="lang[]"
-                        value="{{ $categories->id }}" autocomplete="lang" autofocus @if (in_array($categories->id,
+                        value="{{ $categories->id }}" autocomplete="lang" @if (in_array($categories->id,
                     old('lang',[]))) checked @endif>
                     <label class="c-productNew__label" for="c-{{ $categories->id }}">
                         {{ $categories->name }}
@@ -96,7 +96,7 @@
                     @foreach ($difficult as $difficults)
                     <input id="d-{{ $difficults->id }}" type="radio"
                         class="c-productNew__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
-                        value="{{ $difficults->id }}" autocomplete="difficult" autofocus>
+                        value="{{ $difficults->id }}" autocomplete="difficult">
                     <label class="c-productNew__label" for="d-{{ $difficults->id }}">
                         {{ $difficults->name }}
                     </label>

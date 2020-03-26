@@ -14,7 +14,7 @@
 
 <div class="c-mypage__products">
     <div class="c-mypage__products__title">
-        <h2>購入作品一覧</h2>
+        <h2>出品作品一覧</h2>
     </div>
 
     <div class="c-product__area">
