@@ -43,7 +43,7 @@
                 </tbody>
             </table>
             <div class="c-mypage__sale__nothing">
-                @if ($paid->count() == 0)
+                @if ($paids->count() == 0)
                 ありません
                 @endif
             </div>
