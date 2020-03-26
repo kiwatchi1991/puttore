@@ -100,13 +100,13 @@
                         <td><a href="{{ route('mypage.order.show',$mon) }}">@if($sale[1])申請中 @else 振込済 @endif</a></td>
                     </tr>
                     @endforeach
-                    {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
-                    @if ($sales->count()==0)
-                    <div class="c-mypage__sale__untransferred__price">※処理済みの売上はありません。</div>
-                    @endif
 
                 </tbody>
             </table>
+            {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
+            @if ($sales->count()==0)
+            <div class="c-mypage__sale__untransferred__price">※処理済みの売上はありません。</div>
+            @endif
         </div>
 
     </div>
