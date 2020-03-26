@@ -61,10 +61,14 @@ button{
 }
 .required{
     margin-left: 8px;
-    padding: 3px 5px;
+    padding: 1px 4px;
     background: $btn;
     color: white;
     border-radius: 3px;
     font-size: 14px;
     vertical-align: top;
+    position: relative;
+    @include pc{
+      top: 1px;
+    }
 }
