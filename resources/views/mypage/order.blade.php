@@ -24,12 +24,11 @@
             </div>
             <div class="c-mypage__sale__thisMonth__price__wrapper">
 
-                <div class="c-mypage__sale__thisMonth__total">総額</div>
                 @foreach($thisMonth as $mon => $price)
+                <div class="c-mypage__sale__thisMonth__total">総額</div>
                 <div class="c-mypage__sale__thisMonth__price"><span class="c-mypage__sale__icon">¥</span>
                     {{ number_format($price) }}
                 </div>
-                @endforeach
                 {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
                 @if ($thisMonth->count()==0)
                 <div class="c-mypage__sale__thisMonth__price"><span class="c-mypage__sale__icon">¥</span> 0</div>
@@ -37,6 +36,7 @@
             </div>
             <div class="c-mypage__sale__thisMonth__detail"><a
                     href="{{ route('mypage.order.show',($mon)?$mon:'') }}">詳細</a></div>
+            @endforeach
         </div>
 
         {{-- 未振込の計上 --}}
