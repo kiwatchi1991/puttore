@@ -281,6 +281,9 @@
       font-size: 14px;
       color: $main-text;
       margin-top: 8px;
+      &--picText{
+        font-size: 12px;
+      }
       @include pc{
         font-size: 18px;
       }
@@ -504,7 +507,6 @@
   }
   &__price{
     @include pc{
-      width: 520px;
       margin: 0 auto;
     }
     &--wrap{
@@ -537,7 +539,10 @@
     }
   }
   &__images{
-    margin-top: 32px;
+    margin: 32px auto;
+    @include pc{
+      width: 80%;
+    }
     &__half{
       display: flex;
       justify-content: space-between;
@@ -547,18 +552,37 @@
   &__image{
     &__area{
       width: 30%;
-      height: 25vw;
-      background: #f6f5f4;
+      height: 24vw;
+      max-height: 218px;
+      background: #fff;
       color: #ccc;
       text-align: center;
       line-height: 140px;
       position: relative;
       display: inline-block;
-      background-image:url('/storage/images/add_img.png');
       background-position: center;
       background-size: contain;
+      background-repeat: no-repeat;
       border-radius: 15px;
       overflow: hidden;
+      &.area1{
+        background-image:url('/storage/images/add_img1.png');
+      }
+      &.area2{
+        background-image:url('/storage/images/add_img2.png');
+      }
+      &.area3{
+        background-image:url('/storage/images/add_img3.png');
+      }
+      &.area4{
+        background-image:url('/storage/images/add_img4.png');
+      }
+      &.area5{
+        background-image:url('/storage/images/add_img5.png');
+      }
+      &.area6{
+        background-image:url('/storage/images/add_img6.png');
+      }
       @include pc{
         border: 1px solid $main-color;
      }
@@ -587,7 +611,7 @@
   background: orange;
   border-radius: 10px;
   @include pc{
-    width: 100%;
+    width: 80%;
   }
   &--draft{
     margin-top: 32px;

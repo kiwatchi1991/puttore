@@ -73,7 +73,8 @@
                 @enderror
             </div>
 
-            <p class="c-productNew__title__label c-productNew__title__label--tags">言語・難易度選択</p>
+            <p class="c-productNew__title__label c-productNew__title__label--tags">言語・難易度選択<span
+                    class="required">必須</span></p>
             <div class="c-productNew__tagbox">
                 {{-- 言語選択 --}}
                 <div class="c-productNew__categories">
@@ -116,7 +117,7 @@
 
             {{-- 説明 --}}
             <div class="c-productNew__detail">
-                <p class="c-productNew__title__label">説明文</p>
+                <p class="c-productNew__title__label">説明文<span class="required">必須</span></p>
 
                 <textarea id="detail" type="text"
                     class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
@@ -142,7 +143,8 @@
 
                 {{-- レッスン１　Number --}}
                 <div class="c-productNew__topWrapper">
-                    <div class="c-productNew__number">LESSON <span id="lesson_num"></span>
+                    <div class="c-productNew__number">LESSON <span id="lesson_num"><span
+                                class="required">必須</span></span>
                         <input id="number" type="hidden"
                             class="c-productNew__input-area--number @error('number') is-invalid @enderror"
                             data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
@@ -225,7 +227,7 @@
     <div class="c-productNew__wrapper">
         {{-- 価格 --}}
         <div class="c-productNew__price">
-            <p class="c-productNew__title__label">価格</p>
+            <p class="c-productNew__title__label">価格<span class="required">必須</span></p>
             <div class="c-productNew__price--wrap">
                 <div class="c-productNew__price--icon">¥</div>
                 <input id="default_price" type="text"
@@ -243,7 +245,7 @@
 
         {{-- 必要スキル --}}
         <div class="c-productNew__skills">
-            <p class="c-productNew__title__label">受講に必要なスキル</p>
+            <p class="c-productNew__title__label">受講に必要なスキル<span class="required">必須</span></p>
             <textarea id="skills" type="text"
                 class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
                 data-input="skills" name="skills" value="{{ old('skills') }}" rows="7">{{ old('skills') }}</textarea>
@@ -256,20 +258,22 @@
 
         {{-- 画像 --}}
         <div class="c-productNew__images">
-            <p class="c-productNew__title__label">画像</p>
+            <p class="c-productNew__title__label">画像 <span class="c-productNew__title__label--picText">(
+                    画像１がサムネイルとして表示されます )</span>
+            </p>
             <div class="c-productNew__images__half">
                 {{-- 画像1 --}}
-                <label class="c-productNew__image__area js-area__drop">
+                <label class="c-productNew__image__area area1 js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic1">
                     <img src="" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
                 {{-- 画像2 --}}
-                <label class="c-productNew__image__area js-area__drop">
+                <label class="c-productNew__image__area area2 js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic2">
                     <img src="" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
                 {{-- 画像3 --}}
-                <label class="c-productNew__image__area js-area__drop">
+                <label class="c-productNew__image__area area3 js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic3">
                     <img src="" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
@@ -291,17 +295,17 @@
             @enderror
             <div class="c-productNew__images__half">
                 {{-- 画像4 --}}
-                <label class="c-productNew__image__area js-area__drop">
+                <label class="c-productNew__image__area area4 js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic4">
                     <img src="" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
                 {{--画像5 --}}
-                <label class="c-productNew__image__area js-area__drop">
+                <label class="c-productNew__image__area area5 js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic5">
                     <img src="" alt="" class="c-productNew__image__img js-prev__img">
                 </label>
                 {{--画像6 --}}
-                <label class="c-productNew__image__area js-area__drop">
+                <label class="c-productNew__image__area area6 js-area__drop">
                     <input class="c-productNew__image__input js-input__file--product" type="file" name="pic6">
                     <img src="" alt="" class="c-productNew__image__img js-prev__img">
                 </label>

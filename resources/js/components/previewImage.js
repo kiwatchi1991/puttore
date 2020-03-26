@@ -36,10 +36,7 @@ let $profileFileInput = $('.js-input__file--profile');
 
 //プロフィール画像プレビュー
 $profileFileInput.on('change', function () {
-  console.log('changeイベントはっせい！');
   
-  
-  $dropArea.css('border', 'none');
   let file = this.files[0],         // 2 file配列にファイルが入ってます
   $img = $('#js-profile__img'), // 3 jQueryのsiblingsメソッドで兄弟のimg取得
   fileReader = new FileReader();  // 4 ファイルを読み込むFileReaderオブジェクト

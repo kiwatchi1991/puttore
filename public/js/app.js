@@ -39726,8 +39726,6 @@ $productFileInput.on('change', function () {
 var $profileFileInput = $('.js-input__file--profile'); //プロフィール画像プレビュー
 
 $profileFileInput.on('change', function () {
-  console.log('changeイベントはっせい！');
-  $dropArea.css('border', 'none');
   var file = this.files[0],
       // 2 file配列にファイルが入ってます
   $img = $('#js-profile__img'),
