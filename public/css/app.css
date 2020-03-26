@@ -940,6 +940,13 @@ a:visited {
   color: #111;
 }
 
+@media (min-width: 768px) {
+  .global-nav__item__link:hover {
+    text-decoration: underline;
+    color: #CBEDE4;
+  }
+}
+
 .global-nav__item__link.auth {
   padding: 8px 0 8px;
 }

@@ -84,6 +84,12 @@
       padding: 16px 16px 16px 0px;
       text-decoration: none;
       color: #111;
+      @include pc{
+        &:hover{
+          text-decoration: underline;
+          color: $low-gr;
+        }
+      }
       &.auth{
         padding: 8px 0 8px;
       }
