@@ -44,12 +44,12 @@ class HomeController extends Controller
     {
         //現在のパスワードが正しいかを調べる
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
-            return redirect()->back()->with('change_password_error', '現在のパスワードが間違っています。');
+            return redirect()->back()->with('flash_message', '現在のパスワードが間違っています。');
         }
 
         //現在のパスワードと新しいパスワードが違っているかを調べる
         if (strcmp($request->get('current-password'), $request->get('new-password')) == 0) {
-            return redirect()->back()->with('change_password_error', '新しいパスワードが現在のパスワードと同じです。違うパスワードを設定してください。');
+            return redirect()->back()->with('flash_message', '新しいパスワードが現在のパスワードと同じです。違うパスワードを設定してください。');
         }
 
         //パスワードのバリデーション。新しいパスワードは6文字以上、new-password_confirmationフィールドの値と一致しているかどうか。
@@ -63,6 +63,6 @@ class HomeController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
-        return redirect()->back()->with('change_password_success', 'パスワードを変更しました。');
+        return redirect()->back()->with('flash_message', 'パスワードを変更しました。');
     }
 }
