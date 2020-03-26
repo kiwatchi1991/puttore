@@ -30,8 +30,13 @@
                     {{ number_format($price) }}
                 </div>
                 @endforeach
+                {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
+                @if ($thisMonth->count()==0)
+                <div class="c-mypage__sale__thisMonth__price"><span class="c-mypage__sale__icon">¥</span> 0</div>
+                @endif
             </div>
-            <div class="c-mypage__sale__thisMonth__detail"><a href="{{ route('mypage.order.show',$mon) }}">詳細</a></div>
+            <div class="c-mypage__sale__thisMonth__detail"><a
+                    href="{{ route('mypage.order.show',($mon)?$mon:'') }}">詳細</a></div>
         </div>
 
         {{-- 未振込の計上 --}}
