@@ -105,7 +105,7 @@
             </table>
             {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
             @if ($sales->count()==0)
-            <div class="c-mypage__sale__untransferred__price">※処理済みの売上はありません。</div>
+            <div class="c-mypage__sale__list__text">※処理済みの売上はありません。</div>
             @endif
         </div>
 
