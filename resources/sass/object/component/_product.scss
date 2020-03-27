@@ -345,14 +345,17 @@
       margin-top: 24px;
     }
     &__modal{
-      font-size: 10px;
-      margin: 5px 0 0 3px;
+      font-size: 12px;
+      margin: 8px 0 0 3px;
       @include pc{
         font-size: 14px;
         letter-spacing: -0.04px;
       }
       &__link{
         color:$main-color;
+        &:visited{
+          color:$main-color;
+        }
       }
     }
     &__checkbox{
@@ -856,6 +859,9 @@
       font-size: 13px;
       letter-spacing: 0.04px;
     }
+  }
+  &__number{
+    font-size: 18px;
   }
   &__curriculumBlock{
     margin-top: 32px;
