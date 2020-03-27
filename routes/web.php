@@ -16,53 +16,62 @@
 // });
 
 
+
+
+//===========================================================================
+//管理者権限ユーザーのみ
+//===========================================================================
+Route::group(['middleware' => ['auth', 'can:admin']], function () {
+
+  //管理画面
+  //ユーザー
+  Route::get('/admin/users',  'adminController@userIndex')->name('admin.user');
+  Route::post('/admin/users',  'adminController@userIndex')->name('admin.user.search');
+  Route::post('/admin/users/confirm/{id?}',  'adminController@userDeleteConfirm')->name('admin.user.deletes.confirm');
+  Route::get('/admin/users/confirm/{id}',  'adminController@userDeleteConfirm')->name('admin.user.delete.confirm');
+  Route::post('/admin/users/delete/{id?}',  'adminController@userDelete')->name('admin.user.delete');
+  Route::get('/admin/users/{id}/edit',  'adminController@userEdit')->name('admin.user.edit');
+  Route::post('/admin/users/{id}',  'adminController@userUpdate')->name('admin.user.update');
+
+  //管理画面
+  //プロダクト
+  Route::get('/admin/products',  'adminController@productIndex')->name('admin.product');
+  Route::post('/admin/products',  'adminController@productIndex')->name('admin.product.search');
+  Route::get('/admin/products/{id}',  'adminController@productShow')->name('admin.product.show');
+  Route::post('/admin/products/delete/{id}',  'adminController@productDeleteConfirm')->name('admin.product.delete.confirm');
+  Route::get('/admin/products/delete/{id}',  'adminController@productDeleteConfirm')->name('admin.product.delete.confirm');
+  Route::post('/admin/products/delete/{id?}',  'adminController@productDelete')->name('admin.product.delete');
+
+  //管理画面
+  //注文台帳
+  Route::get('/admin/orders',  'adminController@orderIndex')->name('admin.order');
+  Route::post('/admin/orders',  'adminController@orderIndex')->name('admin.order.search');
+  Route::get('/admin/orders/{id}',  'adminController@orderShow')->name('admin.order.show');
+
+  //管理画面
+  //お問い合わせ台帳
+  Route::get('/admin/contacts',  'adminController@contactIndex')->name('admin.contact');
+  Route::post('/admin/contacts',  'adminController@contactIndex')->name('admin.contact.search');
+  Route::get('/admin/contacts/{id}',  'adminController@contactShow')->name('admin.contact.show');
+
+  //管理画面
+  //振込依頼
+  Route::get('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer');
+  Route::post('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer.search');
+  Route::get('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
+  Route::post('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
+  Route::post('/admin/transfer/update/{id?}',  'adminController@transferUpdate')->name('admin.transfer.update');
+
+});
+
+//===========================================================================
+//全ユーザー閲覧可能
+//===========================================================================
 Auth::routes();
 
 Route::get('/', function () {
     return view('index');
 });
-
-//管理画面
-//ユーザー
-Route::get('/admin/users',  'adminController@userIndex')->name('admin.user');
-Route::post('/admin/users',  'adminController@userIndex')->name('admin.user.search');
-Route::post('/admin/users/confirm/{id?}',  'adminController@userDeleteConfirm')->name('admin.user.deletes.confirm');
-Route::get('/admin/users/confirm/{id}',  'adminController@userDeleteConfirm')->name('admin.user.delete.confirm');
-Route::post('/admin/users/delete/{id?}',  'adminController@userDelete')->name('admin.user.delete');
-Route::get('/admin/users/{id}/edit',  'adminController@userEdit')->name('admin.user.edit');
-Route::post('/admin/users/{id}',  'adminController@userUpdate')->name('admin.user.update');
-
-//管理画面
-//プロダクト
-Route::get('/admin/products',  'adminController@productIndex')->name('admin.product');
-Route::post('/admin/products',  'adminController@productIndex')->name('admin.product.search');
-Route::get('/admin/products/{id}',  'adminController@productShow')->name('admin.product.show');
-Route::post('/admin/products/delete/{id}',  'adminController@productDeleteConfirm')->name('admin.product.delete.confirm');
-Route::get('/admin/products/delete/{id}',  'adminController@productDeleteConfirm')->name('admin.product.delete.confirm');
-Route::post('/admin/products/delete/{id?}',  'adminController@productDelete')->name('admin.product.delete');
-
-//管理画面
-//注文台帳
-Route::get('/admin/orders',  'adminController@orderIndex')->name('admin.order');
-Route::post('/admin/orders',  'adminController@orderIndex')->name('admin.order.search');
-Route::get('/admin/orders/{id}',  'adminController@orderShow')->name('admin.order.show');
-
-//管理画面
-//お問い合わせ台帳
-Route::get('/admin/contacts',  'adminController@contactIndex')->name('admin.contact');
-Route::post('/admin/contacts',  'adminController@contactIndex')->name('admin.contact.search');
-Route::get('/admin/contacts/{id}',  'adminController@contactShow')->name('admin.contact.show');
-
-//管理画面
-//振込依頼
-Route::get('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer');
-Route::post('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer.search');
-Route::get('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
-Route::post('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
-Route::post('/admin/transfer/update/{id?}',  'adminController@transferUpdate')->name('admin.transfer.update');
-
-
-
 Route::get('/',  'indexController@index')->name('home');
 
 
