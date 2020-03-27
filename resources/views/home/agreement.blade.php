@@ -113,9 +113,9 @@
     <div class="c-home__text">
       <h3 class="c-home__text__head">第９条　会員登録の削除（退部）</h3>
       <p class="c-home__text__body">
-        会員は、ログイン後に当サイト上の<a href="https://webukatu.com/mypage/withdraw"
+        会員は、ログイン後に当サイト上の<a href="{{ route('mypage') }}"
           target="_blank">コチラ</a>より手続きをいただくことで、任意で「会員情報を削除」（退部）することが出来ます。退部となる時期やその間発生する部費については、<a
-          href="https://webukatu.com/home/tokutei"
+          href="{{ route('home.tokutei') }}"
           target="_blank">「特定商取引法に基づく表記」</a>に準じます。一度会員情報を削除すると、今までご利用いただいていた会員ID、履歴も削除され、元に戻すことは出来ません。また、再度入会いただくことは出来ません。<br>
         なお、直接講師とTV電話にてレッスンを受けられる「マンツーマン部員」に関しては、申し込み後に退部をされても未利用分の返金は受け付けられません。
       </p>
@@ -195,7 +195,7 @@
       <p class="c-home__text__body">
         各部活には本入部登録後より一定期間経過後に開放され学習が開始できるものがあります。<br>
         練習制限内容は、部員種別により異なります。
-        詳しくは、<a href="https://webukatu.com/plan/list" target="_blank">部費ページ</a>の部費種別をご覧ください。
+        詳しくは、<a href="" target="_blank">部費ページ</a>の部費種別をご覧ください。
       </p>
     </div>
     <div class="c-home__text">
