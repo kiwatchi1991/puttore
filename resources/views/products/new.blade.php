@@ -248,7 +248,7 @@
             <p class="c-productNew__title__label">受講に必要なスキル<span class="required">必須</span></p>
             <textarea id="skills" type="text"
                 class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
-                data-input="skills" name="skills" value="{{ old('skills') }}" rows="7">{{ old('skills') }}</textarea>
+                data-input="skills" name="skills" rows="7">{{ old('skills') }}</textarea>
             @error('skills')
             <span class="c-productNew__error" role="alert">
                 <strong>{{ $message }}</strong>
