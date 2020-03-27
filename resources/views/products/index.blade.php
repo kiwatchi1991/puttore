@@ -30,7 +30,9 @@
           @foreach ($difficult as $difficults)
           <input id="d-{{ $difficults->id }}" type="checkbox"
             class="c-searchBox__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
-            value="{{ $difficults->id }}" autocomplete="difficult" autofocus>
+            value="{{ $difficults->id }}" autocomplete="difficult" @if(!$difficultiesIds==null)
+            @if(in_array($difficults->id,
+          $difficultiesIds))checked @endif @endif>
           <label class="c-searchBox__label" for="d-{{ $difficults->id }}">
             {{ $difficults->name }}
           </label>
@@ -51,7 +53,12 @@
   <h2>一覧 / 検索結果</h2>
 </div>
 <div class="c-pagination">
+  {{-- 1０件以下ならページングが表示されないので、別で件数を表示 --}}
+  @if($products->count() >= 10)
   {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
+  @else
+  <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
+  @endif
 </div>
 {{-- <div class="c-paging">{{ $pageNum_from }} - {{ $pageNum_to }} /<span
   class="c-paging__totalNum">{{ $products->count() }}</span></div> --}}
@@ -92,6 +99,11 @@
 </div>
 
 <div class="c-pagination">
-  {{ $products->links('vendor.pagination.simple-default') }}
+  {{-- 1０件以下ならページングが表示されないので、別で件数を表示 --}}
+  @if($products->count() >= 10)
+  {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
+  @else
+  <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
+  @endif
 </div>
 @endsection
