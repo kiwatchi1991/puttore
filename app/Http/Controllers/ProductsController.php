@@ -358,8 +358,6 @@ class ProductsController extends Controller
          * 検索機能
          */
 
-
-
         //カテゴリーと難易度両方あるパターン
         if ($request->get('lang') && $request->get('difficult')) {
             //カテゴリー
@@ -386,9 +384,6 @@ class ProductsController extends Controller
         } else {
             $products = Product::where('open_flg', 0)->latest()->paginate(10);
         }
-
-        //
-        // $products = $products->where('open_flg', 0);
 
         Log::debug(' <<<<<<   $products->first()   >>>>>>>');
         Log::debug($products->first());
@@ -450,13 +445,18 @@ class ProductsController extends Controller
         $product = Product::find($id);
 
         // 購入済みかどうかを判断（これによって表示するページが違う）
-        $myOrder = DB::table('orders')
-            ->where('user_id', Auth::user()->id)
-            ->where('product_id', $id);
+
+        if (Auth::user()) {
+            $myOrder = DB::table('orders')
+                ->where('user_id', Auth::user()->id)
+                ->where('product_id', $id);
+            $isOrder = ($myOrder->count() > 0) ? true : false;
+        } else {
+            $isOrder = false;
+        }
 
 
         // $isOrder = false;
-        $isOrder = ($myOrder->count() > 0) ? true : false;
         Log::debug('<<<<<<<<<  myOrder   >>>>>>>>>>>>>>>>>>');
         // Log::debug();
         Log::debug('<<<<<<<<<  isOrder   >>>>>>>>>>>>>>>>>>');
@@ -480,12 +480,11 @@ class ProductsController extends Controller
         //各種情報取得
         $product_id = $id;
 
-        //フォロー情報取得
-        $user_id = $user[0]->id;
-        $follow = Follow::where('followed_user_id', $user_id)->where('follow_user_id', Auth::user()->id)->count();
-
         // お気に入り情報取得
-        $liked = Like::where('product_id', $product_id)->where('user_id', Auth::user()->id)->count();
+        $liked = 0;
+        if (Auth::user()) {
+            $liked = Like::where('product_id', $product_id)->where('user_id', Auth::user()->id)->count();
+        }
 
         //　割引価格情報取得
         $discount_price = Discount::where('product_id', $product_id)->first();
@@ -515,7 +514,6 @@ class ProductsController extends Controller
             'product' => $product,
             'user' => $user,
             'categoryAndDifficulty' => $categoryAndDifficulty,
-            'follow' => $follow,
             'liked' => $liked,
             'discount_price' => $discount_price,
             'product_imgs' => $product_imgs,
@@ -537,6 +535,14 @@ class ProductsController extends Controller
         }
 
         $product = Product::find($id);
+        Log::debug($product);
+        Log::debug('$product->value(user_id)');
+        Log::debug($product->user_id);
+
+        //自分以外は権限を持たない
+        if ($product->user_id !== Auth::user()->id) {
+            return redirect('/')->with('flash_message', __('権限がありません'));
+        }
 
         //　割引価格情報取得
         $discount_price = Discount::where('product_id', $id)->first();
@@ -584,11 +590,10 @@ class ProductsController extends Controller
             return redirect('/products/new')->with('flash_message', __('もう一度やり直してください'));
         }
 
-        // $drill = Drill::find($id);
-        // $drill->delete();
+        $product = Product::find($id);
 
-        // こう書いた方がスマート
-        Product::find($id)->delete();
+
+        $product->delete();
 
         return redirect('/products')->with('flash_message', '削除しました');
     }
