@@ -28,6 +28,26 @@ class LoginController extends Controller
      * @var string
      */
 
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        // ここから
+        if (array_key_exists('HTTP_REFERER', $_SERVER)) {
+            $path = parse_url($_SERVER['HTTP_REFERER']); // URLを分解
+            if (array_key_exists('HOST', $path)) {
+                if ($path['HOST'] == $_SERVER['HTTP_HOST']) { // ホスト部分が自ホストと同じ
+                    session(['url.intended' => $_SERVER['HTTP_REFERER']]);
+                }
+            }
+        }
+        // ここまで追加
+        return view('auth.login');
+    }
+
     protected function redirectTo()
     {
         redirect('/products')->with('flash_message', 'ログインしました');
