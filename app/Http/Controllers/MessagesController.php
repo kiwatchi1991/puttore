@@ -25,18 +25,28 @@ class MessagesController extends Controller
 
         //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
         $id = $request->id;
-        $saleUserId = Order::where('orders.id', $request->id)
-            ->join('products', 'orders.product_id', 'products.id')
+
+        $order = Order::where('orders.id', $request->id);
+
+        $saleUserId = $order->join('products', 'orders.product_id', 'products.id')
             ->select('products.user_id')
             ->first();
 
+        $buyUserId = $order->value('user_id');
+
+        Log::debug('$order');
+        Log::debug($order->get());
         Log::debug('$saleUserId');
         Log::debug($saleUserId);
+        Log::debug('$buyUserId');
+        Log::debug($buyUserId);
 
         $message = new Message;
         $message->order_id = $id;
         $message->send_user_id = Auth::user()->id;
-        $message->recieve_user_id = $saleUserId->user_id;
+        //販売者が自分だったら,recieve_user_idは購入者
+        $message->recieve_user_id =
+            (Auth::user()->id == $saleUserId->user_id) ? $buyUserId : $saleUserId->user_id;
         $message->msg = $request->messages;
         $message->save();
 
