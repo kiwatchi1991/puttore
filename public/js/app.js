@@ -39154,7 +39154,7 @@ $button.on('click', function (e) {
   $newCopyTaget.find('.js-toggleTab__preview').removeClass('active');
   $newCopyTaget.find('.js-toggleTab__input').removeClass('active');
   $newCopyTaget.find('.js-lesson__block--input').addClass('active');
-  $newCopyTaget.find('.js-toggleTab__input').addClass('active'); //load()でnumberの振り直し
+  $newCopyTaget.find('.js-toggleTab__preview').addClass('active'); //load()でnumberの振り直し
 
   load();
 }); //===========================================
@@ -39801,57 +39801,46 @@ $(function () {
 // 入力項目のフロントバリデーション
 // ==================================
 //入力項目の検証ルール定義
-var rules = {
-  name: {
-    required: true
-  },
-  lang: {
-    required: true
-  },
-  difficult: {
-    required: true
-  },
-  detail: {
-    required: true
-  },
-  // lessons: {required: true},
-  default_price: {
-    required: true
-  },
-  skills: {
-    required: true
-  } // pic: {required: true},
-
-}; //入力項目ごとのエラーメッセージ定義
-
-var messages = {
-  name: {
-    required: 'タイトルを入力してください'
-  },
-  lang: {
-    required: '言語を選択してください'
-  },
-  difficult: {
-    required: '難易度を選択してください'
-  },
-  detail: {
-    required: '説明を入力してください'
-  },
-  // lessons: {
-  // required: 'レッスンを入力してください'
-  // },
-  default_price: {
-    required: '価格を入力してください'
-  },
-  skills: {
-    required: '価格を入力してください'
-  }
-};
+// let rules = {
+//     name: {required: true},
+//     'lang[]': {
+//         required: true, //必須項目にする
+//         minlength: 1 //2つのチェックが必要
+//     },
+//     'lessons[0][title]': {required: true},//必須項目にする
+//     detail: {required: true},
+//     default_price: {required: true},
+//     skills: {required: true},
+// };
+//入力項目ごとのエラーメッセージ定義
+// var messages = {
+//     name: {
+//     required: 'タイトルを入力してください',
+//     },
+//     'lang[]': {
+//     required: '言語を選択してください',
+//     },
+//     'lessons[0][title]': {
+//     required: 'レッスンタイトルを入力してください',
+//     },
+//     detail: {
+//     required: '説明を入力してください'
+//     },
+//     default_price: {
+//     required: '価格を入力してください'
+//     },
+//     skills: {
+//     required: '価格を入力してください'
+//     },
+// };
+// $(function(){
+//     $('#form-product').validate({
+//     rules: rules,
+//     messages: messages
+//     });
+// });
 $(function () {
-  $('#form-product').validate({
-    rules: rules,
-    messages: messages
-  });
+  $('#form-product').validate({});
 }); //     window.onbeforeunload = function(e) {
 //       e.preventDefault();
 //       return '';
