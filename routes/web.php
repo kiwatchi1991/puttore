@@ -64,7 +64,7 @@ Route::post('/admin/transfer/update/{id?}',  'adminController@transferUpdate')->
 
 
 Route::get('/',  'indexController@index')->name('home');
-Route::get('/products',  'ProductsController@index')->name('products');
+
 
 // 利用規約ページ
 Route::get('/home/agreement', 'indexController@agreement')->name('home.agreement');
@@ -77,16 +77,15 @@ Route::post('/contacts/confirm', 'ContactController@confirm')->name('contact.con
 Route::post('/contacts/finish', 'ContactController@send')->name('contact.send'); //完了画面
 Route::get('/contacts/finish', 'ContactController@finish')->name('contact.finish'); //完了画面
 
-
+//===========================================================================
 //ログインユーザーのみ
+//===========================================================================
 Route::group(['middleware' => 'check'], function () {
     Route::get('/products/new', 'ProductsController@new')->name('products.new');
     Route::post('/products/new', 'ProductsController@create')->name('products.create');
-    Route::post('/products',  'ProductsController@index')->name('products');
     Route::get('/products/{id}/edit', 'ProductsController@edit')->name('products.edit');
     Route::post('/products/{id}/edit', 'ProductsController@update')->name('products.update');
     Route::post('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
-    Route::get('/products/{id}',  'ProductsController@shows')->name('products.show');
     Route::post('/products/ajaxlike',  'LikesController@ajaxlike')->name('products.ajaxlike');
     Route::post('/products/ajaxfollow',  'FollowsController@ajaxfollow')->name('products.ajaxfollow');
     //レッスンの画像アップロード
@@ -140,3 +139,7 @@ Route::group(['middleware' => 'check'], function () {
     Route::get('/reset/{token}', 'ChangeEmailController@reset');
     Route::post('/email', 'ChangeEmailController@sendChangeEmailLink');
 });
+
+Route::get('/products',  'ProductsController@index')->name('products');
+Route::post('/products',  'ProductsController@index')->name('products');
+Route::get('/products/{id}',  'ProductsController@shows')->name('products.show');
