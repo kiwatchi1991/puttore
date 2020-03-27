@@ -39814,9 +39814,7 @@ var rules = {
   detail: {
     required: true
   },
-  lessons: {
-    required: true
-  },
+  // lessons: {required: true},
   default_price: {
     required: true
   },
@@ -39837,11 +39835,11 @@ var messages = {
     required: '難易度を選択してください'
   },
   detail: {
-    required: 'レッスンを入力してください'
+    required: '説明を入力してください'
   },
-  lessons: {
-    required: 'レッスンを入力してください'
-  },
+  // lessons: {
+  // required: 'レッスンを入力してください'
+  // },
   default_price: {
     required: '価格を入力してください'
   },

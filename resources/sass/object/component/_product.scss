@@ -634,6 +634,10 @@
     color: red;
     margin-top: 8px;
     display: block;
+    &--default_price{
+      width: 65%;
+      margin: 8px auto 0;
+    }
   }
 
 }

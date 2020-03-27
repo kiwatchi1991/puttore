@@ -1887,6 +1887,11 @@ a:visited {
   display: block;
 }
 
+.c-productNew__error--default_price {
+  width: 65%;
+  margin: 8px auto 0;
+}
+
 #payjp_checkout_box input[type=button] {
   background: orange !important;
   background-image: none !important;
@@ -4629,8 +4634,8 @@ a:visited {
 }
 
 .c-mypage__account__list img {
-  height: 50px;
-  width: 50px;
+  height: 65px;
+  width: 65px;
   border-radius: 50%;
 }
 
@@ -4643,7 +4648,7 @@ a:visited {
 
 .c-mypage__account__list--withdraw {
   margin-top: 120px;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .c-mypage__account__label {

@@ -124,8 +124,8 @@
                 text-align: center;
             }
             img{
-                height: 50px;
-                width: 50px;
+                height: 65px;
+                width: 65px;
                 border-radius: 50%;
                 @include pc{
                     height: 100px;
@@ -134,7 +134,7 @@
             }
             &--withdraw{
                 margin-top: 120px;
-                font-size: 10px;
+                font-size: 14px;
             }
         }
         &__label{

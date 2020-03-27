@@ -143,8 +143,8 @@
 
                 {{-- レッスン１　Number --}}
                 <div class="c-productNew__topWrapper">
-                    <div class="c-productNew__number">LESSON <span id="lesson_num"><span
-                                class="required">必須</span></span>
+                    <div class="c-productNew__number">LESSON <span id="lesson_num"></span><span
+                            class="required">必須</span>
                         <input id="number" type="hidden"
                             class="c-productNew__input-area--number @error('number') is-invalid @enderror"
                             data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
@@ -235,12 +235,12 @@
                     name="default_price" value="{{ old('default_price') }}" autocomplete="default_price"
                     placeholder="価格">
 
-                @error('default_price')
-                <span class="c-productNew__error" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
             </div>
+            @error('default_price')
+            <span class="c-productNew__error c-productNew__error--default_price" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
         {{-- 必要スキル --}}
