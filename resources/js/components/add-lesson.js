@@ -115,7 +115,7 @@ $button.on('click', function (e) {
     $newCopyTaget.find('.js-toggleTab__input').removeClass('active');
 
     $newCopyTaget.find('.js-lesson__block--input').addClass('active');
-    $newCopyTaget.find('.js-toggleTab__input').addClass('active');
+    $newCopyTaget.find('.js-toggleTab__preview').addClass('active');
 
     //load()でnumberの振り直し
     load();
