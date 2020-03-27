@@ -39,7 +39,7 @@ class CreateProductRequest extends FormRequest
                 'default_price' => 'required|integer|min:100',
 
                 'lessons.*.title' => 'required|max:255',
-                'lessons.*.lesson' => 'required',
+                'lessons.*.lesson' => 'required|string',
 
                 'pic1' => 'nullable|image',
                 'pic2' => 'nullable|image',
