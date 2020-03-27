@@ -64,7 +64,7 @@
             <div class="">
                 <p class="c-productNew__title__label">タイトル<span class="required">必須</span></p>
                 <input id="name" type="text" class="c-productNew__input-area @error('name')is-invalid @enderror"
-                    name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう">
+                    name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう" required>
 
                 @error('name')
                 <span class="c-productNew__error" role="alert">
@@ -121,7 +121,7 @@
 
                 <textarea id="detail" type="text"
                     class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
-                    data-input="detail" name="detail" rows="4">{{ old('detail') }}</textarea>
+                    data-input="detail" name="detail" rows="4" required>{{ old('detail') }}</textarea>
                 @error('detail')
                 <span class="c-productNew__error" role="alert">
                     <strong>{{ $message }}</strong>
@@ -149,19 +149,14 @@
                             class="c-productNew__input-area--number @error('number') is-invalid @enderror"
                             data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
                     <div class="c-productNew__deleteLesson js-deleteIcon"><i class="far fa-trash-alt"></i></div>
-                    @error('number')
-                    <span class="c-productNew__error" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
                 </div>
                 {{-- 　　レッスン1　title --}}
                 <div class="">
                     <input id="title" type="text" class="c-productNew__input-area @error('title') is-invalid @enderror"
                         data-input="title" name="" value="{{$lesson->title}}" autocomplete="title"
-                        placeholder="レッスンのタイトル" placeholder="title１">
+                        placeholder="レッスンのタイトル" placeholder="title１" required>
 
-                    @error('title')
+                    @error('lessons.*.title')
                     <span class="c-productNew__error" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -201,8 +196,8 @@
                         class="c-productNew__lesson c-productNew__lesson--input js-lesson__block js-lesson__block--input active">
                         <textarea type="text" id="lesson"
                             class="c-productNew__lesson--textarea js-marked__textarea @error('lesson') is-invalid @enderror"
-                            data-input="lessson" name="" value="" autocomplete="lesson"
-                            placeholder="lessonの内容">{{ $lesson->lesson }}</textarea>
+                            data-input="lessson" name="" value="" autocomplete="lesson" placeholder="lessonの内容"
+                            required>{{ $lesson->lesson }}</textarea>
                     </div>
                 </div>
                 <div id="preview" placeholder="lessonの内容"
@@ -211,7 +206,7 @@
                 </div>
             </div>
 
-            @error('lesson')
+            @error('lessons.*.lesson')
             <span class="c-productNew__error" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
@@ -230,10 +225,10 @@
             <p class="c-productNew__title__label">価格<span class="required">必須</span></p>
             <div class="c-productNew__price--wrap">
                 <div class="c-productNew__price--icon">¥</div>
-                <input id="default_price" type="text"
+                <input id="default_price" type="text" data-validate="required"
                     class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
                     name="default_price" value="{{ old('default_price') }}" autocomplete="default_price"
-                    placeholder="価格">
+                    placeholder="価格" required>
 
             </div>
             @error('default_price')
@@ -248,7 +243,7 @@
             <p class="c-productNew__title__label">受講に必要なスキル<span class="required">必須</span></p>
             <textarea id="skills" type="text"
                 class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
-                data-input="skills" name="skills" rows="7">{{ old('skills') }}</textarea>
+                data-input="skills" name="skills" rows="7" required>{{ old('skills') }}</textarea>
             @error('skills')
             <span class="c-productNew__error" role="alert">
                 <strong>{{ $message }}</strong>

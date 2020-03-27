@@ -62,7 +62,7 @@
         <div class="c-productNew__wrapper">
             {{-- 名前 --}}
             <div class="">
-                <p class="c-productNew__title__label">タイトル</p>
+                <p class="c-productNew__title__label">タイトル<span class="required">必須</span></p>
                 <input id="name" type="text" class="c-productEdit__input-area @error('name') is-invalid @enderror"
                     name="name" value="{{ $product->name }}" autocomplete="name"
                     placeholder="教材のタイトル（例：Twitter風アプリを作ろう）">
@@ -116,7 +116,7 @@
             </div>
             {{-- 説明 --}}
             <div class="c-productEdit__detail">
-                <p class="c-productNew__title__label">説明文</p>
+                <p class="c-productNew__title__label">説明文<span class="required">必須</span></p>
                 <textarea id="detail" type="text"
                     class="c-productEdit__input-area c-productEdit__input-area--detail @error('detail') is-invalid @enderror"
                     data-input="detail" name="detail" value="{{ old('detail') }}"
@@ -140,7 +140,8 @@
                     <input id="hidden" type="hidden" name="" value="{{ $lesson->id }}">
                     {{-- レッスン　Number --}}
                     <div class="c-productNew__topWrapper">
-                        <div class="c-productNew__number">LESSON <span id="lesson_num">{{ $lesson->number }}</span>
+                        <div class="c-productNew__number">LESSON <span id="lesson_num">{{ $lesson->number }}</span><span
+                                class="required">必須</span>
                             <input id="number" type="hidden"
                                 class="c-productNew__input-area--number @error('number') is-invalid @enderror"
                                 data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
@@ -162,7 +163,7 @@
                             name="" value="{{ $lesson->title }}" autocomplete="title" placeholder="レッスンのタイトル"
                             placeholder="title１">
 
-                        @error('title')
+                        @error('lessons.*.title')
                         <span class="" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -211,7 +212,7 @@
                         class="c-productNew__lesson c-productNew__lesson--preview js-lesson__block js-lesson__block--preview js-edit-preview">
                     </div>
 
-                    @error('lesson')
+                    @error('lessons.*.lesson')
                     <span class="" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -229,7 +230,7 @@
         <div class="c-productNew__wrapper">
             {{-- 価格 --}}
             <div class="c-productEdit__price">
-                <p class="c-productNew__title__label">価格</p>
+                <p class="c-productNew__title__label">価格<span class="required">必須</span></p>
                 <div class="c-productNew__price--wrap">
                     <div class="c-productNew__price--icon">¥</div>
                     <input id="default_price" type="tel"
@@ -247,7 +248,8 @@
 
             {{-- 割引価格 --}}
             <div class="c-productEdit__discount-price">
-                <p class="c-productNew__title__label c-productNew__title__label--discount">割引価格（設定する場合はこちら）</p>
+                <p class="c-productNew__title__label c-productNew__title__label--discount">割引価格<span
+                        class="options">任意</span></p>
                 <div class="c-productNew__price--wrap">
                     <div class="c-productNew__price--icon">¥</div>
                     <input id="discount_price"
@@ -277,7 +279,7 @@
 
             {{-- 必要スキル --}}
             <div class="c-productNew__skills">
-                <p class="c-productNew__skills__title">受講に必要なスキル</p>
+                <p class="c-productNew__skills__title">受講に必要なスキル<span class="required">必須</span></p>
                 <textarea id="skills" type="text"
                     class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
                     data-input="skills" name="skills" value="" rows="7">{{ $product->skills }}</textarea>
