@@ -1,7 +1,6 @@
 #footer{
     width: 100%;
     background: white;
-    // position: absolute;
     bottom: 0;
     border-top: 1px solid $main-color;
     @include pc{
@@ -11,13 +10,16 @@
 
 .c-footer{
     &__inner{
-    display: flex;
-    background: $bg;
-    padding: 16px 24px;
-    justify-content: space-between;
-    @include pc{
-      display: block;
+      background: $bg;
     }
+    &__contents{
+      display: flex;
+      padding: 16px 24px;
+      justify-content: space-between;
+      @include pc{
+        display: block;
+      }
+
   }
   &__logo{
     @include pc{
@@ -48,7 +50,9 @@
         }
   }
   &__small{
-        margin-top: 8px;
+        font-size: 10px;
+        text-align: center;
+        padding-bottom: 16px;
         @include pc{
           text-align: center;
           margin-top: 24px;

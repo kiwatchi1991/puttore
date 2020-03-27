@@ -189,28 +189,32 @@
   </main>
   <footer id="footer">
     <div class="c-footer__inner">
-      <div class="c-footer__logo">
-        <div class="c-top__fvMsg--img">
-          <a class="" href="{{ url('/') }}">
-            <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
-          </a>
+      <div class="c-footer__contents">
+        <div class="c-footer__logo">
+          <div class="c-top__fvMsg--img">
+            <a class="" href="{{ url('/') }}">
+              <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
+            </a>
+          </div>
+          <div class="c-footer__logo--img">
+            <a class="" href="{{ url('/') }}">
+              <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
+            </a>
+          </div>
         </div>
-        <div class="c-footer__logo--img">
-          <a class="" href="{{ url('/') }}">
-            <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
-          </a>
+        <div class="c-footer__list">
+          <ul class="c-footer__list__wrap">
+            <li><a class="c-footer__list__link" href="/#features">ぷっとれについて</a></li>
+            <li><a class="c-footer__list__link" href="/home/agreement">利用規約</a></li>
+            <li><a class="c-footer__list__link" href="/home/policy">プライバシーポリシー</a></li>
+            <li><a class="c-footer__list__link" href="/home/tokutei">特定商取引法に基づく表示</a></li>
+            <li><a class="c-footer__list__link" href="{{ route('contact.index') }}">お問い合わせ</a></li>
+          </ul>
+
         </div>
       </div>
-      <div class="c-footer__list">
-        <ul class="c-footer__list__wrap">
-          <li><a class="c-footer__list__link" href="/#features">ぷっとれについて</a></li>
-          <li><a class="c-footer__list__link" href="/home/agreement">利用規約</a></li>
-          <li><a class="c-footer__list__link" href="/home/policy">プライバシーポリシー</a></li>
-          <li><a class="c-footer__list__link" href="/home/tokutei">特定商取引法に基づく表示</a></li>
-          <li><a class="c-footer__list__link" href="{{ route('contact.index') }}">お問い合わせ</a></li>
-        </ul>
-        <p class="c-footer__small"><small>©︎2020 ぷっとれ</small></p>
-      </div>
+      <p class="c-footer__small"><small>Copyright © <a href="http://0-1-llc.com/" target="_blank">ゼロワンLLC</a>. All
+          Rights Reserved.</small></p>
     </div>
   </footer>
   {{-- </div> --}}
