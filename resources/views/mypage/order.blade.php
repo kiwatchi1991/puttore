@@ -59,16 +59,16 @@
                 <div class="c-mypage__sale__untransferred__price"><span class="c-mypage__sale__icon">¥</span> 0</div>
                 @endif
 
-            </div>
-            <div class="c-mypage__sale__untransferred__request js-request-transfer">
+                <div class="c-mypage__sale__untransferred__request js-request-transfer">
 
-                {{-- 5000円以下の場合は表示しない --}}
-                @foreach($untransferred_price as $mon => $price)
-                @if ($price > 5000)
-                <a href="/mypage/transfer" class="c-mypage__sale__untransferred__request__link">振込依頼</a>
-                @endif
-                @endforeach
+                    {{-- 5000円以下の場合は表示しない --}}
+                    @foreach($untransferred_price as $mon => $price)
+                    @if ($price > 5000)
+                    <a href="/mypage/transfer" class="c-mypage__sale__untransferred__request__link">振込依頼</a>
+                    @endif
+                    @endforeach
 
+                </div>
             </div>
             <p class="c-mypage__sale__untransferred__text">
                 前月末時点での未振込の売上金総額が5,000円以上になると、振込依頼ができるようになります。</p>　

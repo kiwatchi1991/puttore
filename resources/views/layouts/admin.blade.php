@@ -74,17 +74,17 @@
                                 @endauth
 
                                 <li class="global-nav__item">
-                                  <a href="{{ route('admin.user') }}"
-                                  class="global-nav__item__link @guest first @endguest">ユーザー一覧</a>
+                                    <a href="{{ route('admin.user') }}"
+                                        class="global-nav__item__link @guest first @endguest">ユーザー一覧</a>
                                 </li>
                                 <li class="global-nav__item">
-                                  <a href="{{ route('admin.product') }}" class="global-nav__item__link">プロダクト一覧</a>
+                                    <a href="{{ route('admin.product') }}" class="global-nav__item__link">プロダクト一覧</a>
                                 </li>
                                 <li class="global-nav__item">
-                                  <a href="{{ route('admin.contact') }}" class="global-nav__item__link">お問い合わせ一覧</a>
+                                    <a href="{{ route('admin.contact') }}" class="global-nav__item__link">お問い合わせ一覧</a>
                                 </li>
                                 <li class="global-nav__item">
-                                  <a href="{{ route('admin.order') }}" class="global-nav__item__link">注文一覧</a>
+                                    <a href="{{ route('admin.order') }}" class="global-nav__item__link">注文一覧</a>
                                 </li>
 
                                 @auth
@@ -117,6 +117,37 @@
                     </div>
                 </ul>
             </div>
+
+            <div class="global-nav__pc">
+                <nav class="global-nav__pc--wrap">
+                    <ul class="global-nav__pc--list">
+
+                        @auth
+                        <li class="">
+                            <a href=" {{ route('admin.user') }}" class="global-nav__item__link">ユーザー管理</a>
+                        </li>
+
+                        @endauth
+
+                        <li class="">
+                            <a href="{{ route('admin.product') }}" class="global-nav__item__link">コンテンツ管理</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('admin.order') }}"
+                                class="global-nav__item__link @guest first @endguest">注文管理</a>
+                        </li>
+
+                        <li class="">
+                            <a href=" {{ route('admin.contact') }}" class="global-nav__item__link">お問い合わせ</a>
+                        </li>
+                        <li>
+                            <a href=" {{ route('admin.transfer') }}" class="global-nav__item__link">振込依頼</a>
+
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
         </div>
     </nav>
 
