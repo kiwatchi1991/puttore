@@ -26,7 +26,6 @@ class ProfilesController extends Controller
         }
 
         Log::debug('SHOW!!!');
-        // $product = Product::find($id);
 
         // ユーザー情報の取得
         $user = User::find($id);
@@ -62,9 +61,6 @@ class ProfilesController extends Controller
         $product_category = Product::all();
         $product_difficulty = Product::all();
 
-
-
-
         return view('profile.show', [
             'products' => $products,
             'product_categories' => $product_category,
@@ -85,7 +81,7 @@ class ProfilesController extends Controller
     {
         //自分以外は編集権限を持たない
         if ($id != Auth::user()->id) {
-            return redirect('/');
+            return redirect('/')->with('flash_message', __('権限がありません'));
         }
         // GETパラメータが数字かどうかをチェックする
         // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
@@ -113,19 +109,6 @@ class ProfilesController extends Controller
         $user = User::find($id);
         $user->fill($request->all())->save();
 
-        // 整形して入れたいのはこっち
-        // $image = Image::make(file_get_contents($request->pic))->crop(50, 50, 0, 0);
-        // Log::debug('$user　前');
-        // Log::debug($user);
-        // $user->pic = $image; //追加
-        // Log::debug('$user　後');
-        // Log::debug($user);
-        // $user->save(); //追加
-
-        // $path = $image->store('public/profile_images');
-        // Log::debug('<<<<<<<<<<<<     整形後 image       >>>>>>>>>>>>>>');
-        // Log::debug($image);
-
         if ($request->pic) {
 
             $path = $request->pic->store('public/profile_images'); //もともとこっち
@@ -152,6 +135,13 @@ class ProfilesController extends Controller
             return redirect('/profiles')->with('flash_message', __('もう一度やり直してください'));
         }
 
+        //自分以外のユーザーがあくせすできないようにする
+        if ($id != Auth::user()->id) {
+            return redirect()->route('home')->with('flash_message', __('権限がありません'));
+        }
+
+
+
         $user = User::find($id);
         return view('profile.delete', ['user' => $user]);
     }
@@ -172,6 +162,6 @@ class ProfilesController extends Controller
         $user = User::find($request->input('id'));
         $user->delete();
 
-        return redirect('/products/mypage')->with('flash_message', '削除しました');
+        return redirect('/products')->with('flash_message', '退会しました');
     }
 }
