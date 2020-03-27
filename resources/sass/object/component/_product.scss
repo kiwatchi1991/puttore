@@ -516,7 +516,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
-      width: 65%;
+      width: 80%;
       margin: 0 auto;
       &.date{
         justify-content: space-between;
@@ -688,6 +688,9 @@
       width: 90vw;
       position: relative;
       float: left;
+      @include pc{
+        width: 520px;
+    }
       &__img{
         width: 100%;
           top: 0;
@@ -953,7 +956,7 @@
       padding: 10px;
       border-radius: 5px;
       border: none;
-      margin-top: 16px;
+      margin-top: 8px;
       @include pc{
         background: $bg;
       }
@@ -963,7 +966,7 @@
     }
     &__tagbox{
       background: white;
-      margin-top: 32px;
+      margin-top: 8px;
       padding: 16px 16px 16px 0;
       border-radius: 5px;
       @include pc{
@@ -993,7 +996,7 @@
       margin-top: 24px;
     }
     &__modal{
-      font-size: 10px;
+      font-size: 14px;
       margin: 5px 0 0 3px;
     }
     &__checkbox{
@@ -1102,6 +1105,7 @@
       margin-top: 16px;
       &__btn{
         color: $main-color;
+        font-size: 16px;
       }
     }
   }
