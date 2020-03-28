@@ -73,6 +73,9 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     color: $sub-text;
+    a:visited{
+      color: $sub-text;
+    }
   }
 
   &__profile{
