@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Discount;
 use App\Order;
+use App\SystemCommission;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use Payjp\Charge;
@@ -80,6 +81,14 @@ class OrdersController extends Controller
     }
     $order->msg_updated_at = Carbon::now();
     $order->save();
+    $order->transfer_price = $order->sale_price * (1 - SystemCommission::find(1)->value('commission_rate'));
+    $order->save();
+
+    Log::debug('$order->sale_price');
+    Log::debug($order->sale_price);
+    Log::debug('$order->transfer_price');
+    Log::debug($order->transfer_price);
+
 
     // リダイレクトする
     // その時にsessionフラッシュにメッセージを入れる
