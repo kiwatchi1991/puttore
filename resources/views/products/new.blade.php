@@ -64,7 +64,7 @@
             <div class="">
                 <p class="c-productNew__title__label">タイトル<span class="required">必須</span></p>
                 <input id="name" type="text" class="c-productNew__input-area @error('name')is-invalid @enderror"
-                    name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう" required>
+                    name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう">
 
                 @error('name')
                 <span class="c-productNew__error" role="alert">
@@ -121,7 +121,7 @@
 
                 <textarea id="detail" type="text"
                     class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
-                    data-input="detail" name="detail" rows="4" required>{{ old('detail') }}</textarea>
+                    data-input="detail" name="detail" rows="4">{{ old('detail') }}</textarea>
                 @error('detail')
                 <span class="c-productNew__error" role="alert">
                     <strong>{{ $message }}</strong>
@@ -153,14 +153,10 @@
                 {{-- 　　レッスン1　title --}}
                 <div class="">
                     <input id="title" type="text" class="c-productNew__input-area @error('title') is-invalid @enderror"
-                        data-input="title" name="" value="{{$lesson->title}}" autocomplete="title"
-                        placeholder="レッスンのタイトル" placeholder="title１" required>
+                        name="" value="{{ $lesson->title }}" autocomplete="title" placeholder="レッスンのタイトル"
+                        placeholder="title１">
 
-                    @error('lessons.*.title')
-                    <span class="c-productNew__error" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+
                 </div>
             </div>
             {{-- ↑↑　PC用wrapperここまで --}}
@@ -196,8 +192,8 @@
                         class="c-productNew__lesson c-productNew__lesson--input js-lesson__block js-lesson__block--input active">
                         <textarea type="text" id="lesson"
                             class="c-productNew__lesson--textarea js-marked__textarea @error('lesson') is-invalid @enderror"
-                            data-input="lessson" name="" value="" autocomplete="lesson" placeholder="lessonの内容"
-                            required>{{ $lesson->lesson }}</textarea>
+                            name="" value="" autocomplete="lesson"
+                            placeholder="lessonの内容">{{ $lesson->lesson }}</textarea>
                     </div>
                 </div>
                 <div id="preview" placeholder="lessonの内容"
@@ -205,16 +201,20 @@
                     Markdownで記入されたlesson本文のプレビュー
                 </div>
             </div>
-
-            @error('lessons.*.lesson')
-            <span class="c-productNew__error" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
         </div>
 
     </div>
     @endforeach
+    @error('lessons.*.title')
+    <span class="c-productNew__error" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+    @error('lessons.*.lesson')
+    <span class="c-productNew__error" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
     <div class="c-productNew__lesson__addBtn js-addLesson__button">
         <button class="c-productNew__lesson__addBtn__btn"><i class="fas fa-plus-circle"></i>
             LESSONを追加する</button>
@@ -225,10 +225,10 @@
             <p class="c-productNew__title__label">価格<span class="required">必須</span></p>
             <div class="c-productNew__price--wrap">
                 <div class="c-productNew__price--icon">¥</div>
-                <input id="default_price" type="text" data-validate="required"
+                <input id="default_price" type="text"
                     class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
                     name="default_price" value="{{ old('default_price') }}" autocomplete="default_price"
-                    placeholder="価格" required>
+                    placeholder="価格">
 
             </div>
             @error('default_price')
@@ -243,7 +243,7 @@
             <p class="c-productNew__title__label">受講に必要なスキル<span class="required">必須</span></p>
             <textarea id="skills" type="text"
                 class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
-                data-input="skills" name="skills" rows="7" required>{{ old('skills') }}</textarea>
+                name="skills" rows="7">{{ old('skills') }}</textarea>
             @error('skills')
             <span class="c-productNew__error" role="alert">
                 <strong>{{ $message }}</strong>
@@ -321,19 +321,21 @@
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-        <div class="c-productNew__submit c-productNew__submit--draft">
-            <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft"
-                data-type="draft" name="postType" value="draft">
-                下書き保存する
-                {{-- <input type="hidden" name="" class="js-postType" value=""> --}}
-            </button>
-        </div>
-        <div class="c-productNew__submit ">
-            <button type="submit" class="c-productNew__submit__button" data-type="register" name="postType"
-                value="register">
-                登録する
-                {{-- <input type="hidden" name="" class="js-postType" value=""> --}}
-            </button>
+        <div class="js-postType__parentDom">
+            <input type="hidden" name="postType" class="js-postType" value="">
+            <div class="c-productNew__submit c-productNew__submit--draft">
+                <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft"
+                    name="postType" value="draft">
+                    下書き保存する
+                    {{-- <input type="hidden" name="" class="js-postType" value=""> --}}
+                </button>
+            </div>
+            <div class="c-productNew__submit ">
+                <button type="submit" class="c-productNew__submit__button" name="postType" value="register">
+                    登録する
+                    {{-- <input type="hidden" name="" class="js-postType" value=""> --}}
+                </button>
+            </div>
         </div>
     </div>
     </form>

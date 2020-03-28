@@ -96,6 +96,7 @@ $(document).on('change', '.js-lessonUploadImg', function () {
 // ==============    レッスンの追加ボタンを押した時
 // ===============================================
 let $button = $('.js-addLesson__button');
+// $(document).on('click', '.js-addLesson__button', function (e) {
 $button.on('click', function (e) {
     e.preventDefault();
     console.log('レッスン追加イベント！');

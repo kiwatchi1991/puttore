@@ -47,6 +47,8 @@ class ProductsController extends Controller
      */
     public function new()
     {
+        Log::debug('<<<<        new  >>>>>>>>>>');
+
         $category = Category::all();
         $difficult = Difficulty::all();
 
@@ -61,6 +63,8 @@ class ProductsController extends Controller
             $collect->push(new Lesson());
         }
         $lessons = $collect;
+        Log::debug('<<<    $lessons   >>>>>');
+        Log::debug($lessons);
         return view('products.new', [
             'category' => $category,
             'difficult' => $difficult,

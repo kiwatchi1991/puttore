@@ -163,11 +163,7 @@
                             name="" value="{{ $lesson->title }}" autocomplete="title" placeholder="レッスンのタイトル"
                             placeholder="title１">
 
-                        @error('lessons.*.title')
-                        <span class="" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+
                     </div>
                 </div>
                 {{-- ↑↑　PC用wrapperここまで --}}
@@ -211,16 +207,24 @@
                     <div id="preview"
                         class="c-productNew__lesson c-productNew__lesson--preview js-lesson__block js-lesson__block--preview js-edit-preview">
                     </div>
-
-                    @error('lessons.*.lesson')
-                    <span class="" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
                 </div>
 
             </div>
             @endforeach
+            {{-- <div class=""> --}}
+            @error('lessons.*.title')
+            <span class="" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            {{-- </div> --}}
+            {{-- <div class=""> --}}
+            @error('lessons.*.lesson')
+            <span class="" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            {{-- </div> --}}
         </div>
         {{-- レッスン追加ボタン --}}
         <div class="c-productNew__lesson__addBtn js-addLesson__button">
