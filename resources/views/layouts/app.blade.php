@@ -226,6 +226,7 @@
   </script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js">
   </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_ja.js"></script>
 
 </body>
 

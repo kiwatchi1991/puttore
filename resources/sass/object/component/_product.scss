@@ -276,6 +276,11 @@
       letter-spacing: 0.7px;
       color: $main-color;
       padding-bottom: 24px;
+      @include pc{
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
     }
     &__title__label{
       font-size: 14px;

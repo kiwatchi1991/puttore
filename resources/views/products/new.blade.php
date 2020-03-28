@@ -55,16 +55,16 @@
 </div>
 
 <div class="c-productNew">
-    <div class="c-productNew__wrapper">
 
-        <p class="c-productNew__title__head">コンテンツ登録</p>
-        <form id="form-product" method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data">
-            @csrf
+    <p class="c-productNew__title__head">コンテンツ登録</p>
+    <form id="form-product" method="POST" action="{{ route('products.create') }}" enctype="multipart/form-data">
+        @csrf
+        <div class="c-productNew__wrapper">
 
             <div class="">
                 <p class="c-productNew__title__label">タイトル<span class="required">必須</span></p>
                 <input id="name" type="text" class="c-productNew__input-area @error('name')is-invalid @enderror"
-                    name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう">
+                    name="name" value="{{ old('name') }}" autocomplete="name" placeholder="例：Twitter風アプリを作ろう" required>
 
                 @error('name')
                 <span class="c-productNew__error" role="alert">
@@ -84,7 +84,7 @@
                     <input id="c-{{ $categories->id }}" type="checkbox"
                         class="c-productNew__checkbox @error('lang') is-invalid @enderror" name="lang[]"
                         value="{{ $categories->id }}" autocomplete="lang" @if (in_array($categories->id,
-                    old('lang',[]))) checked @endif>
+                    old('lang',[]))) checked @endif required>
                     <label class="c-productNew__label" for="c-{{ $categories->id }}">
                         {{ $categories->name }}
                     </label>
@@ -97,7 +97,7 @@
                     @foreach ($difficult as $difficults)
                     <input id="d-{{ $difficults->id }}" type="radio"
                         class="c-productNew__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
-                        value="{{ $difficults->id }}" autocomplete="difficult">
+                        value="{{ $difficults->id }}" autocomplete="difficult" required>
                     <label class="c-productNew__label" for="d-{{ $difficults->id }}">
                         {{ $difficults->name }}
                     </label>
@@ -121,7 +121,7 @@
 
                 <textarea id="detail" type="text"
                     class="c-productNew__input-area c-productNew__input-area--detail @error('detail') is-invalid @enderror"
-                    data-input="detail" name="detail" rows="4">{{ old('detail') }}</textarea>
+                    data-input="detail" name="detail" rows="4" required>{{ old('detail') }}</textarea>
                 @error('detail')
                 <span class="c-productNew__error" role="alert">
                     <strong>{{ $message }}</strong>
@@ -132,212 +132,213 @@
 
                 </div>
             </div>
-    </div>
-    {{-- レッスン内容 --}}
+        </div>
+        {{-- レッスン内容 --}}
 
-    <div class="c-productNew__lessons" id="js-lesson__section">
-        @foreach( $lessons as $lesson )
-        <div class="c-productNew__lesson__inner js-add__target">
-            {{-- ↓↓　PC用wrapperここから --}}
-            <div class="c-productNew__lesson__pcWrapper">
-
-                {{-- レッスン１　Number --}}
-                <div class="c-productNew__topWrapper">
-                    <div class="c-productNew__number">LESSON <span id="lesson_num"></span><span
-                            class="required">必須</span>
-                        <input id="number" type="hidden"
-                            class="c-productNew__input-area--number @error('number') is-invalid @enderror"
-                            data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
-                    <div class="c-productNew__deleteLesson js-deleteIcon"><i class="far fa-trash-alt"></i></div>
-                </div>
-                {{-- 　　レッスン1　title --}}
-                <div class="">
-                    <input id="title" type="text" class="c-productNew__input-area @error('title') is-invalid @enderror"
-                        name="" value="{{ $lesson->title }}" autocomplete="title" placeholder="レッスンのタイトル"
-                        placeholder="title１">
-
-
-                </div>
-            </div>
-            {{-- ↑↑　PC用wrapperここまで --}}
-            {{-- レッスン１ lesson --}}
-            <div class="c-productNew__lesson__block js-productNew__lesson">
-                {{--↓↓　PC用wrapperここから --}}
+        <div class="c-productNew__lessons" id="js-lesson__section">
+            @foreach( $lessons as $lesson )
+            <div class="c-productNew__lesson__inner js-add__target">
+                {{-- ↓↓　PC用wrapperここから --}}
                 <div class="c-productNew__lesson__pcWrapper">
-                    <div class="c-productNew__lesson__header">
-                        <p class="c-productNew__lesson__header__title">本文</p>
-                        {{-- 編集アイコン --}}
-                        <div class="c-productNew__lesson__header__toggleIcon js-toggleTab js-toggleTab__input"
-                            data-status="input">
-                            <i class="far fa-edit"></i>
-                        </div>
-                        {{-- プレビューアイコン --}}
-                        <div class="c-productNew__lesson__header__toggleIcon js-toggleTab js-toggleTab__preview active"
-                            data-status="preview">
-                            <i class="far fa-eye"></i>
-                        </div>
-                        {{-- 画像アイコン --}}
-                        <div class="c-productNew__lesson__header__imgIcon js-insertImg" data-status="preview">
 
-                            <label for="uploadimg" class="c-productNew__header__label js-imgInputlabel">
-                                <i class="far fa-image"></i>
-                                <input id="uploadimg" class="c-productNew__lesson__header__input js-lessonUploadImg"
-                                    type="file" name="lesson_pic">
-                            </label>
-
-                        </div>
+                    {{-- レッスン１　Number --}}
+                    <div class="c-productNew__topWrapper">
+                        <div class="c-productNew__number">LESSON <span id="lesson_num"></span><span
+                                class="required">必須</span>
+                            <input id="number" type="hidden"
+                                class="c-productNew__input-area--number @error('number') is-invalid @enderror"
+                                data-input="number" name="" value="" autocomplete="number" placeholder="Number1"></div>
+                        <div class="c-productNew__deleteLesson js-deleteIcon"><i class="far fa-trash-alt"></i></div>
                     </div>
+                    {{-- 　　レッスン1　title --}}
+                    <div class="">
+                        <input id="title" type="text"
+                            class="c-productNew__input-area @error('title') is-invalid @enderror" data-input="title"
+                            name="" value="{{ $lesson->title }}" autocomplete="title" placeholder="レッスンのタイトル"
+                            placeholder="title１" required>
 
-                    <div
-                        class="c-productNew__lesson c-productNew__lesson--input js-lesson__block js-lesson__block--input active">
-                        <textarea type="text" id="lesson"
-                            class="c-productNew__lesson--textarea js-marked__textarea @error('lesson') is-invalid @enderror"
-                            name="" value="" autocomplete="lesson"
-                            placeholder="lessonの内容">{{ $lesson->lesson }}</textarea>
+
                     </div>
                 </div>
-                <div id="preview" placeholder="lessonの内容"
-                    class="c-productNew__lesson c-productNew__lesson--preview js-lesson__block js-lesson__block--preview ">
-                    Markdownで記入されたlesson本文のプレビュー
+                {{-- ↑↑　PC用wrapperここまで --}}
+                {{-- レッスン１ lesson --}}
+                <div class="c-productNew__lesson__block js-productNew__lesson">
+                    {{--↓↓　PC用wrapperここから --}}
+                    <div class="c-productNew__lesson__pcWrapper">
+                        <div class="c-productNew__lesson__header">
+                            <p class="c-productNew__lesson__header__title">本文</p>
+                            {{-- 編集アイコン --}}
+                            <div class="c-productNew__lesson__header__toggleIcon js-toggleTab js-toggleTab__input"
+                                data-status="input">
+                                <i class="far fa-edit"></i>
+                            </div>
+                            {{-- プレビューアイコン --}}
+                            <div class="c-productNew__lesson__header__toggleIcon js-toggleTab js-toggleTab__preview active"
+                                data-status="preview">
+                                <i class="far fa-eye"></i>
+                            </div>
+                            {{-- 画像アイコン --}}
+                            <div class="c-productNew__lesson__header__imgIcon js-insertImg" data-status="preview">
+
+                                <label for="uploadimg" class="c-productNew__header__label js-imgInputlabel">
+                                    <i class="far fa-image"></i>
+                                    <input id="uploadimg" class="c-productNew__lesson__header__input js-lessonUploadImg"
+                                        type="file" name="lesson_pic">
+                                </label>
+
+                            </div>
+                        </div>
+
+                        <div
+                            class="c-productNew__lesson c-productNew__lesson--input js-lesson__block js-lesson__block--input active">
+                            <textarea type="text" id="lesson"
+                                class="c-productNew__lesson--textarea js-marked__textarea @error('lesson') is-invalid @enderror"
+                                name="" value="{{ old('lesson') }}" autocomplete="lesson" placeholder="lessonの内容"
+                                required>{{ $lesson->lesson }}</textarea>
+                        </div>
+                    </div>
+                    <div id="preview" placeholder="lessonの内容"
+                        class="c-productNew__lesson c-productNew__lesson--preview js-lesson__block js-lesson__block--preview ">
+                        {{-- Markdownで記入されたlesson本文のプレビュー --}}
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    @endforeach
-    @error('lessons.*.title')
-    <span class="c-productNew__error" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-    @error('lessons.*.lesson')
-    <span class="c-productNew__error" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-    <div class="c-productNew__lesson__addBtn js-addLesson__button">
-        <button class="c-productNew__lesson__addBtn__btn"><i class="fas fa-plus-circle"></i>
-            LESSONを追加する</button>
-    </div>
-    <div class="c-productNew__wrapper">
-        {{-- 価格 --}}
-        <div class="c-productNew__price">
-            <p class="c-productNew__title__label">価格<span class="required">必須</span></p>
-            <div class="c-productNew__price--wrap">
-                <div class="c-productNew__price--icon">¥</div>
-                <input id="default_price" type="text"
-                    class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
-                    name="default_price" value="{{ old('default_price') }}" autocomplete="default_price"
-                    placeholder="価格">
-
-            </div>
-            @error('default_price')
-            <span class="c-productNew__error c-productNew__error--default_price" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
+            @endforeach
         </div>
-
-        {{-- 必要スキル --}}
-        <div class="c-productNew__skills">
-            <p class="c-productNew__title__label">受講に必要なスキル<span class="required">必須</span></p>
-            <textarea id="skills" type="text"
-                class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
-                name="skills" rows="7">{{ old('skills') }}</textarea>
-            @error('skills')
-            <span class="c-productNew__error" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
-
-        {{-- 画像 --}}
-        <div class="c-productNew__images">
-            <p class="c-productNew__title__label">画像 <span class="c-productNew__title__label--picText">(
-                    画像１がサムネイルとして表示されます )</span>
-            </p>
-            <div class="c-productNew__images__half">
-                {{-- 画像1 --}}
-                <label class="c-productNew__image__area area1 js-area__drop">
-                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic1">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
-                </label>
-                {{-- 画像2 --}}
-                <label class="c-productNew__image__area area2 js-area__drop">
-                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic2">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
-                </label>
-                {{-- 画像3 --}}
-                <label class="c-productNew__image__area area3 js-area__drop">
-                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic3">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
-                </label>
-            </div>
-            @error('pic1')
-            <span class="c-productNew__error" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-            @error('pic2')
-            <span class="c-productNew__error" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-            @error('pic2')
-            <span class="c-productNew__error" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-            <div class="c-productNew__images__half">
-                {{-- 画像4 --}}
-                <label class="c-productNew__image__area area4 js-area__drop">
-                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic4">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
-                </label>
-                {{--画像5 --}}
-                <label class="c-productNew__image__area area5 js-area__drop">
-                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic5">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
-                </label>
-                {{--画像6 --}}
-                <label class="c-productNew__image__area area6 js-area__drop">
-                    <input class="c-productNew__image__input js-input__file--product" type="file" name="pic6">
-                    <img src="" alt="" class="c-productNew__image__img js-prev__img">
-                </label>
-            </div>
-        </div>
-        @error('pic4')
+        @error('lessons.*.title')
         <span class="c-productNew__error" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-        @error('pic5')
+        @error('lessons.*.lesson')
         <span class="c-productNew__error" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-        @error('pic6')
-        <span class="c-productNew__error" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-        <div class="js-postType__parentDom">
-            <input type="hidden" name="postType" class="js-postType" value="">
-            <div class="c-productNew__submit c-productNew__submit--draft">
-                <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft"
-                    name="postType" value="draft">
-                    下書き保存する
-                    {{-- <input type="hidden" name="" class="js-postType" value=""> --}}
-                </button>
-            </div>
-            <div class="c-productNew__submit ">
-                <button type="submit" class="c-productNew__submit__button" name="postType" value="register">
-                    登録する
-                    {{-- <input type="hidden" name="" class="js-postType" value=""> --}}
-                </button>
-            </div>
+        <div class="c-productNew__lesson__addBtn js-addLesson__button">
+            <button class="c-productNew__lesson__addBtn__btn"><i class="fas fa-plus-circle"></i>
+                LESSONを追加する</button>
         </div>
-    </div>
+        <div class="c-productNew__wrapper">
+            {{-- 価格 --}}
+            <div class="c-productNew__price">
+                <p class="c-productNew__title__label">価格<span class="required">必須</span></p>
+                <div class="c-productNew__price--wrap">
+                    <div class="c-productNew__price--icon">¥</div>
+                    <input id="default_price" type="text"
+                        class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
+                        name="default_price" value="{{ old('default_price') }}" autocomplete="default_price"
+                        placeholder="価格" required>
+
+                </div>
+                @error('default_price')
+                <span class="c-productNew__error c-productNew__error--default_price" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
+            {{-- 必要スキル --}}
+            <div class="c-productNew__skills">
+                <p class="c-productNew__title__label">受講に必要なスキル<span class="required">必須</span></p>
+                <textarea id="skills" type="text"
+                    class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
+                    name="skills" rows="7" required>{{ old('skills') }}</textarea>
+                @error('skills')
+                <span class="c-productNew__error" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
+            {{-- 画像 --}}
+            <div class="c-productNew__images">
+                <p class="c-productNew__title__label">画像 <span class="c-productNew__title__label--picText">(
+                        画像１がサムネイルとして表示されます )</span>
+                </p>
+                <div class="c-productNew__images__half">
+                    {{-- 画像1 --}}
+                    <label class="c-productNew__image__area area1 js-area__drop">
+                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic1">
+                        <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    </label>
+                    {{-- 画像2 --}}
+                    <label class="c-productNew__image__area area2 js-area__drop">
+                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic2">
+                        <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    </label>
+                    {{-- 画像3 --}}
+                    <label class="c-productNew__image__area area3 js-area__drop">
+                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic3">
+                        <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    </label>
+                </div>
+                @error('pic1')
+                <span class="c-productNew__error" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                @error('pic2')
+                <span class="c-productNew__error" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                @error('pic2')
+                <span class="c-productNew__error" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                <div class="c-productNew__images__half">
+                    {{-- 画像4 --}}
+                    <label class="c-productNew__image__area area4 js-area__drop">
+                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic4">
+                        <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    </label>
+                    {{--画像5 --}}
+                    <label class="c-productNew__image__area area5 js-area__drop">
+                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic5">
+                        <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    </label>
+                    {{--画像6 --}}
+                    <label class="c-productNew__image__area area6 js-area__drop">
+                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic6">
+                        <img src="" alt="" class="c-productNew__image__img js-prev__img">
+                    </label>
+                </div>
+            </div>
+            @error('pic4')
+            <span class="c-productNew__error" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            @error('pic5')
+            <span class="c-productNew__error" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            @error('pic6')
+            <span class="c-productNew__error" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            <div class="js-postType__parentDom">
+                <input type="hidden" name="postType" class="js-postType" value="">
+                <div class="c-productNew__submit c-productNew__submit--draft" data-type="draft">
+                    <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft"
+                        name="postType" value="draft">
+                        下書き保存する
+                    </button>
+                </div>
+                <div class="c-productNew__submit" data-type="register" name="postType" value="register">
+                    <button type="submit" class="c-productNew__submit__button">
+                        登録する
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
     </form>
 </div>
 </div>

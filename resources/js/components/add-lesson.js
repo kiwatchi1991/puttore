@@ -102,18 +102,22 @@ $button.on('click', function (e) {
     console.log('レッスン追加イベント！');
     //レッスンのコピー
     let $copyTaget = $('.js-add__target:last-child');
+    console.log('ここまで1');
     $copyTaget.clone().appendTo('#js-lesson__section');
-
+    console.log('ここまで2');
+    
     let $newCopyTaget = $('.js-add__target:last-child');
     $newCopyTaget.find('#hidden').remove();
     $newCopyTaget.find('#title').val('').keyup();
     $newCopyTaget.find('textarea').val('').keyup();
+    console.log('ここまで3');
     
     //初期表示をプレビューではなく入力に
     $newCopyTaget.find('.js-lesson__block--input').removeClass('active');
     $newCopyTaget.find('.js-lesson__block--preview').removeClass('active');
     $newCopyTaget.find('.js-toggleTab__preview').removeClass('active');
     $newCopyTaget.find('.js-toggleTab__input').removeClass('active');
+    console.log('ここまで4');
 
     $newCopyTaget.find('.js-lesson__block--input').addClass('active');
     $newCopyTaget.find('.js-toggleTab__preview').addClass('active');
