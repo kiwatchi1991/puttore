@@ -143,13 +143,19 @@
                       </div>
                     </a>
                     <ul class="global-nav__pc__submenu">
-                      <li><a class="global-nav__pc__submenu__list" href="#">下書き一覧</a></li>
-                      <li><a class="global-nav__pc__submenu__list" href="#">購入作品一覧</a></li>
-                      <li><a class="global-nav__pc__submenu__list" href="#">出品作品一覧</a></li>
-                      <li><a class="global-nav__pc__submenu__list" href="#">販売管理</a></li>
-                      <li><a class="global-nav__pc__submenu__list" href="#">振込履歴</a></li>
-                      <li><a class="global-nav__pc__submenu__list" href="#">アカウント設定</a></li>
-                      <li><a class="global-nav__pc__submenu__list" href="#">ログアウト</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.draft')}}">下書き一覧</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.buy')}}">購入作品一覧</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.sale')}}">出品作品一覧</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.order')}}">販売管理</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.order.paid')}}">振込履歴</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="{{route('mypage')}}">アカウント設定</a></li>
+                      <li><a onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();"
+                          href="{{ route('logout') }}" class="global-nav__pc__submenu__list">ログアウト</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                        </form>
+                      </li>
                     </ul>
                   </li>
                 </ul>

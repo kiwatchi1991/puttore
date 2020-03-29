@@ -33,19 +33,27 @@ ul li ul li{
     border-bottom: none;
   }
 }
-.global-nav__pc__submenu{
+ul li ul .global-nav__pc__submenu{
   &__list{
     background-color: $bg;
     color: $main-text;
     border-bottom: 1px solid #333;
+    &:visited{
+      color: $main-text;
+    }
     &:first-child{
       border-bottom:none;
     }
+    &:hover{
+      background-color: #ddd;
+    }
   }
 }
-ul li ul li a:hover{
-	background-color: #ddd;
-}
+// ul li ul li a:hover{
+//   &:first-child{
+//     background-color: none;
+//   }
+// }
 
 .sample01 ul li ul{
 	position: absolute;
