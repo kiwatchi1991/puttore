@@ -5470,13 +5470,22 @@ ul li ul .global-nav__pc__submenu__list:hover {
   letter-spacing: 0.3;
 }
 
+.c-footer__list__wrap {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
 @media (min-width: 768px) {
   .c-footer__list__wrap {
     width: 520px;
     margin: 24px auto 0;
-    display: -webkit-box;
-    display: flex;
     justify-content: space-around;
+    -webkit-box-orient: initial;
+    -webkit-box-direction: initial;
+            flex-direction: initial;
   }
 }
 
