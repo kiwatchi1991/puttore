@@ -83,28 +83,28 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="c-mypage__sale__list c-mypage__sale__list--day">期間</th>
+                        <th class="c-mypage__sale__list c-mypage__sale__list--day">振込依頼日</th>
                         <th class="c-mypage__sale__list c-mypage__sale__list--price">売上</th>
                         <th class="c-mypage__sale__list c-mypage__sale__list--status">状況</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($sales as $mon => $sale)
+                    @foreach ($transfers as $transfer)
                     {{-- $sale[0]は金額、$sale[1]は判定フラグ trueは申請中,falseは振込済 --}}
                     <tr>
-                        <td>{{ $mon }}月</td>
-                        <td>@if($sale > 0) ¥ {{ number_format($sale[0]) }} @endif</td>
+                        <td>{{ $transfer->created_at->format('Y年m月d日') }}</td>
+                        <td>¥ {{ number_format($transfer->transfer_price) }}</td>
                         {{-- <td>
                             @if($sale[1])申請中 @else 振込済 @endif
                         </td> --}}
-                        <td><a href="{{ route('mypage.order.show',$mon) }}">@if($sale[1])振込済 @else 申請中 @endif</a></td>
+                        <td><a href="">@if($transfer->status == 0)申請中@else 振込済 @endif</a></td>
                     </tr>
                     @endforeach
 
                 </tbody>
             </table>
             {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
-            @if ($sales->count()==0)
+            @if ($transfers->count()==0)
             <div class="c-mypage__sale__list__text">※処理済みの売上はありません。</div>
             @endif
         </div>

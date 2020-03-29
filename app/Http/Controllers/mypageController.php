@@ -190,32 +190,37 @@ class mypageController extends Controller
 
 
         //==========  振込依頼済みの売上履歴  ==============
-        $sale_histories = Order::query()
-            ->join('products', 'orders.product_id', '=', 'products.id')
-            ->whereIn('status', [1, 2])
-            ->where('products.user_id', Auth::user()->id)
-            ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
-            ->orderBy('created_at', 'desc')
-            ->get();
-        $sales = $sale_histories->groupBy(function ($row) {
-            return $row->created_at->format('Y年m');
-        })
-            ->map(function ($day) {
-                return [$day->sum('sale_price'), $day->filter(function ($d) {
-                    return $d->status == 2;
-                })->count() > 0];
-            });
+        // $sale_histories = Order::query()
+        //     ->join('products', 'orders.product_id', '=', 'products.id')
+        //     ->whereIn('status', [1, 2])
+        //     ->where('products.user_id', Auth::user()->id)
+        //     ->join('users', 'orders.user_id', '=', 'users.id')
+        //     ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
+        //     ->orderBy('created_at', 'desc')
+        //     ->get();
+        // $sales = $sale_histories->groupBy(function ($row) {
+        //     return $row->created_at->format('Y年m');
+        // })
+        //     ->map(function ($day) {
+        //         return [$day->sum('sale_price'), $day->filter(function ($d) {
+        //             return $d->status == 2;
+        //         })->count() > 0];
+        //     });
 
-        Log::debug('$sales');
-        Log::debug($sales);
+        $transfers = Transfer::where('user_id', Auth::user()->id)->get();
+
+
+        Log::debug('$transfers');
+        Log::debug($transfers);
 
         return view('mypage.order', [
-            'sales' => $sales,
+            // 'sales' => $sales,
             'thisMonth' => $thisMonth,
             'untransferred' => $untransferred,
             'untransferred_price' => $untransferred_price,
-            'sale_histories' => $sale_histories,
+            'transfers' => $transfers,
+            // 'sale_histories' => $sale_histories,
+
         ]);
     }
     //=============================================
