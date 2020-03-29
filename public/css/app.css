@@ -146,69 +146,71 @@ a:visited {
 
 /* Global Menu */
 
-header {
+.global-nav__pc {
+  /* Submenu */
+}
+
+.global-nav__pc header {
   margin-bottom: 13em;
   position: relative;
   width: 100%;
   background-color: #444;
 }
 
-ul > li {
+.global-nav__pc ul > li {
   display: inline-block;
 }
 
-ul > li > a {
+.global-nav__pc ul > li > a {
   padding: 15px 30px;
   display: block;
   text-transform: uppercase;
 }
 
-ul > li > span {
+.global-nav__pc ul > li > span {
   margin-left: 1.2em;
 }
 
-/* Submenu */
-
-ul li ul {
+.global-nav__pc ul li ul {
   position: absolute;
   top: 65px;
   left: 0;
 }
 
-ul li ul li {
+.global-nav__pc ul li ul li {
   display: block;
 }
 
-ul li ul li:first-child {
+.global-nav__pc ul li ul li:first-child {
   border-bottom: none;
 }
 
-ul li ul .global-nav__pc__submenu__list {
+.global-nav__pc ul li ul .global-nav__pc__submenu__list {
   background-color: #E5F6F2;
   color: #484848;
   border-bottom: 1px solid #333;
 }
 
-ul li ul .global-nav__pc__submenu__list:visited {
+.global-nav__pc ul li ul .global-nav__pc__submenu__list:visited {
   color: #484848;
 }
 
-ul li ul .global-nav__pc__submenu__list:first-child {
+.global-nav__pc ul li ul .global-nav__pc__submenu__list:first-child {
   border-bottom: none;
 }
 
-ul li ul .global-nav__pc__submenu__list:hover {
+.global-nav__pc ul li ul .global-nav__pc__submenu__list:hover {
   background-color: #ddd;
 }
 
-.sample01 ul li ul {
+.global-nav__pc .sample01 ul li ul {
   position: absolute;
   top: -1000px;
   left: -150px;
   width: 200q;
 }
 
-.sample01 ul li:hover ul {
+.global-nav__pc .sample01 ul li:hover ul {
   -webkit-transform: translateY(1055px);
           transform: translateY(1055px);
   -ms-transform: translateY(1055px);
@@ -1152,6 +1154,16 @@ ul li ul .global-nav__pc__submenu__list:hover {
 .c-button {
   width: 100%;
   border: 1px solid #000;
+}
+
+.c-product__index {
+  padding-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .c-product__index {
+    padding-bottom: 64px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -2664,6 +2676,8 @@ ul li ul .global-nav__pc__submenu__list:hover {
 .c-pagination .pagination {
   display: -webkit-box;
   display: flex;
+  -webkit-box-align: center;
+          align-items: center;
   -webkit-box-pack: center;
           justify-content: center;
 }

@@ -1,4 +1,10 @@
 .c-product{
+  &__index{
+    padding-bottom: 16px;
+    @include pc{
+      padding-bottom: 64px;
+    }
+  }
   &__area{
     @include pc{
     width: 900px;
@@ -1227,6 +1233,7 @@
     margin-top: 20px;
     .pagination{
         display: flex;
+        align-items: center;
         justify-content: center;
     }
     .page-item{

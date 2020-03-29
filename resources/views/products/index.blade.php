@@ -1,63 +1,65 @@
 @extends('layouts.app')
 @section('title','作品一覧')
 @section('content')
-<div class="c-searchBox">
-  <div class="c-searchBox__inner">
-    <form method="POST" action="{{ route('products') }}" enctype="multipart/form-data">
-      @csrf
+<div class="c-product__index">
 
-      {{-- 言語選択 --}}
-      <div class="c-searchBox__categories">
-        <p class="c-searchBox__title">1. 言語を選んでね</p>
-        <div class="c-searchBox__body">
-          @foreach ($category as $categories)
+  <div class="c-searchBox">
+    <div class="c-searchBox__inner">
+      <form method="POST" action="{{ route('products') }}" enctype="multipart/form-data">
+        @csrf
 
-          <input id="c-{{ $categories->id }}" type="checkbox"
-            class="c-searchBox__checkbox @error('lang') is-invalid @enderror" name="lang[]"
-            value="{{ $categories->id }}" autocompplete="lang" @if(!$categorieIds==null) @if(in_array($categories->id,
-          $categorieIds))checked @endif @endif>
-          <label class="c-searchBox__label" for="c-{{ $categories->id }}">
-            {{ $categories->name }}
-          </label>
-          @endforeach
+        {{-- 言語選択 --}}
+        <div class="c-searchBox__categories">
+          <p class="c-searchBox__title">1. 言語を選んでね</p>
+          <div class="c-searchBox__body">
+            @foreach ($category as $categories)
+
+            <input id="c-{{ $categories->id }}" type="checkbox"
+              class="c-searchBox__checkbox @error('lang') is-invalid @enderror" name="lang[]"
+              value="{{ $categories->id }}" autocompplete="lang" @if(!$categorieIds==null) @if(in_array($categories->id,
+            $categorieIds))checked @endif @endif>
+            <label class="c-searchBox__label" for="c-{{ $categories->id }}">
+              {{ $categories->name }}
+            </label>
+            @endforeach
+          </div>
         </div>
-      </div>
 
-      {{-- 難易度選択 --}}
-      <div class="c-searchBox__difficults">
-        <p class="c-searchBox__title">2. 難易度を選んでね</p>
-        <div class="c-searchBox__body">
-          @foreach ($difficult as $difficults)
-          <input id="d-{{ $difficults->id }}" type="checkbox"
-            class="c-searchBox__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
-            value="{{ $difficults->id }}" autocomplete="difficult" @if(!$difficultiesIds==null)
-            @if(in_array($difficults->id,
-          $difficultiesIds))checked @endif @endif>
-          <label class="c-searchBox__label" for="d-{{ $difficults->id }}">
-            {{ $difficults->name }}
-          </label>
-          @endforeach
+        {{-- 難易度選択 --}}
+        <div class="c-searchBox__difficults">
+          <p class="c-searchBox__title">2. 難易度を選んでね</p>
+          <div class="c-searchBox__body">
+            @foreach ($difficult as $difficults)
+            <input id="d-{{ $difficults->id }}" type="checkbox"
+              class="c-searchBox__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
+              value="{{ $difficults->id }}" autocomplete="difficult" @if(!$difficultiesIds==null)
+              @if(in_array($difficults->id,
+            $difficultiesIds))checked @endif @endif>
+            <label class="c-searchBox__label" for="d-{{ $difficults->id }}">
+              {{ $difficults->name }}
+            </label>
+            @endforeach
+          </div>
         </div>
-      </div>
 
-      {{-- 送信ボタン --}}
-      <div class="c-searchBox__submit">
-        <button type="submit" class="c-searchBox__button">
-          検索する
-        </button>
-      </div>
-    </form>
+        {{-- 送信ボタン --}}
+        <div class="c-searchBox__submit">
+          <button type="submit" class="c-searchBox__button">
+            検索する
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
-<div class="c-product__title">
-  <h2>一覧 / 検索結果</h2>
-</div>
-<div class="c-pagination">
-  {{-- 1０件以下ならページングが表示されないので、別で件数を表示 --}}
-  @if($products->count() >= 10)
-  {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
-  @else
-  <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
+  <div class="c-product__title">
+    <h2>一覧 / 検索結果</h2>
+  </div>
+  <div class="c-pagination">
+    {{-- 1０件以下ならページングが表示されないので、別で件数を表示 --}}
+    @if($products->count() >= 10)
+    {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
+    @else
+    {{-- <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div> --}}
   @endif
 </div>
 {{-- <div class="c-paging">{{ $pageNum_from }} - {{ $pageNum_to }} /<span
@@ -105,5 +107,6 @@
   @else
   <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
   @endif
+</div>
 </div>
 @endsection
