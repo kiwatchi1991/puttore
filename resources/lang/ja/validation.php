@@ -28,7 +28,7 @@ return [
         'array'   => ':attributeは:min〜:max個までにしてください。',
     ],
     'boolean'              => ':attributeはtrueかfalseにしてください。',
-    'confirmed'            => ':attributeは確認用項目と一致していません。',
+    'confirmed'            => ':attributeが一致していません。',
     'date'                 => ':attributeは正しい日付ではありません。',
     'date_format'          => ':attributeは":format"書式と一致していません。',
     'different'            => ':attributeは:otherと違うものにしてください。',
