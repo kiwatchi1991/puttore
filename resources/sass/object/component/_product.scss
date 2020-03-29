@@ -12,7 +12,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
+    padding: 0 24px;
     }
   }
   &__block{
@@ -29,6 +29,7 @@
     border-radius: 10px;
     @include pc{
       width: 27.344vw;
+      margin: 30px 0 0 0;
     }
     &:hover{
       opacity: 0.6;

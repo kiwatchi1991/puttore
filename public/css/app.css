@@ -1186,6 +1186,7 @@ a:visited {
     flex-wrap: wrap;
     -webkit-box-pack: justify;
             justify-content: space-between;
+    padding: 0 24px;
   }
 }
 
@@ -1208,6 +1209,7 @@ a:visited {
 @media (min-width: 768px) {
   .c-product__block {
     width: 27.344vw;
+    margin: 30px 0 0 0;
   }
 }
 
