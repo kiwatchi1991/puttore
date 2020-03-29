@@ -1,5 +1,5 @@
+//PCヘッダーサブメニュー
 /* Global Menu */
- 
 header{
 	margin-bottom: 13em;
 	position: relative;
@@ -12,7 +12,6 @@ ul > li{
 ul > li > a{
 	padding: 15px 30px;
 	display: block;
-	font-size: 0.8em;
 	text-transform: uppercase;
 	letter-spacing: .2em;
 }
@@ -21,7 +20,6 @@ ul > li > span{
 }
  
 /* Submenu */
- 
 ul li ul{
 	position: absolute;
 	top: 65px;
