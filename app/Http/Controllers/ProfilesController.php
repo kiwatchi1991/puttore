@@ -33,24 +33,10 @@ class ProfilesController extends Controller
         Log::debug('$user');
         Log::debug($user);
 
-        // $categoryAndDifficulty = Product::all();
-        //プロダクト件数
-        $all_products = Auth::user()->products()->get();
-
-        // 下書き保存中の作品数
-        $drafts = Auth::user()->products()
-            ->where('open_flg', 1)
-            ->get();
-
         //ログインユーザーのプロダクト（ページング）
-        $products = Auth::user()->products()->latest()->paginate(10);
-
-        //ページング用変数 始点
-        $pageNum_from =  $products->currentPage() * 10 - 9;
-        //ページング用変数 終点
-        $pageNum_to = $products->currentPage() * 10;
-
-        //価格をカンマ入れて表示
+        $products = Product::where('user_id', $id)
+            ->where('open_flg', 0)
+            ->latest()->paginate(10);
 
         //画像有無判定フラグ
         $is_image = false;
@@ -65,12 +51,8 @@ class ProfilesController extends Controller
             'products' => $products,
             'product_categories' => $product_category,
             'product_difficulties' => $product_difficulty,
-            'all_products' => $all_products,
-            'pageNum_from' => $pageNum_from,
-            'pageNum_to' => $pageNum_to,
             'is_image' => $is_image,
             'user' => $user,
-            'drafts' => $drafts,
         ]);
     }
 
