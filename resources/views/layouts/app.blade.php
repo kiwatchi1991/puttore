@@ -131,15 +131,30 @@
           <ul class="global-nav__pc--list">
             @auth
             <li class="">
-              <a href="{{ route('mypage') }}" class="global-nav__item__link lobal-nav__item__link--profile">
-                <div class="global-nav__item__profile">
-                  <div class="global-nav__pc__profile__img__wrapper">
-                    @if($user->pic)
-                    <img class="global-nav__pc__profile__img" src="/storage/{{ $user->pic }}" alt="">
-                    @endif
-                  </div>
-                </div>
-              </a></li>
+              <header class="sample01">
+                <ul>
+                  <li><a href="{{ route('mypage') }}" class="global-nav__item__link lobal-nav__item__link--profile">
+                      <div class="global-nav__item__profile">
+                        <div class="global-nav__pc__profile__img__wrapper">
+                          @if($user->pic)
+                          <img class="global-nav__pc__profile__img" src="/storage/{{ $user->pic }}" alt="">
+                          @endif
+                        </div>
+                      </div>
+                    </a>
+                    <ul class="global-nav__pc__submenu">
+                      <li><a class="global-nav__pc__submenu__list" href="#">下書き一覧</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="#">購入作品一覧</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="#">出品作品一覧</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="#">販売管理</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="#">振込履歴</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="#">アカウント設定</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="#">ログアウト</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </header>
+            </li>
 
             @endauth
             @auth
