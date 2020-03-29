@@ -31,7 +31,7 @@
             {{-- 自分の作品の場合は編集ボタンを表示 --}}
             @if ($product->user_id === Auth::id())
 
-            <div class="c-productShow__editIcon js-editMenu-open">
+            <div class="c-productShow__editMenuIcon js-editMenu-open">
                 <i class="fas fa-ellipsis-h"></i>
             </div>
 

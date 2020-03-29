@@ -754,15 +754,49 @@
       padding-left: 8px;
     }
   }
-  &__editIcon{
+  &__editMenuIcon{
     text-align: right;
     margin-top: 16px;
-    font-size: 20px;
+    font-size: 23px;
     color: $main-color;
+    @include pc{
+      font-size: 36px;
+    }
     >a{
       color: $main-color;
     }
   }
+   &__editMenu{
+    display: none;
+    flex-direction: column;
+    width: 150px;
+    margin: 0 0 0 auto;
+    font-size: 14px;
+    @include pc{
+      font-size: 16px;
+    }
+    &__list{
+      color: $main-text;
+      cursor: pointer;
+      background: $low-gr;
+      display: block;
+      &:hover{
+        opacity: 0.5;
+      }
+      a{
+        padding: 15px;
+        display: block;
+        color: $main-text;
+        &:visited{
+          color: $main-text;
+        }
+      }
+      &--delete{
+        padding: 15px;
+      }
+    }
+  }
+
   &__title{
     margin-top: 16px;
     font-size: 20px;
