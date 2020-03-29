@@ -31,15 +31,7 @@
           border-radius: 50%;
           }
 
-        // &__img{
-        //     width: 185px;
-        //     height: 120px;
-        //     @include pc{
-        //       display: none;
-        //     }
-        // }
         &--pc{
-          // display: none;
           width: 185px;
           @include pc{
             display: block;
@@ -164,6 +156,9 @@
         text-align: center;
         background: $bg;
         padding: 35px 0 25px 0;
+        @include pc{
+           padding-top:64px;
+        }
         &__head{
             font-size: 22px;
             font-weight: normal;
@@ -394,7 +389,7 @@
             margin: 36px auto 0;
             letter-spacing: -0.64;
             @include pc{
-              width: 410px;
+              width: 430px;
               text-align: center;
               line-height: 1.5;
               font-size: 20px;

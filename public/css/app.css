@@ -161,7 +161,6 @@ ul > li > a {
   padding: 15px 30px;
   display: block;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
 }
 
 ul > li > span {
@@ -573,6 +572,12 @@ ul li ul .global-nav__pc__submenu__list:hover {
   padding: 35px 0 25px 0;
 }
 
+@media (min-width: 768px) {
+  .c-top__output {
+    padding-top: 64px;
+  }
+}
+
 .c-top__output__head {
   font-size: 22px;
   font-weight: normal;
@@ -886,7 +891,7 @@ ul li ul .global-nav__pc__submenu__list:hover {
 
 @media (min-width: 768px) {
   .c-top__end__subject {
-    width: 410px;
+    width: 430px;
     text-align: center;
     line-height: 1.5;
     font-size: 20px;
@@ -5480,7 +5485,7 @@ ul li ul .global-nav__pc__submenu__list:hover {
 
 @media (min-width: 768px) {
   .c-footer__list__wrap {
-    width: 520px;
+    width: 700px;
     margin: 24px auto 0;
     justify-content: space-around;
     -webkit-box-orient: initial;
