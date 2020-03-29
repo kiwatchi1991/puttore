@@ -12,8 +12,8 @@
             <div class="c-profileEdit__img-area">
                 <div class="c-profileEdit__img">
                     <label class="c-profileEdit__img__label js-area__drop">
-                        <img src="/storage/{{ $user->pic }}" alt="" id="js-profile__img"
-                            class="c-profileEdit__img__img js-prev__img">
+                        <img src="/storage/{{($user->pic)?$user->pic:'images/noavatar.png'}}" alt=""
+                            id="js-profile__img" class="c-profileEdit__img__img js-prev__img">
 
                         <!-- 切り抜き範囲をhiddenで保持する -->
                         <input type="hidden" id="upload-image-x" name="profileImageX" value="0" />
@@ -39,7 +39,8 @@
 
             <div class="c-profileEdit__input-area">
                 {{-- アカウント名 --}}
-                <label for="account_name" class="c-profileEdit__input-label">アカウント名</label>
+                <label for="account_name" class="c-profileEdit__input-label">アカウント名<span
+                        class="required">必須</span></label>
 
                 <div>
                     <input id="account_name" type="text"
@@ -55,12 +56,13 @@
 
                 {{-- 肩書き --}}
                 <div class="c-profileEdit__input-area">
-                    <label for="account_title" class="c-profileEdit__input-label">肩書き</label>
+                    <label for="account_title" class="c-profileEdit__input-label">肩書き<span
+                            class="options">任意</span></label>
 
                     <div>
                         <input id="account_title" type="text"
                             class="c-profileEdit__input @error('account_id') is-invalid @enderror" name="account_title"
-                            required autocomplete="account_title" value="{{ $user->account_title }}">
+                            autocomplete="account_title" value="{{ $user->account_title }}">
 
                         @error('account_title')
                         <span role="alert">
@@ -72,12 +74,13 @@
 
                 {{-- 自己紹介 --}}
                 <div class="c-profileEdit__input-area">
-                    <label for="account_detail" class="c-profileEdit__input-label">自己紹介</label>
+                    <label for="account_detail" class="c-profileEdit__input-label">自己紹介<span
+                            class="options">任意</span></label>
 
                     <div>
                         <input id="account_detail" type="text"
                             class="c-profileEdit__input @error('account_id') is-invalid @enderror" name="account_detail"
-                            required autocomplete="account_detail" value="{{ $user->account_detail }}">
+                            autocomplete="account_detail" value="{{ $user->account_detail }}">
 
                         @error('account_detail')
                         <span role="alert">
