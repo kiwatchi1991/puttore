@@ -36,7 +36,7 @@
                         <td class="c-mypage__sale__list c-mypage__sale__list--title">
                             {{$paid->paid_date->format('Y年m月d日')}}</td>
                         <td class="c-mypage__sale__list c-mypage__sale__list--price">¥
-                            {{number_format($paid->sale_price)}}</td>
+                            {{number_format($paid->transfer_price)}}</td>
                     </tr>
                     @endforeach
 
