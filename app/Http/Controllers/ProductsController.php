@@ -394,19 +394,6 @@ class ProductsController extends Controller
         Log::debug($categorieIds);
         Log::debug($difficultiesIds);
 
-
-        //プロダクト件数
-        $all_products = Product::all();
-        //全プロダクト（ページング）
-        // $products = Product::paginate(10);
-
-        //ページング用変数 始点
-        $pageNum_from =  $products->currentPage() * 10 - 9;
-        //ページング用変数 終点
-        $pageNum_to = $products->currentPage() * 10;
-
-        //価格をカンマ入れて表示
-
         //画像有無判定フラグ
         $is_image = false;
         if (Storage::disk('local')->exists('public/product_images/' . Auth::id() . '.jpg')) {
@@ -420,19 +407,12 @@ class ProductsController extends Controller
             'products' => $products,
             'product_categories' => $product_category,
             'product_difficulties' => $product_difficulty,
-            'all_products' => $all_products,
-            'pageNum_from' => $pageNum_from,
-            'pageNum_to' => $pageNum_to,
             'is_image' => $is_image,
             'category' => $category,
             'difficult' => $difficult,
             'categorieIds' => $categorieIds,
             'difficultiesIds' => $difficultiesIds,
-
         ]);
-
-        // return redirect('/products')->with('flash_message', __('検索したよ'));
-
     }
 
     /**
