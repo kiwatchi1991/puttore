@@ -103,6 +103,7 @@
     {{-- 1０件以下ならページングが表示されないので、別で件数を表示 --}}
     @if($products->count() >= 10)
     {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
+    @elseif($products->count() == 0)
     @else
     <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
     @endif

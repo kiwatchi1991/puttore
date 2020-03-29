@@ -6,7 +6,7 @@
 
         {{-- 画像 --}}
         <div class="c-profile__img">
-            <img src="/storage/{{ $user->pic }}" alt="">
+            <img src="/storage/{{($user->pic)?$user->pic:'images/noavatar.png'}}" alt="">
         </div>
         {{-- プロフィール名 --}}
         <div class="c-profile__name">
@@ -87,6 +87,7 @@
         {{-- 1０件以下ならページングが表示されないので、別で件数を表示 --}}
         @if($products->count() >= 10)
         {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
+        @elseif($products->count() == 0)
         @else
         <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
         @endif
