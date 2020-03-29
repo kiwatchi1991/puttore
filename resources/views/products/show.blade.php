@@ -38,8 +38,12 @@
             <div class="c-productShow__editMenu js-editMenu">
                 <div class="c-productShow__editMenu__list c-productShow__editMenu__list--edit">
                     <a class="" href="{{ route('products.edit',$product->id) }}">編集する</a></div>
-                <div class="c-productShow__editMenu__list c-productShow__editMenu__list--delete">
-                    <a class="" href="{{ route('products.delete',$product->id) }}">削除する</a></div>
+                <div class="c-productShow__editMenu__list c-productShow__editMenu__list--delete js-editMenu-delete">
+                    <form id="delete-form" method="POST" action="{{ route('products.delete',$product->id) }}">
+                        @csrf
+                    </form>
+                    削除する
+                </div>
             </div>
 
             @endif

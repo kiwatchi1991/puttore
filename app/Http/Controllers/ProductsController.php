@@ -571,12 +571,10 @@ class ProductsController extends Controller
     {
         // GETパラメータが数字かどうかをチェックする
         if (!ctype_digit($id)) {
-            return redirect('/products/new')->with('flash_message', __('もう一度やり直してください'));
+            return redirect('/products')->with('flash_message', __('もう一度やり直してください'));
         }
 
         $product = Product::find($id);
-
-
         $product->delete();
 
         return redirect('/products')->with('flash_message', '削除しました');
