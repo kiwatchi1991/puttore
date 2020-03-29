@@ -34,7 +34,7 @@ class RegisterController extends Controller
      * @var string
      */
     // protected $redirectTo = '/profile/{$id}/edit';
-    protected function redirectTo()
+    protected function redirectTo(Request $request, $user)
     {
         return '/products';
     }
@@ -77,10 +77,6 @@ class RegisterController extends Controller
             //初期登録
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-
-            // 追加登録
-            redirect('/products')->with('flash_message', 'ユーザー登録しました')
-
         ]);
     }
 
