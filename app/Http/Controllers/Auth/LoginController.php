@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-use Illuminate\Http\Request; //api用に追加
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -36,21 +36,20 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         // ここから
-        if (array_key_exists('HTTP_REFERER', $_SERVER)) {
-            $path = parse_url($_SERVER['HTTP_REFERER']); // URLを分解
-            if (array_key_exists('HOST', $path)) {
-                if ($path['HOST'] == $_SERVER['HTTP_HOST']) { // ホスト部分が自ホストと同じ
-                    session(['url.intended' => $_SERVER['HTTP_REFERER']]);
-                }
-            }
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $intended = $_SERVER['HTTP_REFERER'];
+        } else {
+            $intended = '/';
         }
+        session(['url.intended' => $intended]);
         // ここまで追加
         return view('auth.login');
     }
 
     protected function redirectTo()
     {
-        redirect('/products')->with('flash_message', 'ログインしました');
+        $intended = session('url.intended');
+        return redirect($intended)->with('flash_message', 'ログインしました');
     }
 
     /**
