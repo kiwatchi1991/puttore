@@ -67,6 +67,7 @@ return array(
     'App\\Providers\\ComposerServiceProvider' => $baseDir . '/app/Providers/ComposerServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\SystemCommission' => $baseDir . '/app/SystemCommission.php',
     'App\\Transfer' => $baseDir . '/app/Transfer.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Users' => $baseDir . '/app/Users.php',

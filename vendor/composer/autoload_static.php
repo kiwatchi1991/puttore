@@ -473,6 +473,7 @@ class ComposerStaticInit55d8b4cd66a0a36c2fb21744739ffa8a
         'App\\Providers\\ComposerServiceProvider' => __DIR__ . '/../..' . '/app/Providers/ComposerServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\SystemCommission' => __DIR__ . '/../..' . '/app/SystemCommission.php',
         'App\\Transfer' => __DIR__ . '/../..' . '/app/Transfer.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\Users' => __DIR__ . '/../..' . '/app/Users.php',
