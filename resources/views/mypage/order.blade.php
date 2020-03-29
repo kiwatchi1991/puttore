@@ -97,7 +97,7 @@
                         {{-- <td>
                             @if($sale[1])申請中 @else 振込済 @endif
                         </td> --}}
-                        <td><a href="{{ route('mypage.order.show',$mon) }}">@if($sale[1])申請中 @else 振込済 @endif</a></td>
+                        <td><a href="{{ route('mypage.order.show',$mon) }}">@if($sale[1])振込済 @else 申請中 @endif</a></td>
                     </tr>
                     @endforeach
 
