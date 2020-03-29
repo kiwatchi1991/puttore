@@ -121,9 +121,7 @@
                     class="c-productEdit__input-area c-productEdit__input-area--detail @error('detail') is-invalid @enderror"
                     data-input="detail" name="detail" value="{{ old('detail') }}" rows="7"
                     required>{{ $product->detail }}</textarea>
-                <div class="c-productEdit__modal">
-                    書き方のヒントは<a href="" class="js-modal-open c-productNew__modal__link">こちら</a>
-                </div>
+
                 @error('detail')
                 <span class="" role="alert">
                     <strong>{{ $message }}</strong>
@@ -131,7 +129,12 @@
                 @enderror
             </div>
         </div>
-        {{-- レッスン --}}
+        {{-- レッスン内容 --}}
+        <p class="c-productNew__lessons__head">LESSON登録</p>
+        <div class="c-productNew__modal">
+            マークダウン記法のヒントは<a href="" class="js-modal-open c-productNew__modal__link">こちら</a>
+
+        </div>
         <div class="c-productNew__lessons" id="js-lesson__section">
             @foreach( $lessons as $lesson )
             <div class="c-productNew__lesson__inner js-add__target">

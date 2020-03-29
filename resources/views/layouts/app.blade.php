@@ -69,7 +69,8 @@
                 @auth
 
                 <li class="global-nav__item global-nav__item--profile">
-                  <a href="{{ route('mypage') }}" class="global-nav__item__link lobal-nav__item__link--profile">
+                  <a href="{{route('profile.show',$user->id)}}"
+                    class="global-nav__item__link lobal-nav__item__link--profile">
                     <div class="global-nav__item__profile">
                       <div class="global-nav__item__profile__img__wrapper">
                         @if($user->pic)
@@ -90,12 +91,12 @@
                 </li>
                 @auth
                 <li class="global-nav__item">
-                  <a href=" {{ route('mypage') }}" class="global-nav__item__link">マイページ</a>
+                  <a href="{{ route('mypage') }}" class="global-nav__item__link">アカウント設定</a>
                 </li>
                 <li class="global-nav__item">
                   <a href=" {{ route('bords') }}" class="global-nav__item__link">メッセージボード</a>
                 </li>
-                <li class="global-nav__item">
+                <li class="global-nav__item global-nav__item--logout">
                   <a onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();"
                     href="{{ route('logout') }}" class="global-nav__item__link">ログアウト</a>

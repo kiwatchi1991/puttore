@@ -65,11 +65,20 @@
     }
     &--auth{
       font-size: 14px;
-
+      width: 100px;
       &.first{
+        border-top: 1px solid $main-color;
         position: relative;
-        margin-top: 32px;
+        margin-top: 16px;
+        padding-top: 16px;
       }
+    }
+    &--logout{
+      margin-top: 16px;
+      padding-top: 16px;
+      width: 100px;
+      border-top: 1px solid $main-color;
+      font-size: 14px;
     }
     &__link {
       display: block;

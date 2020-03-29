@@ -1014,11 +1014,22 @@ a:visited {
 
 .global-nav__item--auth {
   font-size: 14px;
+  width: 100px;
 }
 
 .global-nav__item--auth.first {
+  border-top: 1px solid #00ac7d;
   position: relative;
-  margin-top: 32px;
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.global-nav__item--logout {
+  margin-top: 16px;
+  padding-top: 16px;
+  width: 100px;
+  border-top: 1px solid #00ac7d;
+  font-size: 14px;
 }
 
 .global-nav__item__link {
@@ -1629,7 +1640,7 @@ a:visited {
 
 .c-productNew__modal {
   font-size: 12px;
-  margin: 8px 0 0 3px;
+  margin: 8px 0 0 0;
 }
 
 @media (min-width: 768px) {
@@ -1696,7 +1707,14 @@ a:visited {
 }
 
 .c-productNew__lessons {
+  margin-top: 32px;
+}
+
+.c-productNew__lessons__head {
+  font-size: 20px;
   margin-top: 56px;
+  font-weight: bold;
+  color: #00ac7d;
 }
 
 .c-productNew__lesson {
@@ -2520,7 +2538,7 @@ a:visited {
 
 .c-productEdit__modal {
   font-size: 14px;
-  margin: 5px 0 0 3px;
+  margin: 5px 0 0 0;
 }
 
 .c-productEdit__checkbox {
@@ -7043,7 +7061,7 @@ a:visited {
 }
 
 .modal__content__header {
-  margin-top: 8px;
+  margin-top: １６px;
 }
 
 @media (min-width: 768px) {

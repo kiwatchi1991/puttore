@@ -363,7 +363,7 @@
     }
     &__modal{
       font-size: 12px;
-      margin: 8px 0 0 3px;
+      margin: 8px 0 0 0;
       @include pc{
         font-size: 14px;
         letter-spacing: -0.04px;
@@ -420,7 +420,13 @@
         }
     }
     &__lessons{
-      margin-top: 56px;
+      margin-top: 32px;
+      &__head{
+        font-size: 20px;
+        margin-top: 56px;
+        font-weight: bold;
+        color: $main-color;
+      }
     }
     &__lesson{
       display: none;
@@ -1076,7 +1082,7 @@
     }
     &__modal{
       font-size: 14px;
-      margin: 5px 0 0 3px;
+      margin: 5px 0 0 0;
     }
     &__checkbox{
       display: none;

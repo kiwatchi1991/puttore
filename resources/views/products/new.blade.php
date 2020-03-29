@@ -127,14 +127,14 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                <div class="c-productNew__modal">
-                    書き方のヒントは<a href="" class="js-modal-open c-productNew__modal__link">こちら</a>
-
-                </div>
             </div>
         </div>
         {{-- レッスン内容 --}}
+        <p class="c-productNew__lessons__head">LESSON登録</p>
+        <div class="c-productNew__modal">
+            マークダウン記法のヒントは<a href="" class="js-modal-open c-productNew__modal__link">こちら</a>
 
+        </div>
         <div class="c-productNew__lessons" id="js-lesson__section">
             @foreach( $lessons as $lesson )
             <div class="c-productNew__lesson__inner js-add__target">
