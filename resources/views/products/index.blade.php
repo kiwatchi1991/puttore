@@ -2,7 +2,6 @@
 @section('title','作品一覧')
 @section('content')
 <div class="c-product__index">
-
   <div class="c-searchBox">
     <div class="c-searchBox__inner">
       <form method="POST" action="{{ route('products') }}" enctype="multipart/form-data">
@@ -51,6 +50,7 @@
       </form>
     </div>
   </div>
+
   <div class="c-product__title">
     <h2>一覧 / 検索結果</h2>
   </div>
@@ -59,54 +59,53 @@
     @if($products->count() >= 10)
     {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
     @else
-    {{-- <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div> --}}
-  @endif
-</div>
-{{-- <div class="c-paging">{{ $pageNum_from }} - {{ $pageNum_to }} /<span
-  class="c-paging__totalNum">{{ $products->count() }}</span></div> --}}
-<div class="c-product__area">
-  @foreach ($products as $product)
-  <div class="c-product__block">
-
-    <a class="c-product__link" href="{{ route('products.show', $product->id) }}">
-
-      <div class="c-image__block">
-        <img class="c-image" src="/storage/{{($product->pic1)?$product->pic1:"images/noimage.png"}}">
-      </div>
-      <div class="c-tag__block">
-
-        {{-- 言語表示 --}}
-        @foreach ($product_categories->find($product->id)->categories as $category)
-
-        <div class="c-tag c-tag--category {{ $category->class_name }}">{{ $category->name }}</div>
-        @endforeach
-
-        {{-- 難易度表示 --}}
-        @foreach ($product_difficulties->find($product->id)->difficulties as $difficulty)
-
-        <div class="c-tag c-tag--difficulty {{ $difficulty->class_name }}">{{ $difficulty->name }}</div>
-
-        @endforeach
-      </div>
-      <div class="c-contents__block">
-
-        <div class="c-contents__title">{{ $product->name }}</div>
-        <div class="c-contents__price">¥ {{ number_format($product->default_price) }}</div>
-        <div class="c-contents__detail">{{ mb_strimwidth($product->detail, 0, 50, "...") }}</div>
-
-      </div>
-    </a>
+    <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
+    @endif
   </div>
-  @endforeach
-</div>
 
-<div class="c-pagination">
-  {{-- 1０件以下ならページングが表示されないので、別で件数を表示 --}}
-  @if($products->count() >= 10)
-  {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
-  @else
-  <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
-  @endif
-</div>
-</div>
-@endsection
+  <div class="c-product__area">
+    @foreach ($products as $product)
+    <div class="c-product__block">
+
+      <a class="c-product__link" href="{{ route('products.show', $product->id) }}">
+
+        <div class="c-image__block">
+          <img class="c-image" src="/storage/{{($product->pic1)?$product->pic1:"images/noimage.png"}}">
+        </div>
+        <div class="c-tag__block">
+
+          {{-- 言語表示 --}}
+          @foreach ($product_categories->find($product->id)->categories as $category)
+
+          <div class="c-tag c-tag--category {{ $category->class_name }}">{{ $category->name }}</div>
+          @endforeach
+
+          {{-- 難易度表示 --}}
+          @foreach ($product_difficulties->find($product->id)->difficulties as $difficulty)
+
+          <div class="c-tag c-tag--difficulty {{ $difficulty->class_name }}">{{ $difficulty->name }}</div>
+
+          @endforeach
+        </div>
+        <div class="c-contents__block">
+
+          <div class="c-contents__title">{{ $product->name }}</div>
+          <div class="c-contents__price">¥ {{ number_format($product->default_price) }}</div>
+          <div class="c-contents__detail">{{ mb_strimwidth($product->detail, 0, 50, "...") }}</div>
+
+        </div>
+      </a>
+    </div>
+    @endforeach
+  </div>
+
+  <div class="c-pagination">
+    {{-- 1０件以下ならページングが表示されないので、別で件数を表示 --}}
+    @if($products->count() >= 10)
+    {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
+    @else
+    <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
+    @endif
+  </div>
+  {{-- </div> --}}
+  @endsection

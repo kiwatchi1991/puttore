@@ -186,7 +186,7 @@ a:visited {
 }
 
 .global-nav__pc ul li ul .global-nav__pc__submenu__list {
-  background-color: #E5F6F2;
+  background-color: #CBEDE4;
   color: #484848;
   border-bottom: 1px solid #333;
 }
@@ -6954,6 +6954,12 @@ a:visited {
 
 .modal__content__header {
   margin-top: 8px;
+}
+
+@media (min-width: 768px) {
+  .modal__content__header {
+    margin-top: 32px;
+  }
 }
 
 .c-home {

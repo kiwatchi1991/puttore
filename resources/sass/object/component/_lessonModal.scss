@@ -56,4 +56,7 @@
 }
 .modal__content__header{
     margin-top: 8px;
+    @include pc{
+        margin-top: 32px;
+    }
 }

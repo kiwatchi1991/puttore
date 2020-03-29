@@ -133,7 +133,8 @@
             <li class="">
               <header class="sample01">
                 <ul>
-                  <li><a href="{{ route('mypage') }}" class="global-nav__item__link lobal-nav__item__link--profile">
+                  <li><a href="{{ route('profile.show',$user->id) }}"
+                      class="global-nav__item__link lobal-nav__item__link--profile">
                       <div class="global-nav__item__profile">
                         <div class="global-nav__pc__profile__img__wrapper">
                           @if($user->pic)
@@ -143,6 +144,8 @@
                       </div>
                     </a>
                     <ul class="global-nav__pc__submenu">
+                      <li><a class="global-nav__pc__submenu__list mypage"
+                          href="{{route('profile.show',$user->id)}}">マイページ</a></li>
                       <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.draft')}}">下書き一覧</a></li>
                       <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.buy')}}">購入作品一覧</a></li>
                       <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.sale')}}">出品作品一覧</a></li>
