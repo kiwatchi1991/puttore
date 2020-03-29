@@ -352,4 +352,41 @@ class mypageController extends Controller
             'product_difficulties' => $product_difficulty,
         ]);
     }
+
+    //=============================================
+    //=====    （銀行情報）編集　ページ     ==========
+    //=============================================
+    public function edit()
+    {
+        $id = Auth::user()->id;
+
+        // $bank = User::find($id)->select('bank_name', 'bank_branch', 'bank_account_num')->get();
+        $bank = User::find($id);
+
+        Log::debug('<<<<   $bank    >>>>>>');
+        Log::debug($bank);
+
+        return view('mypage.edit', [
+            'id' => $id,
+            'bank' => $bank,
+        ]);
+    }
+
+    //=============================================
+    //=====    （銀行情報）更新　　　　　     ==========
+    //=============================================
+    public function update(Request $request, $id)
+    {
+        Log::debug('<<<<   $request    >>>>>>');
+        Log::debug($request);
+
+        // $id = Auth::user()->id;
+
+        $user = User::find($id);
+        $user->fill($request->all())->save();
+
+        // $user = Auth::user();
+
+        return redirect()->route('mypage')->with('flash_message', '口座情報を変更しました');
+    }
 }

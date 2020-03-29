@@ -112,6 +112,8 @@ Route::group(['middleware' => 'check'], function () {
 
   //マイページ
   Route::get('/mypage',  'mypageController@index')->name('mypage');
+  Route::get('/mypage/edit',  'mypageController@edit')->name('mypage.edit');
+  Route::post('/mypage/edit/{id}',  'mypageController@update')->name('mypage.update');
   Route::get('/mypage/draft',  'mypageController@draft')->name('mypage.draft');
   Route::get('/mypage/like',  'mypageController@like')->name('mypage.like');
   Route::get('/mypage/buy',  'mypageController@buy')->name('mypage.buy');

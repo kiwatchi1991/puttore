@@ -52,7 +52,7 @@
 
         <div class="c-mypage__account__list">
             <p class="c-mypage__account__label">銀行名 <span class="c-mypage__editLink"><a
-                        href="{{route('profile.edit',$user->id)}}">
+                        href="{{route('mypage.edit',$user->id)}}">
                         変更</a></span></p>
             {{ $user->bank_name }}
         </div>
