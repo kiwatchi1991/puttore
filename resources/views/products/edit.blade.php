@@ -8,9 +8,9 @@
     <div class="modal__contents">
         <div class="modal__head__fixed">
             <div class="modal__title">
-                Markdown記法のヒント
+                Markdown記法<br>のヒント
             </div>
-            <a class="js-modal-close" href="">閉じる</a>
+            <a class="modal__close js-modal-close" href=""><i class="fas fa-times"></i></a>
         </div>
         <div class="modal__contents__inner">
 
@@ -24,8 +24,8 @@
                 コード
             </div>
             <div class="modal__content">
-                ```hmtl
-                コード
+                ```hmtl<br>
+                コード<br>
                 ```
             </div>
             <div class="modal__content__header">
