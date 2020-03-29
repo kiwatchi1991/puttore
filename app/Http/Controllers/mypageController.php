@@ -203,7 +203,7 @@ class mypageController extends Controller
         })
             ->map(function ($day) {
                 return [$day->sum('sale_price'), $day->filter(function ($d) {
-                    return $d->status == 1;
+                    return $d->status == 2;
                 })->count() > 0];
             });
 
