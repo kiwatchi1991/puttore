@@ -153,7 +153,7 @@ a:visited {
 .global-nav__pc header {
   margin-bottom: 13em;
   position: relative;
-  width: 100%;
+  width: 50px;
   background-color: #444;
 }
 
@@ -257,7 +257,7 @@ a:visited {
 
 @media (min-width: 768px) {
   .header__logo {
-    margin: 10px 0px;
+    margin: 10px 0 0 20px;
     position: relative;
     top: -8px;
   }
@@ -376,7 +376,7 @@ a:visited {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
             flex-direction: row-reverse;
-    margin: 0 80px;
+    margin: 0 40px;
   }
 }
 
@@ -404,9 +404,11 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-top__fvImg {
-    height: 434px;
-    width: 434px;
-    margin: 0;
+    max-height: 434px;
+    max-width: 434px;
+    width: 50vw;
+    height: 40vw;
+    margin: auto 0;
     border-radius: 50%;
   }
 }
@@ -418,7 +420,8 @@ a:visited {
 @media (min-width: 768px) {
   .c-top__fvImg--pc {
     display: block;
-    width: 434px;
+    max-width: 434px;
+    width: 40vw;
     height: auto;
   }
 }
@@ -427,7 +430,8 @@ a:visited {
   .c-top__fvMsg {
     position: relative;
     margin-top: 48px;
-    width: 400px;
+    max-width: 400px;
+    margin-right: 2.344vw;
   }
 }
 
@@ -710,8 +714,15 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-top__recommend {
-    margin: 80px 25px 0;
-    width: 285px;
+    margin: 80px 2vw 0;
+  }
+
+  .c-top__recommend:first-child {
+    margin-left: 0;
+  }
+
+  .c-top__recommend:last-child {
+    margin-right: 0;
   }
 }
 
@@ -754,8 +765,8 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-top__recommend__Img {
-    width: 285px;
-    height: 285px;
+    max-width: 285px;
+    max-height: 285px;
   }
 }
 

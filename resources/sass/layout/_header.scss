@@ -5,8 +5,9 @@
   header{
     margin-bottom: 13em;
     position: relative;
-    width: 100%;
+    width: 50px;
     background-color: #444;
+
   }
   ul > li{
     display: inline-block;
@@ -90,7 +91,7 @@
 .header__logo{
     margin: 15px 0 0 15px;
     @include pc{
-      margin: 10px 0px;
+      margin: 10px 0 0 20px;
       position: relative;
       top: -8px;
     }

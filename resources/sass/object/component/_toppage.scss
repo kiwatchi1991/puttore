@@ -8,7 +8,7 @@
         @include pc{
         display: flex;
         flex-direction: row-reverse;
-        margin: 0 80px;
+        margin: 0 40px;
         @include pc{
           padding: 105px 0 50px;
           justify-content: center;
@@ -25,9 +25,11 @@
         margin: 0 auto;
         border-radius: 50%;
           @include pc{
-          height: 434px;
-          width: 434px;
-          margin: 0;
+          max-height: 434px;
+          max-width: 434px;
+          width: 50vw;
+          height: 40vw;
+          margin:auto 0;
           border-radius: 50%;
           }
 
@@ -35,7 +37,8 @@
           width: 185px;
           @include pc{
             display: block;
-            width: 434px;
+            max-width: 434px;
+            width: 40vw;
             height: auto;
           }
         }
@@ -44,7 +47,8 @@
         @include pc{
           position: relative;
           margin-top: 48px;
-          width: 400px;
+          max-width: 400px;
+          margin-right: 2.344vw;
         }
 
         &__head{
@@ -253,8 +257,14 @@
         text-align: center;
         margin: 50px auto 0;
         @include pc{
-        margin: 80px 25px 0;
-        width: 285px;
+        margin: 80px 2vw 0;
+        &:first-child{
+          margin-left: 0;
+        }
+        &:last-child{
+          margin-right: 0;
+        }
+
         }
         &__container{
           @include pc{
@@ -280,8 +290,8 @@
             align-items: center;
             flex-direction: column;
             @include pc{
-              width: 285px;
-              height: 285px;
+              max-width: 285px;
+              max-height: 285px;
             }
             img{
                 padding-bottom: 16px;
