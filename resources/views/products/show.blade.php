@@ -116,11 +116,13 @@
                 <div class="c-productShow__requireSkills__text">{{ $product->skills }}</div>
             </div>
 
+            {{-- ↓↓↓↓　お気に入り・購入ボタンはログインユーザーのみ表示 --}}
+            @auth
             {{-- ↓↓↓↓　購入済みの場合はお気に入り・購入ボタン表示しない --}}
             @if(!$isOrder && $product->user_id !== Auth::id())
             {{-- ほしいものに追加する --}}
             <div class="c-productShow__like @if($liked) is-active @endif">
-                <button type="submit" class="c-ajaxLike__icon @if($liked) is-active @endif"
+                <button type="submit" class="c-productShow__like__btn @if($liked) is-active @endif"
                     data-like="{{ $product->id }}">
                     @if($liked)ほしいものリストに入っています ♡@else ほしいものリストに追加する ♡@endif
                 </button>
@@ -134,12 +136,18 @@
 
                         <script type="text/javascript" src="https://checkout.pay.jp/" class="payjp-button"
                             id="payjp-button" data-key="pk_test_65b86d16158dad1607ce9b69" data-on-created="onCreated"
-                            data-text="今すぐ購入する" data-submit-text="pay"></script>
+                            data-text="今すぐ購入する" data-submit-text="支払いする"></script>
                     </button>
                 </form>
             </div>
             @endif
             {{-- ↑↑↑　購入済みの場合はお気に入り・購入ボタン表示しない --}}
+            @endauth
+            @guest
+            <div class="c-productShow__toLogin">
+                <a class="c-productShow__toLogin__btn" href="{{ route('login') }}">ログインして今すぐ購入する！</a>
+            </div>
+            @endguest
 
             {{-- ↓↓↓↓　購入前の場合はLESSONページへボタンとメッセージボードへボタンを表示しない --}}
             @if($isOrder || $product->user_id === Auth::id())
