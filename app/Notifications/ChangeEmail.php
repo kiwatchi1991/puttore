@@ -28,7 +28,7 @@ class ChangeEmail extends Notification
         Log::debug('<<  この処理 3  >>>>');
 
         return (new MailMessage)
-            // ->from('info@gmail.com')
+            ->from('ぷっとれ事務局')
             ->subject('メールアドレス変更') // 件名
             ->view('emails.changeEmail') // メールテンプレートの指定
             ->action(
