@@ -38992,6 +38992,8 @@ __webpack_require__(/*! ./components/lessonModal */ "./resources/js/components/l
 
 __webpack_require__(/*! ./components/val */ "./resources/js/components/val.js");
 
+__webpack_require__(/*! ./components/editMenu */ "./resources/js/components/editMenu.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39418,6 +39420,33 @@ $(function () {
   $('.js-date_picker').datepicker({
     language: 'ja'
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/editMenu.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/editMenu.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('.js-editMenu-open').on('click', function () {
+    $('.js-editMenu').toggle();
+    return false;
+  });
+});
+$('.js-editMenu-delete').on('click', function (e) {
+  e.preventDefault();
+  var confirm_result = window.confirm('この作品を削除します。よろしいですか？');
+
+  if (confirm_result) {
+    //
+    console.log('OK');
+  } else {
+    console.log('ダメ');
+  }
 });
 
 /***/ }),

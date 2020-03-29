@@ -31,11 +31,17 @@
             {{-- 自分の作品の場合は編集ボタンを表示 --}}
             @if ($product->user_id === Auth::id())
 
-            <div class="c-productShow__editIcon">
-                <a class="" href="{{ route('products.edit',$product->id) }}">
-                    <i class="fas fa-edit"></i>
-                </a>
+            <div class="c-productShow__editIcon js-editMenu-open">
+                <i class="fas fa-ellipsis-h"></i>
             </div>
+
+            <div class="c-productShow__editMenu js-editMenu">
+                <div class="c-productShow__editMenu__list c-productShow__editMenu__list--edit">
+                    <a class="" href="{{ route('products.edit',$product->id) }}">編集する</a></div>
+                <div class="c-productShow__editMenu__list c-productShow__editMenu__list--delete">
+                    <a class="" href="{{ route('products.delete',$product->id) }}">削除する</a></div>
+            </div>
+
             @endif
 
             {{-- タイトル --}}
@@ -159,19 +165,7 @@
             </div>
             @endif
             {{-- ↑↑↑　購入前の場合はLESSONページへボタンとメッセージボードへボタンを表示しない --}}
-
-            {{-- <div class="l-productShow__toLessonPages">
-
-            @foreach ($lessons as $lesson)
-
-            <div class="c-productShow__toLessonPage">
-                <a>LESSON {{ $lesson->number }}</a>
         </div>
-        @endforeach
+    </div>
 
-    </div> --}}
-
-</div>
-</div>
-
-@endsection
+    @endsection
