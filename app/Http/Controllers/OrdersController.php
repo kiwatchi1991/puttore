@@ -76,14 +76,28 @@ class OrdersController extends Controller
 
     if ($discount_price) {
       $order->sale_price = $discount_price->discount_price;
+      $order->price_flg = 1;
     } else {
       $order->sale_price = Product::find($id)->default_price;
+      $order->price_flg = 0;
     }
     $order->msg_updated_at = Carbon::now();
     $order->save();
-    $order->transfer_price = $order->sale_price * (1 - SystemCommission::find(1)->value('commission_rate'));
+
+    if ($discount_price) {
+      //割引価格の時は手数料は3%（今後変更あり）
+      $order->transfer_price = $order->sale_price * (1 - SystemCommission::where('id', 2)->value('commission_rate'));
+    } else {
+      //通常価格の時は手数料は10%（今後変更あり）
+      $order->transfer_price = $order->sale_price * (1 - SystemCommission::where('id', 1)->value('commission_rate'));
+    }
+
     $order->save();
 
+    Log::debug('SystemCommission::find(1)->value(commission_rate)');
+    Log::debug(SystemCommission::find(1)->value('commission_rate'));
+    Log::debug('SystemCommission::find(2)->value(commission_rate)');
+    Log::debug(SystemCommission::find(2)->value('commission_rate'));
     Log::debug('$order->sale_price');
     Log::debug($order->sale_price);
     Log::debug('$order->transfer_price');
