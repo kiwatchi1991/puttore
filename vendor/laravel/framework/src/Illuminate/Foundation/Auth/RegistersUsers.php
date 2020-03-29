@@ -35,7 +35,7 @@ trait RegistersUsers
         $this->guard()->login($user);
 
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+            ?: redirect($this->redirectPath());
     }
 
     /**
@@ -57,6 +57,6 @@ trait RegistersUsers
      */
     protected function registered(Request $request, $user)
     {
-        //
+        return redirect()->route('profile.edit', $user->id)->with('flash_message', 'ユーザー登録しました。プロフィールを編集してください。');
     }
 }
