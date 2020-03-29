@@ -471,7 +471,10 @@ class ProductsController extends Controller
         }
 
         //　割引価格情報取得
-        $discount_price = Discount::where('product_id', $product_id)->first();
+        $discount_price = Discount::where('product_id', $product_id)
+            ->where('start_date', '<', Carbon::now())
+            ->where('end_date', '>', Carbon::now())
+            ->first();
         Log::debug('$discount_price');
         Log::debug($discount_price);
 

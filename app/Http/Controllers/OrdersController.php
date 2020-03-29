@@ -35,7 +35,10 @@ class OrdersController extends Controller
     $product = Product::find($id);
 
     //　割引価格情報取得
-    $discount_price = Discount::where('product_id', $id)->first();
+    $discount_price = Discount::where('product_id', $id)
+      ->where('start_date', '<', Carbon::now())
+      ->where('end_date', '>', Carbon::now())
+      ->first();
 
     // ----------------- コンテンツ登録 →　payjpでの支払い処理　↓↓↓--------------
     try {
