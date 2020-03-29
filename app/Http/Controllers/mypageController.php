@@ -67,13 +67,13 @@ class mypageController extends Controller
             $commission = FromBank::find(1)->commission1;
         }
 
-        $transfer_price_after = $transfer_price_before - $commission;
+        // $transfer_price_after = $transfer_price_before - $commission;
 
         $transfer = new Transfer;
         $transfer->user_id = Auth::user()->id;
         //振込手数料を引いたものを振込む
         $transfer->transfer_price = $transfer_price_before; //運営が振り込む金額
-        $transfer->transferred_price = $transfer_price_after; //システム手数料を引いて実際に振り込まれる金額
+        // $transfer->transferred_price = $transfer_price_after; //システム手数料を引いて実際に振り込まれる金額 nullableにしとく
         $transfer->commission = $commission;
         $transfer->from_bank_id = 1;
         $transfer->payment_date = Carbon::parse('last day of next month');
@@ -360,7 +360,6 @@ class mypageController extends Controller
     {
         $id = Auth::user()->id;
 
-        // $bank = User::find($id)->select('bank_name', 'bank_branch', 'bank_account_num')->get();
         $bank = User::find($id);
 
         Log::debug('<<<<   $bank    >>>>>>');

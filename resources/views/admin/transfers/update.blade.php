@@ -38,20 +38,10 @@
             </div>
 
             <div class="c-admin__user__info__list">
-                <div class="c-admin__user__data">手数料</div>
-                <span>¥ {{ number_format($transfer->commission) }}</span>
-            </div>
-
-            <div class="c-admin__user__info__list">
-                <div class="c-admin__user__data">入金額（振込金額-手数料）</div>
-                <span>¥ {{ number_format($transfer->transferred_price) }}</span>
-            </div>
-
-
-            <div class="c-admin__user__info__list">
                 <div class="c-admin__user__data">ユーザーが振込依頼を実施した日</div>
                 <span>{{ $transfer->created_at }}</span>
             </div>
+
             <div class="c-admin__user__info__list">
                 <div class="c-admin__user__data">支払い期日</div>
                 <span>{{ $transfer->payment_date }}</span>
@@ -60,6 +50,11 @@
             <div class="c-admin__user__info__list">
                 <div class="c-admin__user__data">振込元銀行</div>
                 <span>{{ $transfer->bank_name }}</span>
+            </div>
+
+            <div class="c-admin__user__info__list">
+                <div class="c-admin__user__data">手数料</div>
+                <span>¥ {{ number_format($transfer->commission) }}</span>
             </div>
 
             <div class="c-admin__user__info__list">

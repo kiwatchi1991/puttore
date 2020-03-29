@@ -285,7 +285,7 @@ class adminController extends Controller
 
     //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
     $transfers = Transfer::join('users', 'transfers.user_id', 'users.id')
-      ->select('transfers.id', 'transfer_price', 'payment_date', 'users.email')
+      ->select('transfers.id', 'transfer_price', 'payment_date', 'users.email', 'transfers.status')
       ->when($request->keyword, function ($query) use ($keyword) {
         $query->where('email', 'like', '%' . $keyword . '%');
       })
@@ -294,6 +294,26 @@ class adminController extends Controller
 
     return view('admin.transfers.index', [
       'transfers' => $transfers,
+    ]);
+  }
+
+  // =========  振込依頼 内容確認   ==========
+  public function transferShow(Request $request, $id)
+  {
+    Log::debug('<< transferShow >>');
+    Log::debug($request);
+
+    $transfer = Transfer::join('users', 'transfers.user_id', 'users.id')
+      ->join('from_banks', 'transfers.from_bank_id', 'from_banks.id')
+      ->where('transfers.id', $id)
+      ->select('transfers.id', 'transfers.transfer_price', 'transfers.transferred_price', 'transfers.commission', 'transfers.created_at', 'transfers.status', 'transfers.payment_date', 'users.id as u.id', 'users.account_name', 'users.email', 'from_banks.name as bank_name') //振込元銀行情報は今後変更していく
+      ->first();
+
+    Log::debug('<<<     $transfers    >>>>.');
+    Log::debug($transfer);
+
+    return view('admin.transfers.show', [
+      'transfer' => $transfer,
     ]);
   }
 
@@ -308,7 +328,6 @@ class adminController extends Controller
       ->join('from_banks', 'transfers.from_bank_id', 'from_banks.id')
       ->select('transfers.id', 'transfers.transfer_price', 'transfers.transferred_price', 'transfers.commission', 'transfers.created_at', 'transfers.payment_date', 'users.id as u.id', 'users.account_name', 'users.email', 'from_banks.name as bank_name'); //振込元銀行情報は今後変更していく
     if (!empty($request->get('update_id'))) {
-
       $updateIds = $request->get('update_id');
       Log::debug('$updateIds');
       Log::debug($updateIds);

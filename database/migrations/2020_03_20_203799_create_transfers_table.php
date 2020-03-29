@@ -17,7 +17,7 @@ class CreateTransfersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->decimal('transfer_price', 10, 0)->nullable();
-            $table->decimal('transferred_price', 10, 0)->nullable();
+            // $table->decimal('transferred_price', 10, 0)->nullable();
             $table->decimal('commission', 10, 0)->nullable();
             $table->integer('status')->default(0);
             $table->unsignedBigInteger('from_bank_id');

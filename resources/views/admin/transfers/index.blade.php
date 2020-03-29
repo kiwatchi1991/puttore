@@ -33,16 +33,19 @@
         <div class="admin__users">
             <div class="c-admin__users">
                 @foreach ($transfers as $transfer)
-                <div class="c-admin__user__list">
+                <div class="c-admin__user__list {{($transfer->status === 0)?'':'paid'}}">
                     <input type="checkbox" name="update_id[][0]" value="{{ $transfer->id }}" class="c-admin__checkbox">
                     <div class="c-admin__user__element id">id <span>{{$transfer->id}}</span></div>
+                    <div class="c-admin__user__element status">状態
+                        <span>{{($transfer->status === 0)?'振込前':'振込済'}}</span>
+                    </div>
                     <div class="c-admin__user__element email">メールアドレス<span>@php echo mb_strimwidth($transfer->email, 0,
                             15,
                             "...");@endphp</span></div>
                     <div class="c-admin__user__element id">
                         振込金額<span>{{ number_format($transfer->transfer_price) }}</span></div>
                     <div class="c-admin__user__element id">支払期日<span>{{$transfer->payment_date}}</span></div>
-                    <a class="c-admin__user__edit" href="">確認</a>
+                    <a class="c-admin__user__edit" href="{{route('admin.transfer.show',$transfer->id)}}">確認</a>
                     <a class="c-admin__user__delete"
                         href="{{ route('admin.transfer.update.confirm',$transfer->id)}}">振込完了</a>
                 </div>

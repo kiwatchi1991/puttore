@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
   //振込依頼
   Route::get('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer');
   Route::post('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer.search');
+  Route::get('/admin/transfer/{id}',  'adminController@transferShow')->name('admin.transfer.show');
   Route::get('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
   Route::post('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
   Route::post('/admin/transfer/update/{id?}',  'adminController@transferUpdate')->name('admin.transfer.update');

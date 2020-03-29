@@ -185,17 +185,21 @@ ul li ul li:first-child {
   border-bottom: none;
 }
 
-.global-nav__pc__submenu__list {
+ul li ul .global-nav__pc__submenu__list {
   background-color: #E5F6F2;
   color: #484848;
   border-bottom: 1px solid #333;
 }
 
-.global-nav__pc__submenu__list:first-child {
+ul li ul .global-nav__pc__submenu__list:visited {
+  color: #484848;
+}
+
+ul li ul .global-nav__pc__submenu__list:first-child {
   border-bottom: none;
 }
 
-ul li ul li a:hover {
+ul li ul .global-nav__pc__submenu__list:hover {
   background-color: #ddd;
 }
 
@@ -5796,6 +5800,11 @@ ul li ul li a:hover {
   line-height: 1.5;
   -webkit-box-pack: justify;
           justify-content: space-between;
+}
+
+.c-admin__user__list.paid {
+  background: #585858;
+  color: white;
 }
 
 .c-admin__user__element {
