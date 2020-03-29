@@ -90,13 +90,9 @@
                 </thead>
                 <tbody>
                     @foreach ($transfers as $transfer)
-                    {{-- $sale[0]は金額、$sale[1]は判定フラグ trueは申請中,falseは振込済 --}}
                     <tr>
                         <td>{{ $transfer->created_at->format('Y年m月d日') }}</td>
                         <td>¥ {{ number_format($transfer->transfer_price) }}</td>
-                        {{-- <td>
-                            @if($sale[1])申請中 @else 振込済 @endif
-                        </td> --}}
                         <td><a href="">@if($transfer->status == 0)申請中@else 振込済 @endif</a></td>
                     </tr>
                     @endforeach
@@ -111,5 +107,4 @@
 
     </div>
 </div>
-{{-- {{ $sale_histories }} --}}
 @endsection
