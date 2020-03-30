@@ -27,14 +27,14 @@ mix.webpackConfig({
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .sourceMaps()
     .browserSync({
         files: [
-            'resources/views/**/*.blade.php',
-            'public/**/*.*',
-            'routes/**/*.php',
-            '**/*.php',
-            '**/*.js',
-            '**/*.vue'
+            './resources//**/*‘',
+            './app/**/*',
+            './config/**/*',
+            './routes/**/*',
+            './public/**/*',
         ],
         proxy: {
             target: 'http://127.0.0.1:8000/'
