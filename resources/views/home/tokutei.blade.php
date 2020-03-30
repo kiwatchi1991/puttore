@@ -32,7 +32,7 @@
         </tr>
         <tr>
           <th class="c-home__table__th">商品代金</th>
-          <td class="c-home__table__td">各コースの料金に基づく</td>
+          <td class="c-home__table__td">各商品の料金に基づく</td>
         </tr>
         <tr>
           <th class="c-home__table__th">商品代金以外の必要料金</th>
@@ -64,15 +64,15 @@
         </tr>
         <tr>
           <th class="c-home__table__th">ご返品について</th>
-          <td class="c-home__table__td">商品の特性上返品はお受けできません。ご了承下さい。</td>
+          <td class="c-home__table__td">商品の性質上解約はできません。また、差額の返金は致しません。</td>
         </tr>
         <tr>
           <th class="c-home__table__th">ご解約について</th>
-          <td class="c-home__table__td">解約（退部）は必ずログイン後に<a
-              href="https://webukatu.com/mypage/withdraw">コチラ</a>から行なってください。毎月１５日締めの翌月末解約となります。（８月１３日にご連絡いただいた場合、９月末日のご解約となり、８月１６日にご連絡いただいた場合、１０月末日のご解約となります。）銀行振込みや前納をされた場合、途中解約をされても差額分の返金は致しません。
+          <td class="c-home__table__td">解約（退会）は必ずログイン後に<a href="{{route('mypage')}}" class=“global-nav__item__link”>コチラ</a>から行なってください。銀行振込みや前納をされた場合、途中解約をされても差額分の返金は致しません。
           </td>
         </tr>
       </tbody>
+
     </table>
 
 
