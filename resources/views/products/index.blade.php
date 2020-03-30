@@ -55,12 +55,7 @@
     <h2>一覧 / 検索結果</h2>
   </div>
   <div class="c-pagination">
-    {{-- 1０件以下ならページングが表示されないので、別で件数を表示 --}}
-    @if($products->count() >= 10)
     {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
-    @else
-    <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
-    @endif
   </div>
 
   <div class="c-product__area">
@@ -100,13 +95,7 @@
   </div>
 
   <div class="c-pagination">
-    {{-- 1０件以下ならページングが表示されないので、別で件数を表示 --}}
-    @if($products->count() >= 10)
     {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
-    @elseif($products->count() == 0)
-    @else
-    <div class="c-paging">全 <span> {{ $products->count() }} 件 </span></div>
-    @endif
   </div>
-  {{-- </div> --}}
-  @endsection
+</div>
+@endsection

@@ -371,22 +371,22 @@ class ProductsController extends Controller
                 //難易度
                 ->whereHas('difficulties', function ($query) use ($difficultiesIds) {
                     $query->whereIn('difficulty_id', $difficultiesIds);
-                })->where('open_flg', 0)->latest()->paginate(10);
+                })->where('open_flg', 0)->latest()->paginate(12);
             //カテゴリーしかないパターン
         } else if ($request->get('lang')) {
             $products = Product::whereHas('categories', function ($query) use ($categorieIds) {
                 $query->whereIn('category_id', $categorieIds);
-            })->where('open_flg', 0)->latest()->paginate(10);
+            })->where('open_flg', 0)->latest()->paginate(12);
 
             //難易度しかないパターン
         } else if ($request->get('difficult')) {
             $products = Product::whereHas('difficulties', function ($query) use ($difficultiesIds) {
                 $query->whereIn('difficulty_id', $difficultiesIds);
-            })->where('open_flg', 0)->latest()->paginate(10);
+            })->where('open_flg', 0)->latest()->paginate(12);
 
             //両方ないパターン（初期表示）
         } else {
-            $products = Product::where('open_flg', 0)->latest()->paginate(10);
+            $products = Product::where('open_flg', 0)->latest()->paginate(12);
         }
 
         Log::debug(' <<<<<<   $products->first()   >>>>>>>');

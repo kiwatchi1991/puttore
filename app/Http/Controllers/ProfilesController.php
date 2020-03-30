@@ -36,7 +36,7 @@ class ProfilesController extends Controller
         //ログインユーザーのプロダクト（ページング）
         $products = Product::where('user_id', $id)
             ->where('open_flg', 0)
-            ->latest()->paginate(10);
+            ->latest()->paginate(12);
 
         //画像有無判定フラグ
         $is_image = false;
