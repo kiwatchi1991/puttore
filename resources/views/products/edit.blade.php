@@ -290,6 +290,9 @@
 
             {{-- 画像 --}}
             <div class="c-productNew__images">
+                <p class="c-productNew__title__label">画像 <span class="c-productNew__title__label--picText">(
+                        画像１がサムネイルとして表示されます )</span>
+                </p>
                 <div class="c-productNew__images__half">
                     {{-- 画像1 --}}
                     <label class="c-productNew__image__area area1 js-area__drop">
