@@ -20,7 +20,7 @@ $('.js-editMenu-delete').on('click',function (e) {
 
 );
 
- if($('.c-productEdit').length){
+ if($('.js-popup').length){
     $('.js-popup').click(function() {
     $(window).off('beforeunload');
     });
