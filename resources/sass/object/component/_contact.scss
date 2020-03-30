@@ -1,24 +1,49 @@
 .c-contact{
     background: $bg;
     padding: 32px;
+    @include pc{
+        background: #fff;
+        }
+    &__inner{
+        @include pc{
+            width: 520px;
+            margin: 0 auto;
+            padding-bottom: 80px;
+            padding-top: 48px;
+        }
+    }
     &__title{
         color: $main-color;
         font-size: 24px;
+         @include pc{
+             font-size: 30px;
+             font-weight: normal;
+             text-align: center;
+        }
     }
 
     &__label{
         color: $main-text;
-        font-size: 10px;
+        font-size: 12px;
         padding: 5px 0;
+        @include pc{
+            font-size: 14px;
+        }
     }
     &__input{
         padding: 10px;
         width: 100%;
         border-radius: 5px;
         margin-top: 8px;
+        @include pc{
+            background: $bg;
+        }
     }
     &__input-area{
         margin-top: 24px;
+        @include pc{
+            margin-top: 40px;
+        }
     }
     &__submit{
         margin: 24px auto 0;
@@ -47,5 +72,9 @@
     &__prev{
         margin-top: 8px;
 
+    }
+    &__finish{
+        background: none;
+        padding: 32px;
     }
 }

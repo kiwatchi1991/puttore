@@ -5701,6 +5701,10 @@ a:visited {
   margin-top: 8px;
 }
 
+.c-contact__finish {
+  background: none;
+}
+
 .c-passReset {
   background: #E5F6F2;
   padding: 32px;

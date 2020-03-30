@@ -33,7 +33,7 @@
 
                     <label class="c-contact__label">お問い合わせ内容</label>
                     <div class="">
-                        <textarea class="c-contact__input" name="body" rows="10">{{ old('body') }}</textarea>
+                        <textarea class="c-contact__input" name="body" rows="7">{{ old('body') }}</textarea>
                     </div>
                     @if ($errors->has('body'))
                     <p class="c-contact__error">{{ $errors->first('body') }}</p>
