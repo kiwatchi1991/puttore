@@ -91,10 +91,20 @@
                 </li>
                 @auth
                 <li class="global-nav__item">
-                  <a href="{{ route('mypage') }}" class="global-nav__item__link">アカウント設定</a>
+                  <a href=" {{ route('mypage.draft') }}" class="global-nav__item__link">下書き一覧</a>
                 </li>
                 <li class="global-nav__item">
                   <a href=" {{ route('bords') }}" class="global-nav__item__link">メッセージボード</a>
+                </li>
+                <li class="global-nav__item">
+                  <a href=" {{ route('mypage.buy') }}" class="global-nav__item__link">購入作品</a>
+                </li>
+                <li class="global-nav__item">
+                  <a href=" {{ route('mypage.sale') }}" class="global-nav__item__link">出品作品</a>
+                </li>
+
+                <li class="global-nav__item">
+                  <a href="{{ route('mypage') }}" class="global-nav__item__link">アカウント設定</a>
                 </li>
                 <li class="global-nav__item global-nav__item--logout">
                   <a onclick="event.preventDefault();
