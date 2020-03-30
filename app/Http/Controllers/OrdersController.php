@@ -109,6 +109,6 @@ class OrdersController extends Controller
 
     // リダイレクトする
     // その時にsessionフラッシュにメッセージを入れる
-    return redirect('/bords')->with('flash_message', ('購入しました！'));
+    return redirect()->route('products.show', $id)->with('flash_message', ('購入しました！'));
   }
 }
