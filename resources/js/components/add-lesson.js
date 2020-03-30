@@ -107,6 +107,10 @@ $button.on('click', function (e) {
     console.log('ここまで2');
     
     let $newCopyTaget = $('.js-add__target:last-child');
+    //エラーメッセージ削除
+    $newCopyTaget.find('#title-error').remove();
+    $newCopyTaget.find('#lesson-error').remove();
+    
     $newCopyTaget.find('#hidden').remove();
     $newCopyTaget.find('#title').val('').keyup();
     $newCopyTaget.find('textarea').val('').keyup();
