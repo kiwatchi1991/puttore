@@ -276,7 +276,7 @@
             font-weight: normal;
             padding-bottom: 16px;
             @include pc{
-              font-size: 20px;
+              font-size: 19px;
             }
         }
         &__Img{
@@ -304,7 +304,7 @@
             }
         }
         &__text{
-            font-size: 12px;
+            font-size: 14px;
             line-height: 1.35;
             margin-bottom: -24px;
             @include pc{

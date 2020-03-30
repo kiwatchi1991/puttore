@@ -82,7 +82,7 @@
         <div class="c-top__recommend__Img c-top__recommend__Img--how">
           <h3 class="c-top__recommend__head">どうやって作ればいいの？</h3>
           <img src="/storage/images/top-2.png" alt="">
-          <p class="c-top__recommend__text">教材に沿って進めていくだけで<br>実務レベルのアウトプットが完成します。</p>
+          <p class="c-top__recommend__text">教材に沿って進めていくだけで<br>実務レベルのアウトプットが<br>完成します。</p>
         </div>
       </div>
 
@@ -90,7 +90,7 @@
         <div class="c-top__recommend__Img">
           <h3 class="c-top__recommend__head">初心者でも大丈夫？</h3>
           <img src="/storage/images/top-3.png" alt="">
-          <p class="c-top__recommend__text">実際のコードや画像を使ってわかりやすく<br>説明しているので、初心者でも安心。</p>
+          <p class="c-top__recommend__text">実際のコードや画像を使って<br>わかりやすく説明しているので、<br>初心者でも安心。</p>
         </div>
       </div>
     </div>
