@@ -1019,6 +1019,10 @@ a:visited {
   padding-top: 16px;
 }
 
+.global-nav__item--profile {
+  margin-bottom: 8px;
+}
+
 .global-nav__item--logout {
   margin-top: 16px;
   padding-top: 16px;
@@ -3323,6 +3327,12 @@ a:visited {
   margin-top: 16px;
 }
 
+@media (min-width: 768px) {
+  .c-messages__wrapper {
+    padding-bottom: 32px;
+  }
+}
+
 .c-messages__title {
   display: none;
 }
@@ -3405,7 +3415,7 @@ a:visited {
 }
 
 .c-messages__head__title {
-  margin-left: 16px;
+  margin-left: 18px;
   font-size: 16px;
   white-space: nowrap;
 }
@@ -3413,7 +3423,7 @@ a:visited {
 .c-messages__inner {
   background: #E5F6F2;
   padding: 48px 0 100px 0;
-  min-height: 60vh;
+  min-height: 52vh;
 }
 
 @media (min-width: 768px) {
@@ -3432,6 +3442,7 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-messages__form {
+    height: 100%;
     width: 520px;
     margin: 0 auto;
   }
@@ -3448,6 +3459,17 @@ a:visited {
   padding: 5px 0 5px 5px;
 }
 
+@media (min-width: 768px) {
+  .c-messages__inputArea {
+    height: 180px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    border-top: 1px solid #CBEDE4;
+    border-bottom: 1px solid #CBEDE4;
+  }
+}
+
 .c-messages__input {
   width: 100%;
   padding-left: 16px;
@@ -3456,15 +3478,16 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-messages__input {
-    border-top: 1px solid #CBEDE4;
-    border-bottom: 1px solid #CBEDE4;
+    border: 2px solid #00ac7d;
+    width: 80%;
+    border-radius: 7px;
   }
 }
 
 .c-messages__button {
   width: 25vw;
   height: 35px;
-  margin: auto 10px;
+  margin: 8px 10px auto;
   background: #00ac7d;
   color: white;
   border: none;
@@ -3473,6 +3496,7 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-messages__button {
+    height: 45px;
     width: 10vw;
   }
 
@@ -3526,7 +3550,7 @@ a:visited {
 }
 
 .c-message__msg {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   padding: 10px 20px;
   width: 220px;
@@ -3538,7 +3562,7 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-message__msg {
-    font-size: 13px;
+    font-size: 16px;
   }
 }
 
@@ -7350,5 +7374,9 @@ span.error {
   .options {
     top: 1px;
   }
+}
+
+a:hover {
+  opacity: 0.5;
 }
 
