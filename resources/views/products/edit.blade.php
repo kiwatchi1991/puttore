@@ -377,16 +377,6 @@
     </form>
 </div>
 <script>
-    //     window.onbeforeunload = function(e){
-// return "このページを離れますか？"; // Google Chrome以外
-// e.returnValue = "このページを離れますか？"; // Google Chrome
-// }
 
-// $('form').on('submit', function(e){
-// e.preventDefault();
-// window.onbeforeunload = null; // 関数を削除
-// var $this = $(this);
-// $this.submit();
-// });
 </script>
 @endsection
