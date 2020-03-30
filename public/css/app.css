@@ -2169,13 +2169,11 @@ a:visited {
 }
 
 .c-productShow__editMenu {
-  display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  width: 150px;
+  width: 45px;
   margin: 16px 0 0 auto;
   font-size: 14px;
+  display: -webkit-box;
+  display: flex;
 }
 
 @media (min-width: 768px) {
@@ -2187,8 +2185,9 @@ a:visited {
 .c-productShow__editMenu__list {
   color: #484848;
   cursor: pointer;
-  background: #CBEDE4;
   display: block;
+  margin-right: 24px;
+  font-size: 20px;
 }
 
 .c-productShow__editMenu__list:hover {
@@ -2196,17 +2195,12 @@ a:visited {
 }
 
 .c-productShow__editMenu__list a {
-  padding: 15px;
   display: block;
   color: #484848;
 }
 
 .c-productShow__editMenu__list a:visited {
   color: #484848;
-}
-
-.c-productShow__editMenu__list--delete {
-  padding: 15px;
 }
 
 .c-productShow__title {

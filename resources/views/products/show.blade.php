@@ -31,18 +31,19 @@
             {{-- 自分の作品の場合は編集ボタンを表示 --}}
             @if ($product->user_id === Auth::id())
 
-            <div class="c-productShow__editMenuIcon js-editMenu-open">
+            {{-- <div class="c-productShow__editMenuIcon js-editMenu-open">
                 <i class="fas fa-ellipsis-h"></i>
-            </div>
+            </div> --}}
 
             <div class="c-productShow__editMenu js-editMenu">
-                <div class="c-productShow__editMenu__list c-productShow__editMenu__list--edit">
-                    <a class="" href="{{ route('products.edit',$product->id) }}">編集する</a></div>
                 <div class="c-productShow__editMenu__list c-productShow__editMenu__list--delete js-editMenu-delete">
                     <form id="delete-form" method="POST" action="{{ route('products.delete',$product->id) }}">
                         @csrf
                     </form>
-                    削除する
+                    <i class="far fa-trash-alt"></i>
+                </div>
+                <div class="c-productShow__editMenu__list c-productShow__editMenu__list--edit">
+                    <a class="" href="{{ route('products.edit',$product->id) }}"><i class="far fa-edit"></i></a>
                 </div>
             </div>
 

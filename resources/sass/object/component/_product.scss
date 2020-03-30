@@ -793,24 +793,23 @@
     }
   }
    &__editMenu{
-    display: none;
-    flex-direction: column;
-    width: 150px;
+    width: 45px;
     margin: 16px 0 0 auto;
     font-size: 14px;
+    display: flex;
     @include pc{
       font-size: 16px;
     }
     &__list{
       color: $main-text;
       cursor: pointer;
-      background: $low-gr;
       display: block;
+      margin-right: 24px;
+      font-size: 20px;
       &:hover{
         opacity: 0.5;
       }
       a{
-        padding: 15px;
         display: block;
         color: $main-text;
         &:visited{
@@ -818,7 +817,7 @@
         }
       }
       &--delete{
-        padding: 15px;
+        // padding: 15px;
       }
     }
   }
