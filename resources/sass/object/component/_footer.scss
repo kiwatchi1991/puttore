@@ -39,6 +39,7 @@
         &__wrap{
           display: flex;
           flex-direction: column;
+          list-style: none;
           @include pc{
             width: 700px;
             margin: 24px auto 0;
