@@ -2288,12 +2288,6 @@ a:visited {
 
 .c-productShow__like {
   margin: 64px auto 0;
-  z-index: 3;
-  background: #00ac7d;
-  text-align: center;
-  width: 100%;
-  border-radius: 7px;
-  box-sizing: border-box;
 }
 
 .c-productShow__like__btn {
@@ -2301,11 +2295,13 @@ a:visited {
   width: 100%;
   height: 100%;
   color: white;
+  border-radius: 8px;
 }
 
-.c-productShow__like.is-active {
+.c-productShow__like__btn.is-active {
   background: white;
   border: 1px solid #00ac7d;
+  color: #00ac7d;
 }
 
 .c-productShow__buynow {
@@ -2841,15 +2837,6 @@ a:visited {
   .c-pagination__count {
     font-size: 20px;
   }
-}
-
-.c-ajaxLike__icon {
-  color: white;
-  font-size: 14px;
-}
-
-.c-ajaxLike__icon.is-active {
-  color: #00ac7d;
 }
 
 .c-ajaxFollow__icon.is-active {

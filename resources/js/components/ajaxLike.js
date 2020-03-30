@@ -1,5 +1,5 @@
 console.log('ajaxlike読み込み');
-let $like = $('.c-ajaxLike__icon');
+let $like = $('.js-ajaxLike__btn');
 let likePostId;
 $like.on('click', function () {
     console.log('ajaxlike発火');

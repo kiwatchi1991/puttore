@@ -132,7 +132,7 @@
             @if(!$isOrder && $product->user_id !== Auth::id())
             {{-- ほしいものに追加する --}}
             <div class="c-productShow__like @if($liked) is-active @endif">
-                <button type="submit" class="c-productShow__like__btn @if($liked) is-active @endif"
+                <button type="submit" class="c-productShow__like__btn js-ajaxLike__btn @if($liked) is-active @endif"
                     data-like="{{ $product->id }}">
                     @if($liked)ほしいものリストに入っています ♡@else ほしいものリストに追加する ♡@endif
                 </button>
