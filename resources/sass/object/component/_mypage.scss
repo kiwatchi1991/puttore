@@ -85,6 +85,10 @@
                 height: 100%;
                 text-align: center;
                 line-height: 1.35;
+                &:hover{
+                    background: $bg;
+                    opacity: 0.5;
+                }
             }
         }
     }
