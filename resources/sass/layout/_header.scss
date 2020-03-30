@@ -45,7 +45,10 @@
         border-bottom:none;
       }
       &:hover{
-        background-color: #ddd;
+        opacity: 0.5;
+        color: $main-color;
+        cursor: pointer;
+      }
       }
     }
   }

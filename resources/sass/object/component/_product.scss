@@ -11,7 +11,6 @@
     margin: 60px auto 90px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     padding: 0 24px;
     }
   }
@@ -25,11 +24,17 @@
     animation: cardSlideIn 0.4s ease-in-out;
     padding: 10px 15px 0;
     box-sizing: border-box;
-    background: $p_bg;
+    background:$p_bg;
     border-radius: 10px;
+
     @include pc{
-      width: 30vw;
-      margin: 30px 0 0 0;
+      width: 32%;
+      margin: 30px 2% 0 0;
+      max-width: 288px;
+      &:nth-child(3n){
+        margin-right: 0;
+      }
+
     }
     &:hover{
       opacity: 0.6;
@@ -180,6 +185,13 @@
       color: #ffffff;
       height: 100%;
       width: 100%;
+      &:hover{
+        opacity: 0.5;
+        background: white;
+        color: $main-text;
+        cursor: pointer;
+      }
+
       @include pc{
         font-size: 16px;
       }
@@ -793,7 +805,7 @@
     }
   }
    &__editMenu{
-    width: 45px;
+    width: 65px;
     margin: 16px 0 0 auto;
     font-size: 14px;
     display: flex;
@@ -805,7 +817,7 @@
       cursor: pointer;
       display: block;
       margin-right: 24px;
-      font-size: 20px;
+      font-size: 24px;
       &:hover{
         opacity: 0.5;
       }
@@ -854,7 +866,7 @@
   &__detail{
     margin-top: 16px;
     line-height: 1.2;
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.38;
     letter-spacing: 0.4px;
   }
@@ -876,7 +888,7 @@
  }
   &__username{
     margin-left: 10px;
-    font-size: 13px;
+    font-size: 16px;
     display: flex;
     align-items: center;
   }
@@ -898,6 +910,12 @@
       border-radius: 8px;
       background: $main-color;
       font-size: 16px;
+        &:hover{
+        opacity: 0.5;
+        background: white;
+        color: $main-text;
+        cursor: pointer;
+      }
       &.is-active{
         background: white;
         border: 1px solid $main-color;
@@ -950,13 +968,13 @@
   &__lesson{
     margin-top: 24px;
     &__number{
-      font-size: 17px;
+      font-size: 18px;
       letter-spacing: 0.08px;
     }
     &__title{
       margin-top: 8px;
       line-height: 1.38;
-      font-size: 13px;
+      font-size: 16px;
       letter-spacing: 0.04px;
     }
   }
@@ -975,7 +993,7 @@
     }
     &__text{
       margin-top: 20px;
-      font-size: 11px;
+      font-size: 18px;
       line-height: 1.35;
       letter-spacing: 0.33px;
     }
@@ -989,14 +1007,21 @@
     width: 100%;
     font-size: 15px;
     letter-spacing: -0.24px;
-    padding: 14px;
     border-radius: 11px;
     box-sizing: border-box;
-
+    
     &__link{
+      padding: 14px;
       display: inline-block;
       height: 100%;
       width: 100%;
+      box-sizing: border-box;
+        &:hover{
+        opacity: 0.5;
+        background: white;
+        color: $main-text;
+        cursor: pointer;
+      }
     }
   }
   &__toBord{
@@ -1007,13 +1032,21 @@
     width: 100%;
     font-size: 15px;
     letter-spacing: -0.24px;
-    padding: 14px;
     border-radius: 11px;
     box-sizing: border-box;
     &__link{
+      padding: 14px;
       display: inline-block;
       height: 100%;
       width: 100%;
+      box-sizing: border-box;
+
+        &:hover{
+        opacity: 0.5;
+        background: white;
+        color: $main-text;
+        cursor: pointer;
+      }
     }
   }
 
@@ -1340,6 +1373,10 @@
       &--angle{
         font-size: 25px;
         color: $main-color;
+        &:hover{
+          opacity: 0.5;
+          cursor: pointer;
+        }
       }
       &.inactive{
         color: $easy;
@@ -1349,6 +1386,10 @@
       &--angle{
         color: $main-color;
         font-size: 25px;
+          &:hover{
+          opacity: 0.5;
+          cursor: pointer;
+        }
       }
       &.inactive{
         color: $easy;
