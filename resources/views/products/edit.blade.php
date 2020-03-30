@@ -361,14 +361,14 @@
 
             <div class="js-postType__parentDom">
                 <input type="hidden" name="postType" class="js-postType" value="">
-                <div class="c-productNew__submit c-productNew__submit--draft" data-type="draft">
+                <div class="c-productNew__submit c-productNew__submit--draft js-popup'" data-type="draft">
                     <button type="submit" class="c-productNew__submit__button c-productNew__submit__button--draft"
                         name="postType" value="draft">
                         下書き保存する
                     </button>
                 </div>
                 <div class="c-productNew__submit" data-type="register" name="postType" value="register">
-                    <button type="submit" class="c-productNew__submit__button">
+                    <button type="submit" class="c-productNew__submit__button js-popup">
                         登録する
                     </button>
                 </div>
