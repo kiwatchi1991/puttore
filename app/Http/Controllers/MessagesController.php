@@ -28,7 +28,8 @@ class MessagesController extends Controller
 
         $order = Order::where('orders.id', $request->id);
 
-        $saleUserId = $order->join('products', 'orders.product_id', 'products.id')
+        $saleUserId = Order::join('products', 'orders.product_id', 'products.id')
+            ->where('orders.id', $request->id)
             ->select('products.user_id')
             ->first();
 
@@ -38,6 +39,8 @@ class MessagesController extends Controller
         Log::debug($order->get());
         Log::debug('$saleUserId');
         Log::debug($saleUserId);
+        Log::debug('$saleUserId->user_id');
+        Log::debug($saleUserId->user_id);
         Log::debug('$buyUserId');
         Log::debug($buyUserId);
 

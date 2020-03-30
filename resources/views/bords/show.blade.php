@@ -10,10 +10,10 @@
 //購入販売の判断
 $buy_userId = $bord->{'o.u_id'};
 $sell_userId = $bord->{'p.u_id'};
-$order_type = ($buy_userId == $self_user_id) ? "購入" : "販売";
-$class_order_type = ($buy_userId == $self_user_id) ? "buy" : "sell";
+$order_type = ($buy_userId == $self_user_id) ? "buy" : "sale";
+// $class_order_type = ($buy_userId == $self_user_id) ? "buy" : "sell";
 
-if($order_type == "購入"){
+if($order_type == "buy"){
 $pic = ($user->find($sell_userId)->pic) ? $user->find($sell_userId)->pic : '';
 }else{
 $pic = ($user->find($buy_userId)->pic) ? $user->find($buy_userId)->pic : '';
@@ -42,7 +42,7 @@ $pic = ($user->find($buy_userId)->pic) ? $user->find($buy_userId)->pic : '';
     //メッセージの、自分と相手の判断
     $recieve_userId = $message->recieve_user_id;
     @endphp
-    <div class="c-message @if($recieve_userId == $self_user_id) inself @endif">
+    <div class="c-message @if($recieve_userId == $self_user_id ) inself @endif">
         @if($recieve_userId == $self_user_id)
         <div class="c-message__userImg__wrapper">
             <img src="/storage/{{ $pic }}" alt="" class="c-message__userImg">
