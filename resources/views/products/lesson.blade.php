@@ -8,9 +8,11 @@
 
             {{-- 出品者 --}}
             <div class="c-lessonShow__user">
-                <div class="c-lessonShow__userimg">
-                    <img src="/storage/{{ $user[0]->pic }}" alt="">
-                </div>
+                <a href="{{ route('profile.show',$user[0]->id)}}">
+                    <div class="c-lessonShow__userimg">
+                        <img src="/storage/{{ $user[0]->pic }}" alt="">
+                    </div>
+                </a>
                 <div class="c-lessonShow__username">
                     <p>{{ $user[0]->account_name }}</p>
                 </div>

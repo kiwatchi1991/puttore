@@ -91,9 +91,11 @@
 
             {{-- 出品者 --}}
             <div class="c-productShow__user">
-                <div class="c-productShow__userimg">
-                    <img src="/storage/{{ $user[0]->pic }}" alt="">
-                </div>
+                <a href="{{ route('profile.show',$user[0]->id)}}">
+                    <div class="c-productShow__userimg">
+                        <img src="/storage/ $user[0]->pic  }}" alt="">
+                    </div>
+                </a>
                 <div class="c-productShow__username">
                     <p>{{ $user[0]->account_name }}</p>
                 </div>
@@ -130,11 +132,11 @@
             @auth
             {{-- ↓↓↓↓　購入済みの場合はお気に入り・購入ボタン表示しない --}}
             @if(!$isOrder && $product->user_id !== Auth::id())
-            {{-- ほしいものに追加する --}}
+            {{-- お気に入りに追加する --}}
             <div class="c-productShow__like @if($liked) is-active @endif">
                 <button type="submit" class="c-productShow__like__btn js-ajaxLike__btn @if($liked) is-active @endif"
                     data-like="{{ $product->id }}">
-                    @if($liked)ほしいものリストに入っています ♡@else ほしいものリストに追加する ♡@endif
+                    @if($liked)お気に入りに入っています ♡@else お気に入りに追加する ♡@endif
                 </button>
             </div>
 
@@ -142,11 +144,11 @@
             <div class="c-productShow__buynow">
                 <form method="post" action="{{ route('orders.create',$product->id) }}">
                     @csrf
-                    <button type="submit" class="">
+                    <button type="submit" class=""></button>
 
-                        <script type="text/javascript" src="https://checkout.pay.jp/" class="payjp-button"
-                            id="payjp-button" data-key="pk_test_65b86d16158dad1607ce9b69" data-on-created="onCreated"
-                            data-text="今すぐ購入する" data-submit-text="支払いする"></script>
+                    <script type="text/javascript" src="https://checkout.pay.jp/" class="payjp-button" id="payjp-button"
+                        data-key="pk_test_65b86d16158dad1607ce9b69" data-on-created="onCreated" data-text="今すぐ購入する"
+                        data-submit-text="支払いする"></script>
                     </button>
                 </form>
             </div>
