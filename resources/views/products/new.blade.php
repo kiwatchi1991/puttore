@@ -226,11 +226,12 @@
                 <p class="c-productNew__title__label">価格<span class="required">必須</span></p>
                 <div class="c-productNew__price--wrap">
                     <div class="c-productNew__price--icon">¥</div>
-                    <input id="default_price" type="text"
-                        class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
-                        name="default_price" value="{{ old('default_price') }}" autocomplete="default_price"
-                        placeholder="価格" required>
-
+                    <div class="c-productNew__price__inputWrapper">
+                        <input id="default_price" type="text"
+                            class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
+                            name="default_price" value="{{ old('default_price') }}" autocomplete="default_price"
+                            placeholder="価格" required>
+                    </div>
                 </div>
                 @error('default_price')
                 <span class="c-productNew__error c-productNew__error--default_price" role="alert">

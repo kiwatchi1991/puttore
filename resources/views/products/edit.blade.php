@@ -231,10 +231,12 @@
                 <p class="c-productNew__title__label">価格<span class="required">必須</span></p>
                 <div class="c-productNew__price--wrap">
                     <div class="c-productNew__price--icon">¥</div>
-                    <input id="default_price" type="tel"
-                        class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
-                        name="default_price" value="{{ $product->default_price }}" autocomplete="default_price"
-                        placeholder="価格" required>
+                    <div class="c-productNew__price__inputWrapper">
+                        <input id="default_price" type="tel"
+                            class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
+                            name="default_price" value="{{ $product->default_price }}" autocomplete="default_price"
+                            placeholder="価格" required>
+                    </div>
 
                     @error('default_price')
                     <span class="" role="alert">
@@ -248,8 +250,8 @@
             <div class="c-productEdit__discount-price">
                 <p class="c-productNew__title__label c-productNew__title__label--discount">割引価格<span
                         class="options">任意</span></p>
-                <div class="c-productNew__price--wrap">
-                    <div class="c-productNew__price--icon">¥</div>
+                <div class="c-productNew__price--wrap c-productNew__price--wrap--discount">
+                    <div class="c-productNew__price--icon c-productNew__price--icon--discount">¥</div>
                     <input id="discount_price"
                         class="c-productNew__input-area c-productNew__input-area--discount @error('discount_price') is-invalid @enderror"
                         name="discount_price" value="@if($discount_price) {{ $discount_price->discount_price }} @endif"

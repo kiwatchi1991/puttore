@@ -71,6 +71,4 @@ $pic = ($user->find($buy_userId)->pic) ? $user->find($buy_userId)->pic : '';
     </form>
 </div>
 
-{{-- : {{ $order }} --}}
-
 @endsection

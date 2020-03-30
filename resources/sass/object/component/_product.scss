@@ -278,8 +278,8 @@
     }
     &__wrapper{
       @include pc{
-        max-width: 900px;
-        margin: 0 auto;
+        // max-width: 900px;
+        // margin: 0 auto;
       }
     }
     &__title__head{
@@ -289,7 +289,7 @@
       color: $main-color;
       padding-bottom: 24px;
       @include pc{
-        max-width: 900px;
+        // max-width: 900px;
         margin: 0 auto;
       }
 
@@ -353,6 +353,7 @@
     &__deleteLesson{
       font-size: 26px;
       margin-right: 12px;
+      cursor: pointer;
     }
     &__title{
       font-size: 12px;
@@ -489,6 +490,7 @@
           }
           &__imgIcon{
             color: $main-color;
+            cursor: pointer;
           }
     }
     &.active{
@@ -525,6 +527,7 @@
       margin-top: 16px;
       &__btn{
         color: $main-color;
+        cursor: pointer;
         @include pc{
           font-size: 18px;
         }
@@ -537,23 +540,37 @@
     }
     &--wrap{
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       justify-content: flex-end;
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
       &.date{
         justify-content: space-between;
         margin: 16px auto 0;
       }
-      @include pc{
+      &--discount{
+        align-items: flex-end;
       }
     }
     &--icon{
       padding-right: 8px;
+      padding-top: 16px;
+      height: 38px;
+      vertical-align: top;
+      line-height: 38px;
       @include pc{
       font-size: 20px;
       margin-right: 8px;
+    }
+    &--discount{
+        height: auto;
+        vertical-align: auto;
+        line-height: normal;
+        padding-bottom: 5px;
       }
+    }
+    &__inputWrapper{
+      width: 100%;
     }
 
   }
@@ -591,6 +608,7 @@
       background-repeat: no-repeat;
       border-radius: 15px;
       overflow: hidden;
+      cursor: pointer;
       &.area1{
         background-image:url('/storage/images/add_img1.png');
       }
@@ -658,7 +676,6 @@
     margin-top: 8px;
     display: block;
     &--default_price{
-      width: 65%;
       margin: 8px auto 0;
     }
   }
@@ -1069,6 +1086,7 @@
     &__deleteLesson{
       font-size: 26px;
       margin-right: 12px;
+      cursor: pointer;
     }
     &__title{
       font-size: 12px;
@@ -1166,6 +1184,10 @@
           &__imgIcon{
             color: $main-color;
           }
+          &__label{
+            cursor: pointer;
+
+          }
     }
     &.active{
       display: block;
@@ -1188,6 +1210,7 @@
       &__btn{
         color: $main-color;
         font-size: 16px;
+        cursor: pointer;
       }
     }
   }
