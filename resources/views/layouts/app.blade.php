@@ -64,7 +64,7 @@
                   </a>
                 </div>
               </div>
-              <ul class="global-nav__list">
+              <ul class="global-nav__list @guest guest @endguest">
 
                 @auth
 
