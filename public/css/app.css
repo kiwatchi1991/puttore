@@ -7277,7 +7277,7 @@ h4,
 h5 {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 textarea {
