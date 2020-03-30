@@ -336,13 +336,8 @@ class ProductsController extends Controller
         } else {
             $product->open_flg = 0;
             $product->save();
-            return redirect()->route('lessons', ['p_id' => $product->id, 'l_id' => 1])->with('flash_message', '作品を公開しました');
+            return redirect()->route('products.show', $product->id)->with('flash_message', '作品を公開しました');
         }
-
-
-        // リダイレクトする
-        // その時にsessionフラッシュにメッセージを入れる
-        // return redirect('/products')->with('flash_message', '作品を公開しました');
     }
 
     /**
