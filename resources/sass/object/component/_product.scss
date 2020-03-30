@@ -879,6 +879,7 @@
       height: 100%;
       color: white;
       border-radius: 8px;
+      background: $main-color;
       &.is-active{
         background: white;
         border: 1px solid $main-color;

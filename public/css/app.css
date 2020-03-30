@@ -2296,6 +2296,7 @@ a:visited {
   height: 100%;
   color: white;
   border-radius: 8px;
+  background: #00ac7d;
 }
 
 .c-productShow__like__btn.is-active {
