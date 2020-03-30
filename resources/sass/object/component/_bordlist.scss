@@ -1,4 +1,10 @@
 .c-bords{
+    @include pc{
+      width: 520px;
+      margin: 24px auto 0;
+      border-top: 1px solid  #00ac7d;
+      padding-bottom: 48px;
+    }
     &__head{
         height: 50px;
         line-height: 50px;
@@ -13,14 +19,6 @@
           border: none;
         }
     }
-}
-
-.c-bords{
-  @include pc{
-    width: 520px;
-    margin: 24px auto 0;
-    border-top: 1px solid  #00ac7d;
-}
 }
 
 .c-bord{
