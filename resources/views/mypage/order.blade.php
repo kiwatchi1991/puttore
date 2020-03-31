@@ -84,7 +84,7 @@
                 <thead>
                     <tr>
                         <th class="c-mypage__sale__list c-mypage__sale__list--day">振込依頼日</th>
-                        <th class="c-mypage__sale__list c-mypage__sale__list--price">売上</th>
+                        <th class="c-mypage__sale__list c-mypage__sale__list--price">振込金額</th>
                         <th class="c-mypage__sale__list c-mypage__sale__list--status">状況</th>
                     </tr>
                 </thead>
