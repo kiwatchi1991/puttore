@@ -32,7 +32,7 @@
                     <tr>
                         <td class="c-mypage__sale__list c-mypage__sale__list--day">
                             {{$order->created_at->format('Y年m月d日')}}</td>
-                        <td class="c-mypage__sale__list c-mypage__sale__list--title">{{$order->product_id}}</td>
+                        <td class="c-mypage__sale__list c-mypage__sale__list--title">{{mb_strimwidth($order->name,0,10,'...')}}</td>
                         <td class="c-mypage__sale__list c-mypage__sale__list--price">¥
                             {{number_format($order->sale_price)}}</td>
                     </tr>

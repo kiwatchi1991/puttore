@@ -34,7 +34,9 @@ class mypageController extends Controller
       Log::debug('<<<<<<    transferShow    >>>>>>>>>>>');
 
       $transfer = Transfer::find($id);
-      $orders =  Order::where('transfer_id','=',$id)->get();
+      $orders =  Order::where('transfer_id','=',$id)
+      ->join('products','orders.product_id','products.id')
+      ->get();
 
       Log::debug('$orders');
       Log::debug($orders);
