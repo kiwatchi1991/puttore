@@ -22,7 +22,29 @@ use Illuminate\Support\Facades\Log;
 
 class mypageController extends Controller
 {
+
+
+
     /**
+     *  処理済み売り上げ表示
+     */
+
+    public function showTransfer(Request $request, $id)
+    {
+      Log::debug('<<<<<<    transferShow    >>>>>>>>>>>');
+
+      $transfer = Transfer::find($id);
+      $orders =  Order::where('transfer_id','=',$id)->get();
+
+      Log::debug('$orders');
+      Log::debug($orders);
+
+      return view('mypage.transfer', compact(['orders','transfer']));
+
+    }
+
+
+      /**
      *  振込依頼作成
      */
 

@@ -93,7 +93,7 @@
                     <tr>
                         <td>{{ $transfer->created_at->format('Y年m月d日') }}</td>
                         <td>¥ {{ number_format($transfer->transfer_price) }}</td>
-                        <td><a href="">@if($transfer->status == 0)申請中@else 振込済 @endif</a></td>
+                        <td><a href="{{ route('mypage.order.transfer.show',$transfer->id) }}">@if($transfer->status == 0)申請中@else 振込済 @endif</a></td>
                     </tr>
                     @endforeach
 
