@@ -22,9 +22,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="c-mypage__sale__list c-mypage__sale__list--day">購入日</th>
+                        <th class="c-mypage__sale__list c-mypage__sale__list--day">販売日</th>
                         <th class="c-mypage__sale__list c-mypage__sale__list--title">タイトル</th>
-                        <th class="c-mypage__sale__list c-mypage__sale__list--price">価格</th>
+                        <th class="c-mypage__sale__list c-mypage__sale__list--price">販売価格</th>
                     </tr>
                 </thead>
                 <tbody>
