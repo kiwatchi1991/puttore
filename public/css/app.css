@@ -1815,7 +1815,7 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-productNew__lesson--textarea {
-    min-height: 300px;
+    min-height: 500px;
     background: #E5F6F2;
     border-radius: 0 0 8px 8px;
   }
@@ -1832,10 +1832,10 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-productNew__lesson--preview {
+    height: 535px;
     width: 49%;
     border: 1px solid #00ac7d;
     border-radius: 8px;
-    max-height: 500px;
   }
 }
 
@@ -1846,6 +1846,8 @@ a:visited {
 
 .c-productNew__lesson__addBtn__btn {
   color: #00ac7d;
+  font-size: 16px;
+  margin-bottom: 32px;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -2712,11 +2714,18 @@ a:visited {
   max-height: 500px;
 }
 
+@media (min-width: 768px) {
+  .c-productEdit__lesson--textarea {
+    min-height: 500px;
+    background: #E5F6F2;
+    border-radius: 0 0 8px 8px;
+  }
+}
+
 .c-productEdit__lesson--preview {
   padding: 24px 16px;
-  min-height: 300px;
+  height: 535px;
   background: #fff;
-  max-height: 700px;
 }
 
 .c-productEdit__lesson__addBtn {

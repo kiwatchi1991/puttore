@@ -548,7 +548,7 @@
       box-sizing: border-box;
       max-height: 500px;
       @include pc{
-        min-height: 300px;
+        min-height: 500px;
         background: $bg;
         border-radius: 0 0 8px 8px;
       }
@@ -561,11 +561,10 @@
       max-height: 700px;
       overflow: auto;
       @include pc{
+        height: 535px;
         width: 49%;
         border: 1px solid $main-color;
         border-radius: 8px;
-
-        max-height: 500px;
       }
     }
     &__addBtn{
@@ -573,6 +572,8 @@
       margin-top: 16px;
       &__btn{
         color: $main-color;
+        font-size: 16px;
+        margin-bottom: 32px;
         cursor: pointer;
         transition: all 0.3s;
          &:hover{
@@ -1300,12 +1301,16 @@
       width: 100%;
       box-sizing: border-box;
       max-height: 500px;
+      @include pc{
+        min-height: 500px;
+        background: $bg;
+        border-radius: 0 0 8px 8px;
+      }
     }
     &--preview{
       padding: 24px 16px;
-      min-height: 300px;
+      height: 535px;
       background: #fff;
-      max-height: 700px;
     }
     &__addBtn{
       text-align: center;
