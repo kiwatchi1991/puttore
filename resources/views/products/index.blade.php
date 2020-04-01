@@ -18,7 +18,7 @@
               value="{{ $categories->id }}" autocompplete="lang" @if(!$categorieIds==null) @if(in_array($categories->id,
             $categorieIds))checked @endif @endif>
             <label class="c-searchBox__label" for="c-{{ $categories->id }}">
-              {{ $categories->name }}
+              <span>{{ $categories->name }}</span>
             </label>
             @endforeach
           </div>
@@ -35,7 +35,7 @@
               @if(in_array($difficults->id,
             $difficultiesIds))checked @endif @endif>
             <label class="c-searchBox__label" for="d-{{ $difficults->id }}">
-              {{ $difficults->name }}
+              <span>{{ $difficults->name }}</span>
             </label>
             @endforeach
           </div>

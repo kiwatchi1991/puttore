@@ -80,7 +80,7 @@
         }
 
         &__subject{
-            margin-top: 16px;
+            margin-top: 1 6px;
             text-align: center;
             font-size: 17px;
             color: $main-color;
@@ -151,8 +151,17 @@
             background: orange;
             width: 100%;
             color: white;
+            transition: all .3s;
             &:visited{
-                color: white;
+              color: white;
+            }
+            &:hover{
+              box-sizing: border-box;
+              background: white;
+              color: orange;
+              border: 1px solid orange;
+              opacity: 1;
+              transition: all .3s;
             }
         }
     }

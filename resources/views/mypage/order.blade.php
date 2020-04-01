@@ -34,11 +34,13 @@
                 @if ($thisMonth->count()==0)
                 <div class="c-mypage__sale__thisMonth__price"><span class="c-mypage__sale__icon">¥</span> 0</div>
                 @endif
+                <div>
+                    @foreach($thisMonth as $mon => $price)
+                    <div class="c-mypage__sale__thisMonth__detail"><a
+                            href="{{ route('mypage.order.show',($mon)?$mon:'') }}">詳細</a></div>
+                    @endforeach
+                </div>
             </div>
-            @foreach($thisMonth as $mon => $price)
-            <div class="c-mypage__sale__thisMonth__detail"><a
-                    href="{{ route('mypage.order.show',($mon)?$mon:'') }}">詳細</a></div>
-            @endforeach
         </div>
 
         {{-- 未振込の計上 --}}
@@ -93,7 +95,8 @@
                     <tr>
                         <td>{{ $transfer->created_at->format('Y年m月d日') }}</td>
                         <td>¥ {{ number_format($transfer->transfer_price) }}</td>
-                        <td><a href="{{ route('mypage.order.transfer.show',$transfer->id) }}">@if($transfer->status == 0)申請中@else 振込済 @endif</a></td>
+                        <td><a href="{{ route('mypage.order.transfer.show',$transfer->id) }}">@if($transfer->status ==
+                                0)申請中@else 振込済 @endif</a></td>
                     </tr>
                     @endforeach
 

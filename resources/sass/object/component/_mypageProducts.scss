@@ -12,8 +12,10 @@
         }
         &--sale{
             text-align: left;
+            width: 87.5vw;
             @include pc{
-            text-align: center;
+             width: 280px;
+             text-align: center;
           }
         }
         &--paid{
