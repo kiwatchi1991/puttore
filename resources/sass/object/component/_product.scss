@@ -385,6 +385,11 @@
       font-size: 26px;
       margin-right: 12px;
       cursor: pointer;
+      transition: all 0.3s;
+       &:hover{
+        opacity: 0.7;
+        transition: all 0.3s;
+      }
     }
     &__title{
       font-size: 12px;
@@ -418,6 +423,9 @@
         line-height: 1.41;
         display: inline-block;
         font-size: 12px;
+        span{
+          cursor: pointer;
+        }
         &::before{
             content: "";
             display: block;
@@ -521,7 +529,14 @@
           }
           &__imgIcon{
             color: $main-color;
-            cursor: pointer;
+             &__icon{
+              cursor: pointer;
+              transition: all 0.3s;
+              &:hover{
+                opacity: 0.7;
+                transition: all 0.3s;
+              }
+            }
           }
     }
     &.active{
@@ -559,6 +574,11 @@
       &__btn{
         color: $main-color;
         cursor: pointer;
+        transition: all 0.3s;
+         &:hover{
+            opacity: 0.7;
+            transition: all 0.3s;
+          }
         @include pc{
           font-size: 18px;
         }
@@ -640,6 +660,11 @@
       border-radius: 15px;
       overflow: hidden;
       cursor: pointer;
+      transition: all 0.3s;
+      &:hover{
+        opacity: 0.3;
+        transition: all 0.3s;
+      }
       &.area1{
         background-image:url('/storage/images/add_img1.png');
       }
@@ -685,6 +710,12 @@
   color: #ffffff;
   background: orange;
   border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+    &:hover{
+      opacity: 0.7;
+      transition: all 0.3s;
+    }
   @include pc{
     width: 80%;
   }
@@ -698,6 +729,7 @@
       width: 100%;
       color: #ffffff;
       font-size: 14px;
+      cursor: pointer;
     }
   }
   &__error{
@@ -1149,6 +1181,9 @@
       font-size: 26px;
       margin-right: 12px;
       cursor: pointer;
+      &:hover{
+        opacity: 0.7;
+      }
     }
     &__title{
       font-size: 12px;
@@ -1172,6 +1207,9 @@
         line-height: 17px;
         display: inline-block;
         font-size: 12px;
+        span{
+          cursor: pointer;
+        }
         &::before{
             content: "";
             display: block;
@@ -1245,11 +1283,14 @@
           }
           &__imgIcon{
             color: $main-color;
+            &__icon{
+              cursor: pointer;
+              &:hover{
+                opacity: 0.7;
+              }
+            }
           }
-          &__label{
-            cursor: pointer;
-
-          }
+       
     }
     &.active{
       display: block;
@@ -1273,6 +1314,9 @@
         color: $main-color;
         font-size: 16px;
         cursor: pointer;
+         &:hover{
+           opacity: 0.7;
+         }
       }
     }
   }
@@ -1319,6 +1363,10 @@
       background-size: contain;
       border-radius: 15px;
       overflow: hidden;
+      &:hover{
+        opacity: 0.3;
+        transition: all 0.3s;
+      }
     }
     &__input{
       width: 30%;
@@ -1343,6 +1391,10 @@
   color: #ffffff;
   background: orange;
   border-radius: 10px;
+  cursor: pointer;
+    &:hover{
+      opacity: 0.7;
+    }
   &--draft{
     margin-top: 32px;
     background: $easy;
@@ -1351,9 +1403,9 @@
     padding: 10px;
     width: 100%;
     height: 100%;
-      color: #ffffff;
-      font-size: 14px;
-
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
     }
   }
 

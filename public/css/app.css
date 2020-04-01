@@ -146,7 +146,7 @@ a:visited {
 }
 
 .global-nav__pc header {
-  margin-bottom: 13em;
+  margin-bottom: 12em;
   position: relative;
   width: 50px;
   background-color: #444;
@@ -1607,6 +1607,12 @@ a:visited {
   font-size: 26px;
   margin-right: 12px;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.c-productNew__deleteLesson:hover {
+  opacity: 0.7;
+  transition: all 0.3s;
 }
 
 .c-productNew__title {
@@ -1650,6 +1656,10 @@ a:visited {
   line-height: 1.41;
   display: inline-block;
   font-size: 12px;
+}
+
+.c-productNew__label span {
+  cursor: pointer;
 }
 
 .c-productNew__label::before {
@@ -1780,7 +1790,16 @@ a:visited {
 
 .c-productNew__lesson__header__imgIcon {
   color: #00ac7d;
+}
+
+.c-productNew__lesson__header__imgIcon__icon {
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.c-productNew__lesson__header__imgIcon__icon:hover {
+  opacity: 0.7;
+  transition: all 0.3s;
 }
 
 .c-productNew__lesson.active {
@@ -1828,6 +1847,12 @@ a:visited {
 .c-productNew__lesson__addBtn__btn {
   color: #00ac7d;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.c-productNew__lesson__addBtn__btn:hover {
+  opacity: 0.7;
+  transition: all 0.3s;
 }
 
 @media (min-width: 768px) {
@@ -1925,6 +1950,12 @@ a:visited {
   border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.c-productNew__image__area:hover {
+  opacity: 0.3;
+  transition: all 0.3s;
 }
 
 .c-productNew__image__area.area1 {
@@ -1981,6 +2012,13 @@ a:visited {
   color: #ffffff;
   background: orange;
   border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.c-productNew__submit:hover {
+  opacity: 0.7;
+  transition: all 0.3s;
 }
 
 @media (min-width: 768px) {
@@ -2000,6 +2038,7 @@ a:visited {
   width: 100%;
   color: #ffffff;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .c-productNew__error {
@@ -2533,6 +2572,10 @@ a:visited {
   cursor: pointer;
 }
 
+.c-productEdit__deleteLesson:hover {
+  opacity: 0.7;
+}
+
 .c-productEdit__title {
   font-size: 12px;
   margin-left: 16px;
@@ -2559,6 +2602,10 @@ a:visited {
   line-height: 17px;
   display: inline-block;
   font-size: 12px;
+}
+
+.c-productEdit__label span {
+  cursor: pointer;
 }
 
 .c-productEdit__label::before {
@@ -2646,8 +2693,12 @@ a:visited {
   color: #00ac7d;
 }
 
-.c-productEdit__lesson__header__label {
+.c-productEdit__lesson__header__imgIcon__icon {
   cursor: pointer;
+}
+
+.c-productEdit__lesson__header__imgIcon__icon:hover {
+  opacity: 0.7;
 }
 
 .c-productEdit__lesson.active {
@@ -2677,6 +2728,10 @@ a:visited {
   color: #00ac7d;
   font-size: 16px;
   cursor: pointer;
+}
+
+.c-productEdit__lesson__addBtn__btn:hover {
+  opacity: 0.7;
 }
 
 .c-productEdit__price {
@@ -2730,6 +2785,11 @@ a:visited {
   overflow: hidden;
 }
 
+.c-productEdit__image__area:hover {
+  opacity: 0.3;
+  transition: all 0.3s;
+}
+
 .c-productEdit__image__input {
   width: 30%;
   height: 100%;
@@ -2754,6 +2814,11 @@ a:visited {
   color: #ffffff;
   background: orange;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.c-productEdit__submit:hover {
+  opacity: 0.7;
 }
 
 .c-productEdit__submit--draft {
@@ -2767,6 +2832,7 @@ a:visited {
   height: 100%;
   color: #ffffff;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .c-product__input-area {
@@ -3505,10 +3571,13 @@ a:visited {
   .c-messages__button {
     height: 45px;
     width: 10vw;
+    transition: all 0.3s;
   }
 
   .c-messages__button:hover {
     cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.3s;
   }
 }
 

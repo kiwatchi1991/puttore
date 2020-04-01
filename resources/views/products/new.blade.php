@@ -86,7 +86,7 @@
                         value="{{ $categories->id }}" autocomplete="lang" @if (in_array($categories->id,
                     old('lang',[]))) checked @endif required>
                     <label class="c-productNew__label" for="c-{{ $categories->id }}">
-                        {{ $categories->name }}
+                        <span>{{ $categories->name }}</span>
                     </label>
                     @endforeach
                 </div>
@@ -99,7 +99,7 @@
                         class="c-productNew__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
                         value="{{ $difficults->id }}" autocomplete="difficult" required>
                     <label class="c-productNew__label" for="d-{{ $difficults->id }}">
-                        {{ $difficults->name }}
+                        <span>{{ $difficults->name }}</span>
                     </label>
                     @endforeach
                 </div>
@@ -181,7 +181,8 @@
                             <div class="c-productNew__lesson__header__imgIcon js-insertImg" data-status="preview">
 
                                 <label for="uploadimg" class="c-productNew__header__label js-imgInputlabel">
-                                    <i class="far fa-image"></i>
+                                    <span class="c-productNew__lesson__header__imgIcon__icon"><i
+                                            class="far fa-image"></i></span>
                                     <input id="uploadimg" class="c-productNew__lesson__header__input js-lessonUploadImg"
                                         type="file" name="lesson_pic">
                                 </label>
