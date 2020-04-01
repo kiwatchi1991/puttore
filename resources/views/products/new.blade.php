@@ -217,8 +217,8 @@
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-        <div class="c-productNew__lesson__addBtn js-addLesson__button">
-            <button class="c-productNew__lesson__addBtn__btn"><i class="fas fa-plus-circle"></i>
+        <div class="c-productNew__lesson__addBtn">
+            <button class="c-productNew__lesson__addBtn__btn js-addLesson__button"><i class="fas fa-plus-circle"></i>
                 LESSONを追加する</button>
         </div>
         <div class="c-productNew__wrapper">
