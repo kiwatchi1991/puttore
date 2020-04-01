@@ -27,12 +27,9 @@ $(document).on('click', '.js-deleteIcon', function () {
                 })
                     // Ajaxリクエストが成功した場合
                     .done(function () {
-                        console.log('ここまで4');
                     })
                     // Ajaxリクエストが失敗した場合
                     .fail(function (data) {
-                        console.log('エラー');
-                        console.log(data);
                     });
             }
             //レッスンを画面から削除
@@ -86,9 +83,7 @@ $(document).on('change', '.js-lessonUploadImg', function () {
         })
         // Ajaxリクエストが失敗した場合
         .fail(function (data) {
-            console.log('エラー');
-            console.log('エラー');
-            console.log(data);
+            //
         })
 });
 
@@ -99,12 +94,9 @@ let $button = $('.js-addLesson__button');
 // $(document).on('click', '.js-addLesson__button', function (e) {
 $button.on('click', function (e) {
     e.preventDefault();
-    console.log('レッスン追加イベント！');
     //レッスンのコピー
     let $copyTaget = $('.js-add__target:last-child');
-    console.log('ここまで1');
     $copyTaget.clone().appendTo('#js-lesson__section');
-    console.log('ここまで2');
     
     let $newCopyTaget = $('.js-add__target:last-child');
     //エラーメッセージ削除
@@ -114,14 +106,12 @@ $button.on('click', function (e) {
     $newCopyTaget.find('#hidden').remove();
     $newCopyTaget.find('#title').val('').keyup();
     $newCopyTaget.find('textarea').val('').keyup();
-    console.log('ここまで3');
     
     //初期表示をプレビューではなく入力に
     $newCopyTaget.find('.js-lesson__block--input').removeClass('active');
     $newCopyTaget.find('.js-lesson__block--preview').removeClass('active');
     $newCopyTaget.find('.js-toggleTab__preview').removeClass('active');
     $newCopyTaget.find('.js-toggleTab__input').removeClass('active');
-    console.log('ここまで4');
 
     $newCopyTaget.find('.js-lesson__block--input').addClass('active');
     $newCopyTaget.find('.js-toggleTab__preview').addClass('active');

@@ -7,10 +7,6 @@ let slideContainerWidth = slideItemWidth * slideItemNum;
 let DURATION = 500;
 $slideContainer.attr('style', 'width:' + slideContainerWidth + 'px');
 
-console.log('slideItemNum' + slideItemNum);
-console.log('slideItemWidth' + slideItemWidth);
-console.log('slideContainerWidth' + slideContainerWidth);
-
 $('.js-slider__next').on('click', function () {
   if (currentItemNum < slideItemNum) {
     $slideContainer.animate({ left: '-=' + slideItemWidth + 'px' }, DURATION);

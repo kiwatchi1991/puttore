@@ -6,8 +6,6 @@ require('./components/previewImage');
 require('./components/add-lesson');
 
 require('./components/ajaxLike');
-require('./components/ajaxFollow');
-require('./components/ajaxCart');
 require('./components/date-picker');
 require('./components/sessionFlash');
 require('./components/imgSlider');
