@@ -68,7 +68,7 @@
                     placeholder="教材のタイトル（例：Twitter風アプリを作ろう）" required>
 
                 @error('name')
-                <span class="" role="alert">
+                <span class="error" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
@@ -108,7 +108,7 @@
                     </div>
 
                     @error('name')
-                    <span class="" role="alert">
+                    <span class="error" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
@@ -123,7 +123,7 @@
                     required>{{ $product->detail }}</textarea>
 
                 @error('detail')
-                <span class="" role="alert">
+                <span class="error" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
@@ -151,7 +151,7 @@
                         <div class="c-productNew__deleteLesson js-deleteIcon"><i class="far fa-trash-alt"></i></div>
 
                         @error('number')
-                        <span class="" role="alert">
+                        <span class="error" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
@@ -212,12 +212,12 @@
             @endforeach
         </div>
         @error('lessons.*.title')
-        <span class="" role="alert">
+        <span class="error" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
         @error('lessons.*.lesson')
-        <span class="" role="alert">
+        <span class="error" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
@@ -239,12 +239,12 @@
                             placeholder="価格" required>
                     </div>
 
-                    @error('default_price')
-                    <span class="" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
                 </div>
+                @error('default_price')
+                <span class="error" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
 
             {{-- 割引価格 --}}
@@ -272,7 +272,7 @@
                     </div>
                 </div>
                 @error('sale_price')
-                <span class="" role="alert">
+                <span class="error" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
@@ -285,7 +285,7 @@
                     class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
                     data-input="skills" name="skills" value="" rows="7" required>{{ $product->skills }}</textarea>
                 @error('skills')
-                <span class="" role="alert">
+                <span class="error" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
