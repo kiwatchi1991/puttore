@@ -104,8 +104,9 @@ $button.on('click', function (e) {
     $newCopyTaget.find('#lesson-error').remove();
     
     $newCopyTaget.find('#hidden').remove();
-    $newCopyTaget.find('#title').val('').keyup();
-    $newCopyTaget.find('textarea').val('').keyup();
+    $newCopyTaget.find('#title').val('');
+    $newCopyTaget.find('textarea').val('');
+    $newCopyTaget.find('#preview').html('');
     
     //初期表示をプレビューではなく入力に
     $newCopyTaget.find('.js-lesson__block--input').removeClass('active');
