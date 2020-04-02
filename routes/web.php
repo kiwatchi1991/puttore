@@ -72,7 +72,9 @@ Auth::routes();
 Route::get('/', function () {
   return view('index');
 });
+//ホーム
 Route::get('/',  'indexController@index')->name('home');
+
 
 
 // 利用規約ページ
@@ -137,7 +139,6 @@ Route::group(['middleware' => 'check'], function () {
   //ユーザー
   Route::get('/profile/{id}/edit', 'ProfilesController@edit')->name('profile.edit');
   Route::post('/profile/{id}/edit', 'ProfilesController@update')->name('profile.update');
-  Route::get('/profile/{id}',  'ProfilesController@show')->name('profile.show');
   Route::get('/profile/{id}/delete',  'ProfilesController@deleteShow')->name('profile.deleteShow');
   Route::post('/profile/{id}/delete',  'ProfilesController@deleteData')->name('profile.deleteData');
   Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
@@ -151,6 +152,8 @@ Route::group(['middleware' => 'check'], function () {
   Route::get('/reset/{token}', 'ChangeEmailController@reset');
   Route::post('/email', 'ChangeEmailController@sendChangeEmailLink');
 });
+//プロフィールページ
+Route::get('/profile/{id}',  'ProfilesController@show')->name('profile.show');
 
 Route::get('/products',  'ProductsController@index')->name('products');
 Route::post('/products',  'ProductsController@index')->name('products');
