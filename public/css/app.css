@@ -7356,6 +7356,8 @@ a:visited {
 button {
   border: none;
   background: none;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .container {
@@ -7418,6 +7420,11 @@ span.error {
 
 a:hover {
   opacity: 0.3;
+  transition: all 0.3s;
+}
+
+button:hover {
+  opacity: 0.7;
   transition: all 0.3s;
 }
 
