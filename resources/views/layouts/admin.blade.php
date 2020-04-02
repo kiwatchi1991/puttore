@@ -122,12 +122,20 @@
                 <nav class="global-nav__pc--wrap">
                     <ul class="global-nav__pc--list">
 
-                        @auth
+
+                        <li class="global-nav__item global-nav__item--logout admin">
+                            <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                href="{{ route('logout') }}" class="global-nav__item__link admin">ログアウト</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+
                         <li class="">
                             <a href=" {{ route('admin.user') }}" class="global-nav__item__link">ユーザー管理</a>
                         </li>
 
-                        @endauth
+
 
                         <li class="">
                             <a href="{{ route('admin.product') }}" class="global-nav__item__link">コンテンツ管理</a>
