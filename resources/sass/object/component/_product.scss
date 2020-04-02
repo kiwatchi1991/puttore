@@ -306,6 +306,8 @@
   padding: 30px;
     @include pc{
       background: white;
+      margin: 0 auto;
+      max-width: 980px;
     }
     &__wrapper{
       @include pc{
@@ -1141,6 +1143,8 @@
 .c-productEdit{
   background: $bg;
   padding: 30px;
+  margin: 0 auto;
+  max-width: 980px;
     @include pc{
       background: white;
     }
