@@ -3373,6 +3373,12 @@ a:visited {
   color: #ffffff;
   background: orange;
   border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.c-profileEdit__submit:hover {
+  opacity: 0.7;
+  transition: all 0.3s;
 }
 
 .c-profileEdit__submit__button {
@@ -3381,6 +3387,10 @@ a:visited {
   height: 100%;
   color: #ffffff;
   font-size: 14px;
+}
+
+.c-profileEdit__submit__button:hover {
+  opacity: 1;
 }
 
 .c-profileDelete__title {
@@ -3821,6 +3831,12 @@ a:visited {
   color: #ffffff;
   background: orange;
   border-radius: 7px;
+  transition: all 0.3s;
+}
+
+.c-login__button:hover {
+  opacity: 0.7;
+  transition: all 0.3s;
 }
 
 @media (min-width: 768px) {
@@ -3835,6 +3851,10 @@ a:visited {
   height: 100%;
   color: #ffffff;
   font-size: 14px;
+}
+
+.c-login__btn:hover {
+  opacity: 1;
 }
 
 @media (min-width: 768px) {
@@ -4000,6 +4020,12 @@ a:visited {
   color: #ffffff;
   background: orange;
   border-radius: 7px;
+  transition: all 0.3s;
+}
+
+.c-register__button:hover {
+  opacity: 0.7;
+  transition: all 0.3s;
 }
 
 @media (min-width: 768px) {
@@ -4014,6 +4040,10 @@ a:visited {
   height: 100%;
   color: #ffffff;
   font-size: 14px;
+}
+
+.c-register__btn:hover {
+  opacity: 1;
 }
 
 @media (min-width: 768px) {
@@ -7424,6 +7454,15 @@ a:hover {
 }
 
 button:hover {
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+
+input[type=submit] {
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
   opacity: 0.7;
   transition: all 0.3s;
 }

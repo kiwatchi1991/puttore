@@ -117,6 +117,11 @@
         color: #ffffff;
         background: orange;
         border-radius: 7px;
+        transition: all 0.3s;
+        &:hover{
+          opacity: 0.7;
+          transition: all 0.3s;
+        }
         @include pc{
           width: 100%;
         }
@@ -127,6 +132,9 @@
         height: 100%;
         color: #ffffff;
         font-size: 14px;
+          &:hover{
+          opacity: 1;
+        }
         @include pc{
           font-size: 15px;
         }

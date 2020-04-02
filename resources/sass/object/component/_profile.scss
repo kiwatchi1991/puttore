@@ -201,6 +201,11 @@
   color: #ffffff;
   background: orange;
   border-radius: 10px;
+  transition: all 0.3s;
+    &:hover{
+        opacity: 0.7;
+        transition: all 0.3s;
+}
   
   &__button{
     padding: 10px;
@@ -208,6 +213,9 @@
     height: 100%;
       color: #ffffff;
       font-size: 14px;
+       &:hover{
+          opacity: 1;
+        }
     }
   }
   
