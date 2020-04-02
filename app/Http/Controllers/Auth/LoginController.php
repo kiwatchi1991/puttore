@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -46,10 +47,15 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    protected function redirectTo()
+    protected function authenticated()
     {
         $intended = session('url.intended');
-        return redirect($intended)->with('flash_message', 'ログインしました');
+        if (parse_url($intended, PHP_URL_PATH) == '/') {
+            $id = Auth::user()->id;
+            return redirect()->route('profile.show', $id)->with('flash_message', 'ログインしました');
+        } else {
+            return redirect($intended)->with('flash_message', 'ログインしました');
+        }
     }
 
     /**
