@@ -16,9 +16,9 @@ $like.on('click', function () {
     .done(function () {
         $this.toggleClass('is-active');
         if ($this.hasClass('is-active')) {
-          $this.text('ほしいものリストに入っています ♡');
+          $this.text('お気に入りに入っています ♡');
         } else {
-        $this.text('ほしいものリストに追加する ♡');
+        $this.text('お気に入りに追加する ♡');
       }
       $this.parents('.c-productShow__like').toggleClass('is-active');
   })
