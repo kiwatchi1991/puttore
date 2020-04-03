@@ -262,6 +262,11 @@ class ProductsController extends Controller
             $product->pic5 = str_replace('public/', '', $path);
             $product->save();
         }
+        if ($request->pic6) {
+            $path = $request->pic6->store('public/product_images');
+            $product->pic6 = str_replace('public/', '', $path);
+            $product->save();
+        }
 
         //1対多の登録
         $lessons = $request->input('lessons'); //postされたもののうち、lang属性のものだけ（＝カテゴリーIDの配列）
