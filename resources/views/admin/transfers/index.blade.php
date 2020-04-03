@@ -46,7 +46,7 @@
                         振込金額<span>{{ number_format($transfer->transfer_price) }}</span></div>
                     <div class="c-admin__user__element id">支払期日<span>{{$transfer->payment_date}}</span></div>
                     <a class="c-admin__user__edit" href="{{route('admin.transfer.show',$transfer->id)}}">確認</a>
-                    <a class="c-admin__user__delete"
+                    <a class="c-admin__user__delete {{($transfer->status === 0)?'':'paid'}}"
                         href="{{ route('admin.transfer.update.confirm',$transfer->id)}}">振込完了</a>
                 </div>
                 @endforeach

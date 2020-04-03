@@ -3618,6 +3618,11 @@ a:visited {
   }
 }
 
+.c-messages__button:disabled {
+  background: #ddd;
+  transition: all 0;
+}
+
 .c-message {
   display: flex;
   align-items: flex-end;
@@ -6182,6 +6187,10 @@ a:visited {
 
 .c-admin__user__delete:hover {
   opacity: 0.8;
+}
+
+.c-admin__user__delete.paid {
+  pointer-events: none;
 }
 
 .c-admin__user__info {

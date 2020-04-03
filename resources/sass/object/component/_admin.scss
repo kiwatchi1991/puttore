@@ -63,6 +63,9 @@
       &:hover{
         opacity: 0.8;
       }
+      &.paid{
+        pointer-events: none;
+      }
     }
     //編集画面
     &__info{

@@ -16,4 +16,5 @@ require('./components/footerHide');
 require('./components/lessonModal');
 require('./components/val');
 require('./components/editMenu');
+require('./components/msgFormDisable');
 
