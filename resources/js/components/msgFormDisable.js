@@ -3,8 +3,9 @@
 // ==================================
 
 if ($('#form-msg')) {
-    $(document).on('keyup','.js-msg-textarea',function () {
-        if ($('.js-msg-textarea').val().length > 0) {
+    $(document).on('keyup', '.js-msg-textarea', function () {
+        console.log($('.js-msg-textarea').val() != '');
+        if ($('.js-msg-textarea').val().length > 0 && $('.js-msg-textarea').val() !== null) {
             $('.js-submit-btn').prop('disabled', false);
         } else {
             $('.js-submit-btn').prop('disabled', true);

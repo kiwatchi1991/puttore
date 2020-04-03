@@ -124,6 +124,7 @@ return [
         'pic6' => '画像6',
         'lessons.*.title' => 'レッスンタイトル',
         'lessons.*.lesson' => 'レッスン本文',
+        'messages' => 'メッセージ',
 
     ],
 
