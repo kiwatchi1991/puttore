@@ -135,6 +135,10 @@
             transition: all 0.3s;
           }
         }
+        &:disabled{
+          background: #ddd;
+          transition: all 0;
+        }
       }
 }
 

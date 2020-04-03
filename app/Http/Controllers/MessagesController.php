@@ -23,6 +23,10 @@ class MessagesController extends Controller
         Log::debug('リクエスト内容↓↓');
         Log::debug($request);
 
+        $request->validate([
+            'messages' => 'required',
+        ]);
+
         //注文台帳・プロダクト・ユーザーテーブル結合して情報取得
         $id = $request->id;
 
@@ -64,7 +68,6 @@ class MessagesController extends Controller
 
 
         // リダイレクトする
-        // その時にsessionフラッシュにメッセージを入れる
         return back()->withInput();
     }
 }

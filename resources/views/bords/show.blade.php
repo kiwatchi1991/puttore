@@ -62,13 +62,18 @@ $pic = ($user->find($buy_userId)->pic) ? $user->find($buy_userId)->pic : '';
         </div>
         @endforeach
     </div>
-    <form class="c-messages__form" method="POST" action="{{ route('messages.create',$ordersId) }}">
+    <form id="form-msg" class="c-messages__form" method="POST" action="{{ route('messages.create',$ordersId) }}">
         <div class="c-messages__inputArea">
             @csrf
-            {{-- <input class="c-messages__input" type="text" name="messages" placeholder="ここにメッセージを入力してください"> --}}
-            <textarea class="c-messages__input" name="messages" rows="4" placeholder="ここにメッセージを入力してください"></textarea>
+            <textarea class="c-messages__input js-msg-textarea" name="messages" rows="4"
+                placeholder="ここにメッセージを入力してください"></textarea>
             <input type="hidden" value="{{ $order->id }}" name="id">
-            <button type="submit" class="c-messages__button">
+            @error('messages')
+            <span class="c-productNew__error" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            <button type="submit" class="c-messages__button js-submit-btn" disabled>
                 送信
             </button>
         </div>
