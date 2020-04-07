@@ -17,5 +17,4 @@ require('./components/lessonModal');
 require('./components/val');
 require('./components/editMenu');
 require('./components/msgFormDisable');
-require('./components/loading');
 

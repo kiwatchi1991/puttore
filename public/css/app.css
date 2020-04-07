@@ -7346,6 +7346,10 @@ a:visited {
   z-index: 2;
 }
 
+.loader__text {
+  margin-top: 32px;
+}
+
 .p-input__tag {
   margin-top: 5px;
 }

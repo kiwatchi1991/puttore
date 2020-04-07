@@ -6,7 +6,7 @@
 <div id="loader-bg">
     <div id="loader">
         <img src="/storage/images/loading.gif" width="80" height="80" alt="Now Loading..." />
-        <p>Now Loading...</p>
+        <p class="loader__text">購入処理を行っています...</p>
     </div>
 </div>
 {{-- ↑↑↑　購入後のローディング画面 --}}
@@ -155,14 +155,28 @@
 
                 {{-- 今すぐ購入するボタン --}}
                 <div class="c-productShow__buynow" id="js-loading">
-                    <form method="post" action="{{ route('orders.create',$product->id) }}">
+                    <form id="js-loading-form" method="post" action="{{ route('orders.create',$product->id) }}">
                         @csrf
                         <button type="submit" class="" style="pointer-events: none"></button>
-
+                        {{-- トークン発行に成功した時に実行される　ローディング画面 --}}
+                        <script type="text/javascript">
+                            function loading(options){
+                                var h = $(window).height();
+                                
+                                $('#load-after').css('display', 'none');
+                                $('#loader-bg ,#loader').height(h).css('display', 'block');
+                                
+                                $(window).on('load',function () { 
+                                $('#loader-bg').delay(900).fadeOut(800);
+                                $('#loader').delay(600).fadeOut(300);
+                                $('#load-after').css('display', 'block');
+                                });
+                            }
+                        
+                        </script>
                         <script type="text/javascript" src="https://checkout.pay.jp/" class="payjp-button"
-                            id="payjp-button" data-key="pk_test_65b86d16158dad1607ce9b69" data-on-created="onCreated"
+                            id="payjp-button" data-key="pk_test_65b86d16158dad1607ce9b69" data-on-created="loading"
                             data-text="今すぐ購入する" data-submit-text="支払いする"></script>
-                        </button>
                     </form>
                 </div>
                 @endif
