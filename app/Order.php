@@ -2,10 +2,16 @@
 
 namespace App;
 
+use App\Notifications\BuyContents;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    use Notifiable;
+
+
+
     protected $dates = [
         'created_at',
         'msg_updated_at',

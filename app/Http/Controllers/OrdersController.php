@@ -10,6 +10,7 @@ use App\Order;
 use App\SystemCommission;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
+use app\User;
 use Payjp\Charge;
 
 class OrdersController extends Controller
@@ -97,15 +98,16 @@ class OrdersController extends Controller
 
     $order->save();
 
-    Log::debug('SystemCommission::find(1)->value(commission_rate)');
-    Log::debug(SystemCommission::find(1)->value('commission_rate'));
-    Log::debug('SystemCommission::find(2)->value(commission_rate)');
-    Log::debug(SystemCommission::find(2)->value('commission_rate'));
-    Log::debug('$order->sale_price');
-    Log::debug($order->sale_price);
-    Log::debug('$order->transfer_price');
-    Log::debug($order->transfer_price);
+    Log::debug('この処理1');
+    //購入者にメール送信する
+    User::find($order->user_id)->buyEmail($order);
+    //出品者にメール送信する
+    $sale_user_id = Product::find($id)->user_id;
+    Log::debug('$sale_user_id');
+    Log::debug($sale_user_id);
+    User::find($sale_user_id)->saleEmail($order);
 
+    Log::debug('この処理4');
 
     // リダイレクトする
     // その時にsessionフラッシュにメッセージを入れる
