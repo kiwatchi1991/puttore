@@ -215,7 +215,7 @@
   {{-- フラッシュメッセージ --}}
   @if (session('flash_message'))
   <div class="c-header__sessionMessage js-sessionMessage" style="display: none;">
-    {{ session('flash_message') }}
+    {!! session('flash_message') !!}
   </div>
   @endif
 

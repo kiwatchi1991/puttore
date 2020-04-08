@@ -167,12 +167,11 @@
                                 $('#loader-bg ,#loader').height(h).css('display', 'block');
                                 
                                 $(window).on('load',function () { 
-                                $('#loader-bg').delay(900).fadeOut(800);
-                                $('#loader').delay(600).fadeOut(300);
+                                    $('#loader-bg').delay(900).fadeOut(800);
+                                    $('#loader').delay(600).fadeOut(300);
                                 $('#load-after').css('display', 'block');
-                                });
-                            }
-                        
+                            });
+                        }
                         </script>
                         <script type="text/javascript" src="https://checkout.pay.jp/" class="payjp-button"
                             id="payjp-button" data-key="pk_test_65b86d16158dad1607ce9b69" data-on-created="loading"
