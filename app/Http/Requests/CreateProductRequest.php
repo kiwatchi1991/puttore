@@ -25,7 +25,7 @@ class CreateProductRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        Log::debug('<<<<  product バリデーションちぇっく！ >>>>>>>');
+        Log::debug('<<<<  product バリデーションチェック >>>>>>>');
         Log::debug($request);
 
 

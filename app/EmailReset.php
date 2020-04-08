@@ -25,12 +25,7 @@ class EmailReset extends Model
      */
     public function sendEmailResetNotification($token)
     {
-        // use \Illuminate\Notifications\Notifiable;
-        Log::debug('<<  この処理 1  >>>>');
-        Log::debug('$this');
-        Log::debug($this);
         Notification::send($this, new ChangeEmail($token));
-        Log::debug('<<  この処理 2  >>>>');
     }
 
     /**

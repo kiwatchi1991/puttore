@@ -7,9 +7,6 @@ use App\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
-
-
-
 class LikesController extends Controller
 {
     /**
@@ -17,9 +14,7 @@ class LikesController extends Controller
      */
     public function ajaxlike(Request $request)
     {
-        Log::debug('<<<<<<<< ajax発動！>>>>>>>>>>>>>');
-        Log::debug('<<<<<<<< $request 内容 >>>>>>>>>>>>>');
-        Log::debug($request);
+        Log::debug('<<<<<<<<   ajaxLike   >>>>>>>>>>>>>');
 
         $product_id = $request->like;
 

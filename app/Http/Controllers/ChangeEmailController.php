@@ -31,21 +31,15 @@ class ChangeEmailController extends Controller
         // トークンをDBに保存
         DB::beginTransaction();
         try {
-            Log::debug('ここまで2');
             $param = [];
             $param['user_id'] = Auth::id();
             $param['new_email'] = $new_email;
             $param['token'] = $token;
-            Log::debug('$param');
-            Log::debug($param);
             $email_reset = EmailReset::create($param);
 
-            Log::debug('ここまで3');
             DB::commit();
-            Log::debug('ここまで4');
 
             $email_reset->sendEmailResetNotification($token);
-            Log::debug('ここまで5');
 
             return redirect('/mypage')->with('flash_message', '確認メールを送信しました。');
         } catch (\Exception $e) {

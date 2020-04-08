@@ -24,14 +24,10 @@ class ProfilesController extends Controller
         if (!ctype_digit($id)) {
             return redirect('/products')->with('flash_message', __('もう一度やり直してください'));
         }
-
-        Log::debug('SHOW!!!');
+        Log::debug('<<<<<<      SHOW    >>>>>>>>');
 
         // ユーザー情報の取得
         $user = User::find($id);
-
-        Log::debug('$user');
-        Log::debug($user);
 
         //ログインユーザーのプロダクト（ページング）
         $products = Product::where('user_id', $id)
@@ -70,7 +66,6 @@ class ProfilesController extends Controller
         if (!ctype_digit($id)) {
             return redirect('/products')->with('flash_message', __('もう一度やり直してください'));
         }
-
         $user = User::find($id);
         return view('profile.edit', ['user' => $user]);
     }
@@ -85,22 +80,15 @@ class ProfilesController extends Controller
         if (!ctype_digit($id)) {
             return redirect('/products/mypage')->with('flash_message', __('もう一度やり直してください'));
         }
-        Log::debug('<<<<<<<<<<<<     request       >>>>>>>>>>>>>>');
-        Log::debug($request);
 
         $user = User::find($id);
         $user->fill($request->all())->save();
 
         if ($request->pic) {
-
-            $path = $request->pic->store('public/profile_images'); //もともとこっち
-
-            Log::debug('$request->pic');
-            Log::debug($request->pic);
+            $path = $request->pic->store('public/profile_images');
             $user->pic = str_replace('public/', '', $path);
             $user->save();
         }
-
         return redirect()->route('profile.show', $id)->with('flash_message', 'プロフィールを変更しました');
     }
 
@@ -112,7 +100,6 @@ class ProfilesController extends Controller
     public function deleteShow(Request $request, $id)
     {
         // GETパラメータが数字かどうかをチェックする
-        // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
         if (!ctype_digit($id)) {
             return redirect('/profiles')->with('flash_message', __('もう一度やり直してください'));
         }
@@ -122,8 +109,6 @@ class ProfilesController extends Controller
             return redirect()->route('home')->with('flash_message', __('権限がありません'));
         }
 
-
-
         $user = User::find($id);
         return view('profile.delete', ['user' => $user]);
     }
@@ -132,11 +117,8 @@ class ProfilesController extends Controller
     public function deleteData(Request $request, $id)
     {
         Log::debug('<< deleteData >>');
-        Log::debug($request);
-        Log::debug($id);
 
         // GETパラメータが数字かどうかをチェックする
-        // 事前にチェックしておくことでDBへの無駄なアクセスが減らせる（WEBサーバーへのアクセスのみで済む）
         if (!ctype_digit($id)) {
             return redirect('/profiles')->with('flash_message', __('もう一度やり直してください'));
         }

@@ -8,8 +8,6 @@ use App\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
-
-
 class MessagesController extends Controller
 {
     /**
@@ -18,10 +16,6 @@ class MessagesController extends Controller
     public function create(Request $request)
     {
         Log::debug('メッセージ：create');
-
-        Log::debug('これからDBへデータ挿入');
-        Log::debug('リクエスト内容↓↓');
-        Log::debug($request);
 
         $request->validate([
             'messages' => 'required',
@@ -39,15 +33,6 @@ class MessagesController extends Controller
 
         $buyUserId = $order->value('user_id');
 
-        Log::debug('$order');
-        Log::debug($order->get());
-        Log::debug('$saleUserId');
-        Log::debug($saleUserId);
-        Log::debug('$saleUserId->user_id');
-        Log::debug($saleUserId->user_id);
-        Log::debug('$buyUserId');
-        Log::debug($buyUserId);
-
         $message = new Message;
         $message->order_id = $id;
         $message->send_user_id = Auth::user()->id;
@@ -61,11 +46,6 @@ class MessagesController extends Controller
         $thisOrder = Order::find($request->id);
         $thisOrder->msg_updated_at = $message->created_at;
         $thisOrder->save();
-        Log::debug('$thisorder');
-        Log::debug($thisOrder);
-        Log::debug('$thisorder');
-        Log::debug($thisOrder->msg_updated_at);
-
 
         // リダイレクトする
         return back()->withInput();

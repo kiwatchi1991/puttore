@@ -44,10 +44,6 @@ class SaleContents extends Notification
      */
     public function toMail($notifiable)
     {
-        Log::debug('この処理5');
-        Log::debug('$notifiable');
-        Log::debug($notifiable);
-
         $order = Order::join('products', 'orders.product_id', 'products.id')
             ->join('users', 'orders.user_id', 'users.id')
             ->where('orders.id', $notifiable->o_id)

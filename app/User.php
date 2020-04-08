@@ -77,32 +77,22 @@ class User extends Authenticatable
     public function buyEmail($options)
     {
         Log::debug('<<<<<<<<  buyEmail  >>>>>>>>>');
-        Log::debug('$options');
-        Log::debug($options);
-        Log::debug('$this');
-        Log::debug($this);
 
         $thisOrder = Order::join('users', 'orders.user_id', 'users.id')
             ->where('orders.id', $options->id)
             ->select('orders.id as o_id', 'account_name', 'email')
             ->first();
-        // ここで先ほど作成したNotificationクラスを呼び出す
         $thisOrder->notify(new \App\Notifications\BuyContents());
     }
     public function saleEmail($options)
     {
         Log::debug('<<<<<<<<  saleEmail  >>>>>>>>>');
-        Log::debug('$options');
-        Log::debug($options);
-        Log::debug('$this');
-        Log::debug($this);
 
         $thisOrder = Order::join('products', 'orders.product_id', 'products.id')
             ->join('users', 'products.user_id', 'users.id')
             ->where('orders.id', $options->id)
             ->select('orders.id as o_id', 'account_name', 'email')
             ->first();
-        // ここで先ほど作成したNotificationクラスを呼び出す
         $thisOrder->notify(new \App\Notifications\SaleContents());
     }
 }

@@ -59,7 +59,6 @@ class adminController extends Controller
   public function userUpdate(Request $request, $id)
   {
     Log::debug('<< userUpdate >>');
-    Log::debug($request);
     $user = User::find($id);
     if (!empty($request->group)) {
       $user->group = $request->group;
@@ -72,24 +71,17 @@ class adminController extends Controller
   public function userDeleteConfirm(Request $request, $id)
   {
     Log::debug('<< deleteConfirm >>');
-    Log::debug($request);
 
     //一括ボタンからの場合
 
     if (!empty($request->get('delete_id'))) {
 
       $deleteIds = $request->get('delete_id');
-      Log::debug('$deleteIds');
-      Log::debug($deleteIds);
 
       $users = User::whereIn('id', $deleteIds)->get();
     } else if (!empty($id)) {
       $users = User::where('id', $id)->get();
     }
-
-    Log::debug('$users');
-    Log::debug($users);
-    Log::debug('$users->count()');
 
     return view('admin.users.delete', [
       'users' => $users,
@@ -101,13 +93,10 @@ class adminController extends Controller
   {
 
     Log::debug('<< deleteData >>');
-    Log::debug($request);
 
     if (!empty($request->get('delete_id'))) {
 
       $deleteIds = $request->get('delete_id');
-      Log::debug('$deleteIds');
-      Log::debug($deleteIds);
       $users = User::whereIn('id', $deleteIds)->delete();
     } else if (!empty($id)) {
       $users = User::find($id)->delete();
@@ -123,9 +112,6 @@ class adminController extends Controller
   //  =========== プロダクト一覧表示  ========== 
   public function productIndex(Request $request)
   {
-    Log::debug($request);
-    //並べかえ（降順/昇順が押された場合）
-
     // product情報の取得
     $keyword = $request->keyword;
     $products = Product::join('users', 'products.user_id', '=', 'users.id')
@@ -145,8 +131,6 @@ class adminController extends Controller
   public function productShow(Request $request, $id)
   {
     Log::debug('<< productShow >>');
-    Log::debug($request);
-    Log::debug($id);
 
     $product = Product::find($id);
 
@@ -159,23 +143,17 @@ class adminController extends Controller
   public function productDeleteConfirm(Request $request, $id)
   {
     Log::debug('<< productdeleteConfirm >>');
-    Log::debug($request);
 
     //一括ボタンからの場合
 
     if (!empty($request->get('delete_id'))) {
 
       $deleteIds = $request->get('delete_id');
-      Log::debug('$deleteIds');
-      Log::debug($deleteIds);
 
       $products = Product::whereIn('id', $deleteIds)->get();
     } else if (!empty($id)) {
       $products = Product::where('id', $id)->get();
     }
-
-    Log::debug('$products');
-    Log::debug($products);
 
     return view('admin.products.delete', [
       'products' => $products,
@@ -187,13 +165,10 @@ class adminController extends Controller
   {
 
     Log::debug('<< deleteData >>');
-    Log::debug($request);
 
     if (!empty($request->get('delete_id'))) {
 
       $deleteIds = $request->get('delete_id');
-      Log::debug('$deleteIds');
-      Log::debug($deleteIds);
       $users = Product::whereIn('id', $deleteIds)->delete();
     }
 
@@ -226,8 +201,6 @@ class adminController extends Controller
   public function orderShow(Request $request, $id)
   {
     Log::debug('<< orderShow >>');
-    Log::debug($request);
-    Log::debug($id);
 
     $order = Order::find($id);
 
@@ -243,8 +216,6 @@ class adminController extends Controller
   // =========  お問い合わせ一覧表示 ==========
   public function contactIndex(Request $request)
   {
-    Log::debug($request);
-
     //キーワード検索
     $keyword = $request->keyword;
     $contacts = Contact::when($request->keyword, function ($query) use ($keyword) {
@@ -263,8 +234,6 @@ class adminController extends Controller
   public function contactShow(Request $request, $id)
   {
     Log::debug('<< contactShow >>');
-    Log::debug($request);
-    Log::debug($id);
 
     $cotact = Contact::find($id);
 
@@ -272,7 +241,6 @@ class adminController extends Controller
       'contact' => $cotact,
     ]);
   }
-
 
   // =================================
   // =======   振込依頼  ==============
@@ -301,16 +269,12 @@ class adminController extends Controller
   public function transferShow(Request $request, $id)
   {
     Log::debug('<< transferShow >>');
-    Log::debug($request);
 
     $transfer = Transfer::join('users', 'transfers.user_id', 'users.id')
       ->join('from_banks', 'transfers.from_bank_id', 'from_banks.id')
       ->where('transfers.id', $id)
       ->select('transfers.id', 'transfers.transfer_price', 'transfers.transferred_price', 'transfers.commission', 'transfers.created_at', 'transfers.status', 'transfers.payment_date', 'users.id as u.id', 'users.account_name', 'users.email', 'from_banks.name as bank_name') //振込元銀行情報は今後変更していく
       ->first();
-
-    Log::debug('<<<     $transfers    >>>>.');
-    Log::debug($transfer);
 
     return view('admin.transfers.show', [
       'transfer' => $transfer,
@@ -321,7 +285,6 @@ class adminController extends Controller
   public function transferUpdateConfirm(Request $request, $id)
   {
     Log::debug('<< transferUpdateConfirm >>');
-    Log::debug($request);
 
     //一括ボタンからの場合
     $transfers = Transfer::join('users', 'transfers.user_id', 'users.id')
@@ -329,15 +292,10 @@ class adminController extends Controller
       ->select('transfers.id', 'transfers.transfer_price', 'transfers.transferred_price', 'transfers.commission', 'transfers.created_at', 'transfers.payment_date', 'users.id as u.id', 'users.account_name', 'users.email', 'from_banks.name as bank_name'); //振込元銀行情報は今後変更していく
     if (!empty($request->get('update_id'))) {
       $updateIds = $request->get('update_id');
-      Log::debug('$updateIds');
-      Log::debug($updateIds);
       $transfers = $transfers->whereIn('transfers.id', $updateIds)->get();
     } else if (!empty($id)) {
       $transfers = $transfers->where('transfers.id', $id)->get();
     }
-
-    Log::debug('$transfers');
-    Log::debug($transfers);
 
     return view('admin.transfers.update', [
       'transfers' => $transfers,
@@ -349,16 +307,11 @@ class adminController extends Controller
   {
 
     Log::debug('<< transferUpdate >>');
-    Log::debug($request);
 
     if (!empty($request->get('update'))) {
 
       $updateIds = $request->get('update');
-      Log::debug('$updateIds');
-      Log::debug($updateIds);
       foreach ($updateIds as $updateId) {
-        Log::alert('$updateId');
-        Log::alert($updateId);
         Transfer::whereIn('id', $updateId)->update(['status' => 2, 'paid_date' => Carbon::parse($updateId['paid_date'])]);
       }
     }

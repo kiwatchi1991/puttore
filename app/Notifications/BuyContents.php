@@ -44,10 +44,6 @@ class BuyContents extends Notification
      */
     public function toMail($notifiable)
     {
-        Log::debug('この処理2');
-        Log::debug('$notifiable');
-        Log::debug($notifiable);
-
         $order = Order::join('products', 'orders.product_id', 'products.id')
             ->join('users', 'products.user_id', 'users.id')
             ->where('orders.id', $notifiable->o_id)
@@ -56,11 +52,6 @@ class BuyContents extends Notification
 
         //購入者の名前
         $user_name = $notifiable->account_name;
-
-        Log::debug('$order');
-        Log::debug($order);
-        Log::debug('$user_name');
-        Log::debug($user_name);
 
         return (new MailMessage)
             ->subject($this->title)
@@ -72,7 +63,6 @@ class BuyContents extends Notification
                     'order' => $order,
                 ]
             );
-        Log::debug('この処理3');
     }
 
     /**

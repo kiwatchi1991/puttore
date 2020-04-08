@@ -40,8 +40,6 @@ class LessonShowController extends Controller
         $all_lessons = Lesson::where('product_id', $p_id)->get();
         $this_lesson = Lesson::where('product_id', $p_id)->where('number', $l_id)->first();
 
-        Log::debug($this_lesson);
-
         // ユーザー情報の取得
         $user = DB::table('users')
             ->join('products', 'users.id', '=', 'products.user_id')

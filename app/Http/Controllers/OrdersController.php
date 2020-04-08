@@ -16,22 +16,12 @@ use Payjp\Charge;
 class OrdersController extends Controller
 {
   /**
-   * コンテンツ登録
+   * 注文登録
    */
   public function create(Request $request, $id)
   {
 
     Log::debug('注文台帳：create');
-
-
-    $request->validate([
-      // 'name' => 'required|string|max:255',
-
-    ]);
-
-    Log::debug('これからDBへデータ挿入');
-    Log::debug('リクエスト内容↓↓');
-    Log::debug($request);
 
     $product = Product::find($id);
 
@@ -96,22 +86,17 @@ class OrdersController extends Controller
 
       $order->save();
 
-      Log::debug('この処理1');
       //購入者にメール送信する
       User::find($order->user_id)->buyEmail($order);
       //出品者にメール送信する
       $sale_user_id = Product::find($id)->user_id;
-      Log::debug('$sale_user_id');
-      Log::debug($sale_user_id);
       User::find($sale_user_id)->saleEmail($order);
-
-      Log::debug('この処理4');
 
       // リダイレクトする
       // その時にsessionフラッシュにメッセージを入れる
       return redirect()->route('products.show', $id)->with('flash_message', ('購入しました！'));
     } catch (\Payjp\Error\Card $e) {
-      Log::debug('PAYJP決済失敗！');
+      Log::debug('PAYJP決済失敗');
       $body = $e->getJsonBody();
       $err  = $body['error'];
 

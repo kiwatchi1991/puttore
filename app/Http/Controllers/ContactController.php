@@ -38,9 +38,7 @@ class ContactController extends Controller
 
     public function send(Request $request)
     {
-        Log::debug('<<<<<    send発動   >>>>>>>>>>');
-        Log::debug('request');
-        Log::debug($request);
+        Log::debug('<<<<<    send()   >>>>>>>>>>');
         //バリデーションを実行（結果に問題があれば処理を中断してエラーを返す）
         $request->validate([
             'email' => 'required|email',
@@ -68,9 +66,6 @@ class ContactController extends Controller
             $contacts->fill($request->all())->save();
 
             Log::debug('<<<<<    mail送信処理開始   >>>>>>>>>>');
-            Log::debug('$inputs内容');
-            Log::debug($inputs);
-            Log::debug($inputs['email']);
 
             //入力されたメールアドレスにメールを送信
             Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
@@ -81,7 +76,7 @@ class ContactController extends Controller
 
             Log::debug('トークン再発行');
             //送信完了ページのviewを表示
-            Log::debug('これからリダイレクト');
+            Log::debug('リダイレクト');
             return view('contacts.finish');
         }
     }

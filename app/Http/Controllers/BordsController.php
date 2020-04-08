@@ -34,9 +34,6 @@ class BordsController extends Controller
         $messages = Message::orderBy('id', 'desc')->get();
         $user = User::all();
 
-        Log::debug('$bords↓↓');
-        Log::debug($bords);
-
         return view('bords.index', [
             'bords' => $bords,
             'id' => $id,
@@ -64,14 +61,8 @@ class BordsController extends Controller
 
         $order = Order::find($id);
         $ordersId = $order->id;
-        Log::debug($order);
 
         $messages = Message::where('messages.order_id', $id)->get();
-        Log::debug('<<<<<<<   messages  >>>>>>>>');
-        Log::debug($messages);
-        Log::debug('<<<<<<<<<    $bord  >>>>>>>>');
-        Log::debug($bord);
-        // Log::debug($order->id);
 
         return view('bords.show', [
             'order' => $order,

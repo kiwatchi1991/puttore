@@ -41,7 +41,5 @@ class ContactSendmail extends Mailable
                 'title' => $this->title,
                 'body'  => $this->body,
             ]);
-        Log::debug('thisの中身');
-        Log::debug($this);
     }
 }

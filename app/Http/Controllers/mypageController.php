@@ -22,34 +22,25 @@ use Illuminate\Support\Facades\Log;
 
 class mypageController extends Controller
 {
-
-
-
     /**
      *  処理済み売り上げ表示
      */
 
     public function showTransfer(Request $request, $id)
     {
-      Log::debug('<<<<<<    transferShow    >>>>>>>>>>>');
+        Log::debug('<<<<<<    transferShow    >>>>>>>>>>>');
 
-      $transfer = Transfer::find($id);
-      $orders =  Order::where('transfer_id','=',$id)
-      ->join('products','orders.product_id','products.id')
-      ->get();
+        $transfer = Transfer::find($id);
+        $orders =  Order::where('transfer_id', '=', $id)
+            ->join('products', 'orders.product_id', 'products.id')
+            ->get();
 
-      Log::debug('$orders');
-      Log::debug($orders);
-
-      return view('mypage.transfer', compact(['orders','transfer']));
-
+        return view('mypage.transfer', compact(['orders', 'transfer']));
     }
 
-
-      /**
+    /**
      *  振込依頼作成
      */
-
     public function requestTransfer(Request $request)
     {
         Log::debug('<<<<<<    requesttransfer    >>>>>>>>>>>');
@@ -77,9 +68,6 @@ class mypageController extends Controller
         //数値に変換
         $transfer_price_before = $transfer_price_before[0];
 
-        Log::debug('$transfer_price_before');
-        Log::debug($transfer_price_before[0]);
-
         //==================振込テーブルに新規レコードをつくる
 
         //振込手数料計算（今後変更あり）
@@ -90,8 +78,6 @@ class mypageController extends Controller
             //FromBank::find(1)->commission1がメイン
             $commission = FromBank::find(1)->commission1;
         }
-
-        // $transfer_price_after = $transfer_price_before - $commission;
 
         $transfer = new Transfer;
         $transfer->user_id = Auth::user()->id;
@@ -117,7 +103,6 @@ class mypageController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-
         return view('mypage.index', compact('user'));
     }
 
@@ -137,16 +122,11 @@ class mypageController extends Controller
         $product_category = Product::all();
         $product_difficulty = Product::all();
 
-
         //購入済み作品
         $buy_products = DB::table('orders')
             ->where('orders.user_id', Auth::user()->id)
             ->join('products', 'orders.product_id', '=', 'products.id')
-            // ->select('products.user_id')
             ->get();
-
-        Log::debug('$buy_products');
-        Log::debug($buy_products);
 
         return view('mypage.product', [
             'products' => $products,
@@ -183,10 +163,6 @@ class mypageController extends Controller
                 return $day->sum('sale_price');
             });
 
-        Log::debug('$thisMonth');
-        Log::debug($thisMonth);
-
-
         //=========   未振込依頼売上履歴  ==============
 
         $untransferred = Order::query()
@@ -207,19 +183,9 @@ class mypageController extends Controller
                 return $day->sum('sale_price');
             });
 
-        Log::debug('$untransferred');
-        Log::debug($untransferred);
-        Log::debug('$untransferred_price');
-        Log::debug($untransferred_price);
-
-
         //==========  振込依頼済みの売上履歴  ==============
 
         $transfers = Transfer::where('user_id', Auth::user()->id)->get();
-
-
-        Log::debug('$transfers');
-        Log::debug($transfers);
 
         return view('mypage.order', [
             'thisMonth' => $thisMonth,
@@ -233,15 +199,8 @@ class mypageController extends Controller
     //=============================================
     public function orderMonth(Request $request, $year_month)
     {
-        Log::debug('$year_month');
-        Log::debug($year_month);
         $targetYear = substr($year_month, 0, 4);
         $targetMonth = substr($year_month, 7, 2);
-        Log::debug('$tergetYear');
-        Log::debug($targetYear);
-        Log::debug('$targetMonth');
-        Log::debug($targetMonth);
-
 
         //売上履歴（振込依頼済）
         $sales = Order::query()
@@ -255,8 +214,6 @@ class mypageController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        Log::debug('$sales');
-        Log::debug($sales);
         return view('mypage.orderMonth', [
             'sales' => $sales,
             'year_month' => $year_month,
@@ -292,10 +249,6 @@ class mypageController extends Controller
 
         $product_category = Product::all();
         $product_difficulty = Product::all();
-
-        Log::debug('$products');
-        Log::debug($products);
-
 
         return view('mypage.draft', [
             'products' => $products,
@@ -369,11 +322,7 @@ class mypageController extends Controller
     public function edit()
     {
         $id = Auth::user()->id;
-
         $bank = User::find($id);
-
-        Log::debug('<<<<   $bank    >>>>>>');
-        Log::debug($bank);
 
         return view('mypage.edit', [
             'id' => $id,
@@ -386,15 +335,10 @@ class mypageController extends Controller
     //=============================================
     public function update(Request $request, $id)
     {
-        Log::debug('<<<<   $request    >>>>>>');
-        Log::debug($request);
-
-        // $id = Auth::user()->id;
+        Log::debug('<<<<   update    >>>>>>');
 
         $user = User::find($id);
         $user->fill($request->all())->save();
-
-        // $user = Auth::user();
 
         return redirect()->route('mypage')->with('flash_message', '口座情報を変更しました');
     }
