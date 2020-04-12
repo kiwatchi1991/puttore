@@ -410,6 +410,7 @@ class ProductsController extends Controller
         $product_imgs[] = $product->pic3;
         $product_imgs[] = $product->pic4;
         $product_imgs[] = $product->pic5;
+        $product_imgs[] = $product->pic6;
 
         return view('products.show', [
             'product' => $product,
