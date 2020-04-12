@@ -273,7 +273,7 @@ class adminController extends Controller
     $transfer = Transfer::join('users', 'transfers.user_id', 'users.id')
       ->join('from_banks', 'transfers.from_bank_id', 'from_banks.id')
       ->where('transfers.id', $id)
-      ->select('transfers.id', 'transfers.transfer_price', 'transfers.transferred_price', 'transfers.commission', 'transfers.created_at', 'transfers.status', 'transfers.payment_date', 'users.id as u.id', 'users.account_name', 'users.email', 'from_banks.name as bank_name') //振込元銀行情報は今後変更していく
+      ->select('transfers.id', 'transfers.transfer_price', 'transfers.commission', 'transfers.created_at', 'transfers.status', 'transfers.payment_date', 'users.id as u.id', 'users.account_name', 'users.email', 'from_banks.name as bank_name') //振込元銀行情報は今後変更していく
       ->first();
 
     return view('admin.transfers.show', [
