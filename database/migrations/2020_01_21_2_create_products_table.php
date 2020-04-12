@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('pic3')->nullable();
             $table->string('pic4')->nullable();
             $table->string('pic5')->nullable();
+            $table->string('pic6')->nullable();
             $table->tinyInteger('price_flg')->default(0);
             $table->decimal('default_price', 10, 0)->nullable();
             $table->tinyInteger('open_flg')->default(0);
