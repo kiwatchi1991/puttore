@@ -289,7 +289,7 @@ class adminController extends Controller
     //一括ボタンからの場合
     $transfers = Transfer::join('users', 'transfers.user_id', 'users.id')
       ->join('from_banks', 'transfers.from_bank_id', 'from_banks.id')
-      ->select('transfers.id', 'transfers.transfer_price', 'transfers.transferred_price', 'transfers.commission', 'transfers.created_at', 'transfers.payment_date', 'users.id as u.id', 'users.account_name', 'users.email', 'from_banks.name as bank_name'); //振込元銀行情報は今後変更していく
+      ->select('transfers.id', 'transfers.transfer_price', 'transfers.commission', 'transfers.created_at', 'transfers.payment_date', 'users.id as u.id', 'users.account_name', 'users.email', 'from_banks.name as bank_name'); //振込元銀行情報は今後変更していく
     if (!empty($request->get('update_id'))) {
       $updateIds = $request->get('update_id');
       $transfers = $transfers->whereIn('transfers.id', $updateIds)->get();
