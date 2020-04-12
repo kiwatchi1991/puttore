@@ -1021,7 +1021,7 @@ a:visited {
   display: block;
   padding: 12px 16px 12px 0px;
   text-decoration: none;
-  color: #111;
+  color: white;
 }
 
 @media (min-width: 768px) {
