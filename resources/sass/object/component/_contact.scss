@@ -24,10 +24,13 @@
 
     &__label{
         color: $main-text;
-        font-size: 12px;
+        font-size: 14px;
         padding: 5px 0;
         @include pc{
-            font-size: 14px;
+            font-size: 18px;
+        }
+        &--confirm{
+            font-size: 18px;
         }
     }
     &__input{
@@ -46,7 +49,8 @@
         }
     }
     &__submit{
-        margin: 24px auto 0;
+        font-size: 16px;
+        margin: 48px auto 0;
         display: block;
         text-align: center;
         width: 75%;
@@ -70,7 +74,7 @@
         margin-top: 32px;
     }
     &__prev{
-        margin-top: 8px;
+        margin-top: 16px;
 
     }
     &__finish{

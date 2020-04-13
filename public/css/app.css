@@ -5821,14 +5821,18 @@ a:visited {
 
 .c-contact__label {
   color: #484848;
-  font-size: 12px;
+  font-size: 14px;
   padding: 5px 0;
 }
 
 @media (min-width: 768px) {
   .c-contact__label {
-    font-size: 14px;
+    font-size: 18px;
   }
+}
+
+.c-contact__label--confirm {
+  font-size: 18px;
 }
 
 .c-contact__input {
@@ -5855,7 +5859,8 @@ a:visited {
 }
 
 .c-contact__submit {
-  margin: 24px auto 0;
+  font-size: 16px;
+  margin: 48px auto 0;
   display: block;
   text-align: center;
   width: 75%;
@@ -5882,7 +5887,7 @@ a:visited {
 }
 
 .c-contact__prev {
-  margin-top: 8px;
+  margin-top: 16px;
 }
 
 .c-contact__finish {
@@ -7100,12 +7105,13 @@ a:visited {
 @media (min-width: 768px) {
   .c-authChange__form {
     margin-top: 60px;
+    font-size: 14px;
   }
 }
 
 .c-authChange__form--text {
   margin-bottom: 12px;
-  font-size: 10px;
+  font-size: 13px;
   display: block;
 }
 

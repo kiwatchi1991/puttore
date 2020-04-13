@@ -8,7 +8,7 @@
             @csrf
 
             <div class="c-contact__prev-area c-contact__prev-area__mail">
-                <label class="c-contact__label">メールアドレス</label>
+                <label class="c-contact__label--confirm">メールアドレス</label>
                 <div class="c-contact__prev">
                     {{ $inputs['email'] }}
                 </div>
@@ -16,7 +16,7 @@
             </div>
 
             <div class="c-contact__prev-area c-contact__prev-area__mail">
-                <label class="c-contact__label">タイトル</label>
+                <label class="c-contact__label--confirm">タイトル</label>
                 <div class="c-contact__prev">
                     {{ $inputs['title'] }}
                 </div>
@@ -25,7 +25,7 @@
 
 
             <div class="c-contact__prev-area c-contact__prev-area__mail">
-                <label class="c-contact__label">お問い合わせ内容</label>
+                <label class="c-contact__label--confirm">お問い合わせ内容</label>
                 <div class="c-contact__prev">
                     {!! nl2br(e($inputs['body'])) !!}
                 </div>

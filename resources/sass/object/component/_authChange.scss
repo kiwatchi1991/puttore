@@ -34,10 +34,11 @@
 .c-authChange__form{
   @include pc{
     margin-top: 60px;
+    font-size: 14px;
   }
   &--text{
     margin-bottom: 12px;
-    font-size: 10px;
+    font-size: 13px;
     display: block;
   }
 
