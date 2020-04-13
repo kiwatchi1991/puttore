@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <th class="c-home__table__th">お問合わせメールアドレス</th>
-          <td class="c-home__table__td">info@webukatu.com</td>
+          <td class="c-home__table__td">info@puttore.com</td>
         </tr>
         <tr>
           <th class="c-home__table__th">商品代金</th>
@@ -68,7 +68,8 @@
         </tr>
         <tr>
           <th class="c-home__table__th">ご解約について</th>
-          <td class="c-home__table__td">解約（退会）は必ずログイン後に<a href="{{route('mypage')}}" class=“global-nav__item__link”>コチラ</a>から行なってください。銀行振込みや前納をされた場合、途中解約をされても差額分の返金は致しません。
+          <td class="c-home__table__td">解約（退会）は必ずログイン後に<a href="{{route('mypage')}}"
+              class=“global-nav__item__link”>コチラ</a>から行なってください。銀行振込みや前納をされた場合、途中解約をされても差額分の返金は致しません。
           </td>
         </tr>
       </tbody>

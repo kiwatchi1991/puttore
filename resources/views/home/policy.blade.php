@@ -109,7 +109,7 @@
       <h3 class="c-home__text__head">１１.個人情報に関するお問い合わせについて</h3>
       <p class="c-home__text__body">
         ・当サイトでは、個人情報に関するお問い合わせのために、次の窓口を設定しております。<br><br>
-        ぷっとれカスタマーセンター　info@webukatu.com
+        ぷっとれカスタマーセンター　info@puttore.com
       </p>
     </div>
 
