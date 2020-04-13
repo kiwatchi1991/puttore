@@ -51,7 +51,7 @@
             ぷっとれ カスタマーセンター<br>
             〒130-0022<br>
             東京都墨田区江東橋３－１－１０－１３０３<br>
-            HP: <a href="http://puttore.com">http://puttore.com</a><br>
+            HP: <a href="https://puttore.com">https://puttore.com</a><br>
             MAIL: <a href="info@puttore.com">info@puttore.com</a><br>
             ==============================<br>
         </div>
