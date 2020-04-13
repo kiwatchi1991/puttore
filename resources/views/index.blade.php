@@ -74,7 +74,7 @@
         <div class="c-top__recommend__Img">
           <h3 class="c-top__recommend__head">何を作ればいいの？</h3>
           <img src="/storage/images/top-1.png" alt="">
-          <p class="c-top__recommend__text">たくさんの教材を用意していますので、<br>もうアウトプットのネタに<br>困ることはありません！</p>
+          <p class="c-top__recommend__text">たくさんの教材を用意しています<br>ので、もうアウトプットのネタに<br>困ることはありません！</p>
         </div>
       </div>
 
