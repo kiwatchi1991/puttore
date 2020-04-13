@@ -94,8 +94,8 @@
       display: block;
       padding: 12px 16px 12px 0px;
       text-decoration: none;
-      color: white;
       @include pc{
+        color: #f8f8f8;
         &:hover{
           text-decoration: underline;
           color: $low-gr;

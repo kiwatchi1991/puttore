@@ -1021,10 +1021,13 @@ a:visited {
   display: block;
   padding: 12px 16px 12px 0px;
   text-decoration: none;
-  color: white;
 }
 
 @media (min-width: 768px) {
+  .global-nav__item__link {
+    color: #f8f8f8;
+  }
+
   .global-nav__item__link:hover {
     text-decoration: underline;
     color: #CBEDE4;
