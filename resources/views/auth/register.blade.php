@@ -56,7 +56,7 @@
   </div>
 
   <div class="c-register__to-login">
-    <a class="" href="{{ route('login') }}">ログインはこちらから</a>
+    <a class="c-register__to-login__link" href="{{ route('login') }}">ログインはこちらから</a>
   </div>
 </div>
 

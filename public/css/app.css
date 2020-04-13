@@ -3891,10 +3891,17 @@ a:visited {
 
 .c-login__to-register {
   text-align: center;
-  color: #00ac7d;
   margin-top: 32px;
   border-top: 3px solid #00ac7d;
   padding-top: 32px;
+}
+
+.c-login__to-register__link {
+  color: #00ac7d;
+}
+
+.c-login__to-register__link:visited {
+  color: #00ac7d;
 }
 
 .c-register__inner {
@@ -4074,10 +4081,17 @@ a:visited {
 
 .c-register__to-login {
   text-align: center;
-  color: #00ac7d;
   margin-top: 32px;
   border-top: 3px solid #00ac7d;
   padding-top: 32px;
+}
+
+.c-register__to-login__link {
+  color: #00ac7d;
+}
+
+.c-register__to-login__link:visited {
+  color: #00ac7d;
 }
 
 .c-lessonShow__lesson__contents .octicon,

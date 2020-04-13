@@ -66,7 +66,7 @@
     </form>
   </div>
   <div class="c-login__to-register">
-    <a class="" href="{{ route('register') }}">まだ登録していない方はこちらから</a>
+    <a class="c-login__to-register__link" href="{{ route('register') }}">まだ登録していない方はこちらから</a>
   </div>
 </div>
 

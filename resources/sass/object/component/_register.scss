@@ -137,10 +137,15 @@
     }
     &__to-login{
         text-align: center;
-        color: $main-color;
         margin-top: 32px;
         border-top: 3px solid $main-color;
         padding-top: 32px;
+        &__link{
+          color: $main-color;
+          &:visited{
+            color: $main-color;
+          }
+        }
     }
 
 
