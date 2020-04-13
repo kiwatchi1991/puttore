@@ -97,7 +97,8 @@
                     @foreach ($difficult as $difficults)
                     <input id="d-{{ $difficults->id }}" type="radio"
                         class="c-productNew__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
-                        value="{{ $difficults->id }}" autocomplete="difficult">
+                        value="{{ $difficults->id }}" autocomplete="difficult" @if (in_array($difficults->id,
+                    old('lang',[]))) checked @endif>
                     <label class="c-productNew__label" for="d-{{ $difficults->id }}">
                         <span>{{ $difficults->name }}</span>
                     </label>

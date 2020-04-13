@@ -94,13 +94,10 @@
                     <div class="c-productEdit__difficults">
                         <p class="c-productEdit__title">2. 難易度を選んでね</p>
                         @foreach ($difficult as $difficults)
-                        <input id="d-{{ $difficults->id }}" type="checkbox"
+                        <input id="d-{{ $difficults->id }}" type="radio"
                             class="c-productEdit__checkbox @error('difficult') is-invalid @enderror" name="difficult[]"
-                            value="{{ $difficults->id }}" autocomplete="difficult" @if(
-                            $product->difficulties->contains(function ($difficult1) use ($difficults) {
-                        return $difficult1->id === $difficults->id;
-                        })
-                        ) checked @endif required>
+                            value="{{ $difficults->id }}" autocomplete="difficult" @if(in_array($difficults->id,
+                        old('difficult',$product->difficulties->pluck('id')->toArray()))) checked @endif required>
                         <label class="c-productEdit__label" for="d-{{ $difficults->id }}">
                             <span>{{ $difficults->name }}</span>
                         </label>
