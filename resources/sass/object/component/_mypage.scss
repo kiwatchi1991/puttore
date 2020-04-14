@@ -206,14 +206,14 @@
               @include pc{
               margin: 24px auto 0;
               padding-right: 0;
-              width: 65%;
+              width: 70%;
 
             }
         }
         &__total{
-            font-size: 13px;
+            font-size: 16px;
               @include pc{
-              font-size: 16px;;
+              font-size: 16px;
             }
         }
         &__price{
@@ -221,7 +221,6 @@
             font-weight: bold;
             font-size: 25px;
             letter-spacing: 0.76px;
-            // margin-left: 12px;
               @include pc{
               font-size: 40px;
               margin-left: 20px;
@@ -236,7 +235,7 @@
             color: white;
             width: 50px;
             margin: 16px auto 0;
-            font-size: 10px;
+            font-size: 12px;
               @include pc{
               font-size: 14px;
             }
@@ -272,7 +271,7 @@
             margin-top: 10px;
             @include pc{
               margin: 24px auto 0;
-              width: 65%;
+              width: 70%;
             }
         }
         &__total{
@@ -295,15 +294,18 @@
             }
         }   
         &__request{
-            width: 50px;
+            width: 80px;
             &__link{
-                font-size: 10px;
-                padding: 5px;
-                border-radius: 3px;
+                font-size: 12px;
+                padding: 5px 10px;
+                border-radius: 5px;
                 background: $main-color;
                 color: white;
                 &:visited{
                     color: white;
+                }
+                @include pc{
+                    font-size: 14px;
                 }
             }
         }
@@ -313,8 +315,8 @@
             display: block;
             line-height: 1.375;
             @include pc{
-              font-size: 14px;
-            margin-top: 24px;
+              font-size: 16px;
+              margin-top: 24px;
             }
         }
     }
@@ -478,7 +480,7 @@
             font-size: 16px;
             margin-top: 8px;
             @include pc{
-                font-size: 23px;
+                font-size: 18px;
                 margin-top: 24px;
             }
         }
