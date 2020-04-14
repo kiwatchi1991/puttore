@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <th class="c-home__table__th">所在地</th>
-          <td class="c-home__table__td">〒106-0032　 東京都港区六本木７−８−６　AXALL ROPPONGI 6F</td>
+          <td class="c-home__table__td">〒106-0032　 東京都港区六本木７丁目８番地６号　AXALL ROPPONGI 6F</td>
         </tr>
         <tr>
           <th class="c-home__table__th">顧問弁護士</th>
