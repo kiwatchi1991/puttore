@@ -35,7 +35,8 @@ class CreateProductRequest extends FormRequest
             'difficult' => 'required',
             'detail' => 'required|string|max:255',
             'skills' => 'required|string|max:255',
-            'default_price' => 'required|integer|min:100',
+            'default_price' => 'required|integer|min:500|max:99999',
+            'discount_price' => 'integer|min:500|max:99999',
 
             'lessons.*.title' => 'required|max:255',
             'lessons.*.lesson' => 'required|',
@@ -46,6 +47,15 @@ class CreateProductRequest extends FormRequest
             'pic4' => 'nullable|image',
             'pic5' => 'nullable|image',
             'pic6' => 'nullable|image',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'default_price.min' => ':attributeは 500円 以上 99,999円 以下に設定してください。',
+            'default_price.max' => ':attributeは 500円 以上 99,999円 以下に設定してください。',
+            'discount_price.min' => ':attributeは 500円 以上 99,999円 以下に設定してください。',
+            'discount_price.max' => ':attributeは 500円 以上 99,999円 以下に設定してください。',
         ];
     }
 }

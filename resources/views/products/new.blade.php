@@ -229,7 +229,7 @@
                 <div class="c-productNew__price--wrap">
                     <div class="c-productNew__price--icon">¥</div>
                     <div class="c-productNew__price__inputWrapper">
-                        <input id="default_price" type="text"
+                        <input id="default_price" type="number"
                             class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
                             name="default_price" value="{{ old('default_price') }}" autocomplete="default_price"
                             placeholder="価格" required>

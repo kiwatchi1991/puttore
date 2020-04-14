@@ -449,7 +449,6 @@ class ProductsController extends Controller
         $category = Category::all();
         $difficult = Difficulty::all();
         $difficult = Difficulty::all();
-        // $lessons = Lesson::where('product_id', $id)->get();
         $lessons = null;
         if (old('lessons')) {
             $collect = collect([]);

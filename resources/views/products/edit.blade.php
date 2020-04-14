@@ -73,7 +73,8 @@
                 </span>
                 @enderror
             </div>
-            <p class="c-productNew__title__label c-productNew__title__label--tags">言語・難易度選択</p>
+            <p class="c-productNew__title__label c-productNew__title__label--tags">言語・難易度選択<span
+                    class="required">必須</span></p>
             <div class="c-productEdit__tagbox">
 
                 {{-- 言語選択 --}}
@@ -250,9 +251,9 @@
                         class="options">任意</span></p>
                 <div class="c-productNew__price--wrap c-productNew__price--wrap--discount">
                     <div class="c-productNew__price--icon c-productNew__price--icon--discount">¥</div>
-                    <input id="discount_price"
+                    <input type="number" id="discount_price"
                         class="c-productNew__input-area c-productNew__input-area--discount @error('discount_price') is-invalid @enderror"
-                        name="discount_price" value="@if($discount_price) {{ $discount_price->discount_price }} @endif"
+                        name="discount_price" value="@if($discount_price){{ $discount_price->discount_price }}@endif"
                         autocomplete="discount_price">
                 </div>
                 <div class="c-productNew__price--wrap date">
@@ -260,15 +261,15 @@
                         <span class="c-productEdit__discount-price__label">開始日</span><input type="text"
                             name="start_date"
                             class="c-productNew__input-area c-productNew__input-area--discount js-date_picker @error('sale_price') is-invalid @enderror"
-                            value="@if($discount_price){{ $discount_price->start_date }} @endif">
+                            value="@if($discount_price){{ $discount_price->start_date }}@endif">
                     </div>
                     <div class="c-productEdit__discount-price__date">
                         <span class="c-productEdit__discount-price__label">終了日</span><input type="text" name="end_date"
                             class="c-productNew__input-area c-productNew__input-area--discount js-date_picker @error('sale_price') is-invalid @enderror"
-                            value="@if($discount_price){{ $discount_price->end_date }} @endif">
+                            value="@if($discount_price){{ $discount_price->end_date }}@endif">
                     </div>
                 </div>
-                @error('sale_price')
+                @error('discount_price')
                 <span class="error" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

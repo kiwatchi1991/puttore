@@ -115,6 +115,7 @@ return [
         'difficult' => '難易度',
         'detail' => '説明文',
         'default_price' => '価格',
+        'discount_price' => '価格',
         'skills' => '受講に必要なスキル',
         'pic1' => '画像1',
         'pic2' => '画像2',
