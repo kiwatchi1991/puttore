@@ -130,7 +130,7 @@
         {{-- レッスン内容 --}}
         <p class="c-productNew__lessons__head">LESSON登録</p>
         <div class="c-productNew__modal">
-            マークダウン記法のヒントは<a href="" class="js-modal-open c-productNew__modal__link">こちら</a>
+            マークダウン記法のヒントは<a href="javascript:void(0)" class="js-modal-open c-productNew__modal__link">こちら</a>
 
         </div>
         <div class="c-productNew__lessons" id="js-lesson__section">
