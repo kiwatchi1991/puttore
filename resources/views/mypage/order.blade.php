@@ -34,7 +34,7 @@
                 @if ($thisMonth->count()==0)
                 <div class="c-mypage__sale__thisMonth__price"><span class="c-mypage__sale__icon">¥</span> 0</div>
                 @endif
-                <div>
+                <div style="width:70px;">
                     @foreach($thisMonth as $mon => $price)
                     <div class="c-mypage__sale__thisMonth__detail"><a
                             href="{{ route('mypage.order.show',($mon)?$mon:'') }}">詳細</a></div>
