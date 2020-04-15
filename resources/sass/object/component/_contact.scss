@@ -20,6 +20,15 @@
              font-weight: normal;
              text-align: center;
         }
+        .sp{
+            @include pc{
+                display: none;
+            }
+        }
+        &--finish{
+            line-height: 1.35;
+            font-weight: normal;
+        }
     }
 
     &__label{
@@ -59,6 +68,7 @@
         padding: 10px;
         border-radius: 7px;
         &--post{
+            margin-top: 24px;
             background: orange;
         }
     }

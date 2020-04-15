@@ -27,8 +27,6 @@
                     <input class="c-profileEdit__img__input js-input__file--profile" type="file" name="pic" id="img">
                     画像を変更する
                 </label>
-                {{-- 画像削除 --}}
-                {{-- <p class="js-delete__file">消す</p> --}}
 
                 @error('pic')
                 <span role="alert">
