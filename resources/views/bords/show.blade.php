@@ -14,9 +14,9 @@ $order_type = ($buy_userId == $self_user_id) ? "buy" : "sale";
 // $class_order_type = ($buy_userId == $self_user_id) ? "buy" : "sell";
 
 if($order_type == "buy"){
-$pic = ($user->find($sell_userId)->pic) ? $user->find($sell_userId)->pic : '';
+$pic = ($user->find($sell_userId)->pic)?$user->find($sell_userId)->pic:'images/noavatar.png';
 }else{
-$pic = ($user->find($buy_userId)->pic) ? $user->find($buy_userId)->pic : '';
+$pic = ($user->find($buy_userId)->pic)?$user->find($buy_userId)->pic:'images/noavatar.png';
 }
 
 

@@ -3123,9 +3123,6 @@ a:visited {
 }
 
 .c-bord__userImg__wrapper {
-  background-image: url("/storage/images/noavatar.png");
-  background-position: center;
-  background-size: contain;
   margin-right: 10px;
   width: 50px;
   height: 50px;
@@ -3513,9 +3510,6 @@ a:visited {
 }
 
 .c-messages__head__userImg__wrapper {
-  background-image: url("/storage/images/noavatar.png");
-  background-position: center;
-  background-size: contain;
   margin-left: 16px;
   width: 35px;
   height: 35px;
@@ -3641,9 +3635,6 @@ a:visited {
 }
 
 .c-message__userImg__wrapper {
-  background-image: url("/storage/images/noavatar.png");
-  background-position: center;
-  background-size: contain;
   margin: 0 0 18px 16px;
   width: 35px;
   height: 35px;
@@ -5447,9 +5438,6 @@ a:visited {
 }
 
 .c-lessonShow__userimg {
-  background-image: url("/storage/images/noavatar.png");
-  background-position: center;
-  background-size: contain;
   border: 1px solid #484848;
   width: 50px;
   height: 50px;
