@@ -157,6 +157,7 @@
             display: block;
         }
         &__text{
+            cursor: pointer;
             color: $main-color;
             margin: 16px auto 0;
             background: $low-gr;

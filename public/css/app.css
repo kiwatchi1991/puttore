@@ -3348,6 +3348,7 @@ a:visited {
 }
 
 .c-profileEdit__img__text {
+  cursor: pointer;
   color: #00ac7d;
   margin: 16px auto 0;
   background: #CBEDE4;
@@ -5836,6 +5837,17 @@ a:visited {
   }
 }
 
+@media (min-width: 768px) {
+  .c-contact__title .sp {
+    display: none;
+  }
+}
+
+.c-contact__title--finish {
+  line-height: 1.35;
+  font-weight: normal;
+}
+
 .c-contact__label {
   color: #484848;
   font-size: 14px;
@@ -5888,6 +5900,7 @@ a:visited {
 }
 
 .c-contact__submit--post {
+  margin-top: 24px;
   background: orange;
 }
 
