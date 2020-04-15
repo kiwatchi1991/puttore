@@ -253,7 +253,8 @@
                     <div class="c-productNew__price--icon c-productNew__price--icon--discount">¥</div>
                     <input type="number" id="discount_price"
                         class="c-productNew__input-area c-productNew__input-area--discount @error('discount_price') is-invalid @enderror"
-                        name="discount_price" value="@if($discount_price){{ $discount_price->discount_price }}@endif"
+                        name="discount_price"
+                        value="@if($discount_price){{ $discount_price->discount_price }}@elseif(old('discount_price')){{ old('discount_price') }}@endif"
                         autocomplete="discount_price">
                 </div>
                 <div class="c-productNew__price--wrap date">
@@ -261,15 +262,25 @@
                         <span class="c-productEdit__discount-price__label">開始日</span><input type="text"
                             name="start_date"
                             class="c-productNew__input-area c-productNew__input-area--discount js-date_picker @error('sale_price') is-invalid @enderror"
-                            value="@if($discount_price){{ $discount_price->start_date }}@endif">
+                            value="@if($discount_price){{ $discount_price->start_date }}@elseif(old('start_date')){{ old('start_date') }}@endif">
                     </div>
                     <div class="c-productEdit__discount-price__date">
                         <span class="c-productEdit__discount-price__label">終了日</span><input type="text" name="end_date"
                             class="c-productNew__input-area c-productNew__input-area--discount js-date_picker @error('sale_price') is-invalid @enderror"
-                            value="@if($discount_price){{ $discount_price->end_date }}@endif">
+                            value="@if($discount_price){{ $discount_price->end_date }}@elseif(old('end_date')){{ old('end_date') }}@endif">
                     </div>
                 </div>
                 @error('discount_price')
+                <span class="error" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                @error('start_date')
+                <span class="error" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                @error('end_date')
                 <span class="error" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
