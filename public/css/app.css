@@ -3351,6 +3351,10 @@ a:visited {
   text-align: center;
 }
 
+.c-profileEdit__img__text:hover {
+  opacity: 0.7;
+}
+
 .c-profileEdit__img__input {
   display: none;
 }
