@@ -315,9 +315,6 @@ a:visited {
 }
 
 .global-nav__pc__profile__img__wrapper {
-  background-image: url("/storage/images/noavatar.png");
-  background-position: center;
-  background-size: contain;
   width: 30px;
   height: 30px;
   border-radius: 50%;
