@@ -106,7 +106,7 @@
                 <div class="c-productShow__user">
                     <a href="{{ route('profile.show',$user[0]->id)}}">
                         <div class="c-productShow__userimg">
-                            <img src="/storage/ $user[0]->pic  }}" alt="">
+                            <img src="/storage/{{($user[0]->pic)?$user[0]->pic:'images/noavatar.png'}}" alt="">
                         </div>
                     </a>
                     <div class="c-productShow__username">
