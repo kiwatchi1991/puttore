@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->longText('detail');
-            $table->string('description')->nullable();
             $table->tinyInteger('free_flg')->default(0);
             $table->string('pic1')->nullable();
             $table->string('pic2')->nullable();
