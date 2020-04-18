@@ -312,7 +312,7 @@ class adminController extends Controller
 
       $updateIds = $request->get('update');
       foreach ($updateIds as $updateId) {
-        Transfer::whereIn('id', $updateId)->update(['status' => 2, 'paid_date' => Carbon::parse($updateId['paid_date'])]);
+        Transfer::whereIn('id', $updateId)->update(['status' => 1, 'paid_date' => Carbon::parse($updateId['paid_date'])]);
       }
     }
 
