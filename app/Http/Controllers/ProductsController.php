@@ -444,7 +444,9 @@ class ProductsController extends Controller
         }
 
         //　割引価格情報取得
-        $discount_price = Discount::where('product_id', $id)->first();
+        $discount_price = Discount::where('product_id', $id)
+            ->where('end_date', '>', Carbon::now())
+            ->first();
 
         $category = Category::all();
         $difficult = Difficulty::all();
