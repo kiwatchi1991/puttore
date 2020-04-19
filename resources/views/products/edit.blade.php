@@ -64,7 +64,7 @@
             <div class="">
                 <p class="c-productNew__title__label">タイトル<span class="required">必須</span></p>
                 <input id="name" type="text" class="c-productEdit__input-area @error('name') is-invalid @enderror"
-                    name="name" value="{{ $product->name }}" autocomplete="name"
+                    name="name" value="{{old('name')?old('name'):$product->name}}" autocomplete="name"
                     placeholder="教材のタイトル（例：Twitter風アプリを作ろう）" required>
 
                 @error('name')
@@ -117,8 +117,8 @@
                 <p class="c-productNew__title__label">説明文<span class="required">必須</span></p>
                 <textarea id="detail" type="text"
                     class="c-productEdit__input-area c-productEdit__input-area--detail @error('detail') is-invalid @enderror"
-                    data-input="detail" name="detail" value="{{ old('detail') }}" rows="7"
-                    required>{{ $product->detail }}</textarea>
+                    data-input="detail" name="detail" value="" rows="7"
+                    required>{{old('detail')?old('detail'):$product->detail}}</textarea>
 
                 @error('detail')
                 <span class="error" role="alert">
@@ -233,8 +233,9 @@
                     <div class="c-productNew__price__inputWrapper">
                         <input id="default_price" type="tel"
                             class="c-productNew__input-area c-productNew__input-area--price @error('default_price') is-invalid @enderror"
-                            name="default_price" value="{{ $product->default_price }}" autocomplete="default_price"
-                            placeholder="価格" required>
+                            name="default_price"
+                            value="{{old('default_price')?old('default_price'):$product->default_price}}"
+                            autocomplete="default_price" placeholder="価格" required>
                     </div>
 
                 </div>
@@ -292,7 +293,8 @@
                 <p class="c-productNew__skills__title">受講に必要なスキル<span class="required">必須</span></p>
                 <textarea id="skills" type="text"
                     class="c-productNew__input-area c-productNew__input-area--skills @error('skills') is-invalid @enderror"
-                    data-input="skills" name="skills" value="" rows="7" required>{{ $product->skills }}</textarea>
+                    data-input="skills" name="skills" value="" rows="7"
+                    required>{{old('skills')?old('skills'):$product->skills}}</textarea>
                 @error('skills')
                 <span class="error" role="alert">
                     <strong>{{ $message }}</strong>
@@ -309,7 +311,8 @@
                     {{-- 画像1 --}}
                     <label class="c-productNew__image__area area1 js-area__drop">
                         <input class="c-productNew__image__input js-input__file--product" type="file" name="pic1">
-                        <img src="/storage/{{ $product->pic1 }}" alt="" class="c-productNew__image__img js-prev__img">
+                        <img src="old('pic1')?old('pic1'):/storage/{{ $product->pic1 }}" alt=""
+                            class="c-productNew__image__img js-prev__img">
                     </label>
                     {{-- 画像2 --}}
                     <label class="c-productNew__image__area area2 js-area__drop">
