@@ -311,8 +311,7 @@
                     {{-- 画像1 --}}
                     <label class="c-productNew__image__area area1 js-area__drop">
                         <input class="c-productNew__image__input js-input__file--product" type="file" name="pic1">
-                        <img src="old('pic1')?old('pic1'):/storage/{{ $product->pic1 }}" alt=""
-                            class="c-productNew__image__img js-prev__img">
+                        <img src="/storage/{{ $product->pic1 }}" alt="" class="c-productNew__image__img js-prev__img">
                     </label>
                     {{-- 画像2 --}}
                     <label class="c-productNew__image__area area2 js-area__drop">
