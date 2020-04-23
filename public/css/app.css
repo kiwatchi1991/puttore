@@ -5913,17 +5913,32 @@ a:visited {
 
 .c-passReset {
   background: #E5F6F2;
-  padding: 32px;
+}
+
+@media (min-width: 768px) {
+  .c-passReset {
+    background: #ffffff;
+  }
 }
 
 .c-passReset__title {
   color: #00ac7d;
   font-size: 24px;
+  font-weight: normal;
+}
+
+@media (min-width: 768px) {
+  .c-passReset__title {
+    font-size: 30px;
+    letter-spacing: 3.15;
+    text-align: center;
+    margin-top: 80px;
+  }
 }
 
 .c-passReset__label {
   color: #484848;
-  font-size: 10px;
+  font-size: 14px;
   padding: 5px 0;
 }
 
@@ -5939,7 +5954,7 @@ a:visited {
 }
 
 .c-passReset__submit {
-  margin: 24px auto 0;
+  margin: 32px auto 0;
   display: block;
   text-align: center;
   width: 75%;
@@ -5947,6 +5962,22 @@ a:visited {
   background: orange;
   padding: 10px;
   border-radius: 7px;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .c-passReset__submit {
+    width: 100%;
+    margin-top: 48px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-passReset__submit .sp {
+    display: none;
+  }
 }
 
 .c-passReset__submit--post {
@@ -5970,7 +6001,7 @@ a:visited {
 }
 
 .c-passReset__inner {
-  padding: 30px;
+  padding: 30px 30px 200px 30px;
   background: #E5F6F2;
 }
 
@@ -5979,6 +6010,7 @@ a:visited {
     width: 520px;
     margin: 0 auto;
     background: #fff;
+    padding-bottom: 80px;
   }
 }
 
@@ -6130,7 +6162,7 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-passReset__btn {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 

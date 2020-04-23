@@ -1,14 +1,23 @@
 .c-passReset{
     background: $bg;
-    padding: 32px;
+    @include pc{
+        background: #ffffff;
+    }
     &__title{
         color: $main-color;
         font-size: 24px;
+        font-weight: normal;
+        @include pc{
+            font-size: 30px;
+            letter-spacing: 3.15;
+            text-align: center;
+            margin-top: 80px;
+        }
     }
 
     &__label{
         color: $main-text;
-        font-size: 10px;
+        font-size: 14px;
         padding: 5px 0;
     }
     &__input{
@@ -21,7 +30,7 @@
         margin-top: 24px;
     }
     &__submit{
-        margin: 24px auto 0;
+        margin: 32px auto 0;
         display: block;
         text-align: center;
         width: 75%;
@@ -29,6 +38,18 @@
         background: orange;
         padding: 10px;
         border-radius: 7px;
+        font-size: 14px;
+        line-height: 1.1;
+        @include pc{
+            width: 100%;
+            margin-top: 48px;
+            font-size: 16px;
+       }
+       .sp{
+            @include pc{
+                display: none;
+          }
+       }
         &--post{
             background: orange;
         }
@@ -51,12 +72,13 @@
 
     //リセット画面
     &__inner{
-        padding: 30px;
+        padding: 30px 30px 200px 30px;
         background: $bg;
         @include pc{
           width: 520px;
           margin: 0 auto;
           background: #fff;
+          padding-bottom: 80px;
         }
         &__head{
           @include pc{
@@ -175,7 +197,7 @@
         color: #ffffff;
         font-size: 14px;
         @include pc{
-          font-size: 15px;
+          font-size: 16px;
         }
     }
 }

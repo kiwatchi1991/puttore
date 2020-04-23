@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','パスワードリセット')
 
 @section('content')
 <div class="c-passReset__inner">
