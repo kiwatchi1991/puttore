@@ -1057,9 +1057,6 @@ a:visited {
 }
 
 .global-nav__item__profile__img__wrapper {
-  background-image: url("/storage/images/noavatar.png");
-  background-position: center;
-  background-size: contain;
   width: 80px;
   height: 80px;
   border-radius: 50%;
