@@ -29,4 +29,9 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    protected function sendResetLinkResponse(Request $request)
+    {
+        return back()->with('flash_message', 'パスワード再設定用のURLをメールで送りました。');
+    }
 }
