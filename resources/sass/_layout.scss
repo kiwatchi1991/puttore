@@ -11,13 +11,13 @@ body{
     color: $main-text;
     font-family: "Montserrat", "Noto Sans JP", sans-serif;
 }
-main{
-    padding-top: $header-height;
+.main__top__block{
+    height: $header-height;
     @include pc{
-    padding-top: 70px;
+      height: 70px;
+    }
 }
 
-}
 input{
     box-sizing: border-box;
     border:none;
