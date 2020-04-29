@@ -216,7 +216,8 @@
   </div>
   @endif
 
-  <main class="py-4">
+  <main id="js-setHeight">
+    <div class="main__top__block"></div>
     @yield('content')
   </main>
   <footer id="footer">
