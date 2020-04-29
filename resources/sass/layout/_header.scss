@@ -153,11 +153,12 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
     }
     &__img{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    height: 100%;
     }
   }
 }

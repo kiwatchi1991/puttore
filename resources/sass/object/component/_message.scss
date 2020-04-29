@@ -48,21 +48,19 @@
           }
       }
       &__userImg{
-          width: 35px;
-          height: 35px;
-          border-radius: 50%;
+          height: 100%;
           &__wrapper{
               margin-left: 16px;
               width: 35px;
               height: 35px;
+              display: flex;
+              justify-content: center;
+              overflow: hidden;
               border-radius: 50%;
               @include pc{
-                position: relative;
-                display: inline-block;
                 margin-left: 32px;
                 }
               }
-
       }
       &__title{
       margin-left: 18px;

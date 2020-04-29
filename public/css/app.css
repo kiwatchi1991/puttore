@@ -318,12 +318,13 @@ a:visited {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .global-nav__pc__profile__img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  height: 100%;
 }
 
 .l-product .l-product__wrapper {
@@ -982,7 +983,7 @@ a:visited {
 }
 
 .global-nav__item--auth {
-  font-size: 14px;
+  font-size: 18px;
   width: 100px;
 }
 
@@ -1031,10 +1032,6 @@ a:visited {
   }
 }
 
-.global-nav__item__link.auth {
-  padding: 8px 0 8px;
-}
-
 .global-nav__item__link--profile {
   border-top: 1px solid #7DD4BB;
   padding: 32px 0 32px 24px;
@@ -1051,15 +1048,16 @@ a:visited {
 }
 
 .global-nav__item__profile__img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  height: 100%;
 }
 
 .global-nav__item__profile__img__wrapper {
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .global-nav__item__profile__name {
@@ -1177,15 +1175,15 @@ a:visited {
 }
 
 .c-product__block {
-  width: 280px;
-  max-width: 280px;
+  width: 295px;
+  max-width: 295x;
   margin: 30px auto 0;
   overflow-wrap: break-word;
   box-shadow: 0 20px 30px -15px rgba(89, 0, 0, 0.08);
   transition: 0.2s ease-in-out;
   -webkit-animation: cardSlideIn 0.4s ease-in-out;
           animation: cardSlideIn 0.4s ease-in-out;
-  padding: 10px 15px 0;
+  padding: 10px 25px 0;
   box-sizing: border-box;
   background: rgba(229, 246, 242, 0.5);
   border-radius: 10px;
@@ -1195,7 +1193,7 @@ a:visited {
   .c-product__block {
     width: 32%;
     margin: 30px 2% 0 0;
-    max-width: 288px;
+    max-width: 295px;
   }
 
   .c-product__block:nth-child(3n) {
@@ -1289,13 +1287,9 @@ a:visited {
   }
 }
 
-.c-searchBox__title {
-  font-size: 12px;
-}
-
 @media (min-width: 768px) {
   .c-searchBox__title {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -1323,7 +1317,7 @@ a:visited {
   margin-top: 15px;
   line-height: 1.41;
   display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -1389,11 +1383,12 @@ a:visited {
 }
 
 .c-searchBox__button {
-  padding: 10px;
+  padding: 8px;
   color: #ffffff;
   height: 100%;
   width: 100%;
   transition: all 0.3s;
+  font-size: 16px;
 }
 
 .c-searchBox__button:hover {
@@ -1419,6 +1414,7 @@ a:visited {
 
 .c-image {
   max-width: 100%;
+  width: -webkit-fill-available;
 }
 
 .c-tag {
@@ -1460,11 +1456,11 @@ a:visited {
 }
 
 .c-tag.ruby {
-  background: #C60100;
+  background: #d64545;
 }
 
 .c-tag.rubyfw {
-  background: #C60100;
+  background: #d64545;
 }
 
 .c-tag.easy {
@@ -1482,14 +1478,14 @@ a:visited {
 
 .c-tag__block {
   display: flex;
-  padding: 15px 0 8px 12px;
+  padding: 15px 0 8px;
   flex-wrap: wrap;
   height: 45px;
   overflow: hidden;
 }
 
 .c-contents__block {
-  padding: 0 15px 15px;
+  padding: 0 0 15px;
 }
 
 .c-contents__title {
@@ -1515,6 +1511,8 @@ a:visited {
   line-height: 1.38;
   height: 26px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .c-productNew {
@@ -2293,17 +2291,20 @@ a:visited {
 
 .c-productShow__user {
   display: flex;
+  margin-top: 16px;
 }
 
 .c-productShow__userimg {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .c-productShow__userimg img {
-  height: 50px;
-  width: 50px;
+  height: 100%;
   border-radius: 50%;
 }
 
@@ -3114,15 +3115,16 @@ a:visited {
 }
 
 .c-bord__userImg {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  height: 100%;
 }
 
 .c-bord__userImg__wrapper {
-  margin-right: 10px;
   width: 50px;
   height: 50px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin-right: 10px;
   border-radius: 50%;
 }
 
@@ -3164,14 +3166,19 @@ a:visited {
 .c-profile__img {
   margin: 10px auto 0;
   text-align: center;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .c-profile__img > img {
-  width: 130px;
-  height: 130px;
   margin: 0 auto;
   display: block;
   border-radius: 50%;
+  height: 100%;
 }
 
 .c-profile__edit {
@@ -3505,22 +3512,21 @@ a:visited {
 }
 
 .c-messages__head__userImg {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+  height: 100%;
 }
 
 .c-messages__head__userImg__wrapper {
   margin-left: 16px;
   width: 35px;
   height: 35px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
   border-radius: 50%;
 }
 
 @media (min-width: 768px) {
   .c-messages__head__userImg__wrapper {
-    position: relative;
-    display: inline-block;
     margin-left: 32px;
   }
 }
@@ -3701,6 +3707,7 @@ a:visited {
 .c-login__inner {
   padding: 30px;
   background: #E5F6F2;
+  height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -3897,6 +3904,7 @@ a:visited {
 .c-register__inner {
   padding: 30px;
   background: #E5F6F2;
+  height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -5443,12 +5451,13 @@ a:visited {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .c-lessonShow__userimg img {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
+  height: 100%;
 }
 
 .c-lessonShow__username {
@@ -5910,6 +5919,7 @@ a:visited {
 
 .c-passReset {
   background: #E5F6F2;
+  height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -6612,19 +6622,23 @@ a:visited {
 
 .c-mypage__account__list.img {
   text-align: center;
-}
-
-.c-mypage__account__list img {
   height: 65px;
   width: 65px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
-  .c-mypage__account__list img {
+  .c-mypage__account__list.img {
     height: 100px;
     width: 100px;
   }
+}
+
+.c-mypage__account__list img {
+  height: 100%;
 }
 
 .c-mypage__account__list--withdraw {
@@ -7113,6 +7127,7 @@ a:visited {
 .c-authChange__container {
   padding: 24px 10px;
   background: #E5F6F2;
+  height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -7446,13 +7461,13 @@ body {
   font-family: "Montserrat", "Noto Sans JP", sans-serif;
 }
 
-main {
-  padding-top: 60px;
+.main__top__block {
+  height: 60px;
 }
 
 @media (min-width: 768px) {
-  main {
-    padding-top: 70px;
+  .main__top__block {
+    height: 70px;
   }
 }
 

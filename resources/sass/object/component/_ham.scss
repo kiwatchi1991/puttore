@@ -112,19 +112,18 @@
          }
       }
     }
-    &--profile{
-    }
     &__profile{
       display: flex;
       align-items: center;
         &__img{
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+            height: 100%;
             &__wrapper{
               width: 80px;
               height: 80px;
               border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              overflow: hidden;
             }
           }
         &__name{

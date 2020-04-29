@@ -57,13 +57,14 @@
         font-size: 11px;
     }
     &__userImg{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+        height: 100%;
         &__wrapper{
-            margin-right: 10px;
             width: 50px;
             height: 50px;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            margin-right: 10px;
             border-radius: 50%;
         }
     }

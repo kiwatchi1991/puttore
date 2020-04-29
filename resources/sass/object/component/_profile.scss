@@ -6,12 +6,17 @@
     &__img{
         margin: 10px auto 0;
         text-align: center;
+        width: 130px;
+        height: 130px;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 50%;
         &>img{
-            width: 130px;
-            height: 130px;
             margin: 0 auto;
             display: block;
             border-radius: 50%;
+            height: 100%;
         }
     }
     &__edit{

@@ -156,15 +156,19 @@
             }
             &.img{
                 text-align: center;
-            }
-            img{
                 height: 65px;
                 width: 65px;
                 border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                overflow: hidden;
                 @include pc{
                     height: 100px;
                     width: 100px;
                 }
+            }
+            img{
+                height: 100%;
             }
             &--withdraw{
                 margin-top: 120px;

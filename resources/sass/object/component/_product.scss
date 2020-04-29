@@ -15,14 +15,14 @@
     }
   }
   &__block{
-    width: 280px;
-    max-width: 280px;
+    width: 295px;
+    max-width: 295x;
     margin: 30px auto 0;
     overflow-wrap:break-word;
     box-shadow: 0 20px 30px -15px rgba(89,0,0,0.08);
     transition: 0.2s ease-in-out;
     animation: cardSlideIn 0.4s ease-in-out;
-    padding: 10px 15px 0;
+    padding: 10px 25px 0;
     box-sizing: border-box;
     background:$p_bg;
     border-radius: 10px;
@@ -30,7 +30,7 @@
     @include pc{
       width: 32%;
       margin: 30px 2% 0 0;
-      max-width: 288px;
+      max-width: 295px;
       &:nth-child(3n){
         margin-right: 0;
       }
@@ -106,9 +106,8 @@
       }
     }
     &__title{
-      font-size: 12px;
       @include pc{
-        font-size: 16px;
+        font-size: 18px;
       }
     }
     &__body{
@@ -134,7 +133,7 @@
         margin-top: 15px;
         line-height: 1.41;
         display: inline-block;
-        font-size: 12px;
+        font-size: 14px;
         @include pc{
           width: 28%;
           font-size: 16px;
@@ -189,11 +188,12 @@
     }
   }
   &__button{
-    padding: 10px;
+    padding: 8px;
     color: #ffffff;
     height: 100%;
     width: 100%;
     transition: all .3s;
+    font-size: 16px;
       &:hover{
         transition: all .3s;
         opacity: 0.7;
@@ -219,6 +219,7 @@
 
 .c-image{
     max-width: 100%;
+    width: -webkit-fill-available;
 }
 
 .c-tag{
@@ -266,7 +267,7 @@
   }
   &__block{
     display: flex;
-    padding: 15px 0 8px 12px;
+    padding: 15px 0 8px;
     flex-wrap: wrap;
     height: 45px;
     overflow: hidden;
@@ -275,7 +276,7 @@
 
 .c-contents{
     &__block{
-    padding: 0 15px 15px;
+    padding: 0 0 15px;
     }
     &__title{
       font-size: 17px;
@@ -298,6 +299,8 @@
       line-height: 1.38;
       height: 26px;
       overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
   }
 }
 
@@ -932,14 +935,17 @@
   }
   &__user{
     display: flex;
+    margin-top: 16px;
   }
  &__userimg{
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
    img{
-    height: 50px;
-    width: 50px;
+    height: 100%;
     border-radius: 50%;
    }
  }
