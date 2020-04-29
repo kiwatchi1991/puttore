@@ -13,6 +13,7 @@ require('./components/buyimgSlider');
 require('./components/request-transfer');
 require('./components/footerFixed');
 require('./components/footerHide');
+require('./components/mainSectionSetHeight');
 require('./components/lessonModal');
 require('./components/val');
 require('./components/editMenu');
