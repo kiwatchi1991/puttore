@@ -40,12 +40,12 @@ class CreateProductRequest extends FormRequest
             'lessons.*.title' => 'required|max:255',
             'lessons.*.lesson' => 'required|',
 
-            'pic1' => 'nullable|image',
-            'pic2' => 'nullable|image',
-            'pic3' => 'nullable|image',
-            'pic4' => 'nullable|image',
-            'pic5' => 'nullable|image',
-            'pic6' => 'nullable|image',
+            'pic1' => 'nullable|image|max:2048',
+            'pic2' => 'nullable|image|max:2048',
+            'pic3' => 'nullable|image|max:2048',
+            'pic4' => 'nullable|image|max:2048',
+            'pic5' => 'nullable|image|max:2048',
+            'pic6' => 'nullable|image|max:2048',
         ];
 
         //割引価格の情報が何かしら入力された時はバリデーションを行う
