@@ -76,9 +76,8 @@
                             class="options">任意</span></label>
 
                     <div>
-                        <input id="account_detail" type="text"
-                            class="c-profileEdit__input @error('account_id') is-invalid @enderror" name="account_detail"
-                            autocomplete="account_detail" value="{{ $user->account_detail }}">
+                        <textarea class="c-profileEdit__input @error('account_id') is-invalid @enderror"
+                            name="account_detail" rows="5">{{ $user->account_detail }}</textarea>
 
                         @error('account_detail')
                         <span role="alert">
