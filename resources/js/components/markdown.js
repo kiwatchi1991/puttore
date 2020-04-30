@@ -3,7 +3,7 @@ marked.setOptions({ breaks: true });
 //==========================================
 //==========   マークダウンプレビューイベント
 //==========================================
-$(document).on('keyup', '.js-marked__textarea', function () {
+$(document).on('keyup blur', '.js-marked__textarea', function () {
     var html = marked($(this).val());
     $(this).parents('.js-add__target').find('.js-lesson__block--preview').html(html);
 });
