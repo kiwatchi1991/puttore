@@ -82,9 +82,14 @@ class ProfilesController extends Controller
         }
 
         $user = User::find($id);
+
+        $isPic = $request->pic;
+        //画像の更新があった場合はもとの画像を削除する
+        $isPic && Storage::delete('public/' . $user->pic);
+
         $user->fill($request->all())->save();
 
-        if ($request->pic) {
+        if ($isPic) {
             $path = $request->pic->store('public/profile_images');
             $user->pic = str_replace('public/', '', $path);
             $user->save();
