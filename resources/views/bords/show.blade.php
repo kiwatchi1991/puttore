@@ -12,6 +12,7 @@ $buy_userId = $bord->{'o.u_id'};
 $sell_userId = $bord->{'p.u_id'};
 $order_type = ($buy_userId == $self_user_id) ? "buy" : "sale";
 // $class_order_type = ($buy_userId == $self_user_id) ? "buy" : "sell";
+$partnerId = ($order_type == "buy") ? $sell_userId : $buy_userId;
 
 if($order_type == "buy"){
 $pic = ($user->find($sell_userId)->pic)?$user->find($sell_userId)->pic:'images/noavatar.png';
@@ -29,7 +30,9 @@ $pic = ($user->find($buy_userId)->pic)?$user->find($buy_userId)->pic:'images/noa
 
         <a href="{{ route('bords') }}" class="c-message__userImg__item"></a>
         <div class="c-messages__head__userImg__wrapper">
-            <img src="/storage/{{ $pic }}" alt="" class="c-messages__head__userImg">
+            <a class="c-messages__head__userImg__link" href="{{ route('profile.show',$partnerId) }}">
+                <img src="/storage/{{ $pic }}" alt="" class="c-messages__head__userImg">
+            </a>
         </div>
         <div class="c-messages__head__title">
             @php echo mb_strimwidth( $bord->name, 0, 20, '…', 'UTF-8' ); @endphp

@@ -13,10 +13,10 @@
 
     $buy_userId = $bord->user_id;
     $sell_userId = $bord->{'p.user_id'};
-    $order_type = ($buy_userId == $id) ? "購入" : "販売";
-    $class_order_type = ($buy_userId == $id) ? "buy" : "sell";
+    $order_type = ($buy_userId == $id) ? "buy" : "sell";
+    $partnerId = ($order_type == "buy") ? $sell_userId : $buy_userId;
 
-    if($order_type == "購入"){
+    if($order_type == "buy"){
     $pic = $user->find($sell_userId);
     }else{
     $pic = $user->find($buy_userId);
@@ -27,7 +27,7 @@
 
 
 
-    <a class="c-bord__list {{$class_order_type}}" href="{{ route('bords.show',$bord->id) }}">
+    <a class="c-bord__list {{$order_type}}" href="{{ route('bords.show',$bord->id) }}">
         <div class="c-bord__inner">
 
             <div class="c-bord__half--left">
@@ -38,8 +38,8 @@
 
             <div class="c-bord__half--right">
                 <div class="c-bord__half--top">
-                    <div class="c-bord__order {{$class_order_type}}">
-                        {{ $order_type }}
+                    <div class="c-bord__order {{$order_type}}">
+                        {{($order_type == "buy")?"購入":"販売"}}
                     </div>
                     <div class="c-bord__title">
                         @php echo mb_strimwidth( $bord->name, 0, 20, '…', 'UTF-8' ); @endphp
