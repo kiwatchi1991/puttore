@@ -45,9 +45,10 @@
         border-bottom:none;
       }
       &:hover{
-        opacity: 0.5;
+        opacity: 1;
         color: $main-color;
         cursor: pointer;
+        background: #fff;
       }
       }
     }
