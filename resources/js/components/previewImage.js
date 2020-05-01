@@ -11,13 +11,13 @@ $productFileInput.on('change', function () {
   fileReader.onload = function(event) {
     //読み込んだデータをimgに設定
     $img.attr('src', event.target.result).show();
+    // 削除ボタン表示
+    deletebtnshow();
   };
   
   // 6. 画像読み込み
   fileReader.readAsDataURL(file);
 
-  // 削除ボタン表示
-  deletebtnshow();
 });
 
 //削除ボタン表示関数
