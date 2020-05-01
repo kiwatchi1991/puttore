@@ -25,12 +25,12 @@ $(document).on('click', '.js-deleteIcon', function () {
                     dataType: 'json',
                     data: { 'lessonId': deleteTargetId },
                 })
-                    // Ajaxリクエストが成功した場合
-                    .done(function () {
-                    })
-                    // Ajaxリクエストが失敗した場合
-                    .fail(function (data) {
-                    });
+                // Ajaxリクエストが成功した場合
+                .done(function () {
+                })
+                // Ajaxリクエストが失敗した場合
+                .fail(function (data) {
+                });
             }
             //レッスンを画面から削除
             $deleteTarget.remove();
