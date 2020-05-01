@@ -66,44 +66,84 @@ class ProductsController extends Controller
 
         //画像登録
         $product = Product::find($id);
-        $product->fill($request->all())->save();
-        //画像に変更がない場合は処理をしない
+
+        $isFlgPic1 = $request->flgpic1;
+        $isFlgPic2 = $request->flgpic2;
+        $isFlgPic3 = $request->flgpic3;
+        $isFlgPic4 = $request->flgpic4;
+        $isFlgPic5 = $request->flgpic5;
+        $isFlgPic6 = $request->flgpic6;
+
+        //画像の削除がされていたら既存画像とDBカラムを削除
+        if ($isFlgPic1) {
+            Storage::delete('public/' . $product->pic1);
+            $product->pic1 = '';
+        }
+        if ($isFlgPic2) {
+            Storage::delete('public/' . $product->pic2);
+            $product->pic2 = '';
+        }
+        if ($isFlgPic3) {
+            Storage::delete('public/' . $product->pic3);
+            $product->pic3 = '';
+        }
+        if ($isFlgPic4) {
+            Storage::delete('public/' . $product->pic4);
+            $product->pic4 = '';
+        }
+        if ($isFlgPic5) {
+            Storage::delete('public/' . $product->pic5);
+            $product->pic5 = '';
+        }
+        if ($isFlgPic6) {
+            Storage::delete('public/' . $product->pic6);
+            $product->pic6 = '';
+        }
+
+        // 画像の更新がある場合はDBのデータを削除
         $isPic1 = $request->pic1;
+        $isPic2 = $request->pic2;
+        $isPic3 = $request->pic3;
+        $isPic4 = $request->pic4;
+        $isPic5 = $request->pic5;
+        $isPic6 = $request->pic6;
+
+        $isPic1 && Storage::delete('public/' . $product->pic1);
+        $isPic2 && Storage::delete('public/' . $product->pic2);
+        $isPic3 && Storage::delete('public/' . $product->pic3);
+        $isPic4 && Storage::delete('public/' . $product->pic4);
+        $isPic5 && Storage::delete('public/' . $product->pic5);
+        $isPic6 && Storage::delete('public/' . $product->pic6);
+
+        //データを全て更新
+        $product->fill($request->all())->save();
+
+        //画像に変更がない場合は処理をしない
         if ($isPic1) {
             $path = $isPic1->store('public/product_images');
             $product->pic1 = str_replace('public/', '', $path);
-            $product->save();
         }
-        $isPic2 = $request->pic2;
         if ($isPic2) {
             $path = $isPic2->store('public/product_images');
             $product->pic2 = str_replace('public/', '', $path);
-            $product->save();
         }
-        $isPic3 = $request->pic3;
         if ($isPic3) {
             $path = $isPic3->store('public/product_images');
             $product->pic3 = str_replace('public/', '', $path);
-            $product->save();
         }
-        $isPic4 = $request->pic4;
         if ($isPic4) {
             $path = $isPic4->store('public/product_images');
             $product->pic4 = str_replace('public/', '', $path);
-            $product->save();
         }
-        $isPic5 = $request->pic5;
         if ($isPic5) {
             $path = $isPic5->store('public/product_images');
             $product->pic5 = str_replace('public/', '', $path);
-            $product->save();
         }
-        $isPic6 = $request->pic6;
         if ($isPic6) {
             $path = $isPic6->store('public/product_images');
             $product->pic6 = str_replace('public/', '', $path);
-            $product->save();
         }
+        $product->save();
 
         //レッスンの登録
 
