@@ -1,0 +1,391 @@
+.c-productShow{
+  background: $bg;
+  padding: 20px 20px 48px;
+  &__inner{
+    @include pc{
+      width: 520px;
+      margin: 0 auto;
+    }
+  }
+  &__img{
+    background: white;
+    height: 50vw;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    @include pc{
+      height: 290px;
+    }
+  }
+  &__slider{
+    &__container{
+      height: 100%;
+      position: relative;
+    }
+    &__noimage{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+    }
+    &__item{
+      height: 100%;
+      width: 90vw;
+      position: relative;
+      float: left;
+      @include pc{
+        width: 520px;
+    }
+      &__img{
+        width: 100%;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          margin: auto;
+      }
+    }
+    &__nav{
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      cursor: pointer;
+      z-index: 1;
+      top: 50%;
+      transform: translateY(-50%);
+      &.prev{
+        left: 6px;
+      }
+      &.next{
+        right: 12px;
+      }
+    }
+  }
+  &__price{
+    margin-top: 16px;
+    font-size: 25px;
+    font-weight: bold;
+    color: $main-color;
+    line-height: 1.24;
+    letter-spacing: 0.76px;
+
+    &.is-inactive{
+      text-decoration:line-through;
+      font-size: 16px;
+    }
+    &--discount{
+      margin-top: 8px;
+      color: red;
+    }
+    &__discount{
+      font-size: 12px;
+      padding-left: 8px;
+    }
+  }
+  &__editMenuIcon{
+    text-align: right;
+    margin-top: 16px;
+    font-size: 23px;
+    color: $main-color;
+    @include pc{
+      font-size: 36px;
+    }
+    >a{
+      color: $main-color;
+    }
+  }
+   &__editMenu{
+    width: 65px;
+    margin: 16px 0 0 auto;
+    font-size: 14px;
+    display: flex;
+    @include pc{
+      font-size: 16px;
+    }
+    &__list{
+      color: $main-text;
+      cursor: pointer;
+      display: block;
+      margin-right: 24px;
+      font-size: 24px;
+      &:hover{
+        opacity: 0.5;
+      }
+      a{
+        display: block;
+        color: $main-text;
+        &:visited{
+          color: $main-text;
+        }
+      }
+      &--delete{
+        // padding: 15px;
+      }
+    }
+  }
+
+  &__title{
+    margin-top: 16px;
+    font-size: 20px;
+    line-height: 1.2;
+    @include pc{
+      margin-top: 32px;
+    }
+    &__text{
+      display: flex;
+      align-items: center;
+      font-size: 23px;
+      line-height: 1.35;
+      letter-spacing: -0.13px;
+      @include pc{
+        font-size: 35px;
+        line-height: 1.35;
+        letter-spacing: 1.06px;
+      }
+    }
+  }
+  &__draft{
+    background: $hard;
+    color: white;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 7px 15px;
+    border-radius: 5px;
+    margin-left: 16px;
+  }
+  &__detail{
+    margin-top: 16px;
+    line-height: 1.2;
+    font-size: 16px;
+    line-height: 1.38;
+    letter-spacing: 0.4px;
+  }
+  &__user{
+    display: flex;
+    margin-top: 16px;
+  }
+ &__userimg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+   img{
+    height: 100%;
+    border-radius: 50%;
+   }
+ }
+  &__username{
+    margin-left: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+  &__updated{
+    margin-top: 8px;
+    font-size: 10px;
+    @include pc{
+      font-size: 13px;
+    }
+
+  }
+  &__like{
+    margin: 64px auto 0;
+    &__btn{
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+      color: white;
+      border-radius: 8px;
+      background: $main-color;
+      font-size: 16px;
+      transition: all .3s;
+        &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+        transition: all .3s;
+      }
+      &.is-active{
+        background: white;
+        border: 1px solid $main-color;
+        color:$main-color;
+      }
+    }
+  }
+  &__buynow{
+    form{
+      display: inline;
+
+    }
+    button{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__toLogin{
+    margin: 60px auto 0;
+    z-index: 3;
+    background: orange;
+    text-align: center;
+    width: 80%;
+    border-radius: 7px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all .3s;
+    &:hover{
+      opacity: 0.5;
+      transition: all .3s;
+    }
+    &__btn{
+      padding: 14px;
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      color: white;
+      box-sizing: border-box;
+      transition: all .3s;
+      &:visited{
+        color: white;
+      }
+      &:hover{
+        opacity: 1;
+        transition: all .3s;
+      }
+    }
+  }
+  &__curriculum{
+    margin-top: 24px;
+    &__head{
+      color: $main-color;
+      font-size: 23px;
+      line-height: 1.35;
+    }
+  }
+
+  &__lessons{
+  }
+  &__lesson{
+    margin-top: 24px;
+    &__number{
+      font-size: 18px;
+      letter-spacing: 0.08px;
+    }
+    &__title{
+      margin-top: 8px;
+      line-height: 1.38;
+      font-size: 16px;
+      letter-spacing: 0.04px;
+    }
+  }
+  &__number{
+    font-size: 18px;
+  }
+  &__curriculumBlock{
+    margin-top: 32px;
+  }
+  &__requireSkills{
+    margin-top: 64px;
+    &__head{
+      color: $main-color;
+      font-size: 23px;
+      line-height: 1.35;
+    }
+    &__text{
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.35;
+      letter-spacing: 0.33px;
+    }
+  }
+  &__toLesson{
+    margin: 60px auto 0;
+    z-index: 3;
+    background: orange;
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-size: 15px;
+    letter-spacing: -0.24px;
+    border-radius: 11px;
+    box-sizing: border-box;
+    
+    &__link{
+      padding: 14px;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+        &:hover{
+        opacity: 0.5;
+        background: white;
+        color: $main-text;
+        cursor: pointer;
+      }
+    }
+  }
+  &__toBord{
+    margin: 16px auto 0;
+    z-index: 3;
+    background: #7DD4BC;
+    text-align: center;
+    width: 100%;
+    font-size: 15px;
+    letter-spacing: -0.24px;
+    border-radius: 11px;
+    box-sizing: border-box;
+    &__link{
+      padding: 14px;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+
+        &:hover{
+        opacity: 0.5;
+        background: white;
+        color: $main-text;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__toLessonPage{
+    padding: 16px;
+    font-size: 12px;
+    border-bottom: 1px solid $main-color;
+    color: #585858;
+    background: #CBEDE4;
+    a{
+      color: #585858;
+    }
+    &:first-child{
+      border-radius: 8px 8px 0 0;
+    }
+    &:last-child{
+      border-radius: 0 0 8px 8px;
+      border-bottom: none;
+    }
+  }
+}
+
+//支払いボタンのスタイル上書き
+#payjp_checkout_box input[type=button]{
+  background: orange !important;
+  background-image: none !important;
+  border-radius: 7px !important;
+  border: none !important;
+  padding: 10px !important;
+  font-size: 16px !important;
+  width: 100%;
+  height: 100%;
+  transition: all .3s;
+  &:hover{
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all .3s;
+  }
+}
