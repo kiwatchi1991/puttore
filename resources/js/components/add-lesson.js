@@ -83,7 +83,21 @@ $(document).on('change', '.js-lessonUploadImg', function () {
         })
         // Ajaxリクエストが失敗した場合
         .fail(function (data) {
-            console.log('failed');
+            let status = data.status;
+            let errMessage;
+                
+            switch (status) {
+                case 413:
+                    errMessage = 'アップロード上限は2MBです';
+                    break;
+                case 422:
+                    errMessage = 'アップロードできるのは画像のみです';
+                    break;
+                default:
+                    errMessage = 'アップロードに失敗しました。もう一度やり直してください';
+            }
+            
+            alert(errMessage);
         })
 });
 

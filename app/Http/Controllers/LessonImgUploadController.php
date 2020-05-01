@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LessonImgUploadRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Lessonimg;
@@ -12,7 +13,7 @@ class LessonImgUploadController extends Controller
     /**
      * 画像アップロード
      */
-    public function imgupload(Request $request)
+    public function imgupload(LessonImgUploadRequest $request)
     {
         Log::debug('<<<<<<<< imgupload ajax>>>>>>>>>>>>>');
 
