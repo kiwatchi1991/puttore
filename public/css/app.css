@@ -2911,12 +2911,13 @@ a:visited {
 }
 
 .c-productShow__lesson__number {
-  font-size: 18px;
+  font-size: 20px;
   letter-spacing: 0.08px;
+  font-weight: bold;
 }
 
 .c-productShow__lesson__title {
-  margin-top: 8px;
+  margin-top: 16px;
   line-height: 1.38;
   font-size: 16px;
   letter-spacing: 0.04px;
@@ -3606,6 +3607,10 @@ a:visited {
   .c-messages__head__userImg__wrapper {
     margin-left: 32px;
   }
+}
+
+.c-messages__head__userImg__link {
+  width: 100%;
 }
 
 .c-messages__head__title {
@@ -6699,6 +6704,7 @@ a:visited {
 
 .c-mypage__account__list.img {
   text-align: center;
+  margin: 24px auto;
   height: 65px;
   width: 65px;
   border-radius: 50%;
