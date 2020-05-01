@@ -96,7 +96,6 @@ $(document).on('change', '.js-lessonUploadImg', function () {
                 default:
                     errMessage = 'アップロードに失敗しました。もう一度やり直してください';
             }
-            
             alert(errMessage);
         })
 });
