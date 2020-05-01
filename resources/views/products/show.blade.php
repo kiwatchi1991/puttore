@@ -16,21 +16,21 @@
 
             <div class="c-productShow__img">
                 {{-- 画像がなかったらスライダーボタンを表示しない --}}
-                @if($product_imgs[0] !== null)
+                @if($product_imgs !== null)
                 <img class="c-productShow__slider__nav prev js-slider__prev" src="/storage/images/angle-prev.png"
                     alt="">
                 <img class="c-productShow__slider__nav next js-slider__next" src="/storage/images/angle-next.png"
                     alt="">
                 @endif
                 <ul class="c-productShow__slider__container js-slider__container">
+                    @if($product_imgs)
                     @foreach($product_imgs as $product_img)
                     {{-- 画像がある分だけ表示する --}}
-                    @if($product_img)
                     <li class="c-productShow__slider__item js-slider__item">
                         <img class="c-productShow__slider__item__img" src="/storage/{{ $product_img  }}" alt="">
                     </li>
-                    @endif
                     @endforeach
+                    @endif
 
                     {{-- 画像がなかったら、１枚だけnoimageを表示する --}}
                     @if($product_imgs[0] == null)
