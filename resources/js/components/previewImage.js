@@ -15,6 +15,9 @@ $productFileInput.on('change', function () {
     deletebtnshow();
   };
   
+  //DBの画像パス削除判定フラグをリセット
+  $img.siblings('.js-flg-delete').val('');
+
   // 6. 画像読み込み
   fileReader.readAsDataURL(file);
 
@@ -25,7 +28,11 @@ let deletebtnshow = function () {
   let $imgs = $('.js-prev__img');
 
   for (let i = 0; i < $imgs.length; i++){
-    if ($($imgs[i]).attr('src') !== '/storage/') {
+    //正規表現で画像の有無を判定
+    let src = $($imgs[i]).attr('src');
+    let reg = src.match('/storage/.+|data:.+');
+
+    if (reg) {
       $($imgs[i]).parents('.js-image-parents').find('.js-imgModal-open').show();
     } else {
       $($imgs[i]).parents('.js-image-parents').find('.js-imgModal-open').hide();

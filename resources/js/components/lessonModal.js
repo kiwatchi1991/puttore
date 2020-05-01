@@ -38,11 +38,12 @@ $(function () {
         const $deleteBtn = $deleteTarget.parents('.js-image-parents').find('.js-imgModal-open')
 
         $deleteTarget.prop('src', '');
-
+        $deleteTarget.siblings('.js-flg-delete').val(1);
         $modal.fadeOut();
         $('body').css('overflow', 'visible');
-
         $deleteBtn.hide();
+
+        
         return false;
     });
     

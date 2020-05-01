@@ -304,25 +304,69 @@
 
             {{-- 画像 --}}
             <div class="c-productNew__images">
+                {{-- モーダルウィンドウ --}}
+                <div class="c-productNew__imgModal js-imgModal">
+                    <div class="c-productNew__imgModal__bg js-imgModal-close"></div>
+                    <div class="c-productNew__imgModal__inner">
+
+                        <div class="c-productNew__imgModal__label">画像を削除しますか？</div>
+                        <div class="c-productNew__imgModal__img">
+                            <img src="" alt="" class="js-img-insert-target">
+                        </div>
+                        <div class="c-productNew__imgModal__buttons">
+                            <div class="c-productNew__imgModal__button c-productNew__imgModal__button--cansel">
+                                <a href="javascript:void(0)" class="js-imgModal-close">キャンセル</a>
+                            </div>
+                            <div class="c-productNew__imgModal__button c-productNew__imgModal__button--delete">
+                                <a href="javascript:void(0)" class="js-imgModal-delete">削除する</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <p class="c-productNew__title__label">画像 <span class="c-productNew__title__label--picText">(
                         画像１がサムネイルとして表示されます )</span>
                 </p>
                 <div class="c-productNew__images__half">
                     {{-- 画像1 --}}
-                    <label class="c-productNew__image__area area1 js-area__drop">
-                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic1">
-                        <img src="/storage/{{ $product->pic1 }}" alt="" class="c-productNew__image__img js-prev__img">
-                    </label>
+                    <div class="c-productNew__image js-image-parents">
+                        <label class="c-productNew__image__area area1 js-area__drop">
+                            <input type="hidden" value="" name="flgpic1" class="js-flg-delete">
+                            <input class="c-productNew__image__input js-input__file--product" type="file" name="pic1"
+                                value="">
+                            <img src="/storage/{{ $product->pic1 }}" alt=""
+                                class="c-productNew__image__img js-prev__img" data-modal="pic1">
+                        </label>
+                        <div class="c-productNew__modal c-productNew__modal--img">
+                            <a href="javascript:void(0)" class="js-imgModal-open c-productNew__modal__delete"
+                                data-modal="pic1">削除</a>
+                        </div>
+                    </div>
                     {{-- 画像2 --}}
-                    <label class="c-productNew__image__area area2 js-area__drop">
-                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic2">
-                        <img src="/storage/{{ $product->pic2 }}" alt="" class="c-productNew__image__img js-prev__img">
-                    </label>
+                    <div class="c-productNew__image js-image-parents">
+                        <label class="c-productNew__image__area area2 js-area__drop">
+                            <input type="hidden" value="" name="flgpic2" class="js-flg-delete">
+                            <input class="c-productNew__image__input js-input__file--product" type="file" name="pic2">
+                            <img src="/storage/{{ $product->pic2 }}" alt=""
+                                class="c-productNew__image__img js-prev__img" data-modal="pic2">
+                        </label>
+                        <div class="c-productNew__modal c-productNew__modal--img">
+                            <a href="javascript:void(0)" class="js-imgModal-open c-productNew__modal__delete"
+                                data-modal="pic2">削除</a>
+                        </div>
+                    </div>
                     {{-- 画像3 --}}
-                    <label class="c-productNew__image__area area3 js-area__drop">
-                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic3">
-                        <img src="/storage/{{ $product->pic3}}" alt="" class="c-productNew__image__img js-prev__img">
-                    </label>
+                    <div class="c-productNew__image js-image-parents">
+                        <label class="c-productNew__image__area area3 js-area__drop">
+                            <input type="hidden" value="" name="flgpic3" class="js-flg-delete">
+                            <input class="c-productNew__image__input js-input__file--product" type="file" name="pic3">
+                            <img src="/storage/{{ $product->pic3}}" alt="" class="c-productNew__image__img js-prev__img"
+                                data-modal="pic3">
+                        </label>
+                        <div class="c-productNew__modal c-productNew__modal--img">
+                            <a href="javascript:void(0)" class="js-imgModal-open c-productNew__modal__delete"
+                                data-modal="pic3">削除</a>
+                        </div>
+                    </div>
                 </div>
                 @error('pic1')
                 <span class="c-productNew__error" role="alert">
@@ -341,20 +385,44 @@
                 @enderror
                 <div class="c-productNew__images__half">
                     {{-- 画像4 --}}
-                    <label class="c-productNew__image__area area4 js-area__drop">
-                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic4">
-                        <img src="/storage/{{ $product->pic4 }}" alt="" class="c-productNew__image__img js-prev__img">
-                    </label>
+                    <div class="c-productNew__image js-image-parents">
+                        <label class="c-productNew__image__area area4 js-area__drop">
+                            <input type="hidden" value="" name="flgpic4" class="js-flg-delete">
+                            <input class="c-productNew__image__input js-input__file--product" type="file" name="pic4">
+                            <img src="/storage/{{ $product->pic4 }}" alt=""
+                                class="c-productNew__image__img js-prev__img" data-modal="pic4">
+                        </label>
+                        <div class="c-productNew__modal c-productNew__modal--img">
+                            <a href="javascript:void(0)" class="js-imgModal-open c-productNew__modal__delete"
+                                data-modal="pic4">削除</a>
+                        </div>
+                    </div>
                     {{--画像5 --}}
-                    <label class="c-productNew__image__area area5 js-area__drop">
-                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic5">
-                        <img src="/storage/{{ $product->pic5 }}" alt="" class="c-productNew__image__img js-prev__img">
-                    </label>
+                    <div class="c-productNew__image js-image-parents">
+                        <label class="c-productNew__image__area area5 js-area__drop">
+                            <input type="hidden" value="" name="flgpic5" class="js-flg-delete">
+                            <input class="c-productNew__image__input js-input__file--product" type="file" name="pic5">
+                            <img src="/storage/{{ $product->pic5 }}" alt=""
+                                class="c-productNew__image__img js-prev__img" data-modal="pic5">
+                        </label>
+                        <div class="c-productNew__modal c-productNew__modal--img">
+                            <a href="javascript:void(0)" class="js-imgModal-open c-productNew__modal__delete"
+                                data-modal="pic5">削除</a>
+                        </div>
+                    </div>
                     {{--画像6 --}}
-                    <label class="c-productNew__image__area area6 js-area__drop">
-                        <input class="c-productNew__image__input js-input__file--product" type="file" name="pic6">
-                        <img src="/storage/{{ $product->pic6 }}" alt="" class="c-productNew__image__img js-prev__img">
-                    </label>
+                    <div class="c-productNew__image js-image-parents">
+                        <label class="c-productNew__image__area area6 js-area__drop">
+                            <input type="hidden" value="" name="flgpic6" class="js-flg-delete">
+                            <input class="c-productNew__image__input js-input__file--product" type="file" name="pic6">
+                            <img src="/storage/{{ $product->pic6 }}" alt=""
+                                class="c-productNew__image__img js-prev__img" data-modal="pic6">
+                        </label>
+                        <div class="c-productNew__modal c-productNew__modal--img">
+                            <a href="javascript:void(0)" class="js-imgModal-open c-productNew__modal__delete"
+                                data-modal="pic6">削除</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             @error('pic4')
