@@ -1,21 +1,8 @@
-let $dropArea = $('.js-area__drop');
 let $productFileInput = $('.js-input__file--product');
 let $deletebtn = $('.js-delete__file');
-$dropArea.on('dragover', function(e){
-  e.stopPropagation();
-  e.preventDefault();
-  $(this).css('border', '3px #ccc dashed');
-});
-$dropArea.on('dragleave', function(e){
-  e.stopPropagation();
-  e.preventDefault();
-  $(this).css('border', 'none');
-});
-
 
 // プロダクト登録プレビュー
 $productFileInput.on('change', function () {
-  $dropArea.css('border', 'none');
   let file = this.files[0],         // 2 file配列にファイルが入ってます
   $img = $(this).siblings('.js-prev__img'), // 3 jQueryのsiblingsメソッドで兄弟のimg取得
   fileReader = new FileReader();  // 4 ファイルを読み込むFileReaderオブジェクト
