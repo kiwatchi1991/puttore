@@ -5,6 +5,7 @@
   max-width: 980px;
     @include pc{
       background: white;
+      padding-bottom: 100px;
     }
     &__input-area{
       width: 100%;
