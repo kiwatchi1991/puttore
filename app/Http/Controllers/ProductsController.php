@@ -403,14 +403,18 @@ class ProductsController extends Controller
 
 
 
-        //　画像情報のみ取得
-        $product_imgs = [];
-        $product_imgs[] = $product->pic1;
-        $product_imgs[] = $product->pic2;
-        $product_imgs[] = $product->pic3;
-        $product_imgs[] = $product->pic4;
-        $product_imgs[] = $product->pic5;
-        $product_imgs[] = $product->pic6;
+        //　画像情報のみ取得（pic１になければ表示しない）
+        $product_imgs = null;
+        if ($product->pic1) {
+            $product_imgs[] = $product->pic1;
+            $product_imgs[] = $product->pic2;
+            $product_imgs[] = $product->pic3;
+            $product_imgs[] = $product->pic4;
+            $product_imgs[] = $product->pic5;
+            $product_imgs[] = $product->pic6;
+        }
+        Log::debug('$product_imgs');
+        Log::debug($product_imgs);
 
         return view('products.show', [
             'product' => $product,

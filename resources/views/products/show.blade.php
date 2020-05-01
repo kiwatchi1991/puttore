@@ -25,10 +25,12 @@
                 <ul class="c-productShow__slider__container js-slider__container">
                     @if($product_imgs)
                     @foreach($product_imgs as $product_img)
+                    @if($product_img != null)
                     {{-- 画像がある分だけ表示する --}}
                     <li class="c-productShow__slider__item js-slider__item">
                         <img class="c-productShow__slider__item__img" src="/storage/{{ $product_img  }}" alt="">
                     </li>
+                    @endif
                     @endforeach
                     @endif
 
