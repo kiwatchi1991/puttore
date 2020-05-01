@@ -10,8 +10,6 @@
     }
     &__wrapper{
       @include pc{
-        // max-width: 900px;
-        // margin: 0 auto;
       }
     }
     &__title__head{
@@ -21,7 +19,6 @@
       color: $main-color;
       padding-bottom: 24px;
       @include pc{
-        // max-width: 900px;
         margin: 0 auto;
       }
 
@@ -492,6 +489,8 @@
     &__img{
       width: 65vw;
       height: 65vw;
+      max-width: 275px;
+      max-height: 275px;
       border-radius: 15px;
       margin-top: 16px;
       position: relative;
@@ -501,11 +500,14 @@
        position: absolute;
        top: 0;
        left: 0;
+       right: 0;
+       margin: auto;
        border-radius: 15px; 
       }
     }
     &__buttons{
       width: 65vw;
+      max-width: 275px;
       margin-top: 32px;
     }
     &__button{

@@ -2207,6 +2207,8 @@ a:visited {
 .c-productNew__imgModal__img {
   width: 65vw;
   height: 65vw;
+  max-width: 275px;
+  max-height: 275px;
   border-radius: 15px;
   margin-top: 16px;
   position: relative;
@@ -2218,11 +2220,14 @@ a:visited {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  margin: auto;
   border-radius: 15px;
 }
 
 .c-productNew__imgModal__buttons {
   width: 65vw;
+  max-width: 275px;
   margin-top: 32px;
 }
 
@@ -2588,6 +2593,12 @@ a:visited {
 .c-productShow {
   background: #E5F6F2;
   padding: 20px 20px 48px;
+}
+
+@media (min-width: 768px) {
+  .c-productShow {
+    border-bottom: 1px solid #00ac7d;
+  }
 }
 
 @media (min-width: 768px) {
