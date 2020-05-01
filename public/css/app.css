@@ -1740,12 +1740,15 @@ a:visited {
 }
 
 .c-productNew__modal__delete {
-  color: #00ac7d;
+  color: #ffffff;
   display: none;
+  padding: 3px 10px;
+  background: #00ac7d;
+  border-radius: 5px;
 }
 
 .c-productNew__modal__delete:visited {
-  color: #00ac7d;
+  color: #ffffff;
 }
 
 .c-productNew__checkbox {
@@ -2219,6 +2222,10 @@ a:visited {
 .c-productNew__imgModal__buttons {
   width: 65vw;
   margin-top: 32px;
+}
+
+.c-productNew__imgModal__button {
+  border-radius: 8px;
 }
 
 .c-productNew__imgModal__button a {

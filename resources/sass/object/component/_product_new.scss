@@ -115,10 +115,13 @@
         text-align: center;
       }
       &__delete{
-        color:$main-color;
+        color:#ffffff;
         display: none;
+        padding: 3px 10px;
+        background: $main-color;
+        border-radius: 5px;
         &:visited{
-          color:$main-color;
+          color:#ffffff;
         }
       }
     }
@@ -505,6 +508,7 @@
       margin-top: 32px;
     }
     &__button{
+      border-radius: 8px;
       a{
         border-radius: 8px;
         width: 100%;
