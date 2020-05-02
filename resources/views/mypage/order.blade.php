@@ -34,7 +34,7 @@
                 @if ($thisMonth->count()==0)
                 <div class="c-mypage__sale__thisMonth__price"><span class="c-mypage__sale__icon">¥</span> 0</div>
                 @endif
-                <div style="width:70px;">
+                <div style="width:50px;">
                     @foreach($thisMonth as $mon => $price)
                     <div class="c-mypage__sale__thisMonth__detail"><a
                             href="{{ route('mypage.order.show',($mon)?$mon:'') }}">詳細</a></div>
@@ -62,7 +62,9 @@
                 @endif
 
                 <div class="c-mypage__sale__untransferred__request js-request-transfer">
-
+                    <input type="hidden" id="js-bank-name" value="{{ $user->bank_name }}">
+                    <input type="hidden" id="js-bank-branch" value="{{ $user->bank_branch }}">
+                    <input type="hidden" id="js-bank-num" value="{{ $user->bank_account_num }}">
                     {{-- 5000円以下の場合は表示しない --}}
                     @foreach($untransferred_price as $mon => $price)
                     @if ($price > 5000)
@@ -93,7 +95,7 @@
                 <tbody>
                     @foreach ($transfers as $transfer)
                     <tr>
-                        <td>{{ $transfer->created_at->format('Y年m月d日') }}</td>
+                        <td class="day">{{ $transfer->created_at->format('Y年m月d日') }}</td>
                         <td>¥ {{ number_format($transfer->transfer_price) }}</td>
                         <td><a href="{{ route('mypage.order.transfer.show',$transfer->id) }}">@if($transfer->status ==
                                 0)申請中@else 振込済 @endif</a></td>
