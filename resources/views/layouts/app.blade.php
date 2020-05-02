@@ -72,9 +72,8 @@
                   <a href="{{route('profile.show',$user->id)}}"
                     class="global-nav__item__link lobal-nav__item__link--profile">
                     <div class="global-nav__item__profile">
-                      <div class="global-nav__item__profile__img__wrapper">
-                        <img class="global-nav__item__profile__img"
-                          src="/storage/{{($user->pic)?$user->pic:'images/noavatar.png'}}" alt="">
+                      <div class="global-nav__item__profile__img__wrapper"
+                        style="background-image:url(/storage/{{($user->pic)?$user->pic:'images/noavatar.png'}})">
                       </div>
                       <span class="global-nav__item__profile__name">{{ $user->account_name }}</span>
                     </div>

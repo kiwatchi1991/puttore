@@ -124,6 +124,9 @@
               display: flex;
               justify-content: center;
               overflow: hidden;
+              background-position: center;
+              background-size: cover;
+              background-repeat: no-repeat;
             }
           }
         &__name{
