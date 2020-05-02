@@ -49,9 +49,6 @@
         <h2>出品作品一覧</h2>
     </div>
 
-    <div class="c-pagination">
-        {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
-    </div>
     <div class="c-product__area">
         @foreach ($products as $product)
         <div class="c-product__block">
@@ -89,9 +86,6 @@
             </a>
         </div>
         @endforeach
-    </div>
-    <div class="c-pagination">
-        {{ $products->appends(request()->input())->links('vendor.pagination.simple-default') }}
     </div>
 </div>
 
