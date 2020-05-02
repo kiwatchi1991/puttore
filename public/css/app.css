@@ -1062,6 +1062,9 @@ a:visited {
   display: flex;
   justify-content: center;
   overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .global-nav__item__profile__name {
@@ -6964,8 +6967,6 @@ a:visited {
   margin: 30px auto 0;
   display: inline-block;
   width: 87.5vw;
-  display: flex;
-  flex-direction: column;
 }
 
 @media (min-width: 768px) {
@@ -6990,11 +6991,11 @@ a:visited {
 
 .c-mypage__sale__done table {
   margin-top: 12px;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .c-mypage__sale__done table {
-    width: 100%;
     margin-top: 24px;
   }
 }
