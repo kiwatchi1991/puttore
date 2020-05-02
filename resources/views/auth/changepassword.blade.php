@@ -5,7 +5,6 @@
   <p class="c-authChange__title">パスワード変更</p>
   <p class="c-authChange__title--under">Change Password</p>
 
-
   @if (session('change_password_error'))
   <div class="container mt-2">
     <div class="alert alert-danger">
@@ -21,7 +20,6 @@
     </div>
   </div>
   @endif
-
 
   <div class="c-authChange__form">
     <form method="POST" action="{{route('changepassword')}}" class="c-authChange__form--body">

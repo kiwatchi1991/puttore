@@ -12,36 +12,26 @@
 <body>
 
     <style>
-        #button {
-            width: 200px;
-            text-align: center;
+        .c-passresetMail {
+            padding: 16px;
         }
 
-        #button a {
-            padding: 10px 20px;
-            display: block;
-            background-color: #7DD4BB;
-            border-radius: 10px;
-            color: white;
-            text-decoration: none;
-        }
-
-        #button a:hover {
-            background-color: #2a88bd;
-            color: #FFFFFF;
+        .c-passresetMail__title {
+            font-size: 24px;
         }
     </style>
 
-    <h1>
-        パスワードリセット
-    </h1>
-    <p>
-        以下のボタンを押下し、パスワードリセットの手続きを行ってください。
-    </p>
-    <p id="button">
-        <a href="{{$reset_url}}">パスワードリセット</a>
-    </p>
-
+    <div class="c-passresetMail">
+        <h1 class="c-passresetMail__title">
+            パスワードリセット
+        </h1>
+        <p>
+            以下のボタンを押下し、パスワードリセットの手続きを行ってください。
+        </p>
+        <p id="button">
+            <a href="{{$reset_url}}">パスワードリセット</a>
+        </p>
+    </div>
 </body>
 
 </html>

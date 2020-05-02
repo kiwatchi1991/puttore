@@ -63,6 +63,6 @@ class HomeController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
-        return redirect()->back()->with('flash_message', 'パスワードを変更しました。');
+        return redirect()->route('mypage')->with('flash_message', 'パスワードを変更しました。');
     }
 }

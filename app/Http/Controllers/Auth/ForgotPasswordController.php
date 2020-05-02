@@ -57,7 +57,7 @@ class ForgotPasswordController extends Controller
      */
     protected function sendResetLinkResponse2(Request $request)
     {
-        return back()->with('flash_message', 'パスワード再設定用のURLをメールで送りました。');
+        return redirect()->route('login')->with('flash_message', 'パスワード再設定用のURLをメールで送りました。');
     }
 
     /**
