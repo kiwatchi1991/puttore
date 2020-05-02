@@ -134,6 +134,6 @@ class ProfilesController extends Controller
         $user = User::find($request->input('id'));
         $user->delete();
 
-        return redirect('/products')->with('flash_message', '退会しました');
+        return redirect('/products')->with('flash_message', '退会しました。またのご利用をお待ちしております！');
     }
 }
