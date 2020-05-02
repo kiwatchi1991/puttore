@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','プロフィール')
 @section('content')
-<div class="c-product__index">
+<div class="c-profile__wrapper">
     @if ($user->id === Auth::id())
     <div class="c-mypage__nav">
         <div class="c-mypage__nav__list"><a href="/mypage">アカウント</a></div>
@@ -86,6 +86,9 @@
             </a>
         </div>
         @endforeach
+        @if($products->count()===0)
+        <div class="c-profile__nomsg">現在ありません</div>
+        @endif
     </div>
 </div>
 

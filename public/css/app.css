@@ -3264,6 +3264,10 @@ a:visited {
   background: #E5F6F2;
 }
 
+.c-profile__wrapper {
+  padding-bottom: 100px;
+}
+
 .c-profile__img {
   margin: 10px auto 0;
   text-align: center;
@@ -3397,6 +3401,11 @@ a:visited {
 
 .c-profile__draft__update {
   font-size: 10px;
+}
+
+.c-profile__nomsg {
+  margin: 32px auto;
+  text-align: center;
 }
 
 .c-profileEdit {
