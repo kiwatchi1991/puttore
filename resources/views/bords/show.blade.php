@@ -29,9 +29,8 @@ $pic = ($user->find($buy_userId)->pic)?$user->find($buy_userId)->pic:'images/noa
     <div class="c-messages__head">
 
         <a href="{{ route('bords') }}" class="c-message__userImg__item"></a>
-        <div class="c-messages__head__userImg__wrapper">
+        <div class="c-messages__head__userImg__wrapper" style="background-image:url(/storage/{{$pic}})">
             <a class="c-messages__head__userImg__link" href="{{ route('profile.show',$partnerId) }}">
-                <img src="/storage/{{ $pic }}" alt="" class="c-messages__head__userImg">
             </a>
         </div>
         <div class="c-messages__head__title">

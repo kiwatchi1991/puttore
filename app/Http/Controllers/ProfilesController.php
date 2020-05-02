@@ -43,12 +43,15 @@ class ProfilesController extends Controller
         $product_category = Product::all();
         $product_difficulty = Product::all();
 
+        $pic = ($user->pic) ? $user->pic : 'images/noavatar.png';
+
         return view('profile.show', [
             'products' => $products,
             'product_categories' => $product_category,
             'product_difficulties' => $product_difficulty,
             'is_image' => $is_image,
             'user' => $user,
+            'pic' => $pic,
         ]);
     }
 

@@ -322,6 +322,9 @@ a:visited {
   display: flex;
   justify-content: center;
   overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .global-nav__pc__profile__img {
@@ -2810,11 +2813,9 @@ a:visited {
   overflow: hidden;
   display: flex;
   justify-content: center;
-}
-
-.c-productShow__userimg img {
-  height: 100%;
-  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .c-productShow__username {
@@ -3215,6 +3216,9 @@ a:visited {
   overflow: hidden;
   margin-right: 10px;
   border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .c-bord__order {
@@ -3261,13 +3265,9 @@ a:visited {
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
-}
-
-.c-profile__img > img {
-  margin: 0 auto;
-  display: block;
-  border-radius: 50%;
-  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .c-profile__edit {
@@ -3612,6 +3612,9 @@ a:visited {
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 @media (min-width: 768px) {
@@ -5547,10 +5550,9 @@ a:visited {
   display: flex;
   justify-content: center;
   overflow: hidden;
-}
-
-.c-lessonShow__userimg img {
-  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .c-lessonShow__username {
@@ -6722,6 +6724,9 @@ a:visited {
   display: flex;
   justify-content: center;
   overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 @media (min-width: 768px) {
@@ -6729,10 +6734,6 @@ a:visited {
     height: 100px;
     width: 100px;
   }
-}
-
-.c-mypage__account__list img {
-  height: 100%;
 }
 
 .c-mypage__account__list--withdraw {

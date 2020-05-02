@@ -107,8 +107,8 @@
                 {{-- 出品者 --}}
                 <div class="c-productShow__user">
                     <a href="{{ route('profile.show',$user[0]->id)}}">
-                        <div class="c-productShow__userimg">
-                            <img src="/storage/{{($user[0]->pic)?$user[0]->pic:'images/noavatar.png'}}" alt="">
+                        <div class="c-productShow__userimg"
+                            style="background-image:url(/storage/{{($user[0]->pic)?$user[0]->pic:'images/noavatar.png'}})">
                         </div>
                     </a>
                     <div class="c-productShow__username">

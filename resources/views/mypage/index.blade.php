@@ -18,8 +18,8 @@
             <h2>アカウント設定</h2>
         </div>
 
-        <div class="c-mypage__account__list img">
-            <img src="/storage/{{ $user->pic }}" alt="" width="50" height="50">
+        <div class="c-mypage__account__list img"
+            style="background-image:url(/storage/{{($user->pic)?$user->pic:'images/noavatar.png'}})">
         </div>
 
         <div class="c-mypage__account__list">

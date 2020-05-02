@@ -163,13 +163,13 @@
                 display: flex;
                 justify-content: center;
                 overflow: hidden;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
                 @include pc{
                     height: 100px;
                     width: 100px;
                 }
-            }
-            img{
-                height: 100%;
             }
             &--withdraw{
                 margin-top: 120px;

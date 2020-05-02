@@ -178,10 +178,9 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
-   img{
-    height: 100%;
-    border-radius: 50%;
-   }
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
  }
   &__username{
     margin-left: 10px;

@@ -12,12 +12,9 @@
         justify-content: center;
         overflow: hidden;
         border-radius: 50%;
-        &>img{
-            margin: 0 auto;
-            display: block;
-            border-radius: 50%;
-            height: 100%;
-        }
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
     &__edit{
         color: $main-color;

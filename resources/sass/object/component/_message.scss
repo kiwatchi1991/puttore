@@ -57,6 +57,9 @@
               justify-content: center;
               overflow: hidden;
               border-radius: 50%;
+              background-position: center;
+              background-size: cover;
+              background-repeat: no-repeat;
               @include pc{
                 margin-left: 32px;
                 }

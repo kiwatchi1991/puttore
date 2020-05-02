@@ -17,8 +17,8 @@
     <div class="c-profile">
 
         {{-- 画像 --}}
-        <div class="c-profile__img">
-            <img src="/storage/{{($user->pic)?$user->pic:'images/noavatar.png'}}" alt="">
+
+        <div class="c-profile__img" style="background-image:url(/storage/{{$pic}})">
         </div>
         {{-- プロフィール名 --}}
         <div class="c-profile__name">

@@ -9,8 +9,8 @@
             {{-- 出品者 --}}
             <div class="c-lessonShow__user">
                 <a href="{{ route('profile.show',$user[0]->id)}}">
-                    <div class="c-lessonShow__userimg">
-                        <img src="/storage/{{ $user[0]->pic }}" alt="">
+                    <div class="c-lessonShow__userimg"
+                        style="background-image:url(/storage/{{($user[0]->pic)?$user[0]->pic:'images/noavatar.png'}})">
                     </div>
                 </a>
                 <div class="c-lessonShow__username">

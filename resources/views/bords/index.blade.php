@@ -31,8 +31,8 @@
         <div class="c-bord__inner">
 
             <div class="c-bord__half--left">
-                <div class="c-bord__userImg__wrapper">
-                    <img src="/storage/{{($pic->pic)?$pic->pic:'images/noavatar.png'}}" alt="" class="c-bord__userImg">
+                <div class="c-bord__userImg__wrapper"
+                    style="background-image:url(/storage/{{($pic->pic)?$pic->pic:'images/noavatar.png'}})">
                 </div>
             </div>
 
