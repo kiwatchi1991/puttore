@@ -10,6 +10,9 @@
     <style>
         .c-changeEmail {
             padding: 16px;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
         }
     </style>
     <div class="c-changeEmail">
