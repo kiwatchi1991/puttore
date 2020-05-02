@@ -1,8 +1,9 @@
 .c-authChange__container{
-  padding:24px 10px;
+  padding:24px;
   background: #E5F6F2;
   height: 100%;
   @include pc{
+    padding-bottom: 64px;
     width: 520px;
     margin: 0 auto;
     background: #fff;
@@ -65,7 +66,7 @@
   }
   &--button{
     width: 75%;
-    margin: 0 auto;
+    margin: 32px auto 0;
     @include pc{
       width: 100%;
       font-size: 15px;

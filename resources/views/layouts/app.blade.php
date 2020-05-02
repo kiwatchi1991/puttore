@@ -225,7 +225,7 @@
         <div class="c-footer__logo">
           <div class="c-top__fvMsg--img">
             <a class="" href="{{ url('/') }}">
-              <img src="/storage/images/logo.png" alt="ぷっとれ" width="120">
+              <img src="/storage/images/logo.png" alt="ぷっとれ" class="c-footer__logo__img" width="120">
             </a>
           </div>
           <div class="c-footer__logo--img">

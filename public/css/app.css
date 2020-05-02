@@ -3508,7 +3508,7 @@ a:visited {
 }
 
 .c-profileDelete__title {
-  margin-top: 48px;
+  margin-top: 80px;
   font-size: 20px;
   color: #00ac7d;
   text-align: center;
@@ -3521,10 +3521,14 @@ a:visited {
 .c-profileDelete__submit {
   margin: 32px auto 0;
   text-align: center;
-  width: 50%;
+  width: 200px;
   color: #ffffff;
   background: #484848;
   border-radius: 10px;
+}
+
+.c-profileDelete__submit:hover {
+  opacity: 0.7;
 }
 
 .c-profileDelete__submit__btn {
@@ -3533,6 +3537,10 @@ a:visited {
   height: 100%;
   color: #ffffff;
   font-size: 14px;
+}
+
+.c-profileDelete__submit__btn:hover {
+  opacity: 1;
 }
 
 .c-cart__block {
@@ -5847,6 +5855,11 @@ a:visited {
   }
 }
 
+.c-footer__logo__img {
+  width: 25vw;
+  max-width: 120px;
+}
+
 .c-footer__list {
   font-size: 13px;
   letter-spacing: 0.3;
@@ -6103,7 +6116,7 @@ a:visited {
 }
 
 .c-passReset__inner {
-  padding: 30px 30px 200px 30px;
+  padding: 30px;
   background: #E5F6F2;
 }
 
@@ -6741,6 +6754,10 @@ a:visited {
   font-size: 14px;
 }
 
+.c-mypage__account__list--withdraw a {
+  text-decoration: underline;
+}
+
 .c-mypage__account__label {
   font-weight: bold;
   padding-bottom: 8px;
@@ -6797,7 +6814,7 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-mypage__sale__thisMonth__total {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
@@ -6886,7 +6903,7 @@ a:visited {
 
 @media (min-width: 768px) {
   .c-mypage__sale__untransferred__total {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
@@ -6908,7 +6925,7 @@ a:visited {
 }
 
 .c-mypage__sale__untransferred__request {
-  width: 80px;
+  min-width: 50px;
 }
 
 .c-mypage__sale__untransferred__request__link {
@@ -7015,9 +7032,21 @@ a:visited {
   color: white;
 }
 
+.c-mypage__sale__done td.day {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__done td.day {
+    font-size: 16px;
+  }
+}
+
 .c-mypage__sale__month {
   margin: 40px auto 0;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
 }
 
 @media (min-width: 768px) {
@@ -7061,7 +7090,9 @@ a:visited {
 
 .c-mypage__sale__paid {
   margin: 40px auto 0;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
 }
 
 @media (min-width: 768px) {
@@ -7105,26 +7136,27 @@ a:visited {
 
 .c-mypage__sale__list--day {
   min-width: 100px;
+  width: calc(100%/3);
 }
 
 @media (min-width: 768px) {
   .c-mypage__sale__list--day {
-    width: calc(100%/3);
     font-size: 16px;
   }
 }
 
 .c-mypage__sale__list--title {
   min-width: 95px;
+  width: calc(100%/3);
 }
 
 .c-mypage__sale__list--price {
   min-width: 90px;
+  width: calc(100%/3);
 }
 
 @media (min-width: 768px) {
   .c-mypage__sale__list--price {
-    width: calc(100%/3);
     font-size: 16px;
   }
 }
@@ -7142,35 +7174,34 @@ a:visited {
 
 .c-mypage__sale__list--request {
   min-width: 80px;
+  width: calc(100%/3);
 }
 
 @media (min-width: 768px) {
   .c-mypage__sale__list--request {
-    width: calc(100%/3);
     font-size: 16px;
   }
 }
 
 .c-mypage__sale__list--done {
   min-width: 80px;
+  width: calc(100%/3);
 }
 
 @media (min-width: 768px) {
   .c-mypage__sale__list--done {
-    width: calc(100%/3);
     font-size: 16px;
   }
 }
 
 .c-mypage__sale__list__text {
   font-size: 16px;
-  margin-top: 8px;
+  margin-top: 24px;
 }
 
 @media (min-width: 768px) {
   .c-mypage__sale__list__text {
     font-size: 18px;
-    margin-top: 24px;
   }
 }
 
@@ -7219,14 +7250,26 @@ a:visited {
   }
 }
 
+.c-mypage__products__nomsg {
+  width: 280px;
+  margin: 32px auto;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__products__nomsg {
+    text-align: center;
+  }
+}
+
 .c-authChange__container {
-  padding: 24px 10px;
+  padding: 24px;
   background: #E5F6F2;
   height: 100%;
 }
 
 @media (min-width: 768px) {
   .c-authChange__container {
+    padding-bottom: 64px;
     width: 520px;
     margin: 0 auto;
     background: #fff;
@@ -7301,7 +7344,7 @@ a:visited {
 
 .c-authChange__form--button {
   width: 75%;
-  margin: 0 auto;
+  margin: 32px auto 0;
 }
 
 @media (min-width: 768px) {

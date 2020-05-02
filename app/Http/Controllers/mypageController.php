@@ -187,11 +187,14 @@ class mypageController extends Controller
 
         $transfers = Transfer::where('user_id', Auth::user()->id)->get();
 
+        $user = Auth::user();
+
         return view('mypage.order', [
             'thisMonth' => $thisMonth,
             'untransferred' => $untransferred,
             'untransferred_price' => $untransferred_price,
             'transfers' => $transfers,
+            'user' => $user,
         ]);
     }
     //=============================================
