@@ -51,6 +51,9 @@
             </a>
         </div>
         @endforeach
+        @if($products->count()===0)
+        <div class="c-mypage__products__nomsg">現在ありません</div>
+        @endif
     </div>
 
 </div>

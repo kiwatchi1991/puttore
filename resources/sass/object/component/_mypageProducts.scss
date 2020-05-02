@@ -25,4 +25,11 @@
             }
         }
     }
+    &__nomsg{
+        width: 280px;
+        margin: 32px auto;
+        @include pc{
+            text-align: center;
+        }
+    }
 }
