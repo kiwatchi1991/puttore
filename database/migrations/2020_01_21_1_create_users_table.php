@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('account_detail')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('pic')->nullable()->default('images/noavatar.png');
+            $table->string('pic')->nullable();
             $table->rememberToken();
             $table->tinyInteger('delete_flg')->default(0);
             $table->timestamps();
