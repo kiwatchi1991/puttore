@@ -7059,9 +7059,7 @@ a:visited {
 
 .c-mypage__sale__month {
   margin: 40px auto 0;
-  display: flex;
-  flex-direction: column;
-  width: 90%;
+  width: 90vw;
 }
 
 @media (min-width: 768px) {
@@ -7070,9 +7068,12 @@ a:visited {
   }
 }
 
+.c-mypage__sale__month table {
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .c-mypage__sale__month table {
-    width: 100%;
     margin: 0 auto;
   }
 }
@@ -7105,15 +7106,17 @@ a:visited {
 
 .c-mypage__sale__paid {
   margin: 40px auto 0;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
+  width: 85vw;
 }
 
 @media (min-width: 768px) {
   .c-mypage__sale__paid {
     width: 100%;
   }
+}
+
+.c-mypage__sale__paid table {
+  width: 100%;
 }
 
 @media (min-width: 768px) {

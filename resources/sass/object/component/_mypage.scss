@@ -386,15 +386,13 @@
     }
     &__sale__month{
         margin: 40px auto 0;
-        display: flex;
-        flex-direction: column;
-        width: 90%;
+        width: 90vw;
          @include pc{
             width: 100%;
         }
         table{
+            width: 100%;
             @include pc{
-                width: 100%;
                 margin: 0 auto;
            }
         }
@@ -420,13 +418,12 @@
     }
     &__sale__paid{
         margin: 40px auto 0;
-        display: flex;
-        flex-direction: column;
-        width: 80%;
+        width: 85vw;
         @include pc{
             width: 100%;
         }
         table{
+            width: 100%;
             @include pc{
                 width: 100%;
                 margin: 0 auto;
