@@ -45,11 +45,9 @@
                 {{-- 自分の作品の場合は編集ボタンを表示 --}}
                 @if ($product->user_id === Auth::id())
 
-                {{-- <div class="c-productShow__editMenuIcon js-editMenu-open">
-                <i class="fas fa-ellipsis-h"></i>
-            </div> --}}
-
+                {{-- @if($product->open_flg == 1) <div class="c-productShow__draft">下書き保存中</div>@endif --}}
                 <div class="c-productShow__editMenu js-editMenu">
+                    @if($product->open_flg == 1) <div class="c-productShow__draft">下書き保存中</div>@endif
                     <div class="c-productShow__editMenu__list c-productShow__editMenu__list--delete js-editMenu-delete">
                         <form id="delete-form" method="POST" action="{{ route('products.delete',$product->id) }}">
                             @csrf
@@ -65,8 +63,7 @@
 
                 {{-- タイトル --}}
                 <div class="c-productShow__title">
-                    <h2 class="c-productShow__title__text">{{ $product->name }} @if($product->open_flg == 1) <span
-                            class="c-productShow__draft">下書き保存中</span>@endif
+                    <h2 class="c-productShow__title__text">{{ $product->name }}
                     </h2>
                 </div>
 
