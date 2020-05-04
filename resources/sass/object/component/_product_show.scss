@@ -375,6 +375,11 @@
       border-bottom: none;
     }
   }
+
+  //コンテンツ詳細ページではタグ全表示
+  .c-tag__block{
+    height: auto;
+  }
 }
 
 //支払いボタンのスタイル上書き

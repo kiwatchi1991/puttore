@@ -1470,7 +1470,7 @@ a:visited {
 }
 
 .c-tag.rubyfw {
-  background: #FC9D93;
+  background: #ffa3a3;
 }
 
 .c-tag.easy {
@@ -3045,6 +3045,10 @@ a:visited {
 .c-productShow__toLessonPage:last-child {
   border-radius: 0 0 8px 8px;
   border-bottom: none;
+}
+
+.c-productShow .c-tag__block {
+  height: auto;
 }
 
 #payjp_checkout_box input[type=button] {
