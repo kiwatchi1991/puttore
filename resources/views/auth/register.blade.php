@@ -47,6 +47,10 @@
         </div>
       </div>
 
+      <div class="c-register__agree">
+        「登録する」ボタンを押すことにより、<br class="sp"><a href="{{ route('home.agreement') }}" class="c-register__agree__link"
+          target="_blank"> 利用規約</a>に同意するものとします。
+      </div>
       <div class="c-register__button">
         <button type="submit" class="c-register__btn">
           登録する
