@@ -34,7 +34,9 @@ class OrdersController extends Controller
     // ----------------- コンテンツ登録 →　payjpでの支払い処理　↓↓↓--------------
     try {
 
-      \Payjp\Payjp::setApiKey("sk_test_2f32437ee9bb35d7843c97e6");
+      $payjp_key = config('services.payjp.sk_test');
+
+      \Payjp\Payjp::setApiKey($payjp_key);
       if ($discount_price) {
         Log::debug('<<<<<<<< payjp discount_price  >>>>>>>>>>>>>');
         $charge = \Payjp\Charge::create(array(

@@ -173,8 +173,8 @@
                         }
                         </script>
                         <script type="text/javascript" src="https://checkout.pay.jp/" class="payjp-button"
-                            id="payjp-button" data-key="pk_test_d55567e518694f2b662f7b73" data-on-created="loading"
-                            data-text="今すぐ購入する" data-submit-text="支払いする"></script>
+                            id="payjp-button" data-key="{{ $payjp_pk }}" data-on-created="loading" data-text="今すぐ購入する"
+                            data-submit-text="支払いする"></script>
                     </form>
                 </div>
                 @endif

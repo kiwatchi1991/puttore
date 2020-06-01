@@ -34,4 +34,11 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    'payjp' => [
+        'sk_test' => env('SK_TEST'),
+        'pk_test' => env('PK_TEST'),
+        'sk_live' => env('SK_LIVE'),
+        'pk_live' => env('PK_LIVE'),
+    ],
+
 ];

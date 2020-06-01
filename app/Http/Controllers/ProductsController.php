@@ -456,6 +456,9 @@ class ProductsController extends Controller
         Log::debug('$product_imgs');
         Log::debug($product_imgs);
 
+        // payjp公開鍵
+        $payjp_pk = config('services.payjp.pk_test');
+
         return view('products.show', [
             'product' => $product,
             'user' => $user,
@@ -465,6 +468,7 @@ class ProductsController extends Controller
             'product_imgs' => $product_imgs,
             'lessons' => $lessons,
             'isOrder' => $isOrder,
+            'payjp_pk' => $payjp_pk,
         ]);
     }
 
