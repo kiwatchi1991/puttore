@@ -1,7 +1,5 @@
 const mix = require('laravel-mix');
-const path = require('path');
-require('laravel-mix-eslint');
-require('laravel-mix-stylelint');
+
 
 /*
  |--------------------------------------------------------------------------
@@ -14,16 +12,7 @@ require('laravel-mix-stylelint');
  |
  */
 
-const styleLintPlugin = require('stylelint-webpack-plugin');
-mix.webpackConfig({
-    plugins: [
-        new styleLintPlugin({
-            files: ['**/*.scss'],
-            configFile: path.join(__dirname, '.stylelintrc.js'),
-            syntax: 'scss'
-        })
-    ]
-}).eslint();
+mix.webpackConfig()
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
@@ -38,5 +27,7 @@ mix.js('resources/js/app.js', 'public/js')
         ],
         proxy: {
             target: 'http://127.0.0.1:8000/'
-        }
+        },
+        open: false, //BrowserSync起動時にブラウザを開かない
+        reloadOnRestart: true //BrowserSync起動時にブラウザにリロード命令おくる
     });
