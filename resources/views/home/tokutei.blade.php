@@ -32,7 +32,7 @@
         </tr>
         <tr>
           <th class="c-home__table__th">電話番号</th>
-          <td class="c-home__table__td">080-1231-5729</td>
+          <td class="c-home__table__td">043-488-4609</td>
         </tr>
         <tr>
           <th class="c-home__table__th">商品代金</th>
