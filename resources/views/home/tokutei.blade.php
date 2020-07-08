@@ -31,10 +31,6 @@
           <td class="c-home__table__td">info@puttore.com</td>
         </tr>
         <tr>
-          <th class="c-home__table__th">電話番号</th>
-          <td class="c-home__table__td">043-488-4609</td>
-        </tr>
-        <tr>
           <th class="c-home__table__th">商品代金</th>
           <td class="c-home__table__td">各商品の料金に基づく</td>
         </tr>
