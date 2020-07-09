@@ -36,14 +36,12 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        // ここから
         if (isset($_SERVER['HTTP_REFERER'])) {
             $intended = $_SERVER['HTTP_REFERER'];
         } else {
             $intended = '/';
         }
         session(['url.intended' => $intended]);
-        // ここまで追加
         return view('auth.login');
     }
 

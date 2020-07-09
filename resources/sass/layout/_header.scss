@@ -3,7 +3,6 @@
 .global-nav__pc{
 
   header{
-    margin-bottom: 12em;
     position: relative;
     width: 50px;
     background-color: #444;
@@ -24,8 +23,7 @@
   /* Submenu */
   ul li ul{
     position: absolute;
-    top: 65px;
-    left: 0;
+    top: -25px;
   }
   ul li ul li{
     display: block;
