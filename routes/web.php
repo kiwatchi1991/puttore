@@ -72,9 +72,11 @@ Auth::routes();
 Route::get('/', function () {
   return view('index');
 });
-//ホーム
-Route::get('/',  'indexController@index')->name('home');
 
+Route::group(['middleware' => 'basicauth'], function () {
+  //ホーム
+  Route::get('/',  'indexController@index')->name('home');
+});
 
 
 // 利用規約ページ
