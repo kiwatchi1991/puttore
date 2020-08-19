@@ -16,7 +16,7 @@
 
             <div class="c-productShow__img">
                 {{-- 画像がなかったらスライダーボタンを表示しない --}}
-                @if($product_imgs !== null)
+                @if($product_imgs !== [])
                 <img class="c-productShow__slider__nav prev js-slider__prev" src="/storage/images/angle-prev.png"
                     alt="">
                 <img class="c-productShow__slider__nav next js-slider__next" src="/storage/images/angle-next.png"
@@ -35,7 +35,7 @@
                     @endif
 
                     {{-- 画像がなかったら、１枚だけnoimageを表示する --}}
-                    @if($product_imgs[0] == null)
+                    @if($product_imgs === [])
                     <img class="c-productShow__slider__noimage" src="/storage/images/noimage.png" alt="">
                     @endif
                 </ul>

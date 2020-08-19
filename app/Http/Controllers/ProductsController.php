@@ -444,7 +444,7 @@ class ProductsController extends Controller
 
 
         //　画像情報のみ取得（pic１になければ表示しない）
-        $product_imgs = null;
+        $product_imgs = [];
         if ($product->pic1) {
             $product_imgs[] = $product->pic1;
             $product_imgs[] = $product->pic2;
