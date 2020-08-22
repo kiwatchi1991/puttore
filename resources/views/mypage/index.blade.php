@@ -51,8 +51,7 @@
         </div>
 
         <div class="c-mypage__account__list">
-            <p class="c-mypage__account__label">銀行名 <span class="c-mypage__editLink"><a
-                        href="{{route('mypage.edit',$user->id)}}">
+            <p class="c-mypage__account__label">銀行名 <span class="c-mypage__editLink"><a href="{{route('mypage.edit')}}">
                         変更</a></span></p>
             {{ $user->bank_name }}
         </div>
