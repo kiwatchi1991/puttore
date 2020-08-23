@@ -16,11 +16,11 @@
             </div>
 
             <div class="c-mypage__account__list">
-                <p class="c-mypage__account__label">銀行名 <span class="c-mypage__editLink"></span></p>
-                <input id="bank_name" type="text" class="c-mypage__input-area @error('bank_name')is-invalid @enderror"
-                    name="bank_name" value="{{ $bank->bank_name }}" autocomplete="bank_name" placeholder="" required>
+                <p class="c-mypage__account__label">銀行コード <span class="c-mypage__editLink"></span></p>
+                <input id="bank_code" type="num" class="c-mypage__input-area @error('bank_code')is-invalid @enderror"
+                    name="bank_code" value="{{ $bank->bank_code }}" autocomplete="bank_code" placeholder="" required>
 
-                @error('bank_name')
+                @error('bank_code')
                 <span class="c-mypage__error" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -28,12 +28,42 @@
             </div>
 
             <div class="c-mypage__account__list">
-                <p class="c-mypage__account__label">支店 <span class="c-mypage__editLink"></span></p>
-                <input id="bank_branch" type="text"
-                    class="c-mypage__input-area @error('bank_branch')is-invalid @enderror" name="bank_branch"
-                    value="{{ $bank->bank_branch }}" autocomplete="bank_branch" placeholder="" required>
+                <p class="c-mypage__account__label">支店コード <span class="c-mypage__editLink"></span></p>
+                <input id="bank_branch_code" type="num"
+                    class="c-mypage__input-area @error('bank_branch_code')is-invalid @enderror" name="bank_branch_code"
+                    value="{{ $bank->bank_branch_code }}" autocomplete="bank_branch_code" placeholder="" required>
 
-                @error('bank_branch')
+                @error('bank_branch_code')
+                <span class="c-mypage__error" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="c-mypage__account__list">
+                <p class="c-mypage__account__label">口座名義人（カタカナ） <span class="c-mypage__editLink"></span></p>
+                <input id="bank_account_holder_name" type="text"
+                    class="c-mypage__input-area @error('bank_account_holder_name')is-invalid @enderror"
+                    name="bank_account_holder_name" value="{{ $bank->bank_account_holder_name }}"
+                    autocomplete="bank_account_holder_name" placeholder="" required>
+
+                @error('bank_account_holder_name')
+                <span class="c-mypage__error" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="c-mypage__account__list">
+                <p class="c-mypage__account__label">口座種別 <span class="c-mypage__editLink"></span></p>
+                <select name="bank_account_type" id="bank_account_type">
+                    <option value="">選択してください</option>
+                    <option value="0" selected>普通</option>
+                    <option value="1">当座</option>
+                </select>
+                {{-- <input id="bank_account_type" type="number"
+                    class="c-mypage__input-area @error('bank_account_type')is-invalid @enderror" name="bank_account_type"
+                    value="{{ $bank->bank_account_type }}" autocomplete="bank_account_type"
+                placeholder="" required> --}}
+                @error('bank_account_type')
                 <span class="c-mypage__error" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -41,11 +71,12 @@
             </div>
             <div class="c-mypage__account__list">
                 <p class="c-mypage__account__label">口座番号 <span class="c-mypage__editLink"></span></p>
-                <input id="bank_account_num" type="number"
-                    class="c-mypage__input-area @error('bank_account_num')is-invalid @enderror" name="bank_account_num"
-                    value="{{ $bank->bank_account_num }}" autocomplete="bank_account_num" placeholder="" required>
+                <input id="bank_account_number" type="number"
+                    class="c-mypage__input-area @error('bank_account_number')is-invalid @enderror"
+                    name="bank_account_number" value="{{ $bank->bank_account_number }}"
+                    autocomplete="bank_account_number" placeholder="" required>
 
-                @error('bank_account_num')
+                @error('bank_account_number')
                 <span class="c-mypage__error" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

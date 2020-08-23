@@ -9,15 +9,13 @@ use App\Transfer;
 use App\FromBank;
 use App\User;
 use App\Like;
+use App\SystemCommission;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\Order;
-use App\Category;
-use App\Difficulty;
 use App\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
 class mypageController extends Controller
@@ -339,8 +337,47 @@ class mypageController extends Controller
     public function update(Request $request, $id)
     {
         Log::debug('<<<<   update    >>>>>>');
+        Log::debug('<<<<   request    >>>>>>');
+        Log::debug($request);
 
         $user = User::find($id);
+        try {
+            $payjp_sk = config('services.payjp.sk_test_p');
+            $tenant_id = $user->payjp_tenant_id;
+
+            \Payjp\Payjp::setApiKey($payjp_sk);
+
+            if (empty($tenant_id)) {
+                // ユーザーのpayjp_tenand_idカラムにデータがない場合、テナント新規作成
+                $tenant = \Payjp\Tenant::create(
+                    array(
+                        //テナントidは指定せず、自動生成させる
+                        "name" => $user->email,
+                        "platform_fee_rate" => SystemCommission::find(1)->commission_rate,
+                        "minimum_transfer_amount" => 5000,
+                        "bank_account_holder_name" => $request->bank_account_holder_name,
+                        "bank_code" => $request->bank_code,
+                        "bank_branch_code" => $request->bank_branch_code,
+                        "bank_account_type" => $request->bank_account_type === '0' ? "普通" : "当座",
+                        "bank_account_number" => $request->bank_account_number,
+                    )
+                );
+            } else {
+                // ユーザーのpayjp_tenand_idカラムにデータが存在する場合は、テナント情報の更新
+                $tenant = \Payjp\Tenant::retrieve($tenant_id);
+
+                $tenant->bank_account_holder_name = $request->bank_account_holder_name;
+                $tenant->bank_code = $request->bank_code;
+                $tenant->bank_branch_code = $request->bank_branch_code;
+                $tenant->bank_account_type = $request->bank_account_type === '0' ? "普通" : "当座";
+                $tenant->bank_account_number = $request->bank_account_number;
+                $tenant->save();
+            }
+        } catch (\Payjp\Error\Card $e) {
+            //
+            return redirect()->route('mypage')->with('flash_message', 'テナント情報の登録に失敗しました。');
+        }
+        $user->payjp_tenant_id = $tenant->id;
         $user->fill($request->all())->save();
 
         return redirect()->route('mypage')->with('flash_message', '口座情報を変更しました');

@@ -14,11 +14,12 @@ class AddBankColumnsToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('bank_code')->nullable();
-            $table->integer('bank_branch_code')->nullable();
+            $table->String('bank_code', 4)->nullable();
+            $table->String('bank_branch_code', 3)->nullable();
             $table->String('bank_account_holder_name')->nullable();
             $table->tinyInteger('bank_account_type')->nullable();
-            $table->integer('bank_account_number')->nullable();
+            $table->String('bank_account_number')->nullable();
+            $table->String('payjp_tenant_id')->nullable();
         });
     }
 
@@ -35,6 +36,7 @@ class AddBankColumnsToUsers extends Migration
             $table->dropColumn('bank_account_holder_name');
             $table->dropColumn('bank_account_type');
             $table->dropColumn('bank_account_number');
+            $table->dropColumn('payjp_tenant_id');
         });
     }
 }

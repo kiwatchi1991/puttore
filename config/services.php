@@ -35,10 +35,18 @@ return [
     ],
 
     'payjp' => [
-        'sk_test' => env('SK_TEST'),
-        'pk_test' => env('PK_TEST'),
-        'sk_live' => env('SK_LIVE'),
-        'pk_live' => env('PK_LIVE'),
+        // 単発決済用（基本使わない）
+        // 'sk_test' => env('SK_TEST'),
+        // 'pk_test' => env('PK_TEST'),
+        // 'sk_live' => env('SK_LIVE'),
+        // 'pk_live' => env('PK_LIVE'),
+
+        //　プラットフォーム決済用
+        'sk_test_p' => env('SK_TEST_P'),
+        'pk_test_p' => env('PK_TEST_P'),
+        'sk_live_p' => env('SK_LIVE_P'),
+        'pk_live_p' => env('PK_LIVE_P'),
+
     ],
 
 ];
