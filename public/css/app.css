@@ -6520,8 +6520,67 @@ a:visited {
   background: #E5F6F2;
 }
 
+.c-mypage__radio {
+  display: none;
+}
+
+.c-mypage__radioLabel {
+  position: relative;
+  padding-left: 20px;
+  margin-right: 16px;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.c-mypage__radioLabel::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #333;
+}
+
+.c-mypage__radio:checked + .c-mypage__radioLabel::before {
+  background: #00ac7d;
+  border: none;
+  width: 14px;
+  height: 14px;
+}
+
+.c-mypage__radio:checked + .c-mypage__radioLabel::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  width: 4px;
+  height: 8px;
+  transform: rotate(45deg);
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+.c-mypage__agree {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.c-mypage__agree__link {
+  color: #00ac7d;
+  text-decoration: underline;
+}
+
+.c-mypage__agree__link:visited {
+  color: #00ac7d;
+}
+
 .c-mypage__submit {
-  margin: 56px auto 0;
+  margin: 24px auto 0;
   text-align: center;
   width: 75%;
   color: #ffffff;
@@ -7191,6 +7250,13 @@ a:visited {
 
 .c-mypage__sale__nothing {
   margin-top: 32px;
+}
+
+.c-mypage__error {
+  font-size: 14px;
+  color: red;
+  display: inline-block;
+  margin-top: 8px;
 }
 
 .c-mypage__products {
