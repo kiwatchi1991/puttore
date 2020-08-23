@@ -24,6 +24,7 @@ class OrdersController extends Controller
     Log::debug('注文台帳：create');
 
     $product = Product::find($id);
+    $sale_user_id = $product->user_id;
 
     //　割引価格情報取得
     $discount_price = Discount::where('product_id', $id)
@@ -34,7 +35,8 @@ class OrdersController extends Controller
     // ----------------- コンテンツ登録 →　payjpでの支払い処理　↓↓↓--------------
     try {
 
-      $payjp_sk = config('services.payjp.sk_live');
+      $payjp_sk = config('services.payjp.sk_test_p');
+      $tenant_id = User::find($sale_user_id)->payjp_tenant_id;
 
       \Payjp\Payjp::setApiKey($payjp_sk);
       if ($discount_price) {
@@ -44,6 +46,7 @@ class OrdersController extends Controller
           "amount" =>  $discount_price->discount_price,
           "card" => $request->{'payjp-token'},
           "currency" => "jpy",
+          "tenant" => $tenant_id,
         ));
       } else {
         Log::debug('<<<<<<<< payjp else  >>>>>>>>>>>>>');
@@ -52,6 +55,7 @@ class OrdersController extends Controller
           "card" => $request->{'payjp-token'},
           "amount" => $product->default_price,
           "currency" => "jpy",
+          "tenant" => $tenant_id,
         ));
       }
 
@@ -91,7 +95,6 @@ class OrdersController extends Controller
       //購入者にメール送信する
       User::find($order->user_id)->buyEmail($order);
       //出品者にメール送信する
-      $sale_user_id = Product::find($id)->user_id;
       User::find($sale_user_id)->saleEmail($order);
 
       // リダイレクトする
