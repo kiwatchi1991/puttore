@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateBankInfoRequest;
 
 use Illuminate\Support\Carbon;
 use App\Transfer;
@@ -334,7 +335,7 @@ class mypageController extends Controller
     //=============================================
     //=====    （銀行情報）更新　　　　　     ==========
     //=============================================
-    public function update(Request $request, $id)
+    public function update(UpdateBankInfoRequest $request, $id)
     {
         Log::debug('<<<<   update    >>>>>>');
         Log::debug('<<<<   request    >>>>>>');
@@ -353,7 +354,7 @@ class mypageController extends Controller
                     array(
                         //テナントidは指定せず、自動生成させる
                         "name" => $user->email,
-                        "platform_fee_rate" => SystemCommission::find(1)->commission_rate,
+                        "platform_fee_rate" => SystemCommission::find(1)->commission_rate * 100,
                         "minimum_transfer_amount" => 5000,
                         "bank_account_holder_name" => $request->bank_account_holder_name,
                         "bank_code" => $request->bank_code,
