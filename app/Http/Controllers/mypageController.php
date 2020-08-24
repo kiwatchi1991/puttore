@@ -140,58 +140,35 @@ class mypageController extends Controller
      * 注文管理機能
      */
 
-    public function order(Request $request)
+    public function order()
     {
         //========  今月の売上 ==============
-        $thisMonth = Order::query()
-            ->join('products', 'orders.product_id', '=', 'products.id')
-            ->where('products.user_id', Auth::user()->id)
-            ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
-            ->orderBy('created_at', 'desc')
-            //今月に絞る
-            ->whereYear('orders.created_at', date("Y"))
-            ->whereMonth('orders.created_at', date("m"))
-            ->get()
+        $user = Auth::user();
+        $payjp_sk = config('services.payjp.sk_test_p');
+        $tenant_id = $user->payjp_tenant_id;
 
+        \Payjp\Payjp::setApiKey($payjp_sk);
+        $thisMonth_sale = array_sum(array_column(\Payjp\Charge::all(array(
+            "tenant" => $tenant_id,
+            "since" => strtotime(Carbon::now()->startOfMonth()) //月初のタイムスタンプ
+        ))["data"], "amount"));
 
-            ->groupBy(function ($row) {
-                return $row->created_at->format('Y年m');
-            })
-            ->map(function ($day) {
-                return $day->sum('sale_price');
-            });
+        //=========   未振込売上履歴  ==============
+        $all =
+            \Payjp\Charge::all(array(
+                "tenant" => $tenant_id,
+            ))["data"];
+        $filter = array_filter($all, function ($arr) {
+            return $arr->paid === false;
+        });
+        $untransferred_sale = array_sum(array_column($filter, "amount"));
 
-        //=========   未振込依頼売上履歴  ==============
-
-        $untransferred = Order::query()
-            ->join('products', 'orders.product_id', '=', 'products.id')
-            ->where('products.user_id', Auth::user()->id)
-            ->where('status', 0)
-            ->where('orders.created_at', '<', Carbon::now()->startOfMonth())
-            ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-
-        $untransferred_price = $untransferred->groupBy(function ($row) {
-            return $row->status;
-        })
-            ->map(function ($day) {
-                return $day->sum('sale_price');
-            });
-
-        //==========  振込依頼済みの売上履歴  ==============
-
+        //==========  振込履歴  ==============
         $transfers = Transfer::where('user_id', Auth::user()->id)->get();
 
-        $user = Auth::user();
-
         return view('mypage.order', [
-            'thisMonth' => $thisMonth,
-            'untransferred' => $untransferred,
-            'untransferred_price' => $untransferred_price,
+            'thisMonth_sale' => $thisMonth_sale,
+            'untransferred_sale' => $untransferred_sale,
             'transfers' => $transfers,
             'user' => $user,
         ]);
