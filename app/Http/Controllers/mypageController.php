@@ -6,16 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UpdateBankInfoRequest;
 
 use Illuminate\Support\Carbon;
-use App\Transfer;
-use App\FromBank;
 use App\User;
 use App\Like;
 use App\SystemCommission;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\Order;
-use App\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -35,68 +31,6 @@ class mypageController extends Controller
             ->get();
 
         return view('mypage.transfer', compact(['orders', 'transfer']));
-    }
-
-    /**
-     *  振込依頼作成
-     */
-    public function requestTransfer(Request $request)
-    {
-        Log::debug('<<<<<<    requesttransfer    >>>>>>>>>>>');
-
-        //=========   プライスフラグを見て、各売上の手数料を引いて振込額を決める
-        $untransferred = Order::query()
-            ->join('products', 'orders.product_id', '=', 'products.id')
-            ->where('products.user_id', Auth::user()->id)
-            ->where('status', 0)
-            ->where('orders.created_at', '<', Carbon::now()->startOfMonth())
-            ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'transfer_price', 'status')
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        // =========      各売上の手数料を引いて振込額を決める
-        //$transfer_price_before 振込手数料を引く前の金額
-        $transfer_price_before = $untransferred->groupBy(function ($row) {
-            return $row->status;
-        })
-            ->map(function ($day) {
-                return $day->sum('transfer_price');
-            });
-
-        //数値に変換
-        $transfer_price_before = $transfer_price_before[0];
-
-        //==================振込テーブルに新規レコードをつくる
-
-        //振込手数料計算（今後変更あり）
-        if ($transfer_price_before > 30000) {
-            //FromBank::find(1)->commission1がメイン
-            $commission = FromBank::find(1)->commission1;
-        } else {
-            //FromBank::find(1)->commission1がメイン
-            $commission = FromBank::find(1)->commission1;
-        }
-
-        $transfer = new Transfer;
-        $transfer->user_id = Auth::user()->id;
-        //振込手数料を引いたものを振込む
-        $transfer->transfer_price = $transfer_price_before; //運営が振り込む金額
-        // $transfer->transferred_price = $transfer_price_after; //システム手数料を引いて実際に振り込まれる金額 nullableにしとく
-        $transfer->commission = $commission;
-        $transfer->from_bank_id = 1;
-        $transfer->payment_date = Carbon::parse('last day of next month');
-        $transfer->save();
-
-        //オーダーに結びつく振込テーブルidを格納
-
-        $ids = $untransferred->pluck('id');
-
-        //新規作成した振込依頼テーブルに結びつく注文情報を更新
-        $orders = Order::whereIn('id', $ids)->update(['status' => 1]); //１は申請中（振込前）
-        $orders = Order::whereIn('id', $ids)->update(['transfer_id' => $transfer->id]);
-
-        return redirect()->route('mypage.order');
     }
 
     public function index(Request $request)
@@ -155,7 +89,7 @@ class mypageController extends Controller
 
         //=========   未振込売上履歴  ==============
         $all =
-            \Payjp\Charge::all(array(
+            \Payjp\TenantTransfer::all(array(
                 "tenant" => $tenant_id,
             ))["data"];
         $filter = array_filter($all, function ($arr) {
@@ -164,12 +98,10 @@ class mypageController extends Controller
         $untransferred_sale = array_sum(array_column($filter, "amount"));
 
         //==========  振込履歴  ==============
-        $transfers = Transfer::where('user_id', Auth::user()->id)->get();
 
         return view('mypage.order', [
             'thisMonth_sale' => $thisMonth_sale,
             'untransferred_sale' => $untransferred_sale,
-            'transfers' => $transfers,
             'user' => $user,
         ]);
     }

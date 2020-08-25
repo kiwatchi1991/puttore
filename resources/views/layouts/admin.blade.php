@@ -148,10 +148,6 @@
                         <li class="">
                             <a href=" {{ route('admin.contact') }}" class="global-nav__item__link">お問い合わせ</a>
                         </li>
-                        <li>
-                            <a href=" {{ route('admin.transfer') }}" class="global-nav__item__link">振込依頼</a>
-
-                        </li>
                     </ul>
                 </nav>
             </div>

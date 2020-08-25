@@ -53,15 +53,6 @@ Route::group(['middleware' => ['auth', 'can:admin']], function () {
   Route::get('/admin/contacts',  'adminController@contactIndex')->name('admin.contact');
   Route::post('/admin/contacts',  'adminController@contactIndex')->name('admin.contact.search');
   Route::get('/admin/contacts/{id}',  'adminController@contactShow')->name('admin.contact.show');
-
-  //管理画面
-  //振込依頼
-  Route::get('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer');
-  Route::post('/admin/transfer',  'adminController@transferIndex')->name('admin.transfer.search');
-  Route::get('/admin/transfer/{id}',  'adminController@transferShow')->name('admin.transfer.show');
-  Route::get('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
-  Route::post('/admin/transfer/update/{id}',  'adminController@transferUpdateConfirm')->name('admin.transfer.update.confirm');
-  Route::post('/admin/transfer/update/{id?}',  'adminController@transferUpdate')->name('admin.transfer.update');
 });
 
 //===========================================================================
@@ -126,8 +117,6 @@ Route::group(['middleware' => 'check'], function () {
   Route::get('/mypage/products',  'mypageController@products')->name('mypage.products');
   Route::get('/mypage/order',  'mypageController@order')->name('mypage.order');
   Route::get('/mypage/order/{month}',  'mypageController@orderMonth')->name('mypage.order.show');
-  Route::get('/mypage/transfer',  'mypageController@requestTransfer')->name('mypage.order.transfer');
-  Route::get('/mypage/transfer/{id}',  'mypageController@showTransfer')->name('mypage.order.transfer.show');
   Route::get('/mypage/paid',  'mypageController@paid')->name('mypage.order.paid');
 
   //注文・トークルーム

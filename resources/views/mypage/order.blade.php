@@ -56,7 +56,7 @@
             <div class="c-mypage__sale__done__title">
                 <p>振込履歴</p>
             </div>
-            <table>
+            {{-- <table>
                 <thead>
                     <tr>
                         <th class="c-mypage__sale__list c-mypage__sale__list--day">振込日</th>
@@ -67,16 +67,16 @@
                     @foreach ($transfers as $transfer)
                     <tr>
                         <td class="day">{{ $transfer->created_at->format('Y年m月d日') }}</td>
-                        <td>¥ {{ number_format($transfer->transfer_price) }}</td>
-                    </tr>
-                    @endforeach
+            <td>¥ {{ number_format($transfer->transfer_price) }}</td>
+            </tr>
+            @endforeach
 
-                </tbody>
-            </table>
+            </tbody>
+            </table> --}}
             {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
-            @if ($transfers->count()==0)
+            {{-- @if ($transfers->count()==0)
             <div class="c-mypage__sale__list__text">※振込履歴はありません。</div>
-            @endif
+            @endif --}}
         </div>
 
     </div>
