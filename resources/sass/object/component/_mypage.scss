@@ -472,37 +472,46 @@
              }
         }
     }
-    &__sale__paid{
-        margin: 40px auto 0;
-        width: 85vw;
-        @include pc{
-            width: 100%;
+    &__sold{
+        &__list{
+            margin-top: 24px;
         }
-        table{
-            width: 100%;
-            @include pc{
-                width: 100%;
-                margin: 0 auto;
-           }
-        }
-        thead{
+        &__item{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            text-align: left;
             background: $bg;
+            border:1px solid $main-color;
+            margin-top: -1px;
+        }
+        &__username{
+            font-weight: bold;
+        }
+        &__productname{
             font-size: 14px;
-            font-weight: normal;
+            margin-top: 8px;
+            color: #aaa;
+            a{
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
         }
-        th{
-            padding: 8px 0;
+        &__created{
+            margin-top: 8px;
+            font-size: 10px;
         }
-        tr{
-            border-bottom: 1px solid $bg;
+        &__right{
+            display: flex;
+            align-items: center;
+            margin-left: 12px;
+            flex-shrink: 0;
         }
-        td{
-            padding: 10px 0;
-            font-size: 12px;
-             @include pc{
-                padding: 13px 0;
-                font-size: 16px;
-             }
+        &__price{
+            font-weight: bold;
+            color: $main-color;
         }
     }
     &__sale__list{

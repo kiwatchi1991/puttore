@@ -7129,52 +7129,52 @@ a:visited {
   }
 }
 
-.c-mypage__sale__paid {
-  margin: 40px auto 0;
-  width: 85vw;
+.c-mypage__sold__list {
+  margin-top: 24px;
 }
 
-@media (min-width: 768px) {
-  .c-mypage__sale__paid {
-    width: 100%;
-  }
-}
-
-.c-mypage__sale__paid table {
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .c-mypage__sale__paid table {
-    width: 100%;
-    margin: 0 auto;
-  }
-}
-
-.c-mypage__sale__paid thead {
+.c-mypage__sold__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  text-align: left;
   background: #E5F6F2;
+  border: 1px solid #00ac7d;
+  margin-top: -1px;
+}
+
+.c-mypage__sold__username {
+  font-weight: bold;
+}
+
+.c-mypage__sold__productname {
   font-size: 14px;
-  font-weight: normal;
+  margin-top: 8px;
+  color: #aaa;
 }
 
-.c-mypage__sale__paid th {
-  padding: 8px 0;
+.c-mypage__sold__productname a {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
-.c-mypage__sale__paid tr {
-  border-bottom: 1px solid #E5F6F2;
+.c-mypage__sold__created {
+  margin-top: 8px;
+  font-size: 10px;
 }
 
-.c-mypage__sale__paid td {
-  padding: 10px 0;
-  font-size: 12px;
+.c-mypage__sold__right {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+  flex-shrink: 0;
 }
 
-@media (min-width: 768px) {
-  .c-mypage__sale__paid td {
-    padding: 13px 0;
-    font-size: 16px;
-  }
+.c-mypage__sold__price {
+  font-weight: bold;
+  color: #00ac7d;
 }
 
 .c-mypage__sale__list--day {

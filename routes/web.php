@@ -117,7 +117,7 @@ Route::group(['middleware' => 'check'], function () {
   Route::get('/mypage/products',  'mypageController@products')->name('mypage.products');
   Route::get('/mypage/order',  'mypageController@order')->name('mypage.order');
   Route::get('/mypage/order/{month}',  'mypageController@orderMonth')->name('mypage.order.show');
-  Route::get('/mypage/paid',  'mypageController@paid')->name('mypage.order.paid');
+  Route::get('/mypage/sold',  'mypageController@sold')->name('mypage.order.sold');
 
   //注文・トークルーム
   Route::post('/products/{id}',  'OrdersController@create')->name('orders.create');

@@ -132,16 +132,21 @@ class mypageController extends Controller
     }
 
     //=============================================
-    //==========        振込履歴ページ     ==========
+    //==========        販売履歴ページ     ==========
     //=============================================
-    public function paid(Request $request)
+    public function sold(Request $request)
     {
-        $paids = Transfer::where('user_id', Auth::user()->id)
-            ->where('status', 1)
-            ->get();
+        //売上履歴
+        $sold_data = Order::query()
+            ->join('products', 'orders.product_id', '=', 'products.id')
+            ->where('products.user_id', Auth::user()->id)
+            ->join('users', 'orders.user_id', '=', 'users.id')
+            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'products.id as p_id', 'products.name', 'users.id as u_id', 'users.account_name', 'users.pic')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
 
-        return view('mypage.paid', [
-            'paids' => $paids,
+        return view('mypage.sold', [
+            'sold_data' => $sold_data,
         ]);
     }
 
