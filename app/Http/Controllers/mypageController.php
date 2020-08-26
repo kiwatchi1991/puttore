@@ -17,22 +17,6 @@ use Illuminate\Support\Facades\Log;
 
 class mypageController extends Controller
 {
-    /**
-     *  処理済み売り上げ表示
-     */
-
-    public function showTransfer(Request $request, $id)
-    {
-        Log::debug('<<<<<<    transferShow    >>>>>>>>>>>');
-
-        $transfer = Transfer::find($id);
-        $orders =  Order::where('transfer_id', '=', $id)
-            ->join('products', 'orders.product_id', 'products.id')
-            ->get();
-
-        return view('mypage.transfer', compact(['orders', 'transfer']));
-    }
-
     public function index(Request $request)
     {
         $user = Auth::user();
