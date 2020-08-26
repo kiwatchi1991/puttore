@@ -82,16 +82,6 @@ class OrdersController extends Controller
       $order->msg_updated_at = Carbon::now();
       $order->save();
 
-      if ($discount_price) {
-        //割引価格の時は手数料は3%（今後変更あり）
-        $order->transfer_price = $order->sale_price * (1 - SystemCommission::where('id', 2)->value('commission_rate'));
-      } else {
-        //通常価格の時は手数料は10%（今後変更あり）
-        $order->transfer_price = $order->sale_price * (1 - SystemCommission::where('id', 1)->value('commission_rate'));
-      }
-
-      $order->save();
-
       //購入者にメール送信する
       User::find($order->user_id)->buyEmail($order);
       //出品者にメール送信する
