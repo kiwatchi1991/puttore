@@ -84,7 +84,7 @@ class mypageController extends Controller
         \Payjp\Payjp::setApiKey($payjp_sk);
         $thisMonth_sale = array_sum(array_column(\Payjp\Charge::all(array(
             "tenant" => $tenant_id,
-            "since" => strtotime(Carbon::now()->startOfMonth()) //月初のタイムスタンプ
+            "since" => strtotime(Carbon::now()->startOfMonth()) //月初以降
         ))["data"], "amount"));
 
         //=========   未振込売上履歴  ==============
@@ -103,31 +103,6 @@ class mypageController extends Controller
             'thisMonth_sale' => $thisMonth_sale,
             'untransferred_sale' => $untransferred_sale,
             'user' => $user,
-        ]);
-    }
-    //=============================================
-    //========  1ヶ月の売上リストページ   ============
-    //=============================================
-    public function orderMonth(Request $request, $year_month)
-    {
-        $targetYear = substr($year_month, 0, 4);
-        $targetMonth = substr($year_month, 7, 2);
-
-        //売上履歴（振込依頼済）
-        $sales = Order::query()
-            ->join('products', 'orders.product_id', '=', 'products.id')
-            ->where('products.user_id', Auth::user()->id)
-            ->whereYear('orders.created_at', $targetYear)
-            ->whereMonth('orders.created_at', $targetMonth)
-
-            ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status', 'products.name')
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        return view('mypage.orderMonth', [
-            'sales' => $sales,
-            'year_month' => $year_month,
         ]);
     }
 
