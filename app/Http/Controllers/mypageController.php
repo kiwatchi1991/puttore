@@ -60,20 +60,21 @@ class mypageController extends Controller
 
     public function order()
     {
-        //========  今月の売上 ==============
         $user = Auth::user();
-        $payjp_sk = config('services.payjp.sk_test_p');
         $tenant_id = $user->payjp_tenant_id;
 
         //テナントidが存在しない場合は、アカウント設定ページへリダイレクトさせる
         if (empty($tenant_id)) {
             return redirect()->route('mypage')->with('flash_message', 'アカウント設定ページより、銀行情報を登録してください');
         }
+        //========  今月の売上 ==============
+        $payjp_sk = config('services.payjp.sk_live_p');
+
         \Payjp\Payjp::setApiKey($payjp_sk);
         $thisMonth_sale = array_sum(array_column(\Payjp\Charge::all(array(
             "tenant" => $tenant_id,
             "since" => strtotime(Carbon::now()->startOfMonth()) //月初以降
-        ))["data"], "amount"));
+        ))["data"], "amount")) || 0;
 
         //=========   未振込売上履歴  ==============
         $all =
@@ -226,7 +227,7 @@ class mypageController extends Controller
 
         $user = User::find($id);
         try {
-            $payjp_sk = config('services.payjp.sk_test_p');
+            $payjp_sk = config('services.payjp.sk_live_p');
             $tenant_id = $user->payjp_tenant_id;
 
             \Payjp\Payjp::setApiKey($payjp_sk);

@@ -35,7 +35,7 @@ class OrdersController extends Controller
     // ----------------- コンテンツ登録 →　payjpでの支払い処理　↓↓↓--------------
     try {
 
-      $payjp_sk = config('services.payjp.sk_test_p');
+      $payjp_sk = config('services.payjp.sk_live_p');
       $tenant_id = User::find($sale_user_id)->payjp_tenant_id;
 
       \Payjp\Payjp::setApiKey($payjp_sk);

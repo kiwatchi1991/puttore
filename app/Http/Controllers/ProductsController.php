@@ -457,7 +457,7 @@ class ProductsController extends Controller
         Log::debug($product_imgs);
 
         // payjp公開鍵
-        $payjp_pk = config('services.payjp.pk_test_p');
+        $payjp_pk = config('services.payjp.pk_live_p');
 
         return view('products.show', [
             'product' => $product,
