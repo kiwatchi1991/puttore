@@ -58,12 +58,12 @@
                 <p class="c-mypage__account__label">口座種別<span class="required">必須</span></p>
                 <div class="c-mypage__accountType">
                     <input type="radio" class="c-mypage__radio" name="bank_account_type" id="bank_account_type[0]"
-                        value="0" checked="{{ $bank->bank_account_type === '0' }}">
+                        value="0" {{ $bank->bank_account_type === 0 ? "checked" : "" }}>
                     <label for="bank_account_type[0]" class="c-mypage__radioLabel">
                         普通
                     </label>
                     <input type="radio" class="c-mypage__radio" name="bank_account_type" id="bank_account_type[1]"
-                        value="1" checked="{{ $bank->bank_account_type === '1' }}">
+                        value="1" {{ $bank->bank_account_type === 1 ? "checked" : "" }}>
                     <label for="bank_account_type[1]" class="c-mypage__radioLabel">
                         当座
                     </label>

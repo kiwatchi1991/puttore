@@ -26,7 +26,7 @@ class UpdateBankInfoRequest extends FormRequest
     public function rules()
     {
         return [
-            'bank_account_holder_name' => 'required|regex:/^[ァ-ヴー]+$/',
+            'bank_account_holder_name' => 'required|regex:/^[^\s 　][ァ-ヶー\s 　]+[^\s 　]$/u',
             'bank_code' => 'required|regex:/^[0-9]{4}$/',
             'bank_branch_code' => 'required|regex:/^[0-9]{3}$/',
             'bank_account_type' => 'required|boolean',
