@@ -65,6 +65,10 @@ class mypageController extends Controller
         $payjp_sk = config('services.payjp.sk_test_p');
         $tenant_id = $user->payjp_tenant_id;
 
+        //テナントidが存在しない場合は、アカウント設定ページへリダイレクトさせる
+        if (empty($tenant_id)) {
+            return redirect()->route('mypage')->with('flash_message', 'アカウント設定ページより、銀行情報を登録してください');
+        }
         \Payjp\Payjp::setApiKey($payjp_sk);
         $thisMonth_sale = array_sum(array_column(\Payjp\Charge::all(array(
             "tenant" => $tenant_id,
