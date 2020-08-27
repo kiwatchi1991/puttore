@@ -92,6 +92,7 @@ Route::group(['middleware' => 'check'], function () {
   Route::post('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
   Route::post('/products/ajaxlike',  'LikesController@ajaxlike')->name('products.ajaxlike');
   Route::post('/products/ajaxfollow',  'FollowsController@ajaxfollow')->name('products.ajaxfollow');
+  Route::get('/products/ajaxbankconfirm',  'ProductsController@ajaxBankConfirm')->name('products.ajaxbankconfirm');
   //レッスンの画像アップロード
   Route::post('/products/imgupload',  'LessonImgUploadController@imgupload')->name('products.imgupload');
 

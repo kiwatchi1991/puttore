@@ -9,7 +9,7 @@
             <h2>振込用口座情報の登録</h2>
         </div>
 
-        <form method="POST" action="{{ route('mypage.update', $id)}}">
+        <form method="POST" action="{{ route('mypage.update', $id)}}" id="form-bankInfo">
             @csrf
             <div class="c-mypage__title c-mypage__title--bank">
                 <p>下記は売上金の振込のため<br>必要な項目です</p>

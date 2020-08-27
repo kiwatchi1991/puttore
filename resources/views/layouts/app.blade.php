@@ -83,7 +83,7 @@
                 <li class="global-nav__item">
                   <a href="{{ route('products') }}" class="global-nav__item__link @guest first @endguest">作品を探す</a>
                 </li>
-                <li class="global-nav__item">
+                <li class="global-nav__item" id="js-bank_confirm">
                   <a href="{{ route('products.new') }}" class="global-nav__item__link">出品する</a>
                 </li>
                 @auth
@@ -179,7 +179,7 @@
 
             @endauth
 
-            <li class="">
+            <li id="js-bank_confirm">
               <a href="{{ route('products.new') }}" class="global-nav__item__link">出品する</a>
             </li>
             <li class="">

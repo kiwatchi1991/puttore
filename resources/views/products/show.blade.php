@@ -54,7 +54,8 @@
                         </form>
                         <i class="far fa-trash-alt"></i>
                     </div>
-                    <div class="c-productShow__editMenu__list c-productShow__editMenu__list--edit">
+                    <div id="js-bank_confirm-edit"
+                        class="c-productShow__editMenu__list c-productShow__editMenu__list--edit">
                         <a class="" href="{{ route('products.edit',$product->id) }}"><i class="far fa-edit"></i></a>
                     </div>
                 </div>

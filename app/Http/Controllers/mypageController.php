@@ -83,10 +83,16 @@ class mypageController extends Controller
 
         //==========  振込履歴  ==============
 
+        $paid = (array)\Payjp\Charge::all(array(
+            "tenant" => $tenant_id,
+        ))["data"];
+
+
         return view('mypage.order', [
             'thisMonth_sale' => $thisMonth_sale,
             'untransferred_sale' => $untransferred_sale,
             'user' => $user,
+            'paid' => $paid,
         ]);
     }
 
