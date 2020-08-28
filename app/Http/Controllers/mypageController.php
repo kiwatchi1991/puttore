@@ -74,7 +74,7 @@ class mypageController extends Controller
         $thisMonth_sale = array_sum(array_column(\Payjp\Charge::all(array(
             "tenant" => $tenant_id,
             "since" => strtotime(Carbon::now()->startOfMonth()) //月初以降
-        ))["data"], "amount")) || 0;
+        ))["data"], "amount"));
 
         //=========   未振込売上履歴  ==============
         $all =
