@@ -569,12 +569,12 @@ class ProductsController extends Controller
         $user = Auth::user();
 
         $hasBankConfirm =
-            !empty($user->bank_code) &&
-            !empty($user->bank_branch_code) &&
-            !empty($user->bank_account_holder_name) &&
-            !empty($user->bank_account_type) &&
-            !empty($user->bank_account_number) &&
-            !empty($user->payjp_tenant_id);
+            isset($user->bank_code) &&
+            isset($user->bank_branch_code) &&
+            isset($user->bank_account_holder_name) &&
+            isset($user->bank_account_type) &&
+            isset($user->bank_account_number) &&
+            isset($user->payjp_tenant_id);
 
         return response()->json($hasBankConfirm);
     }
