@@ -69,12 +69,24 @@ class mypageController extends Controller
         }
         //========  今月の売上 ==============
         $payjp_sk = config('services.payjp.sk_live_p');
-
         \Payjp\Payjp::setApiKey($payjp_sk);
-        $thisMonth_sale = array_sum(array_column(\Payjp\Charge::all(array(
+
+        $this_month_charges = \Payjp\Charge::all(array(
             "tenant" => $tenant_id,
             "since" => strtotime(Carbon::now()->startOfMonth()) //月初以降
-        ))["data"], "amount"));
+        ))["data"];
+
+        $this_month_amount =
+            array_sum(
+                array_column(
+                    array_filter($this_month_charges, function ($arr) {
+                        // 返金済みのもの（refunded === true）は除外する
+                        return $arr->refunded === false;
+                    }),
+                    "amount" //array_columnの第二引数
+                )
+            );
+
 
         //=========   未振込売上履歴  ==============
         $all =
@@ -94,7 +106,7 @@ class mypageController extends Controller
 
 
         return view('mypage.order', [
-            'thisMonth_sale' => $thisMonth_sale,
+            'this_month_amount' => $this_month_amount,
             'untransferred_sale' => $untransferred_sale,
             'user' => $user,
             'paid' => $paid,

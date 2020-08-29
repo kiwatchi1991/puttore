@@ -18,7 +18,7 @@
 
                 <div class="c-mypage__sale__thisMonth__total">総額</div>
                 <div class="c-mypage__sale__thisMonth__price"><span class="c-mypage__sale__icon">¥</span>
-                    {{ number_format($thisMonth_sale) }}
+                    {{ number_format($this_month_amount) }}
                 </div>
                 <div style="width:50px;"></div>
             </div>
