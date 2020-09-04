@@ -31,6 +31,9 @@
                 @if($untransferred_sale->status === "pending")
                 <p class=c-mypage__sale__untransferred__scheduled>振込予定日：{{ $untransferred_sale->scheduled_date }}</p>
                 @endif
+                @if($untransferred_sale->status === ("failed" || "recombination"))
+                <p class=c-mypage__sale__untransferred__failed>振込に失敗しております。大変お手数をお掛けいたしますが、運営にお問い合わせをお願い致します。</p>
+                @endif
             </div>
             <div class="c-mypage__sale__untransferred__price__wrapper">
                 <div class="c-mypage__sale__untransferred__total">総額</div>

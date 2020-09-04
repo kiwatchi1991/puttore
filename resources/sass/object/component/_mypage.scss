@@ -337,6 +337,15 @@
                 margin-top: 16px;
             }
         }
+        &__failed{
+            color: red;
+            font-size: 12px;
+            margin-top: 8px;
+            @include pc{
+                font-size: 14px;
+                margin-top: 16px;
+            }
+        }
         &__price__wrapper{
             display: flex;
             justify-content: space-between;
