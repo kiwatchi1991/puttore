@@ -28,12 +28,15 @@
         <div class="c-mypage__sale__untransferred">
             <div class="c-mypage__sale__untransferred__title">
                 <p>次回振込予定金額</p>
+                @if($untransferred_sale->status === "pending")
+                <p class=c-mypage__sale__untransferred__scheduled>振込予定日：{{ $untransferred_sale->scheduled_date }}</p>
+                @endif
             </div>
             <div class="c-mypage__sale__untransferred__price__wrapper">
                 <div class="c-mypage__sale__untransferred__total">総額</div>
 
                 <div class="c-mypage__sale__untransferred__price"><span class="c-mypage__sale__icon">¥</span>
-                    {{ number_format($untransferred_sale) }}
+                    {{ number_format($untransferred_sale->amount) }}
                 </div>
                 <div style="width:50px;"></div>
             </div>
@@ -48,15 +51,7 @@
             <div class="c-mypage__sale__done__title">
                 <p>振込履歴</p>
             </div>
-            @foreach($paid as $data )
-
-            <div class="">{{ $data}}</div>
-            {{-- <div class="">{{ $data->transfer_date}}
-        </div> --}}
-        {{-- <div class="">{{ $data->transfer_amount}}
-    </div> --}}
-    @endforeach
-    {{-- <table>
+            <table>
                 <thead>
                     <tr>
                         <th class="c-mypage__sale__list c-mypage__sale__list--day">振込日</th>
@@ -64,21 +59,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($transfers as $transfer)
+                    @foreach ($paids as $paid)
                     <tr>
-                        <td class="day">{{ $transfer->created_at->format('Y年m月d日') }}</td>
-    <td>¥ {{ number_format($transfer->transfer_price) }}</td>
-    </tr>
-    @endforeach
+                        <td class="day">{{ $paid->transfer_date && $paid->transfer_date->format('Y年m月d日') }}</td>
+                        <td>¥ {{ number_format($paid->transfer_amount) }}</td>
+                    </tr>
+                    @endforeach
 
-    </tbody>
-    </table> --}}
-    {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
-    {{-- @if ($transfers->count()==0)
+                </tbody>
+            </table>
+            {{-- 金額が0円の場合はDOMが表示されなくなるので、これを表示 --}}
+            @if ($paids == null)
             <div class="c-mypage__sale__list__text">※振込履歴はありません。</div>
-            @endif --}}
-</div>
+            @endif
+        </div>
 
-</div>
+    </div>
 </div>
 @endsection

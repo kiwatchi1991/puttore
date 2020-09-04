@@ -6925,6 +6925,19 @@ a:visited {
   }
 }
 
+.c-mypage__sale__untransferred__scheduled {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #00ac7d;
+}
+
+@media (min-width: 768px) {
+  .c-mypage__sale__untransferred__scheduled {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+}
+
 .c-mypage__sale__untransferred__price__wrapper {
   display: flex;
   justify-content: space-between;

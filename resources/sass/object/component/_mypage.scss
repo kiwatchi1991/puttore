@@ -328,6 +328,15 @@
               letter-spacing: 1px;
             }
         }
+        &__scheduled{
+            font-size: 12px;
+            margin-top: 8px;
+            color: $main-color;
+            @include pc{
+                font-size: 14px;
+                margin-top: 16px;
+            }
+        }
         &__price__wrapper{
             display: flex;
             justify-content: space-between;

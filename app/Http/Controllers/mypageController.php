@@ -54,65 +54,6 @@ class mypageController extends Controller
         ]);
     }
 
-    /**
-     * 注文管理機能
-     */
-
-    public function order()
-    {
-        $user = Auth::user();
-        $tenant_id = $user->payjp_tenant_id;
-
-        //テナントidが存在しない場合は、アカウント設定ページへリダイレクトさせる
-        if (empty($tenant_id)) {
-            return redirect()->route('mypage')->with('flash_message', 'アカウント設定ページより、銀行情報を登録してください');
-        }
-        //========  今月の売上 ==============
-        $payjp_sk = config('services.payjp.sk_live_p');
-        \Payjp\Payjp::setApiKey($payjp_sk);
-
-        $this_month_charges = \Payjp\Charge::all(array(
-            "tenant" => $tenant_id,
-            "since" => strtotime(Carbon::now()->startOfMonth()) //月初以降
-        ))["data"];
-
-        $this_month_amount =
-            array_sum(
-                array_column(
-                    array_filter($this_month_charges, function ($arr) {
-                        // 返金済みのもの（refunded === true）は除外する
-                        return $arr->refunded === false;
-                    }),
-                    "amount" //array_columnの第二引数
-                )
-            );
-
-
-        //=========   未振込売上履歴  ==============
-        $all =
-            \Payjp\TenantTransfer::all(array(
-                "tenant" => $tenant_id,
-            ))["data"];
-        $filter = array_filter($all, function ($arr) {
-            return $arr->paid === false;
-        });
-        $untransferred_sale = array_sum(array_column($filter, "amount"));
-
-        //==========  振込履歴  ==============
-
-        $paid = (array)\Payjp\Charge::all(array(
-            "tenant" => $tenant_id,
-        ))["data"];
-
-
-        return view('mypage.order', [
-            'this_month_amount' => $this_month_amount,
-            'untransferred_sale' => $untransferred_sale,
-            'user' => $user,
-            'paid' => $paid,
-        ]);
-    }
-
     //=============================================
     //==========        販売履歴ページ     ==========
     //=============================================
@@ -278,5 +219,82 @@ class mypageController extends Controller
         $user->fill($request->all())->save();
 
         return redirect()->route('mypage')->with('flash_message', '口座情報を変更しました');
+    }
+
+    /**
+     * 注文管理機能
+     */
+
+    public function order()
+    {
+        $user = Auth::user();
+        $tenant_id = $user->payjp_tenant_id;
+
+        //テナントidが存在しない場合は、アカウント設定ページへリダイレクトさせる
+        if (empty($tenant_id)) {
+            return redirect()->route('mypage')->with('flash_message', 'アカウント設定ページより、銀行情報を登録してください');
+        }
+        //========  今月の売上 ==============
+        $payjp_sk = config('services.payjp.sk_live_p');
+        \Payjp\Payjp::setApiKey($payjp_sk);
+
+        $this_month_charges = \Payjp\Charge::all(array(
+            "tenant" => $tenant_id,
+            "since" => strtotime(Carbon::now()->startOfMonth()) //月初以降
+        ))["data"];
+
+        $this_month_amount =
+            array_sum(
+                array_column(
+                    array_filter($this_month_charges, function ($arr) {
+                        // 返金済みのもの（refunded === true）は除外する
+                        return $arr->refunded === false;
+                    }),
+                    "amount" //array_columnの第二引数
+                )
+            );
+
+
+        //=========   未振込売上履歴  ==============
+        $all_transfer = (array)\Payjp\TenantTransfer::all(array(
+            "tenant" => $tenant_id,
+        ))["data"];
+        $filter = array_filter($all_transfer, function ($arr) {
+            return $arr->status !== "paid";
+        });
+        $untransferred_sale = $filter[0];
+
+        //==========  振込履歴  ==============
+        $paids = array_filter($all_transfer, function ($arr) {
+            return $arr->status === "paid";
+        });
+
+        return view('mypage.order', [
+            'this_month_amount' => $this_month_amount,
+            'untransferred_sale' => $untransferred_sale,
+            'user' => $user,
+            'paids' => $paids,
+            'filter' => $filter,
+        ]);
+    }
+
+    public function getSampleData()
+    {
+        $user = Auth::user();
+        $tenant_id = $user->payjp_tenant_id;
+
+        $payjp_sk = config('services.payjp.sk_live_p');
+        \Payjp\Payjp::setApiKey($payjp_sk);
+
+        $all_transfer = (array)\Payjp\TenantTransfer::all(array(
+            // "tenant" => $tenant_id,
+            "tenant" => "ten_e1c93880cbe965d7634427feb032",
+        ))["data"];
+        $filter = array_filter($all_transfer, function ($arr) {
+            return $arr->status !== "paid";
+        });
+
+        // return response()->json($filter[0]->amount);
+        return view('mypage.data');
     }
 }
