@@ -1,4 +1,5 @@
 .c-mypage{
+    // アカウント設定フォーム
     &__input-area{
       width: 100%;
       box-sizing: border-box;
@@ -8,8 +9,62 @@
       margin-top: 8px;
       background: $bg;
     }
+    &__accountType{
+        
+    }
+    &__radio{
+        display: none;
+    }
+    &__radioLabel{
+        position: relative;
+        padding-left: 20px;
+        margin-right: 16px;
+        margin-top: 8px;
+        display: inline-block;  
+    }
+    &__radioLabel::before{
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 13px;
+        height: 13px;
+        border-radius: 4px;
+        background: #fff;
+        border: 1px solid #333;
+    }
+    &__radio:checked + .c-mypage__radioLabel::before{
+        background: $main-color;
+        border: none;
+        width: 14px;
+        height: 14px;
+    }
+    &__radio:checked + .c-mypage__radioLabel::after{
+        content: "";
+        display: block;
+        position: absolute;
+        top: 1px;
+        left: 4px;
+        width: 4px;
+        height: 8px;
+        transform: rotate(45deg);
+        border-bottom: 2px solid #fff;
+        border-right: 2px solid #fff;
+    }
+    &__agree{
+        font-size: 14px;
+        line-height: 1.35;
+    }
+    &__agree__link{
+        color: $main-color;
+        text-decoration: underline;
+    }
+    &__agree__link:visited{
+        color: $main-color;
+    }
     &__submit{
-        margin: 56px auto 0;
+        margin: 24px auto 0;
         text-align: center;
         width: 75%;
         color: #ffffff;
@@ -26,6 +81,7 @@
             font-size: 14px;
         }
     }
+
 
     &__order{
         text-align: center;
@@ -272,6 +328,24 @@
               letter-spacing: 1px;
             }
         }
+        &__scheduled{
+            font-size: 12px;
+            margin-top: 8px;
+            color: $main-color;
+            @include pc{
+                font-size: 14px;
+                margin-top: 16px;
+            }
+        }
+        &__failed{
+            color: red;
+            font-size: 12px;
+            margin-top: 8px;
+            @include pc{
+                font-size: 14px;
+                margin-top: 16px;
+            }
+        }
         &__price__wrapper{
             display: flex;
             justify-content: space-between;
@@ -416,37 +490,46 @@
              }
         }
     }
-    &__sale__paid{
-        margin: 40px auto 0;
-        width: 85vw;
-        @include pc{
-            width: 100%;
+    &__sold{
+        &__list{
+            margin-top: 24px;
         }
-        table{
-            width: 100%;
-            @include pc{
-                width: 100%;
-                margin: 0 auto;
-           }
-        }
-        thead{
+        &__item{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            text-align: left;
             background: $bg;
+            border:1px solid $main-color;
+            margin-top: -1px;
+        }
+        &__username{
+            font-weight: bold;
+        }
+        &__productname{
             font-size: 14px;
-            font-weight: normal;
+            margin-top: 8px;
+            color: #aaa;
+            a{
+                display: -webkit-box;
+                overflow: hidden;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
         }
-        th{
-            padding: 8px 0;
+        &__created{
+            margin-top: 8px;
+            font-size: 10px;
         }
-        tr{
-            border-bottom: 1px solid $bg;
+        &__right{
+            display: flex;
+            align-items: center;
+            margin-left: 12px;
+            flex-shrink: 0;
         }
-        td{
-            padding: 10px 0;
-            font-size: 12px;
-             @include pc{
-                padding: 13px 0;
-                font-size: 16px;
-             }
+        &__price{
+            font-weight: bold;
+            color: $main-color;
         }
     }
     &__sale__list{
@@ -500,5 +583,11 @@
     }
     &__sale__nothing{
         margin-top: 32px;
+    }
+    &__error{
+        font-size: 14px;
+        color: red;
+        display: inline-block;
+        margin-top: 8px;
     }
 }

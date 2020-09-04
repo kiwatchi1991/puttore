@@ -457,7 +457,7 @@ class ProductsController extends Controller
         Log::debug($product_imgs);
 
         // payjp公開鍵
-        $payjp_pk = config('services.payjp.pk_live');
+        $payjp_pk = config('services.payjp.pk_live_p');
 
         return view('products.show', [
             'product' => $product,
@@ -557,5 +557,25 @@ class ProductsController extends Controller
             $delete_target_lesson->delete();
             return response()->json();
         }
+    }
+
+    /**
+     * 銀行情報の有無確認（非同期）
+     */
+    public function ajaxBankConfirm(Request $request)
+    {
+        Log::debug('message');
+
+        $user = Auth::user();
+
+        $hasBankConfirm =
+            isset($user->bank_code) &&
+            isset($user->bank_branch_code) &&
+            isset($user->bank_account_holder_name) &&
+            isset($user->bank_account_type) &&
+            isset($user->bank_account_number) &&
+            isset($user->payjp_tenant_id);
+
+        return response()->json($hasBankConfirm);
     }
 }

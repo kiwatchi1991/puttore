@@ -3,103 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateBankInfoRequest;
 
 use Illuminate\Support\Carbon;
-use App\Transfer;
-use App\FromBank;
 use App\User;
 use App\Like;
-use Intervention\Image\Facades\Image;
+use App\SystemCommission;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\Order;
-use App\Category;
-use App\Difficulty;
-use App\CategoryProduct;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
 class mypageController extends Controller
 {
-    /**
-     *  処理済み売り上げ表示
-     */
-
-    public function showTransfer(Request $request, $id)
-    {
-        Log::debug('<<<<<<    transferShow    >>>>>>>>>>>');
-
-        $transfer = Transfer::find($id);
-        $orders =  Order::where('transfer_id', '=', $id)
-            ->join('products', 'orders.product_id', 'products.id')
-            ->get();
-
-        return view('mypage.transfer', compact(['orders', 'transfer']));
-    }
-
-    /**
-     *  振込依頼作成
-     */
-    public function requestTransfer(Request $request)
-    {
-        Log::debug('<<<<<<    requesttransfer    >>>>>>>>>>>');
-
-        //=========   プライスフラグを見て、各売上の手数料を引いて振込額を決める
-        $untransferred = Order::query()
-            ->join('products', 'orders.product_id', '=', 'products.id')
-            ->where('products.user_id', Auth::user()->id)
-            ->where('status', 0)
-            ->where('orders.created_at', '<', Carbon::now()->startOfMonth())
-            ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'transfer_price', 'status')
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        // =========      各売上の手数料を引いて振込額を決める
-        //$transfer_price_before 振込手数料を引く前の金額
-        $transfer_price_before = $untransferred->groupBy(function ($row) {
-            return $row->status;
-        })
-            ->map(function ($day) {
-                return $day->sum('transfer_price');
-            });
-
-        //数値に変換
-        $transfer_price_before = $transfer_price_before[0];
-
-        //==================振込テーブルに新規レコードをつくる
-
-        //振込手数料計算（今後変更あり）
-        if ($transfer_price_before > 30000) {
-            //FromBank::find(1)->commission1がメイン
-            $commission = FromBank::find(1)->commission1;
-        } else {
-            //FromBank::find(1)->commission1がメイン
-            $commission = FromBank::find(1)->commission1;
-        }
-
-        $transfer = new Transfer;
-        $transfer->user_id = Auth::user()->id;
-        //振込手数料を引いたものを振込む
-        $transfer->transfer_price = $transfer_price_before; //運営が振り込む金額
-        // $transfer->transferred_price = $transfer_price_after; //システム手数料を引いて実際に振り込まれる金額 nullableにしとく
-        $transfer->commission = $commission;
-        $transfer->from_bank_id = 1;
-        $transfer->payment_date = Carbon::parse('last day of next month');
-        $transfer->save();
-
-        //オーダーに結びつく振込テーブルidを格納
-
-        $ids = $untransferred->pluck('id');
-
-        //新規作成した振込依頼テーブルに結びつく注文情報を更新
-        $orders = Order::whereIn('id', $ids)->update(['status' => 1]); //１は申請中（振込前）
-        $orders = Order::whereIn('id', $ids)->update(['transfer_id' => $transfer->id]);
-
-        return redirect()->route('mypage.order');
-    }
-
     public function index(Request $request)
     {
         $user = Auth::user();
@@ -137,103 +54,22 @@ class mypageController extends Controller
         ]);
     }
 
-    /**
-     * 注文管理機能
-     */
-
-    public function order(Request $request)
+    //=============================================
+    //==========        販売履歴ページ     ==========
+    //=============================================
+    public function sold(Request $request)
     {
-        //========  今月の売上 ==============
-        $thisMonth = Order::query()
+        //売上履歴
+        $sold_data = Order::query()
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('products.user_id', Auth::user()->id)
             ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
+            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'products.id as p_id', 'products.name', 'users.id as u_id', 'users.account_name', 'users.pic')
             ->orderBy('created_at', 'desc')
-            //今月に絞る
-            ->whereYear('orders.created_at', date("Y"))
-            ->whereMonth('orders.created_at', date("m"))
-            ->get()
+            ->paginate(10);
 
-
-            ->groupBy(function ($row) {
-                return $row->created_at->format('Y年m');
-            })
-            ->map(function ($day) {
-                return $day->sum('sale_price');
-            });
-
-        //=========   未振込依頼売上履歴  ==============
-
-        $untransferred = Order::query()
-            ->join('products', 'orders.product_id', '=', 'products.id')
-            ->where('products.user_id', Auth::user()->id)
-            ->where('status', 0)
-            ->where('orders.created_at', '<', Carbon::now()->startOfMonth())
-            ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status')
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-
-        $untransferred_price = $untransferred->groupBy(function ($row) {
-            return $row->status;
-        })
-            ->map(function ($day) {
-                return $day->sum('sale_price');
-            });
-
-        //==========  振込依頼済みの売上履歴  ==============
-
-        $transfers = Transfer::where('user_id', Auth::user()->id)->get();
-
-        $user = Auth::user();
-
-        return view('mypage.order', [
-            'thisMonth' => $thisMonth,
-            'untransferred' => $untransferred,
-            'untransferred_price' => $untransferred_price,
-            'transfers' => $transfers,
-            'user' => $user,
-        ]);
-    }
-    //=============================================
-    //========  1ヶ月の売上リストページ   ============
-    //=============================================
-    public function orderMonth(Request $request, $year_month)
-    {
-        $targetYear = substr($year_month, 0, 4);
-        $targetMonth = substr($year_month, 7, 2);
-
-        //売上履歴（振込依頼済）
-        $sales = Order::query()
-            ->join('products', 'orders.product_id', '=', 'products.id')
-            ->where('products.user_id', Auth::user()->id)
-            ->whereYear('orders.created_at', $targetYear)
-            ->whereMonth('orders.created_at', $targetMonth)
-
-            ->join('users', 'orders.user_id', '=', 'users.id')
-            ->select('orders.id', 'orders.created_at as created_at', 'sale_price', 'status', 'products.name')
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        return view('mypage.orderMonth', [
-            'sales' => $sales,
-            'year_month' => $year_month,
-        ]);
-    }
-
-    //=============================================
-    //==========        振込履歴ページ     ==========
-    //=============================================
-    public function paid(Request $request)
-    {
-        $paids = Transfer::where('user_id', Auth::user()->id)
-            ->where('status', 1)
-            ->get();
-
-        return view('mypage.paid', [
-            'paids' => $paids,
+        return view('mypage.sold', [
+            'sold_data' => $sold_data,
         ]);
     }
 
@@ -336,13 +172,129 @@ class mypageController extends Controller
     //=============================================
     //=====    （銀行情報）更新　　　　　     ==========
     //=============================================
-    public function update(Request $request, $id)
+    public function update(UpdateBankInfoRequest $request, $id)
     {
         Log::debug('<<<<   update    >>>>>>');
+        Log::debug('<<<<   request    >>>>>>');
+        Log::debug($request);
 
         $user = User::find($id);
+        try {
+            $payjp_sk = config('services.payjp.sk_live_p');
+            $tenant_id = $user->payjp_tenant_id;
+
+            \Payjp\Payjp::setApiKey($payjp_sk);
+
+            if (empty($tenant_id)) {
+                // ユーザーのpayjp_tenand_idカラムにデータがない場合、テナント新規作成
+                $tenant = \Payjp\Tenant::create(
+                    array(
+                        //テナントidは指定せず、自動生成させる
+                        "name" => $user->email,
+                        "platform_fee_rate" => SystemCommission::find(1)->commission_rate * 100,
+                        "minimum_transfer_amount" => 5000,
+                        "bank_account_holder_name" => $request->bank_account_holder_name,
+                        "bank_code" => $request->bank_code,
+                        "bank_branch_code" => $request->bank_branch_code,
+                        "bank_account_type" => $request->bank_account_type === '0' ? "普通" : "当座",
+                        "bank_account_number" => $request->bank_account_number,
+                    )
+                );
+            } else {
+                // ユーザーのpayjp_tenand_idカラムにデータが存在する場合は、テナント情報の更新
+                $tenant = \Payjp\Tenant::retrieve($tenant_id);
+
+                $tenant->bank_account_holder_name = $request->bank_account_holder_name;
+                $tenant->bank_code = $request->bank_code;
+                $tenant->bank_branch_code = $request->bank_branch_code;
+                $tenant->bank_account_type = $request->bank_account_type === '0' ? "普通" : "当座";
+                $tenant->bank_account_number = $request->bank_account_number;
+                $tenant->save();
+            }
+        } catch (\Payjp\Error\Card $e) {
+            //
+            return redirect()->route('mypage')->with('flash_message', 'テナント情報の登録に失敗しました。');
+        }
+        $user->payjp_tenant_id = $tenant->id;
         $user->fill($request->all())->save();
 
         return redirect()->route('mypage')->with('flash_message', '口座情報を変更しました');
+    }
+
+    /**
+     * 注文管理機能
+     */
+
+    public function order()
+    {
+        $user = Auth::user();
+        $tenant_id = $user->payjp_tenant_id;
+
+        //テナントidが存在しない場合は、アカウント設定ページへリダイレクトさせる
+        if (empty($tenant_id)) {
+            return redirect()->route('mypage')->with('flash_message', 'アカウント設定ページより、銀行情報を登録してください');
+        }
+        //========  今月の売上 ==============
+        $payjp_sk = config('services.payjp.sk_live_p');
+        \Payjp\Payjp::setApiKey($payjp_sk);
+
+        $this_month_charges = \Payjp\Charge::all(array(
+            "tenant" => $tenant_id,
+            "since" => strtotime(Carbon::now()->startOfMonth()) //月初以降
+        ))["data"];
+
+        $this_month_amount =
+            array_sum(
+                array_column(
+                    array_filter($this_month_charges, function ($arr) {
+                        // 返金済みのもの（refunded === true）は除外する
+                        return $arr->refunded === false;
+                    }),
+                    "amount" //array_columnの第二引数
+                )
+            );
+
+
+        //=========   未振込売上履歴  ==============
+        $all_transfer = (array)\Payjp\TenantTransfer::all(array(
+            "tenant" => $tenant_id,
+        ))["data"];
+        $filter = array_filter($all_transfer, function ($arr) {
+            return $arr->status !== "paid";
+        });
+        $untransferred_sale = $filter[0];
+
+        //==========  振込履歴  ==============
+        $paids = array_filter($all_transfer, function ($arr) {
+            return $arr->status === "paid";
+        });
+
+        return view('mypage.order', [
+            'this_month_amount' => $this_month_amount,
+            'untransferred_sale' => $untransferred_sale,
+            'user' => $user,
+            'paids' => $paids,
+            'filter' => $filter,
+        ]);
+    }
+
+    public function getSampleData()
+    {
+        $user = Auth::user();
+        $tenant_id = $user->payjp_tenant_id;
+
+        $payjp_sk = config('services.payjp.sk_live_p');
+        \Payjp\Payjp::setApiKey($payjp_sk);
+
+        $all_transfer = (array)\Payjp\TenantTransfer::all(array(
+            // "tenant" => $tenant_id,
+            "tenant" => "ten_e1c93880cbe965d7634427feb032",
+        ))["data"];
+        $filter = array_filter($all_transfer, function ($arr) {
+            return $arr->status !== "paid";
+        });
+
+        // return response()->json($filter[0]->amount);
+        return view('mypage.data');
     }
 }

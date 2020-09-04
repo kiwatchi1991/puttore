@@ -83,7 +83,7 @@
                 <li class="global-nav__item">
                   <a href="{{ route('products') }}" class="global-nav__item__link @guest first @endguest">作品を探す</a>
                 </li>
-                <li class="global-nav__item">
+                <li class="global-nav__item" id="js-bank_confirm">
                   <a href="{{ route('products.new') }}" class="global-nav__item__link">出品する</a>
                 </li>
                 @auth
@@ -155,8 +155,8 @@
                       <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.draft')}}">下書き一覧</a></li>
                       <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.buy')}}">購入作品一覧</a></li>
                       <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.sale')}}">出品作品一覧</a></li>
-                      <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.order')}}">販売管理</a></li>
-                      <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.order.paid')}}">振込履歴</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.order.sold')}}">販売履歴</a></li>
+                      <li><a class="global-nav__pc__submenu__list" href="{{route('mypage.order')}}">売上管理</a></li>
                       <li><a class="global-nav__pc__submenu__list" href="{{route('mypage')}}">アカウント設定</a></li>
                       <li><a onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();"
@@ -179,7 +179,7 @@
 
             @endauth
 
-            <li class="">
+            <li id="js-bank_confirm">
               <a href="{{ route('products.new') }}" class="global-nav__item__link">出品する</a>
             </li>
             <li class="">

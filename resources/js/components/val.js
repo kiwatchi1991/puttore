@@ -2,6 +2,6 @@
 // 入力項目のフロントバリデーション
 // ==================================
 $(function () {
-    $('#form-product').validate({
+    $('#form-product, #form-bankInfo').validate({
     });
 });
