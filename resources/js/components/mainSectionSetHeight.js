@@ -7,7 +7,6 @@ let setMainHeight = function () {
     let getMainHeight = $('#js-setHeight').height();
     let setMainHeight = window.innerHeight - footerHeight;
     if (setMainHeight > getMainHeight) {
-        console.log('if分岐');
         $('#js-setHeight').css('height', setMainHeight);
     }
 };
