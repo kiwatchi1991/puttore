@@ -81,6 +81,8 @@ Route::post('/contacts/confirm', 'ContactController@confirm')->name('contact.con
 Route::post('/contacts/finish', 'ContactController@send')->name('contact.send'); //完了画面
 Route::get('/contacts/finish', 'ContactController@finish')->name('contact.finish'); //完了画面
 
+//出品するボタンを押したときの銀行情報確認メソッド
+Route::get('/ajaxbankconfirm', 'BankConfirmController@ajaxBankConfirm')->name('ajaxbankconfirm.ajaxbankconfirm');
 //===========================================================================
 //ログインユーザーのみ
 //===========================================================================
@@ -92,7 +94,6 @@ Route::group(['middleware' => 'check'], function () {
   Route::post('/products/{id}/delete', 'ProductsController@delete')->name('products.delete');
   Route::post('/products/ajaxlike',  'LikesController@ajaxlike')->name('products.ajaxlike');
   Route::post('/products/ajaxfollow',  'FollowsController@ajaxfollow')->name('products.ajaxfollow');
-  Route::get('/products/ajaxbankconfirm',  'ProductsController@ajaxBankConfirm')->name('products.ajaxbankconfirm');
   //レッスンの画像アップロード
   Route::post('/products/imgupload',  'LessonImgUploadController@imgupload')->name('products.imgupload');
 

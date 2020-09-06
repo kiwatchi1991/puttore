@@ -9,8 +9,6 @@ use App\Product;
 use App\Category;
 use App\Difficulty;
 use App\Discount;
-use App\Cart;
-use App\Follow;
 use App\Like;
 use App\Lesson;
 use App\CategoryProduct;
@@ -19,7 +17,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Mockery\Undefined;
 
 class ProductsController extends Controller
 {
@@ -557,25 +554,5 @@ class ProductsController extends Controller
             $delete_target_lesson->delete();
             return response()->json();
         }
-    }
-
-    /**
-     * 銀行情報の有無確認（非同期）
-     */
-    public function ajaxBankConfirm(Request $request)
-    {
-        Log::debug('message');
-
-        $user = Auth::user();
-
-        $hasBankConfirm =
-            isset($user->bank_code) &&
-            isset($user->bank_branch_code) &&
-            isset($user->bank_account_holder_name) &&
-            isset($user->bank_account_type) &&
-            isset($user->bank_account_number) &&
-            isset($user->payjp_tenant_id);
-
-        return response()->json($hasBankConfirm);
     }
 }

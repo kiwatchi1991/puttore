@@ -12,15 +12,17 @@ $(document).on('click', '#js-bank_confirm, #js-bank_confirm-edit', function (e) 
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: '/products/ajaxbankconfirm',
+        url: '/ajaxbankconfirm',
         type: 'get',
         dataType: 'json',
     })
         // Ajaxリクエストが成功した場合
         .done(function (data) {
-            if (data === true) {
+            if (data[0] === false) {
+                location.href = "/login";
+            }else if (data[1] === true) {
                 location.href = "/products/new";
-            } else if (data === false) {
+            } else if (data[1] === false) {
                 const result = window.confirm(msg);
                 result && (location.href = "/mypage/edit");
             }
