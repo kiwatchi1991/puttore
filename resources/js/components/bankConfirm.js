@@ -1,7 +1,7 @@
 //======================================================
 // 出品するボタンを押したとき、銀行情報があるかいかを確認する
 //======================================================
-$(document).on('click', '#js-bank_confirm, #js-bank_confirm-edit', function (e) {
+$(document).on('click', '#js-bank_confirm', function (e) {
 
     e.preventDefault();
     const msg = this.id === 'js-bank_confirm'
